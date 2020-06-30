@@ -1,0 +1,18 @@
+:host {
+  display: block;
+  width: 260px;
+  height: 260px;
+  background: url('/assets/icons/main/rating.svg') no-repeat;
+}
+
+.w1024 :host {
+  width: 112px;
+  height: 112px;
+  background-size: 112px;
+}
+
+.w320 :host {
+  width: 68px;
+  height: 68px;
+  background-size: 68px;
+}

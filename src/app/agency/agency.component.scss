@@ -1,0 +1,30 @@
+@import 'src/theme';
+
+.promo {
+  margin-top: 7rem;
+  padding-bottom: 20rem;
+}
+
+.achievements {
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+  background: $color-gray;
+
+  .row {
+    justify-content: space-between;
+  }
+}
+
+.gallery {
+  r-image {
+    flex: 1.5;
+  }
+
+  r-grid-text {
+    height: auto;
+  }
+
+  .column {
+    justify-content: center;
+  }
+}

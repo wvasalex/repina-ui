@@ -1,0 +1,18 @@
+@import 'src/theme';
+
+:host {
+  display: block;
+}
+
+:host[color=brown] .mat-grid-tile {
+  background: $color-brown;
+  color: #fff;
+
+  * {
+    color: #fff;
+  }
+}
+
+.mat-grid-tile {
+}
+

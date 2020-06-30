@@ -1,0 +1,26 @@
+:host {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  white-space: nowrap;
+  padding-top: 6rem;
+}
+
+:host[color=black] {
+  * {
+    color: white !important;
+  }
+}
+
+.menu-item {
+  display: inline-block;
+  font-size: 28px;
+  line-height: 40px;
+  font-weight: 500;
+  margin-right: 40px;
+}
+
+.w1366 :host .menu-item {
+  font-size: 20px;
+  line-height: 28px;
+}

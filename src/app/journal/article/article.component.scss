@@ -1,0 +1,30 @@
+@import 'src/theme';
+
+r-page ::ng-deep .menu, .promo {
+  background: $color-gray;
+}
+
+.promo {
+  padding-bottom: 6rem !important;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+
+.w1366 :host {
+  .avatar {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.w768 :host {
+  .mh-4 {
+    margin: 4rem 0;
+  }
+
+
+}

@@ -1,0 +1,57 @@
+:host {
+  transform: scale(1);
+}
+
+.sphere {
+  display: block;
+  min-width: 556px;
+  min-height: 556px;
+  background: url('/assets/icons/main/sphere.svg');
+  border-radius: 50%;
+}
+
+.w1366 :host {
+  $width: 416px;
+  .sphere {
+    min-width: $width;
+    min-height: $width;
+    background-size: $width;
+  }
+}
+
+.w1024 :host {
+  margin-top: 48px;
+
+  $width: 266px;
+  .sphere {
+    min-width: $width;
+    min-height: $width;
+    background-size: $width;
+  }
+
+  .sphere-rating {
+    right: 0;
+  }
+}
+
+.w320 :host {
+  $width: 128px;
+  .sphere {
+    min-width: $width;
+    min-height: $width;
+    background-size: $width;
+  }
+
+  .sphere-rating {
+    top: -24px;
+  }
+}
+
+.sphere-rating {
+  position: absolute;
+  right: -48px;
+  top: -48px;
+  transition: 300ms;
+  z-index: 1;
+}
+

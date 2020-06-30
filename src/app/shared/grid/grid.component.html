@@ -1,0 +1,37 @@
+<ng-template #rel1>
+  <ng-content select="[rel=1]"></ng-content>
+</ng-template>
+<ng-template #rel2>
+  <ng-content select="[rel=2]"></ng-content>
+</ng-template>
+
+<mat-grid-list
+  *ngIf="!column"
+  [cols]="def.cols"
+  rowHeight="1.5:1"
+  gutterSize="30"
+>
+  <mat-grid-tile
+    *ngFor="let item of def.roles; let index = index"
+    [colspan]="def.grid[index].colspan || 1"
+    [rowspan]="def.grid[index].rowspan || 1"
+  >
+    <ng-container [ngSwitch]="item">
+      <ng-container *ngSwitchCase="1">
+        <ng-container *ngTemplateOutlet="rel1"></ng-container>
+      </ng-container>
+      <ng-container *ngSwitchCase="2">
+        <ng-container *ngTemplateOutlet="rel2"></ng-container>
+      </ng-container>
+      <ng-content *ngSwitchCase="3" select="[rel=3]"></ng-content>
+    </ng-container>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<div
+  *ngIf="column"
+  class="column"
+>
+  <ng-container *ngTemplateOutlet="rel1"></ng-container>
+  <ng-container *ngTemplateOutlet="rel2"></ng-container>
+</div>

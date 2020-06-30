@@ -1,0 +1,21 @@
+:host {
+  display: block;
+  background: #000;
+  padding: 86px 0;
+
+  * {
+    color: #fff;
+  }
+}
+
+.w320 :host {
+  padding: 22px 0;
+}
+
+.row {
+  justify-content: space-between;
+
+  * {
+    flex: 1;
+  }
+}

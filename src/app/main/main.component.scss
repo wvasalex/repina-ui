@@ -1,0 +1,54 @@
+.promo {
+}
+
+r-nav {
+  margin-top: 160px;
+  margin-bottom: 86px;
+}
+
+.all-projects {
+  width: 100%;
+  height: 100%;
+  background-color: #F8F8F8;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .all-icon {
+    background-image: url('/assets/icons/main/all.svg');
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: cover;
+    height: 50px;
+    width: 277px;
+  }
+}
+
+.w1366 :host .all-icon {
+  width: 185px;
+  height: 30px;
+}
+
+.journal {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 128px;
+  padding-bottom: 104px;
+
+  .intro {
+    margin-right: 15%;
+    margin-bottom: 4rem;
+  }
+}
+
+.w768 :host {
+  r-nav {
+    margin-top: 86px;
+  }
+
+  .journal {
+    flex-direction: column;
+  }
+}

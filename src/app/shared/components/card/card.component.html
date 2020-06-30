@@ -1,0 +1,22 @@
+<div>
+  <div class="h4">{{subtitle}}</div>
+  <div style="height: 20px;"></div>
+  <div
+    *ngIf="title; else titleContent"
+    class="h1"
+  >
+    {{title}}
+  </div>
+  <div
+    *ngIf="description"
+    class="text32 mt-1_5"
+  >
+    {{description}}
+  </div>
+</div>
+
+<ng-content></ng-content>
+
+<ng-template #titleContent>
+  <ng-content select="[title]"></ng-content>
+</ng-template>

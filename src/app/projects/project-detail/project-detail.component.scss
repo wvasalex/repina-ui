@@ -1,0 +1,29 @@
+.single-image {
+  width: 100%;
+  height: auto;
+}
+
+.links {
+  a {
+    text-decoration: underline;
+  }
+}
+
+.row {
+
+}
+
+
+.w320 :host {
+  .nav {
+    flex-direction: column-reverse;
+  }
+
+  .links {
+    margin-top: 8rem;
+  }
+
+  .h3 {
+    margin-bottom: 6rem;
+  }
+}

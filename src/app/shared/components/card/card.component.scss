@@ -1,0 +1,25 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+:host[color=black] {
+  * {
+    color: white;
+  }
+}
+
+.h3 {
+  margin-top: 20px;
+}
+
+.w768 :host {
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+:host ::ng-deep r-image {
+  max-width: 38rem;
+  max-height: 38rem;
+}

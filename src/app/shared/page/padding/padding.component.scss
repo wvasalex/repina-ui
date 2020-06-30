@@ -1,0 +1,25 @@
+:host {
+  display: block;
+  padding: 42px 74px;
+}
+
+:host.horizontal {
+  padding-top: 0!important;
+  padding-bottom: 0;
+}
+
+.w1336 :host {
+  padding: 48px 64px;
+}
+
+.w1024 :host {
+  padding: 48px 34px;
+}
+
+.w768 :host {
+  padding: 48px 30px;
+}
+
+.w320 :host {
+  padding: 48px 12px;
+}

@@ -1,0 +1,62 @@
+<r-padding [horizontal]="true">
+  <div>
+    <div class="h3">
+      Запрос коммерческого предложения
+    </div>
+  </div>
+  <div class="column">
+    <div class="h3">Брендинг для</div>
+
+    <div class="mt-3">
+      <r-badge-list
+        [badges]="['Компании', 'Продукта', 'Ритейла', 'HR-бренда']"
+      ></r-badge-list>
+    </div>
+
+    <form class="mt-6">
+      <div class="h3">
+        Ваши контакты
+      </div>
+
+      <div class="primary mt-2">
+        <r-input
+          [required]="true"
+          placeholder="Имя"
+        ></r-input>
+        <r-input
+          [required]="true"
+          placeholder="Телефон"
+        ></r-input>
+      </div>
+      <r-input
+        [required]="true"
+        placeholder="Почта"
+        class="mt-4"
+      ></r-input>
+      <r-input
+        placeholder="Комментарий"
+        class="mt-4"
+      ></r-input>
+
+      <r-button
+        class="mt-4"
+      >
+        Получить предложение
+      </r-button>
+
+      <div class="mt-4 text24">
+        При заполнении формы, вы получите предложение в течение 30 минут. Запрос по другим каналам связи обрабатывается до 2-х рабочих дней.
+      </div>
+
+      <r-checkbox
+        class="mt-1_5"
+      >
+        Я согласен получать рассылку новостей агентства
+      </r-checkbox>
+
+      <div class="text16 mt-1_5">
+        Нажимая на кнопку «Получить предложение» Вы подтверждаете, что Вы ознакомились полностью с актуальной Информационной политикой на настоящем сайте, полностью согласны с ее положениями и выдали ООО «Репина брендинг» все согласия, указанные в вышеупомянутой Информационной политике
+      </div>
+    </form>
+  </div>
+</r-padding>

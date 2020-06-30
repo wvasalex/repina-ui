@@ -1,0 +1,18 @@
+<r-padding class="row">
+  <div>
+    <div class="h3">
+      О нас
+    </div>
+  </div>
+  <div class="column">
+    <div
+      *ngFor="let item of about; let first = first;"
+      [class.mt-6]="!first"
+    >
+      <div class="h3">{{item.title}}</div>
+      <div class="text32 mt-1">
+        {{item.description}}
+      </div>
+    </div>
+  </div>
+</r-padding>

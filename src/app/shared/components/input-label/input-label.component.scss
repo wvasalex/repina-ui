@@ -1,0 +1,12 @@
+@import 'src/styles';
+
+:host {
+  @extend .text16;
+  display: block;
+  margin-bottom: 8px;
+  cursor: pointer;
+
+  &:active {
+    opacity: .75;
+  }
+}

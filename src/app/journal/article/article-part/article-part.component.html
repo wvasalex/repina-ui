@@ -1,0 +1,27 @@
+<div
+  *ngIf="title"
+  class="title h3"
+>
+  {{title}}
+</div>
+
+<div
+  *ngIf="subtitle"
+  [class.mt-1_5]="title"
+  class="subtitle h4"
+>
+  {{subtitle}}
+</div>
+
+<div class="content">
+  <div
+    *ngIf="date"
+    class="date text32"
+  >
+    {{date}}
+  </div>
+
+  <div class="row-column">
+    <ng-content></ng-content>
+  </div>
+</div>

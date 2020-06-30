@@ -1,0 +1,27 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+  position: relative;
+}
+
+input {
+  width: 100%;
+  padding: 1rem 0;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid #000;
+}
+
+.required {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  bottom: 1.5rem;
+  right: 0;
+  background: url('/assets/icons/components/required.svg') no-repeat;
+}

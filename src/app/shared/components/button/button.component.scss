@@ -1,0 +1,15 @@
+@import 'src/theme';
+
+:host {
+  display: block;
+}
+
+button {
+  background: $color-red;
+  padding: .5rem 2rem;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 44px;
+  white-space: nowrap;
+}

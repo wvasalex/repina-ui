@@ -1,0 +1,22 @@
+<div (click)="input.focus()">
+  <ng-content select="s-input-label"></ng-content>
+</div>
+<div class="container">
+  <input
+    #input
+    (input)="writeValue(input.value)"
+    [placeholder]="placeholder"
+    type="text"
+    class="text32"
+  />
+  <div
+    *ngIf="required"
+    class="required"
+  ></div>
+</div>
+
+<r-input-error
+  *ngIf="error"
+  @errorAnimation
+></r-input-error>
+<ng-content></ng-content>

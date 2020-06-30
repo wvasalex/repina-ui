@@ -1,0 +1,76 @@
+@import 'src/theme';
+
+:host {
+  display: block;
+  padding: 8rem 0;
+  background: $color-gray;
+  overflow: hidden;
+}
+
+r-padding {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+a {
+  text-decoration: underline;
+}
+
+.association {
+  align-items: flex-end;
+
+  .text32 {
+    opacity: .3;
+    margin-left: 1.5rem;
+  }
+}
+
+.bolder {
+  margin-top: .5rem;
+}
+
+.social {
+  a:not(:last-of-type) {
+    margin-right: 2rem;
+  }
+}
+
+.w1024 :host {
+  r-logo {
+    width: 228px !important;
+    height: 68px !important;
+  }
+}
+
+.w768 :host {
+  r-padding {
+    flex-direction: column-reverse;
+  }
+
+  .contacts {
+    display: flex;
+    flex-direction: row;
+
+    & > :first-child {
+      margin-right: 2rem;
+    }
+  }
+
+  .social {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0;
+  }
+}
+
+.w320 :host {
+  .contacts {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .social {
+    margin: 3rem 0;
+  }
+}

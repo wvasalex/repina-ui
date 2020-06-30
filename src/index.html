@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Repina Branding</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <script>
+    (function(b, w) {
+      var c = 'w1920';
+
+      switch (true) {
+        case w <= 1366:
+          c = 'w1366';
+          break;
+        case w <= 678:
+          c = 'w768';
+          break;
+        case w <= 320:
+          c = 'w320';
+          break;
+      }
+      b.className = c;
+    })(document.body, window.innerWidth);
+  </script>
+  <app-root></app-root>
+</body>
+</html>

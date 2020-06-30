@@ -1,0 +1,12 @@
+<r-logo [menuColor]="color"></r-logo>
+
+<div class="menu">
+  <a
+    *ngFor="let item of items"
+    [routerLink]="[item.routerLink]"
+    class="menu-item"
+  >
+    {{item.label}}
+  </a>
+  <r-button class="menu-item">Запросить стоимость</r-button>
+</div>

@@ -1,0 +1,48 @@
+<r-padding [horizontal]="true">
+  <div style="margin-right: 1rem">
+    <r-logo
+      width="401"
+      height="120"
+    ></r-logo>
+
+    <div class="text32 mt-1_5">
+      &copy; Repina branding.
+    </div>
+    <div class="text32">
+      Брендинговое агентство Валерии Репиной
+    </div>
+    <a class="text32">
+      Политика конфиденциальности
+    </a>
+
+    <div class="mt-4">
+      <div class="association row">
+        <img src="/assets/icons/footer/association.svg" />
+
+        <div class="text32">
+          Ассоциация брендинговых<br>компаний России
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contacts text32">
+    <div>
+      <div>Контакты</div>
+      <div class="bolder">
+        +7 (499) 521-70-73<br>
+        hello+111119@repinabranding.ru
+      </div>
+      <div class="mt-5">Адрес</div>
+      <div class="bolder">
+        Россия, Москва, пр. Мира 102/31
+      </div>
+    </div>
+    <div class="mt-5 social">
+      <a
+        *ngFor="let item of social; let first = first;"
+        class="text32 bolder"
+      >{{item}}</a>
+    </div>
+  </div>
+</r-padding>
