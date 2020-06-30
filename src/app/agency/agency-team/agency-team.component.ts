@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { TeamMember } from './team.model';
+import { TeamMember } from './agency-team.model';
 
 @Component({
-  selector: 'r-team',
-  templateUrl: './team.component.html',
-  styleUrls: ['./team.component.scss']
+  selector: 'r-agency-team',
+  templateUrl: './agency-team.component.html',
+  styleUrls: ['./agency-team.component.scss'],
 })
-export class TeamComponent implements OnInit {
+export class AgencyTeamComponent implements OnInit {
   public members: TeamMember[] = [
     {
       name: 'Анвар Курбанов',
@@ -30,8 +30,8 @@ export class TeamComponent implements OnInit {
     },
   ];
 
-
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

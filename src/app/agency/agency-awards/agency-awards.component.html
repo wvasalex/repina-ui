@@ -1,0 +1,40 @@
+<r-padding
+  [horizontal]="true"
+>
+  <div class="row-column">
+    <div>
+      <div class="h3">
+        Наши награды
+      </div>
+      <div class="mt-3">
+        <r-arrow
+          type="prev"
+          color="#86827F"
+        ></r-arrow>
+        <r-arrow
+          type="next"
+          color="#FFF"
+          class="next"
+        ></r-arrow>
+      </div>
+    </div>
+    <table>
+      <thead>
+        <th>Год</th>
+        <th>Награда</th>
+        <th>Место</th>
+        <th>Номинация</th>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let award of awards"
+        >
+          <td>{{award.year}}</td>
+          <td>{{award.title}}</td>
+          <td>{{award.position}}</td>
+          <td>{{award.type}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</r-padding>

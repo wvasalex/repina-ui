@@ -1,0 +1,23 @@
+@import 'src/styles';
+
+:host {
+  display: block;
+  padding: 8rem 0;
+}
+
+.next {
+  margin-left: 2rem;
+}
+
+.content {
+  flex: 2 !important;
+}
+
+.quote {
+  padding: 2.5rem 2rem;
+  background: #F8F8F8;
+}
+
+.full-review {
+  text-decoration: underline;
+}

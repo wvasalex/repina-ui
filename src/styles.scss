@@ -146,7 +146,7 @@ a, a:visited {
 }
 
 .w768 .row-column {
-  @extend .column;
+  flex-direction: column !important;
 }
 
 .mt-1 {

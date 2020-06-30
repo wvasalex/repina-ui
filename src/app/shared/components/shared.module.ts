@@ -10,6 +10,7 @@ import { ButtonComponent } from './button/button.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { BadgeListComponent } from './badge-list/badge-list.component';
 import { ImageComponent } from './image/image.component';
+import { ArrowComponent } from './arrow/arrow.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ImageComponent } from './image/image.component';
     CheckboxComponent,
     BadgeListComponent,
     ImageComponent,
+    ArrowComponent,
   ],
   exports: [
     LogoComponent,
@@ -34,6 +36,7 @@ import { ImageComponent } from './image/image.component';
     CheckboxComponent,
     BadgeListComponent,
     ImageComponent,
+    ArrowComponent,
   ],
   imports: [
     CommonModule,

@@ -6,11 +6,13 @@ import { AgencyComponent } from './agency.component';
 import { PageModule } from '../shared/page/page.module';
 import { GridModule } from '../shared/grid/grid.module';
 import { SharedModule } from '../shared/components/shared.module';
-import { TeamComponent } from './team/team.component';
-
+import { AgencyAwardsComponent } from './agency-awards/agency-awards.component';
+import { AgencyTeamComponent } from './agency-team/agency-team.component';
+import { AgencyFeedbackComponent } from './agency-feedback/agency-feedback.component';
+import { AgencyCustomersComponent } from './agency-customers/agency-customers.component';
 
 @NgModule({
-  declarations: [AgencyComponent, TeamComponent],
+  declarations: [AgencyComponent, AgencyAwardsComponent, AgencyTeamComponent, AgencyFeedbackComponent, AgencyCustomersComponent],
   imports: [
     CommonModule,
     AgencyRoutingModule,

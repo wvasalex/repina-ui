@@ -1,0 +1,7 @@
+:host {
+  display: inline-block;
+}
+
+:host[type=next] {
+  transform: rotateY(180deg);
+}
