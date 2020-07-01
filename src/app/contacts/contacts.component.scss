@@ -9,3 +9,39 @@
     }
   }
 }
+
+.map {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 900px;
+  overflow: hidden;
+  transition: 300ms;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url('/assets/icons/contacts/map.svg');
+}
+
+.pin {
+  width: 128px;
+  height: 146px;
+}
+
+.w768 :host {
+  .map {
+    height: 600px;
+  }
+}
+
+.w320 :host {
+  .map {
+    height: 400px;
+  }
+
+  .pin {
+    width: 64px;
+    height: 82px;
+  }
+}

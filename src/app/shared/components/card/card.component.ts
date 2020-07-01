@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostBinding, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'r-card',
@@ -6,7 +6,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
-  @Input() color: 'white' | 'black' = 'white';
+  @Input() @HostBinding('attr.color') color: 'white' | 'black' = 'white';
+  @Input() @HostBinding('attr.size') size: 'big' | 'small' = 'big';
   @Input() title: string;
   @Input() subtitle: string;
   @Input() description: string;

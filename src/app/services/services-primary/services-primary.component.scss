@@ -1,0 +1,56 @@
+@import 'src/theme';
+
+:host {
+  display: block;
+  padding: 8rem 0;
+  background: #000;
+
+  * {
+    color: #fff;
+  }
+}
+
+.index {
+  min-width: 56px;
+}
+
+.service {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.circle {
+  width: 40%;
+  height: 0;
+  padding-bottom: 40%;
+  border-radius: 50%;
+  background: $color-red;
+}
+
+.w1024 :host {
+  .circle {
+    width: 60%;
+    padding-bottom: 60%;
+  }
+}
+
+.w320 :host {
+  .service {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ml-6 {
+    margin-left: 0;
+  }
+
+  .right {
+    display: none;
+  }
+}

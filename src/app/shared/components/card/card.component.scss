@@ -1,12 +1,32 @@
+@import 'src/styles';
+
 :host {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
+.subtitle {
+  @extend .h4;
+}
+
+.title {
+  @extend .h1;
+}
+
 :host[color=black] {
   * {
     color: white;
+  }
+}
+
+:host[size=small] {
+  .subtitle {
+    @extend .h4;
+  }
+
+  .title {
+    @extend .h2;
   }
 }
 
