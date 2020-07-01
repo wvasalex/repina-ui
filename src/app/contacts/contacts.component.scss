@@ -1,0 +1,11 @@
+.address {
+  padding-right: 3rem;
+}
+
+.w320 :host {
+  .space {
+    &:after {
+      content: ' ';
+    }
+  }
+}

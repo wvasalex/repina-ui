@@ -18,6 +18,8 @@ import { RequestComponent } from './request/request.component';
   exports: [
     PageComponent,
     PaddingComponent,
+    RequestComponent,
+    FooterComponent,
   ],
   imports: [
     CommonModule,

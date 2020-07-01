@@ -1,6 +1,8 @@
 :host {
   display: block;
-  padding: 42px 74px;
+  &:not(.disabled) {
+    padding: 42px 74px;
+  }
 }
 
 :host.horizontal {

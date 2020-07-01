@@ -1,7 +1,10 @@
-<r-padding [horizontal]="true">
-  <div>
+<r-padding
+  [horizontal]="true"
+  [disabled]="disablePadding"
+>
+  <div *ngIf="title">
     <div class="h3">
-      Запрос коммерческого предложения
+      {{title}}
     </div>
   </div>
   <div class="column">

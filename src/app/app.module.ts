@@ -14,6 +14,7 @@ import { MainModule } from './main/main.module';
 import { ProjectsModule } from './projects/projects.module';
 import { JournalModule } from './journal/journal.module';
 import { AgencyModule } from './agency/agency.module';
+import { ContactsModule } from './contacts/contacts.module';
 
 @NgModule({
   imports: [
@@ -35,6 +36,7 @@ import { AgencyModule } from './agency/agency.module';
     ProjectsModule,
     AgencyModule,
     JournalModule,
+    ContactsModule,
   ],
   declarations: [
     AppComponent,

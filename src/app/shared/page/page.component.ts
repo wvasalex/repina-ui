@@ -1,4 +1,13 @@
-import { ChangeDetectionStrategy, Component, HostBinding, Input, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  HostBinding,
+  Input,
+  OnDestroy,
+  OnInit,
+  Renderer2,
+  TemplateRef,
+} from '@angular/core';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs';
 import { BreakpointService } from '../breakpoint.service';
@@ -12,6 +21,7 @@ import { BreakpointService } from '../breakpoint.service';
 export class PageComponent implements OnInit, OnDestroy {
   @Input() menuColor: 'white' | 'black' = 'white';
   @Input() @HostBinding('style.backgroundImage') backgroundImage: string;
+  @Input() contentTmp: TemplateRef<any>;
 
   private _observe: Subscription;
 

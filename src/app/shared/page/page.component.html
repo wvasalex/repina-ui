@@ -8,7 +8,8 @@
 <div class="content">
   <ng-content></ng-content>
 
-  <r-request></r-request>
+  <ng-container *ngTemplateOutlet="contentTmp"></ng-container>
+  <r-request *ngIf="!contentTmp"></r-request>
 </div>
 
 <r-footer></r-footer>

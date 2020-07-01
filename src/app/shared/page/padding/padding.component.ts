@@ -7,6 +7,7 @@ import { Component, HostBinding, Input, OnInit } from '@angular/core';
 })
 export class PaddingComponent implements OnInit {
   @Input() @HostBinding('class.horizontal') horizontal: boolean = false;
+  @Input() @HostBinding('class.disabled') disabled: boolean = false;
 
   constructor() { }
 
