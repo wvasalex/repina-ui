@@ -1,21 +1,14 @@
 @import 'src/theme';
 
-$image_size: 570px;
-
 :host {
   display: block;
   padding: 5rem;
   overflow: auto;
 }
 
-.member {
-  &:not(:first-of-type) {
-    margin-left: 2rem;
-  }
-}
-
 .member-image {
-  width: $image_size;
-  height: $image_size;
+  width: 30vw;
+  min-width: 200px;
+  padding-top: 100%;
   background: $color-gray;
 }

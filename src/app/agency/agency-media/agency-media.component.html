@@ -1,0 +1,15 @@
+<r-padding [horizontal]="true">
+  <div class="h3">
+    200+ публикации в СМИ
+  </div>
+
+  <div
+    *ngFor="let article of articles"
+    class="article-snippet"
+  >
+    <div class="h3">{{article.title}}</div>
+    <div class="h4 mt-1">{{article.date}}</div>
+    <div class="text32 mt-1">{{article.text}}</div>
+  </div>
+  <div class="clear"></div>
+</r-padding>

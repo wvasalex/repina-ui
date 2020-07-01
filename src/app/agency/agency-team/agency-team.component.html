@@ -1,6 +1,7 @@
 <div class="row">
   <div
-      *ngFor="let member of members"
+      *ngFor="let member of members; let first = first;"
+      [class.ml-2]="!first"
       class="member"
   >
     <div class="member-image"></div>
