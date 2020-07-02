@@ -1,9 +1,10 @@
-<div class="nav-block-services">
+<div class="primary">
   <a
+    *ngFor="let block of primary"
     [routerLink]="[]"
     class="h3"
   >
-    Услуги
+    {{primary}}
   </a>
 </div>
 <div class="blocks">

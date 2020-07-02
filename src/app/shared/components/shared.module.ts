@@ -11,6 +11,8 @@ import { CheckboxComponent } from './checkbox/checkbox.component';
 import { BadgeListComponent } from './badge-list/badge-list.component';
 import { ImageComponent } from './image/image.component';
 import { ArrowComponent } from './arrow/arrow.component';
+import { NavListComponent } from './nav-list/nav-list.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { ArrowComponent } from './arrow/arrow.component';
     BadgeListComponent,
     ImageComponent,
     ArrowComponent,
+    NavListComponent,
   ],
   exports: [
     LogoComponent,
@@ -37,9 +40,11 @@ import { ArrowComponent } from './arrow/arrow.component';
     BadgeListComponent,
     ImageComponent,
     ArrowComponent,
+    NavListComponent,
   ],
   imports: [
     CommonModule,
+    RouterModule,
   ],
 })
 export class SharedModule {
