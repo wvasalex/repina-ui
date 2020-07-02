@@ -1,0 +1,46 @@
+:host {
+  display: flex;
+  justify-content: space-between;
+  padding: 8rem 0;
+  background: #000;
+
+  * {
+    color: #fff;
+  }
+}
+
+.leading {
+  width: 30%;
+  margin-right: 20px;
+}
+
+.nav-block {
+  display: flex;
+  flex-direction: column;
+
+  .text32 {
+    line-height: 56px;
+  }
+
+  .h3 {
+    margin-bottom: 16px;
+  }
+
+  &:not(:last-of-type) {
+    margin-right: 20px;
+  }
+}
+
+.w768 :host {
+  flex-direction: column;
+
+  .blocks {
+    margin-top: 52px;
+  }
+}
+
+.w1366 :host {
+  .text32 {
+    line-height: 40px;
+  }
+}

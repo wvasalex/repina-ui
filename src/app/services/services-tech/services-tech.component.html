@@ -1,0 +1,36 @@
+<r-padding [horizontal]="true">
+  <!--<div >
+    <a
+      [routerLink]="[]"
+      class="h3"
+    >
+      Бренд-технологии
+    </a>
+  </div>
+  -->
+  <div class="row-column">
+    <a
+      [routerLink]="[]"
+      class="leading h3"
+    >
+      Бренд-технологии
+    </a>
+
+    <div class="blocks column">
+      <div
+        *ngFor="let block of blocks; let first = first;"
+        [class.mt-6]="!first"
+        class="nav-block"
+      >
+        <a
+          *ngFor="let link of block; let first = first;"
+          [routerLink]="[]"
+          [class.h3]="first"
+          [class.text32]="!first"
+        >
+          {{link}}
+        </a>
+      </div>
+    </div>
+  </div>
+</r-padding>

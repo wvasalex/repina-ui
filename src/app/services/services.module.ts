@@ -7,9 +7,10 @@ import { ServicesListComponent } from './services-list/services-list.component';
 import { SharedModule } from '../shared/components/shared.module';
 import { PageModule } from '../shared/page/page.module';
 import { ServicesPrimaryComponent } from './services-primary/services-primary.component';
+import { ServicesTechComponent } from './services-tech/services-tech.component';
 
 @NgModule({
-  declarations: [ServicesComponent, ServicesListComponent, ServicesPrimaryComponent],
+  declarations: [ServicesComponent, ServicesListComponent, ServicesPrimaryComponent, ServicesTechComponent],
   imports: [
     CommonModule,
     ServicesRoutingModule,
