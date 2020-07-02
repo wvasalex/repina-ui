@@ -11,7 +11,7 @@
   grid-auto-rows: minmax(100px, auto);
 }
 
-.nav-block-services {
+.primary {
   width: 30%;
   margin-right: 20px;
 }
@@ -33,6 +33,12 @@
   }
 }
 
+.w1366 :host {
+  .text32 {
+    line-height: 40px;
+  }
+}
+
 .w768 :host {
   flex-direction: column;
 
@@ -42,13 +48,5 @@
 }
 
 .w320 :host {
-  .blocks {
-    grid-template-columns: repeat(1, 1fr);
-  }
-}
-
-.w1366 :host {
-  .text32 {
-    line-height: 40px;
-  }
+  padding: 0;
 }
