@@ -7,6 +7,7 @@ import { PaddingComponent } from './padding/padding.component';
 import { FooterComponent } from './footer/footer.component';
 import { SharedModule } from '../components/shared.module';
 import { RequestComponent } from './request/request.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { RequestComponent } from './request/request.component';
     PaddingComponent,
     FooterComponent,
     RequestComponent,
+    HeaderComponent,
   ],
   exports: [
     PageComponent,

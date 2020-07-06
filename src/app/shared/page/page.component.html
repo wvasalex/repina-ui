@@ -1,9 +1,14 @@
-<r-padding
-  [horizontal]="true"
-  class="menu"
+<r-header
+  [class.has-image]="!!backgroundImage"
+  [backgroundImage]="backgroundImage"
 >
-  <r-menu [color]="menuColor"></r-menu>
-</r-padding>
+  <r-padding
+    [horizontal]="true"
+  >
+    <r-menu [color]="menuColor"></r-menu>
+  </r-padding>
+  <ng-content select="[header]"></ng-content>
+</r-header>
 
 <div class="content">
   <ng-content></ng-content>

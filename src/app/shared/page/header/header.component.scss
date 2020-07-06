@@ -1,0 +1,9 @@
+:host {
+  display: block;
+
+  &.has-image {
+    height: 900px;
+    background-position: top center;
+    background-repeat: no-repeat;
+  }
+}

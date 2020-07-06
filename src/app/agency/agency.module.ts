@@ -11,9 +11,10 @@ import { AgencyTeamComponent } from './agency-team/agency-team.component';
 import { AgencyFeedbackComponent } from './agency-feedback/agency-feedback.component';
 import { AgencyCustomersComponent } from './agency-customers/agency-customers.component';
 import { AgencyMediaComponent } from './agency-media/agency-media.component';
+import { AgencyPrimaryComponent } from './agency-primary/agency-primary.component';
 
 @NgModule({
-  declarations: [AgencyComponent, AgencyAwardsComponent, AgencyTeamComponent, AgencyFeedbackComponent, AgencyCustomersComponent, AgencyMediaComponent],
+  declarations: [AgencyComponent, AgencyAwardsComponent, AgencyTeamComponent, AgencyFeedbackComponent, AgencyCustomersComponent, AgencyMediaComponent, AgencyPrimaryComponent],
   imports: [
     CommonModule,
     AgencyRoutingModule,

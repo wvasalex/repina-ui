@@ -20,7 +20,7 @@ import { BreakpointService } from '../breakpoint.service';
 })
 export class PageComponent implements OnInit, OnDestroy {
   @Input() menuColor: 'white' | 'black' = 'white';
-  @Input() @HostBinding('style.backgroundImage') backgroundImage: string;
+  @Input() backgroundImage: string;
   @Input() contentTmp: TemplateRef<any>;
 
   private _observe: Subscription;

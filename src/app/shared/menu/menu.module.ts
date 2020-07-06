@@ -4,8 +4,6 @@ import { MenuComponent } from './menu.component';
 import { SharedModule } from '../components/shared.module';
 import { RouterModule } from '@angular/router';
 
-
-
 @NgModule({
   declarations: [MenuComponent],
   imports: [

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'r-services-tech',
-  templateUrl: './services-tech.component.html',
-  styleUrls: ['./services-tech.component.scss']
+  selector: 'r-agency-primary',
+  templateUrl: './agency-primary.component.html',
+  styleUrls: ['./agency-primary.component.scss'],
 })
-export class ServicesTechComponent implements OnInit {
+export class AgencyPrimaryComponent implements OnInit {
   public blocks: string[][] = [
     ['Бренд-технологии'],
     [
@@ -22,7 +22,8 @@ export class ServicesTechComponent implements OnInit {
     ],
   ];
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
