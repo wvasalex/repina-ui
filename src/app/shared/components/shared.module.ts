@@ -13,6 +13,7 @@ import { ImageComponent } from './image/image.component';
 import { ArrowComponent } from './arrow/arrow.component';
 import { NavListComponent } from './nav-list/nav-list.component';
 import { RouterModule } from '@angular/router';
+import { ParallaxDirective } from './parallax/parallax.directive';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { RouterModule } from '@angular/router';
     ImageComponent,
     ArrowComponent,
     NavListComponent,
+    ParallaxDirective,
   ],
   exports: [
     LogoComponent,
@@ -41,6 +43,7 @@ import { RouterModule } from '@angular/router';
     ImageComponent,
     ArrowComponent,
     NavListComponent,
+    ParallaxDirective,
   ],
   imports: [
     CommonModule,

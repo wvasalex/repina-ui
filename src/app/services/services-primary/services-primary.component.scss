@@ -31,6 +31,7 @@
   padding-bottom: 40%;
   border-radius: 50%;
   background: $color-red;
+  animation: 1s linear 0s infinite pulse;
 }
 
 .w1024 :host {
@@ -52,5 +53,19 @@
 
   .right {
     display: none;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(.85);
+  }
+
+  100% {
+    transform: scale(1);
   }
 }
