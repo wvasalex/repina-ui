@@ -24,10 +24,10 @@
     <mat-grid-tile
       *ngFor="let image of images; let index = index"
     >
-      <r-grid-image
-        [style.backgroundImage]="'url(/assets/pictures/' + image + '.png)'"
+      <r-image
+        [src]="'/assets/pictures/' + image + '.png'"
         r-parallax
-      ></r-grid-image>
+      ></r-image>
     </mat-grid-tile>
   </mat-grid-list>
 </r-page>

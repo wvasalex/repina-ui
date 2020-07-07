@@ -1,6 +1,6 @@
 import { Directive, ElementRef, HostBinding, HostListener, Input, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { fromEvent, Subscription } from 'rxjs';
-import { map, tap, throttleTime } from 'rxjs/operators';
+import { map, startWith, tap, throttleTime } from 'rxjs/operators';
 
 @Directive({
   selector: '[r-parallax]',
@@ -37,15 +37,22 @@ export class ParallaxDirective implements OnInit, OnDestroy {
 
   private init() {
     const box = this.el.getBoundingClientRect();
-    this.top = box.top + window.pageYOffset;
 
+    if (box.height == 0){
+      return setTimeout(() => this.init(), 10);
+    }
+
+    this.top = box.top + window.scrollY;
     this.sub?.unsubscribe();
+
+    const getOffset = () => {
+      return -.3 * (this.top - window.scrollY) + window.innerHeight / 10;
+    };
 
     this.sub = fromEvent(window, 'scroll').pipe(
       throttleTime(10),
-      map(() => {
-        return -.25 * (this.top - window.scrollY);
-      }),
+      map(getOffset),
+      startWith(getOffset()),
     ).subscribe((offset: number) => {
       if (this.direction == 'reverse') {
         this.renderer.setStyle(this.el, 'margin-top', '-' + (offset * .5) + 'px');
