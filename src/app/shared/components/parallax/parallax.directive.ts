@@ -1,6 +1,6 @@
-import { Directive, ElementRef, HostBinding, HostListener, Input, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, HostBinding, Input, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { fromEvent, Subscription } from 'rxjs';
-import { debounceTime, map, startWith, tap, throttleTime } from 'rxjs/operators';
+import { debounceTime, map, startWith, throttleTime } from 'rxjs/operators';
 
 @Directive({
   selector: '[r-parallax]',
@@ -24,27 +24,27 @@ export class ParallaxDirective implements OnInit, OnDestroy {
     this.init();
 
     this.resize = fromEvent(window, 'resize').pipe(
-      debounceTime(300),
+      debounceTime(600),
     ).subscribe(() => this.init());
   }
 
   public ngOnDestroy() {
-    this.sub.unsubscribe();
-    this.resize.unsubscribe();
+    this.sub?.unsubscribe();
+    this.resize?.unsubscribe();
   }
 
   private init() {
     const box = this.el.getBoundingClientRect();
 
     if (box.height == 0) {
-      return setTimeout(() => this.init(), 10);
+      return setTimeout(() => this.init(), 100);
     }
 
     this.top = box.top + window.scrollY;
     this.sub?.unsubscribe();
 
     const getOffset = () => {
-      return -.3 * (this.top - window.scrollY) + window.innerHeight / 5;
+      return -.3 * (this.top - window.scrollY) + window.innerHeight / 10;
     };
 
     this.sub = fromEvent(window, 'scroll').pipe(

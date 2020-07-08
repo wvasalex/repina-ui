@@ -1,11 +1,15 @@
 @import 'src/theme';
 
-r-page ::ng-deep .menu, .promo {
+r-page ::ng-deep r-header, .promo {
   background: $color-gray;
 }
 
 .promo {
   padding-bottom: 6rem !important;
+}
+
+.avatar-block {
+  align-self: flex-start;
 }
 
 .avatar {

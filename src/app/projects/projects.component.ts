@@ -11,7 +11,9 @@ import { BreakpointService } from '../shared/breakpoint.service';
 })
 export class ProjectsComponent implements OnInit, OnDestroy {
   public cols: number = 3;
-  public images: string[] = ['1' ,'2', '3', '4', '5', '6', '7', '8', '9', '10'];
+  public images: string[] = ['1' ,'2', '3', '4', '5', '6', '7', '8', '9', '10',
+    '1' ,'2', '3', '4', '5', '6', '7', '8', '9', '10',
+    '1' ,'2', '3', '4', '5', '6', '7', '8', '9', '10'];
   public types: string[] = [
     'Все', 'Брендинг', 'Позиционирование', 'Нейминг', 'Фирменный стиль',
     'Упаковка', 'Брендбук', 'Интерьер', 'Ритейл-брендинг', 'IT-брендинг',

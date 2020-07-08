@@ -9,6 +9,10 @@
 
 .content {
   position: relative;
+
+  .row-column {
+    align-items: center;
+  }
 }
 
 .date {
@@ -19,19 +23,21 @@
 }
 
 .w1024 :host {
-  .row-column {
-    flex-direction: column-reverse;
-  }
+
 }
 
 .w768 :host {
+  .row-column {
+    flex-direction: column-reverse !important;
+  }
+
   .date {
     left: auto;
     right: -65px;
     top: 6rem;
   }
 
-  .title, .subtitle {
+  ::ng-deep .title, .subtitle {
     display: none;
   }
 }

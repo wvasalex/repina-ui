@@ -6,8 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./services-tech.component.scss']
 })
 export class ServicesTechComponent implements OnInit {
+  public images = [
+    '/assets/icons/services/brand1.svg',
+    '/assets/icons/services/brand2.svg',
+    '/assets/icons/services/brand3.svg',
+  ];
+
   public blocks: string[][] = [
-    ['Бренд-технологии'],
     [
       'Brand levels',
       'Технология оценки бренда по 3-м показателям продуктивности: сообщение, системность, уникальность',
