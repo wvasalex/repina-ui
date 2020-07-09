@@ -1,0 +1,26 @@
+:host {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+
+span {
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+  -webkit-animation: scroll 16s infinite linear;
+  -moz-animation: scroll 16s infinite linear;
+  animation: scroll 16s infinite linear;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-100%, 0)
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}

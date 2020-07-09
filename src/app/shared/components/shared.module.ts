@@ -14,6 +14,8 @@ import { ArrowComponent } from './arrow/arrow.component';
 import { NavListComponent } from './nav-list/nav-list.component';
 import { RouterModule } from '@angular/router';
 import { ParallaxDirective } from './parallax/parallax.directive';
+import { MarqueeComponent } from './marquee/marquee.component';
+import { PaddingComponent } from './padding/padding.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { ParallaxDirective } from './parallax/parallax.directive';
     ArrowComponent,
     NavListComponent,
     ParallaxDirective,
+    MarqueeComponent,
+    PaddingComponent,
   ],
   exports: [
     LogoComponent,
@@ -44,6 +48,8 @@ import { ParallaxDirective } from './parallax/parallax.directive';
     ArrowComponent,
     NavListComponent,
     ParallaxDirective,
+    MarqueeComponent,
+    PaddingComponent,
   ],
   imports: [
     CommonModule,

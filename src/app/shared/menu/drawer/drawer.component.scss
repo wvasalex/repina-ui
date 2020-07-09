@@ -1,0 +1,46 @@
+:host {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #000;
+  z-index: 999;
+  box-sizing: border-box;
+  padding-top: 42px;
+
+  * {
+    color: #fff;
+  }
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  white-space: nowrap;
+  text-align: right;
+
+  .right {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.menu-item {
+  display: inline-block;
+  font-size: 28px;
+  line-height: 40px;
+  font-weight: 500;
+}
+
+.w1366 :host .menu-item {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.w320 :host {
+  .request-button {
+    display: none;
+  }
+}

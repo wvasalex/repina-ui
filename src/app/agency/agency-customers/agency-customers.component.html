@@ -1,12 +1,11 @@
 <r-padding [horizontal]="true">
   <div class="h3">Клиенты</div>
-
-  <div class="customers row mt-4">
-    <div
-      *ngFor="let customer of customers"
-      class="h1 customer"
-    >
-      {{customer}}
-    </div>
-  </div>
 </r-padding>
+<r-marquee class="mt-4">
+  <div
+    *ngFor="let customer of customers"
+    class="h1 customer"
+  >
+    {{customer}}
+  </div>
+</r-marquee>

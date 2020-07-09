@@ -20,6 +20,30 @@ export class AgencyAwardsComponent implements OnInit {
       position: 'Серебро',
       type: 'Упаковка',
     },
+    {
+      year: 2019,
+      title: 'Red dot',
+      position: 'Победитель',
+      type: 'Брендинг',
+    },
+    {
+      year: 2019,
+      title: 'The Dieline',
+      position: 'Серебро',
+      type: 'Упаковка',
+    },
+    {
+      year: 2019,
+      title: 'Red dot',
+      position: 'Победитель',
+      type: 'Брендинг',
+    },
+    {
+      year: 2019,
+      title: 'The Dieline',
+      position: 'Серебро',
+      type: 'Упаковка',
+    },
   ];
 
   constructor() { }

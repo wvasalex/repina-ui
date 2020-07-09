@@ -1,0 +1,20 @@
+<r-padding
+  [horizontal]="true"
+  class="menu"
+>
+  <a [routerLink]="['/']">
+    <r-logo menuColor="black"></r-logo>
+  </a>
+  <div class="right">
+    <r-button
+      class="menu-item request-button"
+    >
+      Запросить стоимость
+    </r-button>
+    <img
+      (click)="$closeDrawer()"
+      src="/assets/icons/menu/close.svg"
+      class="menu-item ml-2"
+    />
+  </div>
+</r-padding>

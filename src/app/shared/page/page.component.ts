@@ -24,6 +24,8 @@ export class PageComponent implements OnInit, OnDestroy {
   @Input() contentTmp: TemplateRef<any>;
   @Input() customFooter: boolean = false;
 
+  public drawerOpened: boolean = false;
+
   private _observe: Subscription;
 
   constructor(private renderer: Renderer2,
@@ -50,6 +52,10 @@ export class PageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this._observe.unsubscribe();
+  }
+
+  public $toggleDrawer(opened: boolean) {
+    this.drawerOpened = opened;
   }
 
 }

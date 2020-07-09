@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, HostBinding, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, OnInit, Output } from '@angular/core';
 import { MenuItem, MenuItems } from './menu.model';
 
 @Component({
@@ -10,6 +10,8 @@ import { MenuItem, MenuItems } from './menu.model';
 export class MenuComponent implements OnInit {
   @Input() @HostBinding('attr.color') color: 'white' | 'black' = 'white';
 
+  @Output() openDrawer: EventEmitter<void> = new EventEmitter<void>();
+
   public items: MenuItem[] = MenuItems;
 
   constructor() { }
@@ -17,4 +19,7 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public $openDrawer() {
+    this.openDrawer.emit();
+  }
 }

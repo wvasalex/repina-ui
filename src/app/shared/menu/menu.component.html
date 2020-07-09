@@ -1,13 +1,43 @@
-<a [routerLink]="['/']">
-  <r-logo [menuColor]="color"></r-logo>
-</a>
-<div class="menu">
-  <a
-    *ngFor="let item of items"
-    [routerLink]="[item.routerLink]"
-    class="menu-item ml-2"
-  >
-    {{item.label}}
-  </a>
-  <r-button class="menu-item ml-2">Запросить стоимость</r-button>
-</div>
+<r-padding [horizontal]="true">
+  <div class="full">
+    <a [routerLink]="['/']">
+      <r-logo [menuColor]="color"></r-logo>
+    </a>
+    <div class="menu">
+      <a
+        *ngFor="let item of items"
+        [routerLink]="[item.routerLink]"
+        class="menu-item ml-2"
+      >
+        {{item.label}}
+      </a>
+      <r-button
+        class="menu-item request-button ml-2"
+      >
+        Запросить стоимость
+      </r-button>
+      <a
+        class="menu-item ml-2"
+      >
+        Eng
+      </a>
+    </div>
+  </div>
+
+  <div class="mobile">
+    <a [routerLink]="['/']">
+      <r-logo [menuColor]="color"></r-logo>
+    </a>
+    <div class="menu">
+      <r-button
+        class="menu-item request-button ml-2"
+      >
+        Запросить стоимость
+      </r-button>
+      <r-burger
+        (click)="$openDrawer()"
+        class="ml-2"
+      ></r-burger>
+    </div>
+  </div>
+</r-padding>

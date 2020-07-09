@@ -1,12 +1,16 @@
+<r-drawer
+  *ngIf="drawerOpened"
+  (closeDrawer)="$toggleDrawer(false)"
+></r-drawer>
+
 <r-header
   [class.has-image]="!!backgroundImage"
   [backgroundImage]="backgroundImage"
 >
-  <r-padding
-    [horizontal]="true"
-  >
-    <r-menu [color]="menuColor"></r-menu>
-  </r-padding>
+  <r-menu
+    (openDrawer)="$toggleDrawer(true)"
+    [color]="menuColor"
+  ></r-menu>
   <ng-content select="[header]"></ng-content>
 </r-header>
 
