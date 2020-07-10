@@ -11,6 +11,7 @@ export class MenuComponent implements OnInit {
   @Input() @HostBinding('attr.color') color: 'white' | 'black' = 'white';
 
   @Output() openDrawer: EventEmitter<void> = new EventEmitter<void>();
+  @Output() priceRequest: EventEmitter<void> = new EventEmitter<void>();
 
   public items: MenuItem[] = MenuItems;
 
@@ -21,5 +22,9 @@ export class MenuComponent implements OnInit {
 
   public $openDrawer() {
     this.openDrawer.emit();
+  }
+
+  public $priceRequest() {
+    this.priceRequest.emit();
   }
 }

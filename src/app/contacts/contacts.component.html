@@ -5,7 +5,7 @@
 <ng-template #contentTmp>
   <r-padding [horizontal]="true">
     <div class="row-column">
-      <div class="mt-4">
+      <div>
         <div class="address">
           <img src="/assets/icons/main/success.svg">
           <div class="text32 mt-4">
@@ -31,10 +31,11 @@
       <r-request
         [disablePadding]="true"
         [title]="''"
+        style="padding: 0;"
       ></r-request>
     </div>
   </r-padding>
-  <div class="map">
+  <div class="map mt-3">
     <img
       src="/assets/icons/contacts/pin.svg"
       class="pin"

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'r-request',
@@ -9,7 +9,7 @@ export class RequestComponent implements OnInit {
   @Input() title: string = 'Запрос коммерческого предложения';
   @Input() disablePadding: boolean = false;
 
-  constructor() { }
+  constructor(public ref: ElementRef) { }
 
   ngOnInit(): void {
   }

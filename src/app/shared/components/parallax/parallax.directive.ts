@@ -20,8 +20,12 @@ export class ParallaxDirective implements OnInit, OnDestroy {
   }
 
   public ngOnInit() {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
     this.el = this.host.nativeElement;
-    this.init();
+    setTimeout(() => this.init(), 10);
 
     this.resize = fromEvent(window, 'resize').pipe(
       debounceTime(600),
@@ -53,7 +57,7 @@ export class ParallaxDirective implements OnInit, OnDestroy {
       startWith(getOffset()),
     ).subscribe((offset: number) => {
       if (this.direction == 'reverse') {
-        this.renderer.setStyle(this.el, 'margin-top', '-' + (offset) + 'px');
+        this.renderer.setStyle(this.el, 'margin-top', '-' + (offset * 2) + 'px');
       } else if (offset <= 0) {
         this.renderer.setStyle(this.el, 'transform', 'translateY(' + offset + 'px)');
       }

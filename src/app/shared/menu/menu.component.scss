@@ -25,6 +25,10 @@
   font-size: 28px;
   line-height: 40px;
   font-weight: 500;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .w1366 :host .menu-item {

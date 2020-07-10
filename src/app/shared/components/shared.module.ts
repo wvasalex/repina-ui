@@ -16,6 +16,8 @@ import { RouterModule } from '@angular/router';
 import { ParallaxDirective } from './parallax/parallax.directive';
 import { MarqueeComponent } from './marquee/marquee.component';
 import { PaddingComponent } from './padding/padding.component';
+import { QuoteComponent } from './quote/quote.component';
+import { IconNavListComponent } from './icon-nav-list/icon-nav-list.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { PaddingComponent } from './padding/padding.component';
     ParallaxDirective,
     MarqueeComponent,
     PaddingComponent,
+    QuoteComponent,
+    IconNavListComponent,
   ],
   exports: [
     LogoComponent,
@@ -50,6 +54,8 @@ import { PaddingComponent } from './padding/padding.component';
     ParallaxDirective,
     MarqueeComponent,
     PaddingComponent,
+    QuoteComponent,
+    IconNavListComponent,
   ],
   imports: [
     CommonModule,

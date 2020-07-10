@@ -71,3 +71,13 @@ export const badgeAnimation = trigger('badgeAnimation', [
     animate('120ms', style({width: 0, opacity: 0})),
   ]),
 ]);
+
+export const drawerAnimation = trigger('drawerAnimation', [
+  transition(':enter', [
+    style({marginLeft: '-100%', opacity: 0}),
+    animate('200ms', style({marginLeft: 0, opacity: 1})),
+  ]),
+  transition(':leave', [
+    animate('160ms', style({marginLeft: '-100%', opacity: 0})),
+  ]),
+]);

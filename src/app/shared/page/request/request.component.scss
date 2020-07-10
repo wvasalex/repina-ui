@@ -21,7 +21,14 @@
 
 .h3 {
   margin-right: 8rem;
-  margin-bottom: 2rem;
+}
+
+.description {
+  opacity: .5;
+
+  a {
+    text-decoration: underline;
+  }
 }
 
 .w768 :host {

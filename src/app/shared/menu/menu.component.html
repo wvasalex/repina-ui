@@ -12,6 +12,7 @@
         {{item.label}}
       </a>
       <r-button
+        (click)="$priceRequest()"
         class="menu-item request-button ml-2"
       >
         Запросить стоимость
@@ -30,6 +31,7 @@
     </a>
     <div class="menu">
       <r-button
+        (click)="$priceRequest()"
         class="menu-item request-button ml-2"
       >
         Запросить стоимость

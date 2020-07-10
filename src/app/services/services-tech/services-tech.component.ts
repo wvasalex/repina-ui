@@ -13,6 +13,7 @@ export class ServicesTechComponent implements OnInit {
   ];
 
   public blocks: string[][] = [
+    ['Бренд-технологии'],
     [
       'Brand levels',
       'Технология оценки бренда по 3-м показателям продуктивности: сообщение, системность, уникальность',

@@ -1,12 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'r-nav-list',
-  templateUrl: './nav-list.component.html',
-  styleUrls: ['./nav-list.component.scss']
+  selector: 'r-icon-nav-list',
+  templateUrl: './icon-nav-list.component.html',
+  styleUrls: ['./icon-nav-list.component.scss']
 })
-export class NavListComponent implements OnInit {
+export class IconNavListComponent implements OnInit {
   @Input() blocks: string[][];
+  @Input() images: string[] = [];
+
   public primary: string;
 
   constructor() { }

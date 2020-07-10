@@ -1,6 +1,7 @@
 <r-drawer
   *ngIf="drawerOpened"
   (closeDrawer)="$toggleDrawer(false)"
+  @drawerAnimation
 ></r-drawer>
 
 <r-header
@@ -9,6 +10,7 @@
 >
   <r-menu
     (openDrawer)="$toggleDrawer(true)"
+    (priceRequest)="$priceRequest()"
     [color]="menuColor"
   ></r-menu>
   <ng-content select="[header]"></ng-content>
@@ -18,7 +20,9 @@
   <ng-content></ng-content>
 
   <ng-container *ngTemplateOutlet="contentTmp"></ng-container>
-  <r-request *ngIf="!contentTmp"></r-request>
+  <r-request
+    *ngIf="!contentTmp"
+  ></r-request>
 </div>
 
 <r-footer *ngIf="!customFooter"></r-footer>

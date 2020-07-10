@@ -1,0 +1,34 @@
+<r-padding
+  [horizontal]="true"
+  class="row-column"
+>
+  <div class="primary">
+    <a
+      [routerLink]="[]"
+      class="h3"
+    >
+      {{primary}}
+    </a>
+  </div>
+  <div class="blocks column">
+    <div
+      *ngFor="let block of blocks; let first = first; let index = index;"
+      [class.mt-6]="!first"
+      class="nav-block"
+    >
+      <div class="row-column">
+        <img [src]="images[index]"/>
+        <div class="column">
+          <a
+            *ngFor="let link of block; let firstLink = first;"
+            [routerLink]="[]"
+            [class.h3]="firstLink"
+            [class.text32]="!firstLink"
+          >
+            {{link}}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</r-padding>

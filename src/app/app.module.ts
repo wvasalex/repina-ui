@@ -16,10 +16,12 @@ import { JournalModule } from './journal/journal.module';
 import { AgencyModule } from './agency/agency.module';
 import { ContactsModule } from './contacts/contacts.module';
 import { ServicesModule } from './services/services.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
     BrowserModule.withServerTransition({appId: 'repina'}),
+    BrowserAnimationsModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,

@@ -1,0 +1,26 @@
+@import 'src/styles';
+
+:host {
+  display: block;
+  position: relative;
+  quotes: "“" "„";
+}
+
+.inner {
+  padding: 2rem;
+
+  &:before {
+    content: '“';
+    position: absolute;
+    margin-left: -2rem;
+    font-size: 78px;
+  }
+
+  &:after {
+    content: '”';
+    position: absolute;
+    margin-top: 2rem;
+    margin-left: 1rem;
+    font-size: 78px;
+  }
+}

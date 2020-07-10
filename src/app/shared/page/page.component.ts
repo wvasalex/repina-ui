@@ -1,28 +1,35 @@
 import {
   ChangeDetectionStrategy,
-  Component,
+  Component, ContentChild, ContentChildren,
   HostBinding,
   Input,
   OnDestroy,
   OnInit,
   Renderer2,
-  TemplateRef,
+  TemplateRef, ViewChild,
 } from '@angular/core';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs';
 import { BreakpointService } from '../breakpoint.service';
+import { drawerAnimation } from '../animations';
+import { RequestComponent } from './request/request.component';
 
 @Component({
   selector: 'r-page',
   templateUrl: './page.component.html',
   styleUrls: ['./page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [
+    drawerAnimation,
+  ],
 })
 export class PageComponent implements OnInit, OnDestroy {
   @Input() menuColor: 'white' | 'black' = 'white';
   @Input() backgroundImage: string;
   @Input() contentTmp: TemplateRef<any>;
   @Input() customFooter: boolean = false;
+
+  @ViewChild(RequestComponent, {static: false}) requestViewChild: RequestComponent;
 
   public drawerOpened: boolean = false;
 
@@ -58,4 +65,11 @@ export class PageComponent implements OnInit, OnDestroy {
     this.drawerOpened = opened;
   }
 
+  public $priceRequest() {
+    const requestForm = this.requestViewChild;
+
+    if (requestForm) {
+      requestForm.ref.nativeElement.scrollIntoView({behavior: 'smooth'});
+    }
+  }
 }
