@@ -3,13 +3,13 @@ import {
   transition,
   style,
   query,
-  animate,
+  animate, stagger, group, state,
 } from '@angular/animations';
 
 export const signInAnimation =
   trigger('signInAnimation', [
     transition('* => *', [
-      style({position: 'relative'}),
+      style({ position: 'relative' }),
       query(':enter, :leave', [
         style({
           position: 'absolute',
@@ -18,21 +18,21 @@ export const signInAnimation =
           bottom: 0,
           left: 0,
         }),
-      ], {optional: true}),
+      ], { optional: true }),
       query(':enter', [
-        style({opacity: 0, marginTop: -36}),
-        animate('320ms', style({opacity: 1, marginTop: 0})),
-      ], {optional: true}),
+        style({ opacity: 0, marginTop: -36 }),
+        animate('320ms', style({ opacity: 1, marginTop: 0 })),
+      ], { optional: true }),
       query(':leave', [
-        style({display: 'none'}),
-      ], {optional: true}),
+        style({ display: 'none' }),
+      ], { optional: true }),
     ]),
   ]);
 
 export const slideInAnimation =
   trigger('slideInAnimation', [
     transition('* => *', [
-      style({position: 'relative'}),
+      style({ position: 'relative' }),
       query(':enter, :leave', [
         style({
           position: 'absolute',
@@ -41,43 +41,77 @@ export const slideInAnimation =
           bottom: 12,
           left: 16,
         }),
-      ], {optional: true}),
+      ], { optional: true }),
       query(':enter', [
-        style({opacity: 0, marginTop: -36}),
-        animate('160ms', style({opacity: 1, marginTop: 0})),
-      ], {optional: true}),
+        style({ opacity: 0, marginTop: -36 }),
+        animate('160ms', style({ opacity: 1, marginTop: 0 })),
+      ], { optional: true }),
       query(':leave', [
-        style({display: 'none'}),
-      ], {optional: true}),
+        style({ display: 'none' }),
+      ], { optional: true }),
     ]),
   ]);
 
 export const errorAnimation = trigger('errorAnimation', [
   transition(':enter', [
-    style({height: 0, opacity: 0}),
-    animate('160ms', style({height: '*', opacity: 1})),
+    style({ height: 0, opacity: 0 }),
+    animate('160ms', style({ height: '*', opacity: 1 })),
   ]),
   transition(':leave', [
-    animate('120ms', style({height: 0, opacity: 0})),
+    animate('120ms', style({ height: 0, opacity: 0 })),
   ]),
 ]);
 
 export const badgeAnimation = trigger('badgeAnimation', [
   transition(':enter', [
-    style({width: 0, opacity: 0}),
-    animate('160ms', style({width: '*', opacity: 1})),
+    style({ width: 0, opacity: 0 }),
+    animate('160ms', style({ width: '*', opacity: 1 })),
   ]),
   transition(':leave', [
-    animate('120ms', style({width: 0, opacity: 0})),
+    animate('120ms', style({ width: 0, opacity: 0 })),
   ]),
 ]);
 
 export const drawerAnimation = trigger('drawerAnimation', [
   transition(':enter', [
-    style({marginLeft: '-100%', opacity: 0}),
-    animate('200ms', style({marginLeft: 0, opacity: 1})),
+    style({
+      opacity: 0,
+      transform: 'scaleX(.5)',
+    }),
+    animate('200ms', style({
+      opacity: 1,
+      transform: 'scaleX(1)',
+    })),
   ]),
   transition(':leave', [
-    animate('160ms', style({marginLeft: '-100%', opacity: 0})),
+    animate('160ms', style({
+      opacity: 0,
+      transform: 'scaleX(.5)',
+    })),
+  ]),
+]);
+
+export const slider = trigger('slider', [
+  state('*', style({
+    transform: 'translateX(0)',
+    opacity: 1,
+  })),
+  transition(':increment', [
+    style({
+      opacity: 0,
+    }),
+    animate('100ms', style({
+      transform: 'translateX(180px)',
+    })),
+    animate('120ms'),
+  ]),
+  transition(':decrement', [
+    style({
+      opacity: 0,
+    }),
+    animate('100ms', style({
+      transform: 'translateX(-180px)',
+    })),
+    animate('120ms'),
   ]),
 ]);

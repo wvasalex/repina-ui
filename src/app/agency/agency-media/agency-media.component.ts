@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { AgencyMediaSnippet } from './agency-media.model';
 
 @Component({
   selector: 'r-agency-media',
   templateUrl: './agency-media.component.html',
-  styleUrls: ['./agency-media.component.scss']
+  styleUrls: ['./agency-media.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AgencyMediaComponent implements OnInit {
   public articles: AgencyMediaSnippet[] = [

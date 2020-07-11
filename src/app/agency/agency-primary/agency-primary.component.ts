@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'r-agency-primary',
   templateUrl: './agency-primary.component.html',
   styleUrls: ['./agency-primary.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AgencyPrimaryComponent implements OnInit {
   public images = [

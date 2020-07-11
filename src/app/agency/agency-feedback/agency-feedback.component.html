@@ -8,29 +8,35 @@
       </div>
       <div class="mt-3">
         <r-arrow
+          (click)="$prev()"
+          [color]="index == 0 ? '#EBEBEB': '#000'"
           type="prev"
-          color="#EBEBEB"
         ></r-arrow>
         <r-arrow
+          (click)="$next()"
+          [color]="index == last ? '#EBEBEB': '#000'"
           type="next"
-          color="#000"
           class="ml-2"
         ></r-arrow>
       </div>
     </div>
-    <div class="content">
-      <div class="h3">
-        Иван Отзывчивый
-      </div>
-      <div class="text32 mt-1">
-        Директор по маркетингу «Седьмой Континент»
-      </div>
-      <r-quote class="quote h4 mt-2">
-        Я оценил четкость работы команды, соблюдение всех сроков, отличный тайм-менеджмент и умение организовать рабочий
-        процесс
-      </r-quote>
-      <div class="mt-2 bolder full-review">
-        Показать весь отзыв
+    <div>
+      <div
+        [@slider]="index"
+        class="content"
+      >
+        <div class="h3">
+          {{feedbacks[index].name}}
+        </div>
+        <div class="text32 mt-1">
+          {{feedbacks[index].role}}
+        </div>
+        <r-quote class="quote h4 mt-2">
+          {{feedbacks[index].quote}}
+        </r-quote>
+        <div class="mt-2 bolder full-review">
+          Показать весь отзыв
+        </div>
       </div>
     </div>
   </div>

@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { AgencyAward } from './agency-awards.model';
 
 @Component({
   selector: 'r-agency-awards',
   templateUrl: './agency-awards.component.html',
-  styleUrls: ['./agency-awards.component.scss']
+  styleUrls: ['./agency-awards.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AgencyAwardsComponent implements OnInit {
   public awards: AgencyAward[] = [

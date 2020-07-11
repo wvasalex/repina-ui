@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { TeamMember } from './agency-team.model';
 
 @Component({
   selector: 'r-agency-team',
   templateUrl: './agency-team.component.html',
   styleUrls: ['./agency-team.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AgencyTeamComponent implements OnInit {
   public members: TeamMember[] = [
