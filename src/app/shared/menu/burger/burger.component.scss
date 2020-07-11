@@ -13,3 +13,9 @@
     margin-bottom: 10px;
   }
 }
+
+:host[color=black] {
+  .line {
+    background: #fff;
+  }
+}
