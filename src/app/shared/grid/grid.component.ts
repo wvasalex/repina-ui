@@ -30,9 +30,9 @@ export class GridComponent implements OnInit, OnDestroy {
       });
 
       this.column = false;
-      if (points.indexOf('320') > -1) {
+      if (points.indexOf('768') > -1) {
         this._small();
-      } else if (points.indexOf('768') > -1) {
+      } else if (points.indexOf('1024') > -1) {
         this._medium();
       } else {
         this._default();

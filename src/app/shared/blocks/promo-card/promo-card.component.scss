@@ -1,0 +1,59 @@
+@import 'src/styles';
+@import 'src/theme';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 110%;
+  padding: 2rem;
+  box-sizing: border-box;
+  background: #000;
+
+  * {
+    color: #fff;
+  }
+}
+
+.footer {
+  @extend .row;
+  align-items: flex-end;
+
+  .image {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+  }
+}
+
+.label {
+  color: $color-red;
+}
+
+:host[type="1"] {
+  .image {
+    height: 50%;
+    margin-right: -2rem;
+  }
+}
+
+:host[type="2"] {
+  .image {
+    height: 80%;
+  }
+}
+
+:host[type="3"] {
+  flex-direction: column-reverse;
+
+  .footer {
+    align-items: flex-start;
+  }
+
+  .image {
+    height: 100%;
+    margin-left: -2rem;
+    background-position: left bottom;
+  }
+}

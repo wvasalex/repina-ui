@@ -1,0 +1,14 @@
+<div class="h3">
+  {{title}}
+</div>
+<div class="footer">
+  <div *ngIf="type != 3" class="h3 label">
+    {{source}}
+  </div>
+  <div
+    *ngIf="image"
+    [style.backgroundImage]="'url(' + image + ')'"
+    class="image"
+  >
+  </div>
+</div>

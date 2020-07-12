@@ -8,6 +8,7 @@ import { GridModule } from '../shared/grid/grid.module';
 import { JournalModule } from '../journal/journal.module';
 import { AboutComponent } from './about/about.component';
 import { SphereComponent } from './sphere/sphere.component';
+import { BlocksModule } from '../shared/blocks/blocks.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { SphereComponent } from './sphere/sphere.component';
     PageModule,
     GridModule,
     JournalModule,
+    BlocksModule,
   ],
 })
 export class MainModule { }

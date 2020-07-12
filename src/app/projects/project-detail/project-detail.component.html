@@ -1,5 +1,10 @@
-<r-page>
-  <r-padding [horizontal]="true">
+<r-page
+  backgroundImage="url('/assets/pictures/projects/detail.png')"
+>
+  <r-padding
+    [horizontal]="true"
+    class="mt-8"
+  >
     <div class="nav row-column">
       <div class="links column">
         <a class="text32 bolder">Бренд-платформа</a>
@@ -144,12 +149,12 @@
       src="/assets/pictures/projects/4.png"
     ></r-image>
 
-    <r-grid-text
+    <r-quote
       rel="2"
       class="h3 bolder"
     >
       Не ожидали, что упаковка вдохновит нас еще больше. Получился настолько тонкий и одновременно смелый бренд!
-    </r-grid-text>
+    </r-quote>
   </r-grid>
 
   <r-grid type="big">
@@ -169,6 +174,30 @@
       src="/assets/pictures/projects/5.png"
     ></r-image>
   </r-grid>
+
+  <r-padding
+    style="background: #F8F8F8"
+    class="mt-2"
+  >
+    <div class="nav row-column">
+      <div>
+        <div class="h3 bolder">
+          Иван Колесников
+        </div>
+        <div class="mt-1 text32">
+          Сооснователь, генеральный директор Eqviv
+        </div>
+      </div>
+      <div>
+        <r-quote class="h3">
+          Не ожидали, что упаковка вдохновит нас еще больше. Получился настолько тонкий и одновременно смелый бренд!
+        </r-quote>
+        <div class="text32 mt-1">
+          Для флаконов были разработаны как отдельные минималистичные упаковки, так и коробочки для сетов. На каждой упаковке и флаконе точкой отмечены зоны применения перманентной краски: у Моны Лизы перманентный пигмент для бровей, у девушки с жемчужной сережкой – линия ресниц, у девушки с горностаем – губы.
+        </div>
+      </div>
+    </div>
+  </r-padding>
 
   <r-project-detail-roles></r-project-detail-roles>
 </r-page>

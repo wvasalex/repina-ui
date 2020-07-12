@@ -48,7 +48,7 @@ export class ParallaxDirective implements OnInit, OnDestroy {
     this.sub?.unsubscribe();
 
     const getOffset = () => {
-      return -.1 * (this.top - window.scrollY);
+      return -.35 * (this.top - window.scrollY) + window.innerHeight / 5;
     };
 
     this.sub = fromEvent(window, 'scroll').pipe(
