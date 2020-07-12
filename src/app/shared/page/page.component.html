@@ -1,6 +1,7 @@
 <r-drawer
   *ngIf="drawerOpened"
   (closeDrawer)="$toggleDrawer(false)"
+  (priceRequest)="$priceRequest()"
   @drawerAnimation
 ></r-drawer>
 

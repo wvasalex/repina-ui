@@ -18,6 +18,11 @@ r-page ::ng-deep r-header, .promo {
   border-radius: 50%;
 }
 
+.quote-block {
+  padding: 3rem;
+  background: #F8F8F8;
+}
+
 .w1366 :host {
   .avatar {
     width: 80px;
@@ -29,6 +34,4 @@ r-page ::ng-deep r-header, .promo {
   .mh-4 {
     margin: 4rem 0;
   }
-
-
 }

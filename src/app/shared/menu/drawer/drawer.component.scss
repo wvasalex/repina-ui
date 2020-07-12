@@ -27,18 +27,6 @@
   }
 }
 
-.menu-item {
-  display: inline-block;
-  font-size: 28px;
-  line-height: 40px;
-  font-weight: 500;
-}
-
-.w1366 :host .menu-item {
-  font-size: 20px;
-  line-height: 28px;
-}
-
 .w320 :host {
   .request-button {
     display: none;

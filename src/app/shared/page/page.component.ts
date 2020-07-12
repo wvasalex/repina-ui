@@ -66,6 +66,10 @@ export class PageComponent implements OnInit, OnDestroy {
   }
 
   public $priceRequest() {
+    if (this.drawerOpened) {
+      this.drawerOpened = false;
+    }
+
     const requestForm = this.requestViewChild;
 
     if (requestForm) {
