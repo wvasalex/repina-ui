@@ -29,27 +29,40 @@ export class PageComponent implements OnInit, OnDestroy {
   @Input() contentTmp: TemplateRef<any>;
   @Input() customFooter: boolean = false;
 
-  @ViewChild(RequestComponent, {static: false}) requestViewChild: RequestComponent;
+  @ViewChild(RequestComponent, { static: false }) requestViewChild: RequestComponent;
 
   public drawerOpened: boolean = false;
 
   private _observe: Subscription;
 
-  constructor(private renderer: Renderer2,
-              private breakpointService: BreakpointService) {
+  constructor(
+    private renderer: Renderer2,
+    private breakpointService: BreakpointService) {
   }
 
   ngOnInit(): void {
     this._observe = this.breakpointService.change$.subscribe((result: BreakpointState) => {
-      let points: string[] = ['320', '768', '1024', '1366'].filter((width: string) => {
+      const breakpoints = ['320', '480', '768', '1024', '1366', '1680', '1920'];
+      let breakpoint: number = breakpoints.findIndex((width: string) => {
         return result.breakpoints[`(max-width: ${width}px)`];
       });
-      if (!points.length) {
-        points = ['1920'];
+      if (breakpoint == -1) {
+        breakpoint = breakpoints.length - 1;
       }
+
+      const points = breakpoints.slice(breakpoint);
+
+      if (typeof window !== 'undefined' && points.indexOf('320') == -1) {
+        if ('ontouchstart' in window ||
+          (window['DocumentTouch'] && document instanceof window['DocumentTouch'])) {
+          points.push('320');
+        }
+      }
+
       const classes = points.map((w: string) => {
         return 'w' + w;
       });
+
 
       if (typeof document !== 'undefined') {
         this.renderer.setAttribute(document.body, 'class', classes.join(' '));
@@ -73,7 +86,7 @@ export class PageComponent implements OnInit, OnDestroy {
     const requestForm = this.requestViewChild;
 
     if (requestForm) {
-      requestForm.ref.nativeElement.scrollIntoView({behavior: 'smooth'});
+      requestForm.ref.nativeElement.scrollIntoView({ behavior: 'smooth' });
     }
   }
 }

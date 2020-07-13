@@ -75,7 +75,13 @@ a, a:visited {
   color: #000;
 }
 
-@media(max-width: 1366px) {
+.w1680 {
+  html, body {
+    font-size: 13px;
+  }
+}
+
+.w1366 {
   .h1 {
     font-size: 78px;
     line-height: 86px;
@@ -107,13 +113,13 @@ a, a:visited {
   }
 }
 
-@media(max-width: 768px) {
+.w768 {
   html, body {
     font-size: 12px;
   }
 }
 
-@media(max-width: 320px) {
+.w320 {
   html, body {
     font-size: 8px;
   }

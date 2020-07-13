@@ -48,5 +48,14 @@
 }
 
 .w320 :host {
-  padding: 0;
+  padding: 2rem 0;
+
+  .blocks {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-block:not(:first-of-type) {
+    margin-top: 2rem;
+  }
 }

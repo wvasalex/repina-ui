@@ -8,6 +8,7 @@ import { BreakpointState } from '@angular/cdk/layout/breakpoints-observer';
 })
 export class BreakpointService {
   private breakpoints = [
+    '(max-width: 1680px)',
     '(max-width: 1366px)',
     '(max-width: 1024px)',
     '(max-width: 768px)',
