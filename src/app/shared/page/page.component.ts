@@ -42,7 +42,7 @@ export class PageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this._observe = this.breakpointService.change$.subscribe((result: BreakpointState) => {
-      const breakpoints = ['320', '480', '768', '1024', '1366', '1680', '1920'];
+      const breakpoints: string[] = ['320', '480', '768', '1024', '1366', '1680', '1920'];
       let breakpoint: number = breakpoints.findIndex((width: string) => {
         return result.breakpoints[`(max-width: ${width}px)`];
       });
