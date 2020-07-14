@@ -75,7 +75,7 @@ a, a:visited {
   color: #000;
 }
 
-.w1680, .w1366 {
+@media (max-width: 1680px) {
   .h1 {
     font-size: 78px;
     line-height: 86px;
@@ -107,13 +107,13 @@ a, a:visited {
   }
 }
 
-.w768 {
+@media (max-width: 768px) {
   html, body {
     font-size: 12px;
   }
 }
 
-.w320 {
+@media (max-width: 480px) {
   html, body {
     font-size: 8px;
   }

@@ -61,7 +61,7 @@ export class ParallaxDirective implements OnInit, OnDestroy {
       }
 
       if (this.direction == 'reverse') {
-        this.renderer.setStyle(this.el, 'margin-top', '-' + (offset * 2) + 'px');
+        this.renderer.setStyle(this.el, 'margin-top', '-' + offset + 'px');
       } else if (offset <= 0) {
         this.renderer.setStyle(this.el, 'transform', 'translateY(' + offset + 'px)');
       }
