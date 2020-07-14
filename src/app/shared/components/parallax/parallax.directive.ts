@@ -41,7 +41,7 @@ export class ParallaxDirective implements OnInit, OnDestroy {
     const box = this.el.getBoundingClientRect();
 
     if (box.height == 0) {
-      return setTimeout(() => this.init(), 100);
+      return setTimeout(() => this.init(), 300);
     }
 
     this.top = box.top + window.scrollY;
@@ -56,6 +56,10 @@ export class ParallaxDirective implements OnInit, OnDestroy {
       map(getOffset),
       startWith(getOffset()),
     ).subscribe((offset: number) => {
+      if (!this.isInViewport()) {
+        return;
+      }
+
       if (this.direction == 'reverse') {
         this.renderer.setStyle(this.el, 'margin-top', '-' + (offset * 2) + 'px');
       } else if (offset <= 0) {
@@ -64,4 +68,11 @@ export class ParallaxDirective implements OnInit, OnDestroy {
     });
   }
 
+  private isInViewport(): boolean {
+    const bounding = this.el.getBoundingClientRect();
+    return (
+      bounding.top >= 0 &&
+      bounding.bottom <= (window.innerHeight + window.scrollY)
+    );
+  };
 }
