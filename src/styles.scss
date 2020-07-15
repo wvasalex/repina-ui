@@ -5,10 +5,10 @@
   font-style: normal;
 }
 
-body {
-  font-family: 'GTEestiProText', sans-serif;
-  font-size: 16px;
-  font-weight: normal;
+@font-face {
+  font-family: 'GTEestiProText-Book';
+  src: url('/assets/fonts/GTEestiProText-Book.otf') format('otf');
+  font-style: normal;
 }
 
 html, body {
@@ -16,6 +16,13 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  font-size: 16px;
+}
+
+* {
+  font-family: 'GTEestiProText-Book', sans-serif;
+  font-weight: normal;
+  font-style: normal;
 }
 
 .bolder {
@@ -26,48 +33,10 @@ html, body {
   color: white;
 }
 
-.h {
+.h, .h1, .h2, .h3, .h4, button {
+  font-family: 'GTEestiProText', sans-serif;
   font-weight: 500;
   color: #000;
-}
-
-.h1 {
-  @extend .h;
-  font-size: 112px;
-  line-height: 124px;
-}
-
-.h2 {
-  @extend .h;
-  font-size: 72px;
-  line-height: 76px;
-}
-
-.h3 {
-  @extend .h;
-  font-size: 48px;
-  line-height: 56px;
-}
-
-.h4 {
-  @extend .h;
-  font-size: 36px;
-  line-height: 48px;
-}
-
-.text32 {
-  font-size: 32px;
-  line-height: 44px;
-}
-
-.text24 {
-  font-size: 24px;
-  line-height: 32px;
-}
-
-.text16 {
-  font-size: 16px;
-  line-height: 22px;
 }
 
 a, a:visited {
@@ -75,45 +44,85 @@ a, a:visited {
   color: #000;
 }
 
-@media (max-width: 1680px) {
+.h1 {
+  font-size: 78px;
+  line-height: 86px;
+}
+
+.h2 {
+  font-size: 52px;
+  line-height: 60px;
+}
+
+.h3 {
+  font-size: 32px;
+  line-height: 40px;
+}
+
+.h4 {
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.text32 {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.text24 {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.text16 {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.w1920 {
   .h1 {
-    font-size: 78px;
-    line-height: 86px;
+    font-size: 112px;
+    line-height: 124px;
   }
 
   .h2 {
-    font-size: 52px;
-    line-height: 60px;
+    font-size: 72px;
+    line-height: 76px;
   }
 
   .h3 {
-    font-size: 32px;
-    line-height: 40px;
+    font-size: 48px;
+    line-height: 56px;
   }
 
   .h4 {
+    font-size: 36px;
+    line-height: 48px;
+  }
+
+  .text32 {
+    font-size: 32px;
+    line-height: 44px;
+  }
+
+  .text24 {
     font-size: 24px;
     line-height: 32px;
   }
 
-  .text32 {
-    font-size: 20px;
-    line-height: 28px;
-  }
-
-  .text24 {
+  .text16 {
     font-size: 16px;
     line-height: 22px;
   }
 }
 
-@media (max-width: 768px) {
+.w768 {
   html, body {
     font-size: 12px;
   }
 }
 
-@media (max-width: 480px) {
+.w320 {
   html, body {
     font-size: 8px;
   }

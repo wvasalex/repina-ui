@@ -15,13 +15,20 @@ input {
   border: none;
   outline: none;
   border-bottom: 2px solid #000;
+  font-family: inherit;
 }
 
 .required {
   position: absolute;
   width: 28px;
   height: 28px;
-  bottom: 1.5rem;
+  bottom: 1rem;
   right: 0;
   background: url('/assets/icons/components/required.svg') no-repeat;
+}
+
+.w1366, .w1024, .w768, .w320 {
+  :host .required {
+    transform: scale(.8);
+  }
 }

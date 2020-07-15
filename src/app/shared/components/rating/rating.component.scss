@@ -5,7 +5,7 @@
   background: url('/assets/icons/main/rating.svg') no-repeat;
 }
 
-.w1024 :host {
+.w1024 :host, .w768 :host {
   width: 112px;
   height: 112px;
   background-size: 112px;

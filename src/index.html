@@ -10,20 +10,9 @@
 <body>
   <script>
     (function(b, w) {
-      var c = 'w1920';
-
-      switch (true) {
-        case w <= 1366:
-          c = 'w1366';
-          break;
-        case w <= 678:
-          c = 'w768';
-          break;
-        case w <= 320:
-          c = 'w320';
-          break;
-      }
-      b.className = c;
+      const breakpoints = [1920, 1366, 1024, 768, 320];
+      const cn = breakpoints.find((breakpoint) => w > breakpoint) || 320;
+      b.className = 'w' + cn;
     })(document.body, window.innerWidth);
   </script>
   <app-root></app-root>

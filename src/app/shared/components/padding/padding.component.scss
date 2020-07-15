@@ -1,8 +1,6 @@
 :host {
   display: block;
-  &:not(.disabled) {
-    padding: 4rem 2.5rem;
-  }
+  padding: 128px 75px;
 }
 
 :host.horizontal {
@@ -15,7 +13,7 @@
 }
 
 .w1024 :host {
-  padding: 48px 34px;
+  padding: 40px 35px;
 }
 
 .w768 :host {

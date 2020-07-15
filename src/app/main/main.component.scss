@@ -35,12 +35,16 @@
   }
 }
 
-.w768 :host {
+.w768 :host, .w320 :host {
   r-nav {
     margin-top: 86px;
   }
 
   .journal {
     flex-direction: column;
+  }
+
+  r-sphere {
+    margin-top: 64px;
   }
 }

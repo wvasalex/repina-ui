@@ -6,12 +6,8 @@
   justify-content: space-between;
 }
 
-.subtitle {
-  @extend .h4;
-}
-
-.title {
-  @extend .h1;
+.left {
+  width: 60%;
 }
 
 :host[color=black] {
@@ -21,10 +17,6 @@
 }
 
 :host[size=small] {
-  .subtitle {
-    @extend .h4;
-  }
-
   .title {
     @extend .h2;
   }
@@ -34,9 +26,13 @@
   margin-top: 20px;
 }
 
-.w768 :host {
+.w768 :host, .w320 :host {
   flex-direction: column;
   align-items: flex-end;
+
+  .left {
+    width: 100%;
+  }
 }
 
 :host ::ng-deep r-image {

@@ -42,30 +42,19 @@ export class PageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this._observe = this.breakpointService.change$.subscribe((result: BreakpointState) => {
-      const breakpoints: string[] = ['320', '480', '768', '1024', '1366', '1680', '1920'];
-      let breakpoint: number = breakpoints.findIndex((width: string) => {
-        return result.breakpoints[`(max-width: ${width}px)`];
-      });
-      if (breakpoint == -1) {
-        breakpoint = breakpoints.length - 1;
-      }
+      const w = window.innerWidth;
+      const breakpoints = [1920, 1366, 1024, 768, 320];
+      const cn = breakpoints.find((breakpoint) => w > breakpoint) || 320;
 
-      const points = breakpoints.slice(breakpoint);
-
-      if (typeof window !== 'undefined' && points.indexOf('320') == -1) {
+      if (typeof window !== 'undefined' && cn != 320) {
         if ('ontouchstart' in window ||
           (window['DocumentTouch'] && document instanceof window['DocumentTouch'])) {
-          points.push('320');
+          //points.push('320');
         }
       }
 
-      const classes = points.map((w: string) => {
-        return 'w' + w;
-      });
-
-
       if (typeof document !== 'undefined') {
-        this.renderer.setAttribute(document.body, 'class', classes.join(' '));
+        this.renderer.setAttribute(document.body, 'class', 'w' + cn);
       }
     });
   }

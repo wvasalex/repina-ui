@@ -19,7 +19,7 @@
   }
 }
 
-.w1024 :host {
+.w1024 :host, .w768 :host {
   margin-top: 48px;
 
   $width: 266px;
