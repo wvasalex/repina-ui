@@ -11,17 +11,23 @@ a {
   text-decoration: underline;
 }
 
+r-logo {
+  margin-bottom: 16px;
+}
+
 .association {
-  align-items: flex-end;
+  display: flex;
+  align-items: center;
+  margin-top: 5rem;
 
   .text32 {
     opacity: .3;
-    margin-left: 1.5rem;
+    margin-left: 30px;
   }
 }
 
 .bolder {
-  margin-top: .5rem;
+  margin-top: 1rem;
 }
 
 .social {
@@ -30,16 +36,23 @@ a {
   }
 }
 
+.w1366 :host {
+  r-logo {
+    width: 280px !important;
+    height: 84px !important;
+  }
+}
+
 .w1024 :host {
   r-logo {
-    width: 228px !important;
-    height: 68px !important;
+    width: 184px !important;
+    height: 55px !important;
   }
 }
 
 .w768 :host {
   r-padding {
-    flex-direction: column-reverse;
+    flex-direction: column-reverse !important;
   }
 
   .contacts {
@@ -59,6 +72,14 @@ a {
 }
 
 .w320 :host {
+  r-padding {
+    flex-direction: column-reverse !important;
+  }
+
+  r-logo {
+    margin: 48px 0;
+  }
+
   .contacts {
     display: flex;
     flex-direction: column;

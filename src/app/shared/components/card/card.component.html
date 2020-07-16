@@ -1,5 +1,8 @@
 <div class="left">
-  <div class="h3">{{subtitle}}</div>
+  <div
+    [class.h4]="size == 'small'"
+    [class.h3]="size == 'big'"
+  >{{subtitle}}</div>
   <div
     *ngIf="title; else titleContent"
     class="h1 mt-2"

@@ -100,8 +100,8 @@ export const slider = trigger('slider', [
     style({
       opacity: 0,
     }),
-    animate('100ms', style({
-      transform: 'translateX(180px)',
+    animate('60ms', style({
+      transform: 'translateX(60px)',
     })),
     animate('120ms'),
   ]),
@@ -109,8 +109,8 @@ export const slider = trigger('slider', [
     style({
       opacity: 0,
     }),
-    animate('100ms', style({
-      transform: 'translateX(-180px)',
+    animate('60ms', style({
+      transform: 'translateX(-60px)',
     })),
     animate('120ms'),
   ]),

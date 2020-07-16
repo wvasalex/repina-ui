@@ -25,19 +25,26 @@
         [@slider]="index"
         class="content"
       >
-        <div class="h3">
-          {{feedbacks[index].name}}
-        </div>
-        <div class="text32 mt-1">
-          {{feedbacks[index].role}}
-        </div>
-        <r-quote class="quote h4 mt-2">
-          {{feedbacks[index].quote}}
-        </r-quote>
-        <div class="mt-2 bolder full-review">
-          Показать весь отзыв
-        </div>
+        <ng-container *ngTemplateOutlet="feedback; context: {feedback: feedbacks[index]}"></ng-container>
       </div>
     </div>
   </div>
 </r-padding>
+
+<ng-template
+  #feedback
+  let-feedback="feedback"
+>
+  <div class="h3">
+    {{feedback.name}}
+  </div>
+  <div class="text32 mt-1">
+    {{feedback.role}}
+  </div>
+  <r-quote class="quote h4 mt-2">
+    {{feedback.quote}}
+  </r-quote>
+  <div class="mt-2 bolder full-review">
+    Показать весь отзыв
+  </div>
+</ng-template>

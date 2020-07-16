@@ -24,6 +24,7 @@ export class AgencyFeedbackComponent implements OnInit {
     },
   ];
 
+  public prevIndex: number = 0;
   public index: number = 0;
   public last: number = this.feedbacks.length - 1;
 
@@ -35,12 +36,14 @@ export class AgencyFeedbackComponent implements OnInit {
 
   public $prev() {
     if (this.index > 0) {
+      this.prevIndex = this.index;
       this.index--;
     }
   }
 
   public $next() {
     if (this.index < this.last) {
+      this.prevIndex = this.index;
       this.index++;
     }
   }

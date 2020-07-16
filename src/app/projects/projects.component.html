@@ -8,18 +8,16 @@
       </r-card>
     </div>
 
-    <div class="mt-4">
-      <r-badge-list
-        [badges]="types"
-      ></r-badge-list>
-    </div>
+    <r-badge-list
+      [badges]="types"
+      class="badges"
+    ></r-badge-list>
   </r-padding>
 
   <mat-grid-list
     [cols]="cols"
     rowHeight="1.5:1"
     gutterSize="30"
-    class="mt-4"
   >
     <mat-grid-tile
       *ngFor="let image of images; let index = index"

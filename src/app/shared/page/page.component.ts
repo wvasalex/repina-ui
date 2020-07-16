@@ -44,17 +44,17 @@ export class PageComponent implements OnInit, OnDestroy {
     this._observe = this.breakpointService.change$.subscribe((result: BreakpointState) => {
       const w = window.innerWidth;
       const breakpoints = [1920, 1366, 1024, 768, 320];
-      const cn = breakpoints.find((breakpoint) => w > breakpoint) || 320;
+      let cn = breakpoints.find((breakpoint) => w > breakpoint) || 320;
 
       if (typeof window !== 'undefined' && cn != 320) {
         if ('ontouchstart' in window ||
           (window['DocumentTouch'] && document instanceof window['DocumentTouch'])) {
-          //points.push('320');
+          cn = 320;
         }
       }
 
       if (typeof document !== 'undefined') {
-        this.renderer.setAttribute(document.body, 'class', 'w' + cn);
+        this.renderer.setAttribute(document.documentElement, 'class', 'w' + cn);
       }
     });
   }
