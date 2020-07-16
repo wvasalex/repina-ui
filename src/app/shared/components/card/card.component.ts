@@ -7,10 +7,11 @@ import { Component, HostBinding, Input, OnInit } from '@angular/core';
 })
 export class CardComponent implements OnInit {
   @Input() @HostBinding('attr.color') color: 'white' | 'black' = 'white';
-  @Input() @HostBinding('attr.size') size: 'big' | 'small' = 'small';
   @Input() title: string;
   @Input() subtitle: string;
   @Input() description: string;
+  @Input() titleClass = 'h1';
+  @Input() subtitleClass = 'h4';
 
   constructor() { }
 

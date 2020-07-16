@@ -10,6 +10,12 @@
   width: 66%;
 }
 
+:host.wide {
+  .left {
+    width: 80%;
+  }
+}
+
 :host[color=black] {
   * {
     color: white !important;
