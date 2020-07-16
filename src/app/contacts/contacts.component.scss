@@ -2,14 +2,6 @@
   padding-right: 3rem;
 }
 
-.w320 :host {
-  .space {
-    &:after {
-      content: ' ';
-    }
-  }
-}
-
 .map {
   display: flex;
   align-items: center;
@@ -29,6 +21,18 @@
   height: 146px;
 }
 
+.image {
+  width: 64px;
+  height: 124px;
+}
+
+.w1920 :host {
+  .image {
+    width: 94px;
+    height: 192px;
+  }
+}
+
 .w768 :host {
   .map {
     height: 600px;
@@ -36,6 +40,12 @@
 }
 
 .w320 :host {
+  .space {
+    &:after {
+      content: ' ';
+    }
+  }
+
   .map {
     height: 400px;
   }

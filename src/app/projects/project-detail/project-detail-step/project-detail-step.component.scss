@@ -26,8 +26,10 @@
   margin-left: 6.5rem;
 }
 
-.w320 :host {
-  .ml {
-    margin-left: 0;
+.w768, .w320 {
+  :host {
+    .ml {
+      margin-left: 0;
+    }
   }
 }
