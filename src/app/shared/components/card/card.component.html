@@ -5,7 +5,9 @@
   >{{subtitle}}</div>
   <div
     *ngIf="title; else titleContent"
-    class="h1 mt-2"
+    [class.h2]="size == 'small'"
+    [class.h1]="size == 'big'"
+    class="mt-2"
   >
     {{title}}
   </div>

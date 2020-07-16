@@ -51,41 +51,6 @@ a, a:visited {
   @extend .h;
 }
 
-.h1 {
-  font-size: 78px;
-  line-height: 86px;
-}
-
-.h2 {
-  font-size: 52px;
-  line-height: 60px;
-}
-
-.h3 {
-  font-size: 32px;
-  line-height: 40px;
-}
-
-.h4 {
-  font-size: 24px;
-  line-height: 32px;
-}
-
-.text32 {
-  font-size: 20px;
-  line-height: 28px;
-}
-
-.text24 {
-  font-size: 16px;
-  line-height: 22px;
-}
-
-.text16 {
-  font-size: 16px;
-  line-height: 24px;
-}
-
 .w1920 {
   .h1 {
     font-size: 112px;
@@ -120,6 +85,43 @@ a, a:visited {
   .text16 {
     font-size: 16px;
     line-height: 22px;
+  }
+}
+
+.w1366, .w1024, .w768 {
+  .h1 {
+    font-size: 78px;
+    line-height: 86px;
+  }
+
+  .h2 {
+    font-size: 52px;
+    line-height: 60px;
+  }
+
+  .h3 {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .h4 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .text32 {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .text24 {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .text16 {
+    font-size: 16px;
+    line-height: 24px;
   }
 }
 

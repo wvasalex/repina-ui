@@ -7,23 +7,13 @@
 }
 
 .left {
-  width: 60%;
+  width: 66%;
 }
 
 :host[color=black] {
   * {
     color: white !important;
   }
-}
-
-:host[size=small] {
-  .title {
-    @extend .h2;
-  }
-}
-
-.h3 {
-  margin-top: 20px;
 }
 
 .w768 :host, .w320 :host {

@@ -6,6 +6,10 @@ r-journal-snippet, r-subscribe {
   margin: 4rem 0;
 }
 
+.subscription-block {
+  margin: 4rem 0;
+}
+
 .row-column {
 }
 
@@ -23,13 +27,15 @@ r-journal-snippet, r-subscribe {
   margin-right: 30px;
 }
 
-.w768 :host {
-  .m30 {
-    margin: 0;
-  }
+.w768, .w320 {
+  :host {
+    .m30 {
+      margin: 0;
+    }
 
-  .small {
-    margin-left: 0;
+    .small {
+      margin-left: 0;
+    }
   }
 }
 
