@@ -6,9 +6,9 @@
 }
 
 .achievements {
-  padding-top: 8rem;
-  padding-bottom: 8rem;
-  background: $color-gray;
+  padding-top: 8rem !important;
+  padding-bottom: 8rem !important;
+  background: #EBEBEB;
 
   .row {
     justify-content: space-between;

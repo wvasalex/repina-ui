@@ -17,16 +17,18 @@
   }
 }
 
-.h3 {
-  margin-right: 50%;
-  margin-bottom: 40px;
-}
-
 .description {
   opacity: .5;
 
   a {
     text-decoration: underline;
+  }
+}
+
+.w1920 :host {
+  .h3 {
+    margin-right: 50%;
+    margin-bottom: 40px;
   }
 }
 

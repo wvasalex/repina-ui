@@ -13,7 +13,7 @@ export const MenuItems: MenuItem[] = [
     routerLink: '/services',
   },
   {
-    label: 'Агенство',
+    label: 'Агентство',
     routerLink: '/agency',
   },
   {
