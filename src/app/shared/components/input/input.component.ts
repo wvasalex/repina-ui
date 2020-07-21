@@ -18,8 +18,11 @@ import { errorAnimation } from '../../animations';
   ],
 })
 export class InputComponent implements ControlValueAccessor {
-  @Input() required: boolean = false;
+  @Input() type: string = 'text';
   @Input() placeholder: string = '';
+  @Input() disabled = false;
+  @Input() required: boolean = false;
+  @Input() multiline: boolean = false;
 
   public value: string;
   public error: string;

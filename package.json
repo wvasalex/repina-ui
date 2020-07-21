@@ -6,7 +6,7 @@
   "scripts": {
     "ng": "ng",
     "build": "ng build",
-    "start": "ng serve",
+    "start": "ng serve --proxy-config=proxy.conf.json",
     "test": "ng test",
     "lint": "tslint ./src/**/*.ts -t verbose",
     "e2e": "ng e2e",
@@ -34,6 +34,7 @@
     "@nguniversal/express-engine": "^10.0.1",
     "angular-in-memory-web-api": "~0.11.0",
     "express": "^4.15.2",
+    "ngx-localstorage": "^3.1.0",
     "rxjs": "~6.5.4",
     "zone.js": "~0.10.3"
   },

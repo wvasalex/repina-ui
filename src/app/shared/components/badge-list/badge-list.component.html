@@ -1,6 +1,6 @@
 <r-badge
-  *ngFor="let badge of badges; let first = first;"
-  [class.ml-1]="!first"
+  *ngFor="let badge of badges; let last = last;"
+  [class.mr-1]="!last"
 >
   {{badge}}
 </r-badge>

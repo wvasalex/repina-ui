@@ -1,11 +1,7 @@
 @import 'src/theme';
 
-r-page ::ng-deep r-header, .promo {
+::ng-deep r-header, ::ng-deep r-article-header {
   background: $color-gray;
-}
-
-.promo {
-  padding-bottom: 6rem !important;
 }
 
 .avatar-block {

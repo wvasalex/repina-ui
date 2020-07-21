@@ -1,0 +1,25 @@
+<r-page>
+  <r-article-header
+    [title]="article.title"
+    [description]="article.description"
+    [editor]="true"
+  ></r-article-header>
+
+  <r-padding class="row">
+    <r-input
+      [(ngModel)]="article.blog_tag"
+      placeholder="Тег"
+    ></r-input>
+
+    <r-input
+      [(ngModel)]="article.author_name"
+      placeholder="Имя автора статьи"
+    ></r-input>
+  </r-padding>
+
+  <r-padding [horizontal]="false">
+    <r-button (click)="$save()">
+      Сохранить
+    </r-button>
+  </r-padding>
+</r-page>

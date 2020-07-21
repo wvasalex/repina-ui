@@ -1,21 +1,8 @@
 <r-page>
-  <r-padding
-    [horizontal]="true"
-    class="promo"
-  >
-    <r-card
-      subtitle="Колонка Валерии Репиной"
-      description="Основатель и креативный директор агентства Repina branding Валерия Репина рассказывает журналу АРХИДОМ о том, как агентству удалось интегрировать фирменный стиль в интерьер с целью создания целостного образа бренда"
-    >
-      <div
-        title
-        class="h2"
-      >
-        Как внедрить фирменный стиль в интерьер?
-      </div>
-      <r-image [src]="'/assets/pictures/journal/article_header.png'"></r-image>
-    </r-card>
-  </r-padding>
+  <r-article-header
+    [title]="article.title"
+    [description]="article.description"
+  ></r-article-header>
 
   <div>
     <r-article-part
@@ -29,18 +16,16 @@
         особенным местом, точкой отсчета ее новой жизни. Поэтому мы начали работу с исследования и глубинных интервью с
         незамужними девушками и невестами
       </div>
-      <div class="avatar-block">
-        <div class="mh-4">
-          <img
-            src="/assets/pictures/journal/avatar.png"
-            class="avatar"
-          />
-          <div class="h4">
-            Валерия Репина
-          </div>
-          <div class="text32">
-            Автор
-          </div>
+      <div class="avatar-block mh-4">
+        <img
+          src="/assets/pictures/journal/avatar.png"
+          class="avatar"
+        />
+        <div class="h4">
+          {{article.author_name}}
+        </div>
+        <div class="text32">
+          Автор
         </div>
       </div>
     </r-article-part>

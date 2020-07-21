@@ -7,17 +7,21 @@ import { SharedModule } from '../components/shared.module';
 import { SphereComponent } from './main/sphere/sphere.component';
 import { NavListComponent } from './nav/nav-list/nav-list.component';
 import { IconNavListComponent } from './nav/icon-nav-list/icon-nav-list.component';
+import { ArticleHeaderComponent } from './journal/article-header/article-header.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
     SharedModule,
+    FormsModule,
   ],
   exports: [
     PromoCardComponent,
     MainHeaderComponent,
     NavListComponent,
+    ArticleHeaderComponent,
   ],
   declarations: [
     PromoCardComponent,
@@ -25,6 +29,7 @@ import { IconNavListComponent } from './nav/icon-nav-list/icon-nav-list.componen
     SphereComponent,
     NavListComponent,
     IconNavListComponent,
+    ArticleHeaderComponent,
   ],
 })
 export class BlocksModule {

@@ -3,11 +3,13 @@
 </div>
 <div class="container">
   <input
-    #input
-    (input)="writeValue(input.value)"
-    [placeholder]="placeholder"
-    type="text"
-    class="text32"
+      #input
+      (input)="writeValue(input.value)"
+      [value]="value"
+      [placeholder]="placeholder"
+      [disabled]="disabled"
+      type="text"
+      class="text16 input"
   />
   <div
     *ngIf="required"

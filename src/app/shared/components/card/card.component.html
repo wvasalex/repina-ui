@@ -9,7 +9,7 @@
     {{title}}
   </div>
   <div
-    *ngIf="description"
+    *ngIf="description; else descriptionContent"
     class="text32 mt-1_5"
   >
     {{description}}
@@ -20,4 +20,8 @@
 
 <ng-template #titleContent>
   <ng-content select="[title]"></ng-content>
+</ng-template>
+
+<ng-template #descriptionContent>
+  <ng-content select="[description]"></ng-content>
 </ng-template>

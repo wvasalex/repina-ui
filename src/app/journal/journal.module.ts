@@ -10,6 +10,9 @@ import { SharedModule } from '../shared/components/shared.module';
 import { PageModule } from '../shared/page/page.module';
 import { SubscribeComponent } from './subscribe/subscribe.component';
 import { ArticlePartComponent } from './article/article-part/article-part.component';
+import { ArticleEditorComponent } from './article-editor/article-editor.component';
+import { BlocksModule } from '@shared/blocks/blocks.module';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,6 +22,7 @@ import { ArticlePartComponent } from './article/article-part/article-part.compon
     ArticleComponent,
     SubscribeComponent,
     ArticlePartComponent,
+    ArticleEditorComponent,
   ],
   imports: [
     CommonModule,
@@ -26,6 +30,8 @@ import { ArticlePartComponent } from './article/article-part/article-part.compon
     GridModule,
     SharedModule,
     PageModule,
+    BlocksModule,
+    FormsModule,
   ],
   exports: [
     JournalSnippetComponent,

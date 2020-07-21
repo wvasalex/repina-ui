@@ -1,0 +1,38 @@
+<r-padding>
+  <r-card
+    subtitle="Колонка Валерии Репиной"
+  >
+    <div
+      title
+      class="h2 mt-1"
+    >
+      <r-input
+        *ngIf="editor"
+        [(ngModel)]="title"
+        placeholder="Название"
+      ></r-input>
+      <span
+        *ngIf="!editor"
+      >
+        {{title}}
+      </span>
+    </div>
+    <div
+      description
+      class="text32 mt-1_5"
+    >
+      <r-input
+        *ngIf="editor"
+        [(ngModel)]="description"
+        placeholder="Описание"
+      ></r-input>
+      <span
+        *ngIf="!editor"
+      >
+        {{description}}
+      </span>
+    </div>
+
+    <r-image [src]="'/assets/pictures/journal/article_header.png'"></r-image>
+  </r-card>
+</r-padding>

@@ -1,5 +1,5 @@
 <r-page>
-  <r-padding [horizontal]="true">
+  <r-padding>
     <div class="promo">
       <r-card
         subtitle="Блог"
@@ -12,21 +12,17 @@
       [badges]="['Все', 'Колонка Валерии Репиной', 'Жизайн', 'Новости']"
       class="mt-2"
     ></r-badge-list>
-
+  </r-padding>
+  <r-padding *ngIf="articles">
     <div class="row-column">
       <r-journal-snippet
+        *ngFor="let article of main_articles; let first = first;"
+        [routerLink]="[article.slug]"
+        [title]="article.blog_tag"
+        [description]="article.title"
+        [class.big]="first"
+        [class.small]="!first"
         image="/assets/pictures/journal/1.png"
-        title="Брендинг"
-        description="Как создать нескучную упаковку для профессионального продукта"
-        class="big"
-      >
-      </r-journal-snippet>
-
-      <r-journal-snippet
-        image="/assets/pictures/journal/2.png"
-        title="Маркетинг"
-        description="Валерия Репина в РБК: как брендбук должен служить бизнесу"
-        class="small"
       >
       </r-journal-snippet>
     </div>
