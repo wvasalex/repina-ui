@@ -1,6 +1,8 @@
 :host {
   display: block;
+  width: 100%;
   padding: 128px 75px;
+  box-sizing: border-box;
 }
 
 :host.horizontal {

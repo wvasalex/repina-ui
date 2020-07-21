@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { StrMap } from '../shared/types';
 
 @Component({
   selector: 'r-main',
@@ -7,11 +8,102 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainComponent implements OnInit {
-  public nav: string[][] = [
+  public nav: StrMap<string>[][] = [
     [
-      'Услуги',
+      {
+        text: 'Услуги',
+        href: '/services',
+      },
     ],
     [
+      {
+        text: 'Корпоративный брендинг',
+        href: '/branding',
+      },
+      {
+        text: 'Исследования и аудит бренда',
+        href: '/branding',
+      },
+      {
+        text: 'Платформа бренда',
+        href: '/branding',
+      },
+      {
+        text: 'Нейминг и слоган',
+        href: '/branding',
+      },
+      {
+        text: 'Фирменный стиль',
+        href: '/branding',
+      },
+    ],
+    [
+      {
+        text: 'Корпоративный брендинг',
+        href: '/branding',
+      },
+      {
+        text: 'Исследования и аудит бренда',
+        href: '/branding',
+      },
+      {
+        text: 'Платформа бренда',
+        href: '/branding',
+      },
+      {
+        text: 'Нейминг и слоган',
+        href: '/branding',
+      },
+      {
+        text: 'Фирменный стиль',
+        href: '/branding',
+      },
+    ],
+    [
+      {
+        text: 'Корпоративный брендинг',
+        href: '/branding',
+      },
+      {
+        text: 'Исследования и аудит бренда',
+        href: '/branding',
+      },
+      {
+        text: 'Платформа бренда',
+        href: '/branding',
+      },
+      {
+        text: 'Нейминг и слоган',
+        href: '/branding',
+      },
+      {
+        text: 'Фирменный стиль',
+        href: '/branding',
+      },
+    ],
+    [
+      {
+        text: 'Корпоративный брендинг',
+        href: '/branding',
+      },
+      {
+        text: 'Исследования и аудит бренда',
+        href: '/branding',
+      },
+      {
+        text: 'Платформа бренда',
+        href: '/branding',
+      },
+      {
+        text: 'Нейминг и слоган',
+        href: '/branding',
+      },
+      {
+        text: 'Фирменный стиль',
+        href: '/branding',
+      },
+    ],
+    /*[
       'Корпоративный брендинг',
       'Исследования и аудит бренда',
       'Платформа бренда',
@@ -41,7 +133,7 @@ export class MainComponent implements OnInit {
       'Ключевое сообщение hr-бренда',
       'Дизайн офисных помещений',
       'Дизайн продукции с символикой',
-    ],
+    ],*/
   ];
 
   constructor() {

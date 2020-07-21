@@ -1,5 +1,5 @@
 import { Component, HostBinding, Input, OnInit } from '@angular/core';
-import { StrMap } from '../../types';
+import { StrMap } from '../../../types';
 
 @Component({
   selector: 'r-promo-card',

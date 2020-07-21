@@ -11,13 +11,11 @@ import { CheckboxComponent } from './checkbox/checkbox.component';
 import { BadgeListComponent } from './badge-list/badge-list.component';
 import { ImageComponent } from './image/image.component';
 import { ArrowComponent } from './arrow/arrow.component';
-import { NavListComponent } from './nav-list/nav-list.component';
 import { RouterModule } from '@angular/router';
 import { ParallaxDirective } from './parallax/parallax.directive';
 import { MarqueeComponent } from './marquee/marquee.component';
 import { PaddingComponent } from './padding/padding.component';
 import { QuoteComponent } from './quote/quote.component';
-import { IconNavListComponent } from './icon-nav-list/icon-nav-list.component';
 
 @NgModule({
   declarations: [
@@ -32,12 +30,10 @@ import { IconNavListComponent } from './icon-nav-list/icon-nav-list.component';
     BadgeListComponent,
     ImageComponent,
     ArrowComponent,
-    NavListComponent,
     ParallaxDirective,
     MarqueeComponent,
     PaddingComponent,
     QuoteComponent,
-    IconNavListComponent,
   ],
   exports: [
     LogoComponent,
@@ -50,12 +46,10 @@ import { IconNavListComponent } from './icon-nav-list/icon-nav-list.component';
     BadgeListComponent,
     ImageComponent,
     ArrowComponent,
-    NavListComponent,
     ParallaxDirective,
     MarqueeComponent,
     PaddingComponent,
     QuoteComponent,
-    IconNavListComponent,
   ],
   imports: [
     CommonModule,

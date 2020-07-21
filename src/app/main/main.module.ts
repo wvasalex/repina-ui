@@ -7,14 +7,12 @@ import { PageModule } from '../shared/page/page.module';
 import { GridModule } from '../shared/grid/grid.module';
 import { JournalModule } from '../journal/journal.module';
 import { AboutComponent } from './about/about.component';
-import { SphereComponent } from './sphere/sphere.component';
 import { BlocksModule } from '../shared/blocks/blocks.module';
 
 @NgModule({
   declarations: [
     MainComponent,
     AboutComponent,
-    SphereComponent,
   ],
   imports: [
     CommonModule,

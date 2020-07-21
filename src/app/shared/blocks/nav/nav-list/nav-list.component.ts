@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { StrMap } from '@shared/types';
 
 @Component({
   selector: 'r-nav-list',
@@ -6,13 +7,16 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./nav-list.component.scss']
 })
 export class NavListComponent implements OnInit {
-  @Input() blocks: string[][];
-  public primary: string;
+  @Input() blocks: StrMap<string>[][];
+
+  public primaryBlock: StrMap<string>[];
 
   constructor() { }
 
   ngOnInit(): void {
-    this.primary = this.blocks.splice(0, 1)[0][0];
+    if (this.blocks) {
+      this.primaryBlock = this.blocks.splice(0, 1)[0];
+    }
   }
 
 }

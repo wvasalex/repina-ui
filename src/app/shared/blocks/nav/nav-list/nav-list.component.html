@@ -1,0 +1,54 @@
+<r-padding class="nav">
+  <div class="primary-block">
+    <a
+      *ngFor="let item of primaryBlock; let first = first;"
+      [routerLink]="[item.href]"
+      [class.h3]="first"
+      [class.text32]="!first"
+    >
+      {{item.text}}
+    </a>
+  </div>
+
+  <div class="blocks">
+    <div
+      *ngFor="let block of blocks; let primaryBlock = first; let index = index"
+      class="nav-block column"
+    >
+      <a
+        *ngFor="let item of block; let first = first;"
+        [routerLink]="[item.href]"
+        [class.h3]="first"
+        [class.text32]="!first"
+      >
+        {{item.text}}
+      </a>
+    </div>
+  </div>
+</r-padding>
+
+<!--
+<div class="primary">
+    <a
+      [routerLink]="[]"
+      class="h3"
+    >
+      {{primary}}
+    </a>
+  </div>
+  <div class="blocks">
+    <div
+      *ngFor="let block of blocks"
+      class="nav-block"
+    >
+      <a
+        *ngFor="let link of block; let first = first;"
+        [routerLink]="[]"
+        [class.h3]="first"
+        [class.text32]="!first"
+      >
+        {{link}}
+      </a>
+    </div>
+  </div>
+-->
