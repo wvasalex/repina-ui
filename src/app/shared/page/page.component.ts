@@ -41,6 +41,10 @@ export class PageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
     this._observe = this.breakpointService.change$.subscribe((result: BreakpointState) => {
       const w = window.innerWidth;
       const breakpoints = [1920, 1366, 1024, 768, 320];
@@ -60,7 +64,7 @@ export class PageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this._observe.unsubscribe();
+    this._observe?.unsubscribe();
   }
 
   public $toggleDrawer(opened: boolean) {

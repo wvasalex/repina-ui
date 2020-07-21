@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { AgencyRoutingModule } from './agency-routing.module';
 import { AgencyComponent } from './agency.component';
-import { PageModule } from '../shared/page/page.module';
-import { GridModule } from '../shared/grid/grid.module';
-import { SharedModule } from '../shared/components/shared.module';
+import { PageModule } from '@shared/page/page.module';
+import { GridModule } from '@shared/grid/grid.module';
+import { SharedModule } from '@shared/components/shared.module';
+import { BlocksModule } from '@shared/blocks/blocks.module';
 import { AgencyAwardsComponent } from './agency-awards/agency-awards.component';
 import { AgencyTeamComponent } from './agency-team/agency-team.component';
 import { AgencyFeedbackComponent } from './agency-feedback/agency-feedback.component';
@@ -21,6 +22,7 @@ import { AgencyPrimaryComponent } from './agency-primary/agency-primary.componen
     PageModule,
     GridModule,
     SharedModule,
+    BlocksModule,
   ]
 })
 export class AgencyModule { }

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component,  OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ArticleHeaderComponent } from '@shared/blocks/journal/article-header/article-header.component';
 import { JournalService } from '../journal.service';

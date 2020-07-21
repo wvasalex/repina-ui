@@ -22,6 +22,7 @@ import { FormsModule } from '@angular/forms';
     MainHeaderComponent,
     NavListComponent,
     ArticleHeaderComponent,
+    IconNavListComponent,
   ],
   declarations: [
     PromoCardComponent,
