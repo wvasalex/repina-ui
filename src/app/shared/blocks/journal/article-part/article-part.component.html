@@ -1,12 +1,8 @@
-<div
-  *ngIf="props.title"
-  class="title h3"
->
+<div class="title h3">
   {{props.title}}
 </div>
 
 <div
-  *ngIf="props.subtitle"
   [class.mt-1_5]="props.title"
   class="subtitle h4"
 >
@@ -21,7 +17,9 @@
     {{props.date}}
   </div>
 
-  <div class="row-column">
-    <ng-content></ng-content>
-  </div>
+  <r-blocks-render
+    [blocks]="elements"
+    typeKey="element_type"
+    class="row-column"
+  ></r-blocks-render>
 </div>

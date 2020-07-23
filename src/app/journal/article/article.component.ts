@@ -19,7 +19,7 @@ export class ArticleComponent implements OnInit {
       {
         block_type: 'article-header',
         props: {
-          title: 'Колонка Велерии Репиной',
+          title: 'Колонка Валерии Репиной',
           subtitle: 'Заголовок статьи',
           description: 'Тут краткое содержание статьи',
         },
@@ -30,12 +30,40 @@ export class ArticleComponent implements OnInit {
         block_type: 'article-part',
         props: {
           title: 'Заголовок',
+          subtitle: 'Задача',
+          date: '12-19-2020',
         },
         content_elements: [
           {
-            element_type: 'article-title',
+            element_type: 'article-text',
             props: {
-
+              value: 'Текстовое содержимое',
+            },
+          },
+          {
+            element_type: 'article-text',
+            props: {
+              value: 'Текстовое содержимое',
+            },
+          },
+        ],
+      },
+      {
+        block_type: 'article-part',
+        props: {
+          subtitle: 'Задача',
+        },
+        content_elements: [
+          {
+            element_type: 'article-text',
+            props: {
+              value: 'Текстовое содержимое',
+            },
+          },
+          {
+            element_type: 'article-text',
+            props: {
+              value: 'Текстовое содержимое',
             },
           },
         ],

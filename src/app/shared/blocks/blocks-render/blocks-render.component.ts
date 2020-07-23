@@ -9,6 +9,7 @@ import { ArticleContentBlock } from '../../../journal/journal.model';
 export class BlocksRenderComponent implements OnInit {
   @Input() blocks: ArticleContentBlock[];
   @Input() editor: boolean = false;
+  @Input() typeKey: string = 'block_type';
 
   constructor() { }
 

@@ -38,14 +38,12 @@ export class ArticleEditorComponent implements OnInit {
       },
       {
         block_type: 'article-part',
-        props: {},
+        props: {
+          title: 'Заголовок',
+          subtitle: 'Подзаголовок',
+        },
         content_elements: [
-          {
-            element_type: 'article-title',
-            props: {
-              value: 'Заголовок',
-            },
-          },
+
         ],
       },
     ];

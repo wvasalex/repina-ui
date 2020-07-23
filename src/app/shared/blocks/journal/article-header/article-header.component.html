@@ -6,31 +6,13 @@
       title
       class="h2 mt-1"
     >
-      <r-input
-        *ngIf="editor"
-        [(ngModel)]="props.title"
-        placeholder="Название"
-      ></r-input>
-      <span
-        *ngIf="!editor"
-      >
-        {{props.title}}
-      </span>
+      {{props.title}}
     </div>
     <div
       description
       class="text32 mt-1_5"
     >
-      <r-input
-        *ngIf="editor"
-        [(ngModel)]="props.description"
-        placeholder="Описание"
-      ></r-input>
-      <span
-        *ngIf="!editor"
-      >
-        {{props.description}}
-      </span>
+      {{props.description}}
     </div>
 
     <r-image [src]="'/assets/pictures/journal/article_header.png'"></r-image>
