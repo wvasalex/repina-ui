@@ -14,6 +14,33 @@ export class ArticleComponent implements OnInit {
 
   ngOnInit(): void {
     this.article = this.activatedRoute.snapshot.data.article;
+
+    this.article.content_blocks = [
+      {
+        block_type: 'article-header',
+        props: {
+          title: 'Колонка Велерии Репиной',
+          subtitle: 'Заголовок статьи',
+          description: 'Тут краткое содержание статьи',
+        },
+        content_elements: [
+        ],
+      },
+      {
+        block_type: 'article-part',
+        props: {
+          title: 'Заголовок',
+        },
+        content_elements: [
+          {
+            element_type: 'article-title',
+            props: {
+
+            },
+          },
+        ],
+      },
+    ];
   }
 
 }

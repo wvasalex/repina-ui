@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { StrMap } from '@shared/types';
 
 @Component({
   selector: 'r-article-part',
@@ -6,9 +7,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./article-part.component.scss']
 })
 export class ArticlePartComponent implements OnInit {
-  @Input() date: string;
-  @Input() title: string;
-  @Input() subtitle: string;
+  @Input() props: StrMap<string> = {};
+  @Input() editor: boolean = false;
 
   constructor() { }
 

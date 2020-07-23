@@ -7,20 +7,17 @@ import { StrMap } from '@shared/types';
   styleUrls: ['./article-header.component.scss'],
 })
 export class ArticleHeaderComponent implements OnInit {
-  @Input() title: string;
-  @Input() description: string;
+  @Input() props: StrMap<string> = {};
   @Input() editor: boolean = false;
 
   constructor() {
   }
 
   ngOnInit(): void {
+    console.log(this.props);
   }
 
   public getValue(): StrMap<string> {
-    return {
-      'title': this.title,
-      'description': this.description,
-    };
+    return this.props;
   }
 }

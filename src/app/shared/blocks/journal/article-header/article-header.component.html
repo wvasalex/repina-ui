@@ -1,6 +1,6 @@
 <r-padding>
   <r-card
-    subtitle="Колонка Валерии Репиной"
+    [subtitle]="props.subtitle"
   >
     <div
       title
@@ -8,13 +8,13 @@
     >
       <r-input
         *ngIf="editor"
-        [(ngModel)]="title"
+        [(ngModel)]="props.title"
         placeholder="Название"
       ></r-input>
       <span
         *ngIf="!editor"
       >
-        {{title}}
+        {{props.title}}
       </span>
     </div>
     <div
@@ -23,13 +23,13 @@
     >
       <r-input
         *ngIf="editor"
-        [(ngModel)]="description"
+        [(ngModel)]="props.description"
         placeholder="Описание"
       ></r-input>
       <span
         *ngIf="!editor"
       >
-        {{description}}
+        {{props.description}}
       </span>
     </div>
 

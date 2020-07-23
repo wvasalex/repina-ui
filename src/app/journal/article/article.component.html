@@ -1,8 +1,7 @@
 <r-page>
-  <r-article-header
-    [title]="article.title"
-    [description]="article.description"
-  ></r-article-header>
+  <r-blocks-render
+    [blocks]="article.content_blocks"
+  ></r-blocks-render>
 
   <div>
     <r-article-part

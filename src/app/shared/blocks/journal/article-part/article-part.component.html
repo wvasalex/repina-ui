@@ -1,24 +1,24 @@
 <div
-  *ngIf="title"
+  *ngIf="props.title"
   class="title h3"
 >
-  {{title}}
+  {{props.title}}
 </div>
 
 <div
-  *ngIf="subtitle"
-  [class.mt-1_5]="title"
+  *ngIf="props.subtitle"
+  [class.mt-1_5]="props.title"
   class="subtitle h4"
 >
-  {{subtitle}}
+  {{props.subtitle}}
 </div>
 
 <div class="content">
   <div
-    *ngIf="date"
+    *ngIf="props.date"
     class="date text32"
   >
-    {{date}}
+    {{props.date}}
   </div>
 
   <div class="row-column">

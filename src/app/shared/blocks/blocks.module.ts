@@ -10,6 +10,9 @@ import { NavListComponent } from './nav/nav-list/nav-list.component';
 import { IconNavListComponent } from './nav/icon-nav-list/icon-nav-list.component';
 import { ArticleHeaderComponent } from './journal/article-header/article-header.component';
 import { ArticlePartComponent } from '@shared/blocks/journal/article-part/article-part.component';
+import { ArticleTextComponent } from './journal/article-text/article-text.component';
+import { ArticleTitleComponent } from './journal/article-title/article-title.component';
+import { BlocksRenderComponent } from './blocks-render/blocks-render.component';
 
 @NgModule({
   imports: [
@@ -25,6 +28,7 @@ import { ArticlePartComponent } from '@shared/blocks/journal/article-part/articl
     ArticleHeaderComponent,
     IconNavListComponent,
     ArticlePartComponent,
+    BlocksRenderComponent,
   ],
   declarations: [
     PromoCardComponent,
@@ -34,6 +38,9 @@ import { ArticlePartComponent } from '@shared/blocks/journal/article-part/articl
     IconNavListComponent,
     ArticleHeaderComponent,
     ArticlePartComponent,
+    ArticleTextComponent,
+    ArticleTitleComponent,
+    BlocksRenderComponent,
   ],
 })
 export class BlocksModule {

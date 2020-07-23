@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component,  OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ArticleHeaderComponent } from '@shared/blocks/journal/article-header/article-header.component';
 import { JournalService } from '../journal.service';
@@ -23,8 +23,32 @@ export class ArticleEditorComponent implements OnInit {
     const snapshot = this.activatedRoute.snapshot;
     this.article = snapshot.data.article || {
       author_name: 'Валерия Репина',
-      content_blocks: [],
     };
+
+    this.article.content_blocks = [
+      {
+        block_type: 'article-header',
+        props: {
+          title: 'Колонка Велерии Репиной',
+          subtitle: 'Заголовок статьи',
+          description: 'Тут краткое содержание статьи',
+        },
+        content_elements: [
+        ],
+      },
+      {
+        block_type: 'article-part',
+        props: {},
+        content_elements: [
+          {
+            element_type: 'article-title',
+            props: {
+              value: 'Заголовок',
+            },
+          },
+        ],
+      },
+    ];
 
     if (snapshot.params.id) {
       this.article.slug = snapshot.params.id;

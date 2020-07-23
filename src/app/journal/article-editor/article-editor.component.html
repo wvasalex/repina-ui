@@ -1,9 +1,8 @@
 <r-page>
-  <r-article-header
-    [title]="article.title"
-    [description]="article.description"
+  <r-blocks-render
+    [blocks]="article.content_blocks"
     [editor]="true"
-  ></r-article-header>
+  ></r-blocks-render>
 
   <r-padding class="row">
     <r-input

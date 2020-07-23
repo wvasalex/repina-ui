@@ -12,6 +12,7 @@ export interface Article {
   slug?: string;
   preview_file?: string;
   author_avatar?: string;
+  content_blocks: ArticleContentBlock[];
 }
 
 export interface ArticleContentBlock {

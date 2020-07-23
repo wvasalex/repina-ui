@@ -1,0 +1,17 @@
+<div
+  *ngFor="let block of blocks"
+>
+  <ng-container [ngSwitch]="block.block_type">
+    <r-article-header
+      *ngSwitchCase="'article-header'"
+      [props]="block.props"
+      [editor]="editor"
+    ></r-article-header>
+
+    <r-article-part
+      *ngSwitchCase="'article-part'"
+      [props]="block.props"
+      [editor]="editor"
+    ></r-article-part>
+  </ng-container>
+</div>
