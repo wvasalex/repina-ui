@@ -1,4 +1,4 @@
-import { Component, Input, forwardRef } from '@angular/core';
+import { Component, Input, forwardRef, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { errorAnimation } from '../../animations';
 
@@ -22,9 +22,8 @@ export class InputComponent implements ControlValueAccessor {
   @Input() placeholder: string = '';
   @Input() disabled = false;
   @Input() required: boolean = false;
-  @Input() multiline: boolean = false;
 
-  public value: string;
+  public value: string = '';
   public error: string;
 
   constructor() {

@@ -23,6 +23,7 @@ export class ArticleEditorComponent implements OnInit {
     const snapshot = this.activatedRoute.snapshot;
     this.article = snapshot.data.article || {
       author_name: 'Валерия Репина',
+      content_blocks: [],
     };
 
     if (snapshot.params.id) {
