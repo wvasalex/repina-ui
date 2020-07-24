@@ -5,6 +5,8 @@
     <div
       title
       class="h2 mt-1"
+      [r-block]="editor"
+      (contentChanged)="$contentChanged($event, 'title')"
     >
       {{props.title}}
     </div>

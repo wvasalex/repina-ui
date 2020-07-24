@@ -9,16 +9,16 @@ import { ArticleResolver } from './article.resolver';
 const routes: Routes = [
   {path: 'blog', component: JournalComponent},
   {
+    path: 'blog/new',
+    component: ArticleEditorComponent,
+    //canActivate: [SessionGuardService],
+  },
+  {
     path: 'blog/:id',
     component: ArticleComponent,
     resolve: {
       article: ArticleResolver,
     },
-  },
-  {
-    path: 'blog/new',
-    component: ArticleEditorComponent,
-    canActivate: [SessionGuardService],
   },
   {
     path: 'blog/:id/edit',

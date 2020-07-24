@@ -29,7 +29,7 @@ export class ArticleEditorComponent implements OnInit {
       {
         block_type: 'article-header',
         props: {
-          title: 'Колонка Велерии Репиной',
+          title: 'Колонка Валерии Репиной',
           subtitle: 'Заголовок статьи',
           description: 'Тут краткое содержание статьи',
         },

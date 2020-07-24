@@ -6,6 +6,15 @@ export class BaseBlock {
   @Input() editor: boolean = false;
   @Input() elements: any[];
 
+  public $contentChanged(value: string, prop: string) {
+    if (!this.props.hasOwnProperty(prop)) {
+      return;
+    }
+
+    this.props[prop] = value;
+    console.log(this.props);
+  }
+
   public getValue(): StrMap<string> {
     return this.props;
   }
