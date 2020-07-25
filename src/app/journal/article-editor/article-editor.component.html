@@ -1,9 +1,4 @@
 <r-page>
-  <r-blocks-render
-    [blocks]="article.content_blocks"
-    [editor]="true"
-  ></r-blocks-render>
-
   <r-padding class="row">
     <r-input
       [(ngModel)]="article.blog_tag"
@@ -18,8 +13,24 @@
     ></r-input>
   </r-padding>
 
-  <r-padding [horizontal]="false">
-    <r-button (click)="$save()">
+  <r-blocks-render
+    #blocks
+    [blocks]="article.content_blocks"
+    [editor]="true"
+    class="mt-2"
+  ></r-blocks-render>
+
+  <r-padding
+    [horizontal]="false"
+    style="display: flex"
+  >
+    <r-button (click)="$addPart()">
+      + Новый блок
+    </r-button>
+    <r-button
+      (click)="$save(blocks)"
+      class="ml-2"
+    >
       Сохранить
     </r-button>
   </r-padding>

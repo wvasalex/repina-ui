@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ArticleHeaderComponent } from '@shared/blocks/journal/article-header/article-header.component';
 import { JournalService } from '../journal.service';
 import { Article } from '../journal.model';
+import { BlocksRenderComponent } from '@shared/blocks/blocks-render/blocks-render.component';
 
 @Component({
   selector: 'r-article-editor',
@@ -16,6 +17,7 @@ export class ArticleEditorComponent implements OnInit {
   @ViewChild(ArticleHeaderComponent) headerComponent: ArticleHeaderComponent;
 
   constructor(private activatedRoute: ActivatedRoute,
+              private changeDetectorRef: ChangeDetectorRef,
               private journalService: JournalService) {
   }
 
@@ -23,19 +25,21 @@ export class ArticleEditorComponent implements OnInit {
     const snapshot = this.activatedRoute.snapshot;
     this.article = snapshot.data.article || {
       author_name: 'Валерия Репина',
+      content_blocks: [
+        {
+          block_type: 'article-header',
+          props: {
+            title: 'Колонка Валерии Репиной',
+            subtitle: 'Заголовок статьи',
+            description: 'Тут краткое содержание статьи',
+          },
+          content_elements: [],
+        },
+      ],
     };
 
-    this.article.content_blocks = [
-      {
-        block_type: 'article-header',
-        props: {
-          title: 'Колонка Валерии Репиной',
-          subtitle: 'Заголовок статьи',
-          description: 'Тут краткое содержание статьи',
-        },
-        content_elements: [
-        ],
-      },
+    /*this.article.content_blocks = [
+
       {
         block_type: 'article-part',
         props: {
@@ -47,19 +51,35 @@ export class ArticleEditorComponent implements OnInit {
         ],
       },
     ];
-
+*/
     if (snapshot.params.id) {
       this.article.slug = snapshot.params.id;
     }
   }
 
-  public $save() {
-    const header = this.headerComponent.getValue();
+  public $addPart() {
+    this.article.content_blocks = [
+      ...this.article.content_blocks, {
+        block_type: 'article-part',
+        props: {
+          title: 'Заголовок',
+          subtitle: 'Подзаголовок',
+        },
+        content_elements: [],
+      }];
+
+    this.changeDetectorRef.detectChanges();
+  }
+
+  public $save(blocksRenderComponent: BlocksRenderComponent) {
+    console.log(blocksRenderComponent.blocks);
+    /*const content_blocks = blocks.getValue();
     const article: Article = {
-      ...header,
       ...this.article,
+      content_blocks,
     };
 
-    this.journalService.save(article).toPromise();
+    console.log(article);*/
+    //this.journalService.save(article).toPromise();
   }
 }

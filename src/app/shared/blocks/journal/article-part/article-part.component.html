@@ -1,20 +1,28 @@
-<div class="title h3">
-  {{props.title}}
+<div
+  [r-block]="editor"
+  (contentChanged)="$contentChanged($event, 'title')"
+  class="title h3"
+>
+  {{$getValue('title')}}
 </div>
 
 <div
-  [class.mt-1_5]="props.title"
+  [r-block]="editor"
+  (contentChanged)="$contentChanged($event, 'subtitle')"
+  [class.mt-1_5]="$getValue('subtitle')"
   class="subtitle h4"
 >
-  {{props.subtitle}}
+  {{$getValue('subtitle')}}
 </div>
 
 <div class="content">
   <div
-    *ngIf="props.date"
+    [r-block]="editor"
+    (contentChanged)="$contentChanged($event, 'date')"
+    *ngIf="$getValue('title')"
     class="date text32"
   >
-    {{props.date}}
+    {{$getValue('date')}}
   </div>
 
   <r-blocks-render
@@ -23,3 +31,9 @@
     class="row-column"
   ></r-blocks-render>
 </div>
+
+<r-button
+  *ngIf="editor && elements.length < 2"
+  (click)="$addElement()">
+  + Новый элемент
+</r-button>

@@ -11,7 +11,6 @@ import { IconNavListComponent } from './nav/icon-nav-list/icon-nav-list.componen
 import { ArticleHeaderComponent } from './journal/article-header/article-header.component';
 import { ArticlePartComponent } from '@shared/blocks/journal/article-part/article-part.component';
 import { ArticleTextComponent } from './journal/article-text/article-text.component';
-import { ArticleTitleComponent } from './journal/article-title/article-title.component';
 import { BlocksRenderComponent } from './blocks-render/blocks-render.component';
 import { BlockDirective } from '@shared/blocks/block.directive';
 
@@ -40,7 +39,6 @@ import { BlockDirective } from '@shared/blocks/block.directive';
     ArticleHeaderComponent,
     ArticlePartComponent,
     ArticleTextComponent,
-    ArticleTitleComponent,
     BlocksRenderComponent,
     BlockDirective,
   ],

@@ -19,7 +19,7 @@ export class BlockDirective implements OnInit {
 
   @HostListener('click') onClick() {
     if (!this.edit) {
-      this.edit = !this.edit;
+      this.edit = true;
       this.switchMode();
     }
   }

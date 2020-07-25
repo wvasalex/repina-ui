@@ -3,18 +3,20 @@
     [subtitle]="props.subtitle"
   >
     <div
-      title
-      class="h2 mt-1"
       [r-block]="editor"
       (contentChanged)="$contentChanged($event, 'title')"
+      title
+      class="h2 mt-1"
     >
-      {{props.title}}
+      {{$getValue('title')}}
     </div>
     <div
+      [r-block]="editor"
+      (contentChanged)="$contentChanged($event, 'description')"
       description
       class="text32 mt-1_5"
     >
-      {{props.description}}
+      {{$getValue('description')}}
     </div>
 
     <r-image [src]="'/assets/pictures/journal/article_header.png'"></r-image>
