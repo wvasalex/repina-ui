@@ -1,0 +1,7 @@
+<r-quote
+  [r-block]="editor"
+  (contentChanged)="$contentChanged($event, 'value')"
+  class="h3"
+>
+  {{$getValue('quote')}}
+</r-quote>

@@ -27,13 +27,16 @@
 
   <r-blocks-render
     [blocks]="elements"
+    [editor]="editor"
     typeKey="element_type"
     class="row-column"
   ></r-blocks-render>
 </div>
 
-<r-button
+<r-select
   *ngIf="editor && elements.length < 2"
-  (click)="$addElement()">
-  + Новый элемент
-</r-button>
+  (valueChanged)="$addElement($event)"
+  [options]="availableElements"
+  placeholder="+ Добавить элемент"
+>
+</r-select>

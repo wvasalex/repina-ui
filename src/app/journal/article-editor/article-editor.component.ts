@@ -66,9 +66,10 @@ export class ArticleEditorComponent implements OnInit {
           subtitle: 'Подзаголовок',
         },
         content_elements: [],
-      }];
+      },
+    ];
 
-    this.changeDetectorRef.detectChanges();
+    //this.changeDetectorRef.detectChanges();
   }
 
   public $save(blocksRenderComponent: BlocksRenderComponent) {

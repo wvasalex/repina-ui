@@ -1,5 +1,6 @@
 <div
-  *ngFor="let block of blocks"
+  *ngFor="let block of blocks; let index = index"
+  [attr.rel]="typeKey + '_' + index"
 >
   <ng-container [ngSwitch]="block[typeKey]">
     <r-article-header
@@ -20,5 +21,17 @@
       [props]="block.props"
       [editor]="editor"
     ></r-article-text>
+
+    <r-article-image
+      *ngSwitchCase="'article-image'"
+      [props]="block.props"
+      [editor]="editor"
+    ></r-article-image>
+
+    <r-article-quote
+      *ngSwitchCase="'article-quote'"
+      [props]="block.props"
+      [editor]="editor"
+    ></r-article-quote>
   </ng-container>
 </div>

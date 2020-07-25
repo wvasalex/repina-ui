@@ -1,6 +1,10 @@
 :host {
   display: block;
-  padding: 4rem 225px 0;
+  padding: 4rem 75px 0 225px;
+}
+
+::ng-deep [rel="element_type_1"] {
+  padding-left: 180px;
 }
 
 .title {
@@ -19,7 +23,7 @@
   position: absolute;
   transform: rotate(270deg);
   top: 4rem;
-  left: -225px;
+  left: -185px;
 }
 
 .w1024 :host {

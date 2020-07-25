@@ -1,0 +1,47 @@
+:host {
+  display: inline-block;
+  font-size: 16px;
+  line-height: 28px;
+  min-width: 180px;
+  max-width: 220px;
+}
+
+.mat-select-panel-wrap{
+  position: relative;
+  top: 26px;
+}
+
+.mat-select-panel-wrap .mat-select-panel{
+  min-width: calc(100% + 12px) !important;
+  transform: translateX(4px) !important
+}
+
+mat-select ::ng-deep .mat-select-arrow-wrapper {
+  .mat-select-arrow {
+    opacity: 0;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    width: 18px;
+    height: 18px;
+    background: url('/assets/icons/components/dropdown.svg') no-repeat;
+  }
+}
+
+.placeholder {
+  position: absolute;
+  z-index: 1;
+  line-height: 28px;
+  max-width: 160px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: #BDBDBD;
+}
+
+.search {
+  border: none;
+  outline: none;
+}

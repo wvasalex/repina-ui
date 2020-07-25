@@ -5,7 +5,7 @@ import { ArticleContentBlock } from '../../../journal/journal.model';
   selector: 'r-blocks-render',
   templateUrl: './blocks-render.component.html',
   styleUrls: ['./blocks-render.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  //changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BlocksRenderComponent implements OnInit {
   @Input() blocks: ArticleContentBlock[];

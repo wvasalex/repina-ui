@@ -27,16 +27,14 @@ export class BaseBlock {
     this.props[prop] = value;
   }
 
-  public $addElement() {
-    this.elements = [
-      ...this.elements,
-      {
-        element_type: 'article-text',
-        props: {
-          value: 'text content',
-        },
+  public $addElement(type: string) {
+    console.log('add element of type ' + type);
+    this.elements.push({
+      element_type: type,
+      props: {
+        src: '/assets/pictures/journal/article_image.png',
       },
-    ];
+    });
   }
 
   public getValue(): StrMap<string> {

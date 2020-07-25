@@ -1,0 +1,34 @@
+<ng-container *ngIf="!readonly">
+  <input
+    *ngIf="search"
+    (input)="$search($event, select)"
+    (focus)="$focus(true, select)"
+    (blur)="$focus(false, select)"
+    [value]="searchFocused ? term : term || placeholder"
+    class="placeholder text16 search"
+  />
+
+  <div
+    *ngIf="!search && !value"
+    class="placeholder text16"
+  >{{placeholder}}</div>
+
+  <mat-select
+      #select
+      (selectionChange)="$change($event)"
+      [value]="value"
+      [panelClass]="search ? 'select-pane' : ''"
+  >
+    <mat-option
+      *ngFor="let option of $filter(options)"
+      [value]="option.value"
+    >{{option.label}}</mat-option>
+  </mat-select>
+</ng-container>
+
+<div
+  *ngIf="readonly"
+  class="text16"
+>
+  {{selectedOption?.label}}
+</div>

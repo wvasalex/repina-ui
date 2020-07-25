@@ -16,6 +16,8 @@ import { ParallaxDirective } from './parallax/parallax.directive';
 import { MarqueeComponent } from './marquee/marquee.component';
 import { PaddingComponent } from './padding/padding.component';
 import { QuoteComponent } from './quote/quote.component';
+import { SelectComponent } from '@shared/components/select/select.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { QuoteComponent } from './quote/quote.component';
     MarqueeComponent,
     PaddingComponent,
     QuoteComponent,
+    SelectComponent,
   ],
   exports: [
     LogoComponent,
@@ -50,10 +53,12 @@ import { QuoteComponent } from './quote/quote.component';
     MarqueeComponent,
     PaddingComponent,
     QuoteComponent,
+    SelectComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
+    MatSelectModule,
   ],
 })
 export class SharedModule {
