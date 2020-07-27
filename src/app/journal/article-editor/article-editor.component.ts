@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChil
 import { ActivatedRoute } from '@angular/router';
 import { ArticleHeaderComponent } from '@shared/blocks/journal/article-header/article-header.component';
 import { JournalService } from '../journal.service';
-import { Article, ArticleContentBlock } from '../journal.model';
+import { ActicleContentElement, Article, ArticleContentBlock } from '../journal.model';
 import { BlocksRenderComponent } from '@shared/blocks/blocks-render/blocks-render.component';
 
 @Component({
@@ -62,6 +62,10 @@ export class ArticleEditorComponent implements OnInit {
 
     this.article.content_blocks.forEach((block: ArticleContentBlock, index: number) => {
       block.position = index;
+
+      block.content_elements.forEach((element: ActicleContentElement, elementIndex: number) => {
+        element.position = elementIndex;
+      });
     });
 
     this.journalService.save(this.article).toPromise().then((a) => {

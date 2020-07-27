@@ -8,27 +8,17 @@ export class BlockDirective implements OnInit {
 
   @Output() contentChanged: EventEmitter<string> = new EventEmitter<string>();
 
-  public edit: boolean = false;
-
   constructor(private renderer: Renderer2,
               private host: ElementRef) {
   }
 
   public ngOnInit() {
-  }
-
-  @HostListener('click') onClick() {
-    if (!this.edit) {
-      this.edit = true;
-      this.switchMode();
+    if (this.editable) {
+      this.renderer.setAttribute(this.host.nativeElement, 'contenteditable', 'true');
     }
   }
 
   @HostListener('blur') onBlur() {
     this.contentChanged.emit(this.host.nativeElement.textContent);
-  }
-
-  private switchMode() {
-    this.renderer.setAttribute(this.host.nativeElement, 'contenteditable', this.edit ? 'true' : 'false');
   }
 }

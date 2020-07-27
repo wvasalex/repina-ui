@@ -31,5 +31,6 @@ export interface ActicleContentElement {
   content_block?: number;
   id?: number;
   content_file?: string;
+  position?: number;
   _destroy?: boolean;
 }
