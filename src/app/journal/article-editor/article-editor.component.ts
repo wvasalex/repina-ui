@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChil
 import { ActivatedRoute } from '@angular/router';
 import { ArticleHeaderComponent } from '@shared/blocks/journal/article-header/article-header.component';
 import { JournalService } from '../journal.service';
-import { Article } from '../journal.model';
+import { Article, ArticleContentBlock } from '../journal.model';
 import { BlocksRenderComponent } from '@shared/blocks/blocks-render/blocks-render.component';
 
 @Component({
@@ -37,24 +37,9 @@ export class ArticleEditorComponent implements OnInit {
         },
       ],
     };
-
-    /*this.article.content_blocks = [
-
-      {
-        block_type: 'article-part',
-        props: {
-          title: 'Заголовок',
-          subtitle: 'Подзаголовок',
-        },
-        content_elements: [
-
-        ],
-      },
-    ];
-*/
-    if (snapshot.params.id) {
-      this.article.slug = snapshot.params.id;
-    }
+    this.article.content_blocks.sort((a: ArticleContentBlock, b: ArticleContentBlock) => {
+      return a.position - b.position;
+    });
   }
 
   public $addPart() {
@@ -62,25 +47,26 @@ export class ArticleEditorComponent implements OnInit {
       ...this.article.content_blocks, {
         block_type: 'article-part',
         props: {
-          title: 'Заголовок',
-          subtitle: 'Подзаголовок',
+          title: '',
+          subtitle: '',
         },
         content_elements: [],
       },
     ];
-
-    //this.changeDetectorRef.detectChanges();
   }
 
-  public $save(blocksRenderComponent: BlocksRenderComponent) {
-    console.log(blocksRenderComponent.blocks);
-    /*const content_blocks = blocks.getValue();
-    const article: Article = {
-      ...this.article,
-      content_blocks,
-    };
+  public $save() {
+    if (!this.article.blog_tag) {
+      delete this.article.blog_tag;
+    }
 
-    console.log(article);*/
-    //this.journalService.save(article).toPromise();
+    this.article.content_blocks.forEach((block: ArticleContentBlock, index: number) => {
+      block.position = index;
+    });
+
+    this.journalService.save(this.article).toPromise().then((a) => {
+      console.log(a);
+    });
   }
+
 }

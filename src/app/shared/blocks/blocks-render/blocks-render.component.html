@@ -1,5 +1,5 @@
 <div
-  *ngFor="let block of blocks; let index = index"
+  *ngFor="let block of $visible(blocks); let index = index"
   [attr.rel]="typeKey + '_' + index"
 >
   <ng-container [ngSwitch]="block[typeKey]">
@@ -34,4 +34,11 @@
       [editor]="editor"
     ></r-article-quote>
   </ng-container>
+
+  <div
+    *ngIf="editor"
+    (click)="$remove(block)"
+  >
+    Удалить
+  </div>
 </div>

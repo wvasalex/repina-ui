@@ -22,6 +22,7 @@ export interface ArticleContentBlock {
   id?: number;
   blog?: number;
   position?: number;
+  _destroy?: boolean;
 }
 
 export interface ActicleContentElement {
@@ -30,4 +31,5 @@ export interface ActicleContentElement {
   content_block?: number;
   id?: number;
   content_file?: string;
+  _destroy?: boolean;
 }

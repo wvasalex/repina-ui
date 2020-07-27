@@ -15,7 +15,7 @@
   {{$getValue('subtitle')}}
 </div>
 
-<div class="content">
+<div class="content mt-4">
   <div
     [r-block]="editor"
     (contentChanged)="$contentChanged($event, 'date')"
@@ -37,6 +37,8 @@
   *ngIf="editor && elements.length < 2"
   (valueChanged)="$addElement($event)"
   [options]="availableElements"
+  [search]="true"
   placeholder="+ Добавить элемент"
+  class="mt-2"
 >
 </r-select>

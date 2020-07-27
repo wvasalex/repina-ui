@@ -12,7 +12,7 @@ export class SessionService {
   public create(): void {
     this.sessionState.setState({
       valid: true,
-      token: '96d8cbaf2d3d18710798f4932d892701a5b65f6d',
+      token: 'bbe4b99daee3043a52c7dcee27dfdda0acc7332d',
     });
   }
 

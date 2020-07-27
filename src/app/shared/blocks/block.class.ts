@@ -1,10 +1,13 @@
-import { Input, Output } from '@angular/core';
+import { EventEmitter, Input, Output } from '@angular/core';
 import { StrMap } from '../types';
 
 export class BaseBlock {
   @Input() props: StrMap<string> = {};
   @Input() editor: boolean = false;
   @Input() elements: any[];
+
+  @Output() removeBlock: EventEmitter<number> = new EventEmitter<number>();
+  @Output() removeElement: EventEmitter<number> = new EventEmitter<number>();
 
   constructor() {
   }
@@ -20,21 +23,25 @@ export class BaseBlock {
   }
 
   public $contentChanged(value: string, prop: string) {
-    if (!this.props.hasOwnProperty(prop)) {
-      return;
-    }
-
     this.props[prop] = value;
   }
 
   public $addElement(type: string) {
-    console.log('add element of type ' + type);
     this.elements.push({
       element_type: type,
       props: {
         src: '/assets/pictures/journal/article_image.png',
+        value: '',
       },
     });
+  }
+
+  public $removeBlock(id: number) {
+    this.removeBlock.emit(id);
+  }
+
+  public $removeElement(id: number) {
+    this.removeElement.emit(id);
   }
 
   public getValue(): StrMap<string> {

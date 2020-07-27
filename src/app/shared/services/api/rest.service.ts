@@ -2,14 +2,18 @@ import { ApiService } from './api.service';
 import { StrMap } from '@shared/types';
 import { ApiConfig } from '@shared/services/api/api.model';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 export class RestService {
   public config: ApiConfig;
   public api: ApiService;
 
   public save<T>(body: StrMap<any> = {}): Observable<T> {
-    return body.id ?
-      this.patch(body) :
+    return body.slug || body.id ?
+      this.patch({
+        ...body,
+        id: body.slug || body.id,
+      }) :
       this.post(body);
   }
 
@@ -18,7 +22,11 @@ export class RestService {
   }
 
   public get<T>(body: StrMap<any> = {}) {
-    return this.api.getStream<T>(this.config.path, body);
+    return this.api.getStream(this.config.path, body).pipe(
+      map((data) => {
+        return data.results;
+      }),
+    );
   }
 
   public getById<T>(body: StrMap<any> = {}) {

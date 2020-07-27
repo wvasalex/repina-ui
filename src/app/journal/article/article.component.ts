@@ -15,7 +15,7 @@ export class ArticleComponent implements OnInit {
   ngOnInit(): void {
     this.article = this.activatedRoute.snapshot.data.article;
 
-    this.article.content_blocks = [
+    /*this.article.content_blocks = [
       {
         block_type: 'article-header',
         props: {
@@ -68,7 +68,6 @@ export class ArticleComponent implements OnInit {
           },
         ],
       },
-    ];
+    ];*/
   }
-
 }
