@@ -21,6 +21,10 @@ export class BlocksRenderComponent implements OnInit {
   }
 
   public $visible(blocks: ArticleContentBlock[]): ArticleContentBlock[] {
+    if (!Array.isArray(blocks)) {
+      return blocks;
+    }
+
     return blocks.filter((block: ArticleContentBlock) => {
       return block._destroy != true;
     });
