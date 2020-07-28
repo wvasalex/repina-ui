@@ -2,10 +2,6 @@
   display: block;
 }
 
-::ng-deep [rel="element_type_1"] {
-  padding-left: 180px;
-}
-
 .title {
   padding: 4rem 0 0;
 }
@@ -35,9 +31,19 @@
   margin: 4rem auto;
 }
 
+.w1920 :host {
+  ::ng-deep [rel="element_type_1"] {
+    padding-left: 180px;
+  }
+}
+
 .w1366 :host {
   .content {
     margin-left: 75px;
+  }
+
+  ::ng-deep [rel="element_type_1"] {
+    padding-left: 136px;
   }
 }
 
@@ -45,11 +51,20 @@
   .content {
     margin-left: 50px;
   }
+
+  ::ng-deep [rel="element_type_1"] {
+    padding-left: 112px;
+  }
 }
 
 .w768 :host {
+  ::ng-deep [rel="element_type_1"] {
+    margin-bottom: 4rem;
+  }
+
   .row-column {
     flex-direction: column-reverse !important;
+    align-items: flex-start;
   }
 
   .date {

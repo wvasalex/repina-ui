@@ -2,8 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChil
 import { ActivatedRoute } from '@angular/router';
 import { ArticleHeaderComponent } from '@shared/blocks/journal/article-header/article-header.component';
 import { JournalService } from '../journal.service';
-import { ActicleContentElement, Article, ArticleContentBlock } from '../journal.model';
-import { BlocksRenderComponent } from '@shared/blocks/blocks-render/blocks-render.component';
+import { Article, ArticleContentBlock, ArticleContentElement } from '../journal.model';
 
 @Component({
   selector: 'r-article-editor',
@@ -37,9 +36,6 @@ export class ArticleEditorComponent implements OnInit {
         },
       ],
     };
-    this.article.content_blocks.sort((a: ArticleContentBlock, b: ArticleContentBlock) => {
-      return a.position - b.position;
-    });
   }
 
   public $addPart() {
@@ -63,7 +59,7 @@ export class ArticleEditorComponent implements OnInit {
     this.article.content_blocks.forEach((block: ArticleContentBlock, index: number) => {
       block.position = index;
 
-      block.content_elements.forEach((element: ActicleContentElement, elementIndex: number) => {
+      block.content_elements.forEach((element: ArticleContentElement, elementIndex: number) => {
         element.position = elementIndex;
       });
     });
