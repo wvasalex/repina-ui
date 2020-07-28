@@ -41,6 +41,10 @@
 }
 
 .w768 :host {
+  ::ng-deep [rel="element_type_1"] {
+    margin-bottom: 4rem;
+  }
+
   .row-column {
     flex-direction: column-reverse !important;
     align-items: flex-start;
