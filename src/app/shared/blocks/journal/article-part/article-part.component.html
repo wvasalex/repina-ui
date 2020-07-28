@@ -1,5 +1,6 @@
 <r-padding>
   <div
+    *ngIf="editor || props.title"
     [r-block]="editor"
     (contentChanged)="$contentChanged($event, 'title')"
     class="content title h3"
@@ -31,7 +32,7 @@
         [blocks]="elements"
         [editor]="editor"
         typeKey="element_type"
-        class="row-column mt-4"
+        class="row-column mt-2"
       ></r-blocks-render>
     </div>
   </div>

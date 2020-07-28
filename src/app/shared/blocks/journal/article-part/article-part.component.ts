@@ -12,5 +12,6 @@ export class ArticlePartComponent extends BaseBlock {
     { value: 'article-text', label: 'Текст' },
     { value: 'article-image', label: 'Изображение' },
     { value: 'article-quote', label: 'Цитата' },
+    { value: 'article-author', label: 'Автор' },
   ];
 }

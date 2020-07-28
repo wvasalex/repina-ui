@@ -5,3 +5,24 @@
 >
   {{$getValue('value')}}
 </r-quote>
+
+<div class="author">
+  <r-avatar></r-avatar>
+
+  <div class="ml-2 mt-1">
+    <div
+      [r-block]="editor"
+      (contentChanged)="$contentChanged($event, 'name')"
+      class="h4"
+    >
+      {{$getValue('name')}}
+    </div>
+    <div
+      [r-block]="editor"
+      (contentChanged)="$contentChanged($event, 'role')"
+      class="text32"
+    >
+      {{$getValue('role')}}
+    </div>
+  </div>
+</div>

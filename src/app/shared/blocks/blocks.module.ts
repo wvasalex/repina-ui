@@ -15,6 +15,7 @@ import { BlocksRenderComponent } from './blocks-render/blocks-render.component';
 import { BlockDirective } from '@shared/blocks/block.directive';
 import { ArticleQuoteComponent } from './journal/article-quote/article-quote.component';
 import { ArticleImageComponent } from './journal/article-image/article-image.component';
+import { ArticleAuthorComponent } from './journal/article-author/article-author.component';
 
 @NgModule({
   imports: [
@@ -45,6 +46,7 @@ import { ArticleImageComponent } from './journal/article-image/article-image.com
     BlockDirective,
     ArticleQuoteComponent,
     ArticleImageComponent,
+    ArticleAuthorComponent,
   ],
 })
 export class BlocksModule {

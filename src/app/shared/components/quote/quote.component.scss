@@ -13,7 +13,7 @@
   &:before {
     content: '“';
     position: absolute;
-    margin-left: -2rem;
+    margin-left: calc(-2rem - 10px);
     font-size: 78px;
   }
 
@@ -21,7 +21,7 @@
     content: '”';
     position: absolute;
     margin-top: 2.5rem;
-    margin-left: .5rem;
+    margin-left: 10px;
     font-size: 78px;
   }
 }

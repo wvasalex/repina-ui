@@ -2,6 +2,12 @@
   display: block;
 }
 
+.block_type {
+  &:not(:first-of-type) {
+    margin-top: 4rem;
+  }
+}
+
 .remove {
   cursor: pointer;
 }

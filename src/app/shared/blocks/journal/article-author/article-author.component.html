@@ -1,0 +1,11 @@
+<r-avatar></r-avatar>
+<div
+  [r-block]="editor"
+  (contentChanged)="$contentChanged($event, 'name')"
+  class="h4"
+>
+  {{$getValue('name')}}
+</div>
+<div class="text32">
+  Автор
+</div>

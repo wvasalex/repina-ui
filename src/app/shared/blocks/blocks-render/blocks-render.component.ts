@@ -17,7 +17,9 @@ export class BlocksRenderComponent implements OnInit {
   }
 
   public $remove(block: ArticleContentBlock) {
-    block._destroy = true;
+    if (confirm('Удалить контент?')) {
+      block._destroy = true;
+    }
   }
 
   public $visible(blocks: ArticleContentBlock[]): ArticleContentBlock[] {
