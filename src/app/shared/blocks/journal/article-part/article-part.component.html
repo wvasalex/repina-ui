@@ -1,6 +1,15 @@
 <r-padding>
   <div
-    *ngIf="editor || props.title"
+    [r-block]="editor"
+    (contentChanged)="$contentChanged($event, 'i')"
+    *ngIf="$getValue('i')"
+    class="index h3"
+  >
+    {{$getValue('i')}}
+  </div>
+
+  <div
+    *ngIf="$getValue('title')"
     [r-block]="editor"
     (contentChanged)="$contentChanged($event, 'title')"
     class="content title h3"
@@ -47,3 +56,4 @@
   >
   </r-select>
 </r-padding>
+

@@ -1,28 +1,48 @@
-<r-quote
-  [r-block]="editor"
-  (contentChanged)="$contentChanged($event, 'value')"
-  class="h3"
+<div
+  [class.small]="props.small"
+  class="inner"
 >
-  {{$getValue('value')}}
-</r-quote>
+  <r-quote
+    [r-block]="editor"
+    (contentChanged)="$contentChanged($event, 'value')"
+    [class.h3]="!props.small"
+    [class.h4]="props.small"
+  >
+    {{$getValue('value')}}
+  </r-quote>
 
-<div class="author">
-  <r-avatar></r-avatar>
+  <div
+    *ngIf="$getValue('name')"
+    class="author"
+  >
+    <r-avatar></r-avatar>
 
-  <div class="ml-2 mt-1">
-    <div
-      [r-block]="editor"
-      (contentChanged)="$contentChanged($event, 'name')"
-      class="h4"
-    >
-      {{$getValue('name')}}
+    <div class="ml-2 mt-1">
+      <div
+        [r-block]="editor"
+        (contentChanged)="$contentChanged($event, 'name')"
+        class="h4"
+      >
+        {{$getValue('name')}}
+      </div>
+      <div
+        [r-block]="editor"
+        (contentChanged)="$contentChanged($event, 'role')"
+        class="text32"
+      >
+        {{$getValue('role')}}
+      </div>
     </div>
-    <div
-      [r-block]="editor"
-      (contentChanged)="$contentChanged($event, 'role')"
-      class="text32"
+  </div>
+  <div
+    *ngIf="editor"
+    class="mt-2"
+  >
+    <mat-checkbox
+      [(ngModel)]="props.small"
+      name="small"
     >
-      {{$getValue('role')}}
-    </div>
+      Без фона
+    </mat-checkbox>
   </div>
 </div>

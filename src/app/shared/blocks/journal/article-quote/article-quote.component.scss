@@ -1,7 +1,11 @@
-:host {
+.inner {
   display: block;
   padding: 3rem;
   background: #F8F8F8;
+
+  &.small {
+    background: transparent;
+  }
 }
 
 .author {

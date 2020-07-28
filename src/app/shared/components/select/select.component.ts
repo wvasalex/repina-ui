@@ -41,7 +41,13 @@ export class SelectComponent implements ControlValueAccessor {
     this.onTouch();
     this.selectedOption = getOption(this.options, value);
 
-    this.valueChanged.emit(this.value);
+    if (this.value != null) {
+      this.valueChanged.emit(this.value);
+
+      setTimeout(() => {
+        this.writeValue(null);
+      }, 100);
+    }
   }
 
   public registerOnChange(fn: any) {
