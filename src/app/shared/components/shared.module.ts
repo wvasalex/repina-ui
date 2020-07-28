@@ -18,6 +18,8 @@ import { PaddingComponent } from './padding/padding.component';
 import { QuoteComponent } from './quote/quote.component';
 import { SelectComponent } from '@shared/components/select/select.component';
 import { MatSelectModule } from '@angular/material/select';
+import { AButtonComponent } from './a-button/a-button.component';
+import { WithSessionDirective } from './with-session.directive';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { MatSelectModule } from '@angular/material/select';
     PaddingComponent,
     QuoteComponent,
     SelectComponent,
+    AButtonComponent,
+    WithSessionDirective,
   ],
   exports: [
     LogoComponent,
@@ -54,6 +58,7 @@ import { MatSelectModule } from '@angular/material/select';
     PaddingComponent,
     QuoteComponent,
     SelectComponent,
+    WithSessionDirective,
   ],
   imports: [
     CommonModule,

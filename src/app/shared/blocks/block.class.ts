@@ -1,5 +1,6 @@
 import { EventEmitter, Input, Output } from '@angular/core';
 import { StrMap } from '../types';
+import { ArticleContentBlock, ArticleContentElement } from '../../journal/journal.model';
 
 export class BaseBlock {
   @Input() props: StrMap<string> = {};
@@ -33,6 +34,12 @@ export class BaseBlock {
         src: '/assets/pictures/journal/article_image.png',
         value: '',
       },
+    });
+  }
+
+  public $visibleElements(elements: ArticleContentElement[]) {
+    return elements.filter((element: ArticleContentElement) => {
+      return !element._destroy;
     });
   }
 

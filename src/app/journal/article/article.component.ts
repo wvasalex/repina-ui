@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Article, ArticleContentBlock } from '../journal.model';
+import { Article } from '../journal.model';
 
 @Component({
   selector: 'r-article',
@@ -14,8 +14,5 @@ export class ArticleComponent implements OnInit {
 
   ngOnInit(): void {
     this.article = this.activatedRoute.snapshot.data.article;
-    this.article.content_blocks.sort((a: ArticleContentBlock, b: ArticleContentBlock) => {
-      return a.position - b.position;
-    });
   }
 }

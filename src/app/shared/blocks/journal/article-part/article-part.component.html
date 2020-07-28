@@ -1,44 +1,48 @@
-<div
-  [r-block]="editor"
-  (contentChanged)="$contentChanged($event, 'title')"
-  class="title h3"
->
-  {{$getValue('title')}}
-</div>
-
-<div
-  [r-block]="editor"
-  (contentChanged)="$contentChanged($event, 'subtitle')"
-  [class.mt-1_5]="$getValue('subtitle')"
-  class="subtitle h4"
->
-  {{$getValue('subtitle')}}
-</div>
-
-<div class="content mt-4">
+<r-padding>
   <div
     [r-block]="editor"
-    (contentChanged)="$contentChanged($event, 'date')"
-    *ngIf="$getValue('title')"
-    class="date text32"
+    (contentChanged)="$contentChanged($event, 'title')"
+    class="content title h3"
   >
-    {{$getValue('date')}}
+    {{$getValue('title')}}
   </div>
 
-  <r-blocks-render
-    [blocks]="elements"
-    [editor]="editor"
-    typeKey="element_type"
-    class="row-column"
-  ></r-blocks-render>
-</div>
+  <div class="inner">
+    <div
+      [r-block]="editor"
+      (contentChanged)="$contentChanged($event, 'date')"
+      *ngIf="$getValue('title')"
+      class="date h4"
+    >
+      {{$getValue('date')}}
+    </div>
 
-<r-select
-  *ngIf="editor && elements.length < 2"
-  (valueChanged)="$addElement($event)"
-  [options]="availableElements"
-  [search]="true"
-  placeholder="+ Добавить элемент"
-  class="mt-2"
->
-</r-select>
+    <div class="content">
+      <div
+        [r-block]="editor"
+        (contentChanged)="$contentChanged($event, 'subtitle')"
+        [class.mt-1_5]="$getValue('subtitle')"
+        class="subtitle h4"
+      >
+        {{$getValue('subtitle')}}
+      </div>
+
+      <r-blocks-render
+        [blocks]="elements"
+        [editor]="editor"
+        typeKey="element_type"
+        class="row-column mt-4"
+      ></r-blocks-render>
+    </div>
+  </div>
+
+  <r-select
+    *ngIf="editor && $visibleElements(elements).length < 2"
+    (valueChanged)="$addElement($event)"
+    [options]="availableElements"
+    [search]="true"
+    placeholder="+ Добавить элемент"
+    class="add-element"
+  >
+  </r-select>
+</r-padding>

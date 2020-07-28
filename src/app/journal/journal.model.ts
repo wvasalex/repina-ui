@@ -18,14 +18,14 @@ export interface Article {
 export interface ArticleContentBlock {
   block_type: string;
   props: StrMap<string>;
-  content_elements: ActicleContentElement[];
+  content_elements: ArticleContentElement[];
   id?: number;
   blog?: number;
   position?: number;
   _destroy?: boolean;
 }
 
-export interface ActicleContentElement {
+export interface ArticleContentElement {
   element_type: string;
   props: StrMap<string>;
   content_block?: number;

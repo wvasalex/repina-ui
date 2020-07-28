@@ -1,6 +1,5 @@
 :host {
   display: block;
-  padding: 4rem 75px 0 225px;
 }
 
 ::ng-deep [rel="element_type_1"] {
@@ -11,8 +10,12 @@
   padding: 4rem 0 0;
 }
 
-.content {
+.inner {
   position: relative;
+}
+
+.content {
+  margin-left: 102px;
 
   .row-column {
     align-items: center;
@@ -21,13 +24,27 @@
 
 .date {
   position: absolute;
-  top: -4rem;
-  left: -185px;
+  top: 180px;
+  display: inline-block;
   transform: rotate(270deg);
+  transform-origin: left top;
+}
+
+.add-element {
+  display: block;
+  margin: 4rem auto;
+}
+
+.w1366 :host {
+  .content {
+    margin-left: 75px;
+  }
 }
 
 .w1024 :host {
-
+  .content {
+    margin-left: 50px;
+  }
 }
 
 .w768 :host {

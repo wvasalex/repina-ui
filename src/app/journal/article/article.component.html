@@ -3,6 +3,17 @@
     [blocks]="article.content_blocks"
   ></r-blocks-render>
 
+  <r-padding
+    *rWithSession
+    [horizontal]="false"
+  >
+    <r-button
+      [routerLink]="['/blog', article.slug, 'edit']"
+    >
+      Редактировать статью
+    </r-button>
+  </r-padding>
+
   <!--<div>
     <r-article-part
       title="Особенное место"
