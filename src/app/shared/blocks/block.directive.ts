@@ -15,6 +15,7 @@ export class BlockDirective implements OnInit {
   public ngOnInit() {
     if (this.editable) {
       this.renderer.setAttribute(this.host.nativeElement, 'contenteditable', 'true');
+      this.renderer.addClass(this.host.nativeElement, 'editable');
     }
   }
 

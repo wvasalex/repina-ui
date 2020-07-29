@@ -18,9 +18,7 @@ export class BaseBlock {
       return this.props[prop];
     }
 
-    return this.editor ?
-      '<' + prop + '>' :
-      '';
+    return this.editor ? ' ' : '';
   }
 
   public $contentChanged(value: string, prop: string) {

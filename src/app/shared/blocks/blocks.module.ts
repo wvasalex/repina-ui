@@ -17,6 +17,7 @@ import { ArticleQuoteComponent } from './journal/article-quote/article-quote.com
 import { ArticleImageComponent } from './journal/article-image/article-image.component';
 import { ArticleAuthorComponent } from './journal/article-author/article-author.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     SharedModule,
     FormsModule,
     MatCheckboxModule,
+    MatIconModule,
   ],
   exports: [
     PromoCardComponent,

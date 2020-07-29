@@ -18,7 +18,11 @@ export class BlocksRenderComponent implements OnInit {
 
   public $remove(block: ArticleContentBlock) {
     if (confirm('Удалить контент?')) {
-      block._destroy = true;
+      if (block.id) {
+        block._destroy = true;
+      } else {
+        this.blocks.splice(this.blocks.indexOf(block), 1);
+      }
     }
   }
 

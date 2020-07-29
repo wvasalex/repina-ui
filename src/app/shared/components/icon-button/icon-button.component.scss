@@ -1,0 +1,14 @@
+@import 'src/theme';
+@import 'src/styles';
+
+:host {
+  @extend .text16;
+  color: $color-red;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+img {
+  margin-right: 10px;
+}
