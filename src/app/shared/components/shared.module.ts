@@ -20,6 +20,7 @@ import { SelectComponent } from '@shared/components/select/select.component';
 import { MatSelectModule } from '@angular/material/select';
 import { WithSessionDirective } from './with-session.directive';
 import { AvatarComponent } from './avatar/avatar.component';
+import { IconButtonComponent } from '@shared/components/icon-button/icon-button.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { AvatarComponent } from './avatar/avatar.component';
     SelectComponent,
     WithSessionDirective,
     AvatarComponent,
+    IconButtonComponent,
   ],
   exports: [
     LogoComponent,
@@ -60,6 +62,7 @@ import { AvatarComponent } from './avatar/avatar.component';
     SelectComponent,
     WithSessionDirective,
     AvatarComponent,
+    IconButtonComponent,
   ],
   imports: [
     CommonModule,

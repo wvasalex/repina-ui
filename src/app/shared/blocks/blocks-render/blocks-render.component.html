@@ -1,7 +1,7 @@
 <div
   *ngFor="let block of $visible(blocks); let index = index"
   [attr.rel]="typeKey + '_' + index"
-  [attr.class]="typeKey"
+  [attr.class]="typeKey + ' content-item'"
 >
   <ng-container [ngSwitch]="block[typeKey]">
     <r-article-header
@@ -42,11 +42,12 @@
     ></r-article-author>
   </ng-container>
 
-  <div
+  <r-icon-button
     *ngIf="editor"
     (click)="$remove(block)"
+    icon="close"
     class="remove mt-1 ml-2"
   >
-    Удалить
-  </div>
+
+  </r-icon-button>
 </div>
