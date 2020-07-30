@@ -24,18 +24,19 @@ export class ArticleEditorComponent implements OnInit {
     const snapshot = this.activatedRoute.snapshot;
     this.article = snapshot.data.article || {
       author_name: 'Валерия Репина',
-      content_blocks: [
-        {
-          block_type: 'article-header',
-          props: {
-            title: 'Колонка Валерии Репиной',
-            subtitle: 'Заголовок статьи',
-            description: 'Тут краткое содержание статьи',
-          },
-          content_elements: [],
-        },
-      ],
     };
+
+    if (!this.article.content_blocks?.length) {
+      this.article.content_blocks = [{
+        block_type: 'article-header',
+        props: {
+          title: 'Колонка Валерии Репиной',
+          subtitle: 'Заголовок статьи',
+          description: 'Тут краткое содержание статьи',
+        },
+        content_elements: [],
+      }];
+    }
   }
 
   public $addPart() {
