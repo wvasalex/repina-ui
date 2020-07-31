@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ArticleContentBlock } from '../../../journal/journal.model';
+import { ArticleContentBlock, ArticleContentElement } from '../../../journal/journal.model';
+import { moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'r-blocks-render',
@@ -33,7 +34,28 @@ export class BlocksRenderComponent implements OnInit {
 
     return blocks.filter((block: ArticleContentBlock) => {
       return block._destroy != true;
+    }).sort((a: ArticleContentBlock, b: ArticleContentBlock) => {
+      return a.position - b.position;
     });
   }
 
+  public $move(block: ArticleContentBlock, offset: number) {
+    const position: number = block.position;
+    const new_position = position + offset;
+
+    if (new_position < 0 || new_position > this.blocks.length) {
+      return;
+    }
+    block.position = new_position;
+    moveItemInArray(this.blocks, position, new_position);
+  }
+
+  public $swapElements(block: ArticleContentBlock) {
+    const elements: ArticleContentElement[] = block.content_elements;
+    const len: number = elements.length;
+    block.content_elements.forEach((element: ArticleContentElement) => {
+      element.position = len - element.position;
+    });
+    block.content_elements = block.content_elements.reverse();
+  }
 }

@@ -1,9 +1,19 @@
+@import 'src/theme';
+
 :host {
   display: block;
+
+  &[editor] {
+    border-bottom: 1px dashed $color-blue;
+  }
 }
 
 .title {
   padding: 4rem 0 0;
+}
+
+.title, .subtitle {
+  width: 50%;
 }
 
 .inner {

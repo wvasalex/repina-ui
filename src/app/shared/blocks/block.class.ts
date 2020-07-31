@@ -1,10 +1,10 @@
-import { EventEmitter, Input, Output } from '@angular/core';
+import { EventEmitter, HostBinding, Input, Output } from '@angular/core';
 import { StrMap } from '../types';
 import { ArticleContentBlock, ArticleContentElement } from '../../journal/journal.model';
 
 export class BaseBlock {
   @Input() props: StrMap<string> = {};
-  @Input() editor: boolean = false;
+  @Input() @HostBinding('attr.editor') editor: boolean = false;
   @Input() elements: any[];
 
   @Output() removeBlock: EventEmitter<number> = new EventEmitter<number>();

@@ -42,12 +42,32 @@
     ></r-article-author>
   </ng-container>
 
-  <r-icon-button
+  <div
     *ngIf="editor"
-    (click)="$remove(block)"
-    icon="close"
-    class="remove mt-1 ml-2"
+    class="controls row"
   >
+    <r-icon-button
+      (click)="$swapElements(block)"
+      icon="repeat"
+      class="block-control"
+    ></r-icon-button>
 
-  </r-icon-button>
+    <r-icon-button
+      (click)="$move(block, 1)"
+      icon="down-arrow"
+      class="block-control ml-2"
+    ></r-icon-button>
+
+    <r-icon-button
+      (click)="$move(block, -1)"
+      icon="down-arrow"
+      class="block-control revert ml-2"
+    ></r-icon-button>
+
+    <r-icon-button
+      (click)="$remove(block)"
+      icon="close"
+      class="ml-2"
+    ></r-icon-button>
+  </div>
 </div>
