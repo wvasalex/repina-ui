@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ArticleHeaderComponent } from '@shared/blocks/journal/article-header/article-header.component';
 import { JournalService } from '../journal.service';
 import { Article, ArticleContentBlock, ArticleContentElement } from '../journal.model';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'r-article-editor',
@@ -39,8 +40,20 @@ export class ArticleEditorComponent implements OnInit {
     }
   }
 
-  public $addPart() {
-    this.article.content_blocks = [
+  public $addBlock({target, offset}) {
+    const index = this.article.content_blocks.indexOf(target) + offset;
+
+    this.article.content_blocks.splice(index, 0, {
+      block_type: 'article-part',
+      props: {
+        title: '',
+        subtitle: '',
+      },
+      content_elements: [],
+    });
+
+    //this.article.content_blocks = this.article.content_blocks.slice();
+    /*this.article.content_blocks = [
       ...this.article.content_blocks, {
         block_type: 'article-part',
         props: {
@@ -49,7 +62,7 @@ export class ArticleEditorComponent implements OnInit {
         },
         content_elements: [],
       },
-    ];
+    ];*/
   }
 
   public $save() {

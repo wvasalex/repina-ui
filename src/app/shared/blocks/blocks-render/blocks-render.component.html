@@ -47,14 +47,14 @@
     class="controls row"
   >
     <r-icon-button
-      (click)="$move(block, -1)"
+      (click)="$addBlock(block, 0)"
       [size]="18"
       icon="down-arrow"
       class="block-control row revert"
     > + </r-icon-button>
 
     <r-icon-button
-      (click)="$move(block, 1)"
+      (click)="$addBlock(block, 1)"
       [size]="18"
       icon="down-arrow"
       class="block-control row ml-1"
@@ -64,14 +64,14 @@
       (click)="$swapElements(block)"
       [size]="18"
       icon="repeat"
-      class="block-control ml-2"
+      class="block-control ml-3"
     ></r-icon-button>
 
     <r-icon-button
       (click)="$move(block, 1)"
       [size]="18"
       icon="down-arrow"
-      class="block-control ml-2"
+      class="block-control ml-1"
     ></r-icon-button>
 
     <r-icon-button
@@ -85,7 +85,7 @@
       (click)="$remove(block)"
       [size]="18"
       icon="close"
-      class="ml-2"
+      class="ml-3"
     ></r-icon-button>
   </div>
 </div>

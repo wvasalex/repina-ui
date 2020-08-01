@@ -19,6 +19,7 @@
   </r-padding>
 
   <r-blocks-render
+    (addBlock)="$addBlock($event)"
     [blocks]="article.content_blocks"
     [editor]="true"
     class="mt-2"
@@ -28,9 +29,6 @@
     [horizontal]="false"
     style="display: flex"
   >
-    <r-button (click)="$addPart()">
-      + Новый блок
-    </r-button>
     <r-button
       (click)="$save()"
       class="ml-2"

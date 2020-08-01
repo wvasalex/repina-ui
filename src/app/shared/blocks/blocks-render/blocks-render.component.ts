@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ArticleContentBlock, ArticleContentElement } from '../../../journal/journal.model';
 import { moveItemInArray } from '@angular/cdk/drag-drop';
+import { StrMap } from '@shared/types';
 
 @Component({
   selector: 'r-blocks-render',
@@ -11,6 +12,8 @@ export class BlocksRenderComponent implements OnInit {
   @Input() blocks: ArticleContentBlock[];
   @Input() editor: boolean = false;
   @Input() typeKey: string = 'block_type';
+
+  @Output() addBlock: EventEmitter<StrMap<any>> = new EventEmitter<StrMap<any>>();
 
   constructor() { }
 
@@ -57,5 +60,9 @@ export class BlocksRenderComponent implements OnInit {
       element.position = len - element.position;
     });
     block.content_elements = block.content_elements.reverse();
+  }
+
+  public $addBlock(target: ArticleContentBlock, offset: number) {
+    this.addBlock.emit({ target, offset });
   }
 }
