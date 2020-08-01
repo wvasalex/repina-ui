@@ -7,12 +7,12 @@
     margin-top: 4rem;
   }
 
-  > .controls {
+  & > .controls {
     top: 44px;
     right: 64px;
 
     .block-control {
-      display: inline-block;
+      display: flex !important;
     }
   }
 }
@@ -28,7 +28,7 @@
 }
 
 .block-control {
-  display: none;
+  display: none !important;
 }
 
 .controls {

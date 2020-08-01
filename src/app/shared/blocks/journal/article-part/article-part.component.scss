@@ -3,7 +3,7 @@
 :host {
   display: block;
 
-  &[editor] {
+  &[editor="true"] {
     border-bottom: 1px dashed $color-blue;
   }
 }
