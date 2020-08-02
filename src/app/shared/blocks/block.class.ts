@@ -7,6 +7,7 @@ export class BaseBlock {
   @Input() @HostBinding('attr.editor') editor: boolean = false;
   @Input() elements: any[];
 
+  @Output() change: EventEmitter<void> = new EventEmitter<void>();
   @Output() removeBlock: EventEmitter<number> = new EventEmitter<number>();
   @Output() removeElement: EventEmitter<number> = new EventEmitter<number>();
 
@@ -23,6 +24,10 @@ export class BaseBlock {
 
   public $contentChanged(value: string, prop: string) {
     this.props[prop] = value;
+
+    console.log(prop, value);
+
+    this.change.emit();
   }
 
   public $addElement(type: string) {
@@ -33,6 +38,8 @@ export class BaseBlock {
         value: '',
       },
     });
+
+    this.change.emit();
   }
 
   public $visibleElements(elements: ArticleContentElement[]) {

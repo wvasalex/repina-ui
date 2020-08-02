@@ -13,6 +13,7 @@ export class BlocksRenderComponent implements OnInit {
   @Input() editor: boolean = false;
   @Input() typeKey: string = 'block_type';
 
+  @Output() change: EventEmitter<void> = new EventEmitter<void>();
   @Output() addBlock: EventEmitter<StrMap<any>> = new EventEmitter<StrMap<any>>();
 
   constructor() { }
@@ -27,6 +28,7 @@ export class BlocksRenderComponent implements OnInit {
       } else {
         this.blocks.splice(this.blocks.indexOf(block), 1);
       }
+      this.change.emit();
     }
   }
 
@@ -51,6 +53,8 @@ export class BlocksRenderComponent implements OnInit {
     }
     block.position = new_position;
     moveItemInArray(this.blocks, position, new_position);
+
+    this.change.emit();
   }
 
   public $swapElements(block: ArticleContentBlock) {
@@ -60,9 +64,17 @@ export class BlocksRenderComponent implements OnInit {
       element.position = len - element.position;
     });
     block.content_elements = block.content_elements.reverse();
+
+    this.change.emit();
   }
 
   public $addBlock(target: ArticleContentBlock, offset: number) {
     this.addBlock.emit({ target, offset });
+
+    this.change.emit();
+  }
+
+  public $change() {
+    this.change.emit();
   }
 }

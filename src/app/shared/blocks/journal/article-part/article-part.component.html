@@ -38,6 +38,7 @@
       </div>
 
       <r-blocks-render
+        (change)="change.emit()"
         [blocks]="elements"
         [editor]="editor"
         typeKey="element_type"

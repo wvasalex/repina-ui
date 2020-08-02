@@ -4,6 +4,8 @@ import { ArticleHeaderComponent } from '@shared/blocks/journal/article-header/ar
 import { JournalService } from '../journal.service';
 import { Article, ArticleContentBlock, ArticleContentElement } from '../journal.model';
 import { of } from 'rxjs';
+import { StrMap } from '@shared/types';
+import { ToasterService } from '@shared/toaster/toaster.service';
 
 @Component({
   selector: 'r-article-editor',
@@ -16,9 +18,13 @@ export class ArticleEditorComponent implements OnInit {
 
   @ViewChild(ArticleHeaderComponent) headerComponent: ArticleHeaderComponent;
 
+  private _lastSync: number = 0;
+  private _syncTimeout;
+
   constructor(private activatedRoute: ActivatedRoute,
               private changeDetectorRef: ChangeDetectorRef,
-              private journalService: JournalService) {
+              private journalService: JournalService,
+              private toasterService: ToasterService) {
   }
 
   ngOnInit(): void {
@@ -40,7 +46,8 @@ export class ArticleEditorComponent implements OnInit {
     }
   }
 
-  public $addBlock({target, offset}) {
+  public $addBlock(e: StrMap<any>) {
+    const {target, offset} = e;
     const index = this.article.content_blocks.indexOf(target) + offset;
 
     this.article.content_blocks.splice(index, 0, {
@@ -51,21 +58,22 @@ export class ArticleEditorComponent implements OnInit {
       },
       content_elements: [],
     });
-
-    //this.article.content_blocks = this.article.content_blocks.slice();
-    /*this.article.content_blocks = [
-      ...this.article.content_blocks, {
-        block_type: 'article-part',
-        props: {
-          title: '',
-          subtitle: '',
-        },
-        content_elements: [],
-      },
-    ];*/
   }
 
   public $save() {
+    const now = (new Date()).getTime();
+
+    if (now - this._lastSync < 3000) {
+      clearTimeout(this._syncTimeout);
+    }
+
+    this._lastSync = now;
+    this._syncTimeout = setTimeout(() => {
+      this._save();
+    }, 2000);
+  }
+
+  private _save() {
     if (!this.article.blog_tag) {
       delete this.article.blog_tag;
     }
@@ -78,9 +86,11 @@ export class ArticleEditorComponent implements OnInit {
       });
     });
 
-    this.journalService.save(this.article).toPromise().then((a) => {
+    const req = this.journalService.save(this.article).toPromise().then((a) => {
       console.log(a);
     });
+
+    this.toasterService.wrapPromise(req, 'Сохранено', 'Не удалось сохранить');
   }
 
 }

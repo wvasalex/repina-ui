@@ -15,16 +15,19 @@
   </r-padding>
   <r-padding *ngIf="articles">
     <div class="row-column">
-      <r-journal-snippet
+      <a
         *ngFor="let article of main_articles; let first = first;"
         [routerLink]="[article.slug]"
-        [title]="article.blog_tag"
-        [description]="article.title"
         [class.big]="first"
         [class.small]="!first"
-        image="/assets/pictures/journal/1.png"
       >
-      </r-journal-snippet>
+        <r-journal-snippet
+          [title]="article.blog_tag"
+          [description]="article.title"
+          image="/assets/pictures/journal/1.png"
+        >
+        </r-journal-snippet>
+      </a>
     </div>
 
     <!--<div class="row-column">
@@ -49,6 +52,7 @@
       </r-journal-snippet>
     </div>-->
 
+    <!--
     <div class="subscription-block row-column">
       <r-journal-snippet
         image="/assets/pictures/journal/4.png"
@@ -63,6 +67,7 @@
       >
       </r-subscribe>
     </div>
+    -->
 
     <!--<div class="row-column">
       <r-journal-snippet

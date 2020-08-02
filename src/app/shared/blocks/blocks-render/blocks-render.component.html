@@ -6,12 +6,14 @@
   <ng-container [ngSwitch]="block[typeKey]">
     <r-article-header
       *ngSwitchCase="'article-header'"
+      (change)="$change()"
       [props]="block.props"
       [editor]="editor"
     ></r-article-header>
 
     <r-article-part
       *ngSwitchCase="'article-part'"
+      (change)="$change()"
       [props]="block.props"
       [elements]="block.content_elements"
       [editor]="editor"
@@ -19,24 +21,28 @@
 
     <r-article-text
       *ngSwitchCase="'article-text'"
+      (change)="$change()"
       [props]="block.props"
       [editor]="editor"
     ></r-article-text>
 
     <r-article-image
       *ngSwitchCase="'article-image'"
+      (change)="$change()"
       [props]="block.props"
       [editor]="editor"
     ></r-article-image>
 
     <r-article-quote
       *ngSwitchCase="'article-quote'"
+      (change)="$change()"
       [props]="block.props"
       [editor]="editor"
     ></r-article-quote>
 
     <r-article-author
       *ngSwitchCase="'article-author'"
+      (change)="$change()"
       [props]="block.props"
       [editor]="editor"
     ></r-article-author>

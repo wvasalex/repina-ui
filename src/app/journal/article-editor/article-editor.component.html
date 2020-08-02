@@ -2,23 +2,27 @@
   <r-padding class="row">
     <r-input
       [(ngModel)]="article.title"
+      (keyup)="$save()"
       placeholder="Название"
     ></r-input>
 
     <r-input
       [(ngModel)]="article.blog_tag"
+      (keyup)="$save()"
       placeholder="Тег"
       class="ml-2"
     ></r-input>
 
     <r-input
       [(ngModel)]="article.author_name"
+      (keyup)="$save()"
       placeholder="Имя автора статьи"
       class="ml-2"
     ></r-input>
   </r-padding>
 
   <r-blocks-render
+    (change)="$save()"
     (addBlock)="$addBlock($event)"
     [blocks]="article.content_blocks"
     [editor]="true"

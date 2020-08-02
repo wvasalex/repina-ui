@@ -21,6 +21,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { WithSessionDirective } from './with-session.directive';
 import { AvatarComponent } from './avatar/avatar.component';
 import { IconButtonComponent } from '@shared/components/icon-button/icon-button.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { IconButtonComponent } from '@shared/components/icon-button/icon-button.
     CommonModule,
     RouterModule,
     MatSelectModule,
+    MatSnackBarModule,
   ],
 })
 export class SharedModule {
