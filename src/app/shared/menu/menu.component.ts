@@ -1,5 +1,18 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, OnInit, Output } from '@angular/core';
-import { MenuItem, MenuItems } from './menu.model';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  HostBinding,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
+import { Observable } from 'rxjs';
+import { ContentBlock } from '@shared/types';
+import { MenuService } from '@shared/menu/menu.service';
+import { map } from 'rxjs/operators';
+import { ToasterService } from '@shared/toaster/toaster.service';
 
 @Component({
   selector: 'r-menu',
@@ -13,11 +26,82 @@ export class MenuComponent implements OnInit {
   @Output() openDrawer: EventEmitter<void> = new EventEmitter<void>();
   @Output() priceRequest: EventEmitter<void> = new EventEmitter<void>();
 
-  public items: MenuItem[] = MenuItems;
+  public menu: ContentBlock;
 
-  constructor() { }
+  public editor = false;
+
+  constructor(private changeDetectorRef: ChangeDetectorRef,
+              private toasterService: ToasterService,
+              private menuService: MenuService) { }
 
   ngOnInit(): void {
+    this.menuService.get().pipe(map((blocks: ContentBlock[]) => {
+      return blocks.find((block: ContentBlock) => {
+        return block.block_type === 'menu';
+      });
+    })).subscribe((block: ContentBlock) => {
+      this.menu = block;
+      this.changeDetectorRef.detectChanges();
+    });
+
+    /*this.menuService.delete(1).subscribe();
+    this.menuService.delete(2).subscribe();
+    this.menuService.delete(3).subscribe();
+    this.menuService.delete(4).subscribe();
+    this.menuService.delete(5).subscribe();*/
+
+    /*this.menuService.post({
+      block_type: 'logo',
+      is_enabled: true,
+    }).subscribe();*/
+
+    /*this.menuService.post({
+      block_type: 'menu',
+      props: {},
+      is_enabled: true,
+      content_elements: [
+        {
+          element_type: 'link',
+          props: {
+            text: 'Проекты',
+            href: '/projects',
+            enabled: true,
+          },
+        },
+        {
+          element_type: 'link',
+          props: {
+            text: 'Услуги',
+            href: '/services',
+            enabled: true,
+          },
+        },
+        {
+          element_type: 'link',
+          props: {
+            text: 'Агентство',
+            href: '/agency',
+            enabled: true,
+          },
+        },
+        {
+          element_type: 'link',
+          props: {
+            text: 'Журнал',
+            href: '/blog',
+            enabled: true,
+          },
+        },
+        {
+          element_type: 'link',
+          props: {
+            text: 'Контакты',
+            href: '/contacts',
+            enabled: true,
+          },
+        },
+      ]
+    }).subscribe();*/
   }
 
   public $openDrawer() {
@@ -26,5 +110,15 @@ export class MenuComponent implements OnInit {
 
   public $priceRequest() {
     this.priceRequest.emit();
+  }
+
+  public $toggleEditor() {
+    this.editor = !this.editor;
+  }
+
+  public $save() {
+    const req = this.menuService.save(this.menu).toPromise();
+
+    this.toasterService.wrapPromise(req, 'Меню сохранено', 'Не уадлось сохранить меню!');
   }
 }

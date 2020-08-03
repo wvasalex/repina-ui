@@ -39,6 +39,7 @@ import { BaseBlock } from '@shared/blocks/block.component';
     IconNavListComponent,
     ArticlePartComponent,
     BlocksRenderComponent,
+    BlockDirective,
   ],
   declarations: [
     PromoCardComponent,

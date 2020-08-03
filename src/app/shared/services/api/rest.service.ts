@@ -24,7 +24,7 @@ export class RestService {
   public get<T>(body: StrMap<any> = {}) {
     return this.api.getStream(this.config.path, body).pipe(
       map((data) => {
-        return data.results;
+        return data.results || data;
       }),
     );
   }

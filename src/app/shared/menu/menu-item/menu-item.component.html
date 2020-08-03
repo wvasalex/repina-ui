@@ -1,0 +1,10 @@
+<a
+  [routerLink]="editor ? null : [props.href]"
+>
+  <div
+    [r-block]="editor"
+    (contentChanged)="$contentChanged($event, 'text')"
+  >
+    {{$getValue('text')}}
+  </div>
+</a>

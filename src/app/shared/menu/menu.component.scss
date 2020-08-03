@@ -23,6 +23,11 @@
   }
 }
 
+.menu {
+  display: flex;
+  align-items: center;
+}
+
 .menu-item {
   @extend .bolder;
   display: inline-block;
