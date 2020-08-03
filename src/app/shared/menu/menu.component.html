@@ -1,24 +1,45 @@
 <r-padding [horizontal]="true">
-  <div class="full">
+  <div
+    *ngIf="menu"
+    class="full"
+  >
     <a [routerLink]="['/']">
       <r-logo [menuColor]="color"></r-logo>
     </a>
-    <div
-      *ngIf="menu"
-      cdkDropList
-      cdkDropListOrientation="horizontal"
-      (cdkDropListDropped)="$sort($event)"
-      class="menu"
-    >
-      <r-menu-item
-        *ngFor="let item of menu.content_elements"
-        (change)="$save()"
-        [props]="item.props"
-        [editor]="editor"
-        cdkDrag
-        class="menu-item ml-2"
+
+    <div class="menu">
+      <ng-container *ngIf="!editor">
+        <r-menu-item
+          *ngFor="let item of menu.content_elements"
+          [props]="item.props"
+          class="menu-item ml-2"
+        >
+        </r-menu-item>
+      </ng-container>
+
+      <div
+        *ngIf="editor"
+        cdkDropList
+        cdkDropListOrientation="horizontal"
+        (cdkDropListDropped)="$sort($event)"
+        class="menu"
       >
-      </r-menu-item>
+        <r-menu-item
+          *ngFor="let item of menu.content_elements"
+          (change)="$save()"
+          [props]="item.props"
+          [editor]="true"
+          cdkDrag
+          class="menu-item ml-2"
+        >
+          <r-icon-button
+            cdkDragHandle
+            icon="move"
+            size="16"
+          ></r-icon-button>
+        </r-menu-item>
+      </div>
+
       <r-button
         (click)="$priceRequest()"
         class="menu-item request-button ml-2"
@@ -30,11 +51,12 @@
       >
         Eng
       </a>
-      <a
+      <r-icon-button
         *rWithSession
         (click)="$toggleEditor()"
+        icon="edit"
         class="menu-item ml-2"
-      >ред.</a>
+      ></r-icon-button>
     </div>
   </div>
 

@@ -30,7 +30,8 @@
 
 .menu-item {
   @extend .bolder;
-  display: inline-block;
+  display: flex;
+  align-items: center;
   font-size: 28px;
   line-height: 40px;
 
@@ -58,4 +59,16 @@
   .request-button {
     display: none;
   }
+}
+
+.cdk-drag-preview {
+  background: #fff;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
