@@ -9,6 +9,8 @@ import { MenuEditorComponent } from './menu-editor/menu-editor.component';
 import { MenuItemComponent } from './menu-item/menu-item.component';
 import { BlocksModule } from '@shared/blocks/blocks.module';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     RouterModule,
     BlocksModule,
     DragDropModule,
+    MatCheckboxModule,
+    FormsModule,
   ],
   exports: [
     MenuComponent,

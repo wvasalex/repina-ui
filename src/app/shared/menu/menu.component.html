@@ -10,7 +10,7 @@
     <div class="menu">
       <ng-container *ngIf="!editor">
         <r-menu-item
-          *ngFor="let item of menu.content_elements"
+          *ngFor="let item of $enabled(menu.content_elements)"
           [props]="item.props"
           class="menu-item ml-2"
         >
@@ -37,6 +37,10 @@
             icon="move"
             size="16"
           ></r-icon-button>
+          <mat-checkbox
+            (change)="$save()"
+            [(ngModel)]="item.props.enabled"
+          ></mat-checkbox>
         </r-menu-item>
       </div>
 

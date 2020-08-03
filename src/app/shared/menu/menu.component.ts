@@ -44,6 +44,7 @@ export class MenuComponent implements OnInit {
       block.content_elements.sort((a, b) => {
         return a.position - b.position;
       });
+
       this.menu = block;
       this.changeDetectorRef.detectChanges();
     });
@@ -118,6 +119,12 @@ export class MenuComponent implements OnInit {
 
   public $toggleEditor() {
     this.editor = !this.editor;
+  }
+
+  public $enabled(elements: ContentElement[]): ContentElement[] {
+    return elements.filter((element: ContentElement) => {
+      return element.props.enabled;
+    });
   }
 
   public $sort(event: CdkDragDrop<string[]>) {
