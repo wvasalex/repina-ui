@@ -19,6 +19,7 @@ import { ArticleAuthorComponent } from './journal/article-author/article-author.
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { BaseBlock } from '@shared/blocks/block.component';
 
 @NgModule({
   imports: [
@@ -49,6 +50,7 @@ import { MatButtonModule } from '@angular/material/button';
     ArticlePartComponent,
     ArticleTextComponent,
     BlocksRenderComponent,
+    BaseBlock,
     BlockDirective,
     ArticleQuoteComponent,
     ArticleImageComponent,

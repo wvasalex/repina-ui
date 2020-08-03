@@ -1,7 +1,11 @@
-import { EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 import { StrMap } from '../types';
 import { ArticleContentBlock, ArticleContentElement } from '../../journal/journal.model';
 
+@Component({
+  selector:'base-block',
+  template: '',
+})
 export class BaseBlock {
   @Input() props: StrMap<string> = {};
   @Input() @HostBinding('attr.editor') editor: boolean = false;

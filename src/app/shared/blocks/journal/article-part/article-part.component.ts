@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { BaseBlock } from '@shared/blocks/block.class';
+import { BaseBlock } from '@shared/blocks/block.component';
 import { SelectOption } from '@shared/components/select/select.model';
 
 @Component({

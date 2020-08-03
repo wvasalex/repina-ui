@@ -95,6 +95,9 @@ export class ArticleEditorComponent implements OnInit {
       if (a.slug != this.article.slug) {
         this.router.navigate(['/blog', a.slug, 'edit']);
       }
+
+      this.article = a;
+      this.changeDetectorRef.detectChanges();
     });
 
     this.toasterService.wrapPromise(req, 'Сохранено', 'Не удалось сохранить');

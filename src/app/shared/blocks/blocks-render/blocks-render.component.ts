@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ArticleContentBlock, ArticleContentElement } from '../../../journal/journal.model';
 import { moveItemInArray } from '@angular/cdk/drag-drop';
 import { StrMap } from '@shared/types';
