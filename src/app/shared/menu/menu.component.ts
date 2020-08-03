@@ -8,8 +8,8 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { Observable } from 'rxjs';
-import { ContentBlock } from '@shared/types';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { ContentBlock, ContentElement } from '@shared/types';
 import { MenuService } from '@shared/menu/menu.service';
 import { map } from 'rxjs/operators';
 import { ToasterService } from '@shared/toaster/toaster.service';
@@ -32,7 +32,8 @@ export class MenuComponent implements OnInit {
 
   constructor(private changeDetectorRef: ChangeDetectorRef,
               private toasterService: ToasterService,
-              private menuService: MenuService) { }
+              private menuService: MenuService) {
+  }
 
   ngOnInit(): void {
     this.menuService.get().pipe(map((blocks: ContentBlock[]) => {
@@ -114,6 +115,18 @@ export class MenuComponent implements OnInit {
 
   public $toggleEditor() {
     this.editor = !this.editor;
+  }
+
+  public $sort(event: CdkDragDrop<string[]>) {
+    if (!this.editor) {
+      return;
+    }
+
+    moveItemInArray(this.menu.content_elements, event.previousIndex, event.currentIndex);
+    this.menu.content_elements.forEach((element: ContentElement, index: number) => {
+      element.position = index;
+    });
+    this.$save();
   }
 
   public $save() {

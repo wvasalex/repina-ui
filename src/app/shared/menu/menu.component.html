@@ -5,6 +5,9 @@
     </a>
     <div
       *ngIf="menu"
+      cdkDropList
+      cdkDropListOrientation="horizontal"
+      (cdkDropListDropped)="$sort($event)"
       class="menu"
     >
       <r-menu-item
@@ -12,6 +15,7 @@
         (change)="$save()"
         [props]="item.props"
         [editor]="editor"
+        cdkDrag
         class="menu-item ml-2"
       >
       </r-menu-item>

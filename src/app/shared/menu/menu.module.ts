@@ -8,6 +8,7 @@ import { DrawerComponent } from './drawer/drawer.component';
 import { MenuEditorComponent } from './menu-editor/menu-editor.component';
 import { MenuItemComponent } from './menu-item/menu-item.component';
 import { BlocksModule } from '@shared/blocks/blocks.module';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { BlocksModule } from '@shared/blocks/blocks.module';
     SharedModule,
     RouterModule,
     BlocksModule,
+    DragDropModule,
   ],
   exports: [
     MenuComponent,
