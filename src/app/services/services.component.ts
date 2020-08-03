@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StrMap } from '@shared/types';
 
 @Component({
   selector: 'r-services',
@@ -6,28 +7,76 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./services.component.scss'],
 })
 export class ServicesComponent implements OnInit {
-  public services: string[][] = [
-    ['Услуги'],
+  public services: StrMap<string>[][] = [
     [
-      'Исследования',
-      'Аудит бренда',
-      'Потребительские исследования',
-      'Качественные исследования',
-      'Количественные исследования',
+      {
+        text: 'Услуги',
+        href: '/services',
+      },
     ],
     [
-      'Стратегия',
-      'Позиционирование',
-      'Платформа бренда',
-      'Коммуникационная стратегия',
-      'Разработка брендбука',
+      {
+        text: 'Исследования',
+        href: '/services',
+      },
+      {
+        text: 'Аудит бренда',
+        href: '/services',
+      },
+      {
+        text: 'Потребительские исследования',
+        href: '/services',
+      },
+      {
+        text: 'Качественные исследования',
+        href: '/services',
+      },
+      {
+        text: 'Количественные исследования',
+        href: '/services',
+      },
     ],
     [
-      'Нейминг и tone of voice',
-      'Разработка названия',
-      'Разработка слогана',
-      'Создание голоса бренда',
+      {
+        text: 'Стратегия',
+        href: '/services',
+      },
+      {
+        text: 'Позиционирование',
+        href: '/services',
+      },
+      {
+        text: 'Платформа бренда',
+        href: '/services',
+      },
+      {
+        text: 'Коммуникационная стратегия',
+        href: '/services',
+      },
+      {
+        text: 'Разработка брендбука',
+        href: '/services',
+      },
     ],
+    [
+      {
+        text: 'Нейминг и tone of voice',
+        href: '/services',
+      },
+      {
+        text: 'Разработка названия',
+        href: '/services',
+      },
+      {
+        text: 'Разработка слогана',
+        href: '/services',
+      },
+      {
+        text: 'Создание голоса бренда',
+        href: '/services',
+      },
+    ],
+    /*
     [
       'Сопровождение бренда',
       'Дизайн упаковки',
@@ -41,7 +90,7 @@ export class ServicesComponent implements OnInit {
       'Digital-дизайн',
       'Дизайн пространств',
       'Разработка гайдлайна',
-    ],
+    ],*/
   ];
 
   constructor() {
