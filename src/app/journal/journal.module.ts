@@ -12,6 +12,7 @@ import { SubscribeComponent } from './subscribe/subscribe.component';
 import { ArticleEditorComponent } from './article-editor/article-editor.component';
 import { BlocksModule } from '@shared/blocks/blocks.module';
 import { FormsModule } from '@angular/forms';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { FormsModule } from '@angular/forms';
     PageModule,
     BlocksModule,
     FormsModule,
+    MatCheckboxModule,
   ],
   exports: [
     JournalSnippetComponent,

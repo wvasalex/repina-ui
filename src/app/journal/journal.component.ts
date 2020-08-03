@@ -9,7 +9,7 @@ import { Article } from './journal.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class JournalComponent implements OnInit {
-  public articles: Article[];
+  public groups: Article[][];
   public main_articles: Article[];
 
   constructor(private changeDetectorRef: ChangeDetectorRef,
@@ -18,10 +18,9 @@ export class JournalComponent implements OnInit {
   ngOnInit(): void {
     this.journalService.get<Article>().subscribe((articles: Article[]) => {
       this.main_articles = articles.splice(0, 2);
-      this.articles = articles.splice(2);
+      this.groups = this.journalService.groupArticles(articles.splice(2));
 
       this.changeDetectorRef.detectChanges();
     });
   }
-
 }

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ArticleHeaderComponent } from '@shared/blocks/journal/article-header/article-header.component';
 import { JournalService } from '../journal.service';
 import { Article, ArticleContentBlock, ArticleContentElement } from '../journal.model';
@@ -21,7 +21,8 @@ export class ArticleEditorComponent implements OnInit {
   private _lastSync: number = 0;
   private _syncTimeout;
 
-  constructor(private activatedRoute: ActivatedRoute,
+  constructor(private router: Router,
+              private activatedRoute: ActivatedRoute,
               private changeDetectorRef: ChangeDetectorRef,
               private journalService: JournalService,
               private toasterService: ToasterService) {
@@ -74,6 +75,10 @@ export class ArticleEditorComponent implements OnInit {
   }
 
   private _save() {
+    if (!this.article.title) {
+      return;
+    }
+
     if (!this.article.blog_tag) {
       delete this.article.blog_tag;
     }
@@ -86,8 +91,10 @@ export class ArticleEditorComponent implements OnInit {
       });
     });
 
-    const req = this.journalService.save(this.article).toPromise().then((a) => {
-      console.log(a);
+    const req = this.journalService.save(this.article).toPromise().then((a: Article) => {
+      if (a.slug != this.article.slug) {
+        this.router.navigate(['/blog', a.slug, 'edit']);
+      }
     });
 
     this.toasterService.wrapPromise(req, 'Сохранено', 'Не удалось сохранить');

@@ -13,7 +13,17 @@
       class="mt-2"
     ></r-badge-list>
   </r-padding>
-  <r-padding *ngIf="articles">
+  <r-padding
+    *rWithSession
+    [horizontal]="false"
+  >
+    <r-button
+      [routerLink]="['/blog/new']"
+    >
+      Добавить статью
+    </r-button>
+  </r-padding>
+  <r-padding *ngIf="groups">
     <div class="row-column">
       <a
         *ngFor="let article of main_articles; let first = first;"
@@ -30,27 +40,27 @@
       </a>
     </div>
 
-    <!--<div class="row-column">
-      <r-journal-snippet
-        image="/assets/pictures/journal/1.png"
-        title="Брендинг"
-        description="Как создать нескучную упаковку для профессионального продукта"
-      >
-      </r-journal-snippet>
-      <r-journal-snippet
-        image="/assets/pictures/journal/2.png"
-        title="Маркетинг"
-        description="Валерия Репина в РБК: как брендбук должен служить бизнесу"
-        class="m30"
-      >
-      </r-journal-snippet>
-      <r-journal-snippet
-        image="/assets/pictures/journal/3.png"
-        title="Фирменный стиль"
-        description="Как внедрить фирменный стиль в интерьер?"
-      >
-      </r-journal-snippet>
-    </div>-->
+    <div
+      *ngFor="let group of groups"
+      class="row-column"
+    >
+      <ng-container *ngFor="let article of group; let index = index;">
+        <a
+          *ngIf="article.slug"
+          [routerLink]="[article.slug]"
+          [class.m30]="index == 1"
+        >
+          <r-journal-snippet
+            [title]="article.blog_tag"
+            [description]="article.title"
+            image="/assets/pictures/journal/1.png"
+          >
+          </r-journal-snippet>
+        </a>
+
+        <div *ngIf="!article.slug"></div>
+      </ng-container>
+    </div>
 
     <!--
     <div class="subscription-block row-column">
