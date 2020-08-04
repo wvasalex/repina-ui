@@ -1,17 +1,19 @@
 @import 'src/theme';
 
-::ng-deep r-header, ::ng-deep r-article-header {
-  background: $color-gray;
-}
+:host {
+  ::ng-deep r-header, ::ng-deep r-article-header {
+    background: $color-gray;
+  }
 
-.avatar-block {
-  align-self: flex-start;
-}
+  .avatar-block {
+    align-self: flex-start;
+  }
 
-.avatar {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
+  .avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+  }
 }
 
 .w1366 :host {

@@ -21,6 +21,10 @@ export class BlocksRenderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public $hasControls(block: ArticleContentBlock) {
+    return block.block_type !== 'article-header';
+  }
+
   public $remove(block: ArticleContentBlock) {
     if (confirm('Удалить контент?')) {
       if (block.id) {

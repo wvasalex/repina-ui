@@ -15,6 +15,17 @@
           class="menu-item ml-2"
         >
         </r-menu-item>
+        <r-button
+          (click)="$priceRequest()"
+          class="menu-item request-button ml-2"
+        >
+          Запросить стоимость
+        </r-button>
+        <a
+          class="menu-item ml-2"
+        >
+          Eng
+        </a>
       </ng-container>
 
       <div
@@ -36,25 +47,15 @@
             cdkDragHandle
             icon="move"
             size="16"
+            style="margin-bottom:4px;"
           ></r-icon-button>
           <mat-checkbox
             (change)="$save()"
             [(ngModel)]="item.props.enabled"
+            style="margin-bottom:6px;"
           ></mat-checkbox>
         </r-menu-item>
       </div>
-
-      <r-button
-        (click)="$priceRequest()"
-        class="menu-item request-button ml-2"
-      >
-        Запросить стоимость
-      </r-button>
-      <a
-        class="menu-item ml-2"
-      >
-        Eng
-      </a>
       <r-icon-button
         *rWithSession
         (click)="$toggleEditor()"

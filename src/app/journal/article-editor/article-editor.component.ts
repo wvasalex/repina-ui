@@ -44,6 +44,7 @@ export class ArticleEditorComponent implements OnInit {
             description: 'Тут краткое содержание статьи',
           },
           content_elements: [],
+          is_enabled: true,
         },
         {
           block_type: 'article-part',
@@ -52,6 +53,7 @@ export class ArticleEditorComponent implements OnInit {
             subtitle: '',
           },
           content_elements: [],
+          is_enabled: true,
         },
       ];
     }

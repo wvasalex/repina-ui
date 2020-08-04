@@ -49,14 +49,19 @@
   </ng-container>
 
   <div
-    *ngIf="editor"
+    *ngIf="editor && $hasControls(block)"
     class="controls row"
   >
+    <mat-checkbox
+      [(ngModel)]="block.is_enabled"
+      (change)="$change()"
+    ></mat-checkbox>
+
     <r-icon-button
       (click)="$addBlock(block, 0)"
       [size]="18"
       icon="down-arrow"
-      class="block-control row revert"
+      class="block-control row revert ml-2"
     > + </r-icon-button>
 
     <r-icon-button
