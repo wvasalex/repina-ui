@@ -3,20 +3,21 @@
     <mat-checkbox
       [(ngModel)]="article.is_enabled"
       (change)="$save()"
-    > Опубликовать </mat-checkbox>
+    > Опубликовано </mat-checkbox>
 
     <r-input
       [(ngModel)]="article.title"
       (keyup)="$save()"
-      placeholder="Название *"
+      [required]="true"
+      placeholder="Название"
     ></r-input>
 
-    <r-input
+    <!--<r-input
       [(ngModel)]="article.blog_tag"
       (keyup)="$save()"
       placeholder="Тег"
       class="ml-2"
-    ></r-input>
+    ></r-input>-->
 
     <r-input
       [(ngModel)]="article.author_name"

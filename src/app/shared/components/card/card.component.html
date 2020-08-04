@@ -1,7 +1,11 @@
 <div class="left">
   <div
     [attr.class]="subtitleClass"
-  >{{subtitle}}</div>
+  >
+    <span *ngIf="subtitle; else subtitleContent">
+      {{subtitle}}
+    </span>
+  </div>
   <div
     *ngIf="title; else titleContent"
     [attr.class]="titleClass + ' mt-2'"
@@ -21,6 +25,11 @@
 <ng-template #titleContent>
   <ng-content select="[title]"></ng-content>
 </ng-template>
+
+<ng-template #subtitleContent>
+  <ng-content select="[subtitle]"></ng-content>
+</ng-template>
+
 
 <ng-template #descriptionContent>
   <ng-content select="[description]"></ng-content>

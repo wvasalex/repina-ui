@@ -4,9 +4,11 @@
 :host {
   @extend .text16;
   color: $color-red;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   cursor: pointer;
+  max-width: max-content;
+  outline: none;
 }
 
 img {

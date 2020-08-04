@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SessionService } from '../shared/services/session';
 import { Router } from '@angular/router';
+import { SessionService } from '@shared/services/session';
 
 @Component({
   selector: 'r-auth',
@@ -13,7 +13,7 @@ export class AuthComponent implements OnInit {
               private sessionService: SessionService) { }
 
   ngOnInit(): void {
-    this.sessionService.create();
+    this.sessionService.toggle();
     this.router.navigate(['/']);
   }
 

@@ -7,11 +7,13 @@
     *rWithSession
     [horizontal]="false"
   >
-    <r-button
+    <r-icon-button
+      icon="edit"
       [routerLink]="['/blog', article.slug, 'edit']"
+      style="float: right"
     >
       Редактировать статью
-    </r-button>
+    </r-icon-button>
   </r-padding>
 
   <!--<div>

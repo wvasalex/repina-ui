@@ -8,6 +8,14 @@ export class SessionService {
   constructor(private sessionState: SessionStateService) {
   }
 
+  public toggle(): void {
+    if (this.isValid()) {
+      this.destroy();
+    } else {
+      this.create();
+    }
+  }
+
   public create(): void {
     this.sessionState.setState({
       valid: true,

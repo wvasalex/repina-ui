@@ -2,10 +2,20 @@
   <r-padding>
     <div class="promo">
       <r-card
-        subtitle="Блог"
         title="Инсайты о бизнесе, брендинге и дизайне"
         size="big"
       >
+        <div subtitle class="row">
+          Блог
+
+          <r-icon-button
+            *rWithSession
+            [routerLink]="['/blog/new']"
+            icon="add"
+            class="ml-2"
+          >
+          </r-icon-button>
+        </div>
       </r-card>
     </div>
     <r-badge-list
@@ -13,16 +23,7 @@
       class="mt-2"
     ></r-badge-list>
   </r-padding>
-  <r-padding
-    *rWithSession
-    [horizontal]="false"
-  >
-    <r-button
-      [routerLink]="['/blog/new']"
-    >
-      Добавить статью
-    </r-button>
-  </r-padding>
+
   <r-padding *ngIf="groups">
     <div class="row-column">
       <a

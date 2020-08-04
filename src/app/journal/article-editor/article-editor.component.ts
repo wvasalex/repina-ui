@@ -35,20 +35,30 @@ export class ArticleEditorComponent implements OnInit {
     };
 
     if (!this.article.content_blocks?.length) {
-      this.article.content_blocks = [{
-        block_type: 'article-header',
-        props: {
-          title: 'Колонка Валерии Репиной',
-          subtitle: 'Заголовок статьи',
-          description: 'Тут краткое содержание статьи',
+      this.article.content_blocks = [
+        {
+          block_type: 'article-header',
+          props: {
+            title: 'Колонка Валерии Репиной',
+            subtitle: 'Заголовок статьи',
+            description: 'Тут краткое содержание статьи',
+          },
+          content_elements: [],
         },
-        content_elements: [],
-      }];
+        {
+          block_type: 'article-part',
+          props: {
+            title: '',
+            subtitle: '',
+          },
+          content_elements: [],
+        },
+      ];
     }
   }
 
   public $addBlock(e: StrMap<any>) {
-    const {target, offset} = e;
+    const { target, offset } = e;
     const index = this.article.content_blocks.indexOf(target) + offset;
 
     this.article.content_blocks.splice(index, 0, {
