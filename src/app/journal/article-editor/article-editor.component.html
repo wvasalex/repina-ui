@@ -35,15 +35,14 @@
     class="mt-2"
   ></r-blocks-render>
 
-  <r-padding
-    [horizontal]="false"
-    style="display: flex"
-  >
-    <r-button
+  <r-fabs *rWithSession>
+    <button
       (click)="$save()"
-      class="ml-2"
+      [routerLink]="['/blog', article.slug]"
+      mat-fab
+      color="primary"
     >
-      Сохранить
-    </r-button>
-  </r-padding>
+      <r-icon name="components/checked-white"></r-icon>
+    </button>
+  </r-fabs>
 </r-page>

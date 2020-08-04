@@ -13,6 +13,7 @@ import { ArticleEditorComponent } from './article-editor/article-editor.componen
 import { BlocksModule } from '@shared/blocks/blocks.module';
 import { FormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     BlocksModule,
     FormsModule,
     MatCheckboxModule,
+    MatButtonModule,
   ],
   exports: [
     JournalSnippetComponent,

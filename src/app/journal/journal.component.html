@@ -2,20 +2,10 @@
   <r-padding>
     <div class="promo">
       <r-card
+        subtitle="Блог"
         title="Инсайты о бизнесе, брендинге и дизайне"
         size="big"
       >
-        <div subtitle class="row">
-          Блог
-
-          <r-icon-button
-            *rWithSession
-            [routerLink]="['/blog/new']"
-            icon="add"
-            class="ml-2"
-          >
-          </r-icon-button>
-        </div>
       </r-card>
     </div>
     <r-badge-list
@@ -102,4 +92,14 @@
       </r-journal-snippet>
     </div>-->
   </r-padding>
+
+ <r-fabs *rWithSession>
+   <button
+     [routerLink]="['/blog/new']"
+     mat-fab
+     color="primary"
+   >
+     <r-icon name="components/add-white"></r-icon>
+   </button>
+ </r-fabs>
 </r-page>

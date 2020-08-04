@@ -3,19 +3,6 @@
     [blocks]="article.content_blocks"
   ></r-blocks-render>
 
-  <r-padding
-    *rWithSession
-    [horizontal]="false"
-  >
-    <r-icon-button
-      icon="edit"
-      [routerLink]="['/blog', article.slug, 'edit']"
-      style="float: right"
-    >
-      Редактировать статью
-    </r-icon-button>
-  </r-padding>
-
   <!--<div>
     <r-article-part
       title="Особенное место"
@@ -128,4 +115,14 @@
       <div></div>
     </r-article-part>
     </div>-->
+
+  <r-fabs *rWithSession>
+    <button
+      [routerLink]="['/blog', article.slug, 'edit']"
+      mat-fab
+      color="primary"
+    >
+      <r-icon name="components/edit-white"></r-icon>
+    </button>
+  </r-fabs>
 </r-page>

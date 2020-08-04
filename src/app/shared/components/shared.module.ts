@@ -22,6 +22,8 @@ import { WithSessionDirective } from './with-session.directive';
 import { AvatarComponent } from './avatar/avatar.component';
 import { IconButtonComponent } from '@shared/components/icon-button/icon-button.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { IconComponent } from '@shared/components/icon/icon.component';
+import { FabsComponent } from './fabs/fabs.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     WithSessionDirective,
     AvatarComponent,
     IconButtonComponent,
+    IconComponent,
+    FabsComponent,
   ],
   exports: [
     LogoComponent,
@@ -64,6 +68,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     WithSessionDirective,
     AvatarComponent,
     IconButtonComponent,
+    IconComponent,
+    FabsComponent,
   ],
   imports: [
     CommonModule,
