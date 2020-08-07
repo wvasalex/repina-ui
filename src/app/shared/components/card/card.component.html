@@ -1,26 +1,28 @@
-<div class="left">
-  <div
-    [attr.class]="subtitleClass"
-  >
+<div class="row-column">
+  <div class="left">
+    <div
+      [attr.class]="subtitleClass"
+    >
     <span *ngIf="subtitle; else subtitleContent">
       {{subtitle}}
     </span>
+    </div>
+    <div
+      *ngIf="title; else titleContent"
+      [attr.class]="titleClass + ' mt-2'"
+    >
+      {{title}}
+    </div>
+    <div
+      *ngIf="description; else descriptionContent"
+      class="text32 mt-1_5"
+    >
+      {{description}}
+    </div>
   </div>
-  <div
-    *ngIf="title; else titleContent"
-    [attr.class]="titleClass + ' mt-2'"
-  >
-    {{title}}
-  </div>
-  <div
-    *ngIf="description; else descriptionContent"
-    class="text32 mt-1_5"
-  >
-    {{description}}
-  </div>
-</div>
 
-<ng-content></ng-content>
+  <ng-content></ng-content>
+</div>
 
 <ng-template #titleContent>
   <ng-content select="[title]"></ng-content>

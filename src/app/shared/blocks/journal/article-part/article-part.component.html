@@ -1,45 +1,44 @@
 <r-padding>
   <div
     [r-block]="editor"
+    [innerHTML]="$getValue('i')"
     (contentChanged)="$contentChanged($event, 'i')"
     *ngIf="$getValue('i')"
     class="index h3"
   >
-    {{$getValue('i')}}
   </div>
 
   <div
     *ngIf="$getValue('title')"
     [r-block]="editor"
+    [innerHTML]="$getValue('title')"
     (contentChanged)="$contentChanged($event, 'title')"
     class="content title h3"
   >
-    {{$getValue('title')}}
   </div>
 
   <div class="inner">
     <div
-      [r-block]="editor"
-      (contentChanged)="$contentChanged($event, 'date')"
       *ngIf="$getValue('title')"
+      [r-block]="editor"
+      [innerHTML]="$getValue('date')"
+      (contentChanged)="$contentChanged($event, 'date')"
       class="date h4"
     >
-      {{$getValue('date')}}
     </div>
 
     <div class="content">
       <div
         [r-block]="editor"
+        [innerHTML]="$getValue('subtitle')"
         (contentChanged)="$contentChanged($event, 'subtitle')"
         [class.mt-1_5]="$getValue('subtitle')"
         class="subtitle h4"
       >
-        {{$getValue('subtitle')}}
       </div>
 
       <r-blocks-render
         *ngIf="elements?.length"
-        (change)="change.emit()"
         [blocks]="elements"
         [editor]="editor"
         typeKey="element_type"

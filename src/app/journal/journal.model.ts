@@ -28,7 +28,7 @@ export interface ArticleContentBlock {
 
 export interface ArticleContentElement {
   element_type: string;
-  props: StrMap<string>;
+  props?: StrMap<string>;
   content_block?: number;
   id?: number;
   content_file?: string;

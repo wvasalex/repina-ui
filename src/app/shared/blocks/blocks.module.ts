@@ -20,6 +20,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { BaseBlock } from '@shared/blocks/block.component';
+import { ArticleBlankComponent } from './journal/article-blank/article-blank.component';
 
 @NgModule({
   imports: [
@@ -56,6 +57,7 @@ import { BaseBlock } from '@shared/blocks/block.component';
     ArticleQuoteComponent,
     ArticleImageComponent,
     ArticleAuthorComponent,
+    ArticleBlankComponent,
   ],
 })
 export class BlocksModule {

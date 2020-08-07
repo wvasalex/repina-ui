@@ -20,7 +20,7 @@ export class BaseBlock {
 
   public $getValue(prop: string) {
     if (this.props[prop]) {
-      return this.props[prop];
+      return this.props[prop].replace(/\n/g, '<br>');
     }
 
     return this.editor ? ' ' : '';
@@ -28,7 +28,7 @@ export class BaseBlock {
 
   public $contentChanged(value: string, prop: string) {
     this.props[prop] = value.trim();
-console.log(prop, value);
+
     this.change.emit();
   }
 

@@ -3,12 +3,14 @@
   class="inner"
 >
   <r-quote
-    [r-block]="editor"
     (contentChanged)="$contentChanged($event, 'value')"
+    [r-block]="editor"
     [class.h3]="!props.small"
     [class.h4]="props.small"
   >
-    {{$getValue('value')}}
+    <span
+      [innerHTML]="$getValue('value')"
+    ></span>
   </r-quote>
 
   <div
@@ -19,18 +21,18 @@
 
     <div class="ml-2 mt-1">
       <div
-        [r-block]="editor"
         (contentChanged)="$contentChanged($event, 'name')"
+        [r-block]="editor"
+        [innerHTML]="$getValue('name')"
         class="h4"
       >
-        {{$getValue('name')}}
       </div>
       <div
-        [r-block]="editor"
         (contentChanged)="$contentChanged($event, 'role')"
+        [r-block]="editor"
+        [innerHTML]="$getValue('role')"
         class="text32"
       >
-        {{$getValue('role')}}
       </div>
     </div>
   </div>

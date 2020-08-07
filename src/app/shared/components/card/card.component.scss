@@ -1,13 +1,12 @@
 @import 'src/styles';
 
-:host {
-  display: flex;
-  align-items: center;
+.row-column {
   justify-content: space-between;
 }
 
 .left {
-  width: 50%;
+  flex: 1.5 !important;
+  margin-right: 180px;
 }
 
 :host.wide {
@@ -22,6 +21,7 @@
   }
 }
 
+/*
 .w768 :host, .w320 :host {
   flex-direction: column;
   align-items: flex-end;
@@ -29,9 +29,21 @@
   .left {
     width: 100%;
   }
-}
+}*/
 
 :host ::ng-deep r-image {
   max-width: 38rem;
   max-height: 38rem;
+}
+
+.w1366 :host {
+  .left {
+    margin-right: 136px;
+  }
+}
+
+.w1024 :host {
+  .left {
+    margin-right: 112px;
+  }
 }

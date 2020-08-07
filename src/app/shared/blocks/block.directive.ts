@@ -32,6 +32,6 @@ export class BlockDirective implements OnChanges {
   }
 
   @HostListener('blur') onBlur() {
-    this.contentChanged.emit(this.host.nativeElement.textContent);
+    this.contentChanged.emit(this.host.nativeElement.innerText);
   }
 }

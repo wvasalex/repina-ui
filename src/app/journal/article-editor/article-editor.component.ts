@@ -18,9 +18,6 @@ export class ArticleEditorComponent implements OnInit {
 
   @ViewChild(ArticleHeaderComponent) headerComponent: ArticleHeaderComponent;
 
-  private _lastSync: number = 0;
-  private _syncTimeout;
-
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private changeDetectorRef: ChangeDetectorRef,
@@ -52,7 +49,10 @@ export class ArticleEditorComponent implements OnInit {
             title: '',
             subtitle: '',
           },
-          content_elements: [],
+          content_elements: [
+            { element_type: 'blank' },
+            { element_type: 'blank' },
+          ],
           is_enabled: true,
         },
       ];
@@ -69,21 +69,15 @@ export class ArticleEditorComponent implements OnInit {
         title: '',
         subtitle: '',
       },
-      content_elements: [],
+      content_elements: [
+        { element_type: 'blank' },
+        { element_type: 'blank' },
+      ],
     });
   }
 
   public $save() {
-    const now = (new Date()).getTime();
-
-    if (now - this._lastSync < 3000) {
-      clearTimeout(this._syncTimeout);
-    }
-
-    this._lastSync = now;
-    this._syncTimeout = setTimeout(() => {
-      this._save();
-    }, 2000);
+    this._save();
   }
 
   private _save() {
