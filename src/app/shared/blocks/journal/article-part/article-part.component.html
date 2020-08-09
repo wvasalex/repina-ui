@@ -41,13 +41,14 @@
         *ngIf="elements?.length"
         [blocks]="elements"
         [editor]="editor"
+        [availableElements]="availableElements"
         typeKey="element_type"
         class="row-column mt-2"
       ></r-blocks-render>
     </div>
   </div>
 
-  <r-select
+  <!--<r-select
     *ngIf="editor && $visibleElements(elements).length < 2"
     (valueChanged)="$addElement($event)"
     [options]="availableElements"
@@ -55,6 +56,6 @@
     placeholder="+ Добавить элемент"
     class="add-element"
   >
-  </r-select>
+  </r-select>-->
 </r-padding>
 

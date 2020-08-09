@@ -16,7 +16,8 @@ export interface Article {
 }
 
 export interface ArticleContentBlock {
-  block_type: string;
+  block_type?: string;
+  element_type?: string;
   props: StrMap<string>;
   content_elements: ArticleContentElement[];
   id?: number;

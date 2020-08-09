@@ -6,8 +6,8 @@
   display: block;
   min-width: 556px;
   min-height: 556px;
-  background: url('/assets/icons/main/sphere.svg');
   border-radius: 50%;
+  background: url('/assets/icons/main/sphere.svg') no-repeat;
 }
 
 .w1366 :host {

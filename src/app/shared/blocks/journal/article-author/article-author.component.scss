@@ -1,7 +1,10 @@
 :host {
   display: block;
-  margin-top: -75px;
-  padding-bottom: 75px;
+
+  &:not([editor]) {
+    margin-top: -75px;
+    padding-bottom: 75px;
+  }
 }
 
 .avatar {

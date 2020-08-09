@@ -6,6 +6,7 @@ import { Article, ArticleContentBlock, ArticleContentElement } from '../journal.
 import { of } from 'rxjs';
 import { StrMap } from '@shared/types';
 import { ToasterService } from '@shared/toaster/toaster.service';
+import { SelectOption } from '@shared/components/select/select.model';
 
 @Component({
   selector: 'r-article-editor',
@@ -15,6 +16,13 @@ import { ToasterService } from '@shared/toaster/toaster.service';
 })
 export class ArticleEditorComponent implements OnInit {
   public article: Article;
+
+  public availableElements: SelectOption[] = [
+    { value: 'article-text', label: 'Текст' },
+    { value: 'article-image', label: 'Изображение' },
+    { value: 'article-quote', label: 'Цитата' },
+    { value: 'article-author', label: 'Автор' },
+  ];
 
   @ViewChild(ArticleHeaderComponent) headerComponent: ArticleHeaderComponent;
 
@@ -50,8 +58,14 @@ export class ArticleEditorComponent implements OnInit {
             subtitle: '',
           },
           content_elements: [
-            { element_type: 'blank' },
-            { element_type: 'blank' },
+            {
+              element_type: 'article-text',
+              props: {},
+            },
+            {
+              element_type: 'blank',
+              props: {},
+            },
           ],
           is_enabled: true,
         },
@@ -100,13 +114,14 @@ export class ArticleEditorComponent implements OnInit {
     const req = this.journalService.save(this.article).toPromise().then((a: Article) => {
       if (a.slug != this.article.slug) {
         this.router.navigate(['/blog', a.slug, 'edit']);
+      } else {
+        this.article = a;
+        this.changeDetectorRef.detectChanges();
       }
-
-      this.article = a;
-      this.changeDetectorRef.detectChanges();
     });
 
     this.toasterService.wrapPromise(req, 'Сохранено', 'Не удалось сохранить');
   }
+
 
 }

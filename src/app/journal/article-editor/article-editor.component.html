@@ -2,12 +2,10 @@
   <r-padding class="row" style="align-items: center">
     <mat-checkbox
       [(ngModel)]="article.is_enabled"
-      (change)="$save()"
     > Опубликовано </mat-checkbox>
 
     <r-input
       [(ngModel)]="article.title"
-      (keyup)="$save()"
       [required]="true"
       placeholder="Название"
     ></r-input>
@@ -21,16 +19,15 @@
 
     <r-input
       [(ngModel)]="article.author_name"
-      (keyup)="$save()"
       placeholder="Имя автора статьи"
       class="ml-2"
     ></r-input>
   </r-padding>
 
   <r-blocks-render
-    (change)="$save()"
     (addBlock)="$addBlock($event)"
     [blocks]="article.content_blocks"
+    [availableElements]="availableElements"
     [editor]="true"
     class="mt-2"
   ></r-blocks-render>
@@ -38,7 +35,6 @@
   <r-fabs *rWithSession>
     <button
       (click)="$save()"
-      [routerLink]="['/blog', article.slug]"
       mat-fab
       color="primary"
     >

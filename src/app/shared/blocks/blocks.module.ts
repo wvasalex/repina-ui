@@ -21,6 +21,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { BaseBlock } from '@shared/blocks/block.component';
 import { ArticleBlankComponent } from './journal/article-blank/article-blank.component';
+import { BlockSwitcherComponent } from './block-switcher/block-switcher.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   imports: [
@@ -31,6 +33,7 @@ import { ArticleBlankComponent } from './journal/article-blank/article-blank.com
     MatCheckboxModule,
     MatIconModule,
     MatButtonModule,
+    MatTooltipModule,
   ],
   exports: [
     PromoCardComponent,
@@ -58,6 +61,7 @@ import { ArticleBlankComponent } from './journal/article-blank/article-blank.com
     ArticleImageComponent,
     ArticleAuthorComponent,
     ArticleBlankComponent,
+    BlockSwitcherComponent,
   ],
 })
 export class BlocksModule {

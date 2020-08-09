@@ -1,0 +1,14 @@
+<div
+  *ngFor="let element of availableElements"
+  class="mr-1"
+  style="display: inline-block"
+>
+  <button
+    (click)="$change(element)"
+    [matTooltip]="element.label"
+    mat-fab
+    color="accent"
+  >
+    <r-icon [name]="'editor/' + element.value"></r-icon>
+  </button>
+</div>

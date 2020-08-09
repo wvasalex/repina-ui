@@ -18,7 +18,9 @@
 
 .content {
   margin-left: 102px;
+}
 
+:host:not([editor]) {
   .row-column {
     align-items: center;
   }

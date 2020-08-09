@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ArticleContentBlock, ArticleContentElement } from '../../../journal/journal.model';
 import { moveItemInArray } from '@angular/cdk/drag-drop';
 import { StrMap } from '@shared/types';
+import { SelectOption } from '@shared/components/select/select.model';
 
 @Component({
   selector: 'r-blocks-render',
@@ -11,7 +12,8 @@ import { StrMap } from '@shared/types';
 export class BlocksRenderComponent implements OnInit {
   @Input() blocks: ArticleContentBlock[];
   @Input() editor: boolean = false;
-  @Input() typeKey: string = 'block_type';
+  @Input() typeKey: 'block_type' | 'element_type' = 'block_type';
+  @Input() availableElements: SelectOption[];
 
   //@Output() change: EventEmitter<void> = new EventEmitter<void>();
   @Output() addBlock: EventEmitter<StrMap<any>> = new EventEmitter<StrMap<any>>();
@@ -33,18 +35,6 @@ export class BlocksRenderComponent implements OnInit {
         this.blocks.splice(this.blocks.indexOf(block), 1);
       }
     }
-  }
-
-  public $visible(blocks: ArticleContentBlock[]): ArticleContentBlock[] {
-    if (!Array.isArray(blocks)) {
-      return blocks;
-    }
-
-    return blocks.filter((block: ArticleContentBlock) => {
-      return block._destroy != true;
-    }).sort((a: ArticleContentBlock, b: ArticleContentBlock) => {
-      return a.position - b.position;
-    });
   }
 
   public $move(block: ArticleContentBlock, offset: number) {
@@ -69,5 +59,9 @@ export class BlocksRenderComponent implements OnInit {
 
   public $addBlock(target: ArticleContentBlock, offset: number) {
     this.addBlock.emit({ target, offset });
+  }
+
+  public $setType(target: ArticleContentBlock, type: string) {
+    target.element_type = type;
   }
 }

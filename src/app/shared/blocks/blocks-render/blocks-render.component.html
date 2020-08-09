@@ -1,5 +1,5 @@
 <div
-  *ngFor="let block of $visible(blocks); let index = index; let last = last;"
+  *ngFor="let block of blocks; let index = index; let last = last;"
   [attr.rel]="typeKey + '_' + index"
   [attr.class]="typeKey + ' content-item'"
 >
@@ -13,6 +13,14 @@
       class="icon revert"
     ></r-icon>
   </div>
+
+  <r-block-switcher
+    *ngIf="editor && typeKey == 'element_type'"
+    (change)="$setType(block, $event)"
+    [availableElements]="availableElements"
+  >
+    {{block.element_type}}
+  </r-block-switcher>
 
   <ng-container [ngSwitch]="block[typeKey]">
     <r-article-header
@@ -31,6 +39,7 @@
       *ngSwitchCase="'article-part'"
       [props]="block.props"
       [elements]="block.content_elements"
+      [availableElements]="availableElements"
       [editor]="editor"
     ></r-article-part>
 
