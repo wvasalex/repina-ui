@@ -38,7 +38,6 @@ export class BaseBlock {
     this.elements.push({
       element_type: type,
       props: {
-        src: '/assets/pictures/journal/article_image.png',
         value: '',
       },
     });

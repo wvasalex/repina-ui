@@ -1,15 +1,24 @@
 <div
-  *ngFor="let block of blocks; let index = index; let last = last;"
+  *ngFor="let block of $visible(blocks); let index = index; let last = last;"
   [attr.rel]="typeKey + '_' + index"
   [attr.class]="typeKey + ' content-item'"
 >
   <div
-    *ngIf="editor && typeKey == 'block_type' && $hasControls(block) && index > 1"
-    (click)="$move(block, -1)"
+    *ngIf="editor && $hasControls(block)"
     class="move-block move-up controls"
   >
     <r-icon
+      *ngIf="index > 1"
+      (click)="$move(block, -1)"
       name="components/down-arrow"
+      matTooltip="Переместить вверх"
+      class="icon revert"
+    ></r-icon>
+
+    <r-icon
+      (click)="$addBlock(block, 0)"
+      name="components/add"
+      matTooltip="Добавить блок выше"
       class="icon revert"
     ></r-icon>
   </div>
@@ -76,58 +85,45 @@
   </ng-container>
 
   <div
-    *ngIf="editor && !last && typeKey == 'block_type' && $hasControls(block)"
-    (click)="$move(block, 1)"
+    *ngIf="editor && $hasControls(block)"
     class="move-block move-down controls"
   >
     <r-icon
+      *ngIf="!last"
+      (click)="$move(block, 1)"
       name="components/down-arrow"
+      matTooltip="Переместить вниз"
+      class="icon"
+    ></r-icon>
+
+    <r-icon
+      (click)="$addBlock(block, 1)"
+      name="components/add"
+      matTooltip="Добавить блок ниже"
       class="icon"
     ></r-icon>
   </div>
 
-  <!--<div
+  <div
     *ngIf="editor && $hasControls(block)"
-    class="controls row"
+    class="main-controls row"
   >
     <mat-checkbox
-      *ngIf="typeKey == 'block_type'"
       [(ngModel)]="block.is_enabled"
     ></mat-checkbox>
-
-    <r-icon-button
-      (click)="$addBlock(block, 0)"
-      [size]="18"
-      icon="down-arrow"
-      class="block-control row revert ml-2"
-    > + </r-icon-button>
-
-    <r-icon-button
-      (click)="$addBlock(block, 1)"
-      [size]="18"
-      icon="down-arrow"
-      class="block-control row ml-1"
-    > + </r-icon-button>
 
     <r-icon-button
       (click)="$swapElements(block)"
       [size]="18"
       icon="repeat"
-      class="block-control ml-3"
-    ></r-icon-button>
-
-    <r-icon-button
-      (click)="$move(block, -1)"
-      [size]="18"
-      icon="down-arrow"
-      class="block-control revert"
+      class="ml-2"
     ></r-icon-button>
 
     <r-icon-button
       (click)="$remove(block)"
       [size]="18"
       icon="close"
-      class="ml-3"
+      class="ml-2"
     ></r-icon-button>
-  </div-->
+  </div>
 </div>

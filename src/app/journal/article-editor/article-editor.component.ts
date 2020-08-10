@@ -90,8 +90,14 @@ export class ArticleEditorComponent implements OnInit {
         subtitle: '',
       },
       content_elements: [
-        { element_type: 'blank' },
-        { element_type: 'blank' },
+        {
+          element_type: 'blank',
+          props: {},
+        },
+        {
+          element_type: 'blank',
+          props: {},
+        },
       ],
     });
   }

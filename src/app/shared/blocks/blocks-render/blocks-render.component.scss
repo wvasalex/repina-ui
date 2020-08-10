@@ -28,7 +28,13 @@
   transition: 300ms;
 }
 
-::ng-deep {
+.main-controls {
+  position: absolute;
+  right: 40px;
+  top: 80px;
+}
+
+:host ::ng-deep {
   .editable {
     border-bottom: 1px dashed #CFD8DC;
     min-height: 32px;
@@ -49,14 +55,14 @@
   margin: 48px 0;
 
   &.move-down {
-    border-top: 1px solid #000;
+    border-top: 1px solid #ccc;
     .icon {
       margin-top: -3px;
     }
   }
 
   &.move-up  {
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #ccc;
     .icon {
       margin-bottom: -3px;
     }
@@ -67,7 +73,7 @@
     height: 80px;
     border-bottom-left-radius: 100px;  /* 100px of height + 10px of border */
     border-bottom-right-radius: 100px; /* 100px of height + 10px of border */
-    border: 1px solid #000;
+    border: 1px solid #ccc;
     border-top: 3px solid #fff;
     padding: 0 36px 36px 36px;
     background: #fff;

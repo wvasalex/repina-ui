@@ -23,8 +23,17 @@ export class BlocksRenderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public $visible(blocks: ArticleContentBlock[]) {
+    return blocks.filter((block: ArticleContentBlock) => {
+      return !block._destroy;
+    }).sort((a, b) => {
+      return a.position - b.position;
+    });
+  }
+
   public $hasControls(block: ArticleContentBlock) {
-    return block.block_type !== 'article-header';
+    return this.typeKey == 'block_type' &&
+      block.block_type !== 'article-header';
   }
 
   public $remove(block: ArticleContentBlock) {
