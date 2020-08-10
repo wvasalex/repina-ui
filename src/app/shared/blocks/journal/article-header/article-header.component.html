@@ -3,22 +3,28 @@
     [subtitle]="props.subtitle"
   >
     <div
-      [r-block]="editor"
       (contentChanged)="$contentChanged($event, 'title')"
+      [r-block]="editor"
+      [innerHTML]="$getValue('title')"
       title
       class="h2 mt-1"
     >
-      {{$getValue('title')}}
     </div>
     <div
-      [r-block]="editor"
       (contentChanged)="$contentChanged($event, 'description')"
+      [r-block]="editor"
+      [innerHTML]="$getValue('description')"
       description
       class="text32 mt-1_5"
     >
-      {{$getValue('description')}}
     </div>
 
-    <r-image [src]="'/assets/pictures/journal/article_header.png'"></r-image>
+    <r-article-image
+      [id]="elements && elements[0].id"
+      [contentFile]="elements && elements[0].content_file"
+      [props]="{src:'/assets/pictures/journal/article_header.png'}"
+      [editor]="editor"
+      image
+    ></r-article-image>
   </r-card>
 </r-padding>

@@ -3,3 +3,55 @@
   padding-bottom: 6rem;
   width: 100%;
 }
+
+:host r-card ::ng-deep .row-column {
+  flex-direction: row !important;
+}
+
+[image] {
+  border-radius: 50%;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.w1920 :host {
+  [image] {
+    min-width: 608px;
+    min-height: 608px;
+    max-width: 608px;
+    max-height: 608px;
+  }
+}
+
+.w1366 :host {
+  [image] {
+    min-width: 496px;
+    min-height: 496px;
+    max-width: 496px;
+    max-height: 496px;
+  }
+}
+
+.w1024 :host {
+  [image] {
+    min-width: 386px;
+    min-height: 386px;
+    max-width: 386px;
+    max-height: 386px;
+  }
+}
+
+.w768 :host {
+  [image] {
+    min-width: 215px;
+    min-height: 215px;
+    max-width: 215px;
+    max-height: 215px;
+  }
+}
+
+.w320 :host {
+  [image] {
+    display: none;
+  }
+}

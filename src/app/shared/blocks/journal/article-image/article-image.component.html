@@ -1,3 +1,17 @@
 <r-image
-  [src]="props.src"
+  *ngIf="contentFile"
+  [src]="contentFile"
 ></r-image>
+
+<button
+  *ngIf="editor && id"
+  mat-flat-button
+>
+  Загрузить
+
+  <input
+    (change)="$upload($event)"
+    type="file"
+    class="file"
+  >
+</button>

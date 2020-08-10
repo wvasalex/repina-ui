@@ -26,6 +26,7 @@
     <r-article-header
       *ngSwitchCase="'article-header'"
       [props]="block.props"
+      [elements]="block.content_elements"
       [editor]="editor"
     ></r-article-header>
 
@@ -51,18 +52,24 @@
 
     <r-article-image
       *ngSwitchCase="'article-image'"
+      [id]="block.id"
+      [contentFile]="block.content_file"
       [props]="block.props"
       [editor]="editor"
     ></r-article-image>
 
     <r-article-quote
       *ngSwitchCase="'article-quote'"
+      [id]="block.id"
+      [contentFile]="block.content_file"
       [props]="block.props"
       [editor]="editor"
     ></r-article-quote>
 
     <r-article-author
       *ngSwitchCase="'article-author'"
+      [id]="block.id"
+      [contentFile]="block.content_file"
       [props]="block.props"
       [editor]="editor"
     ></r-article-author>

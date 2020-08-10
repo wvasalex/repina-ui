@@ -31,7 +31,7 @@
   }
 }*/
 
-:host ::ng-deep r-image {
+:host ::ng-deep [image] {
   max-width: 38rem;
   max-height: 38rem;
 }
@@ -44,6 +44,6 @@
 
 .w1024 :host {
   .left {
-    margin-right: 112px;
+    margin-right: 40px;
   }
 }

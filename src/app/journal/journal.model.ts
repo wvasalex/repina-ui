@@ -24,6 +24,7 @@ export interface ArticleContentBlock {
   blog?: number;
   position?: number;
   is_enabled?: boolean;
+  content_file?: string;
   _destroy?: boolean;
 }
 

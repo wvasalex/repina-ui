@@ -48,7 +48,13 @@ export class ArticleEditorComponent implements OnInit {
             subtitle: 'Заголовок статьи',
             description: 'Тут краткое содержание статьи',
           },
-          content_elements: [],
+          content_elements: [
+            {
+              element_type: 'article-image',
+              props: {},
+              content_file: null,
+            },
+          ],
           is_enabled: true,
         },
         {
@@ -96,6 +102,7 @@ export class ArticleEditorComponent implements OnInit {
 
   private _save() {
     if (!this.article.title) {
+      alert('Название статьи обязательно!');
       return;
     }
 
@@ -108,6 +115,10 @@ export class ArticleEditorComponent implements OnInit {
 
       block.content_elements.forEach((element: ArticleContentElement, elementIndex: number) => {
         element.position = elementIndex;
+
+        if (element.content_file) {
+          delete element.content_file;
+        }
       });
     });
 

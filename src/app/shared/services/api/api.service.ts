@@ -36,6 +36,10 @@ export class ApiService {
     return this._stream('delete', url, body, options);
   }
 
+  public postFile<T>(url: string, data, options?: ApiRequestOptions): Observable<T> {
+    return this.httpClient.patch<T>(url, data);
+  }
+
   private _stream<T>(method: string, url: string, body: StrMap<any> = {}, options?: ApiRequestOptions): Observable<T> {
     return this.httpClient[method]<T>(this.normalizeUrl(method, url, body), body, {
       headers: {
