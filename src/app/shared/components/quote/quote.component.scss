@@ -3,11 +3,6 @@
 :host {
   display: block;
   position: relative;
-  width: max-content;
-}
-
-.inner {
-  @extend .h;
   padding: 2rem;
 
   &:before {
@@ -23,5 +18,9 @@
     margin-top: 2.5rem;
     right: -10px;
     font-size: 78px;
+  }
+
+  ::ng-deep * {
+    @extend .h;
   }
 }

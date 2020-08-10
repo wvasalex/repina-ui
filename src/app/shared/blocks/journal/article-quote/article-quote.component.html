@@ -4,13 +4,11 @@
 >
   <r-quote
     (contentChanged)="$contentChanged($event, 'value')"
+    [innerHTML]="$getValue('value')"
     [r-block]="editor"
     [class.h3]="!props.small"
     [class.h4]="props.small"
   >
-    <span
-      [innerHTML]="$getValue('value')"
-    ></span>
   </r-quote>
 
   <div

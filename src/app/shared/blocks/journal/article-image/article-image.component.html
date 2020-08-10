@@ -5,11 +5,10 @@
 
 <button
   *ngIf="editor && id"
-  mat-flat-button
+  mat-fab
   class="upload"
 >
-  Загрузить
-
+  <r-icon name="components/upload"></r-icon>
   <input
     (change)="$upload($event)"
     type="file"

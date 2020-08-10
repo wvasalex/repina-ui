@@ -18,6 +18,7 @@ export class ArticleEditorComponent implements OnInit {
   public article: Article;
 
   public availableElements: SelectOption[] = [
+    { value: 'blank', label: 'Пустой' },
     { value: 'article-text', label: 'Текст' },
     { value: 'article-image', label: 'Изображение' },
     { value: 'article-quote', label: 'Цитата' },

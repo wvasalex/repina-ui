@@ -1,8 +1,14 @@
+:host {
+  display: block;
+}
+
 .inner {
+  overflow-wrap: break-word;
   display: block;
   padding: 3rem;
   background: #F8F8F8;
   width: max-content;
+  max-width: 100%;
 
   &.small {
     background: transparent;
