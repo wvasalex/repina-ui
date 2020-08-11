@@ -18,7 +18,7 @@ export class FooterService extends RestService {
 
   public enabled(elements: ContentElement[]): ContentElement[] {
     return elements.filter((element: ContentElement) => {
-      return element.props.enabled;
+      return element.props.enabled && !element._destroy;
     });
   }
 }

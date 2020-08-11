@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 import { ContentBlock, ContentElement } from '@shared/types';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { FooterService } from '@shared/footer/footer.service';
@@ -17,6 +17,7 @@ export class FooterSocialComponent {
   @Output() change: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(
+    private changeDetectorRef: ChangeDetectorRef,
     private toasterService: ToasterService,
     private footerService: FooterService,
   ) {
@@ -47,6 +48,18 @@ export class FooterSocialComponent {
         text: ''
       },
     });
+  }
+
+  public $remove(element: ContentElement) {
+    if (confirm('Удалить ссылку?')) {
+      if (element.id) {
+        element._destroy = true;
+        this._save();
+      }
+      this.social.content_elements.splice(this.social.content_elements.indexOf(element), 1);
+    }
+
+    this.changeDetectorRef.detectChanges();
   }
 
   private _save() {

@@ -5,7 +5,7 @@
   <r-social-item
     *ngFor="let item of $enabled(social.content_elements)"
     [props]="item.props"
-    class="menu-item mr-2"
+    class="social-item mr-2"
   >
   </r-social-item>
 </div>
@@ -23,7 +23,7 @@
     [props]="item.props"
     [editor]="true"
     cdkDrag
-    class="menu-item mr-2"
+    class="social-item mr-2"
   >
     <r-icon-button
       cdkDragHandle
@@ -36,6 +36,12 @@
       [(ngModel)]="item.props.enabled"
       style="margin-bottom:6px;"
     ></mat-checkbox>
+    <r-icon-button
+      (click)="$remove(item)"
+      icon="close"
+      size="16"
+      style="margin-bottom:4px;margin-left: 8px;"
+    ></r-icon-button>
   </r-social-item>
 
   <r-icon-button

@@ -20,10 +20,8 @@ r-logo {
   margin-top: 1rem;
 }
 
-.social {
-  a:not(:last-of-type) {
-    margin-right: 2rem;
-  }
+.contacts {
+  max-width: 50%;
 }
 
 .w1366 :host {

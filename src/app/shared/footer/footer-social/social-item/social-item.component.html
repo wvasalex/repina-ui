@@ -1,5 +1,6 @@
 <a
-  [routerLink]="editor ? null : [props.href]"
+  [attr.href]="editor ? null : [props.href]"
+  target="_blank"
   class="underline"
 >
   <div
