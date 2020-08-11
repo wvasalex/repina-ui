@@ -26,7 +26,7 @@ export class JournalService extends RestService {
     const chuck_size = 3;
 
     for(let i = 0; i < articles.length; i += chuck_size) {
-      const chunk: any[] = articles.slice(i, (i + 1) * chuck_size);
+      const chunk: any[] = articles.slice(i, i + chuck_size);
       if (chunk.length < chuck_size) {
         chunk.push(new Array(chuck_size - chunk.length));
       }

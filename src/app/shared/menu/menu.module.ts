@@ -5,7 +5,6 @@ import { SharedModule } from '../components/shared.module';
 import { RouterModule } from '@angular/router';
 import { BurgerComponent } from './burger/burger.component';
 import { DrawerComponent } from './drawer/drawer.component';
-import { MenuEditorComponent } from './menu-editor/menu-editor.component';
 import { MenuItemComponent } from './menu-item/menu-item.component';
 import { BlocksModule } from '@shared/blocks/blocks.module';
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -17,7 +16,6 @@ import { FormsModule } from '@angular/forms';
     MenuComponent,
     BurgerComponent,
     DrawerComponent,
-    MenuEditorComponent,
     MenuItemComponent,
   ],
   imports: [

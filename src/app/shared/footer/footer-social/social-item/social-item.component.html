@@ -1,0 +1,21 @@
+<a
+  [routerLink]="editor ? null : [props.href]"
+  class="underline"
+>
+  <div
+    [r-block]="editor"
+    (contentChanged)="$contentChanged($event, 'text')"
+    class="text32 bolder"
+  >
+    {{$getValue('text')}}
+  </div>
+  <div
+    *ngIf="editor"
+    [r-block]="editor"
+    (contentChanged)="$contentChanged($event, 'href')"
+  >
+    {{$getValue('href')}}
+  </div>
+</a>
+
+<ng-content></ng-content>

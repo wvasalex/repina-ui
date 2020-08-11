@@ -1,0 +1,45 @@
+<div
+  *ngIf="!editor"
+  class="links"
+>
+  <r-social-item
+    *ngFor="let item of $enabled(social.content_elements)"
+    [props]="item.props"
+    class="menu-item mr-2"
+  >
+  </r-social-item>
+</div>
+
+<div
+  *ngIf="editor"
+  cdkDropList
+  cdkDropListOrientation="horizontal"
+  (cdkDropListDropped)="$sort($event)"
+  class="links"
+>
+  <r-social-item
+    *ngFor="let item of social.content_elements"
+    (change)="$change()"
+    [props]="item.props"
+    [editor]="true"
+    cdkDrag
+    class="menu-item mr-2"
+  >
+    <r-icon-button
+      cdkDragHandle
+      icon="move"
+      size="16"
+      style="margin-bottom:4px;"
+    ></r-icon-button>
+    <mat-checkbox
+      (change)="$change()"
+      [(ngModel)]="item.props.enabled"
+      style="margin-bottom:6px;"
+    ></mat-checkbox>
+  </r-social-item>
+
+  <r-icon-button
+    (click)="$add()"
+    icon="add"
+  ></r-icon-button>
+</div>

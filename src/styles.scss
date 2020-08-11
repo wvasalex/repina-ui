@@ -195,7 +195,7 @@ a, a:visited {
   @extend .row;
 }
 
-.w768, .w320  {
+.w768, .w320 {
   .row-column {
     flex-direction: column !important;
   }
@@ -278,4 +278,23 @@ a, a:visited {
 
 .d-block {
   display: block;
+}
+
+.editable {
+  border-bottom: 1px dashed #CFD8DC;
+  min-height: 32px;
+  min-width: 32px;
+  box-sizing: border-box;
+}
+
+span.editable, a.editable {
+  display: inline-block;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.h-underline:hover {
+  text-decoration: underline;
 }

@@ -35,12 +35,6 @@
 }
 
 :host ::ng-deep {
-  .editable {
-    border-bottom: 1px dashed #CFD8DC;
-    min-height: 32px;
-    min-width: 32px;
-  }
-
   [rel=element_type_0] {
     flex: 1.5;
     max-width: 55%;

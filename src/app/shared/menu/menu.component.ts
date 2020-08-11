@@ -36,11 +36,7 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.menuService.get().pipe(map((blocks: ContentBlock[]) => {
-      return blocks.find((block: ContentBlock) => {
-        return block.block_type === 'menu';
-      });
-    })).subscribe((block: ContentBlock) => {
+    this.menuService.get().subscribe((block: ContentBlock) => {
       block.content_elements.sort((a, b) => {
         return a.position - b.position;
       });
@@ -122,9 +118,7 @@ export class MenuComponent implements OnInit {
   }
 
   public $enabled(elements: ContentElement[]): ContentElement[] {
-    return elements.filter((element: ContentElement) => {
-      return element.props.enabled;
-    });
+    return this.menuService.enabled(elements);
   }
 
   public $sort(event: CdkDragDrop<string[]>) {

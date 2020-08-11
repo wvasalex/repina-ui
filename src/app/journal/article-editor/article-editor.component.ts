@@ -117,6 +117,10 @@ export class ArticleEditorComponent implements OnInit {
       delete this.article.blog_tag;
     }
 
+    if (this.article.content_blocks[0].content_elements[0]?.content_file) {
+      this.article.preview_file = this.article.content_blocks[0].content_elements[0]?.content_file;
+    }
+
     this.article.content_blocks.forEach((block: ArticleContentBlock, index: number) => {
       block.position = index;
 

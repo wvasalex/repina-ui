@@ -1,0 +1,53 @@
+<r-padding
+  [horizontal]="true"
+  class="row-column"
+>
+  <div
+    *ngIf="left"
+    style="margin-right: 1rem"
+  >
+    <r-logo
+      width="401"
+      height="120"
+    ></r-logo>
+
+    <r-footer-left
+      (change)="$save()"
+      [props]="left.content_elements[0].props"
+      [contentFile]="left.content_elements[0].content_file"
+      [editor]="editor"
+    ></r-footer-left>
+  </div>
+
+  <div class="contacts text32">
+    <div>
+      <div>Контакты</div>
+      <div class="bolder">
+        +7 (499) 521-70-73<br>
+        hello+111119@repinabranding.ru
+      </div>
+      <div class="mt-5">Адрес</div>
+      <div class="bolder">
+        Россия, Москва, пр. Мира 102/31
+      </div>
+    </div>
+    <div class="mt-5 social">
+      <r-footer-social
+        *ngIf="social"
+        [social]="social"
+        [editor]="editor"
+      ></r-footer-social>
+    </div>
+  </div>
+</r-padding>
+
+<div
+  *rWithSession
+  class="controls"
+>
+  <r-icon-button
+    (click)="$toggleEditor()"
+    [icon]="(editor ? 'close' : 'edit')"
+    [size]="32"
+  ></r-icon-button>
+</div>

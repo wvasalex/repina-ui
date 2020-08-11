@@ -1,5 +1,15 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, OnInit, Output } from '@angular/core';
-import { MenuItem, MenuItems } from '../menu.model';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  HostBinding,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
+import { MenuService } from '@shared/menu/menu.service';
+import { ContentBlock, ContentElement } from '@shared/types';
 
 @Component({
   selector: 'r-drawer',
@@ -13,14 +23,27 @@ export class DrawerComponent implements OnInit {
 
   @HostBinding('style.height.px') public height: number;
 
-  public items: MenuItem[] = MenuItems;
+  public menu: ContentBlock;
 
-  constructor() { }
+  constructor(
+    private changeDetectorRef: ChangeDetectorRef,
+    private menuService: MenuService,
+  ) {
+  }
 
   ngOnInit(): void {
     if (typeof document !== 'undefined') {
       this.height = document.documentElement.scrollHeight;
     }
+
+    this.menuService.get().subscribe((block: ContentBlock) => {
+      block.content_elements.sort((a, b) => {
+        return a.position - b.position;
+      });
+
+      this.menu = block;
+      this.changeDetectorRef.detectChanges();
+    });
   }
 
   public $closeDrawer() {
@@ -29,5 +52,9 @@ export class DrawerComponent implements OnInit {
 
   public $priceRequest() {
     this.priceRequest.emit();
+  }
+
+  public $enabled(elements: ContentElement[]): ContentElement[] {
+    return this.menuService.enabled(elements);
   }
 }

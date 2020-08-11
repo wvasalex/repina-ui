@@ -25,7 +25,7 @@
         <r-journal-snippet
           [title]="article.blog_tag"
           [description]="article.title"
-          image="/assets/pictures/journal/1.png"
+          [image]="article.preview_file|| '/assets/pictures/journal/1.png'"
         >
         </r-journal-snippet>
       </a>
@@ -44,7 +44,7 @@
           <r-journal-snippet
             [title]="article.blog_tag"
             [description]="article.title"
-            image="/assets/pictures/journal/1.png"
+            [image]="article.preview_file || '/assets/pictures/journal/1.png'"
           >
           </r-journal-snippet>
         </a>
