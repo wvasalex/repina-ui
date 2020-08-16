@@ -1,5 +1,11 @@
 :host {
   position: relative;
+
+  &:hover {
+    .upload {
+      opacity: 1;
+    }
+  }
 }
 
 .file {
@@ -13,7 +19,10 @@
 
 .upload {
   position: absolute;
-  bottom: 8px;
   left: 50%;
+  top: 50%;
   margin-left: -28px;
+  margin-top: -28px;
+  opacity: 0;
+  transition: 300ms;
 }

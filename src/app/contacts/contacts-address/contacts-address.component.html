@@ -1,0 +1,33 @@
+<div class="text32 mt-4">
+  Почтовый адрес
+</div>
+<div class="h3">
+  <span
+    [r-block]="editor"
+    (contentChanged)="$contentChanged($event, 'email_address')"
+  >{{$getValue('email_address')}}</span>
+  <span class="space"></span>@<span
+    [r-block]="editor"
+    (contentChanged)="$contentChanged($event, 'email_domain')"
+  >{{$getValue('email_domain')}}</span>
+</div>
+<div class="text32 mt-4">
+  Телефон
+</div>
+<div
+  [r-block]="editor"
+  (contentChanged)="$contentChanged($event, 'phone')"
+  class="h3"
+>
+  {{$getValue('phone')}}
+</div>
+<div class="text32 mt-4">
+  Адрес
+</div>
+<div
+  [r-block]="editor"
+  (contentChanged)="$contentChanged($event, 'address')"
+  class="h3"
+>
+  {{$getValue('address')}}
+</div>

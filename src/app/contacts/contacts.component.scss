@@ -1,5 +1,5 @@
-.address {
-  padding-right: 3rem;
+.address-wrapper {
+  position: relative;
 }
 
 .map {
@@ -11,9 +11,7 @@
   overflow: hidden;
   transition: 300ms;
 
-  background-position: center;
-  background-repeat: no-repeat;
-  background-image: url('/assets/icons/contacts/map.svg');
+  filter: grayscale(100%);
 }
 
 .pin {
@@ -54,4 +52,10 @@
     width: 64px;
     height: 82px;
   }
+}
+
+.controls {
+  position: absolute;
+  right: 80px;
+  top: 36px;
 }

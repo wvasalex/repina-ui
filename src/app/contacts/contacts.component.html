@@ -1,34 +1,25 @@
 <r-page [contentTmp]="contentTmp">
-
 </r-page>
 
 <ng-template #contentTmp>
-  <r-padding [horizontal]="true">
+  <r-padding>
     <div class="row-column">
-      <div>
-        <div class="address">
-          <img
-            src="/assets/icons/main/success.svg"
-            class="image"
-          >
-          <div class="text32 mt-4">
-            Почтовый адрес
-          </div>
-          <div class="h3">
-            hello+111119<span class="space"></span>@repinabranding.ru
-          </div>
-          <div class="text32 mt-4">
-            Телефон
-          </div>
-          <div class="h3">
-            +7 (499) 521-70-73
-          </div>
-          <div class="text32 mt-4">
-            Адрес
-          </div>
-          <div class="h3">
-            Россия, Москва пр. Мира 102/31
-          </div>
+      <div class="address-wrapper">
+        <r-contacts-address
+          *ngIf="block"
+          (change)="$save()"
+          [props]="block.content_elements[0].props"
+          [editor]="editor"
+        ></r-contacts-address>
+        <div
+          *rWithSession
+          class="controls"
+        >
+          <r-icon-button
+            (click)="$toggleEditor()"
+            icon="edit"
+            [size]="32"
+          ></r-icon-button>
         </div>
       </div>
       <r-request
@@ -38,10 +29,9 @@
       ></r-request>
     </div>
   </r-padding>
-  <div class="map mt-3">
-    <img
-      src="/assets/icons/contacts/pin.svg"
-      class="pin"
-    >
+  <div
+    id="map"
+    class="map mt-3"
+  >
   </div>
 </ng-template>

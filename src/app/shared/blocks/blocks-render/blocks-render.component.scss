@@ -4,7 +4,7 @@
 
 .block_type {
   &:not(:first-of-type) {
-    margin-top: 4rem;
+
   }
 }
 
@@ -47,17 +47,17 @@
 
 .move-block {
   text-align: center;
-  margin: 48px 0;
+  margin: 4px 0;
 
   &.move-down {
-    border-top: 1px solid #ccc;
+    //border-top: 1px solid #ccc;
     .icon {
       margin-top: -3px;
     }
   }
 
   &.move-up  {
-    border-bottom: 1px solid #ccc;
+    //border-bottom: 1px solid #ccc;
     .icon {
       margin-bottom: -3px;
     }
@@ -66,11 +66,11 @@
   .icon {
     width: 300px;
     height: 80px;
-    border-bottom-left-radius: 100px;  /* 100px of height + 10px of border */
-    border-bottom-right-radius: 100px; /* 100px of height + 10px of border */
-    border: 1px solid #ccc;
-    border-top: 3px solid #fff;
-    padding: 0 36px 36px 36px;
-    background: #fff;
+    //border-bottom-left-radius: 100px;  /* 100px of height + 10px of border */
+    //border-bottom-right-radius: 100px; /* 100px of height + 10px of border */
+    //border: 1px solid #ccc;
+    //border-top: 3px solid #fff;
+    padding: 12px;
+    //background: #fff;
   }
 }

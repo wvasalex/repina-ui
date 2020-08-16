@@ -1,0 +1,11 @@
+<div *ngIf="block?.content_elements[0]?.props as data">
+  <div>Контакты</div>
+  <div class="bolder">
+    {{data.phone}}<br>
+    {{data.email_address}}@{{data.email_domain}}
+  </div>
+  <div class="mt-5">Адрес</div>
+  <div class="bolder">
+    {{data.address}}
+  </div>
+</div>

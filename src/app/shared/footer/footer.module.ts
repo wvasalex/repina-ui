@@ -11,6 +11,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { FooterContactsComponent } from './footer-contacts/footer-contacts.component';
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import { RouterModule } from '@angular/router';
     FooterLeftComponent,
     FooterSocialComponent,
     SocialItemComponent,
+    FooterContactsComponent,
   ],
 })
 export class FooterModule {

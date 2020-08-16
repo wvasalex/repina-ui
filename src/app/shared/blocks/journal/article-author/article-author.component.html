@@ -1,4 +1,11 @@
-<r-avatar></r-avatar>
+<r-article-image
+  [id]="id"
+  [contentFile]="contentFile"
+  [props]="props"
+  [editor]="editor"
+  class="avatar"
+></r-article-image>
+
 <div
   [r-block]="editor"
   (contentChanged)="$contentChanged($event, 'name')"
