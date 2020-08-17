@@ -71,8 +71,8 @@ export class ArticleVideoComponent extends BaseBlock implements AfterViewInit, O
       ],
       controls: false,
       autoplay: true,
+      loop: true,
     }, () => {
-      console.log('ready!',this.contentFile);
     });
   }
 }

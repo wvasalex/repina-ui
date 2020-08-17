@@ -29,9 +29,12 @@
       ></r-request>
     </div>
   </r-padding>
-  <div
-    #map
-    class="map mt-3"
-  >
+  <div class="mt-3">
+    <div
+      #map
+      [hidden]="!block?.content_elements[0].props.address"
+      class="map"
+    >
+    </div>
   </div>
 </ng-template>

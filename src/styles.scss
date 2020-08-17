@@ -64,6 +64,10 @@ a, a:visited {
   color: #000;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 .text-white {
   color: white;
 }
