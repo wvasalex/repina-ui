@@ -34,8 +34,8 @@
     "@nguniversal/express-engine": "^10.0.1",
     "angular-in-memory-web-api": "~0.11.0",
     "express": "^4.15.2",
-    "ngx-localstorage": "^3.1.0",
     "rxjs": "~6.5.4",
+    "video.js": "^7.8.4",
     "zone.js": "~0.10.3"
   },
   "devDependencies": {

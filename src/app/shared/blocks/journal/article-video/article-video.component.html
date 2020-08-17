@@ -1,13 +1,10 @@
 <video
-  *ngIf="contentFile"
-  width="400"
-  height="300"
-  controls="controls"
+  #video
+  width="100%"
+  height="100%"
+  class="video-js"
+  muted
 >
-  <source
-    [src]="contentFile"
-    type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'
-  >
 </video>
 
 <button
