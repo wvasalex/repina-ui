@@ -4,7 +4,7 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef, OnDestroy,
-  ViewChild
+  ViewChild, ViewEncapsulation
 } from '@angular/core';
 import videojs from 'video.js';
 import { BaseBlock } from '@shared/blocks/block.component';
@@ -16,6 +16,7 @@ import { ArticleContentElement } from '../../../../journal/journal.model';
   templateUrl: './article-video.component.html',
   styleUrls: ['./article-video.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class ArticleVideoComponent extends BaseBlock implements AfterViewInit, OnDestroy {
   @ViewChild('video', { static: false }) video: ElementRef;

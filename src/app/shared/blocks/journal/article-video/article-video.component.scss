@@ -2,6 +2,9 @@
 
 :host {
   position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
 
   &:hover {
     .upload {
@@ -27,4 +30,9 @@
   margin-top: -28px;
   opacity: 0;
   transition: 300ms;
+}
+
+::ng-deep .video-js {
+  width: 100%;
+  height: 100%;
 }
