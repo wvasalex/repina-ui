@@ -49,6 +49,7 @@ export class ArticleVideoComponent extends BaseBlock implements AfterViewInit, O
       .then((element: ArticleContentElement) => {
         this.contentFile = element.content_file;
         this.changeDetectoRef.detectChanges();
+        this.initPlayer();
       });
   }
 
@@ -68,7 +69,7 @@ export class ArticleVideoComponent extends BaseBlock implements AfterViewInit, O
           src: this.contentFile,
         },
       ],
-      controls: true,
+      controls: false,
       autoplay: true,
     }, () => {
       console.log('ready!',this.contentFile);
