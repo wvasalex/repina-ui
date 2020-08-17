@@ -67,6 +67,14 @@
       [editor]="editor"
     ></r-article-image>
 
+    <r-article-video
+      *ngSwitchCase="'article-video'"
+      [id]="block.id"
+      [contentFile]="block.content_file"
+      [props]="block.props"
+      [editor]="editor"
+    ></r-article-video>
+
     <r-article-quote
       *ngSwitchCase="'article-quote'"
       [id]="block.id"

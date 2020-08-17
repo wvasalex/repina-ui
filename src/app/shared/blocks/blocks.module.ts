@@ -23,6 +23,7 @@ import { BaseBlock } from '@shared/blocks/block.component';
 import { ArticleBlankComponent } from './journal/article-blank/article-blank.component';
 import { BlockSwitcherComponent } from './block-switcher/block-switcher.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { ArticleVideoComponent } from './journal/article-video/article-video.component';
 
 @NgModule({
   imports: [
@@ -62,6 +63,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     ArticleAuthorComponent,
     ArticleBlankComponent,
     BlockSwitcherComponent,
+    ArticleVideoComponent,
   ],
 })
 export class BlocksModule {

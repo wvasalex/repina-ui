@@ -23,6 +23,7 @@ export class ArticleEditorComponent implements OnInit {
     { value: 'article-image', label: 'Изображение' },
     { value: 'article-quote', label: 'Цитата' },
     { value: 'article-author', label: 'Автор' },
+    { value: 'article-video', label: 'Видео' },
   ];
 
   @ViewChild(ArticleHeaderComponent) headerComponent: ArticleHeaderComponent;
