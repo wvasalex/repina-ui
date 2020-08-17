@@ -128,7 +128,7 @@ export class ArticleEditorComponent implements OnInit {
       block.content_elements.forEach((element: ArticleContentElement, elementIndex: number) => {
         element.position = elementIndex;
 
-        if (element.content_file) {
+        if (element.hasOwnProperty('content_file')) {
           delete element.content_file;
         }
       });

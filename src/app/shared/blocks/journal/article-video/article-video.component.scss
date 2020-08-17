@@ -14,7 +14,6 @@ r-article-video {
 
   .video-js {
     width: 100%;
-    height: 100%;
   }
 }
 
@@ -35,8 +34,5 @@ r-article-video {
   margin-top: -28px;
   opacity: 0;
   transition: 300ms;
-}
-
-:host, ::ng-deep video {
-
+  z-index: 1000;
 }

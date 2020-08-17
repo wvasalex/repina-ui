@@ -3,13 +3,14 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  ElementRef, OnDestroy,
-  ViewChild, ViewEncapsulation
+  ElementRef, OnDestroy, OnInit,
+  ViewChild, ViewEncapsulation,
 } from '@angular/core';
 import videojs from 'video.js';
 import { BaseBlock } from '@shared/blocks/block.component';
 import { ApiService } from '@shared/services/api/api.service';
 import { ArticleContentElement } from '../../../../journal/journal.model';
+import { ToasterService } from '@shared/toaster/toaster.service';
 
 @Component({
   selector: 'r-article-video',
@@ -18,18 +19,19 @@ import { ArticleContentElement } from '../../../../journal/journal.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class ArticleVideoComponent extends BaseBlock implements AfterViewInit, OnDestroy {
-  @ViewChild('video', { static: false }) video: ElementRef;
+export class ArticleVideoComponent extends BaseBlock implements OnInit, OnDestroy {
+  @ViewChild('video', { static: true }) video: ElementRef;
 
   private player: videojs.Player;
 
   constructor(
     private changeDetectoRef: ChangeDetectorRef,
+    private toasterService: ToasterService,
     private api: ApiService) {
     super();
   }
 
-  public ngAfterViewInit(): void {
+  public ngOnInit(): void {
     this.initPlayer();
   }
 
@@ -44,35 +46,44 @@ export class ArticleVideoComponent extends BaseBlock implements AfterViewInit, O
     const data = new FormData();
     data.append('content_file', file);
 
+    this.toasterService.info('Загрузка видео...');
     this.api.postFile('/api/v1/blog_content_elements/' + this.id + '/', data)
       .toPromise()
       .then((element: ArticleContentElement) => {
         this.contentFile = element.content_file;
         this.changeDetectoRef.detectChanges();
+
+        this.toasterService.info('Видео загружено!');
+
         this.initPlayer();
       });
   }
 
   private initPlayer() {
-    if (this.player) {
-      this.player.dispose();
-    }
-
     if (!this.contentFile) {
       return;
     }
 
-    this.player = videojs(this.video.nativeElement, {
-      sources: [
+    if (!this.player) {
+      this.player = videojs(this.video.nativeElement, {
+        sources: [
+          {
+            type: 'video/mp4',
+            src: this.contentFile,
+          },
+        ],
+        controls: false,
+        autoplay: true,
+        loop: true,
+      }, () => {
+      });
+    } else {
+      this.player.src([
         {
           type: 'video/mp4',
           src: this.contentFile,
         },
-      ],
-      controls: false,
-      autoplay: true,
-      loop: true,
-    }, () => {
-    });
+      ]);
+    }
   }
 }
