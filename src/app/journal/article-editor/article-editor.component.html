@@ -26,6 +26,7 @@
 
   <r-blocks-render
     (addBlock)="$addBlock($event)"
+    [render]="render"
     [blocks]="article.content_blocks"
     [availableElements]="availableElements"
     [editor]="true"

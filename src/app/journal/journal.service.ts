@@ -4,6 +4,13 @@ import { ApiService } from '@shared/services/api/api.service';
 import { ApiConfig } from '@shared/services/api/api.model';
 import { StrMap } from '@shared/types';
 import { Article } from './journal.model';
+import { ArticleHeaderComponent } from './article/article-header/article-header.component';
+import { ArticlePartComponent } from './article/article-part/article-part.component';
+import { ArticleAuthorComponent } from './article/article-author/article-author.component';
+import { ArticleImageComponent } from './article/article-image/article-image.component';
+import { ArticleTextComponent } from './article/article-text/article-text.component';
+import { ArticleQuoteComponent } from './article/article-quote/article-quote.component';
+import { ArticleVideoComponent } from './article/article-video/article-video.component';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +18,16 @@ import { Article } from './journal.model';
 export class JournalService extends RestService {
   public config: ApiConfig = {
     path: '/blogs/',
+  };
+
+  public render = {
+    'article-header': ArticleHeaderComponent,
+    'article-part': ArticlePartComponent,
+    'article-author': ArticleAuthorComponent,
+    'article-image': ArticleImageComponent,
+    'article-text': ArticleTextComponent,
+    'article-quote': ArticleQuoteComponent,
+    'article-video': ArticleVideoComponent,
   };
 
   constructor(public api: ApiService) {

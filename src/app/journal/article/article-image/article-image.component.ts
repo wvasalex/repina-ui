@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { BaseBlock } from '@shared/blocks/block.component';
 import { ApiService } from '@shared/services/api/api.service';
-import { ArticleContentElement } from '../../../../journal/journal.model';
+import { ContentElement } from '@shared/types';
 
 @Component({
   selector: 'r-article-image',
@@ -23,7 +23,7 @@ export class ArticleImageComponent extends BaseBlock {
 
     this.api.postFile('/api/v1/blog_content_elements/' + this.id + '/', data)
       .toPromise()
-      .then((element: ArticleContentElement) => {
+      .then((element: ContentElement) => {
         this.contentFile = element.content_file;
         this.changeDetectoRef.detectChanges();
       });

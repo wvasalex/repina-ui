@@ -39,6 +39,7 @@
 
       <r-blocks-render
         *ngIf="elements?.length"
+        [render]="render"
         [blocks]="elements"
         [editor]="editor"
         [availableElements]="availableElements"

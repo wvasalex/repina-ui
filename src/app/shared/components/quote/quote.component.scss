@@ -8,15 +8,15 @@
   &:before {
     content: '“';
     position: absolute;
-    margin-left: calc(-48px);
+    margin-left: -48px;
     font-size: 78px;
   }
 
   &:after {
     content: '”';
     position: absolute;
-    margin-top: 2.5rem;
-    right: -10px;
+    bottom: 0;
+    right: 16px;
     font-size: 78px;
   }
 

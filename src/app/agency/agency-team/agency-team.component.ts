@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { TeamMember } from './agency-team.model';
+import { BaseBlock } from '@shared/blocks/block.component';
 
 @Component({
   selector: 'r-agency-team',
@@ -7,7 +8,7 @@ import { TeamMember } from './agency-team.model';
   styleUrls: ['./agency-team.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AgencyTeamComponent implements OnInit {
+export class AgencyTeamComponent extends BaseBlock {
   public members: TeamMember[] = [
     {
       name: 'Анвар Курбанов',
@@ -30,11 +31,5 @@ export class AgencyTeamComponent implements OnInit {
       position: 4,
     },
   ];
-
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
 
 }

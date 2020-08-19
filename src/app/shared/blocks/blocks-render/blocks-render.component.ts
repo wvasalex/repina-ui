@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ArticleContentBlock, ArticleContentElement } from '../../../journal/journal.model';
 import { moveItemInArray } from '@angular/cdk/drag-drop';
-import { StrMap } from '@shared/types';
+import { ContentBlock, ContentElement, StrMap } from '@shared/types';
 import { SelectOption } from '@shared/components/select/select.model';
 
 @Component({
@@ -10,7 +10,8 @@ import { SelectOption } from '@shared/components/select/select.model';
   styleUrls: ['./blocks-render.component.scss'],
 })
 export class BlocksRenderComponent implements OnInit {
-  @Input() blocks: ArticleContentBlock[];
+  @Input() render: StrMap<Component> = {};
+  @Input() blocks: ContentBlock[];
   @Input() editor: boolean = false;
   @Input() typeKey: 'block_type' | 'element_type' = 'block_type';
   @Input() availableElements: SelectOption[];
@@ -23,7 +24,7 @@ export class BlocksRenderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public $visible(blocks: ArticleContentBlock[]) {
+  public $visible(blocks: ContentBlock[]) {
     return blocks.filter((block: ArticleContentBlock) => {
       return !block._destroy;
     }).sort((a, b) => {
@@ -31,12 +32,13 @@ export class BlocksRenderComponent implements OnInit {
     });
   }
 
-  public $hasControls(block: ArticleContentBlock) {
+  public $hasControls(block: ContentBlock) {
     return this.typeKey == 'block_type' &&
-      block.block_type !== 'article-header';
+      block.block_type !== 'article-header' &&
+      block.block_type.match(/article/);
   }
 
-  public $remove(block: ArticleContentBlock) {
+  public $remove(block: ContentBlock) {
     if (confirm('Удалить контент?')) {
       if (block.id) {
         block._destroy = true;
@@ -46,7 +48,7 @@ export class BlocksRenderComponent implements OnInit {
     }
   }
 
-  public $move(block: ArticleContentBlock, offset: number) {
+  public $move(block: ContentBlock, offset: number) {
     const position: number = block.position;
     const new_position = position + offset;
 
@@ -57,7 +59,7 @@ export class BlocksRenderComponent implements OnInit {
     moveItemInArray(this.blocks, position, new_position);
   }
 
-  public $swapElements(block: ArticleContentBlock) {
+  public $swapElements(block: ContentBlock) {
     const elements: ArticleContentElement[] = block.content_elements;
     const len: number = elements.length;
     block.content_elements.forEach((element: ArticleContentElement) => {
@@ -66,11 +68,15 @@ export class BlocksRenderComponent implements OnInit {
     block.content_elements = block.content_elements.reverse();
   }
 
-  public $addBlock(target: ArticleContentBlock, offset: number) {
+  public $addBlock(target: ContentBlock, offset: number) {
     this.addBlock.emit({ target, offset });
   }
 
-  public $setType(target: ArticleContentBlock, type: string) {
+  public $setType(target: ContentBlock, type: string) {
     target.element_type = type;
+  }
+
+  public $component(block: ContentBlock) {
+    return this.render[block[this.typeKey]];
   }
 }

@@ -12,6 +12,7 @@ export class BaseBlock {
   @Input() contentFile: string;
   @Input() @HostBinding('attr.editor') editor: boolean = false;
   @Input() elements: any[];
+  @Input() render;
 
   @Output() change: EventEmitter<void> = new EventEmitter<void>();
   @Output() removeBlock: EventEmitter<number> = new EventEmitter<number>();

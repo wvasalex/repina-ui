@@ -7,15 +7,27 @@ import { PageModule } from '@shared/page/page.module';
 import { GridModule } from '@shared/grid/grid.module';
 import { SharedModule } from '@shared/components/shared.module';
 import { BlocksModule } from '@shared/blocks/blocks.module';
-import { AgencyAwardsComponent } from './agency-awards/agency-awards.component';
-import { AgencyTeamComponent } from './agency-team/agency-team.component';
 import { AgencyFeedbackComponent } from './agency-feedback/agency-feedback.component';
 import { AgencyCustomersComponent } from './agency-customers/agency-customers.component';
 import { AgencyMediaComponent } from './agency-media/agency-media.component';
 import { AgencyPrimaryComponent } from './agency-primary/agency-primary.component';
+import { AgencyAchievementsComponent } from './agency-achievements/agency-achievements.component';
+import { AgencyRepinaComponent } from './agency-repina/agency-repina.component';
+import { AgencyTeamComponent } from './agency-team/agency-team.component';
+import { AgencyAwardsComponent } from './agency-awards/agency-awards.component';
 
 @NgModule({
-  declarations: [AgencyComponent, AgencyAwardsComponent, AgencyTeamComponent, AgencyFeedbackComponent, AgencyCustomersComponent, AgencyMediaComponent, AgencyPrimaryComponent],
+  declarations: [
+    AgencyComponent,
+    AgencyPrimaryComponent,
+    AgencyFeedbackComponent,
+    AgencyCustomersComponent,
+    AgencyMediaComponent,
+    AgencyAchievementsComponent,
+    AgencyRepinaComponent,
+    AgencyTeamComponent,
+    AgencyAwardsComponent,
+  ],
   imports: [
     CommonModule,
     AgencyRoutingModule,
@@ -23,6 +35,7 @@ import { AgencyPrimaryComponent } from './agency-primary/agency-primary.componen
     GridModule,
     SharedModule,
     BlocksModule,
-  ]
+  ],
 })
-export class AgencyModule { }
+export class AgencyModule {
+}

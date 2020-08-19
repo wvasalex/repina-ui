@@ -9,8 +9,8 @@ import {
 import videojs from 'video.js';
 import { BaseBlock } from '@shared/blocks/block.component';
 import { ApiService } from '@shared/services/api/api.service';
-import { ArticleContentElement } from '../../../../journal/journal.model';
 import { ToasterService } from '@shared/toaster/toaster.service';
+import { ContentElement } from '@shared/types';
 
 @Component({
   selector: 'r-article-video',
@@ -49,7 +49,7 @@ export class ArticleVideoComponent extends BaseBlock implements OnInit, OnDestro
     this.toasterService.info('Загрузка видео...');
     this.api.postFile('/api/v1/blog_content_elements/' + this.id + '/', data)
       .toPromise()
-      .then((element: ArticleContentElement) => {
+      .then((element: ContentElement) => {
         this.contentFile = element.content_file;
         this.changeDetectoRef.detectChanges();
 

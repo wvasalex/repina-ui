@@ -1,9 +1,8 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ArticleHeaderComponent } from '@shared/blocks/journal/article-header/article-header.component';
+import { ArticleHeaderComponent } from '../article/article-header/article-header.component';
 import { JournalService } from '../journal.service';
 import { Article, ArticleContentBlock, ArticleContentElement } from '../journal.model';
-import { of } from 'rxjs';
 import { StrMap } from '@shared/types';
 import { ToasterService } from '@shared/toaster/toaster.service';
 import { SelectOption } from '@shared/components/select/select.model';
@@ -16,6 +15,8 @@ import { SelectOption } from '@shared/components/select/select.model';
 })
 export class ArticleEditorComponent implements OnInit {
   public article: Article;
+
+  public render = this.journalService.render;
 
   public availableElements: SelectOption[] = [
     { value: 'blank', label: 'Пустой' },
