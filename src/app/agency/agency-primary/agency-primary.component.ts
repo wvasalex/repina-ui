@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BaseBlock } from '@shared/blocks/block.component';
+import { ContentElement } from '@shared/types';
 
 @Component({
   selector: 'r-agency-primary',
@@ -14,19 +15,16 @@ export class AgencyPrimaryComponent extends BaseBlock {
     '/assets/icons/agency/word3.svg',
   ];
 
-  public blocks: string[][] = [
-    ['3 слова о нас'],
-    [
+  /*
+  [
       'Энергия',
-      'Энергия — это то, что двигает ваш бизнес вперед. Та же энергия переполняет нас. Мы приумножим вашу энергию и поможем найти фокус.',
-    ],
+      ],
     [
       'Страсть',
-      'Бизнес — это страсть предпринимателя, которую он транслирует миру. Наш бизнес — это брендинг. Мы выступаем проводниками вашей страсти через свою, мы создаем воплощение вашего бизнеса в смысловых и визуальных формах.',
-    ],
+      ],
     [
       'Новаторство',
       'Наш бизнес — это смочь сказать что-то новое там, где все уже сказано. Это вызов, который мы принимаем в каждом новом проекте. Мы стремимся быть авторами эффективных и вдохновляющих решений, которыми вы сможете гордиться.',
     ],
-  ];
+   */
 }

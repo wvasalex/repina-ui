@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ContentElement } from '@shared/types';
 
 @Component({
   selector: 'r-icon-nav-list',
@@ -7,6 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class IconNavListComponent implements OnInit {
   @Input() blocks: string[][];
+  @Input() title: String;
+  @Input() elements: ContentElement[];
   @Input() images: string[] = [];
 
   public primary: string;
@@ -14,7 +17,6 @@ export class IconNavListComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.primary = this.blocks.splice(0, 1)[0][0];
   }
 
 }

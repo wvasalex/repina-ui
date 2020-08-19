@@ -7,25 +7,23 @@
       [routerLink]="[]"
       class="h3"
     >
-      {{primary}}
+      {{title}}
     </a>
   </div>
   <div class="blocks column">
     <div
-      *ngFor="let block of blocks; let first = first; let index = index;"
+      *ngFor="let el of elements; let first = first; let index = index;"
       [class.mt-6]="!first"
       class="nav-block"
     >
       <div class="row-column">
         <img [src]="images[index]"/>
         <div class="column">
-          <a
-            *ngFor="let link of block; let firstLink = first;"
-            [routerLink]="[]"
-            [class.h3]="firstLink"
-            [class.text32]="!firstLink"
-          >
-            {{link}}
+          <a href="" class="h3">
+            {{el.props.title}}
+          </a>
+          <a href="" class="text32">
+            {{el.props.text}}
           </a>
         </div>
       </div>

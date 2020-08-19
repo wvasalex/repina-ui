@@ -15,6 +15,11 @@ import { AgencyAchievementsComponent } from './agency-achievements/agency-achiev
 import { AgencyRepinaComponent } from './agency-repina/agency-repina.component';
 import { AgencyTeamComponent } from './agency-team/agency-team.component';
 import { AgencyAwardsComponent } from './agency-awards/agency-awards.component';
+import { AgencyImagesComponent } from './agency-images/agency-images.component';
+import { AgencyAchievementComponent } from './agency-achievements/agency-achievement/agency-achievement.component';
+import { AgencyPrimaryTextComponent } from './agency-primary/agency-primary-text/agency-primary-text.component';
+import { AgencyEditorComponent } from './agency-editor/agency-editor.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -27,6 +32,10 @@ import { AgencyAwardsComponent } from './agency-awards/agency-awards.component';
     AgencyRepinaComponent,
     AgencyTeamComponent,
     AgencyAwardsComponent,
+    AgencyImagesComponent,
+    AgencyAchievementComponent,
+    AgencyPrimaryTextComponent,
+    AgencyEditorComponent,
   ],
   imports: [
     CommonModule,
@@ -35,6 +44,7 @@ import { AgencyAwardsComponent } from './agency-awards/agency-awards.component';
     GridModule,
     SharedModule,
     BlocksModule,
+    MatButtonModule,
   ],
 })
 export class AgencyModule {

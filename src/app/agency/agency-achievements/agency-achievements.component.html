@@ -3,29 +3,10 @@
   class="achievements"
 >
   <div class="row-column">
-    <div>
-      <div class="h2">
-        7 место
-      </div>
-      <div class="text32 mt-1">
-        В рейтинге лучших брендинговых агентств России по версии АКАР
-      </div>
-    </div>
-    <div>
-      <div class="h2">
-        8 премий
-      </div>
-      <div class="text32 mt-1">
-        Самые престижные мировые и российские премии в области брендинга
-      </div>
-    </div>
-    <div>
-      <div class="h2">
-        215 проектов
-      </div>
-      <div class="text32 mt-1">
-        FMCG, ритейл, медицина, технологии, финансы, e-commerce, промышленность, девелопмент
-      </div>
-    </div>
+    <r-agency-achievement
+      *ngFor="let element of elements"
+      [props]="element.props"
+      [editor]="editor"
+    ></r-agency-achievement>
   </div>
 </r-padding>

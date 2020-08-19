@@ -146,6 +146,4 @@ export class ArticleEditorComponent implements OnInit {
 
     this.toasterService.wrapPromise(req, 'Сохранено', 'Не удалось сохранить');
   }
-
-
 }

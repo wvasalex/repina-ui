@@ -13,18 +13,20 @@
   </r-padding>
 
   <r-blocks-render
-    *ngIf="blocks$ | async as blocks"
+    *ngIf="blocks"
+    (change)="$save()"
     [render]="render"
     [blocks]="blocks"
+    [editor]="true"
   ></r-blocks-render>
 
   <r-fabs *rWithSession>
     <button
-      [routerLink]="['/agency', 'edit']"
+      (click)="$save()"
       mat-fab
       color="primary"
     >
-      <r-icon name="components/edit-white"></r-icon>
+      <r-icon name="components/checked-white"></r-icon>
     </button>
   </r-fabs>
 </r-page>

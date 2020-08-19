@@ -1,0 +1,12 @@
+<div
+  [r-block]="editor"
+  [innerHTML]="$getValue('title')"
+  (contentChanged)="$contentChanged($event, 'title')"
+  class="h2"
+></div>
+<div
+  [r-block]="editor"
+  [innerHTML]="$getValue('text')"
+  (contentChanged)="$contentChanged($event, 'text')"
+  class="text32 mt-1 mr-1"
+></div>

@@ -6,14 +6,24 @@
   </div>
   <r-grid-text>
     <div class="column mh-4">
-      <div class="h3">Валерия Репина</div>
-      <div class="text32 mt-1">
-        Креативный директор, специалист по визуальным коммуникациям, эксперт по брендингу, колумнист в Forbes, член
-        жюри российских премий в сфере бизнеса и маркетинга.
-      </div>
-      <r-button class="mt-3">
-        Колонка Валерии Репиной
-      </r-button>
+      <div
+        [r-block]="editor"
+        [innerHTML]="$getValue('title')"
+        (contentChanged)="$contentChanged($event, 'title')"
+        class="h3"
+      ></div>
+      <div
+        [r-block]="editor"
+        [innerHTML]="$getValue('text')"
+        (contentChanged)="$contentChanged($event, 'text')"
+        class="text32 mt-1"
+      ></div>
+      <r-button
+        [r-block]="editor"
+        [innerHTML]="$getValue('buttonText')"
+        (contentChanged)="$contentChanged($event, 'buttonText')"
+        class="mt-3"
+      ></r-button>
     </div>
   </r-grid-text>
 </div>
