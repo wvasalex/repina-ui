@@ -2,4 +2,16 @@
   title="3 слова о нас"
   [images]="images"
   [elements]="elements"
+  [itemTemplate]="itemTemplate"
 ></r-icon-nav-list>
+
+<ng-template
+  #itemTemplate
+  let-element="element"
+>
+  <r-agency-primary-text
+    [editor]="editor"
+    [id]="element.id"
+    [props]="element.props"
+  ></r-agency-primary-text>
+</ng-template>

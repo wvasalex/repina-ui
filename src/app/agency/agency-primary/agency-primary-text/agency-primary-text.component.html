@@ -1,1 +1,13 @@
-<p>agency-primary-text works!</p>
+<div
+  [r-block]="editor"
+  [innerHTML]="$getValue('title')"
+  (contentChanged)="$contentChanged($event, 'title')"
+  class="h3"
+></div>
+
+<div
+  [r-block]="editor"
+  [innerHTML]="$getValue('text')"
+  (contentChanged)="$contentChanged($event, 'text')"
+  class="text32"
+></div>

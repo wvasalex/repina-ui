@@ -18,15 +18,21 @@
     >
       <div class="row-column">
         <img [src]="images[index]"/>
-        <div class="column">
-          <a href="" class="h3">
-            {{el.props.title}}
-          </a>
-          <a href="" class="text32">
-            {{el.props.text}}
-          </a>
-        </div>
+        <ng-container
+          *ngTemplateOutlet="itemTemplate; context: {element: el, index: index}"
+        ></ng-container>
       </div>
     </div>
   </div>
 </r-padding>
+
+<!--
+<div class="column">
+          <div class="h3">
+            {{el.props.title}}
+          </div>
+          <div class="text32">
+            {{el.props.text}}
+          </div>
+        </div>
+-->

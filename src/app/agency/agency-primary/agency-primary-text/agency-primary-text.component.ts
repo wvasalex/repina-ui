@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { BaseBlock } from '@shared/blocks/block.component';
 
 @Component({
   selector: 'r-agency-primary-text',
   templateUrl: './agency-primary-text.component.html',
-  styleUrls: ['./agency-primary-text.component.scss']
+  styleUrls: ['./agency-primary-text.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AgencyPrimaryTextComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+export class AgencyPrimaryTextComponent extends BaseBlock {
 
 }
