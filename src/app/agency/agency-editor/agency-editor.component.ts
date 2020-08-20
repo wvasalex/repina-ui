@@ -34,6 +34,7 @@ export class AgencyEditorComponent implements OnInit {
   private _save() {
     const promises = [];
     this.blocks.forEach((block: ContentBlock) => {
+      block.is_enabled = true;
       promises.push(this.agencyService.save(block).toPromise());
     });
 
