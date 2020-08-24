@@ -14,22 +14,25 @@
     ></r-badge-list>
   </r-padding>
 
-  <mat-grid-list
-    [cols]="cols"
-    rowHeight="1.5:1"
-    gutterSize="30"
+  <div
+    *ngFor="let group of groups"
+    class="row-column"
   >
-    <mat-grid-tile
-      *ngFor="let image of images; let index = index"
-    >
-      <a [routerLink]="['/projects/project-name']">
+    <ng-container *ngFor="let project of group; let index = index;">
+      <a
+        *ngIf="project.slug"
+        [routerLink]="[project.slug]"
+        [class.m30]="index == 1"
+      >
         <r-image
-          [src]="'/assets/pictures/' + image + '.png'"
+          [src]="project.preview_file"
           r-parallax
         ></r-image>
       </a>
-    </mat-grid-tile>
-  </mat-grid-list>
+
+      <div *ngIf="!project.slug"></div>
+    </ng-container>
+  </div>
 
   <r-fabs *rWithSession>
     <button

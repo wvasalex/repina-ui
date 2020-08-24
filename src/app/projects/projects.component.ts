@@ -1,7 +1,10 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { BreakpointState } from '@angular/cdk/layout';
-import { BreakpointService } from '../shared/breakpoint.service';
+import { BreakpointService } from '@shared/breakpoint.service';
+import { Article } from '../journal/journal.model';
+import { ProjectsService } from './projects.service';
+import { Project } from './projects.model';
 
 @Component({
   selector: 'r-projects',
@@ -11,9 +14,9 @@ import { BreakpointService } from '../shared/breakpoint.service';
 })
 export class ProjectsComponent implements OnInit, OnDestroy {
   public cols: number = 3;
-  public images: string[] = ['1' ,'2', '3', '4', '5', '6', '7', '8', '9', '10',
-    '1' ,'2', '3', '4', '5', '6', '7', '8', '9', '10',
-    '1' ,'2', '3', '4', '5', '6', '7', '8', '9', '10'];
+
+  public groups: Project[][];
+
   public types: string[] = [
     'Все', 'Брендинг', 'Позиционирование', 'Нейминг', 'Фирменный стиль',
     'Упаковка', 'Брендбук', 'Интерьер', 'Ритейл-брендинг', 'IT-брендинг',
@@ -22,12 +25,19 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   private _observe: Subscription;
 
   constructor(private changeDetectorRef: ChangeDetectorRef,
-              private breakpointService: BreakpointService) { }
+              private breakpointService: BreakpointService,
+              private projectsService: ProjectsService) { }
 
   ngOnInit(): void {
+    this.projectsService.get<Project>().subscribe((projects: Project[]) => {
+      this.groups = this.projectsService.groupProjectss(projects);
+
+      this.changeDetectorRef.detectChanges();
+    });
+
     this._observe = this.breakpointService.change$.subscribe((result: BreakpointState) => {
       let points: string[] = ['320', '768', '1024', '1366'].filter((width: string) => {
-        return result.breakpoints[`(max-width: ${width}px)`];
+        return result.breakpoints[`(min-width: ${width}px)`];
       });
 
       if (points.indexOf('320') > -1) {

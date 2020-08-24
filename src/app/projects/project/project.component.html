@@ -1,6 +1,6 @@
 <r-page
   *ngIf="project"
-  backgroundImage="url('/assets/pictures/projects/detail.png')"
+  [backgroundImage]="project.preview_file ? 'url(' + project.preview_file + ')' : null"
 >
   <r-blocks-render
     [render]="render"

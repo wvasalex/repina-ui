@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChil
 import { ActivatedRoute, Router } from '@angular/router';
 import { ArticleHeaderComponent } from '../article/article-header/article-header.component';
 import { JournalService } from '../journal.service';
-import { Article, ArticleContentBlock, ArticleContentElement } from '../journal.model';
-import { StrMap } from '@shared/types';
+import { Article } from '../journal.model';
+import { ContentBlock, ContentElement, StrMap } from '@shared/types';
 import { ToasterService } from '@shared/toaster/toaster.service';
 import { SelectOption } from '@shared/components/select/select.model';
 
@@ -123,10 +123,10 @@ export class ArticleEditorComponent implements OnInit {
       this.article.preview_file = this.article.content_blocks[0].content_elements[0]?.content_file;
     }
 
-    this.article.content_blocks.forEach((block: ArticleContentBlock, index: number) => {
+    this.article.content_blocks.forEach((block: ContentBlock, index: number) => {
       block.position = index;
 
-      block.content_elements.forEach((element: ArticleContentElement, elementIndex: number) => {
+      block.content_elements.forEach((element: ContentElement, elementIndex: number) => {
         element.position = elementIndex;
 
         if (element.hasOwnProperty('content_file')) {

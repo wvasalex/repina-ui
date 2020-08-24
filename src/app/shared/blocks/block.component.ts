@@ -1,6 +1,5 @@
 import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
-import { StrMap } from '../types';
-import { ArticleContentBlock, ArticleContentElement } from '../../journal/journal.model';
+import { ContentElement, StrMap } from '../types';
 
 @Component({
   selector:'base-block',
@@ -13,6 +12,7 @@ export class BaseBlock {
   @Input() @HostBinding('attr.editor') editor: boolean = false;
   @Input() elements: any[];
   @Input() render;
+  @Input() index: number = 0;
 
   @Output() change: EventEmitter<void> = new EventEmitter<void>();
   @Output() removeBlock: EventEmitter<number> = new EventEmitter<number>();
@@ -46,8 +46,8 @@ export class BaseBlock {
     this.change.emit();
   }
 
-  public $visibleElements(elements: ArticleContentElement[]) {
-    return elements.filter((element: ArticleContentElement) => {
+  public $visibleElements(elements: ContentElement[]) {
+    return elements.filter((element: ContentElement) => {
       return !element._destroy;
     });
   }

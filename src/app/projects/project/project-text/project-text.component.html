@@ -3,7 +3,7 @@
   [horizontal]="true"
 >
   <div
-    *ngIf="$getValue('i')"
+    *ngIf="$getValue('i') && index == 0"
     [r-block]="editor"
     [innerHTML]="'0' + $getValue('i')"
     (contentChanged)="$contentChanged($event, 'i')"

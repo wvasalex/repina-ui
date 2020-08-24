@@ -3,6 +3,7 @@ import { ContentBlock } from '@shared/types';
 export interface Project {
   title: string;
   status: 'setup' | 'active' | 'archived';
+  is_enabled: boolean;
   description?: string;
   tags?: [];
   slug?: string;

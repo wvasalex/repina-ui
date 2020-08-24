@@ -1,3 +1,11 @@
+<r-project-image
+  *ngIf="editor && elements.length"
+  [id]="elements[0].id"
+  [contentFile]="elements[0].content_file"
+  [editor]="editor"
+  class="image"
+></r-project-image>
+
 <r-padding [horizontal]="false">
   <div class="nav row-column">
     <div class="links column">
@@ -10,23 +18,8 @@
       <r-project-text
         [props]="props"
         [editor]="editor"
+        [index]="1"
       ></r-project-text>
-
-      <!--<div
-        *ngIf="$getValue('title')"
-        [r-block]="editor"
-        [innerHTML]="$getValue('title')"
-        (contentChanged)="$contentChanged($event, 'title')"
-        class="title h3"
-      ></div>
-
-      <div
-        *ngIf="$getValue('text')"
-        [r-block]="editor"
-        [innerHTML]="$getValue('text')"
-        (contentChanged)="$contentChanged($event, 'text')"
-        class="text32 mt-1"
-      ></div>-->
     </div>
   </div>
 </r-padding>

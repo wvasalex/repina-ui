@@ -42,7 +42,12 @@ export class ProjectEditorComponent implements OnInit {
         {
           block_type: 'project-root',
           props: {},
-          content_elements: [],
+          content_elements: [
+            {
+              element_type: 'project-image',
+              props: {},
+            },
+          ],
         },
       ];
     }
@@ -76,13 +81,16 @@ export class ProjectEditorComponent implements OnInit {
   }
 
   private _save() {
+    const root = this.project.content_blocks[0];
+    if (root.content_elements[0]?.content_file) {
+      this.project.preview_file = root.content_elements[0]?.content_file;
+    }
+    this.project.title = root.props.title;
+    this.project.description = root.props.subtitle;
+
     if (!this.project.title) {
       alert('Название статьи обязательно!');
       return;
-    }
-
-    if (this.project.content_blocks[0].content_elements[0]?.content_file) {
-      this.project.preview_file = this.project.content_blocks[0].content_elements[0]?.content_file;
     }
 
     this.project.content_blocks.forEach((block: ContentBlock, index: number) => {

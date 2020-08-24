@@ -10,6 +10,8 @@ import { ProjectTextComponent } from './project/project-text/project-text.compon
 import { ProjectBlankComponent } from './project/project-blank/project-blank.component';
 import { ProjectQuoteComponent } from './project/project-quote/project-quote.component';
 import { ProjectVideoComponent } from './project/project-video/project-video.component';
+import { Article } from '../journal/journal.model';
+import { Project } from './projects.model';
 
 @Injectable({
   providedIn: 'root'
@@ -32,5 +34,20 @@ export class ProjectsService extends RestService {
 
   constructor(public api: ApiService) {
     super();
+  }
+
+  public groupProjectss(projects: Project[]): Project[][] {
+    const chunks = [];
+    const chuck_size = 3;
+
+    for(let i = 0; i < projects.length; i += chuck_size) {
+      const chunk: any[] = projects.slice(i, i + chuck_size);
+      if (chunk.length < chuck_size) {
+        chunk.push(new Array(chuck_size - chunk.length));
+      }
+      chunks.push(chunk);
+    }
+
+    return chunks;
   }
 }

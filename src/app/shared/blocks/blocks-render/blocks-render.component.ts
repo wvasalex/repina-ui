@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ArticleContentBlock, ArticleContentElement } from '../../../journal/journal.model';
 import { moveItemInArray } from '@angular/cdk/drag-drop';
 import { ContentBlock, ContentElement, StrMap } from '@shared/types';
 import { SelectOption } from '@shared/components/select/select.model';
@@ -25,7 +24,7 @@ export class BlocksRenderComponent implements OnInit {
   }
 
   public $visible(blocks: ContentBlock[]) {
-    return blocks.filter((block: ArticleContentBlock) => {
+    return blocks.filter((block: ContentBlock) => {
       return !block._destroy;
     }).sort((a, b) => {
       return a.position - b.position;
@@ -60,9 +59,9 @@ export class BlocksRenderComponent implements OnInit {
   }
 
   public $swapElements(block: ContentBlock) {
-    const elements: ArticleContentElement[] = block.content_elements;
+    const elements: ContentElement[] = block.content_elements;
     const len: number = elements.length;
-    block.content_elements.forEach((element: ArticleContentElement) => {
+    block.content_elements.forEach((element: ContentElement) => {
       element.position = len - element.position;
     });
     block.content_elements = block.content_elements.reverse();

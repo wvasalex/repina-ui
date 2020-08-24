@@ -1,10 +1,11 @@
 <r-page>
   <r-padding class="row" style="align-items: center">
-    <r-input
-      [(ngModel)]="project.title"
-      [required]="true"
-      placeholder="Название"
-    ></r-input>
+    <mat-checkbox
+      [(ngModel)]="project.is_enabled"
+    > Опубликовано </mat-checkbox>
+
+    <div></div>
+    <div></div>
   </r-padding>
 
   <r-blocks-render
