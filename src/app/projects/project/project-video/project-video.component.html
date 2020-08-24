@@ -1,0 +1,19 @@
+<video
+    #video
+    class="video-js"
+    muted
+>
+</video>
+
+<button
+  *ngIf="editor && id"
+  mat-fab
+  class="upload"
+>
+  <r-icon name="components/upload"></r-icon>
+  <input
+    (change)="$upload($event)"
+    type="file"
+    class="file"
+  >
+</button>

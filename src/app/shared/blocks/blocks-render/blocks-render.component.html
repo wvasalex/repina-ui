@@ -1,5 +1,5 @@
 <div
-  *ngFor="let block of $visible(blocks); let index = index; let last = last;"
+  *ngFor="let block of $visible(blocks); let index = index; let first = first; let last = last;"
   [attr.rel]="typeKey + '_' + index"
   [attr.class]="typeKey + ' content-item'"
 >
@@ -8,7 +8,7 @@
     class="move-block move-up controls"
   >
     <r-icon
-      *ngIf="index > 1"
+      *ngIf="!first"
       (click)="$move(block, -1)"
       name="components/down-arrow"
       matTooltip="Переместить вверх"

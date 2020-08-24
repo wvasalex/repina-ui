@@ -1,0 +1,34 @@
+:host {
+  display: block;
+  padding: 8rem 0;
+}
+
+:host ::ng-deep li {
+  margin-top: 1.5rem;
+  padding-left: 1rem;
+}
+
+:host[color="gray"] {
+  background: #86827F;
+
+  * {
+    color: #fff;
+  }
+}
+
+.h3 {
+  margin-bottom: 4rem;
+  position: relative;
+}
+
+.ml {
+  margin-left: 6.5rem;
+}
+
+.w768, .w320 {
+  :host {
+    .ml {
+      margin-left: 0;
+    }
+  }
+}

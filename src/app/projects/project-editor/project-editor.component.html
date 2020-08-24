@@ -1,0 +1,28 @@
+<r-page>
+  <r-padding class="row" style="align-items: center">
+    <r-input
+      [(ngModel)]="project.title"
+      [required]="true"
+      placeholder="Название"
+    ></r-input>
+  </r-padding>
+
+  <r-blocks-render
+    (addBlock)="$addBlock($event)"
+    [render]="render"
+    [blocks]="project.content_blocks"
+    [availableElements]="availableElements"
+    [editor]="true"
+    class="mt-2"
+  ></r-blocks-render>
+
+  <r-fabs *rWithSession>
+    <button
+      (click)="$save()"
+      mat-fab
+      color="primary"
+    >
+      <r-icon name="components/checked-white"></r-icon>
+    </button>
+  </r-fabs>
+</r-page>

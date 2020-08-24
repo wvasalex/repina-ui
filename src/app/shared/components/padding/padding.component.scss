@@ -10,6 +10,10 @@
   padding-bottom: 0 !important;
 }
 
+:host.disabled {
+  padding: 0 !important;
+}
+
 .w1366 :host {
   padding: 48px 64px;
 }

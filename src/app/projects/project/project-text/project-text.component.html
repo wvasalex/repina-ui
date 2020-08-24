@@ -1,0 +1,31 @@
+<r-padding
+  [disabled]="contentFile != null"
+  [horizontal]="false"
+>
+  <div
+    *ngIf="$getValue('i')"
+    [r-block]="editor"
+    [innerHTML]="'0' + $getValue('i')"
+    (contentChanged)="$contentChanged($event, 'i')"
+    class="index h3"
+  >
+  </div>
+
+  <div class="column">
+    <div
+      *ngIf="$getValue('title')"
+      [r-block]="editor"
+      [innerHTML]="$getValue('title')"
+      (contentChanged)="$contentChanged($event, 'title')"
+      class="content title h3"
+    ></div>
+
+    <div
+      [r-block]="editor"
+      [innerHTML]="$getValue('subtitle')"
+      (contentChanged)="$contentChanged($event, 'subtitle')"
+      [class.mt-1_5]="$getValue('subtitle')"
+      class="subtitle h4"
+    ></div>
+  </div>
+</r-padding>

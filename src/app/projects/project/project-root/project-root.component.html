@@ -1,0 +1,27 @@
+<r-padding [horizontal]="false">
+  <div class="nav row-column">
+    <div class="links column">
+      <a class="text32 bolder">Бренд-платформа</a>
+      <a class="text32 bolder mt-1_5">Нейминг</a>
+      <a class="text32 bolder mt-1_5">Фирменный стиль</a>
+      <a class="text32 bolder mt-1_5">Упаковка</a>
+    </div>
+    <div>
+      <div
+        *ngIf="$getValue('title')"
+        [r-block]="editor"
+        [innerHTML]="$getValue('title')"
+        (contentChanged)="$contentChanged($event, 'title')"
+        class="title h3"
+      ></div>
+
+      <div
+        *ngIf="$getValue('text')"
+        [r-block]="editor"
+        [innerHTML]="$getValue('text')"
+        (contentChanged)="$contentChanged($event, 'text')"
+        class="text32 mt-1"
+      ></div>
+    </div>
+  </div>
+</r-padding>

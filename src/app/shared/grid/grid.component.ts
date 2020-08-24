@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy
 import { GridDataSize, GridDataSizeDef, GridDataType } from './grid.model';
 import { BreakpointService } from '../breakpoint.service';
 import { BreakpointState } from '@angular/cdk/layout';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'r-grid',
@@ -25,17 +25,17 @@ export class GridComponent implements OnInit, OnDestroy {
     this.def = GridDataSize[this.type];
 
     this._observe = this.breakpointService.change$.subscribe((result: BreakpointState) => {
-      let points: string[] = ['320', '768', '1024', '1366'].filter((width: string) => {
-        return result.breakpoints[`(max-width: ${width}px)`];
+      let points: string[] = ['320', '768', '1024', '1366', '1920'].filter((width: string) => {
+        return result.breakpoints[`(min-width: ${width}px)`];
       });
 
       this.column = false;
-      if (points.indexOf('768') > -1) {
-        this._small();
-      } else if (points.indexOf('1024') > -1) {
+      if (points.indexOf('1024') > -1) {
+        this._default();
+      } else if (points.indexOf('768') > -1) {
         this._medium();
       } else {
-        this._default();
+        this._small();
       }
     });
   }

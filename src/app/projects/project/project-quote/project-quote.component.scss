@@ -6,11 +6,24 @@
   overflow-wrap: break-word;
   display: block;
   padding: 3rem;
-  background: #F8F8F8;
   max-width: 100%;
 
   &.small {
     background: transparent;
     padding: 1rem;
   }
+}
+
+.author {
+  display: flex;
+  flex-direction: row;
+  margin-left: 2rem;
+  margin-top: 2rem;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
 }

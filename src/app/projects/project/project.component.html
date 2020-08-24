@@ -1,12 +1,15 @@
-<r-page>
+<r-page
+  *ngIf="project"
+  backgroundImage="url('/assets/pictures/projects/detail.png')"
+>
   <r-blocks-render
     [render]="render"
-    [blocks]="article.content_blocks"
+    [blocks]="project.content_blocks"
   ></r-blocks-render>
 
   <r-fabs *rWithSession>
     <button
-      [routerLink]="['/blog', article.slug, 'edit']"
+      [routerLink]="['/projects', project.slug, 'edit']"
       mat-fab
       color="primary"
     >

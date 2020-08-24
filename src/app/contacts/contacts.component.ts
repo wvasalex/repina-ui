@@ -18,7 +18,7 @@ import { ToasterService } from '@shared/toaster/toaster.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContactsComponent implements OnInit, AfterViewInit {
-  @ViewChild('map', {static: false}) map: ElementRef;
+  @ViewChild('map', { static: false }) map: ElementRef;
 
   public block: ContentBlock;
 

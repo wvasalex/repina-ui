@@ -11,7 +11,7 @@ const routes: Routes = [
   {
     path: 'blog/new',
     component: ArticleEditorComponent,
-    //canActivate: [SessionGuardService],
+    canActivate: [SessionGuardService],
   },
   {
     path: 'blog/:id',

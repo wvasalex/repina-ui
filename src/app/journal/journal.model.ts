@@ -1,4 +1,4 @@
-import { StrMap } from '@shared/types';
+import { ContentBlock } from '@shared/types';
 
 export interface Article {
   title: string;
@@ -12,28 +12,5 @@ export interface Article {
   slug?: string;
   preview_file?: string;
   author_avatar?: string;
-  content_blocks: ArticleContentBlock[];
-}
-
-export interface ArticleContentBlock {
-  block_type?: string;
-  element_type?: string;
-  props: StrMap<string>;
-  content_elements: ArticleContentElement[];
-  id?: number;
-  blog?: number;
-  position?: number;
-  is_enabled?: boolean;
-  content_file?: string;
-  _destroy?: boolean;
-}
-
-export interface ArticleContentElement {
-  element_type: string;
-  props?: StrMap<string>;
-  content_block?: number;
-  id?: number;
-  content_file?: string;
-  position?: number;
-  _destroy?: boolean;
+  content_blocks: ContentBlock[];
 }

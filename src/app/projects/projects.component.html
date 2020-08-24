@@ -30,4 +30,14 @@
       </a>
     </mat-grid-tile>
   </mat-grid-list>
+
+  <r-fabs *rWithSession>
+    <button
+      [routerLink]="['/projects/new']"
+      mat-fab
+      color="primary"
+    >
+      <r-icon name="components/add-white"></r-icon>
+    </button>
+  </r-fabs>
 </r-page>

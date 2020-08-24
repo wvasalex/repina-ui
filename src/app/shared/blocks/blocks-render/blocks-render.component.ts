@@ -35,7 +35,7 @@ export class BlocksRenderComponent implements OnInit {
   public $hasControls(block: ContentBlock) {
     return this.typeKey == 'block_type' &&
       block.block_type !== 'article-header' &&
-      block.block_type.match(/article/);
+      block.block_type.match(/(article|project)/);
   }
 
   public $remove(block: ContentBlock) {

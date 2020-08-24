@@ -1,4 +1,11 @@
+@import 'src/styles';
+
 :host {
   display: flex;
   align-items: center;
+  font: inherit;
+
+  * {
+    font: inherit;
+  }
 }
