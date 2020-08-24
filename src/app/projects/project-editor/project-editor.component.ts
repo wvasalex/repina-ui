@@ -5,7 +5,6 @@ import { Project } from '../projects.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToasterService } from '@shared/toaster/toaster.service';
 import { ContentBlock, ContentElement, StrMap } from '@shared/types';
-import { Article, ArticleContentBlock, ArticleContentElement } from '../../journal/journal.model';
 
 @Component({
   selector: 'r-project-editor',
