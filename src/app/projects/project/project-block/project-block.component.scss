@@ -1,6 +1,7 @@
-:host ::ng-deep {
-  [rel=element_type_0] {
-    flex: 1;
+:host {
+  ::ng-deep [rel=element_type_0] {
+    flex: initial;
+    width: 40%;
     max-width: none;
   }
 }

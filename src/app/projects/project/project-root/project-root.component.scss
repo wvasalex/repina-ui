@@ -5,6 +5,9 @@
   }
 
   .links {
+    flex: initial;
+    width: 40%;
+
     a {
       text-decoration: underline;
     }

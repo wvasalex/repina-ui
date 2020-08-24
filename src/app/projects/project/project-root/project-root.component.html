@@ -7,7 +7,12 @@
       <a class="text32 bolder mt-1_5">Упаковка</a>
     </div>
     <div>
-      <div
+      <r-project-text
+        [props]="props"
+        [editor]="editor"
+      ></r-project-text>
+
+      <!--<div
         *ngIf="$getValue('title')"
         [r-block]="editor"
         [innerHTML]="$getValue('title')"
@@ -21,7 +26,7 @@
         [innerHTML]="$getValue('text')"
         (contentChanged)="$contentChanged($event, 'text')"
         class="text32 mt-1"
-      ></div>
+      ></div>-->
     </div>
   </div>
 </r-padding>

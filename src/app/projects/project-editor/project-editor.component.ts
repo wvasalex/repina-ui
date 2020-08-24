@@ -46,8 +46,6 @@ export class ProjectEditorComponent implements OnInit {
         },
       ];
     }
-
-    console.log(this.project);
   }
 
   public $addBlock(e: StrMap<any>) {
