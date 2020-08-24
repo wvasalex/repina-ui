@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { BaseBlock } from '@shared/blocks/block.component';
 import { ApiService } from '@shared/services/api/api.service';
 import { ContentElement } from '@shared/types';
@@ -6,7 +6,8 @@ import { ContentElement } from '@shared/types';
 @Component({
   selector: 'r-project-image',
   templateUrl: './project-image.component.html',
-  styleUrls: ['./project-image.component.scss']
+  styleUrls: ['./project-image.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectImageComponent extends BaseBlock {
   constructor(

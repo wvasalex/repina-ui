@@ -1,7 +1,13 @@
 :host {
+  display: block;
+
   ::ng-deep [rel=element_type_0] {
     flex: initial;
     width: 40%;
     max-width: none;
+  }
+
+  &.full-width ::ng-deep [rel=element_type_0] {
+    width: 100%;
   }
 }

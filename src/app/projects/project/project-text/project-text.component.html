@@ -5,7 +5,7 @@
   <div
     *ngIf="$getValue('i') && index == 0"
     [r-block]="editor"
-    [innerHTML]="'0' + $getValue('i')"
+    [innerHTML]="$getValue('i')"
     (contentChanged)="$contentChanged($event, 'i')"
     class="index h3"
   >

@@ -48,14 +48,21 @@ export class BlocksRenderComponent implements OnInit {
   }
 
   public $move(block: ContentBlock, offset: number) {
-    const position: number = block.position;
+    const position: number = block.position || this.blocks.indexOf(block);
     const new_position = position + offset;
 
     if (new_position < 0 || new_position > this.blocks.length) {
       return;
     }
+
     block.position = new_position;
-    moveItemInArray(this.blocks, position, new_position);
+    this.blocks.splice(position, 1);
+    this.blocks.splice(new_position, 0, block);
+
+    /*block.position = new_position;
+    const blocks = this.blocks.slice();
+    moveItemInArray(blocks, position, new_position);
+    this.blocks = blocks;*/
   }
 
   public $swapElements(block: ContentBlock) {
