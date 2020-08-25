@@ -1,31 +1,26 @@
-<r-padding
-  [disabled]="contentFile != null"
-  [horizontal]="true"
+<div
+  *ngIf="$getValue('i') && index == 0"
+  [r-block]="editor"
+  [innerHTML]="$getValue('i')"
+  (contentChanged)="$contentChanged($event, 'i')"
+  class="index h3"
 >
+</div>
+
+<div class="column">
   <div
-    *ngIf="$getValue('i') && index == 0"
+    *ngIf="$getValue('title')"
     [r-block]="editor"
-    [innerHTML]="$getValue('i')"
-    (contentChanged)="$contentChanged($event, 'i')"
-    class="index h3"
-  >
-  </div>
+    [innerHTML]="$getValue('title')"
+    (contentChanged)="$contentChanged($event, 'title')"
+    class="content title h3"
+  ></div>
 
-  <div class="column">
-    <div
-      *ngIf="$getValue('title')"
-      [r-block]="editor"
-      [innerHTML]="$getValue('title')"
-      (contentChanged)="$contentChanged($event, 'title')"
-      class="content title h3"
-    ></div>
-
-    <div
-      [r-block]="editor"
-      [innerHTML]="$getValue('subtitle')"
-      (contentChanged)="$contentChanged($event, 'subtitle')"
-      [class.mt-1_5]="$getValue('subtitle')"
-      class="subtitle text32"
-    ></div>
-  </div>
-</r-padding>
+  <div
+    [r-block]="editor"
+    [innerHTML]="$getValue('subtitle')"
+    (contentChanged)="$contentChanged($event, 'subtitle')"
+    [class.mt-1_5]="$getValue('subtitle')"
+    class="subtitle text32"
+  ></div>
+</div>

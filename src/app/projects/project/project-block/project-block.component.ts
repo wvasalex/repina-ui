@@ -12,15 +12,18 @@ export class ProjectBlockComponent extends BaseBlock implements OnInit {
   @Input() availableElements: SelectOption[];
 
   @HostBinding('class.full-width') fullWidth: boolean = false;
+  @HostBinding('class.media') media: boolean = false;
 
   public ngOnInit() {
     const elements = this.elements;
-    const is_image = (element) => {
-      return element.element_type === 'project-image';
+    const is_media = (element) => {
+      return element.element_type === 'project-image' ||
+        element.element_type === 'project-video';
     }
 
-    if (!this.editor && elements?.length > 1 && is_image(elements[0])) {
-      if (is_image(elements[1]) && !elements[1].contentFile) {
+    if (elements?.length > 1 && is_media(elements[0])) {
+      this.media = true;
+      if (!this.editor && is_media(elements[1]) && !elements[1].contentFile) {
         this.elements = elements.slice(0, 1);
         this.fullWidth = true;
       }

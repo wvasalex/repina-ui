@@ -18,11 +18,14 @@
     *ngFor="let group of groups"
     class="row-column"
   >
-    <ng-container *ngFor="let project of group; let index = index;">
+    <ng-container
+      *ngFor="let project of group; let index = index;"
+    >
       <a
         *ngIf="project.slug"
         [routerLink]="[project.slug]"
         [class.m30]="index == 1"
+        class="mb-30"
       >
         <r-image
           [src]="project.preview_file"

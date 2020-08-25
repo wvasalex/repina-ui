@@ -1,9 +1,11 @@
-<r-blocks-render
-  *ngIf="elements?.length"
-  [render]="render"
-  [blocks]="elements"
-  [availableElements]="availableElements"
-  [editor]="editor"
-  typeKey="element_type"
-  class="row-column mt-2"
-></r-blocks-render>
+<r-padding [disabled]="fullWidth">
+  <r-blocks-render
+    *ngIf="elements?.length"
+    [render]="render"
+    [blocks]="elements"
+    [availableElements]="availableElements"
+    [editor]="editor"
+    typeKey="element_type"
+    class="row-column mt-2"
+  ></r-blocks-render>
+</r-padding>

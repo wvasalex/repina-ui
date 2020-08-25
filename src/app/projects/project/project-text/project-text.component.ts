@@ -8,4 +8,5 @@ import { BaseBlock } from '@shared/blocks/block.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectTextComponent extends BaseBlock {
+  @Input() padding: boolean = true;
 }
