@@ -11,6 +11,7 @@
 .role {
   float: left;
   margin: 4rem;
+  width: calc(30% - 4rem);
 
   &:not(:last-of-type) {
 

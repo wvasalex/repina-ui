@@ -93,16 +93,18 @@
       class="ml-2"
     ></r-icon-button>
   </div>
-</div>
 
-<mat-menu #blockSelector="matMenu">
-  <ng-template matMenuContent let-block="block" let-offset="offset">
-    <button
-      *ngFor="let blockDescriptor of availableBlocks"
-      (click)="$addBlock(block, offset, blockDescriptor.value)"
-      mat-menu-item
-    >
-      {{blockDescriptor.label}}
-    </button>
-  </ng-template>
-</mat-menu>
+  <mat-menu
+    #blockSelector="matMenu"
+  >
+    <ng-template matMenuContent let-block="block" let-offset="offset">
+      <button
+        *ngFor="let blockDescriptor of availableBlocks"
+        (click)="$addBlock(block, offset, blockDescriptor.value)"
+        mat-menu-item
+      >
+        {{blockDescriptor.label}}
+      </button>
+    </ng-template>
+  </mat-menu>
+</div>

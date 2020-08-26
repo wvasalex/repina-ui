@@ -15,8 +15,8 @@
   &:after {
     content: '”';
     position: absolute;
-    bottom: 0;
-    right: 16px;
+    bottom: -16px;
+    right: -16px;
     font-size: 78px;
   }
 

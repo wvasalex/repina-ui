@@ -5,7 +5,10 @@
   <r-blocks-render
     [render]="render"
     [blocks]="project.content_blocks"
+    class="mt-2"
   ></r-blocks-render>
+
+  <r-project-detail-roles></r-project-detail-roles>
 
   <r-fabs *rWithSession>
     <button
