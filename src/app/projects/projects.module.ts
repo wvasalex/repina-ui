@@ -24,6 +24,7 @@ import { FormsModule } from '@angular/forms';
 import { ProjectVideoComponent } from './project/project-video/project-video.component';
 import { ProjectQuoteComponent } from './project/project-quote/project-quote.component';
 import { ProjectBlankComponent } from './project/project-blank/project-blank.component';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { ProjectBlankComponent } from './project/project-blank/project-blank.com
     MatButtonModule,
     MatCheckboxModule,
     FormsModule,
+    MatButtonToggleModule,
   ],
 })
 export class ProjectsModule {

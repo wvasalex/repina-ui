@@ -1,8 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { moveItemInArray } from '@angular/cdk/drag-drop';
+import { Component, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import { ContentBlock, ContentElement, StrMap } from '@shared/types';
 import { SelectOption } from '@shared/components/select/select.model';
-import { MatMenu, MatMenuTrigger } from '@angular/material/menu';
+import { MatMenu } from '@angular/material/menu';
 
 @Component({
   selector: 'r-blocks-render',
@@ -14,6 +13,7 @@ export class BlocksRenderComponent implements OnInit {
   @Input() blocks: ContentBlock[];
   @Input() editor: boolean = false;
   @Input() typeKey: 'block_type' | 'element_type' = 'block_type';
+  @Input() controlTmp: TemplateRef<any>;
 
   @Input() availableElements: SelectOption[];
   @Input() availableBlocks: SelectOption[];
@@ -21,7 +21,8 @@ export class BlocksRenderComponent implements OnInit {
   //@Output() change: EventEmitter<void> = new EventEmitter<void>();
   @Output() addBlock: EventEmitter<StrMap<any>> = new EventEmitter<StrMap<any>>();
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
@@ -85,7 +86,7 @@ export class BlocksRenderComponent implements OnInit {
     target.element_type = type;
   }
 
-  public $component(block: ContentBlock) {
+  public $component(block: ContentBlock): any {
     return this.render[block[this.typeKey]];
   }
 

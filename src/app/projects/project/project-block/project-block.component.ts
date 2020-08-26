@@ -1,4 +1,14 @@
-import { ChangeDetectionStrategy, Component, HostBinding, Input, OnInit } from '@angular/core';
+import {
+  AfterContentChecked,
+  AfterViewChecked,
+  ChangeDetectionStrategy,
+  Component,
+  HostBinding,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { BaseBlock } from '@shared/blocks/block.component';
 import { SelectOption } from '@shared/components/select/select.model';
 import { ContentElement } from '@shared/types';
@@ -9,12 +19,14 @@ import { ContentElement } from '@shared/types';
   styleUrls: ['./project-block.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProjectBlockComponent extends BaseBlock implements OnInit {
+export class ProjectBlockComponent extends BaseBlock implements OnInit, AfterContentChecked {
   @Input() availableElements: SelectOption[];
 
   @HostBinding('class.full-width') fullWidth: boolean = false;
   @HostBinding('class.has-media') hasMedia: boolean = false;
   @HostBinding('class.first-media') media: boolean = false;
+
+  @HostBinding('style.background') color;
 
   public ngOnInit() {
     const elements = this.elements;
@@ -32,5 +44,9 @@ export class ProjectBlockComponent extends BaseBlock implements OnInit {
         this.fullWidth = true;
       }
     }
+  }
+
+  public ngAfterContentChecked() {
+    this.color = this.props.color;
   }
 }

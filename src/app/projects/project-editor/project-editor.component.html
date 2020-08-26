@@ -15,6 +15,7 @@
     [availableElements]="availableElements"
     [availableBlocks]="availableBlocks"
     [editor]="true"
+    [controlTmp]="blockControls"
     class="mt-2"
   ></r-blocks-render>
 
@@ -28,3 +29,20 @@
     </button>
   </r-fabs>
 </r-page>
+
+<ng-template
+  #blockControls
+  let-block="block"
+>
+  <mat-button-toggle-group
+    *ngIf="block.block_type === 'project-block'"
+    [(ngModel)]="block.props.color"
+    name="color"
+    class="mr-2"
+    style="flex: auto"
+  >
+    <mat-button-toggle value="#fff">Белый</mat-button-toggle>
+    <mat-button-toggle value="#F8F8F8">Серый</mat-button-toggle>
+    <mat-button-toggle value="#86827F">Коричневый</mat-button-toggle>
+  </mat-button-toggle-group>
+</ng-template>

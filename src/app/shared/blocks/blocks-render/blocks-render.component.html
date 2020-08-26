@@ -75,13 +75,17 @@
     *ngIf="editor && $hasControls(block)"
     class="main-controls row"
   >
+    <ng-container *ngTemplateOutlet="controlTmp; context: {block: block}"></ng-container>
+
     <mat-checkbox
       [(ngModel)]="block.is_enabled"
+      matTooltip="Использовать"
     ></mat-checkbox>
 
     <r-icon-button
       (click)="$swapElements(block)"
       [size]="18"
+      matTooltip="Поменять элементы местами"
       icon="repeat"
       class="ml-2"
     ></r-icon-button>
@@ -89,6 +93,7 @@
     <r-icon-button
       (click)="$remove(block)"
       [size]="18"
+      matTooltip="Удалить"
       icon="close"
       class="ml-2"
     ></r-icon-button>
@@ -97,7 +102,11 @@
   <mat-menu
     #blockSelector="matMenu"
   >
-    <ng-template matMenuContent let-block="block" let-offset="offset">
+    <ng-template
+      matMenuContent
+      let-block="block"
+      let-offset="offset"
+    >
       <button
         *ngFor="let blockDescriptor of availableBlocks"
         (click)="$addBlock(block, offset, blockDescriptor.value)"
