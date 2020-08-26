@@ -15,7 +15,6 @@ import { BlocksModule } from '@shared/blocks/blocks.module';
 import { ProjectRootComponent } from './project/project-root/project-root.component';
 import { MatButtonModule } from '@angular/material/button';
 import { ProjectBlockComponent } from './project/project-block/project-block.component';
-import { ProjectBlockStepComponent } from './project/project-block-step/project-block-step.component';
 import { ProjectImageComponent } from './project/project-image/project-image.component';
 import { ProjectGalleryComponent } from './project/project-gallery/project-gallery.component';
 import { ProjectTextComponent } from './project/project-text/project-text.component';
@@ -35,7 +34,6 @@ import { ProjectBlankComponent } from './project/project-blank/project-blank.com
     ProjectComponent,
     ProjectRootComponent,
     ProjectBlockComponent,
-    ProjectBlockStepComponent,
     ProjectImageComponent,
     ProjectGalleryComponent,
     ProjectTextComponent,

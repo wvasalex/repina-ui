@@ -17,6 +17,11 @@ export class ProjectEditorComponent implements OnInit {
 
   public render = this.projectsService.render;
 
+  public availableBlocks: SelectOption[] = [
+    { value: 'project-block', label: 'Блок' },
+    { value: 'project-gallery', label: 'Галерея' },
+  ];
+
   public availableElements: SelectOption[] = [
     { value: 'blank', label: 'Пустой' },
     { value: 'project-text', label: 'Текст' },
@@ -54,25 +59,29 @@ export class ProjectEditorComponent implements OnInit {
   }
 
   public $addBlock(e: StrMap<any>) {
-    const { target, offset } = e;
+    const { target, offset, blockType } = e;
     const index = this.project.content_blocks.indexOf(target) + offset;
 
+    const element = (type: string = 'blank') => {
+      return {
+        element_type: 'blank',
+        props: {},
+      };
+    };
+
+    const elements = [element(), element()];
+
+    if (blockType === 'project-gallery') {
+      elements.push(element());
+    }
+
     this.project.content_blocks.splice(index, 0, {
-      block_type: 'project-block',
+      block_type: blockType,
       props: {
         title: '',
         subtitle: '',
       },
-      content_elements: [
-        {
-          element_type: 'blank',
-          props: {},
-        },
-        {
-          element_type: 'blank',
-          props: {},
-        },
-      ],
+      content_elements: elements,
     });
   }
 

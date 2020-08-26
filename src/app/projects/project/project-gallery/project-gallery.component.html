@@ -1,16 +1,39 @@
 <r-grid
-  [type]="props.type || 'small'"
+  *ngIf="!editor"
+  [type]="props.type || 'big-small'"
 >
-  <r-grid-image
+  <r-project-image
     rel="1"
-    src="/assets/pictures/1.png"
-  ></r-grid-image>
-  <r-grid-image
+    [id]="elements[0].id"
+    [props]="elements[0].props"
+    [contentFile]="elements[0].content_file"
+  ></r-project-image>
+  <r-project-image
     rel="2"
-    src="/assets/pictures/2.png"
-  ></r-grid-image>
-  <r-grid-image
+    [id]="elements[1].id"
+    [props]="elements[1].props"
+    [contentFile]="elements[1].content_file"
+  ></r-project-image>
+  <r-project-image
+    *ngIf="elements[2]"
     rel="3"
-    src="/assets/pictures/3.png"
-  ></r-grid-image>
+    [id]="elements[2].id"
+    [props]="elements[2].props"
+    [contentFile]="elements[2].content_file"
+  ></r-project-image>
 </r-grid>
+
+<div
+  *ngIf="editor"
+  class="row"
+  style="min-height: 100%"
+>
+  <r-project-image
+    *ngFor="let element of elements; let index = index"
+    [attr.rel]="index"
+    [id]="element.id"
+    [props]="element.props"
+    [contentFile]="element.content_file"
+    [editor]="true"
+  ></r-project-image>
+</div>

@@ -16,7 +16,9 @@
     ></r-icon>
 
     <r-icon
-      (click)="$addBlock(block, 0)"
+      (click)="availableBlocks ? null : $addBlock(block, 0)"
+      [matMenuTriggerFor]="blockSelector"
+      [matMenuTriggerData]="{block: block, offset: 0}"
       name="components/add"
       matTooltip="Добавить блок выше"
       class="icon revert"
@@ -45,107 +47,6 @@
     }"
   ></ndc-dynamic>
 
-  <!--<ng-container [ngSwitch]="block[typeKey]">
-    <r-article-header
-      *ngSwitchCase="'article-header'"
-      [props]="block.props"
-      [elements]="block.content_elements"
-      [editor]="editor"
-    ></r-article-header>
-
-    <r-article-blank
-      *ngSwitchCase="'article-blank'"
-      [props]="block.props"
-      [editor]="editor"
-    ></r-article-blank>
-
-    <r-article-part
-      *ngSwitchCase="'article-part'"
-      [props]="block.props"
-      [elements]="block.content_elements"
-      [availableElements]="availableElements"
-      [editor]="editor"
-    ></r-article-part>
-
-    <r-article-text
-      *ngSwitchCase="'article-text'"
-      [props]="block.props"
-      [editor]="editor"
-    ></r-article-text>
-
-    <r-article-image
-      *ngSwitchCase="'article-image'"
-      [id]="block.id"
-      [contentFile]="block.content_file"
-      [props]="block.props"
-      [editor]="editor"
-    ></r-article-image>
-
-    <r-article-video
-      *ngSwitchCase="'article-video'"
-      [id]="block.id"
-      [contentFile]="block.content_file"
-      [props]="block.props"
-      [editor]="editor"
-    ></r-article-video>
-
-    <r-article-quote
-      *ngSwitchCase="'article-quote'"
-      [id]="block.id"
-      [contentFile]="block.content_file"
-      [props]="block.props"
-      [editor]="editor"
-    ></r-article-quote>
-
-    <r-article-author
-      *ngSwitchCase="'article-author'"
-      [id]="block.id"
-      [contentFile]="block.content_file"
-      [props]="block.props"
-      [editor]="editor"
-    ></r-article-author>
-
-    <r-agency-primary
-      *ngSwitchCase="'agency-primary'"
-      [id]="block.id"
-      [contentFile]="block.content_file"
-      [props]="block.props"
-      [editor]="editor"
-    ></r-agency-primary>
-
-    <r-agency-achievements
-      *ngSwitchCase="'agency-achievements'"
-      [id]="block.id"
-      [contentFile]="block.content_file"
-      [props]="block.props"
-      [editor]="editor"
-    ></r-agency-achievements>
-
-    <r-agency-repina
-      *ngSwitchCase="'agency-repina'"
-      [id]="block.id"
-      [contentFile]="block.content_file"
-      [props]="block.props"
-      [editor]="editor"
-    ></r-agency-repina>
-
-    <r-agency-team
-      *ngSwitchCase="'agency-team'"
-      [id]="block.id"
-      [contentFile]="block.content_file"
-      [props]="block.props"
-      [editor]="editor"
-    ></r-agency-team>
-
-    <r-agency-awards
-      *ngSwitchCase="'agency-awards'"
-      [id]="block.id"
-      [contentFile]="block.content_file"
-      [props]="block.props"
-      [editor]="editor"
-    ></r-agency-awards>
-  </ng-container>-->
-
   <div
     *ngIf="editor && $hasControls(block)"
     class="move-block move-down controls"
@@ -159,7 +60,9 @@
     ></r-icon>
 
     <r-icon
-      (click)="$addBlock(block, 1)"
+      (click)="availableBlocks ? null : $addBlock(block, 1)"
+      [matMenuTriggerFor]="blockSelector"
+      [matMenuTriggerData]="{block: block, offset: 1}"
       name="components/add"
       matTooltip="Добавить блок ниже"
       class="icon"
@@ -189,3 +92,15 @@
     ></r-icon-button>
   </div>
 </div>
+
+<mat-menu #blockSelector="matMenu">
+  <ng-template matMenuContent let-block="block" let-offset="offset">
+    <button
+      *ngFor="let blockDescriptor of availableBlocks"
+      (click)="$addBlock(block, offset, blockDescriptor.value)"
+      mat-menu-item
+    >
+      {{blockDescriptor.label}}
+    </button>
+  </ng-template>
+</mat-menu>

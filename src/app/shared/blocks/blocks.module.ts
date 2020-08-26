@@ -18,6 +18,7 @@ import { BlockSwitcherComponent } from './block-switcher/block-switcher.componen
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { GridModule } from '@shared/grid/grid.module';
 import { DynamicModule } from 'ng-dynamic-component';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import { DynamicModule } from 'ng-dynamic-component';
     MatButtonModule,
     MatTooltipModule,
     GridModule,
+    MatMenuModule,
   ],
   exports: [
     PromoCardComponent,

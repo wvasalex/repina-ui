@@ -13,7 +13,9 @@ export class BlocksRenderComponent implements OnInit {
   @Input() blocks: ContentBlock[];
   @Input() editor: boolean = false;
   @Input() typeKey: 'block_type' | 'element_type' = 'block_type';
+
   @Input() availableElements: SelectOption[];
+  @Input() availableBlocks: SelectOption[];
 
   //@Output() change: EventEmitter<void> = new EventEmitter<void>();
   @Output() addBlock: EventEmitter<StrMap<any>> = new EventEmitter<StrMap<any>>();
@@ -74,8 +76,8 @@ export class BlocksRenderComponent implements OnInit {
     block.content_elements = block.content_elements.reverse();
   }
 
-  public $addBlock(target: ContentBlock, offset: number) {
-    this.addBlock.emit({ target, offset });
+  public $addBlock(target: ContentBlock, offset: number, blockType?: String) {
+    this.addBlock.emit({ target, offset, blockType });
   }
 
   public $setType(target: ContentBlock, type: string) {
