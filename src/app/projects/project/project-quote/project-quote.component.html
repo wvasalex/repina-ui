@@ -1,27 +1,25 @@
-<r-padding>
-  <div
-    [class.small]="props.small"
-    class="inner"
+<div
+  [class.small]="props.small"
+  class="inner"
+>
+  <r-quote
+    (contentChanged)="$contentChanged($event, 'value')"
+    [innerHTML]="$getValue('value')"
+    [r-block]="editor"
+    [class.h3]="!props.small"
+    [class.h4]="props.small"
   >
-    <r-quote
-      (contentChanged)="$contentChanged($event, 'value')"
-      [innerHTML]="$getValue('value')"
-      [r-block]="editor"
-      [class.h3]="!props.small"
-      [class.h4]="props.small"
-    >
-    </r-quote>
+  </r-quote>
 
-    <div
-      *ngIf="editor"
-      class="mt-2"
+  <div
+    *ngIf="editor"
+    class="mt-2"
+  >
+    <mat-checkbox
+      [(ngModel)]="props.small"
+      name="small"
     >
-      <mat-checkbox
-        [(ngModel)]="props.small"
-        name="small"
-      >
-        Без фона
-      </mat-checkbox>
-    </div>
+      Без фона
+    </mat-checkbox>
   </div>
-</r-padding>
+</div>

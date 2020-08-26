@@ -1,10 +1,15 @@
 :host {
   display: block;
+  margin-bottom: 30px;
 
   ::ng-deep [rel=element_type_0] {
     flex: initial;
     width: 40%;
     max-width: none;
+  }
+
+  ::ng-deep [rel=element_type_1] {
+    margin-left: 10%;
   }
 
   &.full-width {
@@ -14,28 +19,33 @@
     }
   }
 
-  &.media ::ng-deep [rel=element_type_0] {
+  &.first-media ::ng-deep [rel=element_type_0] {
     margin-left: -75px;
     margin-right: 75px;
   }
+
+  &:not(.has-media) {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
 }
 
-.w1366 :host.media ::ng-deep [rel=element_type_0] {
+.w1366 :host.first-media ::ng-deep [rel=element_type_0] {
   margin-left: -64px;
   margin-right: 64px;
 }
 
-.w1024 :host.media ::ng-deep [rel=element_type_0] {
+.w1024 :host.first-media ::ng-deep [rel=element_type_0] {
   margin-left: -35px;
   margin-right: 35px;
 }
 
-.w768 :host.media ::ng-deep [rel=element_type_0] {
+.w768 :host.first-media ::ng-deep [rel=element_type_0] {
   margin-left: -30px;
   margin-right: 30px;
 }
 
-.w320 :host.media ::ng-deep [rel=element_type_0] {
+.w320 :host.first-media ::ng-deep [rel=element_type_0] {
   margin-left: -12px;
   margin-right: 12px;
 }
