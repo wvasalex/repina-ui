@@ -17,6 +17,7 @@
 
     <r-icon
       (click)="availableBlocks ? null : $addBlock(block, 0)"
+      (onMenuOpen)="$checkMenu(blockSelector)"
       [matMenuTriggerFor]="blockSelector"
       [matMenuTriggerData]="{block: block, offset: 0}"
       name="components/add"
@@ -61,6 +62,7 @@
 
     <r-icon
       (click)="availableBlocks ? null : $addBlock(block, 1)"
+      (onMenuOpen)="$checkMenu(blockSelector)"
       [matMenuTriggerFor]="blockSelector"
       [matMenuTriggerData]="{block: block, offset: 1}"
       name="components/add"

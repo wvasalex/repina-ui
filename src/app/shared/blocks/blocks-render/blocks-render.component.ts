@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { moveItemInArray } from '@angular/cdk/drag-drop';
 import { ContentBlock, ContentElement, StrMap } from '@shared/types';
 import { SelectOption } from '@shared/components/select/select.model';
+import { MatMenu, MatMenuTrigger } from '@angular/material/menu';
 
 @Component({
   selector: 'r-blocks-render',
@@ -86,5 +87,11 @@ export class BlocksRenderComponent implements OnInit {
 
   public $component(block: ContentBlock) {
     return this.render[block[this.typeKey]];
+  }
+
+  public $checkMenu(menu: MatMenu) {
+    if (!this.availableBlocks?.length) {
+      menu.closed.emit('click');
+    }
   }
 }
