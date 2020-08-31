@@ -7,11 +7,10 @@ import { ProjectBlockComponent } from './project/project-block/project-block.com
 import { ProjectImageComponent } from './project/project-image/project-image.component';
 import { ProjectGalleryComponent } from './project/project-gallery/project-gallery.component';
 import { ProjectTextComponent } from './project/project-text/project-text.component';
-import { ProjectBlankComponent } from './project/project-blank/project-blank.component';
 import { ProjectQuoteComponent } from './project/project-quote/project-quote.component';
 import { ProjectVideoComponent } from './project/project-video/project-video.component';
-import { Article } from '../journal/journal.model';
 import { Project } from './projects.model';
+import { BlockBlankComponent } from '@shared/blocks/block-blank/block-blank.component';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +21,7 @@ export class ProjectsService extends RestService {
   };
 
   public render = {
-    'blank': ProjectBlankComponent,
+    'blank': BlockBlankComponent,
     'project-root': ProjectRootComponent,
     'project-block': ProjectBlockComponent,
     'project-image': ProjectImageComponent,

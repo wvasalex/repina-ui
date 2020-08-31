@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { slider } from '../../shared/animations';
+import { slider } from '@shared/animations';
 
 @Component({
   selector: 'r-agency-feedback',
@@ -11,7 +11,7 @@ import { slider } from '../../shared/animations';
   ]
 })
 export class AgencyFeedbackComponent implements OnInit {
-  public feedbacks = [
+  public comments = [
     {
       name: 'Иван Отзывчивый',
       role: 'Директор по маркетингу «Седьмой Континент»',
@@ -25,26 +25,23 @@ export class AgencyFeedbackComponent implements OnInit {
   ];
 
   public prevIndex: number = 0;
-  public index: number = 0;
-  public last: number = this.feedbacks.length - 1;
+  public currentIndex: number = 0;
+  public last: number = this.comments.length - 1;
 
   constructor() { }
 
   ngOnInit(): void {
-
   }
 
   public $prev() {
-    if (this.index > 0) {
-      this.prevIndex = this.index;
-      this.index--;
+    if (this.currentIndex > 0) {
+      this.prevIndex = this.currentIndex--;
     }
   }
 
   public $next() {
-    if (this.index < this.last) {
-      this.prevIndex = this.index;
-      this.index++;
+    if (this.currentIndex < this.last) {
+      this.prevIndex = this.currentIndex++;
     }
   }
 }

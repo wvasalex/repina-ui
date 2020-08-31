@@ -1,4 +1,17 @@
 <r-icon-nav-list
+  title="Бренд-технологии"
   [images]="images"
-  [blocks]="blocks"
+  [elements]="elements"
+  [itemTemplate]="itemTemplate"
 ></r-icon-nav-list>
+
+<ng-template
+  #itemTemplate
+  let-element="element"
+>
+  <r-services-tech-text
+    [editor]="editor"
+    [id]="element.id"
+    [props]="element.props"
+  ></r-services-tech-text>
+</ng-template>

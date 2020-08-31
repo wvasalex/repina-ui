@@ -9,12 +9,12 @@
       <div class="mt-3">
         <r-arrow
           (click)="$prev()"
-          [color]="index == 0 ? '#EBEBEB': '#000'"
+          [color]="currentIndex == 0 ? '#EBEBEB': '#000'"
           type="prev"
         ></r-arrow>
         <r-arrow
           (click)="$next()"
-          [color]="index == last ? '#EBEBEB': '#000'"
+          [color]="currentIndex == last ? '#EBEBEB': '#000'"
           type="next"
           class="ml-2"
         ></r-arrow>
@@ -22,10 +22,10 @@
     </div>
     <div>
       <div
-        [@slider]="index"
+        [@slider]="currentIndex"
         class="content"
       >
-        <ng-container *ngTemplateOutlet="feedback; context: {feedback: feedbacks[index]}"></ng-container>
+        <ng-container *ngTemplateOutlet="feedback; context: {comment: comments[currentIndex]}"></ng-container>
       </div>
     </div>
   </div>
@@ -33,18 +33,20 @@
 
 <ng-template
   #feedback
-  let-feedback="feedback"
+  let-comment="comment"
 >
-  <div class="h3">
-    {{feedback.name}}
-  </div>
-  <div class="text32 mt-1">
-    {{feedback.role}}
-  </div>
-  <r-quote class="quote h4 mt-2">
-    {{feedback.quote}}
-  </r-quote>
-  <div class="mt-2 bolder full-review">
-    Показать весь отзыв
-  </div>
+  <ng-container *ngIf="comment">
+    <div class="h3">
+      {{comment.name}}
+    </div>
+    <div class="text32 mt-1">
+      {{comment.role}}
+    </div>
+    <r-quote class="quote h4 mt-2">
+      {{comment.quote}}
+    </r-quote>
+    <div class="mt-2 bolder full-review">
+      Показать весь отзыв
+    </div>
+  </ng-container>
 </ng-template>

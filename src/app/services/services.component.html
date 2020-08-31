@@ -11,10 +11,18 @@
 
   <r-services-primary class="mt-8"></r-services-primary>
 
-  <r-padding [horizontal]="true">
-    <r-nav-list
-      [blocks]="services"
-    ></r-nav-list>
-  </r-padding>
+  <r-service-list></r-service-list>
+
   <r-services-tech></r-services-tech>
+
+  <r-fabs *rWithSession>
+    <button
+      [routerLink]="['/services', 'new']"
+      mat-fab
+      color="primary"
+    >
+      <r-icon name="components/add-white"></r-icon>
+    </button>
+  </r-fabs>
 </r-page>
+

@@ -19,7 +19,6 @@ import { ArticleTextComponent } from './article/article-text/article-text.compon
 import { ArticleImageComponent } from './article/article-image/article-image.component';
 import { ArticleAuthorComponent } from './article/article-author/article-author.component';
 import { ArticlePartComponent } from './article/article-part/article-part.component';
-import { ArticleBlankComponent } from './article/article-blank/article-blank.component';
 import { ArticleQuoteComponent } from './article/article-quote/article-quote.component';
 import { ArticleVideoComponent } from './article/article-video/article-video.component';
 
@@ -37,7 +36,6 @@ import { ArticleVideoComponent } from './article/article-video/article-video.com
     ArticleVideoComponent,
     ArticleAuthorComponent,
     ArticlePartComponent,
-    ArticleBlankComponent,
     ArticleQuoteComponent,
   ],
   imports: [

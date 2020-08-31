@@ -19,6 +19,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { GridModule } from '@shared/grid/grid.module';
 import { DynamicModule } from 'ng-dynamic-component';
 import { MatMenuModule } from '@angular/material/menu';
+import { BlockBlankComponent } from './block-blank/block-blank.component';
 
 @NgModule({
   imports: [
@@ -52,6 +53,7 @@ import { MatMenuModule } from '@angular/material/menu';
     BaseBlock,
     BlockDirective,
     BlockSwitcherComponent,
+    BlockBlankComponent,
   ],
 })
 export class BlocksModule {

@@ -11,7 +11,7 @@ import { ArticleImageComponent } from './article/article-image/article-image.com
 import { ArticleTextComponent } from './article/article-text/article-text.component';
 import { ArticleQuoteComponent } from './article/article-quote/article-quote.component';
 import { ArticleVideoComponent } from './article/article-video/article-video.component';
-import { ArticleBlankComponent } from './article/article-blank/article-blank.component';
+import { BlockBlankComponent } from '@shared/blocks/block-blank/block-blank.component';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +22,7 @@ export class JournalService extends RestService {
   };
 
   public render = {
-    'blank': ArticleBlankComponent,
+    'blank': BlockBlankComponent,
     'article-header': ArticleHeaderComponent,
     'article-part': ArticlePartComponent,
     'article-author': ArticleAuthorComponent,

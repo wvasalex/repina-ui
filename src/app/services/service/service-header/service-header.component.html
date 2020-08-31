@@ -1,0 +1,62 @@
+<r-padding>
+  <r-card
+    [subtitle]="props.subtitle"
+    size="small"
+    class="promo"
+  >
+    <div
+      (contentChanged)="$contentChanged($event, 'title')"
+      [r-block]="editor"
+      [innerHTML]="$getValue('title')"
+      title
+      class="h2 mt-1"
+    ></div>
+
+    <div
+      description
+    >
+      <div
+        (contentChanged)="$contentChanged($event, 'description')"
+        [r-block]="editor"
+        [innerHTML]="$getValue('description')"
+        class="description text32 mt-1_5"
+      ></div>
+      <r-button
+        class="mt-2"
+      >
+        Заказать
+      </r-button>
+    </div>
+
+    <r-service-image
+      [id]="elements && elements[0].id"
+      [contentFile]="elements && elements[0].content_file"
+      [editor]="editor"
+      image
+    ></r-service-image>
+  </r-card>
+</r-padding>
+
+<!--
+<r-padding
+  header
+  [horizontal]="true"
+>
+  <r-card
+    color="black"
+    size="small"
+    subtitle="Услуги"
+    title="Корпоративный брендинг"
+    class="promo"
+  >
+    <div class="description text32 mt-1_5">
+      Репина Брендинг — одно из ведущих брендинговых агентств в России. Мы осуществляем полный комплекс услуг по разработке бренда продукта от исследования и стратегии до дизайна упаковки.
+    </div>
+    <r-button
+      class="mt-2"
+    >
+      Заказать
+    </r-button>
+  </r-card>
+</r-padding>
+-->

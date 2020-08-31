@@ -1,0 +1,26 @@
+<r-page>
+  <r-padding class="row" style="align-items: center">
+    <mat-checkbox
+      [(ngModel)]="service.is_enabled"
+    > Опубликовано </mat-checkbox>
+  </r-padding>
+
+  <r-blocks-render
+    (addBlock)="$addBlock($event)"
+    [render]="render"
+    [blocks]="service.content_blocks"
+    [availableElements]="availableElements"
+    [editor]="true"
+    class="mt-2"
+  ></r-blocks-render>
+
+  <r-fabs *rWithSession>
+    <button
+      (click)="$save()"
+      mat-fab
+      color="primary"
+    >
+      <r-icon name="components/checked-white"></r-icon>
+    </button>
+  </r-fabs>
+</r-page>
