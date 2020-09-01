@@ -1,6 +1,6 @@
 import { StrMap } from '../types';
 
-export type GridDataType = 'big-small' | 'small-big' | 'small-wide' | 'small' | 'big';
+export type GridDataType = 'big-small' | 'small-big' | 'small-wide' | 'wide-small' | 'small' | 'big' | 'fullscreen';
 
 export const GridDataSize: StrMap<GridDataSizeDef> = {
   'big-small': {
@@ -29,6 +29,14 @@ export const GridDataSize: StrMap<GridDataSizeDef> = {
       {colspan: 2},
     ],
   },
+  'wide-small': {
+    cols: 3,
+    roles: [1, 2],
+    grid: [
+      {colspan: 2},
+      {},
+    ],
+  },
   'small': {
     cols: 3,
     roles: [1, 2, 3],
@@ -43,6 +51,13 @@ export const GridDataSize: StrMap<GridDataSizeDef> = {
     roles: [1, 2],
     grid: [
       {},
+      {},
+    ],
+  },
+  fullscreen: {
+    cols: 1,
+    roles: [1],
+    grid: [
       {},
     ],
   }

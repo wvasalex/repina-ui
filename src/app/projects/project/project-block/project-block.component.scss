@@ -1,6 +1,6 @@
 :host {
   display: block;
-  margin-bottom: 30px;
+  padding-top: 2rem;
 
   ::ng-deep [rel=element_type_0] {
     flex: initial;
@@ -22,6 +22,10 @@
   &.first-media ::ng-deep [rel=element_type_0] {
     margin-left: -75px;
     margin-right: 75px;
+  }
+
+  &.white ::ng-deep * {
+    color: #fff;
   }
 
   &:not(.has-media) {

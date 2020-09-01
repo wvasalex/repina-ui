@@ -1,27 +1,44 @@
-<r-grid
-  *ngIf="!editor"
-  [type]="props.type || 'big-small'"
->
-  <r-project-image
-    rel="1"
-    [id]="elements[0].id"
-    [props]="elements[0].props"
-    [contentFile]="elements[0].content_file"
-  ></r-project-image>
-  <r-project-image
-    rel="2"
-    [id]="elements[1].id"
-    [props]="elements[1].props"
-    [contentFile]="elements[1].content_file"
-  ></r-project-image>
-  <r-project-image
-    *ngIf="elements[2]"
-    rel="3"
-    [id]="elements[2].id"
-    [props]="elements[2].props"
-    [contentFile]="elements[2].content_file"
-  ></r-project-image>
-</r-grid>
+<ng-container *ngIf="!editor">
+  <!--<div
+    *ngIf="images.length < 3"
+    class="row"
+  >
+    <r-project-image
+      [props]="images[0].props"
+      [contentFile]="images[0].content_file"
+    ></r-project-image>
+    <r-project-image
+      *ngIf="images[1]"
+      [props]="images[1].props"
+      [contentFile]="images[1].content_file"
+    ></r-project-image>
+  </div>-->
+
+  <r-grid
+    [type]="type"
+  >
+    <r-project-image
+      rel="1"
+      [id]="elements[0].id"
+      [props]="elements[0].props"
+      [contentFile]="elements[0].content_file"
+    ></r-project-image>
+    <r-project-image
+      *ngIf="images[1]"
+      rel="2"
+      [id]="elements[1].id"
+      [props]="elements[1].props"
+      [contentFile]="elements[1].content_file"
+    ></r-project-image>
+    <r-project-image
+      *ngIf="images[2]"
+      rel="3"
+      [id]="elements[2].id"
+      [props]="elements[2].props"
+      [contentFile]="elements[2].content_file"
+    ></r-project-image>
+  </r-grid>
+</ng-container>
 
 <div
   *ngIf="editor"

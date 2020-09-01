@@ -26,7 +26,8 @@ export class ProjectBlockComponent extends BaseBlock implements OnInit, AfterCon
   @HostBinding('class.has-media') hasMedia: boolean = false;
   @HostBinding('class.first-media') media: boolean = false;
 
-  @HostBinding('style.background') color;
+  @HostBinding('style.background') background: string;
+  @HostBinding('class.white') white: boolean = false;
 
   public ngOnInit() {
     const elements = this.elements;
@@ -47,6 +48,7 @@ export class ProjectBlockComponent extends BaseBlock implements OnInit, AfterCon
   }
 
   public ngAfterContentChecked() {
-    this.color = this.props.color;
+    this.background = this.props.background;
+    this.white = this.props.color === 'white';
   }
 }
