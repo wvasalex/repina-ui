@@ -1,8 +1,32 @@
 <r-page
   *ngIf="service"
   [backgroundImage]="service.preview_file ? 'url(' + service.preview_file + ')' : null"
-  menuColor="black"
+  menuColor="white"
 >
+  <r-padding
+    header
+    [horizontal]="true"
+  >
+    <r-card
+      color="black"
+      size="small"
+      subtitle="Услуги"
+      [title]="service.title"
+      class="promo"
+    >
+      <div description>
+        <div class="description text32 mt-1_5">
+          {{service.description}}
+        </div>
+        <r-button
+          class="mt-2"
+        >
+          Заказать
+        </r-button>
+      </div>
+    </r-card>
+  </r-padding>
+
   <r-blocks-render
     [render]="render"
     [blocks]="service.content_blocks"

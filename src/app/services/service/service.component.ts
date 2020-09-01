@@ -22,5 +22,6 @@ export class ServiceComponent implements OnInit {
 
   ngOnInit(): void {
     this.service = this.activatedRoute.snapshot.data.service;
+    delete this.service.content_blocks[0];
   }
 }
