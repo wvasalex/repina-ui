@@ -1,6 +1,7 @@
 import { ContentBlock } from '@shared/types';
 
 export interface Service {
+  id?: number;
   title: string;
   description?: string;
   is_enabled: boolean;

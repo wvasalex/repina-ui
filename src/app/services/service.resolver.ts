@@ -6,7 +6,7 @@ import { ServicesService } from './services.service';
 @Injectable({
   providedIn: 'root',
 })
-export class ServiceResolver extends ResolverService<Project> {
+export class ServiceResolver extends ResolverService<Service> {
   constructor(public service: ServicesService) {
     super();
   }

@@ -28,11 +28,11 @@ export class ApiService {
     return this._stream('put', url, body, options);
   }
 
-  public patchStream<T>(url: string, body: StrMap<any> = {},options?: ApiRequestOptions): Observable<any> {
+  public patchStream<T>(url: string, body: StrMap<any> = {}, options?: ApiRequestOptions): Observable<any> {
     return this._stream('patch', url, body, options);
   }
 
-  public deleteStream<T>(url: string, body: StrMap<any> = {},options?: ApiRequestOptions): Observable<any> {
+  public deleteStream<T>(url: string, body: StrMap<any> = {}, options?: ApiRequestOptions): Observable<any> {
     return this._stream('delete', url, body, options);
   }
 
@@ -41,7 +41,12 @@ export class ApiService {
   }
 
   private _stream<T>(method: string, url: string, body: StrMap<any> = {}, options?: ApiRequestOptions): Observable<T> {
-    return this.httpClient[method]<T>(this.normalizeUrl(method, url, body), body, {
+    const params = {...body};
+    if (params.hasOwnProperty('slug')) {
+      delete params.id;
+    }
+
+    return this.httpClient[method]<T>(this.normalizeUrl(method, url, body), params, {
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
       },

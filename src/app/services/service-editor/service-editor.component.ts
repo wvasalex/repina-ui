@@ -3,7 +3,7 @@ import { Project } from '../../projects/projects.model';
 import { SelectOption } from '@shared/components/select/select.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToasterService } from '@shared/toaster/toaster.service';
-import { StrMap } from '@shared/types';
+import { ContentBlock, ContentElement, StrMap } from '@shared/types';
 import { ServicesService } from '../services.service';
 import { Service } from '../services.model';
 
@@ -102,19 +102,18 @@ export class ServiceEditorComponent implements OnInit {
   private _save() {
     const root = this.service.content_blocks[0];
     if (root.content_elements[0]?.content_file) {
-      this.service.preview_file = root.content_elements[0]?.content_file;
+      this.service.preview_file = root.content_elements[0].content_file;
     }
+
     this.service.title = root.props.title;
     this.service.description = root.props.description;
 
     if (!this.service.title) {
-      alert('Название статьи обязательно!');
+      alert('Название услуги обязательно!');
       return;
     }
 
-    console.log(this.service);
-
-    /*this.project.content_blocks.forEach((block: ContentBlock, index: number) => {
+    this.service.content_blocks.forEach((block: ContentBlock, index: number) => {
       block.position = index;
 
       block.content_elements.forEach((element: ContentElement, elementIndex: number) => {
@@ -126,17 +125,17 @@ export class ServiceEditorComponent implements OnInit {
       });
     });
 
-    const req = this.servicesService.save(this.project).toPromise().then((a: Project) => {
-      if (a.slug != this.project.slug) {
-        this.router.navigate(['/projects', a.slug, 'edit']);
+    delete this.service.tag;
+    const req = this.servicesService.save(this.service).toPromise().then((a: Service) => {
+      if (a.slug != this.service.slug) {
+        this.router.navigate(['/services', a.slug, 'edit']);
       } else {
-        this.project = a;
+        this.service = a;
         this.changeDetectorRef.detectChanges();
       }
     });
 
     this.toasterService.wrapPromise(req, 'Сохранено', 'Не удалось сохранить');
-  */
   }
 
 }

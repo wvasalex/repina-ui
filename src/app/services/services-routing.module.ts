@@ -4,6 +4,7 @@ import { ServicesComponent } from './services.component';
 import { SessionGuardService } from '@shared/services/session/guard/session-guard.service';
 import { ServiceEditorComponent } from './service-editor/service-editor.component';
 import { ServiceComponent } from './service/service.component';
+import { ServiceResolver } from './service.resolver';
 
 const routes: Routes = [
   { path: 'services', component: ServicesComponent },
@@ -16,7 +17,7 @@ const routes: Routes = [
     path: 'services/:id',
     component: ServiceComponent,
     resolve: {
-      //project: ServiceResolver,
+      service: ServiceResolver,
     },
   },
   {
@@ -24,7 +25,7 @@ const routes: Routes = [
     component: ServiceEditorComponent,
     canActivate: [SessionGuardService],
     resolve: {
-      //project: ServiceResolver,
+      service: ServiceResolver,
     },
   },
 ];

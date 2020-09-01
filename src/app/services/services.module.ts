@@ -23,6 +23,7 @@ import { FormsModule } from '@angular/forms';
 import { ServiceBlankComponent } from './service/service-blank/service-blank.component';
 import { ServiceTextComponent } from './service/service-text/service-text.component';
 import { ServiceTitleComponent } from './service/service-title/service-title.component';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [ServicesComponent, ServicesPrimaryComponent, ServicesTechComponent, ServiceDetailComponent, ServicesTechTextComponent, ServiceComponent, ServiceListComponent, ServiceEditorComponent, ServiceHeaderComponent, ServiceBlockComponent, ServiceImageComponent, ServiceBlankComponent, ServiceTextComponent, ServiceTitleComponent],
@@ -36,6 +37,7 @@ import { ServiceTitleComponent } from './service/service-title/service-title.com
     MatButtonModule,
     MatCheckboxModule,
     FormsModule,
+    MatButtonToggleModule,
   ],
 })
 export class ServicesModule {
