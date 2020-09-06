@@ -40,10 +40,6 @@ export class ProjectBlockComponent extends BaseBlock implements OnInit, AfterCon
 
     if (elements?.length > 1 && is_media(elements[0])) {
       this.media = true;
-      if (!this.editor && is_media(elements[1]) && !elements[1].contentFile) {
-        this.elements = elements.slice(0, 1);
-        this.fullWidth = true;
-      }
     }
   }
 

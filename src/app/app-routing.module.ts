@@ -5,6 +5,12 @@ import { MainComponent } from './main/main.component';
 
 const routes: Routes = [
   {path: '', component: MainComponent},
+  {
+    path: 'lists',
+    loadChildren: () => import('./lists/lists.module').then((m) => {
+      return m.ListsModule;
+    }),
+  }
 ];
 
 @NgModule({
