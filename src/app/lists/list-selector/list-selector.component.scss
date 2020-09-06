@@ -1,0 +1,16 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: #000;
+}
+
+.item {
+  outline: none;
+  padding: 24px;
+  cursor: pointer;
+
+  &.active {
+    text-decoration: underline;
+  }
+}

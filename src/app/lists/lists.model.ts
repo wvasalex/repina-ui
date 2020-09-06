@@ -1,4 +1,4 @@
-import { StrMap } from '../shared/types';
+import { StrMap } from '@shared/types';
 
 export interface ContentListItem {
   id?: number;
@@ -7,3 +7,8 @@ export interface ContentListItem {
   props?: StrMap<any>;
   file?: string;
 }
+
+export const ContentListTypes = [
+  'team',
+  'awards',
+];

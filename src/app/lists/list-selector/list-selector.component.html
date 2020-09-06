@@ -1,0 +1,8 @@
+<a
+  *ngFor="let item of types"
+  [routerLink]="['/lists', item]"
+  [class.active]="type === item"
+  class="h3 item"
+>
+  {{item}}
+</a>
