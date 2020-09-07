@@ -5,6 +5,7 @@ import { ListsRoutingModule } from './lists-routing.module';
 import { ListsComponent } from './lists.component';
 import { ListSelectorComponent } from './list-selector/list-selector.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { DataTableModule } from '@shared/data-table/data-table.module';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     CommonModule,
     ListsRoutingModule,
     MatSidenavModule,
+    DataTableModule,
   ],
 })
 export class ListsModule { }
