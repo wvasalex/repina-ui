@@ -5,6 +5,7 @@ import { ApiService } from '@shared/services/api/api.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ContentListItem } from './lists.model';
 import { tap } from 'rxjs/operators';
+import { StrMap } from '@shared/types';
 
 @Injectable({
   providedIn: 'root',
@@ -28,5 +29,28 @@ export class ListsService extends RestService {
       this.type.next(list_type);
       this.data.next(list);
     }));
+  }
+
+  public save<T>(body: StrMap<any> = {}): Observable<T> {
+    return super.save<T>(body).pipe(
+      tap((item: any) => {
+        this._update(item as ContentListItem);
+      }),
+    );
+  }
+
+  private _update(updated: ContentListItem) {
+    const items = this.data.value;
+    const index = items.findIndex((item: ContentListItem) => {
+      return item.id === updated.id;
+    });
+
+    if (index !== -1) {
+      items[index] = updated;
+    } else {
+      items.push(updated);
+    }
+
+    this.data.next(items.slice());
   }
 }

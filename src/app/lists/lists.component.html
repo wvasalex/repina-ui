@@ -4,5 +4,35 @@
 ></r-list-selector>
 
 <div class="content">
-  test
+  <table
+    *ngIf="columns$ | async as displayedColumns"
+    [dataSource]="listsService.data | async"
+    mat-table
+  >
+    <ng-container
+      *ngFor="let column of displayedColumns"
+      matColumnDef="{{column}}"
+    >
+      <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+      <td mat-cell *matCellDef="let element"> {{element.props[column]}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: displayedColumns;"
+      (click)="$edit(row)"
+    ></tr>
+
+  </table>
 </div>
+
+<r-fabs *rWithSession>
+  <button
+    (click)="$edit()"
+    mat-fab
+    color="primary"
+  >
+    <r-icon name="components/add-white"></r-icon>
+  </button>
+</r-fabs>

@@ -25,6 +25,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { IconComponent } from '@shared/components/icon/icon.component';
 import { FabsComponent } from './fabs/fabs.component';
 import { ImagePlaceholderComponent } from './image-placeholder/image-placeholder.component';
+import { InputLabelComponent } from '@shared/components/input-label/input-label.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { ImagePlaceholderComponent } from './image-placeholder/image-placeholder
     IconComponent,
     FabsComponent,
     ImagePlaceholderComponent,
+    InputLabelComponent,
   ],
   exports: [
     LogoComponent,
@@ -73,6 +75,7 @@ import { ImagePlaceholderComponent } from './image-placeholder/image-placeholder
     IconComponent,
     FabsComponent,
     ImagePlaceholderComponent,
+    InputLabelComponent,
   ],
   imports: [
     CommonModule,

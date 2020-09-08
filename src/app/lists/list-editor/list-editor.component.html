@@ -1,0 +1,13 @@
+<r-input
+  *ngFor="let prop of props"
+  [(ngModel)]="item.props[prop.name]"
+>
+  <r-input-label>{{prop.label}}</r-input-label>
+</r-input>
+
+<r-button
+  [mat-dialog-close]="item"
+  class="mt-2"
+>
+  Сохранить
+</r-button>
