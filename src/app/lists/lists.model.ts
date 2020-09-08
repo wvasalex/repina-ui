@@ -1,4 +1,5 @@
 import { StrMap } from '@shared/types';
+import { SelectOption } from '@shared/components/select/select.model';
 
 export interface ContentListItem {
   id?: number;
@@ -8,9 +9,23 @@ export interface ContentListItem {
   file?: string;
 }
 
-export const ContentListTypes = [
-  'team',
-  'awards',
+export const ContentListTypes: SelectOption[] = [
+  {
+    value: 'team',
+    label: 'Команда',
+  },
+  {
+    value: 'awards',
+    label: 'Награды',
+  },
+  {
+    value: 'feedback',
+    label: 'Отзывы',
+  },
+  {
+    value: 'media',
+    label: 'СМИ',
+  },
 ];
 
 export const PropsDef = {
@@ -40,6 +55,38 @@ export const PropsDef = {
     {
       name: 'type',
       label: 'Номинация',
+    },
+  ],
+  feedback: [
+    {
+      name: 'name',
+      label: 'Имя автора',
+    },
+    {
+      name: 'role',
+      label: 'Должность',
+    },
+    {
+      name: 'quote',
+      label: 'Кратко',
+    },
+    {
+      name: 'text',
+      label: 'Полный текст',
+    },
+  ],
+  media: [
+    {
+      name: 'source',
+      label: 'Источник',
+    },
+    {
+      name: 'date',
+      label: 'Дата',
+    },
+    {
+      name: 'text',
+      label: 'Текст',
     },
   ],
 };

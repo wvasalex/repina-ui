@@ -39,6 +39,14 @@ export class ListsService extends RestService {
     );
   }
 
+  public delete<T>(id: number): Observable<T> {
+    return super.delete<T>(id).pipe(
+      tap((item: any) => {
+        this._delete(id);
+      }),
+    );
+  }
+
   private _update(updated: ContentListItem) {
     const items = this.data.value;
     const index = items.findIndex((item: ContentListItem) => {
@@ -49,6 +57,19 @@ export class ListsService extends RestService {
       items[index] = updated;
     } else {
       items.push(updated);
+    }
+
+    this.data.next(items.slice());
+  }
+
+  private _delete(removed: number) {
+    const items = this.data.value;
+    const index = items.findIndex((item: ContentListItem) => {
+      return item.id === removed;
+    });
+
+    if (index !== -1) {
+      items.splice(index, 1);
     }
 
     this.data.next(items.slice());

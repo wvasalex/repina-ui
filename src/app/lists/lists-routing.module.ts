@@ -6,6 +6,11 @@ import { ListsResolver } from './lists.resolver';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'awards',
+    pathMatch: 'full',
+  },
+  {
     path: ':id',
     canActivate: [SessionGuardService],
     resolve: {

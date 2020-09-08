@@ -1,8 +1,8 @@
 <a
   *ngFor="let item of types"
-  [routerLink]="['/lists', item]"
-  [class.active]="type === item"
+  [routerLink]="['/lists', item.value]"
+  [class.active]="type === item.value"
   class="h3 item"
 >
-  {{item}}
+  {{item.label}}
 </a>

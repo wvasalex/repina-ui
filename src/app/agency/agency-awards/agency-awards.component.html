@@ -1,4 +1,5 @@
 <r-padding
+  *ngIf="awards$ | async as awards"
   [horizontal]="true"
 >
   <div class="row-column">
@@ -6,19 +7,27 @@
       <div class="h3">
         Наши награды
       </div>
-      <div class="arrows">
+      <div
+        *ngIf="last > 0"
+        class="arrows"
+      >
         <r-arrow
+          (click)="$prev()"
+          [color]="currentIndex == 0 ? '#86827F': '#fff'"
           type="prev"
-          color="#86827F"
         ></r-arrow>
         <r-arrow
+          (click)="$next()"
+          [color]="currentIndex == last ? '#86827F': '#fff'"
           type="next"
-          color="#FFF"
           class="ml-2"
         ></r-arrow>
       </div>
     </div>
-    <table>
+    <table
+      [@slider]="currentIndex"
+      class="awards"
+    >
       <thead>
         <th>Год</th>
         <th>Награда</th>
@@ -27,12 +36,12 @@
       </thead>
       <tbody>
         <tr
-          *ngFor="let award of awards"
+          *ngFor="let award of $page(awards)"
         >
-          <td>{{award.year}}</td>
-          <td>{{award.title}}</td>
-          <td>{{award.position}}</td>
-          <td>{{award.type}}</td>
+          <td>{{award.props.year}}</td>
+          <td>{{award.props.title}}</td>
+          <td>{{award.props.position}}</td>
+          <td>{{award.props.type}}</td>
         </tr>
       </tbody>
     </table>

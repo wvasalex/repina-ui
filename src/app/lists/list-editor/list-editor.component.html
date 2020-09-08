@@ -1,13 +1,24 @@
 <r-input
   *ngFor="let prop of props"
   [(ngModel)]="item.props[prop.name]"
+  [textarea]="prop.name === 'text'"
 >
   <r-input-label>{{prop.label}}</r-input-label>
 </r-input>
 
-<r-button
-  [mat-dialog-close]="item"
-  class="mt-2"
->
-  Сохранить
-</r-button>
+<div class="row mt-2">
+  <r-button
+    [mat-dialog-close]="item"
+  >
+    Сохранить
+  </r-button>
+
+  <button
+    *ngIf="item.id"
+    (click)="$delete()"
+    mat-flat-button
+  >
+    Удалить
+  </button>
+</div>
+

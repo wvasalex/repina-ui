@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { AgencyMediaSnippet } from './agency-media.model';
+import { Observable } from 'rxjs';
+import { ContentListItem } from '../../lists/lists.model';
+import { AgencyService } from '../agency.service';
 
 @Component({
   selector: 'r-agency-media',
@@ -8,35 +10,9 @@ import { AgencyMediaSnippet } from './agency-media.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AgencyMediaComponent implements OnInit {
-  public articles: AgencyMediaSnippet[] = [
-    {
-      title: 'VC.RU',
-      text: '«Пятёрочка» развлекает: Repina Branding создало маскота для hr-бренда сети',
-      date: '21 — 01 / 2020',
-    },
-    {
-      title: 'VC.RU',
-      text: '«Пятёрочка» развлекает: Repina Branding создало маскота для hr-бренда сети',
-      date: '21 — 01 / 2020',
-    },
-    {
-      title: 'VC.RU',
-      text: '«Пятёрочка» развлекает: Repina Branding создало маскота для hr-бренда сети',
-      date: '21 — 01 / 2020',
-    },
-    {
-      title: 'VC.RU',
-      text: '«Пятёрочка» развлекает: Repina Branding создало маскота для hr-бренда сети',
-      date: '21 — 01 / 2020',
-    },
-    {
-      title: 'VC.RU',
-      text: '«Пятёрочка» развлекает: Repina Branding создало маскота для hr-бренда сети',
-      date: '21 — 01 / 2020',
-    },
-  ];
+  public media$: Observable<ContentListItem[]> = this.agencyService.getMedia();
 
-  constructor() { }
+  constructor(private agencyService: AgencyService) { }
 
   ngOnInit(): void {
   }

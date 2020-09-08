@@ -2,13 +2,14 @@ import {
   ChangeDetectionStrategy,
   Component,
 } from '@angular/core';
-import { ListsService } from './lists.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ContentListItem, PropsDef } from './lists.model';
-import { ListEditorComponent } from './list-editor/list-editor.component';
-import { ToasterService } from '@shared/toaster/toaster.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { ToasterService } from '@shared/toaster/toaster.service';
+import { ListsService } from './lists.service';
+import { ContentListItem, PropsDef } from './lists.model';
+import { ListEditorComponent } from './list-editor/list-editor.component';
+
 
 @Component({
   selector: 'r-lists',
@@ -33,6 +34,7 @@ export class ListsComponent {
 
   public $edit(item?: ContentListItem) {
     const dialogRef = this.dialog.open(ListEditorComponent, {
+      width: '450px',
       data: {
         item,
         props: PropsDef[this.listsService.type.value],
@@ -40,6 +42,9 @@ export class ListsComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      if (result === null && item) {
+        this._delete(item);
+      }
       if (result) {
         this._save(result);
       }
@@ -51,8 +56,13 @@ export class ListsComponent {
       item.list_type = this.listsService.type.value;
     }
 
-    const promise = this.listsService.save(item)
-      .toPromise();
+    const promise = this.listsService.save(item).toPromise();
     this.toasterService.wrapPromise(promise, 'Сохранено!', 'Не удалось сохранить!');
+  }
+
+  private _delete(item: ContentListItem) {
+    const promise = this.listsService.delete(item.id).toPromise();
+    this.toasterService.wrapPromise(promise, 'Удалено!', 'Не удалось удалить!');
+
   }
 }

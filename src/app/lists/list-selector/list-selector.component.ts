@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { ContentListTypes } from '../lists.model';
+import { SelectOption } from '@shared/components/select/select.model';
 
 @Component({
   selector: 'r-list-selector',
@@ -10,7 +11,7 @@ import { ContentListTypes } from '../lists.model';
 export class ListSelectorComponent implements OnInit {
   @Input() type: string = '';
 
-  public types: string[] = ContentListTypes;
+  public types: SelectOption[] = ContentListTypes;
 
   constructor() {
   }

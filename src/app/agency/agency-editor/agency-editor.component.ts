@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { AgencyService } from '../agency.service';
 import { ContentBlock } from '@shared/types';
 import { ToasterService } from '@shared/toaster/toaster.service';
+import { AgencyRenderService } from '../agency-render.service';
 
 @Component({
   selector: 'r-agency-editor',
@@ -10,14 +11,16 @@ import { ToasterService } from '@shared/toaster/toaster.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AgencyEditorComponent implements OnInit {
-  public render = this.agencyService.render;
+  public render = this.agencyRenderService.render;
 
   public blocks: ContentBlock[];
 
   constructor(
     private changeDetectorRef: ChangeDetectorRef,
     private toasterService: ToasterService,
-    private agencyService: AgencyService) {
+    private agencyService: AgencyService,
+    private agencyRenderService: AgencyRenderService,
+  ) {
   }
 
   ngOnInit(): void {

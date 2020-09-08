@@ -1,16 +1,25 @@
-<div (click)="input.focus()">
+<div (click)="$any(input.firstElementChild).focus()">
   <ng-content select="s-input-label"></ng-content>
 </div>
-<div class="container">
+<div #input class="container">
   <input
-      #input
-      (input)="writeValue(input.value)"
+      *ngIf="!textarea"
+      (input)="writeValue($any($event.target).value)"
       [value]="value"
       [placeholder]="placeholder"
       [disabled]="disabled"
       type="text"
       class="text16 input"
   />
+  <textarea
+    *ngIf="textarea"
+    (input)="writeValue($any($event.target).value)"
+    [value]="value"
+    [placeholder]="placeholder"
+    [disabled]="disabled"
+    type="text"
+    class="text16 input"
+  ></textarea>
   <div
     *ngIf="required"
     class="required"

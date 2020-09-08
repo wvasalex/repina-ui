@@ -1,15 +1,18 @@
-<r-padding [horizontal]="true">
+<r-padding
+  *ngIf="media$ | async as media"
+  [horizontal]="true"
+>
   <div class="h3">
     200+ публикации в СМИ
   </div>
 
   <div
-    *ngFor="let article of articles"
+    *ngFor="let article of media"
     class="article-snippet"
   >
-    <div class="h3">{{article.title}}</div>
-    <div class="h4 mt-1">{{article.date}}</div>
-    <div class="text32 mt-1">{{article.text}}</div>
+    <div class="h3">{{article.props.source}}</div>
+    <div class="h4 mt-1">{{article.props.date}}</div>
+    <div class="text32 mt-1">{{article.props.text}}</div>
   </div>
   <div class="clear"></div>
 </r-padding>

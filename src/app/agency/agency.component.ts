@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, HostListener, OnInit } from '@angul
 import { ContentBlock } from '@shared/types';
 import { AgencyService } from './agency.service';
 import { Observable } from 'rxjs';
+import { AgencyRenderService } from './agency-render.service';
 
 @Component({
   selector: 'r-agency',
@@ -10,7 +11,7 @@ import { Observable } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AgencyComponent implements OnInit {
-  public render = this.agencyService.render;
+  public render = this.agencyRenderService.render;
 
   public blocks$: Observable<ContentBlock[]> = this.agencyService.get();
 
@@ -112,7 +113,10 @@ export class AgencyComponent implements OnInit {
     },
   ];
 
-  constructor(private agencyService: AgencyService) {
+  constructor(
+    private agencyService: AgencyService,
+    private agencyRenderService: AgencyRenderService,
+  ) {
   }
 
   public ngOnInit() {
