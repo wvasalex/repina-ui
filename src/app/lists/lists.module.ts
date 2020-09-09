@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { MatTableModule } from '@angular/material/table';
     MatButtonModule,
     FormsModule,
     MatTableModule,
+    DragDropModule,
   ],
 })
 export class ListsModule { }

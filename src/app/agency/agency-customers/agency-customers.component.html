@@ -1,11 +1,15 @@
-<r-padding [horizontal]="true">
-  <div class="h3">Клиенты</div>
-</r-padding>
-<r-marquee class="mt-4">
-  <div
-    *ngFor="let customer of customers"
-    class="h1 customer"
-  >
-    {{customer}}
-  </div>
-</r-marquee>
+<ng-container
+  *ngIf="customers$ | async as customers"
+>
+  <r-padding [horizontal]="true">
+    <div class="h3">Клиенты</div>
+  </r-padding>
+  <r-marquee class="mt-4">
+    <div
+      *ngFor="let customer of customers"
+      class="h1 customer"
+    >
+      {{customer.props.title}}
+    </div>
+  </r-marquee>
+</ng-container>

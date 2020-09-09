@@ -25,6 +25,10 @@ export class ListEditorComponent implements OnInit {
     this.props = (this.data.props || []).slice();
   }
 
+  public $submit() {
+    this.dialogRef.close(this.item);
+  }
+
   public $delete() {
     if (confirm('Удалить элемент?')) {
       this.dialogRef.close(null);

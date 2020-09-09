@@ -1,4 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { AgencyService } from '../agency.service';
+import { Observable } from 'rxjs';
+import { ContentListItem } from '../../lists/lists.model';
 
 @Component({
   selector: 'r-agency-customers',
@@ -7,13 +10,9 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AgencyCustomersComponent implements OnInit {
-  public customers: string[] = [
-    'Palmolive',
-    'Протек',
-    'Авиакомпания Победа',
-  ];
+  public customers$: Observable<ContentListItem[]> = this.agencyService.getCustomers();
 
-  constructor() { }
+  constructor(private agencyService: AgencyService) { }
 
   ngOnInit(): void {
   }

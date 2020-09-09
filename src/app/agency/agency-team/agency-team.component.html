@@ -1,4 +1,10 @@
-<div class="row">
+<div
+  *ngIf="members$ | async as members"
+  (swipeleft)="$next()"
+  (swiperight)="$prev()"
+  [style.marginLeft.%]="-105 * currentIndex"
+  class="row list"
+>
   <div
       *ngFor="let member of members; let first = first;"
       [class.ml-2]="!first"
@@ -6,7 +12,15 @@
   >
     <div class="member-image"></div>
     <div class="h3 mt-2">
-      {{member.name}}
+      {{member.props.name}}
     </div>
+  </div>
+
+  <div class="member ml-2">
+    <div class="member-image transparent"></div>
+  </div>
+
+  <div class="member ml-2">
+    <div class="member-image transparent"></div>
   </div>
 </div>

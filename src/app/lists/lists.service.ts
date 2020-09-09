@@ -6,6 +6,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { ContentListItem } from './lists.model';
 import { tap } from 'rxjs/operators';
 import { StrMap } from '@shared/types';
+import { moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Injectable({
   providedIn: 'root',
@@ -45,6 +46,18 @@ export class ListsService extends RestService {
         this._delete(id);
       }),
     );
+  }
+
+  public move(fromIndex: number, toIndex: number) {
+    const items = this.data.value;
+    moveItemInArray(items, fromIndex, toIndex);
+
+    this.data.next(items.slice());
+
+    items.forEach((item: ContentListItem, position: number) => {
+      item.position = position;
+      this.patch(item).subscribe();
+    });
   }
 
   private _update(updated: ContentListItem) {

@@ -26,6 +26,10 @@ export const ContentListTypes: SelectOption[] = [
     value: 'media',
     label: 'СМИ',
   },
+  {
+    value: 'customers',
+    label: 'Клиенты',
+  },
 ];
 
 export const PropsDef = {
@@ -87,6 +91,12 @@ export const PropsDef = {
     {
       name: 'text',
       label: 'Текст',
+    },
+  ],
+  customers: [
+    {
+      name: 'title',
+      label: 'Название',
     },
   ],
 };

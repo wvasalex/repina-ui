@@ -9,6 +9,7 @@ import { ToasterService } from '@shared/toaster/toaster.service';
 import { ListsService } from './lists.service';
 import { ContentListItem, PropsDef } from './lists.model';
 import { ListEditorComponent } from './list-editor/list-editor.component';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 
 @Component({
@@ -49,6 +50,10 @@ export class ListsComponent {
         this._save(result);
       }
     });
+  }
+
+  public $sort(event: CdkDragDrop<ContentListItem>) {
+    this.listsService.move(event.previousIndex, event.currentIndex);
   }
 
   private _save(item: ContentListItem) {

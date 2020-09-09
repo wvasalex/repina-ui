@@ -1,14 +1,17 @@
-<r-input
-  *ngFor="let prop of props"
-  [(ngModel)]="item.props[prop.name]"
-  [textarea]="prop.name === 'text'"
->
-  <r-input-label>{{prop.label}}</r-input-label>
-</r-input>
+<form (ngSubmit)="$submit()">
+  <r-input
+    *ngFor="let prop of props"
+    [(ngModel)]="item.props[prop.name]"
+    [textarea]="prop.name === 'text'"
+    [name]="prop.name"
+  >
+    <r-input-label>{{prop.label}}</r-input-label>
+  </r-input>
+</form>
 
 <div class="row mt-2">
   <r-button
-    [mat-dialog-close]="item"
+    (click)="$submit()"
   >
     Сохранить
   </r-button>

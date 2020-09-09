@@ -3,7 +3,11 @@
 :host {
   display: block;
   padding: 5rem;
-  overflow: auto;
+  overflow: hidden;
+}
+
+.list {
+  transition: 600ms;
 }
 
 .member-image {
@@ -11,4 +15,8 @@
   min-width: 200px;
   padding-top: 100%;
   background: $color-gray;
+
+  &.transparent {
+    opacity: 0;
+  }
 }

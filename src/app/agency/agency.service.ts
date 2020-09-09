@@ -3,6 +3,8 @@ import { RestService } from '@shared/services/api/rest.service';
 import { ApiService } from '@shared/services/api/api.service';
 import { ApiConfig } from '@shared/services/api/api.model';
 import { ListsService } from '../lists/lists.service';
+import { Observable } from 'rxjs';
+import { ContentListItem } from '../lists/lists.model';
 
 @Injectable({
   providedIn: 'root',
@@ -17,21 +19,33 @@ export class AgencyService extends RestService {
     super();
   }
 
-  public getAwards(page: number = 1) {
+  public getAwards(): Observable<ContentListItem[]> {
     return this.listsService.get({
       list_type: 'awards',
     });
   }
 
-  public getFeedback(page: number = 1) {
+  public getFeedback(): Observable<ContentListItem[]> {
     return this.listsService.get({
       list_type: 'feedback',
     });
   }
 
-  public getMedia(page: number = 1) {
+  public getMedia(): Observable<ContentListItem[]> {
     return this.listsService.get({
       list_type: 'media',
+    });
+  }
+
+  public getCustomers(): Observable<ContentListItem[]> {
+    return this.listsService.get({
+      list_type: 'customers',
+    });
+  }
+
+  public getTeam(): Observable<ContentListItem[]> {
+    return this.listsService.get({
+      list_type: 'team',
     });
   }
 }
