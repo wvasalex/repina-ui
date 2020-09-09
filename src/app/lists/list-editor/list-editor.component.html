@@ -2,7 +2,7 @@
   <r-input
     *ngFor="let prop of props"
     [(ngModel)]="item.props[prop.name]"
-    [textarea]="prop.name === 'text'"
+    [textarea]="prop.name == 'text'"
     [name]="prop.name"
   >
     <r-input-label>{{prop.label}}</r-input-label>

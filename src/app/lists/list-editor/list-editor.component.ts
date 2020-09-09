@@ -9,7 +9,7 @@ import { StrMap } from '@shared/types';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListEditorComponent implements OnInit {
-  public item: StrMap<string>;
+  public item: StrMap<any>;
   public props: StrMap<string>[];
 
   constructor(
