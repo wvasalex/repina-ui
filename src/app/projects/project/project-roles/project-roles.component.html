@@ -1,0 +1,20 @@
+<r-padding>
+  <ng-container *ngIf="!editor">
+    <div
+      *ngFor="let member of $parseRoles(props.roles)"
+      class="role"
+    >
+      <div class="h4">{{member.label}}</div>
+      <div class="text32">{{member.value}}</div>
+    </div>
+  </ng-container>
+
+  <div *ngIf="editor">
+    <r-list-content
+      (valueChanges)="$rolesChanged($event)"
+      [options$]="services$"
+      [selected]="$parseRoles(props.roles)"
+      placeholder="Участники проекта"
+    ></r-list-content>
+  </div>
+</r-padding>

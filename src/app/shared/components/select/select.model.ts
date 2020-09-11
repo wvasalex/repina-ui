@@ -1,6 +1,7 @@
 export interface SelectOption {
   label: string;
   value: number | string;
+  position?: number;
 }
 
 export interface SelectGroup {

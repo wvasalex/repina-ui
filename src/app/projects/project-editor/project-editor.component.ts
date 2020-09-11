@@ -54,6 +54,12 @@ export class ProjectEditorComponent implements OnInit {
             },
           ],
         },
+        {
+          block_type: 'project-roles',
+          props: {},
+          content_elements: [
+          ],
+        },
       ];
     }
   }
@@ -98,7 +104,7 @@ export class ProjectEditorComponent implements OnInit {
     this.project.description = root.props.subtitle;
 
     if (!this.project.title) {
-      alert('Название статьи обязательно!');
+      alert('Название проекта обязательно!');
       return;
     }
 

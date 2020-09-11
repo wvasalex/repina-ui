@@ -8,12 +8,27 @@
 
 <r-padding [horizontal]="false">
   <div class="nav row-column">
-    <div class="links column">
-      <a class="text32 bolder">Бренд-платформа</a>
-      <a class="text32 bolder mt-1_5">Нейминг</a>
-      <a class="text32 bolder mt-1_5">Фирменный стиль</a>
-      <a class="text32 bolder mt-1_5">Упаковка</a>
+    <div
+      *ngIf="!editor"
+      class="links column"
+    >
+      <a
+        *ngFor="let service of $parseServices(props.services); let first = first"
+        [routerLink]="['/services', service.value]"
+        [class.mt-1_5]="!first"
+        class="text32 bolder"
+      >{{service.label}}</a>
     </div>
+
+    <div *ngIf="editor">
+      <r-list-content
+        (valueChanges)="$servicesChanged($event)"
+        [options$]="services$"
+        [selected]="$parseServices(props.services)"
+        placeholder="Оказанные услуги"
+      ></r-list-content>
+    </div>
+
     <r-project-text
       [props]="props"
       [editor]="editor"

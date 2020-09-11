@@ -7,8 +7,6 @@
     [blocks]="project.content_blocks"
   ></r-blocks-render>
 
-  <r-project-detail-roles></r-project-detail-roles>
-
   <r-fabs *rWithSession>
     <button
       [routerLink]="['/projects', project.slug, 'edit']"

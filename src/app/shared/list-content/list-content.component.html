@@ -1,0 +1,31 @@
+<ng-container *ngIf="options$ | async as options">
+  <div class="column">
+    <div
+      *ngFor="let item of selected; let first = first"
+      [class.mt-1_5]="!first"
+    >
+      <div class="row">
+        <div
+          [r-block]="true"
+          [innerHTML]="item.label"
+          (contentChanged)="$labelChanged(item, $event)"
+          class="text32 bolder"
+        ></div>
+        <div
+          [r-block]="true"
+          [innerHTML]="item.value"
+          (contentChanged)="$valueChanged(item, $event)"
+          class="text32 bolder"
+        ></div>
+      </div>
+    </div>
+  </div>
+
+  <r-select
+    #select
+    (valueChanged)="$changed(select)"
+    [options]="options"
+    [placeholder]="placeholder"
+    class="mt-2"
+  ></r-select>
+</ng-container>

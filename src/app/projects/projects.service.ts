@@ -11,6 +11,7 @@ import { ProjectQuoteComponent } from './project/project-quote/project-quote.com
 import { ProjectVideoComponent } from './project/project-video/project-video.component';
 import { Project } from './projects.model';
 import { BlockBlankComponent } from '@shared/blocks/block-blank/block-blank.component';
+import { ProjectRolesComponent } from './project/project-roles/project-roles.component';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,7 @@ export class ProjectsService extends RestService {
     'project-gallery': ProjectGalleryComponent,
     'project-text': ProjectTextComponent,
     'project-quote': ProjectQuoteComponent,
+    'project-roles': ProjectRolesComponent,
   };
 
   constructor(public api: ApiService) {

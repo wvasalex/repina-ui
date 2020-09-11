@@ -9,7 +9,7 @@ import { SharedModule } from '@shared/components/shared.module';
 import { GridModule } from '@shared/grid/grid.module';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
 import { ProjectDetailStepComponent } from './project-detail/project-detail-step/project-detail-step.component';
-import { ProjectDetailRolesComponent } from './project/project-detail-roles/project-detail-roles.component';
+import { ProjectRolesComponent } from './project/project-roles/project-roles.component';
 import { ProjectComponent } from './project/project.component';
 import { BlocksModule } from '@shared/blocks/blocks.module';
 import { ProjectRootComponent } from './project/project-root/project-root.component';
@@ -25,13 +25,14 @@ import { ProjectVideoComponent } from './project/project-video/project-video.com
 import { ProjectQuoteComponent } from './project/project-quote/project-quote.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { ProjectSnippetComponent } from './project-snippet/project-snippet.component';
+import { ListContentModule } from '@shared/list-content/list-content.module';
 
 @NgModule({
   declarations: [
     ProjectsComponent,
     ProjectDetailComponent,
     ProjectDetailStepComponent,
-    ProjectDetailRolesComponent,
+    ProjectRolesComponent,
     ProjectComponent,
     ProjectRootComponent,
     ProjectBlockComponent,
@@ -55,6 +56,7 @@ import { ProjectSnippetComponent } from './project-snippet/project-snippet.compo
     MatCheckboxModule,
     FormsModule,
     MatButtonToggleModule,
+    ListContentModule,
   ],
 })
 export class ProjectsModule {
