@@ -100,8 +100,6 @@ export class ProjectEditorComponent implements OnInit {
     if (root.content_elements[0]?.content_file) {
       this.project.preview_file = root.content_elements[0]?.content_file;
     }
-    this.project.title = root.props.title;
-    this.project.description = root.props.subtitle;
 
     if (!this.project.title) {
       alert('Название проекта обязательно!');

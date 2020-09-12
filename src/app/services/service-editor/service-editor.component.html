@@ -2,7 +2,7 @@
   <r-padding class="row" style="align-items: center">
     <mat-checkbox
       [(ngModel)]="service.is_enabled"
-    > Опубликовано
+    > Опубликовать
     </mat-checkbox>
 
     <div>
@@ -14,6 +14,19 @@
         <mat-button-toggle value="complex">Комплексная</mat-button-toggle>
       </mat-button-toggle-group>
     </div>
+  </r-padding>
+
+  <r-padding class="row mt-2">
+    <r-input
+      [(ngModel)]="service.title"
+      placeholder="Название"
+    ></r-input>
+
+    <r-input
+      [(ngModel)]="service.description"
+      placeholder="Описание"
+      class="ml-2"
+    ></r-input>
   </r-padding>
 
   <r-blocks-render

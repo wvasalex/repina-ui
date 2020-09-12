@@ -9,7 +9,7 @@ import { SelectComponent } from '@shared/components/select/select.component';
   styleUrls: ['./list-content.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ListContentComponent implements OnInit {
+export class ListContentComponent {
   @Input() options$: Observable<SelectOption[]>;
   @Input() selected: SelectOption[] = [];
   @Input() placeholder: string = 'Выбрать';

@@ -11,6 +11,10 @@ export interface ContentListItem {
 
 export const ContentListTypes: SelectOption[] = [
   {
+    value: 'services',
+    label: 'Услуги',
+  },
+  {
     value: 'team',
     label: 'Команда',
   },

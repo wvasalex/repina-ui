@@ -9,8 +9,7 @@ import { ToasterService } from '@shared/toaster/toaster.service';
 import { ListsService } from './lists.service';
 import { ContentListItem, PropsDef } from './lists.model';
 import { ListEditorComponent } from './list-editor/list-editor.component';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'r-lists',

@@ -2,11 +2,24 @@
   <r-padding class="row" style="align-items: center">
     <mat-checkbox
       [(ngModel)]="project.is_enabled"
-    > Опубликовано
+    > Опубликовать
     </mat-checkbox>
 
     <div></div>
     <div></div>
+  </r-padding>
+
+  <r-padding class="row mt-2">
+    <r-input
+      [(ngModel)]="project.title"
+      placeholder="Название"
+    ></r-input>
+
+    <r-input
+      [(ngModel)]="project.description"
+      placeholder="Описание"
+      class="ml-2"
+    ></r-input>
   </r-padding>
 
   <r-blocks-render

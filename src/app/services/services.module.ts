@@ -26,7 +26,9 @@ import { ServiceTitleComponent } from './service/service-title/service-title.com
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @NgModule({
-  declarations: [ServicesComponent, ServicesPrimaryComponent, ServicesTechComponent, ServiceDetailComponent, ServicesTechTextComponent, ServiceComponent, ServiceListComponent, ServiceEditorComponent, ServiceHeaderComponent, ServiceBlockComponent, ServiceImageComponent, ServiceBlankComponent, ServiceTextComponent, ServiceTitleComponent],
+  declarations: [
+    ServicesComponent, ServicesPrimaryComponent, ServicesTechComponent, ServiceDetailComponent, ServicesTechTextComponent, ServiceComponent, ServiceListComponent, ServiceEditorComponent, ServiceHeaderComponent, ServiceBlockComponent, ServiceImageComponent, ServiceBlankComponent, ServiceTextComponent, ServiceTitleComponent,
+  ],
   imports: [
     CommonModule,
     ServicesRoutingModule,

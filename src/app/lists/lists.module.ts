@@ -12,10 +12,11 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ListServicesComponent } from './list-services/list-services.component';
 
 
 @NgModule({
-  declarations: [ListsComponent, ListSelectorComponent, ListEditorComponent],
+  declarations: [ListsComponent, ListSelectorComponent, ListEditorComponent, ListServicesComponent],
   imports: [
     CommonModule,
     ListsRoutingModule,

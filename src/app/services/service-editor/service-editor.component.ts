@@ -105,9 +105,6 @@ export class ServiceEditorComponent implements OnInit {
       this.service.preview_file = root.content_elements[0].content_file;
     }
 
-    this.service.title = root.props.title;
-    this.service.description = root.props.description;
-
     if (!this.service.title) {
       alert('Название услуги обязательно!');
       return;

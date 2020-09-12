@@ -1,0 +1,16 @@
+<r-list-selector
+  type="services"
+></r-list-selector>
+
+<div
+  *ngIf="services$ | async as services"
+  class="content"
+>
+  <a
+    *ngFor="let service of services"
+    [routerLink]="['/services', service.slug]"
+    class="item"
+  >
+    {{service.title}} [{{service.slug}}]
+  </a>
+</div>
