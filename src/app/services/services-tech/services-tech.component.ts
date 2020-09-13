@@ -15,46 +15,6 @@ export class ServicesTechComponent extends BaseBlock {
     '/assets/icons/services/brand3.svg',
   ];
 
-  public elements: ContentElement[] = [
-    {
-      element_type: 'services-tech-text',
-      props: {
-        title: 'Brand levels',
-        text: 'Технология оценки бренда по 3-м показателям продуктивности: сообщение, системность, уникальность',
-      },
-    },
-    {
-      element_type: 'services-tech-text',
-      props: {
-        title: 'Brand inside',
-        text: 'Технология разработки позиционирования и платформы бренда',
-      },
-    },
-    {
-      element_type: 'services-tech-text',
-      props: {
-        title: 'Brand Evolution',
-        text: 'Технология, которая позволяет провести эффективный ребрендинг',
-      },
-    },
-  ];
-
-  /*public blocks: string[][] = [
-    ['Бренд-технологии'],
-    [
-      'Brand levels',
-      'Технология оценки бренда по 3-м показателям продуктивности: сообщение, системность, уникальность',
-    ],
-    [
-      'Brand inside',
-      'Технология разработки позиционирования и платформы бренда',
-    ],
-    [
-      'Brand Evolution',
-      'Технология, которая позволяет провести эффективный ребрендинг',
-    ],
-  ];*/
-
   ngOnInit(): void {
   }
 

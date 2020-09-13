@@ -12,7 +12,7 @@ import { ServicesTechComponent } from './services-tech/services-tech.component';
 import { ServiceDetailComponent } from './service-detail/service-detail.component';
 import { ServicesTechTextComponent } from './services-tech/services-tech-text/services-tech-text.component';
 import { ServiceComponent } from './service/service.component';
-import { ServiceListComponent } from './service-list/service-list.component';
+import { ServicesListComponent } from './services-list/services-list.component';
 import { ServiceEditorComponent } from './service-editor/service-editor.component';
 import { MatButtonModule } from '@angular/material/button';
 import { ServiceHeaderComponent } from './service/service-header/service-header.component';
@@ -24,10 +24,12 @@ import { ServiceBlankComponent } from './service/service-blank/service-blank.com
 import { ServiceTextComponent } from './service/service-text/service-text.component';
 import { ServiceTitleComponent } from './service/service-title/service-title.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { ServicesEditorComponent } from './services-editor/services-editor.component';
+import { ListContentModule } from '@shared/list-content/list-content.module';
 
 @NgModule({
   declarations: [
-    ServicesComponent, ServicesPrimaryComponent, ServicesTechComponent, ServiceDetailComponent, ServicesTechTextComponent, ServiceComponent, ServiceListComponent, ServiceEditorComponent, ServiceHeaderComponent, ServiceBlockComponent, ServiceImageComponent, ServiceBlankComponent, ServiceTextComponent, ServiceTitleComponent,
+    ServicesComponent, ServicesPrimaryComponent, ServicesTechComponent, ServiceDetailComponent, ServicesTechTextComponent, ServiceComponent, ServicesListComponent, ServiceEditorComponent, ServiceHeaderComponent, ServiceBlockComponent, ServiceImageComponent, ServiceBlankComponent, ServiceTextComponent, ServiceTitleComponent, ServicesEditorComponent,
   ],
   imports: [
     CommonModule,
@@ -40,6 +42,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     MatCheckboxModule,
     FormsModule,
     MatButtonToggleModule,
+    ListContentModule,
   ],
 })
 export class ServicesModule {

@@ -29,8 +29,8 @@
     </div>
 
     <r-service-image
-      [id]="elements && elements[0].id"
-      [contentFile]="elements && elements[0].content_file"
+      [id]="elements?.length && elements[0].id"
+      [contentFile]="elements?.length && elements[0].content_file"
       [editor]="editor"
       image
     ></r-service-image>

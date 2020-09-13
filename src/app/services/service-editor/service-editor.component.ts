@@ -122,6 +122,7 @@ export class ServiceEditorComponent implements OnInit {
       });
     });
 
+    delete this.service.parent;
     delete this.service.tag;
     const req = this.servicesService.save(this.service).toPromise().then((a: Service) => {
       if (a.slug != this.service.slug) {
