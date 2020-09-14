@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input, OnInit } from '@angular/core';
 import { BaseBlock } from '@shared/blocks/block.component';
 
 @Component({
@@ -7,6 +7,12 @@ import { BaseBlock } from '@shared/blocks/block.component';
   styleUrls: ['./project-text.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProjectTextComponent extends BaseBlock {
+export class ProjectTextComponent extends BaseBlock implements OnInit {
   @Input() padding: boolean = true;
+
+  @HostBinding('class.has-index') hasIndex;
+
+  public ngOnInit() {
+    this.hasIndex = this.props.i;
+  }
 }
