@@ -4,24 +4,35 @@
 
   ::ng-deep [rel=element_type_0] {
     flex: initial;
-    width: 40%;
+    width: 45%;
     max-width: none;
+    padding-right: 30px;
+    background: #fff;
   }
 
   ::ng-deep [rel=element_type_1] {
-    margin-left: 10%;
+    margin-left: 5%;
   }
 
   &.full-width {
     ::ng-deep [rel=element_type_0] {
       width: 100%;
       margin: 0 !important;
+      padding: 0;
+    }
+    ::ng-deep [rel=element_type_1] {
+      display: none;
     }
   }
 
   &.first-media ::ng-deep [rel=element_type_0] {
     margin-left: -75px;
     margin-right: 75px;
+  }
+
+  &.last-media ::ng-deep [rel=element_type_1] {
+    margin-right: -75px;
+    margin-left: 75px;
   }
 
   &.white ::ng-deep * {

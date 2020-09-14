@@ -1,13 +1,11 @@
 @font-face {
-  font-family: 'GTEestiProText';
-  src: url('/assets/fonts/GT-Eesti-Pro-Text-Bold.otf') format('otf');
-  font-style: normal;
+  font-family: GTEestiProText;
+  src: url('/assets/fonts/GT-Eesti-Pro-Text-Bold.otf') format('opentype');
 }
 
 @font-face {
   font-family: 'GTEestiProText-Book';
-  src: url('/assets/fonts/GTEestiProText-Book.otf') format('otf');
-  font-style: normal;
+  src: url('/assets/fonts/GTEestiProText-Book.otf') format('opentype');
 }
 
 @import '~@angular/material/theming';
@@ -73,7 +71,7 @@ a, a:visited {
 }
 
 .h, .h1, .h2, .h3, .h4, button {
-  font-family: 'GTEestiProText', sans-serif;
+  font-family: GTEestiProText, sans-serif;
   font-weight: 600;
   color: #000;
 }

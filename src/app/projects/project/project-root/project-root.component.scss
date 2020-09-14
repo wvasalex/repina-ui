@@ -6,7 +6,7 @@
 
   .links {
     flex: initial;
-    width: 40%;
+    width: 45%;
 
     a {
       text-decoration: underline;
@@ -19,7 +19,7 @@
   }
 
   .text {
-    margin-left: 10%;
+    margin-left: calc(5% + 15px);
   }
 }
 
