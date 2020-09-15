@@ -8,10 +8,18 @@
     max-width: none;
     padding-right: 30px;
     background: #fff;
+
+    r-project-text {
+      background: var(background, #fff);
+    }
   }
 
   ::ng-deep [rel=element_type_1] {
     margin-left: 5%;
+  }
+
+  ::ng-deep r-project-text {
+    background: var(--background, transparent);
   }
 
   &.full-width {
@@ -27,12 +35,12 @@
 
   &.first-media ::ng-deep [rel=element_type_0] {
     margin-left: -75px;
-    margin-right: 75px;
+    margin-right: 0;
   }
 
   &.last-media ::ng-deep [rel=element_type_1] {
     margin-right: -75px;
-    margin-left: 75px;
+    margin-left: 0;
   }
 
   &.white ::ng-deep * {

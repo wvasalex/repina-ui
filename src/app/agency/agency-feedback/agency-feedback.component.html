@@ -50,9 +50,18 @@
       {{comment.props.quote}}
     </r-quote>
     <div
+      (click)="$toggle()"
       class="mt-2 bolder full-review"
     >
       Показать весь отзыв
+    </div>
+
+    <div
+      *ngIf="expanded"
+      @errorAnimation
+      class="mt-3 text32"
+    >
+      {{comment.props.text}}
     </div>
   </ng-container>
 </ng-template>

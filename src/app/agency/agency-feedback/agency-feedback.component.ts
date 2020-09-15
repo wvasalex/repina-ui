@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { slider } from '@shared/animations';
+import { errorAnimation, slider } from '@shared/animations';
 import { Observable } from 'rxjs';
 import { ContentListItem } from '../../lists/lists.model';
 import { tap } from 'rxjs/operators';
@@ -12,6 +12,7 @@ import { AgencyService } from '../agency.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     slider,
+    errorAnimation,
   ]
 })
 export class AgencyFeedbackComponent implements OnInit {
@@ -25,6 +26,7 @@ export class AgencyFeedbackComponent implements OnInit {
   public prevIndex: number = 0;
   public currentIndex: number = 0;
   public last: number;
+  public expanded: boolean = false;
 
   private pageSize: number = 1;
 
@@ -36,12 +38,18 @@ export class AgencyFeedbackComponent implements OnInit {
   public $prev() {
     if (this.currentIndex > 0) {
       this.prevIndex = this.currentIndex--;
+      this.expanded = false;
     }
   }
 
   public $next() {
     if (this.currentIndex < this.last) {
       this.prevIndex = this.currentIndex++;
+      this.expanded = false;
     }
+  }
+
+  public $toggle() {
+    this.expanded = !this.expanded;
   }
 }
