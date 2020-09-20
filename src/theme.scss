@@ -2,3 +2,42 @@ $color-blue: #0043EE;
 $color-red: #E42A45;
 $color-gray: #F8F8F8;
 $color-brown: #86827F;
+
+:root {
+  --padding-horizontal: 75px;
+  --padding-vertical: 128px;
+}
+
+.w1366 :host {
+  --padding-horizontal: 64px;
+  --padding-vertical: 48px;
+}
+
+.w1024 :host {
+  --padding-horizontal: 35px;
+  --padding-vertical: 40px;
+}
+
+.w768 :host {
+  --padding-horizontal: 48px;
+  --padding-vertical: 30px;
+}
+
+.w320 :host {
+  --padding-horizontal: 48px;
+  --padding-vertical: 12px;
+}
+
+
+.p-l {
+  padding-left: var(--padding-horizontal, 0);
+}
+.p-r {
+  padding-right: var(--padding-horizontal, 0);
+}
+.p-t {
+  padding-top: var(--padding-vertical, 0);
+}
+.p-b {
+  padding-bottom: var(--padding-vertical, 0);
+}

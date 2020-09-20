@@ -2,10 +2,8 @@
   display: block;
 }
 
-.block_type {
-  &:not(:first-of-type) {
-
-  }
+.element_type {
+  height: 100%;
 }
 
 .content-item {

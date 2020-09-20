@@ -4,25 +4,16 @@
 
   ::ng-deep [rel=element_type_0] {
     flex: initial;
-    width: 45%;
+    width: 40%;
     max-width: none;
     padding-right: 30px;
-    background: #fff;
-
-    r-project-text {
-      background: var(background, #fff);
-    }
-  }
-
-  ::ng-deep [rel=element_type_1] {
-    margin-left: 5%;
   }
 
   ::ng-deep r-project-text {
     background: var(--background, transparent);
   }
 
-  &.full-width {
+  /*&.full-width {
     ::ng-deep [rel=element_type_0] {
       width: 100%;
       margin: 0 !important;
@@ -41,18 +32,18 @@
   &.last-media ::ng-deep [rel=element_type_1] {
     margin-right: -75px;
     margin-left: 0;
-  }
+  }*/
 
   &.white ::ng-deep * {
     color: #fff;
   }
 
-  &:not(.has-media) {
+  /*&:not(.has-media) {
     padding-top: 8rem;
     padding-bottom: 8rem;
-  }
+  }*/
 }
-
+/*
 .w1366 :host.first-media ::ng-deep [rel=element_type_0] {
   margin-left: -64px;
   margin-right: 64px;
@@ -71,4 +62,4 @@
 .w320 :host.first-media ::ng-deep [rel=element_type_0] {
   margin-left: -12px;
   margin-right: 12px;
-}
+}*/

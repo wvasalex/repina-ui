@@ -27,7 +27,7 @@ export class ProjectBlockComponent extends BaseBlock implements OnInit, AfterCon
   @HostBinding('class.first-media') media: boolean = false;
   @HostBinding('class.last-media') lastMedia: boolean = false;
 
-  @HostBinding('style.background') @HostBinding('style.--background') background: string;
+  @HostBinding('style.--background') background: string;
   @HostBinding('class.white') white: boolean = false;
 
   public ngOnInit() {
