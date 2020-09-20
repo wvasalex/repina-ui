@@ -1,12 +1,10 @@
 :host  {
-  r-padding {
-    padding-top: 8rem;
-    padding-bottom: 8rem;
-  }
 
   .links {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
     flex: initial;
-    width: 45%;
+    width: 40%;
 
     a {
       text-decoration: underline;
@@ -14,12 +12,8 @@
   }
 
   .image {
-    width: 30%;
-    margin: 0 auto;
-  }
-
-  .text {
-    margin-left: 15px;
+    width: 40%;
+    margin-left: 10%;
   }
 }
 

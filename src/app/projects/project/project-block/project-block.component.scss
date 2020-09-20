@@ -9,7 +9,7 @@
     padding-right: 30px;
   }
 
-  ::ng-deep r-project-text {
+  ::ng-deep r-project-text, ::ng-deep r-project-quote {
     background: var(--background, transparent);
   }
 

@@ -1,7 +1,7 @@
 @import 'src/styles';
 
 :host {
-  display: block;
+  display: inline-block;
   position: relative;
   padding: 2rem;
 
@@ -16,7 +16,7 @@
     content: '”';
     position: absolute;
     bottom: -8px;
-    right: 8px;
+    margin-left: 16px;
     font-size: 78px;
   }
 

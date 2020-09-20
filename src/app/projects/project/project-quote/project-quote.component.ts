@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, OnInit } from '@angular/core';
 import { BaseBlock } from '@shared/blocks/block.component';
 
 @Component({
@@ -8,5 +8,11 @@ import { BaseBlock } from '@shared/blocks/block.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectQuoteComponent extends BaseBlock {
-
+  @HostBinding('class.p-l') get _pl() {
+    return this.index === 0;
+  };
+  @HostBinding('class.center') get _index() {
+    return this.index !== 0;
+  };
+  @HostBinding('class.p-r') pr = true;
 }

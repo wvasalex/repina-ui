@@ -6,35 +6,33 @@
   class="image"
 ></r-project-image>
 
-<r-padding [horizontal]="true">
-  <div class="nav row-column">
-    <div
-      *ngIf="!editor"
-      class="links column"
-    >
-      <a
-        *ngFor="let service of $parseServices(props.services); let first = first"
-        [routerLink]="['/services', service.value]"
-        [class.mt-1_5]="!first"
-        class="text32 bolder"
-      >{{service.label}}</a>
-    </div>
-
-    <div *ngIf="editor">
-      <r-list-content
-        (valueChanges)="$servicesChanged($event)"
-        [options$]="services$"
-        [selected]="$parseServices(props.services)"
-        placeholder="Оказанные услуги"
-      ></r-list-content>
-    </div>
-
-    <r-project-text
-      [props]="props"
-      [editor]="editor"
-      [padding]="false"
-      [index]="1"
-      class="text"
-    ></r-project-text>
+<div class="nav row-column p-l p-r">
+  <div
+    *ngIf="!editor"
+    class="links column"
+  >
+    <a
+      *ngFor="let service of $parseServices(props.services); let first = first"
+      [routerLink]="['/services', service.value]"
+      [class.mt-1_5]="!first"
+      class="text32 bolder"
+    >{{service.label}}</a>
   </div>
-</r-padding>
+
+  <div *ngIf="editor">
+    <r-list-content
+      (valueChanges)="$servicesChanged($event)"
+      [options$]="services$"
+      [selected]="$parseServices(props.services)"
+      placeholder="Оказанные услуги"
+    ></r-list-content>
+  </div>
+
+  <r-project-text
+    [props]="props"
+    [editor]="editor"
+    [padding]="false"
+    [index]="1"
+    class="text"
+  ></r-project-text>
+</div>
