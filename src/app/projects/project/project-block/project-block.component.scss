@@ -13,7 +13,7 @@
     background: var(--background, transparent);
   }
 
-  /*&.full-width {
+  &.full-width {
     ::ng-deep [rel=element_type_0] {
       width: 100%;
       margin: 0 !important;
@@ -23,7 +23,7 @@
       display: none;
     }
   }
-
+/*
   &.first-media ::ng-deep [rel=element_type_0] {
     margin-left: -75px;
     margin-right: 0;
