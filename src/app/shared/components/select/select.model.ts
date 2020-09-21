@@ -1,7 +1,7 @@
 export interface SelectOption {
   label: string;
   value: number | string;
-  meta?: string;
+  meta?: any;
   position?: number;
 }
 

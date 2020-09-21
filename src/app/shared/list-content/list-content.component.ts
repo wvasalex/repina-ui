@@ -12,6 +12,7 @@ import { SelectComponent } from '@shared/components/select/select.component';
 export class ListContentComponent {
   @Input() options$: Observable<SelectOption[]>;
   @Input() selected: SelectOption[] = [];
+  @Input() editable: boolean = true;
   @Input() placeholder: string = 'Выбрать';
 
   @Output() valueChanges: EventEmitter<SelectOption[]> = new EventEmitter<SelectOption[]>();

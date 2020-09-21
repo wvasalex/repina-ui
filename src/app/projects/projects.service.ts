@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { RestService } from '@shared/services/api/rest.service';
 import { ApiService } from '@shared/services/api/api.service';
 import { ApiConfig } from '@shared/services/api/api.model';
+import { BlockBlankComponent } from '@shared/blocks/block-blank/block-blank.component';
 import { ProjectRootComponent } from './project/project-root/project-root.component';
 import { ProjectBlockComponent } from './project/project-block/project-block.component';
 import { ProjectImageComponent } from './project/project-image/project-image.component';
@@ -10,8 +11,9 @@ import { ProjectTextComponent } from './project/project-text/project-text.compon
 import { ProjectQuoteComponent } from './project/project-quote/project-quote.component';
 import { ProjectVideoComponent } from './project/project-video/project-video.component';
 import { Project } from './projects.model';
-import { BlockBlankComponent } from '@shared/blocks/block-blank/block-blank.component';
 import { ProjectRolesComponent } from './project/project-roles/project-roles.component';
+import { ProjectFeedbackComponent } from './project/project-feedback/project-feedback.component';
+import { ProjectArticlesComponent } from './project/project-articles/project-articles.component';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +33,8 @@ export class ProjectsService extends RestService {
     'project-text': ProjectTextComponent,
     'project-quote': ProjectQuoteComponent,
     'project-roles': ProjectRolesComponent,
+    'project-feedback': ProjectFeedbackComponent,
+    'project-articles': ProjectArticlesComponent,
   };
 
   constructor(public api: ApiService) {

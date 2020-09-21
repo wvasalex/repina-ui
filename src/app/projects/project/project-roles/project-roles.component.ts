@@ -1,8 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { BaseBlock } from '@shared/blocks/block.component';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { Service } from '../../../services/services.model';
-import { ServicesService } from '../../../services/services.service';
+import { BaseBlock } from '@shared/blocks/block.component';
 import { SelectOption } from '@shared/components/select/select.model';
 import { ListsService } from '../../../lists/lists.service';
 import { ContentListItem } from '../../../lists/lists.model';

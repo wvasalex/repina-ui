@@ -1,0 +1,32 @@
+<ng-container *ngIf="!editor">
+  <div class="row-column">
+    <div>
+      <div class="h3">
+        Статьи и награды
+      </div>
+    </div>
+    <div>
+      <div
+        *ngFor="let article of $parseValue(props.articles)"
+        class="item"
+      >
+        <a
+          [attr.href]="$href(article.value)"
+          class="h3"
+        >
+          {{$title(article.label)}}
+        </a>
+        <div class="text32">{{$description(article.label)}}</div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<div *ngIf="editor">
+  <r-list-content
+    (valueChanges)="$valueChanged($event)"
+    [options$]="articles$"
+    [selected]="$parseValue(props.articles)"
+    placeholder="Статьи и награды"
+  ></r-list-content>
+</div>

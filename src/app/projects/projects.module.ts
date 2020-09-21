@@ -26,6 +26,8 @@ import { ProjectQuoteComponent } from './project/project-quote/project-quote.com
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { ProjectSnippetComponent } from './project-snippet/project-snippet.component';
 import { ListContentModule } from '@shared/list-content/list-content.module';
+import { ProjectFeedbackComponent } from './project/project-feedback/project-feedback.component';
+import { ProjectArticlesComponent } from './project/project-articles/project-articles.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { ListContentModule } from '@shared/list-content/list-content.module';
     ProjectVideoComponent,
     ProjectQuoteComponent,
     ProjectSnippetComponent,
+    ProjectFeedbackComponent,
+    ProjectArticlesComponent,
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,22 @@
+:host {
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+.left {
+  flex: initial;
+  width: 40%;
+  margin-right: 30px;
+}
+
+.right {
+  padding-right: 8rem;
+  padding-left: 8rem;
+}
+
+.item:not(:first-of-type) {
+  margin-top: 64px;
+}

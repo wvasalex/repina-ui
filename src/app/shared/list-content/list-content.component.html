@@ -6,13 +6,13 @@
     >
       <div class="row">
         <div
-          [r-block]="true"
+          [r-block]="editable"
           [innerHTML]="item.label"
           (contentChanged)="$labelChanged(item, $event)"
           class="text32 bolder"
         ></div>
         <div
-          [r-block]="true"
+          [r-block]="editable"
           [innerHTML]="item.value"
           (contentChanged)="$valueChanged(item, $event)"
           class="text32 bolder ml-2"

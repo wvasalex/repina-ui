@@ -20,6 +20,8 @@ export class ProjectEditorComponent implements OnInit {
   public availableBlocks: SelectOption[] = [
     { value: 'project-block', label: 'Блок' },
     { value: 'project-gallery', label: 'Галерея' },
+    { value: 'project-feedback', label: 'Отзыв' },
+    { value: 'project-articles', label: 'Статьи и награды' },
   ];
 
   public availableElements: SelectOption[] = [
@@ -55,7 +57,19 @@ export class ProjectEditorComponent implements OnInit {
           ],
         },
         {
+          block_type: 'project-feedback',
+          props: {},
+          content_elements: [
+          ],
+        },
+        {
           block_type: 'project-roles',
+          props: {},
+          content_elements: [
+          ],
+        },
+        {
+          block_type: 'project-articles',
           props: {},
           content_elements: [
           ],
