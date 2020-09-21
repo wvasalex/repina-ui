@@ -12,7 +12,7 @@
   *ngIf="!editor && comment"
   class="row-column"
 >
-  <div class="author">
+  <div class="author p-l">
     <div class="h3">
       {{comment.props.name}}
     </div>
@@ -20,8 +20,8 @@
       {{comment.props.role}}
     </div>
   </div>
-  <div class="comment">
-    <r-quote class="quote h4 mt-2">
+  <div class="comment p-r">
+    <r-quote class="quote h3">
       {{comment.props.quote}}
     </r-quote>
 

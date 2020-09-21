@@ -10,11 +10,13 @@
 
 .author {
   flex: initial;
-  width: 40%;
-  margin-right: 30px;
+  min-width: 45%;
+  padding-right: 30px;
+  box-sizing: border-box;
 }
 
 .comment {
-  padding-right: 8rem;
-  padding-left: 8rem;
+  flex: initial;
+  margin-top: -2rem;
+  padding-left: calc(10% - 30px - 4rem);
 }

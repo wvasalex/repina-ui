@@ -13,8 +13,6 @@ import { ListsService } from '../../../lists/lists.service';
 })
 export class ProjectFeedbackComponent extends BaseBlock implements OnInit {
 
-  @HostBinding('class.p-l') @HostBinding('class.p-r') _padding = true;
-
   public comment: ContentListItem;
 
   public feedbacks$ = this.listsService.resolve('feedback')

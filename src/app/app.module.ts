@@ -22,6 +22,7 @@ import { API_BASE_CONFIG } from '@shared/services/api/api.model';
 import { AuthModule } from './auth/auth.module';
 import { SessionModule } from '@shared/services/session/session.module';
 import { ListsModule } from './lists/lists.module';
+import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import { ListsModule } from './lists/lists.module';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    MarkdownModule.forRoot(),
 
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.

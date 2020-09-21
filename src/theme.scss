@@ -6,28 +6,28 @@ $color-brown: #86827F;
 :root {
   --padding-horizontal: 75px;
   --padding-vertical: 128px;
-}
 
-.w1366 :host {
-  --padding-horizontal: 64px;
-  --padding-vertical: 48px;
-}
 
-.w1024 :host {
-  --padding-horizontal: 35px;
-  --padding-vertical: 40px;
-}
+  &.w1366 {
+    --padding-horizontal: 64px;
+    --padding-vertical: 48px;
+  }
 
-.w768 :host {
-  --padding-horizontal: 48px;
-  --padding-vertical: 30px;
-}
+  &.w1024 {
+    --padding-horizontal: 35px;
+    --padding-vertical: 40px;
+  }
 
-.w320 :host {
-  --padding-horizontal: 48px;
-  --padding-vertical: 12px;
-}
+  &.w768 {
+    --padding-horizontal: 48px;
+    --padding-vertical: 30px;
+  }
 
+  &.w320 {
+    --padding-horizontal: 48px;
+    --padding-vertical: 12px;
+  }
+}
 
 .p-l {
   padding-left: var(--padding-horizontal, 0);

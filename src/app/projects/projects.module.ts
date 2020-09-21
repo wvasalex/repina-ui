@@ -7,8 +7,6 @@ import { ProjectsComponent } from './projects.component';
 import { PageModule } from '@shared/page/page.module';
 import { SharedModule } from '@shared/components/shared.module';
 import { GridModule } from '@shared/grid/grid.module';
-import { ProjectDetailComponent } from './project-detail/project-detail.component';
-import { ProjectDetailStepComponent } from './project-detail/project-detail-step/project-detail-step.component';
 import { ProjectRolesComponent } from './project/project-roles/project-roles.component';
 import { ProjectComponent } from './project/project.component';
 import { BlocksModule } from '@shared/blocks/blocks.module';
@@ -28,12 +26,11 @@ import { ProjectSnippetComponent } from './project-snippet/project-snippet.compo
 import { ListContentModule } from '@shared/list-content/list-content.module';
 import { ProjectFeedbackComponent } from './project/project-feedback/project-feedback.component';
 import { ProjectArticlesComponent } from './project/project-articles/project-articles.component';
+import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
   declarations: [
     ProjectsComponent,
-    ProjectDetailComponent,
-    ProjectDetailStepComponent,
     ProjectRolesComponent,
     ProjectComponent,
     ProjectRootComponent,
@@ -61,6 +58,7 @@ import { ProjectArticlesComponent } from './project/project-articles/project-art
     FormsModule,
     MatButtonToggleModule,
     ListContentModule,
+    MarkdownModule,
   ],
 })
 export class ProjectsModule {

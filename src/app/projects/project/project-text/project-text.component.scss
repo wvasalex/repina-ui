@@ -6,20 +6,19 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  padding-top: 8rem;
-  padding-bottom: 8rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 
   &.has-index {
     align-items: flex-start;
     justify-content: flex-start;
   }
-
-  &.center {
-    padding-right: 8rem;
-    padding-left: 8rem;
-  }
 }
 
 .index {
   margin-right: 4rem;
+}
+
+.column {
+  width: 100%;
 }

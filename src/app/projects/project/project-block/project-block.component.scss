@@ -4,9 +4,19 @@
 
   ::ng-deep [rel=element_type_0] {
     flex: initial;
-    width: 40%;
+    min-width: 45%;
+    width: 45%;
     max-width: none;
-    padding-right: 30px;
+    box-sizing: border-box;
+    margin-right: 30px;
+  }
+
+  ::ng-deep [rel=element_type_1] > * {
+    padding-left: calc(10% - 30px);
+  }
+
+  ::ng-deep r-project-quote {
+    padding-left: calc(10% - 30px + 2rem) !important;
   }
 
   ::ng-deep r-project-text, ::ng-deep r-project-quote {

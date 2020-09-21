@@ -1,11 +1,12 @@
 @font-face {
-  font-family: GTEestiProText;
-  src: url('/assets/fonts/GT-Eesti-Pro-Text-Bold.otf') format('opentype');
+  font-family: GTEestiProTextMedium;
+  src: url('/assets/fonts/GT-Eesti-Pro-Text-Medium.otf') format('opentype');
+  font-weight: 500;
 }
 
 @font-face {
-  font-family: 'GTEestiProText-Book';
-  src: url('/assets/fonts/GTEestiProText-Book.otf') format('opentype');
+  font-family: GTEestiProTextBook;
+  src: url('/assets/fonts/GT-Eesti-Pro-Text-Book.otf') format('opentype');
 }
 
 @import '~@angular/material/theming';
@@ -52,9 +53,8 @@ body {
 }
 
 * {
-  font-family: 'GTEestiProText-Book', sans-serif;
+  font-family: GTEestiProTextBook, sans-serif;
   font-weight: normal;
-  font-style: normal;
 }
 
 a, a:visited {
@@ -70,8 +70,8 @@ a, a:visited {
   color: white;
 }
 
-.h, .h1, .h2, .h3, .h4, button {
-  font-family: GTEestiProText, sans-serif;
+h1, h2, h3, h4, .h, .h1, .h2, .h3, .h4, button {
+  font-family: GTEestiProTextMedium, sans-serif;
   font-weight: 500;
   color: #000;
 }
@@ -81,22 +81,22 @@ a, a:visited {
 }
 
 .w1920 {
-  .h1 {
+  .h1, h1 {
     font-size: 112px;
     line-height: 124px;
   }
 
-  .h2 {
+  .h2, h2 {
     font-size: 72px;
     line-height: 76px;
   }
 
-  .h3 {
+  .h3, h3 {
     font-size: 48px;
     line-height: 56px;
   }
 
-  .h4 {
+  .h4, h4 {
     font-size: 36px;
     line-height: 48px;
   }
@@ -118,22 +118,22 @@ a, a:visited {
 }
 
 .w1366, .w1024, .w768, .w320 {
-  .h1 {
+  .h1, h1 {
     font-size: 78px;
     line-height: 86px;
   }
 
-  .h2 {
+  .h2, h2 {
     font-size: 52px;
     line-height: 60px;
   }
 
-  .h3 {
+  .h3, h3 {
     font-size: 32px;
     line-height: 40px;
   }
 
-  .h4 {
+  .h4, h4 {
     font-size: 24px;
     line-height: 32px;
   }
@@ -161,17 +161,17 @@ a, a:visited {
 .w320 {
   font-size: 8px;
 
-  .h1 {
+  .h1, h1 {
     font-size: 32px !important;
     line-height: 40px !important;
   }
 
-  .h2 {
+  .h2, h2 {
     font-size: 32px;
     line-height: 40px;
   }
 
-  .h3, .h4 {
+  .h3, .h4, h3, h4 {
     font-size: 24px;
     line-height: 32px;
   }
@@ -303,4 +303,14 @@ span.editable, a.editable {
 
 .h-underline:hover {
   text-decoration: underline;
+}
+
+ndc-dynamic {
+  display: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
