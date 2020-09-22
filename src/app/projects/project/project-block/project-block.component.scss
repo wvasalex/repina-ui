@@ -12,11 +12,11 @@
   }
 
   ::ng-deep [rel=element_type_1] > * {
-    padding-left: calc(10% - 30px);
+    padding-left: calc(10% - 15px);
   }
 
   ::ng-deep r-project-quote {
-    padding-left: calc(10% - 30px + 2rem) !important;
+    padding-left: calc(10% - 15px + 2rem) !important;
   }
 
   ::ng-deep r-project-text, ::ng-deep r-project-quote {
