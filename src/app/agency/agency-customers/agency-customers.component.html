@@ -5,11 +5,13 @@
     <div class="h3">Клиенты</div>
   </r-padding>
   <r-marquee class="mt-4">
-    <div
-      *ngFor="let customer of customers"
-      class="h1 customer"
-    >
-      {{customer.props.title}}
-    </div>
+    <ng-template #marqueeContent>
+      <div
+        *ngFor="let customer of customers"
+        class="h1 customer"
+      >
+        {{customer.props.title}}
+      </div>
+    </ng-template>
   </r-marquee>
 </ng-container>

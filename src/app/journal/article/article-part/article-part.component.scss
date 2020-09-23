@@ -3,6 +3,10 @@
 :host {
   display: block;
 
+  ::ng-deep [rel="element_type_0"] {
+    flex: 3;
+  }
+
   ::ng-deep [rel="element_type_1"] {
     r-article-text, r-article-quote {
       display: flex;

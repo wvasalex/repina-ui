@@ -1,15 +1,21 @@
 <r-padding>
-  <r-card
-    [subtitle]="props.subtitle"
-  >
+  <r-card>
     <div
       (contentChanged)="$contentChanged($event, 'title')"
       [r-block]="editor"
       [innerHTML]="$getValue('title')"
       title
       class="h2 mt-1"
-    >
-    </div>
+    ></div>
+
+    <div
+      (contentChanged)="$contentChanged($event, 'subtitle')"
+      [r-block]="editor"
+      [innerHTML]="$getValue('subtitle')"
+      subtitle
+      class="h4 mt-1"
+    ></div>
+
     <div
       (contentChanged)="$contentChanged($event, 'description')"
       [r-block]="editor"

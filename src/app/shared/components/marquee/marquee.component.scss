@@ -1,5 +1,6 @@
 :host {
-  display: block;
+  display: flex;
+  flex-direction: row;
   width: 100%;
   overflow: hidden;
 }
@@ -17,10 +18,7 @@ span {
   0% {
     transform: translate(0, 0);
   }
-  50% {
-    transform: translate(-100%, 0)
-  }
   100% {
-    transform: translate(0, 0);
+    transform: translate(-100%, 0)
   }
 }

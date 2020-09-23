@@ -1,3 +1,6 @@
 <span>
-  <ng-content></ng-content>
+  <ng-container *ngTemplateOutlet="content"></ng-container>
+</span>
+<span class="second">
+  <ng-container *ngTemplateOutlet="content"></ng-container>
 </span>
