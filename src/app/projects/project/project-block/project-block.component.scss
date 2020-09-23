@@ -11,8 +11,10 @@
     margin-right: 30px;
   }
 
-  ::ng-deep [rel=element_type_1] > * {
-    padding-left: calc(10% - 15px);
+  ::ng-deep [rel=element_type_1] {
+    r-project-text, r-project-quote {
+      padding-left: calc(10% - 15px);
+    }
   }
 
   ::ng-deep r-project-quote {

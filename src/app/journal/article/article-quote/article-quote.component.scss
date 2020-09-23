@@ -1,11 +1,17 @@
 :host {
-  display: block;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
+
 
 .inner {
   overflow-wrap: break-word;
   display: block;
-  padding: 3rem;
+  padding: 3rem 6rem;
   background: #F8F8F8;
   max-width: 100%;
 
@@ -13,4 +19,17 @@
     background: transparent;
     padding: 1rem;
   }
+}
+
+.avatar {
+  display: inline-block;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.author {
+  display: flex;
+  flex-direction: row;
 }

@@ -21,6 +21,7 @@ import { ArticleAuthorComponent } from './article/article-author/article-author.
 import { ArticlePartComponent } from './article/article-part/article-part.component';
 import { ArticleQuoteComponent } from './article/article-quote/article-quote.component';
 import { ArticleVideoComponent } from './article/article-video/article-video.component';
+import { MarkdownModule } from 'ngx-markdown';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { ArticleVideoComponent } from './article/article-video/article-video.com
     FormsModule,
     MatCheckboxModule,
     MatButtonModule,
+    MarkdownModule,
   ],
   exports: [
     JournalSnippetComponent,

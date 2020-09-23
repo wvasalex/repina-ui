@@ -1,4 +1,7 @@
-<div *ngIf="editor">
+<div
+  *ngIf="editor"
+  class="p-l"
+>
   <r-list-content
     (valueChanges)="$valueChanged($event)"
     [options$]="feedbacks$"

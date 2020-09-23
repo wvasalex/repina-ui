@@ -1,6 +1,6 @@
 @font-face {
-  font-family: GTEestiProTextMedium;
-  src: url('/assets/fonts/GT-Eesti-Pro-Text-Medium.otf') format('opentype');
+  font-family: GTEestiProTextRegular;
+  src: url('/assets/fonts/GT-Eesti-Pro-Text-Regular.otf') format('opentype');
   font-weight: 500;
 }
 
@@ -71,9 +71,10 @@ a, a:visited {
 }
 
 h1, h2, h3, h4, .h, .h1, .h2, .h3, .h4, button {
-  font-family: GTEestiProTextMedium, sans-serif;
+  font-family: GTEestiProTextRegular, sans-serif;
   font-weight: 500;
   color: #000;
+  margin: 0;
 }
 
 .bolder {
@@ -312,4 +313,9 @@ ndc-dynamic {
 ul {
   padding: 0;
   margin: 0;
+  padding-inline-start: 1em;
+}
+
+markdown p {
+  white-space: pre;
 }

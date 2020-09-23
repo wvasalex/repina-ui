@@ -1,7 +1,14 @@
 <div
+  *ngIf="editor"
   [r-block]="editor"
   [innerHTML]="$getValue('value')"
   (contentChanged)="$contentChanged($event, 'value')"
   class="text32 mt-1"
 >
 </div>
+
+<markdown
+  *ngIf="!editor"
+  [data]="props.value"
+  class="subtitle text32"
+></markdown>

@@ -2,6 +2,12 @@
 
 :host {
   display: block;
+
+  ::ng-deep [rel="element_type_1"] {
+    r-article-text, r-article-quote {
+      display: flex;
+    }
+  }
 }
 
 .title {
@@ -89,4 +95,8 @@
   ::ng-deep .title, .subtitle {
     display: none;
   }
+}
+
+.element_type {
+  align-items: center;
 }
