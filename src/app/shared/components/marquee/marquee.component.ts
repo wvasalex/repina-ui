@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ContentChild, OnInit, TemplateRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ContentChild, OnInit } from '@angular/core';
 
 @Component({
   selector: 'r-marquee',

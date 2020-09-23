@@ -1,6 +1,6 @@
 @font-face {
-  font-family: GTEestiProTextRegular;
-  src: url('/assets/fonts/GT-Eesti-Pro-Text-Regular.otf') format('opentype');
+  font-family: GTEestiProTextMedium;
+  src: url('/assets/fonts/GT-Eesti-Pro-Text-Medium.otf') format('opentype');
   font-weight: 500;
 }
 
@@ -71,7 +71,7 @@ a, a:visited {
 }
 
 h1, h2, h3, h4, .h, .h1, .h2, .h3, .h4, button {
-  font-family: GTEestiProTextRegular, sans-serif;
+  font-family: GTEestiProTextMedium, sans-serif;
   font-weight: 500;
   color: #000;
   margin: 0;
