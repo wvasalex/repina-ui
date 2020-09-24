@@ -2,6 +2,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Project } from '../projects.model';
 import { ProjectsService } from '../projects.service';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { pluck } from 'rxjs/operators';
 
 @Component({
   selector: 'r-project',
@@ -10,9 +12,10 @@ import { ActivatedRoute } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectComponent implements OnInit {
+
   public render = this.projectsService.render;
 
-  public project: Project;
+  public project$: Observable<Project> = this.activatedRoute.data.pipe(pluck('project'));
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -21,6 +24,5 @@ export class ProjectComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.project = this.activatedRoute.snapshot.data.project;
   }
 }

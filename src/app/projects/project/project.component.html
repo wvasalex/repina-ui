@@ -1,5 +1,5 @@
 <r-page
-  *ngIf="project"
+  *ngIf="project$ | async as project"
   [backgroundImage]="project.preview_file ? 'url(' + project.preview_file + ')' : null"
 >
   <r-blocks-render
