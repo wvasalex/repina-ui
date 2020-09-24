@@ -1,13 +1,10 @@
 import {
   AfterContentChecked,
-  AfterViewChecked,
   ChangeDetectionStrategy,
   Component,
   HostBinding,
   Input,
-  OnChanges,
   OnInit,
-  SimpleChanges,
 } from '@angular/core';
 import { BaseBlock } from '@shared/blocks/block.component';
 import { SelectOption } from '@shared/components/select/select.model';
