@@ -1,0 +1,22 @@
+:host {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+
+  &:not(.static) {
+    .overlay {
+      opacity: 0;
+      transition: ease-in 300ms;
+    }
+
+    &:hover .overlay {
+      opacity: 1;
+    }
+  }
+}
+
+.image {
+
+}

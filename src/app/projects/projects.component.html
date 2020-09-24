@@ -16,26 +16,15 @@
 
   <div
     *ngFor="let group of groups"
-    class="row-column"
+    class="row-column mb-30"
   >
-    <ng-container
+    <r-project-snippet
       *ngFor="let project of group; let index = index;"
+      [project]="project"
+      [class.m30]="index == 1"
+      class="snippet"
     >
-      <a
-        *ngIf="project.slug"
-        [routerLink]="[project.slug]"
-        [class.m30]="index == 1"
-        class="project mb-30"
-        style="overflow: hidden"
-      >
-        <r-image
-          [src]="project.preview_file || '/assets/icons/project/placeholder.svg'"
-          r-parallax
-        ></r-image>
-      </a>
-
-      <div *ngIf="!project.slug"></div>
-    </ng-container>
+    </r-project-snippet>
   </div>
 
   <r-fabs *rWithSession>

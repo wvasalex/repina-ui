@@ -56,6 +56,6 @@ export class JournalService extends RestService {
   }
 
   public getLink(slug: string): string {
-    return '/project/' + slug;
+    return '/article/' + slug;
   }
 }

@@ -27,6 +27,8 @@ import { ListContentModule } from '@shared/list-content/list-content.module';
 import { ProjectFeedbackComponent } from './project/project-feedback/project-feedback.component';
 import { ProjectArticlesComponent } from './project/project-articles/project-articles.component';
 import { MarkdownModule } from 'ngx-markdown';
+import { ProjectNextComponent } from './project/project-next/project-next.component';
+import { ProjectSnippetOverlayComponent } from './project-snippet/project-snippet-overlay/project-snippet-overlay.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { MarkdownModule } from 'ngx-markdown';
     ProjectSnippetComponent,
     ProjectFeedbackComponent,
     ProjectArticlesComponent,
+    ProjectNextComponent,
+    ProjectSnippetOverlayComponent,
   ],
   imports: [
     CommonModule,
@@ -59,6 +63,9 @@ import { MarkdownModule } from 'ngx-markdown';
     MatButtonToggleModule,
     ListContentModule,
     MarkdownModule,
+  ],
+  exports: [
+    ProjectSnippetComponent,
   ],
 })
 export class ProjectsModule {

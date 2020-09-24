@@ -4,12 +4,18 @@
   <r-nav-list [blocks]="nav"></r-nav-list>
 
   <r-grid type="big-small">
-    <r-image
+    <r-project-snippet
+      [project]="{
+        'id': 1,
+        'title': 'title',
+        'slug': 'slug',
+        'status': 'active'
+      }"
       rel="1"
-      src="/assets/pictures/1.png"
       r-parallax
     >
-    </r-image>
+    </r-project-snippet>
+
     <r-image
       rel="2"
       src="/assets/pictures/2.png"
@@ -23,7 +29,6 @@
     >
     </r-image>
   </r-grid>
-
 
 
   <r-grid

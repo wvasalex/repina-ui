@@ -9,4 +9,5 @@ export interface Project {
   slug?: string;
   preview_file?: string;
   content_blocks: ContentBlock[];
+  next_project?: Project;
 }

@@ -7,6 +7,11 @@
     [blocks]="project.content_blocks"
   ></r-blocks-render>
 
+  <r-project-next
+    *ngIf="project.next_project"
+    [project]="project.next_project"
+  ></r-project-next>
+
   <r-fabs *rWithSession>
     <button
       [routerLink]="['/projects', project.slug, 'edit']"

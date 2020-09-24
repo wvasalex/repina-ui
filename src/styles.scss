@@ -66,8 +66,8 @@ a, a:visited {
   display: none !important;
 }
 
-.text-white {
-  color: white;
+.text-white, .text-white * {
+  color: white !important;
 }
 
 h1, h2, h3, h4, .h, .h1, .h2, .h3, .h4, button {
