@@ -13,6 +13,7 @@ import { ContentBlock, ContentElement, StrMap } from '@shared/types';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectEditorComponent implements OnInit {
+
   public project: Project;
 
   public render = this.projectsService.render;
@@ -110,7 +111,7 @@ export class ProjectEditorComponent implements OnInit {
     this._save();
   }
 
-  private _save() {
+  private async _save() {
     const root = this.project.content_blocks[0];
     if (root.content_elements[0]?.content_file) {
       this.project.preview_file = root.content_elements[0]?.content_file;
@@ -144,4 +145,5 @@ export class ProjectEditorComponent implements OnInit {
 
     this.toasterService.wrapPromise(req, 'Сохранено', 'Не удалось сохранить');
   }
+
 }

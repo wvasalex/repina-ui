@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Output } from '@angular/core';
 import { BaseBlock } from '@shared/blocks/block.component';
 import { ApiService } from '@shared/services/api/api.service';
 import { ContentElement } from '@shared/types';
@@ -10,6 +10,9 @@ import { ContentElement } from '@shared/types';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectImageComponent extends BaseBlock {
+
+  @Output() upload: EventEmitter<File> = new EventEmitter<File>();
+
   constructor(
     private changeDetectoRef: ChangeDetectorRef,
     private api: ApiService) {
@@ -24,8 +27,10 @@ export class ProjectImageComponent extends BaseBlock {
     this.api.postFile('/api/v1/project_content_elements/' + this.id + '/', data)
       .toPromise()
       .then((element: ContentElement) => {
+        this.upload.emit(file);
         this.contentFile = element.content_file;
         this.changeDetectoRef.detectChanges();
       });
   }
+
 }

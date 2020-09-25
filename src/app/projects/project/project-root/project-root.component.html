@@ -1,5 +1,6 @@
 <r-project-image
   *ngIf="editor && elements.length"
+  (upload)="$upload($event)"
   [id]="elements[0].id"
   [contentFile]="elements[0].content_file"
   [editor]="editor"
