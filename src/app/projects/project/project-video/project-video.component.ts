@@ -2,7 +2,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  ElementRef, OnDestroy, OnInit,
+  ElementRef, HostListener, OnDestroy, OnInit,
   ViewChild, ViewEncapsulation,
 } from '@angular/core';
 import videojs from 'video.js';
@@ -21,6 +21,7 @@ import { ContentElement } from '@shared/types';
 export class ProjectVideoComponent extends BaseBlock implements OnInit, OnDestroy {
   @ViewChild('video', { static: true }) video: ElementRef;
 
+  public paused: boolean = true;
   public muted: boolean = true;
 
   private player: videojs.Player;
@@ -30,6 +31,16 @@ export class ProjectVideoComponent extends BaseBlock implements OnInit, OnDestro
     private toasterService: ToasterService,
     private api: ApiService) {
     super();
+  }
+
+  @HostListener('click') $onClick() {
+    this.paused = !this.paused;
+
+    if (this.paused) {
+      this.video.nativeElement.pause();
+    } else {
+      this.video.nativeElement.play();
+    }
   }
 
   public ngOnInit(): void {
@@ -42,7 +53,9 @@ export class ProjectVideoComponent extends BaseBlock implements OnInit, OnDestro
     }
   }
 
-  public $toggleAudio() {
+  public $toggleAudio(e: Event) {
+    e.stopPropagation();
+
     this.muted = !this.muted;
 
     this.video.nativeElement.muted = this.muted;
@@ -80,9 +93,10 @@ export class ProjectVideoComponent extends BaseBlock implements OnInit, OnDestro
           },
         ],
         controls: false,
-        autoplay: true,
+        autoplay: this.props.autoplay,
         loop: true,
       }, () => {
+        this.video.nativeElement.muted = this.muted = this.props.autoplay == 'true';
       });
     } else {
       this.player.src([

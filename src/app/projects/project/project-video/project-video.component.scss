@@ -5,6 +5,7 @@ r-project-video {
   display: block;
   width: 100% !important;
   height: 100% !important;
+  outline: none;
 
   &:hover {
     .upload {
@@ -37,12 +38,19 @@ r-project-video {
   z-index: 1000;
 }
 
-.volume-control {
-  position: absolute;
-  right: 24px;
-  bottom: 24px;
-
+.control {
   padding: 1rem;
   background: rgba(255, 255, 255, .5);
   border-radius: 50%;
+}
+
+.volume-control {
+  @extend .control;
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+}
+
+.play-control {
+  @extend .control;
 }
