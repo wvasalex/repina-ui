@@ -1,6 +1,7 @@
 <div>
   <video
       #video
+      preload="metadata"
       class="video-js vjs-16-9"
   >
   </video>
@@ -18,7 +19,7 @@
 </div>
 
 <div
-  *ngIf="!editor"
+  *ngIf="!editor && !props.autoplay"
   (click)="$toggleAudio($event)"
   class="volume-control"
 >

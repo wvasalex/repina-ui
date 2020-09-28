@@ -5,6 +5,7 @@
   position: relative;
   padding: 32px;
   margin-left: -32px;
+  word-break: break-word;
 
   &:before {
     content: '“';

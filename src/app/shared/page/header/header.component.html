@@ -1,1 +1,22 @@
-<ng-content></ng-content>
+<div
+  *ngIf="backgroundImage"
+  class="background"
+>
+  <img
+    *ngIf="$isImage(backgroundImage); else video"
+    [src]="backgroundImage"
+  >
+</div>
+
+<div class="content">
+  <ng-content></ng-content>
+</div>
+
+<ng-template #video>
+  <video
+    [src]="backgroundImage"
+    [muted]="true"
+    autoplay
+    loop
+  ></video>
+</ng-template>

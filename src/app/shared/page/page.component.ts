@@ -26,6 +26,7 @@ import { RequestComponent } from './request/request.component';
 export class PageComponent implements OnInit, OnDestroy {
   @Input() menuColor: 'white' | 'black' = 'white';
   @Input() backgroundImage: string;
+  @Input() fullscreenBackgroundImage: boolean = false;
   @Input() contentTmp: TemplateRef<any>;
   @Input() customFooter: boolean = false;
 

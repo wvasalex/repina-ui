@@ -93,7 +93,7 @@ export class ProjectVideoComponent extends BaseBlock implements OnInit, OnDestro
         sources: [
           {
             type: 'video/mp4',
-            src: this.contentFile,
+            src: this.contentFile + (this.props.autoplay ? '' : '#t=3'),
           },
         ],
         controls: false,

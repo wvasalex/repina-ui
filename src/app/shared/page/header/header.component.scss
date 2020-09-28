@@ -2,13 +2,37 @@
   display: block;
 
   &.has-image {
+    .background, .content {
+      position: absolute;
+      width: 100%;
+    }
+
     height: 900px;
     background-position: top center;
     background-repeat: no-repeat;
     background-size: cover;
+
+    .background {
+      height: 900px;
+    }
+
+    img, video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 }
 
+:host.fullscreen {
+  height: 100vh;
+
+  .background {
+    height: 100vh;
+  }
+}
+
+/*
 .w1024 :host.has-image {
   height: 720px;
 }
@@ -21,3 +45,4 @@
 .w320 :host.has-image {
   height: 320px;
 }
+*/

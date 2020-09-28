@@ -6,6 +6,33 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <style>
+    @font-face {
+      font-family: GTEestiProTextMedium;
+      src: url('/assets/fonts/GT-Eesti-Pro-Text-Medium.woff2') format('woff2');
+      font-weight: 500;
+    }
+
+    @font-face {
+      font-family: GTEestiProTextLight;
+      src: url('/assets/fonts/GT-Eesti-Pro-Text-Book.woff2') format('woff2');
+    }
+
+    * {
+      font-family: GTEestiProTextLight, sans-serif;
+      font-weight: 100;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1, h2, h3, h4, .h, .h1, .h2, .h3, .h4, button {
+      font-family: GTEestiProTextMedium, sans-serif;
+      font-weight: 500;
+      color: #000;
+      margin: 0;
+    }
+  </style>
 </head>
 <body>
 <script>

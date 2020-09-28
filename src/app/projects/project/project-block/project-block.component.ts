@@ -21,8 +21,6 @@ export class ProjectBlockComponent extends BaseBlock implements OnInit, AfterCon
 
   @HostBinding('class.full-width') fullWidth: boolean = false;
   @HostBinding('class.has-media') hasMedia: boolean = false;
-  @HostBinding('class.first-media') media: boolean = false;
-  @HostBinding('class.last-media') lastMedia: boolean = false;
 
   @HostBinding('style.--background') background: string;
   @HostBinding('class.white') white: boolean = false;
@@ -38,13 +36,6 @@ export class ProjectBlockComponent extends BaseBlock implements OnInit, AfterCon
 
     if (elements?.length > 1 && is_media(elements[0])) {
       this.fullWidth = is_media(elements[1]) && !elements[1].content_file;
-
-      if (!this.fullWidth) {
-        this.media = true;
-      }
-    }
-    if (!this.fullWidth && elements?.length === 2 && is_media(elements[1])) {
-      this.lastMedia = true;
     }
   }
 

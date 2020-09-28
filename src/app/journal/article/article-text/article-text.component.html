@@ -9,6 +9,6 @@
 
 <markdown
   *ngIf="!editor"
-  [data]="props.value"
+  [data]="$normalizeSpaces(props.value)"
   class="subtitle text32"
 ></markdown>

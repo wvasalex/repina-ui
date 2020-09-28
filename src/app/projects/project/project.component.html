@@ -1,6 +1,7 @@
 <r-page
   *ngIf="project$ | async as project"
   [backgroundImage]="$background(project)"
+  [fullscreenBackgroundImage]="true"
   [menuColor]="$menuColor(project)"
 >
   <r-blocks-render

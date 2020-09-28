@@ -23,7 +23,7 @@ export class BaseBlock {
 
   public $getValue(prop: string) {
     if (this.props[prop]) {
-      return this.props[prop].replace(/\n/g, '<br>');
+      return this.$normalizeSpaces(this.props[prop].replace(/\n/g, '<br>'));
     }
 
     return this.editor ? ' ' : '';
@@ -33,6 +33,10 @@ export class BaseBlock {
     this.props[prop] = value.trim();
 
     this.change.emit();
+  }
+
+  public $normalizeSpaces(value: string): string {
+    return value && value.replace(/\s(.{1,2})\s/gi, ' $1&nbsp;');
   }
 
   public $addElement(type: string) {

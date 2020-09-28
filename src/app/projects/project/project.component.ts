@@ -40,11 +40,13 @@ export class ProjectComponent implements OnInit {
     const url = root && root.content_elements?.length > 1 &&
       root.content_elements[1].content_file;
 
-    return url ? 'url(' + url + ')' : null;
+    return url;
   }
 
   public $content(blocks: ContentBlock[]): ContentBlock[] {
-    return blocks.slice(1);
+    blocks = blocks.slice();
+    blocks[0].content_elements.slice(1);
+    return blocks;
   }
 
   private _getRoot(project: Project): ContentBlock {
