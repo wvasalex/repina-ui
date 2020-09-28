@@ -3,6 +3,7 @@ import { ServerModule } from '@angular/platform-server';
 
 import { AppModule } from './app.module';
 import { AppComponent } from './app.component';
+import { API_BASE_CONFIG } from './shared/services/api/api.model';
 
 @NgModule({
   imports: [
@@ -10,7 +11,13 @@ import { AppComponent } from './app.component';
     ServerModule,
   ],
   providers: [
-    // Add server-only providers here.
+    {
+      provide: API_BASE_CONFIG,
+      useValue: {
+        host: 'http://5.63.158.46',
+        base: '/api/v1',
+      }
+    }
   ],
   bootstrap: [AppComponent],
 })

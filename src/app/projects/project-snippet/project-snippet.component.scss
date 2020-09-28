@@ -17,6 +17,25 @@
   }
 }
 
+/*
 .image {
 
 }
+
+.w1366 .image {
+  max-height: 310px;
+}
+
+.w1024 .image, .w320 .image {
+  max-height: 230px;
+}
+
+.w768 .image {
+  max-height: 265px;
+}
+
+.image {
+  max-height: 450px;
+  overflow: hidden;
+}
+*/

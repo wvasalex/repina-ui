@@ -3,8 +3,8 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  /*padding-top: 2rem;
+  padding-bottom: 2rem;*/
 }
 
 
@@ -27,6 +27,8 @@
   height: 120px;
   border-radius: 50%;
   overflow: hidden;
+  min-width: 120px;
+  min-height: 120px;
 }
 
 .author {

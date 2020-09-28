@@ -11,7 +11,7 @@ export class SessionStateService {
   private storage: Storage;
 
   constructor() {
-    this.storage = typeof window !== 'undefined' && window.sessionStorage
+    this.storage = typeof window !== 'undefined' && window.sessionStorage;
     if (this.storage) {
       this.token = this.storage.getItem('auth.token');
     }

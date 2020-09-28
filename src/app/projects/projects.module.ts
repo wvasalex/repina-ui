@@ -29,6 +29,7 @@ import { ProjectArticlesComponent } from './project/project-articles/project-art
 import { MarkdownModule } from 'ngx-markdown';
 import { ProjectNextComponent } from './project/project-next/project-next.component';
 import { ProjectSnippetOverlayComponent } from './project-snippet/project-snippet-overlay/project-snippet-overlay.component';
+import { ProjectMediaComponent } from './project/project-media/project-media.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { ProjectSnippetOverlayComponent } from './project-snippet/project-snippe
     ProjectArticlesComponent,
     ProjectNextComponent,
     ProjectSnippetOverlayComponent,
+    ProjectMediaComponent,
   ],
   imports: [
     CommonModule,

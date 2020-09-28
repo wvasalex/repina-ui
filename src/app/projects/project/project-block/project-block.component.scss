@@ -1,7 +1,10 @@
 :host {
   display: block;
-  overflow: hidden;
   margin-top: 30px;
+
+  &[editor="true"] {
+    padding-bottom: 90px;
+  }
 
   ::ng-deep [rel=element_type_0] {
     flex: initial;

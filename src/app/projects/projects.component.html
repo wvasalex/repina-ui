@@ -18,13 +18,23 @@
     *ngFor="let group of groups"
     class="row-column mb-30"
   >
-    <r-project-snippet
-      *ngFor="let project of group; let index = index;"
-      [project]="project"
-      [class.m30]="index == 1"
-      class="snippet"
+    <mat-grid-list
+      cols="3"
+      rowHeight="16:10"
+      gutterSize="30"
     >
-    </r-project-snippet>
+      <mat-grid-tile
+        *ngFor="let project of group; let index = index;"
+        [colspan]="1"
+        [rowspan]="1"
+      >
+        <r-project-snippet
+          [project]="project"
+          class="snippet"
+        >
+        </r-project-snippet>
+      </mat-grid-tile>
+    </mat-grid-list>
   </div>
 
   <r-fabs *rWithSession>

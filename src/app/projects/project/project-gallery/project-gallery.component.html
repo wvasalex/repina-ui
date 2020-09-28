@@ -2,26 +2,26 @@
   <r-grid
     [type]="type"
   >
-    <r-project-image
+    <r-project-media
       rel="1"
       [id]="elements[0].id"
       [props]="elements[0].props"
       [contentFile]="elements[0].content_file"
-    ></r-project-image>
-    <r-project-image
+    ></r-project-media>
+    <r-project-media
       *ngIf="images[1]"
       rel="2"
       [id]="elements[1].id"
       [props]="elements[1].props"
       [contentFile]="elements[1].content_file"
-    ></r-project-image>
-    <r-project-image
+    ></r-project-media>
+    <r-project-media
       *ngIf="images[2]"
       rel="3"
       [id]="elements[2].id"
       [props]="elements[2].props"
       [contentFile]="elements[2].content_file"
-    ></r-project-image>
+    ></r-project-media>
   </r-grid>
 </ng-container>
 
@@ -30,12 +30,12 @@
   class="row"
   style="min-height: 100%"
 >
-  <r-project-image
+  <r-project-media
     *ngFor="let element of elements; let index = index"
     [attr.rel]="index"
     [id]="element.id"
     [props]="element.props"
     [contentFile]="element.content_file"
     [editor]="true"
-  ></r-project-image>
+  ></r-project-media>
 </div>

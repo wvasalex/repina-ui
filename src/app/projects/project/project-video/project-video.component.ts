@@ -21,6 +21,8 @@ import { ContentElement } from '@shared/types';
 export class ProjectVideoComponent extends BaseBlock implements OnInit, OnDestroy {
   @ViewChild('video', { static: true }) video: ElementRef;
 
+  public muted: boolean = true;
+
   private player: videojs.Player;
 
   constructor(
@@ -38,6 +40,12 @@ export class ProjectVideoComponent extends BaseBlock implements OnInit, OnDestro
     if (this.player) {
       this.player.dispose();
     }
+  }
+
+  public $toggleAudio() {
+    this.muted = !this.muted;
+
+    this.video.nativeElement.muted = this.muted;
   }
 
   public $upload(e) {

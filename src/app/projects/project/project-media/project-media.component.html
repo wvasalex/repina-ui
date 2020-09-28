@@ -1,0 +1,16 @@
+<r-project-image
+  *ngIf="$isImage(contentFile); else video"
+  [editor]="editor"
+  [id]="id"
+  [props]="props"
+  [contentFile]="contentFile"
+></r-project-image>
+
+<ng-template #video>
+  <r-project-video
+    [editor]="editor"
+    [id]="id"
+    [props]="props"
+    [contentFile]="contentFile"
+  ></r-project-video>
+</ng-template>

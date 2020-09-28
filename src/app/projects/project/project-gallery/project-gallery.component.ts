@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { BaseBlock } from '@shared/blocks/block.component';
 import { GridDataType } from '@shared/grid/grid.model';
 import { ContentElement } from '@shared/types';

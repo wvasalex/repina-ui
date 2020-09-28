@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnIni
 import { Subscription } from 'rxjs';
 import { BreakpointState } from '@angular/cdk/layout';
 import { BreakpointService } from '@shared/breakpoint.service';
-import { Article } from '../journal/journal.model';
 import { ProjectsService } from './projects.service';
 import { Project } from './projects.model';
 

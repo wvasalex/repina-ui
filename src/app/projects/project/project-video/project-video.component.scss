@@ -36,3 +36,13 @@ r-project-video {
   transition: 300ms;
   z-index: 1000;
 }
+
+.volume-control {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+
+  padding: 1rem;
+  background: rgba(255, 255, 255, .5);
+  border-radius: 50%;
+}

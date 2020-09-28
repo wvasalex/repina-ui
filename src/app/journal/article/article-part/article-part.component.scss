@@ -3,6 +3,10 @@
 :host {
   display: block;
 
+  &[editor="true"] {
+    padding-bottom: 60px;
+  }
+
   ::ng-deep [rel="element_type_0"] {
     flex: 3;
   }
@@ -39,6 +43,7 @@
 .date {
   position: absolute;
   top: 260px;
+  left: -16px;
   display: inline-block;
   transform: rotate(270deg);
   transform-origin: left top;
@@ -80,7 +85,7 @@
   }
 }
 
-.w768 :host {
+.w768 :host, .w320 :host {
   ::ng-deep [rel="element_type_1"] {
     margin-bottom: 4rem;
   }
@@ -90,14 +95,19 @@
     align-items: flex-start;
   }
 
+  ::ng-deep .title, .subtitle {
+    display: none;
+  }
+}
+
+.w320 :host {
   .date {
     left: auto;
     right: -65px;
-    top: 6rem;
   }
 
-  ::ng-deep .title, .subtitle {
-    display: none;
+  .content {
+    margin-left: 16px;
   }
 }
 

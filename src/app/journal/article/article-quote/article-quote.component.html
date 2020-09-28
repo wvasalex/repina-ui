@@ -16,14 +16,15 @@
     class="author"
   >
     <r-article-image
+      *ngIf="editor || contentFile"
       [id]="id"
       [contentFile]="contentFile"
       [props]="props"
       [editor]="editor"
-      class="avatar"
+      class="avatar mr-2"
     ></r-article-image>
 
-    <div class="ml-2 mt-1">
+    <div class="mt-1">
       <div
         (contentChanged)="$contentChanged($event, 'name')"
         [r-block]="editor"

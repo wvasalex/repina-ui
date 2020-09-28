@@ -48,7 +48,7 @@ export class ProjectsService extends RestService {
     for(let i = 0; i < projects.length; i += chuck_size) {
       const chunk: any[] = projects.slice(i, i + chuck_size);
       if (chunk.length < chuck_size) {
-        chunk.push(new Array(chuck_size - chunk.length));
+        chunk.push(...new Array(chuck_size - chunk.length));
       }
       chunks.push(chunk);
     }
