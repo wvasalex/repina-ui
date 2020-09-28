@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { BaseBlock } from '@shared/blocks/block.component';
 
 @Component({
@@ -8,6 +8,8 @@ import { BaseBlock } from '@shared/blocks/block.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectMediaComponent extends BaseBlock {
+
+  @Output() upload: EventEmitter<File> = new EventEmitter<File>();
 
   public $isImage(src: string): boolean {
     return !src || /\.(jpe?g|png|gif)$/.test(src);

@@ -9,14 +9,14 @@
     class="image"
   ></r-project-image>
 
-  <r-project-image
+  <r-project-media
     *ngIf="elements.length > 1"
     (upload)="$upload($event)"
     [id]="elements[1].id"
     [contentFile]="elements[1].content_file"
     [editor]="editor"
     class="image"
-  ></r-project-image>
+  ></r-project-media>
 </div>
 
 <div class="nav row-column">
