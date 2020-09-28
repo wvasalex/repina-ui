@@ -14,6 +14,8 @@ import { Project } from './projects.model';
 import { ProjectRolesComponent } from './project/project-roles/project-roles.component';
 import { ProjectFeedbackComponent } from './project/project-feedback/project-feedback.component';
 import { ProjectArticlesComponent } from './project/project-articles/project-articles.component';
+import { StrMap } from '@shared/types';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +41,14 @@ export class ProjectsService extends RestService {
 
   constructor(public api: ApiService) {
     super();
+  }
+
+  public public
+
+  get<T>(body: StrMap<any> = {}): Observable<any> {
+    return super.get({
+      per_page: 100,
+    });
   }
 
   public groupProjectss(projects: Project[]): Project[][] {

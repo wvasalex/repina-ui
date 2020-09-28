@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { SelectOption } from '@shared/components/select/select.model';
-import { ProjectsService } from '../projects.service';
-import { Project } from '../projects.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToasterService } from '@shared/toaster/toaster.service';
 import { ContentBlock, ContentElement, StrMap } from '@shared/types';
+import { SelectOption } from '@shared/components/select/select.model';
+import { ProjectsService } from '../projects.service';
+import { Project } from '../projects.model';
 
 @Component({
   selector: 'r-project-editor',
@@ -52,6 +52,10 @@ export class ProjectEditorComponent implements OnInit {
           block_type: 'project-root',
           props: {},
           content_elements: [
+            {
+              element_type: 'project-image',
+              props: {},
+            },
             {
               element_type: 'project-image',
               props: {},
@@ -114,7 +118,7 @@ export class ProjectEditorComponent implements OnInit {
   private async _save() {
     const root = this.project.content_blocks[0];
     if (root.content_elements[0]?.content_file) {
-      this.project.preview_file = root.content_elements[0]?.content_file;
+      this.project.preview_file = root.content_elements[0].content_file;
     }
 
     if (!this.project.title) {

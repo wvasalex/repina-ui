@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { pluck } from 'rxjs/operators';
+import { map, pluck } from 'rxjs/operators';
+import { ContentBlock } from '@shared/types';
 import { Project } from '../projects.model';
 import { ProjectsService } from '../projects.service';
-import { ContentBlock } from '@shared/types';
 
 @Component({
   selector: 'r-project',
@@ -31,10 +31,26 @@ export class ProjectComponent implements OnInit {
   }
 
   public $menuColor(project: Project): string {
-    const root = project.content_blocks.find((block: ContentBlock) => {
+    const root = this._getRoot(project);
+    return root && root.props?.isDark ? 'black' : 'white';
+  }
+
+  public $background(project: Project): string {
+    const root = this._getRoot(project);
+    const url = root && root.content_elements?.length > 1 &&
+      root.content_elements[1].content_file;
+
+    return url ? 'url(' + url + ')' : null;
+  }
+
+  public $content(blocks: ContentBlock[]): ContentBlock[] {
+    return blocks.slice(1);
+  }
+
+  private _getRoot(project: Project): ContentBlock {
+    return project.content_blocks.find((block: ContentBlock) => {
       return block.block_type === 'project-root';
     });
-    return root && root.props?.isDark ? 'black' : 'white';
   }
 
 }

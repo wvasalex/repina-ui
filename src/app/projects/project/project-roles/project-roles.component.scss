@@ -1,8 +1,11 @@
 :host {
   display: inline-block;
   width: 100%;
-  padding: 6rem 0;
   box-sizing: border-box;
+}
+
+.pv-6 {
+  padding: 6rem 0;
 }
 
 :host:not([editor=true]) {

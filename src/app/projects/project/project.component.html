@@ -1,11 +1,11 @@
 <r-page
   *ngIf="project$ | async as project"
-  [backgroundImage]="project.preview_file ? 'url(' + project.preview_file + ')' : null"
+  [backgroundImage]="$background(project)"
   [menuColor]="$menuColor(project)"
 >
   <r-blocks-render
     [render]="render"
-    [blocks]="project.content_blocks"
+    [blocks]="$content(project.content_blocks)"
   ></r-blocks-render>
 
   <r-project-next
