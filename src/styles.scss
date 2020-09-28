@@ -5,8 +5,8 @@
 }
 
 @font-face {
-  font-family: GTEestiProTextBook;
-  src: url('/assets/fonts/GT-Eesti-Pro-Text-Book.otf') format('opentype');
+  font-family: GTEestiProTextLight;
+  src: url('/assets/fonts/GTEestiProText-Light.woff') format('woff');
 }
 
 @import '~@angular/material/theming';
@@ -53,8 +53,8 @@ body {
 }
 
 * {
-  font-family: GTEestiProTextBook, sans-serif;
-  font-weight: normal;
+  font-family: GTEestiProTextLight, sans-serif;
+  font-weight: 100;
   margin: 0;
   padding: 0;
 }

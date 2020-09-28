@@ -1,7 +1,7 @@
 :host {
   display: block;
   width: 100%;
-  padding: 128px 75px;
+  padding: 128px 75px !important;
   box-sizing: border-box;
 }
 
@@ -15,17 +15,17 @@
 }
 
 .w1366 :host {
-  padding: 48px 64px;
+  padding: 48px 64px !important;
 }
 
 .w1024 :host {
-  padding: 40px 35px;
+  padding: 40px 35px !important;
 }
 
 .w768 :host {
-  padding: 48px 30px;
+  padding: 48px 30px !important;
 }
 
 .w320 :host {
-  padding: 48px 12px;
+  padding: 48px 12px !important;
 }
