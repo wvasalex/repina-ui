@@ -81,6 +81,14 @@ export class ProjectEditorComponent implements OnInit {
           ],
         },
       ];
+    } else {
+      const root = this.project.content_blocks[0];
+      if (root.content_elements?.length == 1) {
+        this.project.content_blocks[0].content_elements.push({
+          element_type: 'project-image',
+          props: {},
+        });
+      }
     }
   }
 
