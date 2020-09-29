@@ -3,31 +3,31 @@
 </div>
 <div class="h3">
   <span
-    [r-block]="editor"
     (contentChanged)="$contentChanged($event, 'email_address')"
-  >{{$getValue('email_address')}}</span>
-  <span class="space"></span>@<span
+    [innerHTML]="$getValue('email_address')"
     [r-block]="editor"
+  ></span>
+  <span class="space"></span>@<span
     (contentChanged)="$contentChanged($event, 'email_domain')"
-  >{{$getValue('email_domain')}}</span>
+    [innerHTML]="$getValue('email_domain')"
+    [r-block]="editor"
+  ></span>
 </div>
 <div class="text32 mt-4">
   Телефон
 </div>
 <div
-  [r-block]="editor"
   (contentChanged)="$contentChanged($event, 'phone')"
+  [innerHTML]="$getValue('phone')"
+  [r-block]="editor"
   class="h3"
->
-  {{$getValue('phone')}}
-</div>
+></div>
 <div class="text32 mt-4">
   Адрес
 </div>
 <div
-  [r-block]="editor"
   (contentChanged)="$contentChanged($event, 'address')"
+  [innerHTML]="$getValue('address')"
+  [r-block]="editor"
   class="h3"
->
-  {{$getValue('address')}}
-</div>
+></div>
