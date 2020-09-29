@@ -12,6 +12,7 @@ import { ArticleTextComponent } from './article/article-text/article-text.compon
 import { ArticleQuoteComponent } from './article/article-quote/article-quote.component';
 import { ArticleVideoComponent } from './article/article-video/article-video.component';
 import { BlockBlankComponent } from '@shared/blocks/block-blank/block-blank.component';
+import { ArticleRequestComponent } from './article/article-request/article-request.component';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,7 @@ export class JournalService extends RestService {
     'article-text': ArticleTextComponent,
     'article-quote': ArticleQuoteComponent,
     'article-video': ArticleVideoComponent,
+    'article-request': ArticleRequestComponent,
   };
 
   constructor(public api: ApiService) {

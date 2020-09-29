@@ -19,12 +19,13 @@ export class ArticleEditorComponent implements OnInit {
   public render = this.journalService.render;
 
   public availableElements: SelectOption[] = [
-    { value: 'blank', label: 'Пустой' },
-    { value: 'article-text', label: 'Текст' },
-    { value: 'article-image', label: 'Изображение' },
-    { value: 'article-quote', label: 'Цитата' },
-    { value: 'article-author', label: 'Автор' },
-    { value: 'article-video', label: 'Видео' },
+    {value: 'blank', label: 'Пустой'},
+    {value: 'article-text', label: 'Текст'},
+    {value: 'article-image', label: 'Изображение'},
+    {value: 'article-quote', label: 'Цитата'},
+    {value: 'article-author', label: 'Автор'},
+    {value: 'article-video', label: 'Видео'},
+    {value: 'article-request', label: 'Запрос стоимости'},
   ];
 
   @ViewChild(ArticleHeaderComponent) headerComponent: ArticleHeaderComponent;
@@ -83,7 +84,7 @@ export class ArticleEditorComponent implements OnInit {
   }
 
   public $addBlock(e: StrMap<any>) {
-    const { target, offset } = e;
+    const {target, offset} = e;
     const index = this.article.content_blocks.indexOf(target) + offset;
 
     this.article.content_blocks.splice(index, 0, {

@@ -1,6 +1,6 @@
 import {
   ChangeDetectionStrategy,
-  Component, ContentChild, ContentChildren,
+  Component, ContentChild, ContentChildren, EventEmitter,
   HostBinding,
   Input,
   OnDestroy,
@@ -34,6 +34,9 @@ export class PageComponent implements OnInit, OnDestroy {
 
   public drawerOpened: boolean = false;
 
+  public priceRequest: EventEmitter<void> = new EventEmitter<void>();
+
+  private _priceRequest: Subscription;
   private _observe: Subscription;
 
   constructor(
@@ -62,10 +65,15 @@ export class PageComponent implements OnInit, OnDestroy {
         this.renderer.setAttribute(document.documentElement, 'class', 'w' + cn);
       }
     });
+
+    this._priceRequest = this.priceRequest.subscribe(() => {
+      this.$priceRequest();
+    });
   }
 
   ngOnDestroy(): void {
     this._observe?.unsubscribe();
+    this._priceRequest?.unsubscribe();
   }
 
   public $toggleDrawer(opened: boolean) {
