@@ -51,14 +51,13 @@ export class ProjectsService extends RestService {
     });
   }
 
-  public groupProjectss(projects: Project[]): Project[][] {
+  public groupProjectss(projects: Project[], chunkSize: number = 3): Project[][] {
     const chunks = [];
-    const chuck_size = 3;
 
-    for(let i = 0; i < projects.length; i += chuck_size) {
-      const chunk: any[] = projects.slice(i, i + chuck_size);
-      if (chunk.length < chuck_size) {
-        chunk.push(...new Array(chuck_size - chunk.length));
+    for(let i = 0; i < projects.length; i += chunkSize) {
+      const chunk: any[] = projects.slice(i, i + chunkSize);
+      if (chunk.length < chunkSize) {
+        chunk.push(...new Array(chunkSize - chunk.length));
       }
       chunks.push(chunk);
     }

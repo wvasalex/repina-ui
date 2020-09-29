@@ -44,6 +44,10 @@ export class ProjectComponent implements OnInit {
   }
 
   public $content(blocks: ContentBlock[]): ContentBlock[] {
+    if (!blocks?.length) {
+      return [];
+    }
+
     blocks = blocks.slice();
     blocks[0].content_elements.slice(1);
     return blocks;

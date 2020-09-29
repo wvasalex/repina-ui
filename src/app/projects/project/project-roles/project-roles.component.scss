@@ -1,8 +1,9 @@
 :host {
-  display: inline-block;
+  display: block;
   width: 100%;
   padding: 6rem 0;
   box-sizing: border-box;
+  margin-top: 30px;
 }
 
 :host:not([editor=true]) {
@@ -13,11 +14,7 @@
 }
 
 .role {
-  float: left;
+  display: inline-block;
   margin: 2rem 4rem 2rem 0;
   width: calc(30% - 4rem);
-
-  &:not(:last-of-type) {
-
-  }
 }

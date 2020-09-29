@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { combineLatest, Observable } from 'rxjs';
 import { BreakpointState } from '@angular/cdk/layout';
 import { BreakpointService } from '@shared/breakpoint.service';
 import { ProjectsService } from './projects.service';
 import { Project } from './projects.model';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'r-projects',
@@ -11,62 +12,38 @@ import { Project } from './projects.model';
   styleUrls: ['./projects.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProjectsComponent implements OnInit, OnDestroy {
-  public cols: number = 3;
+export class ProjectsComponent {
 
-  public groups: Project[][];
+  private projects$: Observable<Project[]> = this.projectsService.get<Project>();
+
+  private rows$: Observable<number> = this.breakpointService.change$
+    .pipe(map((result: BreakpointState) => {
+      const w = window.innerWidth;
+      const breakpoints = [1920, 1366, 1024, 768, 320];
+      let cn = breakpoints.find((breakpoint) => w > breakpoint) || 320;
+
+      if (cn >= 1024) {
+        return 3;
+      }
+      if (cn == 320) {
+        return 1;
+      }
+      return 2;
+    }));
+
+  public groups$: Observable<Project[][]> = combineLatest([this.projects$, this.rows$])
+    .pipe(map(([projects, rows]) => {
+      return this.projectsService.groupProjectss(projects, rows);
+    }));
 
   public types: string[] = [
     'Все', 'Брендинг', 'Позиционирование', 'Нейминг', 'Фирменный стиль',
     'Упаковка', 'Брендбук', 'Интерьер', 'Ритейл-брендинг', 'IT-брендинг',
   ];
 
-  private _observe: Subscription;
-
   constructor(private changeDetectorRef: ChangeDetectorRef,
               private breakpointService: BreakpointService,
-              private projectsService: ProjectsService) { }
-
-  ngOnInit(): void {
-    this.projectsService.get<Project>().subscribe((projects: Project[]) => {
-      this.groups = this.projectsService.groupProjectss(projects);
-
-      this.changeDetectorRef.detectChanges();
-    });
-
-    this._observe = this.breakpointService.change$.subscribe((result: BreakpointState) => {
-      let points: string[] = ['320', '768', '1024', '1366'].filter((width: string) => {
-        return result.breakpoints[`(min-width: ${width}px)`];
-      });
-
-      if (points.indexOf('320') > -1) {
-        this._small();
-      } else if (points.indexOf('768') > -1) {
-        this._medium();
-      } else {
-        this._default();
-      }
-    });
+              private projectsService: ProjectsService) {
   }
 
-  ngOnDestroy(): void {
-    this._observe.unsubscribe();
-  }
-
-  private _small() {
-    this.setCols(1);
-  }
-
-  private _medium() {
-    this.setCols(2);
-  }
-
-  private _default() {
-    this.setCols(3);
-  }
-
-  private setCols(num: number) {
-    this.cols = num;
-    this.changeDetectorRef.detectChanges();
-  }
 }

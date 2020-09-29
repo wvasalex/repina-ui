@@ -188,6 +188,10 @@ a, a:visited {
   }
 }
 
+.mt-16 {
+  margin-top: 16px;
+}
+
 .mt-1 {
   margin-top: 1rem;
 }
@@ -300,6 +304,11 @@ ul {
   padding-inline-start: 1em;
 }
 
-markdown p {
-  white-space: pre-line;
+markdown {
+  p {
+    white-space: pre-line;
+  }
+  h1, h2, h3, h4, h5 {
+    margin: 16px 0;
+  }
 }
