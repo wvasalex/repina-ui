@@ -7,6 +7,7 @@ $color-brown: #86827F;
   --padding-horizontal: 75px;
   --padding-vertical: 128px;
 
+
   &.w1366 {
     --padding-horizontal: 64px;
     --padding-vertical: 48px;
@@ -16,15 +17,14 @@ $color-brown: #86827F;
     --padding-horizontal: 35px;
     --padding-vertical: 40px;
   }
-
   &.w768 {
     --padding-horizontal: 30px;
     --padding-vertical: 48px;
   }
 
   &.w320 {
-    --padding-horizontal: 48px;
-    --padding-vertical: 12px;
+    --padding-horizontal: 12px;
+    --padding-vertical: 48px;
   }
 }
 
