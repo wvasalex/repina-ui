@@ -298,10 +298,14 @@ ndc-dynamic {
   display: none;
 }
 
-ul {
+ul, ol {
   padding: 0;
   margin: 0;
   padding-inline-start: 1em;
+
+  li {
+    margin-bottom: 1.25rem;
+  }
 }
 
 markdown {
@@ -310,6 +314,7 @@ markdown {
   }
 
   h1, h2, h3, h4, h5 {
-    margin: 16px 0;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
   }
 }
