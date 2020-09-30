@@ -41,9 +41,12 @@ body {
   font-size: inherit;
 }
 
-h1, h2, h3, h4, .h, .h1, .h2, .h3, .h4, button {
+h1, .h1 {
   font-family: GTEestiProTextMedium, sans-serif;
-  font-weight: 500;
+}
+
+h2, h3, h4, .h, .h2, .h3, .h4, button {
+  font-family: GTEestiProTextRegular, sans-serif;
   color: #000;
   margin: 0;
 }
