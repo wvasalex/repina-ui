@@ -27,6 +27,7 @@ import { FabsComponent } from './fabs/fabs.component';
 import { ImagePlaceholderComponent } from './image-placeholder/image-placeholder.component';
 import { InputLabelComponent } from '@shared/components/input-label/input-label.component';
 import { AspectRatioDirective } from './aspect-ratio.directive';
+import { LinebreaksPipe } from './linebreaks.pipe';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { AspectRatioDirective } from './aspect-ratio.directive';
     ImagePlaceholderComponent,
     InputLabelComponent,
     AspectRatioDirective,
+    LinebreaksPipe,
   ],
   exports: [
     LogoComponent,
@@ -79,6 +81,7 @@ import { AspectRatioDirective } from './aspect-ratio.directive';
     ImagePlaceholderComponent,
     InputLabelComponent,
     AspectRatioDirective,
+    LinebreaksPipe,
   ],
   imports: [
     CommonModule,

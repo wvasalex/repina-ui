@@ -49,6 +49,10 @@ h2, h3, h4, .h, .h2, .h3, .h4, button {
   font-family: GTEestiProTextRegular, sans-serif;
   color: #000;
   margin: 0;
+
+  * {
+    font: inherit;
+  }
 }
 
 a, a:visited {
@@ -306,7 +310,7 @@ ul, ol {
   margin: 0;
   padding-inline-start: 1em;
 
-  li {
+  li:not(:last-of-type) {
     margin-bottom: 1.25rem;
   }
 }
@@ -319,5 +323,9 @@ markdown {
   h1, h2, h3, h4, h5 {
     margin-top: 3rem;
     margin-bottom: 1.5rem;
+  }
+
+  a {
+    text-decoration: underline;
   }
 }

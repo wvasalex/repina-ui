@@ -14,7 +14,7 @@ export class GridComponent implements OnInit, OnDestroy {
   @Input() type: GridDataType = 'small';
 
   public def: GridDataSizeDef;
-  public rowHeight: string = '1.5:1';
+  @Input() rowHeight: string = '1.5:1';
   public column: boolean = false;
 
   private _observe: Subscription;
