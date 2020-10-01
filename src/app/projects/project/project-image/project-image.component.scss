@@ -30,3 +30,10 @@
   opacity: 0.25;
   transition: 300ms;
 }
+
+.clear {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  cursor: pointer;
+}

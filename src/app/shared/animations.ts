@@ -115,3 +115,4 @@ export const slider = trigger('slider', [
     animate('120ms'),
   ]),
 ]);
+

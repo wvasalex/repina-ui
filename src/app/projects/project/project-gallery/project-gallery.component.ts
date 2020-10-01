@@ -19,6 +19,10 @@ export class ProjectGalleryComponent extends BaseBlock implements OnInit {
       return element.content_file;
     });
 
+    if (this.editor) {
+      return;
+    }
+
     if (this.images.length === 1) {
       this.type = 'fullscreen';
     } else {

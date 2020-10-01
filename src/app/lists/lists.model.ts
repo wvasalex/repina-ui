@@ -100,6 +100,10 @@ export const PropsDef = {
       name: 'text',
       label: 'Текст',
     },
+    {
+      name: 'href',
+      label: 'Ссылка',
+    },
   ],
   customers: [
     {

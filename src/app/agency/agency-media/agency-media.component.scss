@@ -9,9 +9,10 @@
 }
 
 .article-snippet {
-  float: left;
+  display: inline-block;
   width: 20%;
   margin: 4rem 3rem 4rem 0;
+  vertical-align: top;
 }
 
 .w1024 :host {
@@ -30,8 +31,4 @@
   .article-snippet {
     width: 100%
   }
-}
-
-.clear {
-  clear: both;
 }

@@ -15,18 +15,20 @@ import { slider } from '@shared/animations';
   ]
 })
 export class AgencyAwardsComponent implements OnInit {
+
   public awards$: Observable<ContentListItem[]> = this.agencyService.getAwards()
     .pipe(tap((awards: ContentListItem[]) => {
       this.pagesCount = Math.ceil(awards.length / this.pageSize);
-      this.last = awards.length - 1;
+      this.last = this.pagesCount - 1;
     }));
+
   public pagesCount: number;
 
   public prevIndex: number = 0;
   public currentIndex: number = 0;
   public last: number;
 
-  private pageSize: number = 1;
+  private pageSize: number = 7;
 
   constructor(private agencyService: AgencyService) {
   }
@@ -50,4 +52,5 @@ export class AgencyAwardsComponent implements OnInit {
       this.prevIndex = this.currentIndex++;
     }
   }
+
 }

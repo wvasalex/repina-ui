@@ -15,7 +15,9 @@ export class ArticleRequestComponent extends BaseBlock {
   }
 
   public $priceRequest() {
-    this.page.priceRequest.emit();
+    if (!this.editor) {
+      this.page.priceRequest.emit();
+    }
   }
 
 }

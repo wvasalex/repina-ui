@@ -7,12 +7,22 @@
   </div>
 
   <div
-    *ngFor="let article of media"
+    *ngFor="let article of $page(media)"
+    @errorAnimation
     class="article-snippet"
   >
-    <div class="h3">{{article.props.source}}</div>
+    <a
+      [attr.href]="article.props.href || '#'"
+      target="_blank"
+      class="h3"
+    >{{article.props.source}}</a>
     <div class="h4 mt-1">{{article.props.date}}</div>
     <div class="text32 mt-1">{{article.props.text}}</div>
   </div>
-  <div class="clear"></div>
+
+  <r-button
+    *ngIf="limit < media.length"
+    (click)="$more()"
+    class="mt-4"
+  >Больше публикаций</r-button>
 </r-padding>

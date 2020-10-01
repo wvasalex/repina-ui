@@ -26,6 +26,10 @@ export class ProjectBlockComponent extends BaseBlock implements OnInit, AfterCon
   @HostBinding('class.white') white: boolean = false;
 
   public ngOnInit() {
+    if (this.editor) {
+      return;
+    }
+
     const elements = this.elements;
     const is_media = (element: ContentElement) => {
       return element.element_type === 'project-image' ||

@@ -33,4 +33,10 @@ export class ProjectImageComponent extends BaseBlock {
       });
   }
 
+  public $clear() {
+    this.api.patchStream('/project_content_elements/' + this.id + '/', { content_file: null }).toPromise();
+    this.contentFile = null;
+    this.changeDetectoRef.detectChanges();
+  }
+
 }
