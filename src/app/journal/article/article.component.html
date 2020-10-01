@@ -4,6 +4,12 @@
     [blocks]="article.content_blocks"
   ></r-blocks-render>
 
+  <r-article-next
+    *ngIf="article.next_blog"
+    [article]="article.next_blog"
+    class="mt-8"
+  ></r-article-next>
+
   <r-fabs *rWithSession>
     <button
       [routerLink]="['/blog', article.slug, 'edit']"

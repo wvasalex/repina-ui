@@ -27,7 +27,7 @@ export class ProjectEditorComponent implements OnInit {
   ];
 
   public availableElements: SelectOption[] = [
-    { value: 'blank', label: 'Пустой' },
+    //{ value: 'blank', label: 'Пустой' },
     { value: 'project-text', label: 'Текст' },
     { value: 'project-image', label: 'Изображение' },
     { value: 'project-quote', label: 'Цитата' },

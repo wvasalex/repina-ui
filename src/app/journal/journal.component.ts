@@ -1,6 +1,11 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { JournalService } from './journal.service';
-import { Article } from './journal.model';
+import { Article, BlogTag } from './journal.model';
+import { JournalTagsService } from './journal-tags.service';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { StrMap } from '@shared/types';
+import { SelectOption } from '@shared/components/select/select.model';
 
 @Component({
   selector: 'r-journal',
@@ -9,18 +14,53 @@ import { Article } from './journal.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class JournalComponent implements OnInit {
-  public groups: Article[][];
-  public main_articles: Article[];
+
+  public articles$: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+
+  public tags$: Observable<SelectOption[]> = this.journalTagsService.get()
+    .pipe(map((tags: BlogTag[]) => {
+      return tags.map((tag: BlogTag) => {
+        return {
+          value: tag.key,
+          label: tag.title,
+        };
+      });
+    }));
+
+  public groups$: Observable<any> = this.articles$
+    .pipe(map((articles) => {
+      if (articles.length >= 6) {
+        articles.splice(6, 0, {
+          type: 'subscribe',
+        });
+      }
+
+      return this.journalService.groupArticles(articles);
+    }));
 
   constructor(private changeDetectorRef: ChangeDetectorRef,
-              private journalService: JournalService) { }
+              private journalService: JournalService,
+              private journalTagsService: JournalTagsService) {
+  }
 
   ngOnInit(): void {
-    this.journalService.get<Article>().subscribe((articles: Article[]) => {
-      this.main_articles = articles.splice(0, 2);
-      this.groups = this.journalService.groupArticles(articles.splice(2));
+    this._load();
+  }
 
-      this.changeDetectorRef.detectChanges();
+  public $applyTags(tags: SelectOption[]) {
+    const keys = tags.map((option: SelectOption) => {
+      return option.value;
+    });
+
+    this._load({
+      blog_tag__key__in: keys.join(','),
     });
   }
+
+  private _load(filters: StrMap<string> = {}) {
+    this.journalService.get<Article>(filters).subscribe((articles: Article[]) => {
+      this.articles$.next(articles);
+    });
+  }
+
 }

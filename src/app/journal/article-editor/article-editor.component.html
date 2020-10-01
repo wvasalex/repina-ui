@@ -4,18 +4,19 @@
       [(ngModel)]="article.is_enabled"
     > Опубликовано </mat-checkbox>
 
+    <r-select
+      *ngIf="tags$ | async as tags"
+      [(ngModel)]="article.blog_tag"
+      [options]="tags"
+      placeholder="Руррика"
+    ></r-select>
+
     <r-input
       [(ngModel)]="article.title"
       [required]="true"
       placeholder="Название"
-    ></r-input>
-
-    <!--<r-input
-      [(ngModel)]="article.blog_tag"
-      (keyup)="$save()"
-      placeholder="Тег"
       class="ml-2"
-    ></r-input>-->
+    ></r-input>
 
     <r-input
       [(ngModel)]="article.author_name"

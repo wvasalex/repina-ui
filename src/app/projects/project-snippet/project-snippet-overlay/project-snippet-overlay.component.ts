@@ -8,7 +8,7 @@ import { ChangeDetectionStrategy, Component, HostBinding, OnInit } from '@angula
 })
 export class ProjectSnippetOverlayComponent implements OnInit {
 
-  @HostBinding('class.p-l') @HostBinding('class.p-r') _p: boolean = true;
+  //@HostBinding('class.p-l') @HostBinding('class.p-r') _p: boolean = true;
 
   constructor() { }
 

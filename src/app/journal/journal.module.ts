@@ -8,7 +8,6 @@ import { ArticleComponent } from './article/article.component';
 import { GridModule } from '@shared/grid/grid.module';
 import { SharedModule } from '@shared/components/shared.module';
 import { PageModule } from '@shared/page/page.module';
-import { SubscribeComponent } from './subscribe/subscribe.component';
 import { ArticleEditorComponent } from './article-editor/article-editor.component';
 import { BlocksModule } from '@shared/blocks/blocks.module';
 import { FormsModule } from '@angular/forms';
@@ -23,6 +22,8 @@ import { ArticleQuoteComponent } from './article/article-quote/article-quote.com
 import { ArticleVideoComponent } from './article/article-video/article-video.component';
 import { MarkdownModule } from 'ngx-markdown';
 import { ArticleRequestComponent } from './article/article-request/article-request.component';
+import { ArticleSubscribeComponent } from './article/article-subscribe/article-subscribe.component';
+import { ArticleNextComponent } from './article/article-next/article-next.component';
 
 
 @NgModule({
@@ -30,7 +31,6 @@ import { ArticleRequestComponent } from './article/article-request/article-reque
     JournalComponent,
     JournalSnippetComponent,
     ArticleComponent,
-    SubscribeComponent,
     ArticleEditorComponent,
     ArticleHeaderComponent,
     ArticleTextComponent,
@@ -40,6 +40,8 @@ import { ArticleRequestComponent } from './article/article-request/article-reque
     ArticlePartComponent,
     ArticleQuoteComponent,
     ArticleRequestComponent,
+    ArticleSubscribeComponent,
+    ArticleNextComponent,
   ],
   imports: [
     CommonModule,

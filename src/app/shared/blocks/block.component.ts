@@ -21,12 +21,12 @@ export class BaseBlock {
   constructor() {
   }
 
-  public $getValue(prop: string) {
+  public $getValue(prop: string, defaults: string = ' ') {
     if (this.props[prop]) {
       return this.$normalizeSpaces(this.props[prop].replace(/\n/g, '<br>'));
     }
 
-    return this.editor ? ' ' : '';
+    return this.editor ? defaults : '';
   }
 
   public $contentChanged(value: string, prop: string) {

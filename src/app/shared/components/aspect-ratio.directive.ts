@@ -23,7 +23,7 @@ export class AspectRatioDirective implements AfterViewInit {
   }
 
   @HostListener('window:resize', ['$event']) onResize(event) {
-    this._fit();
+    setTimeout(() => this._fit(), 100);
   }
 
   private _fit() {

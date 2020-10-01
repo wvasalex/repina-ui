@@ -34,6 +34,10 @@ export const ContentListTypes: SelectOption[] = [
     value: 'customers',
     label: 'Клиенты',
   },
+  {
+    value: 'blog-tags',
+    label: 'Рубрики блога',
+  },
 ];
 
 export const PropsDef = {
@@ -101,6 +105,16 @@ export const PropsDef = {
     {
       name: 'title',
       label: 'Название',
+    },
+  ],
+  'blog-tags': [
+    {
+      name: 'title',
+      label: 'Название',
+    },
+    {
+      name: 'key',
+      label: 'Значение',
     },
   ],
 };

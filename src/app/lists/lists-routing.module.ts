@@ -4,6 +4,7 @@ import { SessionGuardService } from '@shared/services/session/guard/session-guar
 import { ListsComponent } from './lists.component';
 import { ListsResolver } from './lists.resolver';
 import { ListServicesComponent } from './list-services/list-services.component';
+import { BlogTagsComponent } from './blog/blog-tags/blog-tags.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,11 @@ const routes: Routes = [
     path: 'services',
     canActivate: [SessionGuardService],
     component: ListServicesComponent,
+  },
+  {
+    path: 'blog-tags',
+    canActivate: [SessionGuardService],
+    component: BlogTagsComponent,
   },
   {
     path: ':id',

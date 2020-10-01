@@ -13,6 +13,7 @@ import { ArticleQuoteComponent } from './article/article-quote/article-quote.com
 import { ArticleVideoComponent } from './article/article-video/article-video.component';
 import { BlockBlankComponent } from '@shared/blocks/block-blank/block-blank.component';
 import { ArticleRequestComponent } from './article/article-request/article-request.component';
+import { ArticleSubscribeComponent } from './article/article-subscribe/article-subscribe.component';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +33,7 @@ export class JournalService extends RestService {
     'article-quote': ArticleQuoteComponent,
     'article-video': ArticleVideoComponent,
     'article-request': ArticleRequestComponent,
+    'article-subscribe': ArticleSubscribeComponent,
   };
 
   constructor(public api: ApiService) {
@@ -44,14 +46,21 @@ export class JournalService extends RestService {
 
   public groupArticles(articles: Article[]): Article[][] {
     const chunks = [];
-    const chuck_size = 3;
+    const max_chunk_size = 3;
+    let line: number = 0;
+    let chunk_size: number = 2;
 
-    for(let i = 0; i < articles.length; i += chuck_size) {
-      const chunk: any[] = articles.slice(i, i + chuck_size);
-      if (chunk.length < chuck_size) {
-        chunk.push(new Array(chuck_size - chunk.length));
+    for(let i = 0; i < articles.length;) {
+      const chunk: any[] = articles.slice(i, i + chunk_size);
+      if (chunk.length < chunk_size) {
+        chunk.push(...new Array(chunk_size - chunk.length));
       }
       chunks.push(chunk);
+
+      i += chunk_size;
+
+      line++;
+      chunk_size = line % 2 == 0 ? 2 : 3;
     }
 
     return chunks;
