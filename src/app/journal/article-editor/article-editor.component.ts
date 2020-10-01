@@ -17,7 +17,7 @@ import { map } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ArticleEditorComponent implements OnInit {
-  public tags$: Observable<SelectOption> = this.blogTagsService.get()
+  public tags$: Observable<SelectOption[]> = this.blogTagsService.get()
     .pipe(map((tags: BlogTag[]) => {
       return tags.map((tag: BlogTag) => {
         return {
