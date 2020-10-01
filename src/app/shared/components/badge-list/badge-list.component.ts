@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { SelectOption } from '@shared/components/select/select.model';
 
 @Component({
   selector: 'r-badge-list',
@@ -8,17 +9,17 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
 })
 export class BadgeListComponent implements OnInit {
 
-  @Output() changed: EventEmitter<string[]> = new EventEmitter<string[]>();
+  @Output() changed: EventEmitter<SelectOption[]> = new EventEmitter<SelectOption[]>();
 
-  @Input() badges: string[] = [];
-  @Input() selected: string[] = [];
+  @Input() badges: SelectOption[] = [];
+  @Input() selected: SelectOption[] = [];
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  public $toggle(badge: string) {
+  public $toggle(badge: SelectOption) {
     const index: number = this.selected.indexOf(badge);
     if (index == -1) {
       this.selected.push(badge);

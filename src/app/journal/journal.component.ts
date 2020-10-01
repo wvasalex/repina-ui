@@ -5,6 +5,7 @@ import { JournalTagsService } from './journal-tags.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { StrMap } from '@shared/types';
+import { SelectOption } from '@shared/components/select/select.model';
 
 @Component({
   selector: 'r-journal',
@@ -16,10 +17,13 @@ export class JournalComponent implements OnInit {
 
   public articles$: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 
-  public tags$: Observable<string[]> = this.journalTagsService.get()
+  public tags$: Observable<SelectOption[]> = this.journalTagsService.get()
     .pipe(map((tags: BlogTag[]) => {
       return tags.map((tag: BlogTag) => {
-        return tag.title;
+        return {
+          value: tag.key,
+          label: tag.title,
+        };
       });
     }));
 
@@ -43,9 +47,13 @@ export class JournalComponent implements OnInit {
     this._load();
   }
 
-  public $applyTags(tags: string[]) {
+  public $applyTags(tags: SelectOption[]) {
+    const keys = tags.map((option: SelectOption) => {
+      return option.value;
+    });
+
     this._load({
-      blog_tag__title: tags.join(','),
+      blog_tag__key__in: keys.join(','),
     });
   }
 
