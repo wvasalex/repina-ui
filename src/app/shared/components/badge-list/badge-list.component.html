@@ -1,5 +1,7 @@
 <r-badge
   *ngFor="let badge of badges; let last = last;"
+  (click)="$toggle(badge)"
+  [selected]="selected.indexOf(badge) != -1"
   [class.mr-1]="!last"
 >
   {{badge}}

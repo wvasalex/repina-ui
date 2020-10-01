@@ -53,7 +53,7 @@ export class JournalService extends RestService {
     for(let i = 0; i < articles.length;) {
       const chunk: any[] = articles.slice(i, i + chunk_size);
       if (chunk.length < chunk_size) {
-       // chunk.push(...new Array(chunk_size - chunk.length));
+        chunk.push(...new Array(chunk_size - chunk.length));
       }
       chunks.push(chunk);
 

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ListsService } from '../../lists.service';
-import { BlogTagsService } from '../blog-tags.service';
+import { JournalTagsService } from '../../../journal/journal-tags.service';
 
 @Component({
   selector: 'r-blog-tags',
@@ -10,7 +10,7 @@ import { BlogTagsService } from '../blog-tags.service';
   providers: [
     {
       provide: ListsService,
-      useClass: BlogTagsService,
+      useClass: JournalTagsService,
     }
   ]
 })

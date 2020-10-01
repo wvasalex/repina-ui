@@ -1,0 +1,31 @@
+<div
+  *ngIf="article"
+  class="row-column p-l p-r"
+>
+  <div>
+    <div class="text">
+      <div class="h3">Блог</div>
+      <div class="text32 mt-1">
+        Мы любим слушать и любим говорить.
+        Читайте наш журнал о брендинге и дизайне
+      </div>
+      <a [routerLink]="['/blog']">
+        <r-button class="mt-2">
+          Все статьи
+        </r-button>
+      </a>
+    </div>
+  </div>
+  <a
+    *ngIf="article.slug"
+    [routerLink]="['/blog', article.slug]"
+  >
+    <r-journal-snippet
+      [tag]="$any(article).blog_tag?.title"
+      [title]="article.title"
+      [image]="article.preview_file || '/assets/pictures/journal/1.png'"
+      class="snippet"
+    >
+    </r-journal-snippet>
+  </a>
+</div>

@@ -23,6 +23,7 @@ import { ArticleVideoComponent } from './article/article-video/article-video.com
 import { MarkdownModule } from 'ngx-markdown';
 import { ArticleRequestComponent } from './article/article-request/article-request.component';
 import { ArticleSubscribeComponent } from './article/article-subscribe/article-subscribe.component';
+import { ArticleNextComponent } from './article/article-next/article-next.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { ArticleSubscribeComponent } from './article/article-subscribe/article-s
     ArticleQuoteComponent,
     ArticleRequestComponent,
     ArticleSubscribeComponent,
+    ArticleNextComponent,
   ],
   imports: [
     CommonModule,

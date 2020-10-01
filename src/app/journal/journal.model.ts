@@ -13,6 +13,8 @@ export interface Article {
   preview_file?: string;
   author_avatar?: string;
   content_blocks: ContentBlock[];
+
+  next_blog: Article;
 }
 
 export interface BlogTag {

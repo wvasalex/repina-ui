@@ -6,7 +6,7 @@ import { Article, BlogTag } from '../journal.model';
 import { ContentBlock, ContentElement, StrMap } from '@shared/types';
 import { ToasterService } from '@shared/toaster/toaster.service';
 import { SelectOption } from '@shared/components/select/select.model';
-import { BlogTagsService } from '../../lists/blog/blog-tags.service';
+import { JournalTagsService } from '../journal-tags.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -17,7 +17,7 @@ import { map } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ArticleEditorComponent implements OnInit {
-  public tags$: Observable<SelectOption[]> = this.blogTagsService.get()
+  public tags$: Observable<SelectOption[]> = this.journalTagsService.get()
     .pipe(map((tags: BlogTag[]) => {
       return tags.map((tag: BlogTag) => {
         return {
@@ -48,7 +48,7 @@ export class ArticleEditorComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private changeDetectorRef: ChangeDetectorRef,
               private journalService: JournalService,
-              private blogTagsService: BlogTagsService,
+              private journalTagsService: JournalTagsService,
               private toasterService: ToasterService) {
   }
 

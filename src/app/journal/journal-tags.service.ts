@@ -1,22 +1,21 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { RestService } from '@shared/services/api/rest.service';
 import { ApiConfig } from '@shared/services/api/api.model';
 import { ApiService } from '@shared/services/api/api.service';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { ContentListItem } from './lists.model';
-import { tap } from 'rxjs/operators';
 import { StrMap } from '@shared/types';
-import { moveItemInArray } from '@angular/cdk/drag-drop';
+import { BlogTag } from './journal.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class BlogTagsService extends RestService {
+export class JournalTagsService extends RestService {
   public config: ApiConfig = {
     path: '/blog_tags/',
   };
 
-  public data: BehaviorSubject<ContentListItem[]> = new BehaviorSubject<ContentListItem[]>([]);
+  public data: BehaviorSubject<BlogTag[]> = new BehaviorSubject<BlogTag[]>([]);
   public type: BehaviorSubject<string> = new BehaviorSubject<string>('blog-tags');
 
   constructor(public api: ApiService) {
@@ -25,10 +24,10 @@ export class BlogTagsService extends RestService {
     this.resolve('blog-tags');
   }
 
-  public resolve<T>(list_type: string): Observable<ContentListItem[]> {
+  public resolve<T>(list_type: string): Observable<BlogTag[]> {
     return super.get({
       list_type,
-    }).pipe(tap((list: ContentListItem[]) => {
+    }).pipe(tap((list: BlogTag[]) => {
       this.type.next(list_type);
       this.data.next(list);
     }));
@@ -37,7 +36,7 @@ export class BlogTagsService extends RestService {
   public save<T>(body: StrMap<any> = {}): Observable<T> {
     return super.save<T>(body.props).pipe(
       tap((item: any) => {
-        this._update(item as ContentListItem);
+        this._update(item as BlogTag);
       }),
     );
   }
@@ -50,21 +49,9 @@ export class BlogTagsService extends RestService {
     );
   }
 
-  public move(fromIndex: number, toIndex: number) {
+  private _update(updated: BlogTag) {
     const items = this.data.value;
-    moveItemInArray(items, fromIndex, toIndex);
-
-    this.data.next(items.slice());
-
-    items.forEach((item: ContentListItem, position: number) => {
-      item.position = position;
-      this.patch(item).subscribe();
-    });
-  }
-
-  private _update(updated: ContentListItem) {
-    const items = this.data.value;
-    const index = items.findIndex((item: ContentListItem) => {
+    const index = items.findIndex((item: BlogTag) => {
       return item.id === updated.id;
     });
 
@@ -79,7 +66,7 @@ export class BlogTagsService extends RestService {
 
   private _delete(removed: number) {
     const items = this.data.value;
-    const index = items.findIndex((item: ContentListItem) => {
+    const index = items.findIndex((item: BlogTag) => {
       return item.id === removed;
     });
 

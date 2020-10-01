@@ -1,0 +1,20 @@
+:host {
+  display: block;
+  background: #F8F8F8;
+  padding-top: 128px;
+  padding-bottom: 128px;
+}
+
+.text {
+  width: 60%;
+}
+
+.w320 :host, .w768 :host {
+  .text {
+    width: 100%;
+  }
+
+  .snippet {
+    margin-top: 64px;
+  }
+}

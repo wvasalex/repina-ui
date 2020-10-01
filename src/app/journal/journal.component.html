@@ -8,56 +8,45 @@
       >
       </r-card>
     </div>
+
     <r-badge-list
-      [badges]="['Все', 'Колонка Валерии Репиной', 'Жизайн', 'Новости']"
+      *ngIf="tags$ | async as tags"
+      (changed)="$applyTags($event)"
+      [badges]="tags"
       class="mt-2"
     ></r-badge-list>
   </r-padding>
 
-  <r-padding *ngIf="groups">
-   <!-- <div class="row-column">
-      <a
-        *ngFor="let article of main_articles; let first = first;"
-        [routerLink]="[article.slug]"
-        [class.big]="first"
-        [class.small]="!first"
-      >
-        <r-journal-snippet
-          [title]="article.blog_tag"
-          [description]="article.title"
-          [image]="article.preview_file|| '/assets/pictures/journal/1.png'"
-        >
-        </r-journal-snippet>
-      </a>
-    </div>-->
-
+  <r-padding *ngIf="groups$ | async as groups">
     <div
       *ngFor="let group of groups"
       class="row-column"
     >
       <ng-container *ngFor="let article of group; let first = first; let index = index; let last = last;">
-        <a
-          *ngIf="article.slug"
-          [routerLink]="[article.slug]"
-          [class.big]="group.length == 2 && first"
-          [class.ml-30]="!first"
-          [class.mr-30]="group.length == 3 && index == 1"
-        >
-          <r-journal-snippet
-            [tag]="article.blog_tag?.title"
-            [title]="article.title"
-            [image]="article.preview_file || '/assets/pictures/journal/1.png'"
+        <ng-container *ngIf="article">
+          <a
+            *ngIf="article.slug"
+            [routerLink]="[article.slug]"
+            [class.big]="group.length == 2 && first"
+            [class.ml-30]="!first"
+            [class.mr-30]="group.length == 3 && index == 1"
           >
-          </r-journal-snippet>
-        </a>
+            <r-journal-snippet
+              [tag]="article.blog_tag?.title"
+              [title]="article.title"
+              [image]="article.preview_file || '/assets/pictures/journal/1.png'"
+            >
+            </r-journal-snippet>
+          </a>
 
-        <div *ngIf="!article.slug && !article.type"></div>
+          <div *ngIf="!article.slug && !article.type"></div>
 
-        <r-article-subscribe
-          *ngIf="article.type === 'subscribe'"
-          [props]="{ value: 'Узнавайте о последних новостях' }"
-          class="subscription-block ml-30"
-        ></r-article-subscribe>
+          <r-article-subscribe
+            *ngIf="article.type === 'subscribe'"
+            [props]="{ value: 'Узнавайте о последних новостях' }"
+            class="subscription-block ml-30"
+          ></r-article-subscribe>
+        </ng-container>
       </ng-container>
     </div>
   </r-padding>
