@@ -2,10 +2,13 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChil
 import { ActivatedRoute, Router } from '@angular/router';
 import { ArticleHeaderComponent } from '../article/article-header/article-header.component';
 import { JournalService } from '../journal.service';
-import { Article } from '../journal.model';
+import { Article, BlogTag } from '../journal.model';
 import { ContentBlock, ContentElement, StrMap } from '@shared/types';
 import { ToasterService } from '@shared/toaster/toaster.service';
 import { SelectOption } from '@shared/components/select/select.model';
+import { BlogTagsService } from '../../lists/blog/blog-tags.service';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'r-article-editor',
@@ -14,18 +17,29 @@ import { SelectOption } from '@shared/components/select/select.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ArticleEditorComponent implements OnInit {
+  public tags$: Observable<SelectOption> = this.blogTagsService.get()
+    .pipe(map((tags: BlogTag[]) => {
+      return tags.map((tag: BlogTag) => {
+        return {
+          value: tag.id,
+          label: tag.title,
+        };
+      });
+    }));
+
   public article: Article;
 
   public render = this.journalService.render;
 
   public availableElements: SelectOption[] = [
-    {value: 'blank', label: 'Пустой'},
+    //{value: 'blank', label: 'Пустой'},
     {value: 'article-text', label: 'Текст'},
     {value: 'article-image', label: 'Изображение'},
     {value: 'article-quote', label: 'Цитата'},
     {value: 'article-author', label: 'Автор'},
     {value: 'article-video', label: 'Видео'},
     {value: 'article-request', label: 'Запрос стоимости'},
+    {value: 'article-subscribe', label: 'Подписаться'},
   ];
 
   @ViewChild(ArticleHeaderComponent) headerComponent: ArticleHeaderComponent;
@@ -34,6 +48,7 @@ export class ArticleEditorComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private changeDetectorRef: ChangeDetectorRef,
               private journalService: JournalService,
+              private blogTagsService: BlogTagsService,
               private toasterService: ToasterService) {
   }
 
@@ -42,6 +57,10 @@ export class ArticleEditorComponent implements OnInit {
     this.article = snapshot.data.article || {
       author_name: 'Валерия Репина',
     };
+
+    if (this.article.blog_tag) {
+      this.article.blog_tag = this.article.blog_tag['id'];
+    }
 
     if (!this.article.content_blocks?.length) {
       this.article.content_blocks = [
@@ -103,6 +122,7 @@ export class ArticleEditorComponent implements OnInit {
           props: {},
         },
       ],
+      is_enabled: true,
     });
   }
 

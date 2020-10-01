@@ -1,11 +1,15 @@
 :host {
   position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   background: rgba(0, 0, 0, .4);
+  padding: 40px;
+
+  &.static {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }

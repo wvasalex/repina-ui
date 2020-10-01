@@ -8,8 +8,8 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
 })
 export class JournalSnippetComponent implements OnInit {
   @Input() image: string;
+  @Input() tag: string;
   @Input() title: string;
-  @Input() description: string;
 
   constructor() { }
 

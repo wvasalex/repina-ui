@@ -13,10 +13,10 @@ import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ListServicesComponent } from './list-services/list-services.component';
-
+import { BlogTagsComponent } from './blog/blog-tags/blog-tags.component';
 
 @NgModule({
-  declarations: [ListsComponent, ListSelectorComponent, ListEditorComponent, ListServicesComponent],
+  declarations: [ListsComponent, ListSelectorComponent, ListEditorComponent, ListServicesComponent, BlogTagsComponent],
   imports: [
     CommonModule,
     ListsRoutingModule,

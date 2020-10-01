@@ -43,10 +43,6 @@ export class SelectComponent implements ControlValueAccessor {
 
     if (this.value != null) {
       this.valueChanged.emit(this.value);
-
-      setTimeout(() => {
-        this.writeValue(null);
-      }, 100);
     }
   }
 

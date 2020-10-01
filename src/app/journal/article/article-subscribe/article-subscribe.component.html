@@ -1,0 +1,17 @@
+<div
+  [r-block]="editor"
+  [innerHTML]="$getValue('value')"
+  (contentChanged)="$contentChanged($event, 'value')"
+  class="h4"
+></div>
+
+<r-input
+  placeholder="Почта"
+  class="mt-1_5"
+></r-input>
+
+<r-button
+  class="mt-2"
+>
+  Подписаться
+</r-button>

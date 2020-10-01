@@ -7,10 +7,16 @@ export interface Article {
   description?: string;
   is_enabled?: boolean;
   position?: number;
-  blog_tag?: string;
+  blog_tag?: string | BlogTag;
   id?: string;
   slug?: string;
   preview_file?: string;
   author_avatar?: string;
   content_blocks: ContentBlock[];
+}
+
+export interface BlogTag {
+  id?: number;
+  title: string;
+  key: string;
 }

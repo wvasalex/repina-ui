@@ -12,18 +12,21 @@
   <div *ngIf="!project.slug"></div>
 
   <r-project-snippet-overlay
+    [class.static]="static"
     class="overlay"
   >
     <div
-      snippet-title
       [class.h1]="static"
-      [class.h3]="!static"
+      [class.text32]="!static"
+      snippet-title
       class="text-white"
     >
       {{project.title}}
     </div>
     <div
-      class="text-32 text-white"
+      [class.h3]="!static"
+      [class.text32]="static"
+      class="text-white"
       snippet-description
     >
       {{project.description}}
