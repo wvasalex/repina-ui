@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  HostBinding,
+  Input,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { GridDataSize, GridDataSizeDef, GridDataType } from './grid.model';
 import { BreakpointService } from '../breakpoint.service';
 import { BreakpointState } from '@angular/cdk/layout';
@@ -11,11 +19,12 @@ import { Subscription } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GridComponent implements OnInit, OnDestroy {
-  @Input() type: GridDataType = 'small';
+  @Input() @HostBinding('attr.type') type: GridDataType = 'small';
 
   public def: GridDataSizeDef;
   @Input() rowHeight: string = '1.5:1';
   public column: boolean = false;
+  public grid: boolean = true;
 
   private _observe: Subscription;
 
@@ -41,7 +50,7 @@ export class GridComponent implements OnInit, OnDestroy {
     });
 
     if (this.type === 'small-wide' || this.type === 'wide-small') {
-      this.rowHeight = '1:2';
+      this.rowHeight = '1.5:2';
       this.changeDetectorRef.detectChanges();
     }
   }
