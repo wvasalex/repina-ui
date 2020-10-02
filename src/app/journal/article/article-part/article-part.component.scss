@@ -3,9 +3,9 @@
 :host {
   display: block;
 
-  &[editor="true"] {
+  /*&[editor="true"] {
     padding-bottom: 60px;
-  }
+  }*/
 
   ::ng-deep [rel="element_type_0"] {
     flex: 3;

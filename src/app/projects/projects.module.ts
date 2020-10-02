@@ -30,6 +30,7 @@ import { MarkdownModule } from 'ngx-markdown';
 import { ProjectNextComponent } from './project/project-next/project-next.component';
 import { ProjectSnippetOverlayComponent } from './project-snippet/project-snippet-overlay/project-snippet-overlay.component';
 import { ProjectMediaComponent } from './project/project-media/project-media.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { ProjectMediaComponent } from './project/project-media/project-media.com
     MatButtonToggleModule,
     ListContentModule,
     MarkdownModule,
+    MatMenuModule,
   ],
   exports: [
     ProjectSnippetComponent,

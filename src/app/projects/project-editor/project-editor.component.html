@@ -48,43 +48,51 @@
   #blockControls
   let-block="block"
 >
-  <div
-    *ngIf="block.block_type === 'project-block'"
-    class="row mr-2"
+  <ng-container *ngIf="block.block_type === 'project-block'">
+    <button mat-menu-item>
+      <mat-button-toggle-group
+        [(ngModel)]="block.props.color"
+        name="color"
+        style="flex: auto"
+      >
+        <mat-button-toggle value="white">Белый</mat-button-toggle>
+        <mat-button-toggle value="black">Черный</mat-button-toggle>
+      </mat-button-toggle-group>
+    </button>
+
+    <button
+      (click)="$event.stopImmediatePropagation()"
+      mat-menu-item
+    >
+      <input
+        [(ngModel)]="block.props.background"
+        name="background"
+        style="height: 24px"
+      >
+    </button>
+  </ng-container>
+
+  <button
+    *ngIf="block.block_type === 'project-gallery'"
+    mat-menu-item
   >
     <mat-button-toggle-group
-      [(ngModel)]="block.props.color"
+      [(ngModel)]="block.props.type"
       name="color"
       style="flex: auto"
     >
-      <mat-button-toggle value="white">Белый</mat-button-toggle>
-      <mat-button-toggle value="black">Черный</mat-button-toggle>
+      <mat-button-toggle value="big-small">
+        big-s
+      </mat-button-toggle>
+      <mat-button-toggle value="small-big">
+        s-big
+      </mat-button-toggle>
+      <mat-button-toggle value="small-wide">
+        s-wide
+      </mat-button-toggle>
+      <mat-button-toggle value="wide-small">
+        wide-s
+      </mat-button-toggle>
     </mat-button-toggle-group>
-
-    <input
-      [(ngModel)]="block.props.background"
-      name="background"
-    >
-  </div>
-
-  <mat-button-toggle-group
-    *ngIf="block.block_type === 'project-gallery'"
-    [(ngModel)]="block.props.type"
-    name="color"
-    class="mr-2"
-    style="flex: auto"
-  >
-    <mat-button-toggle value="big-small">
-      big-small
-    </mat-button-toggle>
-    <mat-button-toggle value="small-big">
-      small-big
-    </mat-button-toggle>
-    <mat-button-toggle value="small-wide">
-      small-wide
-    </mat-button-toggle>
-    <mat-button-toggle value="wide-small">
-      wide-small
-    </mat-button-toggle>
-  </mat-button-toggle-group>
+  </button>
 </ng-template>

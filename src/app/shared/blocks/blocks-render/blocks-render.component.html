@@ -4,26 +4,26 @@
   [attr.class]="typeKey + ' content-item'"
 >
   <div
-    *ngIf="editor && $hasControls(block)"
+    *ngIf="0 && editor && $hasControls(block)"
     class="move-block move-up controls"
   >
-    <r-icon
+    <r-icon-button
       *ngIf="!first"
       (click)="$move(block, -1)"
-      name="components/down-arrow"
+      icon="down-arrow"
       matTooltip="Переместить вверх"
       class="icon revert"
-    ></r-icon>
+    ></r-icon-button>
 
-    <r-icon
+    <r-icon-button
       (click)="availableBlocks ? null : $addBlock(block, 0)"
       (onMenuOpen)="$checkMenu(blockSelector)"
       [matMenuTriggerFor]="blockSelector"
       [matMenuTriggerData]="{block: block, offset: 0}"
-      name="components/add"
+      icon="add"
       matTooltip="Добавить блок выше"
       class="icon revert"
-    ></r-icon>
+    ></r-icon-button>
   </div>
 
   <r-block-switcher
@@ -52,55 +52,40 @@
     *ngIf="editor && $hasControls(block)"
     class="move-block move-down controls"
   >
-    <r-icon
-      *ngIf="!last"
+    <r-icon-button
+      *ngIf="!last && !first"
       (click)="$move(block, 1)"
-      name="components/down-arrow"
+      icon="down-arrow"
       matTooltip="Переместить вниз"
       class="icon"
-    ></r-icon>
+    ></r-icon-button>
 
-    <r-icon
+    <r-icon-button
       (click)="availableBlocks ? null : $addBlock(block, 1)"
       (onMenuOpen)="$checkMenu(blockSelector)"
       [matMenuTriggerFor]="blockSelector"
       [matMenuTriggerData]="{block: block, offset: 1}"
-      name="components/add"
+      icon="add"
       matTooltip="Добавить блок ниже"
       class="icon"
-    ></r-icon>
+    ></r-icon-button>
   </div>
 
   <div
     *ngIf="editor && $hasControls(block)"
     class="main-controls row"
   >
-    <ng-container *ngTemplateOutlet="controlTmp; context: {block: block}"></ng-container>
-
-    <mat-checkbox
-      [(ngModel)]="block.is_enabled"
-      matTooltip="Использовать"
-    ></mat-checkbox>
-
     <r-icon-button
-      (click)="$swapElements(block)"
-      [size]="18"
-      matTooltip="Поменять элементы местами"
-      icon="repeat"
-      class="ml-2"
-    ></r-icon-button>
-
-    <r-icon-button
-      (click)="$remove(block)"
-      [size]="18"
-      matTooltip="Удалить"
-      icon="close"
-      class="ml-2"
+      [matMenuTriggerFor]="blockControl"
+      [matMenuTriggerData]="{block: block, offset: 1}"
+      icon="more"
+      matTooltip="Управление"
+      class="icon"
     ></r-icon-button>
   </div>
 
   <mat-menu
-    #blockSelector="matMenu"
+      #blockSelector="matMenu"
   >
     <ng-template
       matMenuContent
@@ -115,5 +100,35 @@
         {{blockDescriptor.label}}
       </button>
     </ng-template>
+  </mat-menu>
+
+  <mat-menu
+      #blockControl="matMenu"
+  >
+    <ng-container *ngTemplateOutlet="controlTmp; context: {block: block}"></ng-container>
+
+    <button mat-menu-item>
+      <mat-checkbox
+        [(ngModel)]="block.is_enabled"
+      >Использовать</mat-checkbox>
+    </button>
+
+    <button mat-menu-item>
+      <r-icon-button
+        (click)="$swapElements(block)"
+        [size]="18"
+        icon="repeat"
+      >Поменять элементы местами
+      </r-icon-button>
+    </button>
+
+    <button mat-menu-item>
+      <r-icon-button
+        (click)="$remove(block)"
+        [size]="18"
+        icon="close"
+      >Удалить
+      </r-icon-button>
+    </button>
   </mat-menu>
 </div>

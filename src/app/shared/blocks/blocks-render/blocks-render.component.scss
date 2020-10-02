@@ -45,10 +45,13 @@
 }
 
 .move-block {
+  position: absolute;
+
+  width: 100%;
   text-align: center;
-  margin: 4px 0;
 
   &.move-down {
+    bottom: -10px;
     //border-top: 1px solid #ccc;
     .icon {
       margin-top: -3px;
@@ -56,7 +59,6 @@
   }
 
   &.move-up  {
-    //border-bottom: 1px solid #ccc;
     .icon {
       margin-bottom: -3px;
     }
@@ -69,7 +71,5 @@
     //border-bottom-right-radius: 100px; /* 100px of height + 10px of border */
     //border: 1px solid #ccc;
     //border-top: 3px solid #fff;
-    padding: 12px;
-    //background: #fff;
   }
 }

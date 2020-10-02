@@ -1,9 +1,7 @@
-@import 'src/theme';
 @import 'src/styles';
 
 :host {
   @extend .text16;
-  color: $color-red;
   display: inline-flex;
   align-items: center;
   cursor: pointer;

@@ -10,7 +10,7 @@
 
 .article-snippet {
   display: inline-block;
-  width: 20%;
+  width: calc(25% - 3rem);
   margin: 4rem 3rem 4rem 0;
   vertical-align: top;
 }
