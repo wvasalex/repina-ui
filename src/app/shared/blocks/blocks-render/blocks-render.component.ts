@@ -84,6 +84,7 @@ export class BlocksRenderComponent implements OnInit {
   }
 
   public $setType(target: ContentBlock, type: string) {
+    console.log(type, target);
     target.element_type = type;
   }
 
