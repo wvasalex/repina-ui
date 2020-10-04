@@ -11,12 +11,13 @@ import { JournalTagsService } from '../../../journal/journal-tags.service';
     {
       provide: ListsService,
       useClass: JournalTagsService,
-    }
-  ]
+    },
+  ],
 })
 export class BlogTagsComponent implements OnInit {
 
-  constructor(private listsService: ListsService) { }
+  constructor(private listsService: ListsService) {
+  }
 
   ngOnInit(): void {
     this.listsService.resolve('blog-tags').subscribe();

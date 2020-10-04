@@ -41,6 +41,10 @@ export class JournalService extends RestService {
   }
 
   public patch<T>(body: StrMap<any> = {}) {
+    if (typeof body.blog_tag === 'object' && body.blog_tag.id) {
+      body.blog_tag = body.blog_tag.id;
+    }
+
     return super.patch({...body, id: body.slug});
   }
 

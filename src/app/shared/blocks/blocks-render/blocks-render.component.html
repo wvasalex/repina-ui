@@ -3,7 +3,7 @@
   [attr.rel]="typeKey + '_' + index"
   [attr.class]="typeKey + ' content-item'"
 >
-  <div
+  <!--<div
     *ngIf="0 && editor && $hasControls(block)"
     class="move-block move-up controls"
   >
@@ -24,7 +24,7 @@
       matTooltip="Добавить блок выше"
       class="icon revert"
     ></r-icon-button>
-  </div>
+  </div>-->
 
   <r-block-switcher
     *ngIf="editor && typeKey == 'element_type' && availableElements?.length"
@@ -52,14 +52,6 @@
     *ngIf="editor && $hasControls(block)"
     class="move-block move-down controls"
   >
-    <r-icon-button
-      *ngIf="!last && !first"
-      (click)="$move(block, 1)"
-      icon="down-arrow"
-      matTooltip="Переместить вниз"
-      class="icon"
-    ></r-icon-button>
-
     <r-icon-button
       (click)="availableBlocks ? null : $addBlock(block, 1)"
       (onMenuOpen)="$checkMenu(blockSelector)"
@@ -113,12 +105,39 @@
       >Использовать</mat-checkbox>
     </button>
 
+    <button
+      *ngIf="!first"
+      (click)="$move(block, -1)"
+      mat-menu-item
+    >
+      <r-icon-button
+        [size]="18"
+        icon="arrow-up"
+        class="icon"
+      ></r-icon-button>
+      Переместить вверх
+    </button>
+
+    <button
+      *ngIf="!last"
+      (click)="$move(block, 0)"
+      mat-menu-item
+    >
+      <r-icon-button
+        [size]="18"
+        icon="arrow-down"
+        class="icon"
+      ></r-icon-button>
+      Переместить вниз
+    </button>
+
     <button mat-menu-item>
       <r-icon-button
         (click)="$swapElements(block)"
         [size]="18"
         icon="repeat"
-      >Поменять элементы местами
+      >
+        Поменять элементы местами
       </r-icon-button>
     </button>
 

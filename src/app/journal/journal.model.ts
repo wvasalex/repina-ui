@@ -21,4 +21,8 @@ export interface BlogTag {
   id?: number;
   title: string;
   key: string;
+  props?: {
+    title: string;
+    key: string;
+  };
 }

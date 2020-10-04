@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { RestService } from '@shared/services/api/rest.service';
 import { ApiConfig } from '@shared/services/api/api.model';
 import { ApiService } from '@shared/services/api/api.service';
@@ -27,14 +27,26 @@ export class JournalTagsService extends RestService {
   public resolve<T>(list_type: string): Observable<BlogTag[]> {
     return super.get({
       list_type,
-    }).pipe(tap((list: BlogTag[]) => {
-      this.type.next(list_type);
-      this.data.next(list);
-    }));
+    }).pipe(
+      map((list: BlogTag[]) => {
+        return list.map((tag: BlogTag) => {
+          tag.props = {
+            key: tag.key,
+            title: tag.title,
+          };
+          return tag;
+        });
+      }),
+      tap((list: BlogTag[]) => {
+        this.type.next(list_type);
+        this.data.next(list);
+      }),
+    );
   }
 
   public save<T>(body: StrMap<any> = {}): Observable<T> {
-    return super.save<T>(body.props).pipe(
+    const {id, props} = body;
+    return super.save<T>({id, ...props}).pipe(
       tap((item: any) => {
         this._update(item as BlogTag);
       }),

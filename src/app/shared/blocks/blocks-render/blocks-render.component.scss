@@ -29,8 +29,11 @@
 .main-controls {
   position: absolute;
   right: 40px;
-  top: 0;
+  top: 12px;
   align-items: center;
+  background: rgba(255, 255, 255, .4);
+  padding: 12px;
+  border-radius: 50%;
 }
 
 :host ::ng-deep {
@@ -40,10 +43,6 @@
   }
 }
 
-.revert {
-  transform: rotate(180deg);
-}
-
 .move-block {
   position: absolute;
 
@@ -51,7 +50,8 @@
   text-align: center;
 
   &.move-down {
-    bottom: -10px;
+    padding: 12px;
+    bottom: -48px;
     //border-top: 1px solid #ccc;
     .icon {
       margin-top: -3px;
@@ -65,10 +65,10 @@
   }
 
   .icon {
-    width: 300px;
+    width: 80px;
     height: 80px;
-    //border-bottom-left-radius: 100px;  /* 100px of height + 10px of border */
-    //border-bottom-right-radius: 100px; /* 100px of height + 10px of border */
+    //border-bottom-left-radius: 100px;
+    //border-bottom-right-radius: 100px;
     //border: 1px solid #ccc;
     //border-top: 3px solid #fff;
   }
