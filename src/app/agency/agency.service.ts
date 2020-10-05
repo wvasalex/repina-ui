@@ -5,6 +5,8 @@ import { ApiConfig } from '@shared/services/api/api.model';
 import { ListsService } from '../lists/lists.service';
 import { Observable } from 'rxjs';
 import { ContentListItem } from '../lists/lists.model';
+import { ContentBlock, StrMap } from '@shared/types';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +19,15 @@ export class AgencyService extends RestService {
   constructor(public api: ApiService,
               private listsService: ListsService) {
     super();
+  }
+
+  public get<T>(body: StrMap<any> = {}): Observable<any> {
+    return super.get(body).pipe(map((blocks: ContentBlock[]) => {
+      return blocks.map(((block: ContentBlock) => {
+        block.content_elements = block.content_elements.sort((a, b) => a.id - b.id);
+        return block;
+      }));
+    }));
   }
 
   public getAwards(): Observable<ContentListItem[]> {

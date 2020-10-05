@@ -1,30 +1,32 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 import { BaseBlock } from '@shared/blocks/block.component';
-import { ApiService } from '@shared/services/api/api.service';
 import { ContentElement } from '@shared/types';
+import { ApiService } from '@shared/services/api/api.service';
 
 @Component({
-  selector: 'r-project-image',
-  templateUrl: './project-image.component.html',
-  styleUrls: ['./project-image.component.scss'],
+  selector: 'r-image-upload',
+  templateUrl: './image-upload.component.html',
+  styleUrls: ['./image-upload.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProjectImageComponent extends BaseBlock {
+export class ImageUploadComponent extends BaseBlock {
 
   @Output() upload: EventEmitter<File> = new EventEmitter<File>();
 
-  /*constructor(
+  @Input() endpoint: string = '';
+
+  constructor(
     private changeDetectoRef: ChangeDetectorRef,
     private api: ApiService) {
     super();
-  }*/
+  }
 
-  /*public $upload(e) {
+  public $upload(e) {
     const file = e.target.files[0];
     const data = new FormData();
     data.append('content_file', file);
 
-    this.api.postFile('/api/v1/project_content_elements/' + this.id + '/', data)
+    this.api.postFile(`/api/v1/${this.endpoint}/${this.id}/`, data)
       .toPromise()
       .then((element: ContentElement) => {
         this.upload.emit(file);
@@ -34,9 +36,10 @@ export class ProjectImageComponent extends BaseBlock {
   }
 
   public $clear() {
-    this.api.patchStream('/project_content_elements/' + this.id + '/', { content_file: null }).toPromise();
+    this.api.patchStream(`/${this.endpoint}/${this.id}/`, { content_file: null }).toPromise();
     this.contentFile = null;
     this.changeDetectoRef.detectChanges();
-  }*/
+  }
+
 
 }

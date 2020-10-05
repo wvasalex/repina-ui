@@ -10,7 +10,7 @@ import { ContentElement } from '@shared/types';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ArticleImageComponent extends BaseBlock {
-  constructor(
+  /*constructor(
     private changeDetectoRef: ChangeDetectorRef,
     private api: ApiService) {
     super();
@@ -27,5 +27,5 @@ export class ArticleImageComponent extends BaseBlock {
         this.contentFile = element.content_file;
         this.changeDetectoRef.detectChanges();
       });
-  }
+  }*/
 }

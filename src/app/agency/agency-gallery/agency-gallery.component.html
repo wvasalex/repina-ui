@@ -1,0 +1,39 @@
+<ng-container *ngIf="!editor">
+  <r-grid
+    [type]="props.type"
+  >
+    <r-agency-image
+      [id]="elements[0].id"
+      [props]="elements[0].props"
+      [contentFile]="elements[0].content_file"
+      rel="1"
+    ></r-agency-image>
+    <r-agency-image
+      [id]="elements[1].id"
+      [props]="elements[1].props"
+      [contentFile]="elements[1].content_file"
+      rel="2"
+    ></r-agency-image>
+    <r-agency-image
+      [id]="elements[2].id"
+      [props]="elements[2].props"
+      [contentFile]="elements[2].content_file"
+      rel="3"
+    ></r-agency-image>
+  </r-grid>
+</ng-container>
+
+<div
+  *ngIf="editor"
+  class="row"
+  style="min-height: 100%"
+>
+  <r-agency-image
+    *ngFor="let element of elements; let index = index"
+    [attr.rel]="index"
+    [id]="element.id"
+    [props]="element.props"
+    [contentFile]="element.content_file"
+    [editor]="true"
+  ></r-agency-image>
+</div>

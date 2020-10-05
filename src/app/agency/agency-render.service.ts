@@ -8,6 +8,8 @@ import { AgencyFeedbackComponent } from './agency-feedback/agency-feedback.compo
 import { AgencyImagesComponent } from './agency-images/agency-images.component';
 import { AgencyCustomersComponent } from './agency-customers/agency-customers.component';
 import { AgencyMediaComponent } from './agency-media/agency-media.component';
+import { AgencyGalleryComponent } from './agency-gallery/agency-gallery.component';
+import { AgencyImageComponent } from './agency-image/agency-image.component';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +25,8 @@ export class AgencyRenderService {
     'agency-images': AgencyImagesComponent,
     'agency-customers': AgencyCustomersComponent,
     'agency-media': AgencyMediaComponent,
+    'agency-gallery': AgencyGalleryComponent,
+    'agency-image': AgencyImageComponent,
   };
 
   constructor() { }

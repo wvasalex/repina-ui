@@ -20,6 +20,8 @@ import { AgencyAchievementComponent } from './agency-achievements/agency-achieve
 import { AgencyPrimaryTextComponent } from './agency-primary/agency-primary-text/agency-primary-text.component';
 import { AgencyEditorComponent } from './agency-editor/agency-editor.component';
 import { MatButtonModule } from '@angular/material/button';
+import { AgencyGalleryComponent } from './agency-gallery/agency-gallery.component';
+import { AgencyImageComponent } from './agency-image/agency-image.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { MatButtonModule } from '@angular/material/button';
     AgencyAchievementComponent,
     AgencyPrimaryTextComponent,
     AgencyEditorComponent,
+    AgencyGalleryComponent,
+    AgencyImageComponent,
   ],
   imports: [
     CommonModule,

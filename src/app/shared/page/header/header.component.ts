@@ -17,8 +17,6 @@ export class HeaderComponent implements OnInit {
   }
 
   public $isImage(src: string): boolean {
-    console.log(src);
-
     return /\.(jpe?g|png|gif)$/.test(src);
   }
 

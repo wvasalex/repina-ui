@@ -28,6 +28,8 @@ import { ImagePlaceholderComponent } from './image-placeholder/image-placeholder
 import { InputLabelComponent } from '@shared/components/input-label/input-label.component';
 import { AspectRatioDirective } from './aspect-ratio.directive';
 import { LinebreaksPipe } from './linebreaks.pipe';
+import { ImageUploadComponent } from './image-upload/image-upload.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,7 @@ import { LinebreaksPipe } from './linebreaks.pipe';
     InputLabelComponent,
     AspectRatioDirective,
     LinebreaksPipe,
+    ImageUploadComponent,
   ],
   exports: [
     LogoComponent,
@@ -82,12 +85,14 @@ import { LinebreaksPipe } from './linebreaks.pipe';
     InputLabelComponent,
     AspectRatioDirective,
     LinebreaksPipe,
+    ImageUploadComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
     MatSelectModule,
     MatSnackBarModule,
+    MatButtonModule,
   ],
 })
 export class SharedModule {

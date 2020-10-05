@@ -97,9 +97,38 @@ export class AgencyComponent implements OnInit {
       content_elements: [],
     },
     {
-      block_type: 'agency-images',
-      props: {},
-      content_elements: [],
+      block_type: 'agency-gallery',
+      props: {
+        type: 'small-big',
+      },
+      content_elements: [
+        {
+          element_type: 'agency-image',
+        },
+        {
+          element_type: 'agency-image',
+        },
+        {
+          element_type: 'agency-image',
+        },
+      ],
+    },
+    {
+      block_type: 'agency-gallery',
+      props: {
+        type: 'small',
+      },
+      content_elements: [
+        {
+          element_type: 'agency-image',
+        },
+        {
+          element_type: 'agency-image',
+        },
+        {
+          element_type: 'agency-image',
+        },
+      ],
     },
     {
       block_type: 'agency-customers',
@@ -120,12 +149,14 @@ export class AgencyComponent implements OnInit {
   }
 
   public ngOnInit() {
+
   }
 
-  /*@HostListener('dblclick') onInit() {
-    this.content_blocks.forEach((block: ContentBlock, position: number) => {
+ /* @HostListener('dblclick') _init() {
+    this.content_blocks.forEach((block, position: number) => {
       block.position = position;
       this.agencyService.post(block).subscribe();
-  });*/
+    });
+  }*/
 
 }
