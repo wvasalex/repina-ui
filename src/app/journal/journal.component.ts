@@ -1,11 +1,14 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { JournalService } from './journal.service';
 import { Article, BlogTag } from './journal.model';
 import { JournalTagsService } from './journal-tags.service';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { StrMap } from '@shared/types';
 import { SelectOption } from '@shared/components/select/select.model';
+import { MatDialog } from '@angular/material/dialog';
+import { ListReorderComponent } from '@shared/list-reorder/list-reorder.component';
+import { Project } from '../projects/projects.model';
 
 @Component({
   selector: 'r-journal',
@@ -38,9 +41,11 @@ export class JournalComponent implements OnInit {
       return this.journalService.groupArticles(articles);
     }));
 
-  constructor(private changeDetectorRef: ChangeDetectorRef,
-              private journalService: JournalService,
-              private journalTagsService: JournalTagsService) {
+  constructor(
+    private dialog: MatDialog,
+    private journalService: JournalService,
+    private journalTagsService: JournalTagsService,
+  ) {
   }
 
   ngOnInit(): void {
@@ -55,6 +60,33 @@ export class JournalComponent implements OnInit {
     this._load({
       blog_tag__key__in: keys.join(','),
     });
+  }
+
+  public $reorder() {
+    this.dialog.open(ListReorderComponent, {
+      data: {
+        items: this.articles$.value.map((article: Article) => {
+          return {
+            image: article.preview_file,
+            ...article,
+          };
+        }),
+        onChange: (items) => {
+          this._save(items);
+        },
+      },
+    });
+  }
+
+  private _save(items: Article[]) {
+    items.forEach((item: Article) => {
+      this.journalService.patch({
+        slug: item.slug,
+        position: item.position,
+      }).subscribe();
+    });
+
+    this.articles$.next(items);
   }
 
   private _load(filters: StrMap<string> = {}) {

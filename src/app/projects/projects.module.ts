@@ -31,6 +31,7 @@ import { ProjectNextComponent } from './project/project-next/project-next.compon
 import { ProjectSnippetOverlayComponent } from './project-snippet/project-snippet-overlay/project-snippet-overlay.component';
 import { ProjectMediaComponent } from './project/project-media/project-media.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { ListReorderModule } from '@shared/list-reorder/list-reorder.module';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { MatMenuModule } from '@angular/material/menu';
     ListContentModule,
     MarkdownModule,
     MatMenuModule,
+    ListReorderModule,
   ],
   exports: [
     ProjectSnippetComponent,

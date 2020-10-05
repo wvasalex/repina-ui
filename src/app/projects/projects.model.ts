@@ -4,6 +4,7 @@ export interface Project {
   title: string;
   status: 'setup' | 'active' | 'archived';
   is_enabled: boolean;
+  position: number;
   description?: string;
   tags?: [];
   slug?: string;

@@ -53,9 +53,18 @@
 
  <r-fabs *rWithSession>
    <button
+     (click)="$reorder()"
+     mat-fab
+     color="primary"
+   >
+     <r-icon name="components/reorder"></r-icon>
+   </button>
+
+   <button
      [routerLink]="['/blog/new']"
      mat-fab
      color="primary"
+     style="margin-left: 16px;"
    >
      <r-icon name="components/add-white"></r-icon>
    </button>

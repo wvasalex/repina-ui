@@ -1,0 +1,26 @@
+<div
+  cdkDropList
+  (cdkDropListDropped)="$drop($event)"
+  class="list"
+>
+  <div
+    *ngFor="let item of items"
+    cdkDrag
+    class="item row"
+  >
+    <div>
+      <r-image
+        *ngIf="item.image"
+        [src]="item.image"
+      ></r-image>
+    </div>
+    <div class="column ml-1">
+      <div class="text-32 bolder">
+        {{item.title}}
+      </div>
+      <div class="text-32">
+        {{item.description}}
+      </div>
+    </div>
+  </div>
+</div>

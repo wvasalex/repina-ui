@@ -1,10 +1,12 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
-import { combineLatest, Observable } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
 import { BreakpointState } from '@angular/cdk/layout';
 import { BreakpointService } from '@shared/breakpoint.service';
 import { ProjectsService } from './projects.service';
 import { Project } from './projects.model';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
+import { MatDialog } from '@angular/material/dialog';
+import { ListReorderComponent } from '@shared/list-reorder/list-reorder.component';
 
 @Component({
   selector: 'r-projects',
@@ -14,7 +16,7 @@ import { map } from 'rxjs/operators';
 })
 export class ProjectsComponent {
 
-  private projects$: Observable<Project[]> = this.projectsService.get<Project>();
+  private projects$: BehaviorSubject<Project[]> = new BehaviorSubject<Project[]>([]);
 
   private rows$: Observable<number> = this.breakpointService.change$
     .pipe(map((result: BreakpointState) => {
@@ -41,9 +43,43 @@ export class ProjectsComponent {
     'Упаковка', 'Брендбук', 'Интерьер', 'Ритейл-брендинг', 'IT-брендинг',
   ];
 
-  constructor(private changeDetectorRef: ChangeDetectorRef,
-              private breakpointService: BreakpointService,
-              private projectsService: ProjectsService) {
+  constructor(
+    private dialog: MatDialog,
+    private changeDetectorRef: ChangeDetectorRef,
+    private breakpointService: BreakpointService,
+    private projectsService: ProjectsService,
+  ) {
+    this.projectsService.get<Project>()
+      .subscribe((projects: Project[]) => {
+        this.projects$.next(projects);
+      });
+  }
+
+  public $reorder() {
+    this.dialog.open(ListReorderComponent, {
+      data: {
+        items: this.projects$.value.map((project: Project) => {
+          return {
+            image: project.preview_file,
+            ...project,
+          };
+        }),
+        onChange: (items) => {
+          this._save(items);
+        },
+      },
+    });
+  }
+
+  private _save(items: Project[]) {
+    items.forEach((item: Project) => {
+      this.projectsService.patch({
+        id: item.slug,
+        position: item.position,
+      }).subscribe();
+    });
+
+    this.projects$.next(items);
   }
 
 }
