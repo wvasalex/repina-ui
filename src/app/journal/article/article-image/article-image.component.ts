@@ -1,7 +1,5 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BaseBlock } from '@shared/blocks/block.component';
-import { ApiService } from '@shared/services/api/api.service';
-import { ContentElement } from '@shared/types';
 
 @Component({
   selector: 'r-article-image',
@@ -10,22 +8,4 @@ import { ContentElement } from '@shared/types';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ArticleImageComponent extends BaseBlock {
-  /*constructor(
-    private changeDetectoRef: ChangeDetectorRef,
-    private api: ApiService) {
-    super();
-  }
-
-  public $upload(e) {
-    const file = e.target.files[0];
-    const data = new FormData();
-    data.append('content_file', file);
-
-    this.api.postFile('/api/v1/blog_content_elements/' + this.id + '/', data)
-      .toPromise()
-      .then((element: ContentElement) => {
-        this.contentFile = element.content_file;
-        this.changeDetectoRef.detectChanges();
-      });
-  }*/
 }
