@@ -35,7 +35,8 @@ export class BaseBlock {
   }
 
   public $normalizeSpaces(value: string): string {
-    return value && value.replace(/\s([а-яА-Яa-zA-Z]{1,2})\s/gi, ' $1&nbsp;');
+    return value && value.replace(/\s([а-яА-Яa-zA-Z]{1,2})\s/gi, ' $1&nbsp;') &&
+      value.replace(/\\/g, '<br>');
   }
 
   public $addElement(type: string) {

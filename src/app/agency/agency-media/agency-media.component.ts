@@ -4,6 +4,8 @@ import { ContentListItem } from '../../lists/lists.model';
 import { AgencyService } from '../agency.service';
 import { map } from 'rxjs/operators';
 import { errorAnimation } from '@shared/animations';
+import { BreakpointState } from '@angular/cdk/layout';
+import { BreakpointService } from '@shared/breakpoint.service';
 
 @Component({
   selector: 'r-agency-media',
@@ -32,7 +34,9 @@ export class AgencyMediaComponent implements OnInit {
 
   private pageSize: number = 8;
 
-  constructor(private agencyService: AgencyService) {
+  constructor(
+    private breakpointService: BreakpointService,
+    private agencyService: AgencyService) {
   }
 
   ngOnInit(): void {

@@ -20,11 +20,10 @@ export class JournalTagsService extends RestService {
 
   constructor(public api: ApiService) {
     super();
-
-    this.resolve('blog-tags');
   }
 
   public resolve<T>(list_type: string): Observable<BlogTag[]> {
+    console.log(list_type);
     return super.get({
       list_type,
     }).pipe(

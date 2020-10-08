@@ -14,9 +14,11 @@ import { MatTableModule } from '@angular/material/table';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ListServicesComponent } from './list-services/list-services.component';
 import { BlogTagsComponent } from './blog/blog-tags/blog-tags.component';
+import { ServicesTagsComponent } from './services/services-tags/services-tags.component';
+import { ServicesGroupsComponent } from './services/services-groups/services-groups.component';
 
 @NgModule({
-  declarations: [ListsComponent, ListSelectorComponent, ListEditorComponent, ListServicesComponent, BlogTagsComponent],
+  declarations: [ListsComponent, ListSelectorComponent, ListEditorComponent, ListServicesComponent, BlogTagsComponent, ServicesTagsComponent, ServicesGroupsComponent],
   imports: [
     CommonModule,
     ListsRoutingModule,

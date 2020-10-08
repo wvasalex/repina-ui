@@ -6,18 +6,20 @@
     200+ публикации в СМИ
   </div>
 
-  <div
-    *ngFor="let article of $page(media)"
-    @errorAnimation
-    class="article-snippet"
-  >
-    <a
-      [attr.href]="article.props.href || '#'"
-      target="_blank"
-      class="h3"
-    >{{article.props.source}}</a>
-    <div class="h4 mt-1">{{article.props.date}}</div>
-    <div class="text32 mt-1">{{article.props.text}}</div>
+  <div class="grid">
+    <div
+      *ngFor="let article of $page(media)"
+      @errorAnimation
+      class="article-snippet"
+    >
+      <a
+        [attr.href]="article.props.href || '#'"
+        target="_blank"
+        class="h3"
+      >{{article.props.source}}</a>
+      <div class="h4 mt-1">{{article.props.date}}</div>
+      <div class="text32 mt-1">{{article.props.text}}</div>
+    </div>
   </div>
 
   <r-button

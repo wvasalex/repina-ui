@@ -8,27 +8,29 @@
   }
 }
 
-.article-snippet {
-  display: inline-block;
-  width: calc(25% - 3rem);
-  margin: 4rem 3rem 4rem 0;
-  vertical-align: top;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 4rem;
+  grid-row-gap: 8em;
+  margin-top: 4rem;
 }
 
 .w1024 :host {
-  .article-snippet {
-    width: 30%;
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 .w768 :host {
-  .article-snippet {
-    width: 45%;
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 .w320 :host {
-  .article-snippet {
-    width: 100%
+  .grid {
+    grid-template-columns: 1fr;
   }
 }
+
