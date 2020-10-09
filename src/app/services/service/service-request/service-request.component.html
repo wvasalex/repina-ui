@@ -1,0 +1,16 @@
+<img src="/assets/icons/article/request.svg">
+
+<div
+  [r-block]="editor"
+  [innerHTML]="$getValue('title')"
+  (contentChanged)="$contentChanged($event, 'title')"
+  class="h4 mt-1_5"
+></div>
+
+<div
+  (click)="$priceRequest()"
+  [r-block]="editor"
+  [innerHTML]="$getValue('label')"
+  (contentChanged)="$contentChanged($event, 'label')"
+  class="text32 bolder request"
+></div>

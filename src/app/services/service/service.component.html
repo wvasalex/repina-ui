@@ -1,6 +1,6 @@
 <r-page
   *ngIf="service"
-  [backgroundImage]="service.preview_file ? 'url(' + service.preview_file + ')' : null"
+  [backgroundImage]="service.preview_file"
   menuColor="white"
 >
   <r-padding
@@ -30,6 +30,7 @@
   <r-blocks-render
     [render]="render"
     [blocks]="service.content_blocks"
+    class="mt-8"
   ></r-blocks-render>
 
   <r-fabs *rWithSession>

@@ -8,6 +8,7 @@ import { SelectOption } from '@shared/components/select/select.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BlockSwitcherComponent implements OnInit {
+
   @Input() availableElements: SelectOption[];
 
   @Output() change: EventEmitter<string> = new EventEmitter<string>();
@@ -20,4 +21,5 @@ export class BlockSwitcherComponent implements OnInit {
   public $change(selected: SelectOption) {
     this.change.emit(selected.value as string);
   }
+
 }

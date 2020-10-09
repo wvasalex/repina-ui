@@ -6,6 +6,7 @@ import { ContentElement, StrMap } from '../types';
   template: '',
 })
 export class BaseBlock {
+
   @Input() id: number;
   @Input() props: StrMap<string> = {};
   @Input() contentFile: string;
@@ -67,4 +68,5 @@ export class BaseBlock {
   public getValue(): StrMap<string> {
     return this.props;
   }
+
 }

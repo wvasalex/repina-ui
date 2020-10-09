@@ -1,0 +1,25 @@
+<video
+  *ngIf="!editor"
+  #video
+  class="video-js vjs-16-9"
+  muted
+></video>
+
+<button
+  *ngIf="editor && id"
+  mat-fab
+  class="upload"
+>
+  <r-icon name="components/upload"></r-icon>
+  <input
+    (change)="$upload($event)"
+    type="file"
+    class="file"
+  >
+</button>
+
+<r-image-placeholder
+  *ngIf="editor && !id"
+>
+  Сохраните статью для загрузки медиа
+</r-image-placeholder>

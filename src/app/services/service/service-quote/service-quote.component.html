@@ -1,0 +1,55 @@
+<div
+  [class.small]="props.small"
+  class="inner"
+>
+  <r-quote
+    (contentChanged)="$contentChanged($event, 'value')"
+    [innerHTML]="$getValue('value')"
+    [r-block]="editor"
+    [class.h3]="!props.small"
+    [class.h4]="props.small"
+  >
+  </r-quote>
+
+  <div
+    *ngIf="$getValue('name')"
+    class="author"
+  >
+    <r-service-image
+      *ngIf="editor || contentFile"
+      [id]="id"
+      [contentFile]="contentFile"
+      [props]="props"
+      [editor]="editor"
+      class="avatar mr-2"
+    ></r-service-image>
+
+    <div class="mt-1">
+      <div
+        (contentChanged)="$contentChanged($event, 'name')"
+        [r-block]="editor"
+        [innerHTML]="$getValue('name')"
+        class="h4"
+      >
+      </div>
+      <div
+        (contentChanged)="$contentChanged($event, 'role')"
+        [r-block]="editor"
+        [innerHTML]="$getValue('role')"
+        class="text32"
+      >
+      </div>
+    </div>
+  </div>
+  <div
+    *ngIf="editor"
+    class="mt-2"
+  >
+    <mat-checkbox
+      [(ngModel)]="props.small"
+      name="small"
+    >
+      Без фона
+    </mat-checkbox>
+  </div>
+</div>

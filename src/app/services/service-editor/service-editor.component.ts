@@ -14,6 +14,7 @@ import { Service } from '../services.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ServiceEditorComponent implements OnInit {
+
   public service: Service;
 
   public render = this.servicesService.render;
@@ -24,10 +25,11 @@ export class ServiceEditorComponent implements OnInit {
   ];*/
 
   public availableElements: SelectOption[] = [
-    { value: 'blank', label: 'Пустой' },
-    { value: 'service-title', label: ' Заголовок' },
     { value: 'service-text', label: 'Текст' },
-    //{ value: 'project-image', label: 'Изображение' },
+    { value: 'service-image', label: 'Изображение' },
+    { value: 'service-quote', label: 'Цитата' },
+    { value: 'service-video', label: 'Видео' },
+    { value: 'service-request', label: 'Запрос стоимости' },
   ];
 
   constructor(

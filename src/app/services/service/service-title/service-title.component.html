@@ -1,7 +1,0 @@
-<div
-  *ngIf="$getValue('title')"
-  [r-block]="editor"
-  [innerHTML]="$getValue('title')"
-  (contentChanged)="$contentChanged($event, 'title')"
-  class="title h2"
-></div>

@@ -1,10 +1,102 @@
+@import 'src/theme';
+
 :host {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
+
+  .index {
+    margin-right: 4rem;
+    width: 54px;
+  }
+
+  ::ng-deep [rel="element_type_0"] {
+    flex: 3;
+  }
+
+  ::ng-deep [rel="element_type_1"] {
+    r-article-text, r-article-quote {
+      display: flex;
+    }
+  }
 }
 
-.index {
-  margin-right: 4rem;
-  width: 44px;
+.title, .subtitle {
+  margin-bottom: 1rem;
 }
+
+/*
+.inner {
+  position: relative;
+}
+
+.content {
+  margin-left: 102px;
+}
+
+.mb-30 {
+  margin-bottom: 30px;
+}
+
+:host:not([editor]) {
+  .row-column {
+    align-items: center;
+  }
+}
+
+.w1920 :host {
+  ::ng-deep [rel="element_type_1"] {
+    padding-left: 180px;
+  }
+}
+
+.w1366 :host {
+  .content {
+    margin-left: 75px;
+  }
+
+  ::ng-deep [rel="element_type_1"] {
+    padding-left: 136px;
+  }
+}
+
+.w1024 :host {
+  .content {
+    margin-left: 50px;
+  }
+
+  ::ng-deep [rel="element_type_1"] {
+    padding-left: 112px;
+  }
+}
+
+.w768 :host, .w320 :host {
+  ::ng-deep [rel="element_type_1"] {
+    margin-bottom: 4rem;
+  }
+
+  .row-column {
+    flex-direction: column-reverse !important;
+    align-items: flex-start;
+  }
+
+  ::ng-deep .title, .subtitle {
+    display: none;
+  }
+}
+
+.w320 :host {
+  .date {
+    left: auto;
+    right: -65px;
+  }
+
+  .content {
+    margin-left: 0;
+  }
+}
+
+.element_type {
+  align-items: center;
+}
+*/

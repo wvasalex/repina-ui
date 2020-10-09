@@ -1,3 +1,45 @@
 :host {
   display: block;
 }
+
+
+.w1920 :host {
+  ::ng-deep [rel="element_type_1"] {
+    padding-left: 180px;
+  }
+}
+
+.w1366 :host {
+  .content {
+    margin-left: 75px;
+  }
+
+  ::ng-deep [rel="element_type_1"] {
+    padding-left: 136px;
+  }
+}
+
+.w1024 :host {
+  .content {
+    margin-left: 50px;
+  }
+
+  ::ng-deep [rel="element_type_1"] {
+    padding-left: 112px;
+  }
+}
+
+.w768 :host, .w320 :host {
+  ::ng-deep [rel="element_type_1"] {
+    margin-bottom: 4rem;
+  }
+
+  .row-column {
+    flex-direction: column-reverse !important;
+    align-items: flex-start;
+  }
+
+  ::ng-deep .title, .subtitle {
+    display: none;
+  }
+}

@@ -8,6 +8,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class ServicesGroupsService extends JournalTagsService {
+
   public config: ApiConfig = {
     path: '/service_tag_groups/',
   };

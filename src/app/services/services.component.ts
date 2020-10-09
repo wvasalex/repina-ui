@@ -11,6 +11,7 @@ import { ServicesEditorService } from './services-editor.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ServicesComponent implements OnInit {
+
   public render = this.servicesService.render;
 
   public blocks$: Observable<ContentBlock[]> = this.servicesEditorService.get();
