@@ -6,14 +6,43 @@
     </mat-checkbox>
 
     <div>
-      <mat-button-toggle-group
-        [(ngModel)]="service.service_type"
-        name="service_type"
-      >
-        <mat-button-toggle value="single">Простая</mat-button-toggle>
-        <mat-button-toggle value="complex">Комплексная</mat-button-toggle>
-      </mat-button-toggle-group>
     </div>
+  </r-padding>
+
+  <r-padding class="row mt-2">
+    <r-select
+      [(ngModel)]="service.service_type"
+      [options]="types"
+      placeholder="Тип услуги"
+    ></r-select>
+
+    <r-select
+      *ngIf="serviceTags$ | async as serviceTags"
+      [(ngModel)]="service.tag"
+      [options]="serviceTags | selectOptions : $toOption"
+      placeholder="Тег"
+      class="ml-2"
+    ></r-select>
+
+    <ng-container *ngIf="service.service_type === 'single'">
+      <r-select
+        *ngIf="serviceGroups$ | async as groups"
+        [(ngModel)]="service.tag_group"
+        [options]="groups | selectOptions : $toOption"
+        placeholder="Группа"
+        class="ml-2"
+      ></r-select>
+    </ng-container>
+
+    <ng-container *ngIf="service.service_type === 'brand_wiki'">
+      <r-select
+        *ngIf="serviceScopes$ | async as scopes"
+        [(ngModel)]="service.activity_scope"
+        [options]="scopes | selectOptions : $toOption"
+        placeholder="Сфера услуги"
+        class="ml-2"
+      ></r-select>
+    </ng-container>
   </r-padding>
 
   <r-padding class="row mt-2">

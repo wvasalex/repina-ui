@@ -1,9 +1,8 @@
 <r-page
   *ngIf="service"
-  [backgroundImage]="service.preview_file"
   menuColor="white"
 >
-  <r-padding
+  <!--<r-padding
     header
     [horizontal]="true"
   >
@@ -25,12 +24,12 @@
         </r-button>
       </div>
     </r-card>
-  </r-padding>
+  </r-padding>-->
 
   <r-blocks-render
     [render]="render"
     [blocks]="service.content_blocks"
-    class="mt-8"
+    [data]="{service: service}"
   ></r-blocks-render>
 
   <r-fabs *rWithSession>

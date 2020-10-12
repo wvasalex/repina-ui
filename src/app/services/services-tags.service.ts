@@ -8,11 +8,11 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class ServicesTagsService extends JournalTagsService {
+
   public config: ApiConfig = {
     path: '/service_tags/',
   };
 
-  public modelName: string = 'services-tags';
   public type: BehaviorSubject<string> = new BehaviorSubject<string>('services-tags');
 
   constructor(public api: ApiService) {

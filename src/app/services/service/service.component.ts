@@ -10,6 +10,7 @@ import { ServicesService } from '../services.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ServiceComponent implements OnInit {
+
   public render = this.servicesService.render;
 
   public service: Service;
@@ -22,6 +23,6 @@ export class ServiceComponent implements OnInit {
 
   ngOnInit(): void {
     this.service = this.activatedRoute.snapshot.data.service;
-    delete this.service.content_blocks[0];
   }
+
 }

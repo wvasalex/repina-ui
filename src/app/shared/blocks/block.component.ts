@@ -14,6 +14,7 @@ export class BaseBlock {
   @Input() elements: any[];
   @Input() render;
   @Input() index: number = 0;
+  @Input() data: any;
 
   @Output() change: EventEmitter<void> = new EventEmitter<void>();
   @Output() removeBlock: EventEmitter<number> = new EventEmitter<number>();

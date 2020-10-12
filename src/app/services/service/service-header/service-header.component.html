@@ -5,6 +5,13 @@
     class="promo"
   >
     <div
+      *ngIf="!editor && data.service.tag"
+      subtitle
+    >
+      {{data.service.tag.title}}
+    </div>
+
+    <div
       (contentChanged)="$contentChanged($event, 'title')"
       [r-block]="editor"
       [innerHTML]="$getValue('title')"
@@ -28,12 +35,12 @@
       </r-button>
     </div>
 
-    <r-service-image
+    <!--<r-service-image
       [id]="elements?.length && elements[0].id"
       [contentFile]="elements?.length && elements[0].content_file"
       [editor]="editor"
       image
-    ></r-service-image>
+    ></r-service-image>-->
   </r-card>
 </r-padding>
 

@@ -1,18 +1,51 @@
 import { ContentBlock } from '@shared/types';
+import { SelectOption } from '@shared/components/select/select.model';
+
+export const SERVICE_TYPES: SelectOption[] = [
+  {
+    value: 'single',
+    label: 'Простая',
+  },
+  {
+    value: 'complex',
+    label: 'Конмплексная',
+  },
+  {
+    value: 'brand_wiki',
+    label: 'Brand-wiki',
+  },
+];
 
 export interface Service {
   id?: number;
   title: string;
   description?: string;
   is_enabled: boolean;
-  service_type: 'complex' | 'single';
-  tag?: any;
+  service_type: string;
+  content_blocks: ContentBlock[];
+  tag?: number | ServiceTag;
+  tag_group?: number | ServiceTagGroup;
+  activity_scope: number | ServiceScope;
   slug?: string;
   preview_file?: string;
-  parent?: {
+  parent?: number | {
     id: number;
+    title: string;
     slug?: string;
-
   };
-  content_blocks: ContentBlock[];
+}
+
+export interface ServiceTag {
+  id: number;
+  title: string;
+}
+
+export interface ServiceTagGroup {
+  id: number;
+  title: string;
+}
+
+export interface ServiceScope {
+  id: number;
+  title: string;
 }

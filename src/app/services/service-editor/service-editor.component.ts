@@ -1,11 +1,14 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { Project } from '../../projects/projects.model';
 import { SelectOption } from '@shared/components/select/select.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToasterService } from '@shared/toaster/toaster.service';
 import { ContentBlock, ContentElement, StrMap } from '@shared/types';
 import { ServicesService } from '../services.service';
-import { Service } from '../services.model';
+import { Service, ServiceTag, SERVICE_TYPES, ServiceScope, ServiceTagGroup } from '../services.model';
+import { ServicesTagsService } from '../services-tags.service';
+import { Observable } from 'rxjs';
+import { ServicesScopesService } from '../services-scopes.service';
+import { ServicesGroupsService } from '../services-groups.service';
 
 @Component({
   selector: 'r-service-editor',
@@ -17,6 +20,12 @@ export class ServiceEditorComponent implements OnInit {
 
   public service: Service;
 
+  public serviceTags$: Observable<ServiceTag[]> = this.servicesTagsService.get();
+  public serviceGroups$: Observable<ServiceTagGroup[]> = this.servicesGroupsService.get();
+  public serviceScopes$: Observable<ServiceScope[]> = this.servicesScopesService.get();
+
+  public types: SelectOption[] = SERVICE_TYPES;
+
   public render = this.servicesService.render;
 
   public availableBlocks: SelectOption[]; /* = [
@@ -25,24 +34,28 @@ export class ServiceEditorComponent implements OnInit {
   ];*/
 
   public availableElements: SelectOption[] = [
-    { value: 'service-text', label: 'Текст' },
-    { value: 'service-image', label: 'Изображение' },
-    { value: 'service-quote', label: 'Цитата' },
-    { value: 'service-video', label: 'Видео' },
-    { value: 'service-request', label: 'Запрос стоимости' },
+    {value: 'service-text', label: 'Текст'},
+    {value: 'service-image', label: 'Изображение'},
+    {value: 'service-quote', label: 'Цитата'},
+    {value: 'service-video', label: 'Видео'},
+    {value: 'service-request', label: 'Запрос стоимости'},
   ];
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private changeDetectorRef: ChangeDetectorRef,
+    private toasterService: ToasterService,
     private servicesService: ServicesService,
-    private toasterService: ToasterService) {
+    private servicesTagsService: ServicesTagsService,
+    private servicesGroupsService: ServicesGroupsService,
+    private servicesScopesService: ServicesScopesService,
+  ) {
   }
 
   public ngOnInit(): void {
     const snapshot = this.activatedRoute.snapshot;
-    this.service = snapshot.data.service || {};
+    this._normalize(this.service = snapshot.data.service || {});
 
     if (!this.service.content_blocks?.length) {
       this.service.content_blocks = [
@@ -75,7 +88,7 @@ export class ServiceEditorComponent implements OnInit {
   }
 
   public $addBlock(e: StrMap<any>) {
-    const { target, offset, blockType } = e;
+    const {target, offset, blockType} = e;
     const index = this.service.content_blocks.indexOf(target) + offset;
 
     const element = (type: string = 'blank') => {
@@ -102,10 +115,10 @@ export class ServiceEditorComponent implements OnInit {
   }
 
   private _save() {
-    const root = this.service.content_blocks[0];
+    /*const root = this.service.content_blocks[0];
     if (root.content_elements[0]?.content_file) {
       this.service.preview_file = root.content_elements[0].content_file;
-    }
+    }*/
 
     if (!this.service.title) {
       alert('Название услуги обязательно!');
@@ -125,17 +138,35 @@ export class ServiceEditorComponent implements OnInit {
     });
 
     delete this.service.parent;
-    delete this.service.tag;
+
     const req = this.servicesService.save(this.service).toPromise().then((a: Service) => {
       if (a.slug != this.service.slug) {
         this.router.navigate(['/services', a.slug, 'edit']);
       } else {
-        this.service = a;
+        this._normalize(this.service = a);
         this.changeDetectorRef.detectChanges();
       }
     });
 
     this.toasterService.wrapPromise(req, 'Сохранено', 'Не удалось сохранить');
+  }
+
+  public $toOption(tag: ServiceTag) {
+    return {
+      value: tag.id,
+      label: tag.title,
+    };
+  }
+
+  private _normalize(service: Service) {
+    const normalize = (key: string) => {
+      if (service[key]) {
+        service[key] = service[key].id;
+      }
+      return normalize;
+    };
+    normalize('tag')('tag_group')('activity_scope');
+    return service;
   }
 
 }

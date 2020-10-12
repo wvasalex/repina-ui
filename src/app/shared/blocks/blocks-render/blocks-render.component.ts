@@ -10,6 +10,7 @@ import { MatMenu } from '@angular/material/menu';
 })
 export class BlocksRenderComponent implements OnInit {
   @Input() render: StrMap<Component> = {};
+  @Input() data: any;
   @Input() blocks: ContentBlock[];
   @Input() editor: boolean = false;
   @Input() typeKey: 'block_type' | 'element_type' = 'block_type';

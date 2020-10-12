@@ -27,6 +27,7 @@ import { ServicesEditorComponent } from './services-editor/services-editor.compo
 import { ServiceVideoComponent } from './service/service-video/service-video.component';
 import { ServiceQuoteComponent } from './service/service-quote/service-quote.component';
 import { ServiceRequestComponent } from './service/service-request/service-request.component';
+import { SelectOptionsPipe } from '@shared/components/select/select-options.pipe';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { ServiceRequestComponent } from './service/service-request/service-reque
     ServiceVideoComponent,
     ServiceQuoteComponent,
     ServiceRequestComponent,
+    SelectOptionsPipe,
   ],
   imports: [
     CommonModule,
