@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ListsService } from '../../lists.service';
 import { ServicesTagsService } from '../../../services/services-tags.service';
 
@@ -14,6 +14,13 @@ import { ServicesTagsService } from '../../../services/services-tags.service';
     },
   ],
 })
-export class ServicesTagsComponent {
+export class ServicesTagsComponent implements OnInit {
+
+  constructor(private listsService: ListsService) {
+  }
+
+  ngOnInit(): void {
+    this.listsService.resolve('services-tags').subscribe();
+  }
 
 }

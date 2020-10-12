@@ -16,9 +16,10 @@ import { ListServicesComponent } from './list-services/list-services.component';
 import { BlogTagsComponent } from './blog/blog-tags/blog-tags.component';
 import { ServicesTagsComponent } from './services/services-tags/services-tags.component';
 import { ServicesGroupsComponent } from './services/services-groups/services-groups.component';
+import { ServicesScopesComponent } from './services/services-scopes/services-scopes.component';
 
 @NgModule({
-  declarations: [ListsComponent, ListSelectorComponent, ListEditorComponent, ListServicesComponent, BlogTagsComponent, ServicesTagsComponent, ServicesGroupsComponent],
+  declarations: [ListsComponent, ListSelectorComponent, ListEditorComponent, ListServicesComponent, BlogTagsComponent, ServicesTagsComponent, ServicesGroupsComponent, ServicesScopesComponent],
   imports: [
     CommonModule,
     ListsRoutingModule,

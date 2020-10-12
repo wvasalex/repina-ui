@@ -39,6 +39,10 @@ export const ContentListTypes: SelectOption[] = [
     label: 'Рубрики блога',
   },
   {
+    value: 'services-scopes',
+    label: 'Сферы услуг',
+  },
+  {
     value: 'services-tags',
     label: 'Теги услуг',
   },
@@ -136,6 +140,12 @@ export const PropsDef = {
     }
   ],
   'services-groups': [
+    {
+      name: 'title',
+      label: 'Название',
+    }
+  ],
+  'services-scopes': [
     {
       name: 'title',
       label: 'Название',

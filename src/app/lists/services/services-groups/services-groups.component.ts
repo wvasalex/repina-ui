@@ -16,9 +16,11 @@ import { ServicesGroupsService } from '../../../services/services-groups.service
 })
 export class ServicesGroupsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private listsService: ListsService) {
+  }
 
   ngOnInit(): void {
+    this.listsService.resolve('services-groups').subscribe();
   }
 
 }

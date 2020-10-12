@@ -23,7 +23,6 @@ export class JournalTagsService extends RestService {
   }
 
   public resolve<T>(list_type: string): Observable<BlogTag[]> {
-    console.log(list_type);
     return super.get({
       list_type,
     }).pipe(
