@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Service } from '../services.model';
 import { ServicesService } from '../services.service';
@@ -15,6 +15,8 @@ export class ServiceComponent implements OnInit {
 
   public service: Service;
 
+  @HostBinding('attr.type') type: string;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private servicesService: ServicesService,
@@ -23,6 +25,7 @@ export class ServiceComponent implements OnInit {
 
   ngOnInit(): void {
     this.service = this.activatedRoute.snapshot.data.service;
+    this.type = this.service.service_type;
   }
 
 }

@@ -1,6 +1,6 @@
 <r-page
   *ngIf="service"
-  menuColor="white"
+  [menuColor]="service.service_type === 'complex' ? 'black' : 'white'"
 >
   <!--<r-padding
     header

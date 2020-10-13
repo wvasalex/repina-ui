@@ -5,10 +5,11 @@
     class="promo"
   >
     <div
-      *ngIf="!editor && data.service.tag"
       subtitle
     >
-      {{data.service.tag.title}}
+      <span *ngIf="!editor && data.service.tag; else serviceTmp">
+        {{data.service.tag.title}}
+      </span>
     </div>
 
     <div
@@ -43,6 +44,10 @@
     ></r-service-image>-->
   </r-card>
 </r-padding>
+
+<ng-template #serviceTmp>
+  Услуги
+</ng-template>
 
 <!--
 <r-padding
