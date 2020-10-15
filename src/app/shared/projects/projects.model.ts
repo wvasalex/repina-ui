@@ -1,4 +1,5 @@
-import { ContentBlock } from '@shared/types';
+import { ContentBlock } from '../types';
+import { ServiceScope, ServiceTag } from '../../services/services.model';
 
 export interface Project {
   title: string;
@@ -6,7 +7,8 @@ export interface Project {
   is_enabled: boolean;
   position: number;
   description?: string;
-  tags?: [];
+  tag?: number | ServiceTag;
+  activity_scope?: number | ServiceScope;
   slug?: string;
   preview_file?: string;
   content_blocks: ContentBlock[];

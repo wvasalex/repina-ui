@@ -117,14 +117,8 @@ export class ServiceEditorComponent implements OnInit {
   }
 
   private _save() {
-    /*const root = this.service.content_blocks[0];
-    if (root.content_elements[0]?.content_file) {
-      this.service.preview_file = root.content_elements[0].content_file;
-    }*/
-
     if (!this.service.title) {
-      alert('Название услуги обязательно!');
-      return;
+      return this.toasterService.error('Название обязательно!');
     }
 
     this.service.content_blocks.forEach((block: ContentBlock, index: number) => {

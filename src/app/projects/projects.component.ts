@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/
 import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
 import { BreakpointState } from '@angular/cdk/layout';
 import { BreakpointService } from '@shared/breakpoint.service';
-import { ProjectsService } from './projects.service';
-import { Project } from './projects.model';
+import { ProjectsService } from '@shared/projects/projects.service';
+import { Project } from '@shared/projects/projects.model';
 import { map, tap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { ListReorderComponent } from '@shared/list-reorder/list-reorder.component';

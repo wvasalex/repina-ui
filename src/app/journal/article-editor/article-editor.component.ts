@@ -132,8 +132,7 @@ export class ArticleEditorComponent implements OnInit {
 
   private _save() {
     if (!this.article.title) {
-      alert('Название статьи обязательно!');
-      return;
+      return this.toasterService.error('Название обязательно!');
     }
 
     if (!this.article.blog_tag) {

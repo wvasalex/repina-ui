@@ -1,0 +1,12 @@
+<div
+  *ngIf="projects$ && projects$ | async as projects"
+  class="grid"
+>
+    <r-project-snippet
+      *ngFor="let project of projects"
+      [project]="project"
+      [rAspectRatio]="1.4"
+    ></r-project-snippet>
+
+    <r-project-all [rAspectRatio]="1.4"></r-project-all>
+</div>

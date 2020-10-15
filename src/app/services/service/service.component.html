@@ -2,30 +2,6 @@
   *ngIf="service"
   [menuColor]="service.service_type === 'complex' ? 'black' : 'white'"
 >
-  <!--<r-padding
-    header
-    [horizontal]="true"
-  >
-    <r-card
-      color="black"
-      size="small"
-      subtitle="Услуги"
-      [title]="service.title"
-      class="promo"
-    >
-      <div description>
-        <div class="description text32 mt-1_5">
-          {{service.description}}
-        </div>
-        <r-button
-          class="mt-2"
-        >
-          Заказать
-        </r-button>
-      </div>
-    </r-card>
-  </r-padding>-->
-
   <r-blocks-render
     [render]="render"
     [blocks]="service.content_blocks"

@@ -26,6 +26,13 @@ export class ServiceComponent implements OnInit {
   ngOnInit(): void {
     this.service = this.activatedRoute.snapshot.data.service;
     this.type = this.service.service_type;
+
+    this.service.content_blocks.splice(1, 0, {
+      block_type: 'service-projects',
+      props: {},
+      content_elements: [
+      ],
+    });
   }
 
 }

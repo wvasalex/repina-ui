@@ -3,8 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';
 import { ContentBlock } from '@shared/types';
-import { Project } from '../projects.model';
-import { ProjectsService } from '../projects.service';
+import { Project } from '@shared/projects/projects.model';
+import { ProjectsService } from '@shared/projects/projects.service';
 
 @Component({
   selector: 'r-project',

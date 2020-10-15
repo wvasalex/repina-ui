@@ -29,6 +29,8 @@ import { ServiceQuoteComponent } from './service/service-quote/service-quote.com
 import { ServiceRequestComponent } from './service/service-request/service-request.component';
 import { SelectOptionsPipe } from '@shared/components/select/select-options.pipe';
 import { ServiceTitleComponent } from './service/service-title/service-title.component';
+import { ServiceProjectsComponent } from './service/service-projects/service-projects.component';
+import { SharedProjectsModule } from '@shared/projects/projects.module';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,7 @@ import { ServiceTitleComponent } from './service/service-title/service-title.com
     ServiceRequestComponent,
     SelectOptionsPipe,
     ServiceTitleComponent,
+    ServiceProjectsComponent,
   ],
   imports: [
     CommonModule,
@@ -64,6 +67,10 @@ import { ServiceTitleComponent } from './service/service-title/service-title.com
     MatButtonToggleModule,
     ListContentModule,
     MarkdownModule,
+    SharedProjectsModule,
+  ],
+  exports: [
+    SelectOptionsPipe,
   ],
 })
 export class ServicesModule {

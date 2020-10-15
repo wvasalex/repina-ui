@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { Project } from '../../projects.model';
+import { Project } from '@shared/projects/projects.model';
 
 @Component({
   selector: 'r-project-next',

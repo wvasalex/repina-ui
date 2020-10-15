@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
-import { RestService } from '@shared/services/api/rest.service';
-import { ApiService } from '@shared/services/api/api.service';
-import { ApiConfig } from '@shared/services/api/api.model';
-import { BlockBlankComponent } from '@shared/blocks/block-blank/block-blank.component';
-import { ProjectRootComponent } from './project/project-root/project-root.component';
-import { ProjectBlockComponent } from './project/project-block/project-block.component';
-import { ProjectImageComponent } from './project/project-image/project-image.component';
-import { ProjectGalleryComponent } from './project/project-gallery/project-gallery.component';
-import { ProjectTextComponent } from './project/project-text/project-text.component';
-import { ProjectQuoteComponent } from './project/project-quote/project-quote.component';
-import { ProjectVideoComponent } from './project/project-video/project-video.component';
+import { RestService } from '../services/api/rest.service';
+import { ApiService } from '../services/api/api.service';
+import { ApiConfig } from '../services/api/api.model';
+import { BlockBlankComponent } from '../blocks/block-blank/block-blank.component';
+import { ProjectRootComponent } from '../../projects/project/project-root/project-root.component';
+import { ProjectBlockComponent } from '../../projects/project/project-block/project-block.component';
+import { ProjectImageComponent } from '../../projects/project/project-image/project-image.component';
+import { ProjectGalleryComponent } from '../../projects/project/project-gallery/project-gallery.component';
+import { ProjectTextComponent } from '../../projects/project/project-text/project-text.component';
+import { ProjectQuoteComponent } from '../../projects/project/project-quote/project-quote.component';
+import { ProjectVideoComponent } from '../../projects/project/project-video/project-video.component';
 import { Project } from './projects.model';
-import { ProjectRolesComponent } from './project/project-roles/project-roles.component';
-import { ProjectFeedbackComponent } from './project/project-feedback/project-feedback.component';
-import { ProjectArticlesComponent } from './project/project-articles/project-articles.component';
-import { StrMap } from '@shared/types';
+import { ProjectRolesComponent } from '../../projects/project/project-roles/project-roles.component';
+import { ProjectFeedbackComponent } from '../../projects/project/project-feedback/project-feedback.component';
+import { ProjectArticlesComponent } from '../../projects/project/project-articles/project-articles.component';
+import { StrMap } from '../types';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -46,9 +46,7 @@ export class ProjectsService extends RestService {
   public public
 
   get<T>(body: StrMap<any> = {}): Observable<any> {
-    return super.get({
-      per_page: 100,
-    });
+    return super.get(body);
   }
 
   public groupProjectss(projects: Project[], chunkSize: number = 3): Project[][] {

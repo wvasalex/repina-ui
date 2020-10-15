@@ -14,6 +14,7 @@ import { ServiceQuoteComponent } from './service/service-quote/service-quote.com
 import { ServiceVideoComponent } from './service/service-video/service-video.component';
 import { ServiceRequestComponent } from './service/service-request/service-request.component';
 import { ServiceTitleComponent } from './service/service-title/service-title.component';
+import { ServiceProjectsComponent } from './service/service-projects/service-projects.component';
 
 @Injectable({
   providedIn: 'root',
@@ -37,6 +38,7 @@ export class ServicesService extends RestService {
     'service-quote': ServiceQuoteComponent,
     'service-video': ServiceVideoComponent,
     'service-request': ServiceRequestComponent,
+    'service-projects': ServiceProjectsComponent,
   };
 
   constructor(public api: ApiService) {

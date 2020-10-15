@@ -8,7 +8,7 @@ import { StrMap } from '@shared/types';
 import { SelectOption } from '@shared/components/select/select.model';
 import { MatDialog } from '@angular/material/dialog';
 import { ListReorderComponent } from '@shared/list-reorder/list-reorder.component';
-import { Project } from '../projects/projects.model';
+import { Project } from '@shared/projects/projects.model';
 
 @Component({
   selector: 'r-journal',

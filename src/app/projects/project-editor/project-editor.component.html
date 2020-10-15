@@ -10,6 +10,23 @@
   </r-padding>
 
   <r-padding class="row mt-2">
+    <r-select
+      *ngIf="serviceTags$ | async as serviceTags"
+      [(ngModel)]="project.tag"
+      [options]="serviceTags | selectOptions : $toOption"
+      placeholder="Тег"
+    ></r-select>
+
+    <r-select
+      *ngIf="serviceScopes$ | async as scopes"
+      [(ngModel)]="project.activity_scope"
+      [options]="scopes | selectOptions : $toOption"
+      placeholder="Сфера услуги"
+      class="ml-2"
+    ></r-select>
+  </r-padding>
+
+  <r-padding class="row mt-2">
     <r-input
       [(ngModel)]="project.title"
       placeholder="Название"

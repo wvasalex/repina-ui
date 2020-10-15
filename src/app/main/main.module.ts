@@ -9,6 +9,7 @@ import { JournalModule } from '../journal/journal.module';
 import { AboutComponent } from './about/about.component';
 import { BlocksModule } from '../shared/blocks/blocks.module';
 import { ProjectsModule } from '../projects/projects.module';
+import { SharedProjectsModule } from '@shared/projects/projects.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ProjectsModule } from '../projects/projects.module';
     JournalModule,
     BlocksModule,
     ProjectsModule,
+    SharedProjectsModule,
   ],
 })
 export class MainModule { }

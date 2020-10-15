@@ -24,8 +24,8 @@ export interface Service {
   service_type: string;
   content_blocks: ContentBlock[];
   tag?: number | ServiceTag;
+  activity_scope?: number | ServiceScope;
   tag_group?: number | ServiceTagGroup;
-  activity_scope: number | ServiceScope;
   slug?: string;
   preview_file?: string;
   parent?: number | {

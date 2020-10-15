@@ -22,16 +22,16 @@ import { FormsModule } from '@angular/forms';
 import { ProjectVideoComponent } from './project/project-video/project-video.component';
 import { ProjectQuoteComponent } from './project/project-quote/project-quote.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { ProjectSnippetComponent } from './project-snippet/project-snippet.component';
 import { ListContentModule } from '@shared/list-content/list-content.module';
 import { ProjectFeedbackComponent } from './project/project-feedback/project-feedback.component';
 import { ProjectArticlesComponent } from './project/project-articles/project-articles.component';
 import { MarkdownModule } from 'ngx-markdown';
 import { ProjectNextComponent } from './project/project-next/project-next.component';
-import { ProjectSnippetOverlayComponent } from './project-snippet/project-snippet-overlay/project-snippet-overlay.component';
 import { ProjectMediaComponent } from './project/project-media/project-media.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { ListReorderModule } from '@shared/list-reorder/list-reorder.module';
+import { ServicesModule } from '../services/services.module';
+import { SharedProjectsModule } from '@shared/projects/projects.module';
 
 @NgModule({
   declarations: [
@@ -46,11 +46,9 @@ import { ListReorderModule } from '@shared/list-reorder/list-reorder.module';
     ProjectEditorComponent,
     ProjectVideoComponent,
     ProjectQuoteComponent,
-    ProjectSnippetComponent,
     ProjectFeedbackComponent,
     ProjectArticlesComponent,
     ProjectNextComponent,
-    ProjectSnippetOverlayComponent,
     ProjectMediaComponent,
   ],
   imports: [
@@ -69,9 +67,10 @@ import { ListReorderModule } from '@shared/list-reorder/list-reorder.module';
     MarkdownModule,
     MatMenuModule,
     ListReorderModule,
+    ServicesModule,
+    SharedProjectsModule,
   ],
   exports: [
-    ProjectSnippetComponent,
   ],
 })
 export class ProjectsModule {

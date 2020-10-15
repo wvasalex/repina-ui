@@ -1,10 +1,14 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { ToasterService } from '@shared/toaster/toaster.service';
 import { ContentBlock, ContentElement, StrMap } from '@shared/types';
 import { SelectOption } from '@shared/components/select/select.model';
-import { ProjectsService } from '../projects.service';
-import { Project } from '../projects.model';
+import { ProjectsService } from '@shared/projects/projects.service';
+import { Project } from '@shared/projects/projects.model';
+import { ServicesTagsService } from '../../services/services-tags.service';
+import { ServicesScopesService } from '../../services/services-scopes.service';
+import { ServiceScope, ServiceTag } from '../../services/services.model';
 
 @Component({
   selector: 'r-project-editor',
@@ -16,22 +20,25 @@ export class ProjectEditorComponent implements OnInit {
 
   public project: Project;
 
+  public serviceTags$: Observable<ServiceTag[]> = this.servicesTagsService.get();
+  public serviceScopes$: Observable<ServiceScope[]> = this.servicesScopesService.get();
+
   public render = this.projectsService.render;
 
   public availableBlocks: SelectOption[] = [
-    { value: 'project-block', label: 'Блок' },
-    { value: 'project-gallery', label: 'Галерея' },
-    { value: 'project-roles', label: 'Участники' },
-    { value: 'project-feedback', label: 'Отзыв' },
-    { value: 'project-articles', label: 'Статьи и награды' },
+    {value: 'project-block', label: 'Блок'},
+    {value: 'project-gallery', label: 'Галерея'},
+    {value: 'project-roles', label: 'Участники'},
+    {value: 'project-feedback', label: 'Отзыв'},
+    {value: 'project-articles', label: 'Статьи и награды'},
   ];
 
   public availableElements: SelectOption[] = [
     //{ value: 'blank', label: 'Пустой' },
-    { value: 'project-text', label: 'Текст' },
-    { value: 'project-image', label: 'Изображение' },
-    { value: 'project-quote', label: 'Цитата' },
-    { value: 'project-video', label: 'Видео' },
+    {value: 'project-text', label: 'Текст'},
+    {value: 'project-image', label: 'Изображение'},
+    {value: 'project-quote', label: 'Цитата'},
+    {value: 'project-video', label: 'Видео'},
   ];
 
   constructor(
@@ -39,12 +46,15 @@ export class ProjectEditorComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private changeDetectorRef: ChangeDetectorRef,
     private projectsService: ProjectsService,
-    private toasterService: ToasterService) {
+    private toasterService: ToasterService,
+    private servicesTagsService: ServicesTagsService,
+    private servicesScopesService: ServicesScopesService,
+  ) {
   }
 
   public ngOnInit(): void {
     const snapshot = this.activatedRoute.snapshot;
-    this.project = snapshot.data.project || {};
+    this.project = this._normalize(snapshot.data.project || {});
 
     if (!this.project.content_blocks?.length) {
       this.project.content_blocks = [
@@ -65,20 +75,17 @@ export class ProjectEditorComponent implements OnInit {
         {
           block_type: 'project-feedback',
           props: {},
-          content_elements: [
-          ],
+          content_elements: [],
         },
         {
           block_type: 'project-roles',
           props: {},
-          content_elements: [
-          ],
+          content_elements: [],
         },
         {
           block_type: 'project-articles',
           props: {},
-          content_elements: [
-          ],
+          content_elements: [],
         },
       ];
     } else {
@@ -93,7 +100,7 @@ export class ProjectEditorComponent implements OnInit {
   }
 
   public $addBlock(e: StrMap<any>) {
-    const { target, offset, blockType } = e;
+    const {target, offset, blockType} = e;
     const index = this.project.content_blocks.indexOf(target) + offset;
 
     const element = (type: string = 'blank') => {
@@ -116,6 +123,7 @@ export class ProjectEditorComponent implements OnInit {
         subtitle: '',
       },
       content_elements: elements,
+      is_enabled: true,
     });
   }
 
@@ -123,15 +131,21 @@ export class ProjectEditorComponent implements OnInit {
     this._save();
   }
 
-  private async _save() {
+  public $toOption(tag: ServiceTag) {
+    return {
+      value: tag.id,
+      label: tag.title,
+    };
+  }
+
+  private _save() {
     const root = this.project.content_blocks[0];
     if (root.content_elements[0]?.content_file) {
       this.project.preview_file = root.content_elements[0].content_file;
     }
 
     if (!this.project.title) {
-      alert('Название проекта обязательно!');
-      return;
+      return this.toasterService.error('Название обязательно!');
     }
 
     this.project.content_blocks.forEach((block: ContentBlock, index: number) => {
@@ -150,12 +164,23 @@ export class ProjectEditorComponent implements OnInit {
       if (a.slug != this.project.slug) {
         this.router.navigate(['/projects', a.slug, 'edit']);
       } else {
-        this.project = a;
+        this.project = this._normalize(a);
         this.changeDetectorRef.detectChanges();
       }
     });
 
     this.toasterService.wrapPromise(req, 'Сохранено', 'Не удалось сохранить');
+  }
+
+  private _normalize(project: Project) {
+    const normalize = (key: string) => {
+      if (project[key]) {
+        project[key] = project[key].id;
+      }
+      return normalize;
+    };
+    normalize('tag')('activity_scope');
+    return project;
   }
 
 }
