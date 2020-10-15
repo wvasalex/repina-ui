@@ -28,6 +28,7 @@ import { ServiceVideoComponent } from './service/service-video/service-video.com
 import { ServiceQuoteComponent } from './service/service-quote/service-quote.component';
 import { ServiceRequestComponent } from './service/service-request/service-request.component';
 import { SelectOptionsPipe } from '@shared/components/select/select-options.pipe';
+import { ServiceTitleComponent } from './service/service-title/service-title.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { SelectOptionsPipe } from '@shared/components/select/select-options.pipe
     ServiceQuoteComponent,
     ServiceRequestComponent,
     SelectOptionsPipe,
+    ServiceTitleComponent,
   ],
   imports: [
     CommonModule,

@@ -11,6 +11,7 @@ import { ServicesEditorService } from '../services-editor.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ServicesEditorComponent implements OnInit {
+
   public render = this.servicesService.render;
 
   public blocks: ContentBlock[];
@@ -92,4 +93,5 @@ export class ServicesEditorComponent implements OnInit {
     this.toasterService.wrapPromise(
       Promise.all(promises), 'Сохранено', 'Не удалось сохранить');
   }
+
 }

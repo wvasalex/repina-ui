@@ -1,5 +1,9 @@
 :host {
   display: block;
+
+  ::ng-deep .element_type {
+    height: 100%;
+  }
 }
 
 

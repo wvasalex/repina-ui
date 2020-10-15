@@ -1,11 +1,10 @@
 <div
-  *ngIf="$getValue('i') && index == 0"
+  *ngIf="$getValue('i') && index == 0; else blankIndex"
   [r-block]="editor"
   [innerHTML]="$getValue('i')"
   (contentChanged)="$contentChanged($event, 'i')"
-  class="index h3"
->
-</div>
+  class="index h4"
+></div>
 
 <div class="column">
   <div
@@ -13,7 +12,7 @@
     [r-block]="editor"
     [innerHTML]="$getValue('subtitle')"
     (contentChanged)="$contentChanged($event, 'subtitle')"
-    class="title h3"
+    class="subtitle h4"
   ></div>
 
   <div
@@ -23,12 +22,15 @@
     (contentChanged)="$contentChanged($event, 'text')"
     [class.mt-1_5]="$getValue('text')"
     class="text32 mt-1"
-  >
-  </div>
+  ></div>
 
   <markdown
     *ngIf="!editor"
     [data]="$normalizeSpaces(props.text)"
-    class="subtitle text32"
+    class="text32 text32"
   ></markdown>
 </div>
+
+<ng-template #blankIndex>
+  <div class="index"></div>
+</ng-template>

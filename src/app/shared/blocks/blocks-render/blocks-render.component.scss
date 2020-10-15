@@ -29,7 +29,7 @@
 .main-controls {
   position: absolute;
   right: 40px;
-  top: 12px;
+  top: 0;
   align-items: center;
   background: rgba(255, 255, 255, .4);
   padding: 12px;
@@ -64,14 +64,5 @@
     .icon {
       margin-bottom: -3px;
     }
-  }
-
-  .icon {
-    width: 80px;
-    height: 80px;
-    //border-bottom-left-radius: 100px;
-    //border-bottom-right-radius: 100px;
-    //border: 1px solid #ccc;
-    //border-top: 3px solid #fff;
   }
 }

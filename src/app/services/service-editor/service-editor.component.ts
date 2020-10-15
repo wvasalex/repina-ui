@@ -34,6 +34,7 @@ export class ServiceEditorComponent implements OnInit {
   ];*/
 
   public availableElements: SelectOption[] = [
+    {value: 'service-title', label: 'Заголовок'},
     {value: 'service-text', label: 'Текст'},
     {value: 'service-image', label: 'Изображение'},
     {value: 'service-quote', label: 'Цитата'},

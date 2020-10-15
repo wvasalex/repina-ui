@@ -1,0 +1,6 @@
+<div
+  [r-block]="editor"
+  [innerHTML]="$getValue('title')"
+  (contentChanged)="$contentChanged($event, 'title')"
+  class="h3"
+></div>
