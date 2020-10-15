@@ -103,6 +103,7 @@ export class ServiceEditorComponent implements OnInit {
 
     this.service.content_blocks.splice(index, 0, {
       block_type: 'service-block',
+      is_enabled: true,
       props: {
         title: '',
         subtitle: '',
