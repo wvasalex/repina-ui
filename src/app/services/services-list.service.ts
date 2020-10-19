@@ -3,7 +3,7 @@ import { ServicesGroupsService } from './services-groups.service';
 import { ServicesService } from './services.service';
 import { Observable } from 'rxjs';
 import { Service, ServiceTagGroup } from './services.model';
-import { map } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -16,24 +16,24 @@ export class ServicesListService {
   ) {
   }
 
-  public groupByGroup(): Observable<any> {
+  public groupBy(field: string) {
     return this.servicesService.get()
       .pipe(
         map((services: Service[]) => {
-          return this._group(services);
+          return this._group(services, field);
         }),
       );
   }
 
-  private _group(services: Service[]) {
+  private _group(services: Service[], field: string) {
     const servicesMap = services.reduce((result, item) => {
-      const tag_id = item.tag_group && (item.tag_group as ServiceTagGroup).id;
+      const tag_id = item[field] && item[field].id;
       if (tag_id) {
         if (!result[tag_id]) {
           result[tag_id] = [
             {
-              text: (item.tag_group as ServiceTagGroup).title,
-              href: null,
+              text: item[field].title,
+              href: item[field].slug,
             },
           ];
         }

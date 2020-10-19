@@ -11,14 +11,18 @@
   }
 }
 
+.title {
+  width: 60%;
+}
+
 .index {
   min-width: 56px;
+  margin-top: .5rem;
 }
 
 .service {
   display: flex;
   flex-direction: row;
-  align-items: center;
 }
 
 .right {

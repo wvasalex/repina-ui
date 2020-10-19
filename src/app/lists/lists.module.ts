@@ -31,5 +31,8 @@ import { ServicesScopesComponent } from './services/services-scopes/services-sco
     MatTableModule,
     DragDropModule,
   ],
+  exports: [
+    ListServicesComponent,
+  ],
 })
 export class ListsModule { }

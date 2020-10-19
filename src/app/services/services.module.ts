@@ -71,6 +71,7 @@ import { SharedProjectsModule } from '@shared/projects/projects.module';
   ],
   exports: [
     SelectOptionsPipe,
+    ServicesListComponent,
   ],
 })
 export class ServicesModule {

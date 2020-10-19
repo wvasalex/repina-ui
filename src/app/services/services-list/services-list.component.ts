@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { ServicesListService } from '../services-list.service';
 
 @Component({
@@ -9,7 +9,9 @@ import { ServicesListService } from '../services-list.service';
 })
 export class ServicesListComponent implements OnInit {
 
-  public services$ = this.servicesListService.groupByGroup();
+  @Input() groupBy: 'tag_group' | 'parent' = 'tag_group';
+
+  public services$;
 
   constructor(
     private servicesListService: ServicesListService,
@@ -17,77 +19,7 @@ export class ServicesListComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+    this.services$ = this.servicesListService.groupBy(this.groupBy);
   }
 
-
-  /*[
-  [
-    {
-      text: 'Услуги',
-      href: '/services',
-    },
-  ],
-  [
-    {
-      text: 'Исследования',
-      href: '/services',
-    },
-    {
-      text: 'Аудит бренда',
-      href: '/services',
-    },
-    {
-      text: 'Потребительские исследования',
-      href: '/services',
-    },
-    {
-      text: 'Качественные исследования',
-      href: '/services',
-    },
-    {
-      text: 'Количественные исследования',
-      href: '/services',
-    },
-  ],
-  [
-    {
-      text: 'Стратегия',
-      href: '/services',
-    },
-    {
-      text: 'Позиционирование',
-      href: '/services',
-    },
-    {
-      text: 'Платформа бренда',
-      href: '/services',
-    },
-    {
-      text: 'Коммуникационная стратегия',
-      href: '/services',
-    },
-    {
-      text: 'Разработка брендбука',
-      href: '/services',
-    },
-  ],
-  [
-    {
-      text: 'Нейминг и tone of voice',
-      href: '/services',
-    },
-    {
-      text: 'Разработка названия',
-      href: '/services',
-    },
-    {
-      text: 'Разработка слогана',
-      href: '/services',
-    },
-    {
-      text: 'Создание голоса бренда',
-      href: '/services',
-    },
-  ],
-];*/
 }

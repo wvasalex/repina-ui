@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BaseBlock } from '@shared/blocks/block.component';
-import { ContentElement } from '@shared/types';
 
 @Component({
   selector: 'r-services-tech',

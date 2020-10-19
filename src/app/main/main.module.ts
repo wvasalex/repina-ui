@@ -10,6 +10,8 @@ import { AboutComponent } from './about/about.component';
 import { BlocksModule } from '../shared/blocks/blocks.module';
 import { ProjectsModule } from '../projects/projects.module';
 import { SharedProjectsModule } from '@shared/projects/projects.module';
+import { ListsModule } from '../lists/lists.module';
+import { ServicesModule } from '../services/services.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { SharedProjectsModule } from '@shared/projects/projects.module';
     BlocksModule,
     ProjectsModule,
     SharedProjectsModule,
+    ListsModule,
+    ServicesModule,
   ],
 })
 export class MainModule { }

@@ -131,8 +131,6 @@ export class ServiceEditorComponent implements OnInit {
       });
     });
 
-    delete this.service.parent;
-
     const req = this.servicesService.save(this.service).toPromise().then((a: Service) => {
       if (a.slug != this.service.slug) {
         this.router.navigate(['/services', a.slug, 'edit']);
@@ -145,14 +143,14 @@ export class ServiceEditorComponent implements OnInit {
     this.toasterService.wrapPromise(req, 'Сохранено', 'Не удалось сохранить');
   }
 
-  public $toOption(tag: ServiceTag) {
+  public $toOption(tag: ServiceTag): SelectOption {
     return {
       value: tag.id,
       label: tag.title,
     };
   }
 
-  private _normalize(service: Service) {
+  private _normalize(service: Service): Service {
     const normalize = (key: string) => {
       if (service[key]) {
         service[key] = service[key].id;
