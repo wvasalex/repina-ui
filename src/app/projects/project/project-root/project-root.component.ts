@@ -14,7 +14,7 @@ import * as f from 'fast-average-color';
 })
 export class ProjectRootComponent extends BaseBlock {
 
-  public services$ = this.servicesService.get()
+  /*public services$ = this.servicesService.get()
     .pipe(map((services: Service[]) => {
       return services.map((service: Service) => {
         return {
@@ -22,9 +22,9 @@ export class ProjectRootComponent extends BaseBlock {
           label: service.title,
         };
       });
-    }));
+    }));*/
 
-  constructor(private servicesService: ServicesService) {
+  constructor(/*private servicesService: ServicesService*/) {
     super();
   }
 

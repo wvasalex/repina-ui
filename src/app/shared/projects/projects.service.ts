@@ -21,6 +21,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProjectsService extends RestService {
+
   public config: ApiConfig = {
     path: '/projects/',
   };
@@ -66,4 +67,5 @@ export class ProjectsService extends RestService {
   public getLink(slug: string): string {
     return '/projects/' + slug;
   }
+
 }

@@ -1,12 +1,16 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
-import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
 import { BreakpointState } from '@angular/cdk/layout';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { BreakpointService } from '@shared/breakpoint.service';
 import { ProjectsService } from '@shared/projects/projects.service';
 import { Project } from '@shared/projects/projects.model';
-import { map, tap } from 'rxjs/operators';
-import { MatDialog } from '@angular/material/dialog';
 import { ListReorderComponent } from '@shared/list-reorder/list-reorder.component';
+import { SelectOption } from '@shared/components/select/select.model';
+import { StrMap } from '@shared/types';
+import { ServicesTagsService } from '../services/services-tags.service';
+import { ServiceTag } from '../services/services.model';
 
 @Component({
   selector: 'r-projects',
@@ -17,6 +21,16 @@ import { ListReorderComponent } from '@shared/list-reorder/list-reorder.componen
 export class ProjectsComponent {
 
   private projects$: BehaviorSubject<Project[]> = new BehaviorSubject<Project[]>([]);
+
+  public tags$: Observable<SelectOption[]> = this.servicesTagsService.get()
+    .pipe(map((tags: ServiceTag[]) => {
+      return tags.map((tag: ServiceTag) => {
+        return {
+          value: tag.id,
+          label: tag.title,
+        };
+      });
+    }));
 
   private rows$: Observable<number> = this.breakpointService.change$
     .pipe(map((result: BreakpointState) => {
@@ -38,21 +52,31 @@ export class ProjectsComponent {
       return this.projectsService.groupProjectss(projects, rows);
     }));
 
-  public types: string[] = [
-    'Все', 'Брендинг', 'Позиционирование', 'Нейминг', 'Фирменный стиль',
-    'Упаковка', 'Брендбук', 'Интерьер', 'Ритейл-брендинг', 'IT-брендинг',
-  ];
-
   constructor(
     private dialog: MatDialog,
     private changeDetectorRef: ChangeDetectorRef,
     private breakpointService: BreakpointService,
+    private servicesTagsService: ServicesTagsService,
     private projectsService: ProjectsService,
   ) {
     this.projectsService.get<Project>()
       .subscribe((projects: Project[]) => {
         this.projects$.next(projects);
       });
+  }
+
+  public $applyTags(tags: SelectOption[]) {
+    /*const keys = tags.map((option: SelectOption) => {
+      return option.value;
+    });*/
+
+    let filters = {};
+    if (tags.length) {
+      filters = {
+        tag_id: tags[0].value as string,
+      };
+    }
+    this._load(filters);
   }
 
   public $reorder() {
@@ -80,6 +104,12 @@ export class ProjectsComponent {
     });
 
     this.projects$.next(items);
+  }
+
+  private _load(filters: StrMap<string> = {}) {
+    this.projectsService.get<Project>(filters).subscribe((projects: Project[]) => {
+      this.projects$.next(projects);
+    });
   }
 
 }

@@ -15,6 +15,7 @@
       [(ngModel)]="project.tag"
       [options]="serviceTags | selectOptions : $toOption"
       placeholder="Тег"
+      label="Тег"
     ></r-select>
 
     <r-select
@@ -22,6 +23,7 @@
       [(ngModel)]="project.activity_scope"
       [options]="scopes | selectOptions : $toOption"
       placeholder="Сфера услуги"
+      label="Сфера услуги"
       class="ml-2"
     ></r-select>
   </r-padding>
@@ -30,13 +32,17 @@
     <r-input
       [(ngModel)]="project.title"
       placeholder="Название"
-    ></r-input>
+    >
+      <r-input-label>Название</r-input-label>
+    </r-input>
 
     <r-input
       [(ngModel)]="project.description"
       placeholder="Описание"
       class="ml-2"
-    ></r-input>
+    >
+      <r-input-label>Краткое описание</r-input-label>
+    </r-input>
   </r-padding>
 
   <r-blocks-render

@@ -3,7 +3,7 @@ import { ServicesGroupsService } from './services-groups.service';
 import { ServicesService } from './services.service';
 import { Observable } from 'rxjs';
 import { Service, ServiceTagGroup } from './services.model';
-import { map, switchMap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',

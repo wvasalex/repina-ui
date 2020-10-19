@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { SelectOption } from '@shared/components/select/select.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToasterService } from '@shared/toaster/toaster.service';
@@ -6,7 +7,6 @@ import { ContentBlock, ContentElement, StrMap } from '@shared/types';
 import { ServicesService } from '../services.service';
 import { Service, ServiceTag, SERVICE_TYPES, ServiceScope, ServiceTagGroup } from '../services.model';
 import { ServicesTagsService } from '../services-tags.service';
-import { Observable } from 'rxjs';
 import { ServicesScopesService } from '../services-scopes.service';
 import { ServicesGroupsService } from '../services-groups.service';
 
@@ -23,15 +23,13 @@ export class ServiceEditorComponent implements OnInit {
   public serviceTags$: Observable<ServiceTag[]> = this.servicesTagsService.get();
   public serviceGroups$: Observable<ServiceTagGroup[]> = this.servicesGroupsService.get();
   public serviceScopes$: Observable<ServiceScope[]> = this.servicesScopesService.get();
+  public complexServices$: Observable<Service[]> = this.servicesService.get({
+    service_type: 'complex',
+  });
 
   public types: SelectOption[] = SERVICE_TYPES;
 
   public render = this.servicesService.render;
-
-  public availableBlocks: SelectOption[]; /* = [
-    { value: 'project-block', label: 'Блок' },
-    { value: 'project-gallery', label: 'Галерея' },
-  ];*/
 
   public availableElements: SelectOption[] = [
     {value: 'service-title', label: 'Заголовок'},
@@ -161,7 +159,7 @@ export class ServiceEditorComponent implements OnInit {
       }
       return normalize;
     };
-    normalize('tag')('tag_group')('activity_scope');
+    normalize('parent')('tag')('tag_group')('activity_scope');
     return service;
   }
 

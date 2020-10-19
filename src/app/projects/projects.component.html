@@ -8,10 +8,12 @@
       </r-card>
     </div>
 
-    <!--r-badge-list
-      [badges]="types"
-      class="badges"
-    ></r-badge-list-->
+    <r-badge-list
+      *ngIf="tags$ | async as tags"
+      (changed)="$applyTags($event)"
+      [badges]="tags"
+      class="mt-2"
+    ></r-badge-list>
   </r-padding>
 
   <div

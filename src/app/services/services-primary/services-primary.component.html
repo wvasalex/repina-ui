@@ -1,4 +1,5 @@
 <r-padding
+  *ngIf="services$ | async as services"
   [horizontal]="true"
   class="row"
 >
@@ -9,9 +10,12 @@
       class="service"
     >
       <div class="h3 index">0{{index + 1}}</div>
-      <div class="h2 ml-6">
-        {{service}}
-      </div>
+      <a
+        [routerLink]="['/services', service.slug]"
+        class="h2 ml-6"
+      >
+        {{service.title}}
+      </a>
     </div>
   </div>
   <div class="right">

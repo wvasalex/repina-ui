@@ -8,7 +8,7 @@ export const SERVICE_TYPES: SelectOption[] = [
   },
   {
     value: 'complex',
-    label: 'Конмплексная',
+    label: 'Направление',
   },
   {
     value: 'brand_wiki',

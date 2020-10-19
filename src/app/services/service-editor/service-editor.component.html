@@ -14,22 +14,36 @@
       [(ngModel)]="service.service_type"
       [options]="types"
       placeholder="Тип услуги"
+      label="Тип услуги"
     ></r-select>
 
-    <r-select
-      *ngIf="serviceTags$ | async as serviceTags"
-      [(ngModel)]="service.tag"
-      [options]="serviceTags | selectOptions : $toOption"
-      placeholder="Тег"
-      class="ml-2"
-    ></r-select>
+    <ng-container *ngIf="service.service_type !== 'complex'">
+      <r-select
+        *ngIf="serviceTags$ | async as serviceTags"
+        [(ngModel)]="service.tag"
+        [options]="serviceTags | selectOptions : $toOption"
+        placeholder="Тег"
+        label="Тег"
+        class="ml-2"
+      ></r-select>
+    </ng-container>
 
     <ng-container *ngIf="service.service_type === 'single'">
+      <r-select
+        *ngIf="complexServices$ | async as groups"
+        [(ngModel)]="service.parent"
+        [options]="groups | selectOptions : $toOption"
+        placeholder="Направление"
+        label="Направление"
+        class="ml-2"
+      ></r-select>
+
       <r-select
         *ngIf="serviceGroups$ | async as groups"
         [(ngModel)]="service.tag_group"
         [options]="groups | selectOptions : $toOption"
         placeholder="Группа"
+        label="Группа"
         class="ml-2"
       ></r-select>
     </ng-container>
@@ -40,6 +54,7 @@
         [(ngModel)]="service.activity_scope"
         [options]="scopes | selectOptions : $toOption"
         placeholder="Сфера услуги"
+        label="Сфера"
         class="ml-2"
       ></r-select>
     </ng-container>

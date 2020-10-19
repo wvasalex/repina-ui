@@ -11,6 +11,6 @@
     [routerLink]="['/services', service.slug]"
     class="item"
   >
-    {{service.title}} [{{service.slug}}]
+    {{service.title}} ({{$type[service.service_type]}})
   </a>
 </div>

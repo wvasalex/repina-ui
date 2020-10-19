@@ -1,4 +1,4 @@
-import { Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
 import { MatSelect, MatSelectChange } from '@angular/material/select';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { getOption, SelectOption } from './select.model';
@@ -7,6 +7,7 @@ import { getOption, SelectOption } from './select.model';
   selector: 'r-select',
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -16,12 +17,14 @@ import { getOption, SelectOption } from './select.model';
   ],
 })
 export class SelectComponent implements ControlValueAccessor {
+
   @Output() valueChanged: EventEmitter<string | number> = new EventEmitter<string | number>();
 
   @Input() options: SelectOption[];
   @Input() placeholder: string;
   @Input() search: boolean;
   @Input() readonly: boolean = false;
+  @Input() label: string;
 
   public value: string | number;
   public selectedOption: SelectOption;
@@ -83,4 +86,5 @@ export class SelectComponent implements ControlValueAccessor {
       return option.label.toLowerCase().indexOf(this.term.toLowerCase()) != -1;
     });
   }
+
 }
