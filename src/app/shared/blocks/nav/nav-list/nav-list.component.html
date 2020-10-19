@@ -2,7 +2,7 @@
   <div class="primary-block">
     <a
       *ngFor="let item of primaryBlock; let first = first;"
-      [routerLink]="[item.href]"
+      [routerLink]="item.href ? [item.href] : null"
       [class.h3]="first"
       [class.text32]="!first"
     >
@@ -12,12 +12,12 @@
 
   <div class="blocks">
     <div
-      *ngFor="let block of blocks; let primaryBlock = first; let index = index"
+      *ngFor="let block of blocks; let index = index"
       class="nav-block column"
     >
       <a
         *ngFor="let item of block; let first = first;"
-        [routerLink]="[item.href]"
+        [routerLink]="item.href ? [item.href] : null"
         [class.h3]="first"
         [class.text32]="!first"
       >

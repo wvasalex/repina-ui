@@ -1,11 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { BaseBlock } from '@shared/blocks/block.component';
-import { StrMap } from '@shared/types';
-import { map } from 'rxjs/operators';
-import { ListsService } from '../../lists/lists.service';
-import { SelectOption } from '@shared/components/select/select.model';
-import { ServicesService } from '../services.service';
-import { Service } from '../services.model';
+import { ServicesListService } from '../services-list.service';
 
 @Component({
   selector: 'r-service-list',
@@ -13,64 +7,18 @@ import { Service } from '../services.model';
   styleUrls: ['./services-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ServicesListComponent extends BaseBlock implements OnInit {
-  public services$ = this.servicesService.get()
-    .pipe(map((services: Service[]) => {
-      return services.map((service: Service) => {
-        return {
-          value: service.slug,
-          label: service.title,
-          meta: service.service_type,
-        };
-      });
-    }));
+export class ServicesListComponent implements OnInit {
+
+  public services$ = this.servicesListService.groupByGroup();
 
   constructor(
-    private servicesService: ServicesService,
-    private listsService: ListsService,
+    private servicesListService: ServicesListService,
   ) {
-    super();
   }
 
-  public $listChanged(services: SelectOption[]) {
-    this.props.services = JSON.stringify(services);
+  public ngOnInit(): void {
   }
 
-  public $parseList(json: string): SelectOption[] {
-    return json ?
-      JSON.parse(json) :
-      [];
-  }
-
-  public services: StrMap<string>[][] = [];
-
-  public ngOnInit() {
-    this._init();
-  }
-
-  private _init() {
-    const services = this.$parseList(this.props.services);
-    const result = [];
-    let group = [];
-
-    services.forEach((item) => {
-      if (item.meta === 'complex') {
-        if (group.length > 0) {
-          result.push(group);
-          group = [];
-        }
-      }
-      group.push({
-        text: item.label,
-        href: item.value,
-      });
-    });
-    if (group.length > 0) {
-      result.push(group);
-    }
-
-    this.services = result;
-  }
 
   /*[
   [

@@ -1,5 +1,5 @@
 <r-page
-  *ngIf="service"
+  *ngIf="service$ | async as service"
   [menuColor]="service.service_type === 'complex' ? 'black' : 'white'"
 >
   <r-blocks-render
@@ -7,6 +7,10 @@
     [blocks]="service.content_blocks"
     [data]="{service: service}"
   ></r-blocks-render>
+
+  <r-service-list
+    class="service-list mt-8"
+  ></r-service-list>
 
   <r-fabs *rWithSession>
     <button

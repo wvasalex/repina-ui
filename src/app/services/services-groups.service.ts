@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { JournalTagsService } from '../journal/journal-tags.service';
-import { ApiConfig } from '@shared/services/api/api.model';
-import { ApiService } from '@shared/services/api/api.service';
 import { BehaviorSubject } from 'rxjs';
+import { ApiConfig } from '@shared/services/api/api.model';
+import { JournalTagsService } from '../journal/journal-tags.service';
 
 @Injectable({
   providedIn: 'root'

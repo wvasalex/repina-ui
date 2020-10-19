@@ -1,17 +1,4 @@
 <r-nav-list
-  *ngIf="!editor"
+  *ngIf="services$ | async as services"
   [blocks]="services"
 ></r-nav-list>
-
-<div *ngIf="editor">
-  <r-padding
-    [horizontal]="false"
-  >
-    <r-list-content
-      (valueChanges)="$listChanged($event)"
-      [options$]="services$"
-      [selected]="$parseList(props.services)"
-      placeholder="Услуги"
-    ></r-list-content>
-  </r-padding>
-</div>
