@@ -137,6 +137,11 @@ export const PropsDef = {
     {
       name: 'title',
       label: 'Название',
+    },
+    {
+      name: 'show_in_projects',
+      label: 'Показывать в проектах',
+      type: 'checkbox',
     }
   ],
   'services-groups': [

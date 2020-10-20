@@ -28,10 +28,7 @@ export class JournalTagsService extends RestService {
     }).pipe(
       map((list: BlogTag[]) => {
         return list.map((tag: BlogTag) => {
-          tag.props = {
-            key: tag.key,
-            title: tag.title,
-          };
+          tag.props = {...tag};
           return tag;
         });
       }),

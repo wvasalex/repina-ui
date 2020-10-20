@@ -1,12 +1,24 @@
 <form (ngSubmit)="$submit()">
-  <r-input
-    *ngFor="let prop of props"
-    [(ngModel)]="item.props[prop.name]"
-    [textarea]="prop.name == 'text'"
-    [name]="prop.name"
-  >
-    <r-input-label>{{prop.label}}</r-input-label>
-  </r-input>
+  <ng-container *ngFor="let prop of props">
+    <r-input
+      *ngIf="!prop.type"
+      [(ngModel)]="item.props[prop.name]"
+      [textarea]="prop.name == 'text'"
+      [name]="prop.name"
+    >
+      <r-input-label>{{prop.label}}</r-input-label>
+    </r-input>
+
+    <mat-checkbox
+      *ngIf="prop.type === 'checkbox'"
+      [(ngModel)]="item.props[prop.name]"
+      [name]="prop.name"
+    >
+      {{prop.label}}
+    </mat-checkbox>
+  </ng-container>
+
+
 </form>
 
 <div class="row mt-2">

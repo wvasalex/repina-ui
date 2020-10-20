@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnChanges, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { StrMap } from '@shared/types';
 
@@ -8,21 +8,29 @@ import { StrMap } from '@shared/types';
   styleUrls: ['./list-editor.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ListEditorComponent implements OnInit {
-  public item: StrMap<any>;
-  public props: StrMap<string>[];
+export class ListEditorComponent {
+
+  public get item(): StrMap<any> {
+    if (this.data.item && !this.data.item.props) {
+      return {
+        ...this.data.item,
+        props: this.data.item,
+      };
+    }
+
+    return this.data.item || {
+      props: {},
+    };
+  }
+
+  public get props(): StrMap<string>[] {
+    return (this.data.props || []).slice();
+  }
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data,
     private dialogRef: MatDialogRef<ListEditorComponent>,
   ) {
-  }
-
-  ngOnInit(): void {
-    this.item = this.data.item || {
-      props: {},
-    };
-    this.props = (this.data.props || []).slice();
   }
 
   public $submit() {
@@ -34,4 +42,5 @@ export class ListEditorComponent implements OnInit {
       this.dialogRef.close(null);
     }
   }
+
 }

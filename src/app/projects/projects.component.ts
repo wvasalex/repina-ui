@@ -24,7 +24,11 @@ export class ProjectsComponent {
 
   public tags$: Observable<SelectOption[]> = this.servicesTagsService.get()
     .pipe(map((tags: ServiceTag[]) => {
-      return tags.map((tag: ServiceTag) => {
+      return tags
+        .filter((tag: ServiceTag) => {
+          return tag['show_in_projects'];
+        })
+        .map((tag: ServiceTag) => {
         return {
           value: tag.id,
           label: tag.title,
