@@ -20,7 +20,11 @@ export class ServiceRelatedWikiComponent extends BaseBlock implements OnInit {
   }
 
   public ngOnInit(): void {
-    const service: Service = this.data.service as Service;
+    const service: Service = this.data?.service as Service;
+
+    if (!service) {
+      return;
+    }
 
     const query: StrMap<number | string> = {
       service_type: 'brand_wiki',

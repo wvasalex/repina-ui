@@ -66,14 +66,14 @@ export class ProjectsComponent {
   }
 
   public $applyTags(tags: SelectOption[]) {
-    /*const keys = tags.map((option: SelectOption) => {
+    const keys = tags.map((option: SelectOption) => {
       return option.value;
-    });*/
+    });
 
     let filters = {};
     if (tags.length) {
       filters = {
-        tag_id: tags[0].value as string,
+        tag_id__in: keys.join(','),
       };
     }
     this._load(filters);
