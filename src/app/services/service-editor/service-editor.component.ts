@@ -9,6 +9,7 @@ import { Service, ServiceTag, SERVICE_TYPES, ServiceScope, ServiceTagGroup } fro
 import { ServicesTagsService } from '../services-tags.service';
 import { ServicesScopesService } from '../services-scopes.service';
 import { ServicesGroupsService } from '../services-groups.service';
+import { ServicesRenderService } from '../services-render.service';
 
 @Component({
   selector: 'r-service-editor',
@@ -29,7 +30,7 @@ export class ServiceEditorComponent implements OnInit {
 
   public types: SelectOption[] = SERVICE_TYPES;
 
-  public render = this.servicesService.render;
+  public render = this.servicesRenderService.render;
 
   public availableElements: SelectOption[] = [
     {value: 'service-title', label: 'Заголовок'},
@@ -38,6 +39,7 @@ export class ServiceEditorComponent implements OnInit {
     {value: 'service-quote', label: 'Цитата'},
     {value: 'service-video', label: 'Видео'},
     {value: 'service-request', label: 'Запрос стоимости'},
+    {value: 'service-related-wiki', label: 'Статьи по теме'},
   ];
 
   constructor(
@@ -46,6 +48,7 @@ export class ServiceEditorComponent implements OnInit {
     private changeDetectorRef: ChangeDetectorRef,
     private toasterService: ToasterService,
     private servicesService: ServicesService,
+    private servicesRenderService: ServicesRenderService,
     private servicesTagsService: ServicesTagsService,
     private servicesGroupsService: ServicesGroupsService,
     private servicesScopesService: ServicesScopesService,

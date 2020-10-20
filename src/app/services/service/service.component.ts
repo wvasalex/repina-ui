@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, HostBinding, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Service } from '../services.model';
-import { ServicesService } from '../services.service';
 import { Observable } from 'rxjs';
 import { map, pluck, tap } from 'rxjs/operators';
+import { ServicesRenderService } from '../services-render.service';
 
 @Component({
   selector: 'r-service',
@@ -13,7 +13,7 @@ import { map, pluck, tap } from 'rxjs/operators';
 })
 export class ServiceComponent implements OnInit {
 
-  public render = this.servicesService.render;
+  public render = this.servicesRenderService.render;
 
   public service$: Observable<Service> = this.activatedRoute.data
     .pipe(
@@ -39,7 +39,7 @@ export class ServiceComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private servicesService: ServicesService,
+    private servicesRenderService: ServicesRenderService,
   ) {
   }
 

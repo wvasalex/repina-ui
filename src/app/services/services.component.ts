@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ContentBlock } from '@shared/types';
-import { ServicesService } from './services.service';
 import { ServicesEditorService } from './services-editor.service';
+import { ServicesRenderService } from './services-render.service';
 
 @Component({
   selector: 'r-services',
@@ -12,13 +12,13 @@ import { ServicesEditorService } from './services-editor.service';
 })
 export class ServicesComponent implements OnInit {
 
-  public render = this.servicesService.render;
+  public render = this.servicesRenderService.render;
 
   public blocks$: Observable<ContentBlock[]> = this.servicesEditorService.get();
 
   constructor(
     private servicesEditorService: ServicesEditorService,
-    private servicesService: ServicesService) {
+    private servicesRenderService: ServicesRenderService) {
   }
 
   ngOnInit(): void {

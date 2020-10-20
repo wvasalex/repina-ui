@@ -40,16 +40,16 @@ import { MarkdownModule } from 'ngx-markdown';
       InMemoryDataService, {dataEncapsulation: false},
     ),*/
 
+    AuthModule,
+    AgencyModule,
+    ContactsModule,
     SharedModule,
     PageModule,
     MainModule,
     ProjectsModule,
-    AgencyModule,
     JournalModule,
-    ContactsModule,
     ServicesModule,
     SessionModule,
-    AuthModule,
     ListsModule,
   ],
   declarations: [

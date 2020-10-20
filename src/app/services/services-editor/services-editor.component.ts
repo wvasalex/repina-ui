@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, OnInit } from '@angular/core';
 import { ContentBlock } from '@shared/types';
 import { ToasterService } from '@shared/toaster/toaster.service';
-import { ServicesService } from '../services.service';
 import { ServicesEditorService } from '../services-editor.service';
+import { ServicesRenderService } from '../services-render.service';
 
 @Component({
   selector: 'r-services-editor',
@@ -12,7 +12,7 @@ import { ServicesEditorService } from '../services-editor.service';
 })
 export class ServicesEditorComponent implements OnInit {
 
-  public render = this.servicesService.render;
+  public render = this.servicesRenderService.render;
 
   public blocks: ContentBlock[];
 
@@ -60,7 +60,7 @@ export class ServicesEditorComponent implements OnInit {
   constructor(
     private changeDetectorRef: ChangeDetectorRef,
     private toasterService: ToasterService,
-    private servicesService: ServicesService,
+    private servicesRenderService: ServicesRenderService,
     private servicesEditorService: ServicesEditorService,
   ) {
   }

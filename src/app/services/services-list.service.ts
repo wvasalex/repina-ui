@@ -17,7 +17,9 @@ export class ServicesListService {
   }
 
   public groupBy(field: string) {
-    return this.servicesService.get()
+    return this.servicesService.get({
+      service_type__in: 'complex,single'
+    })
       .pipe(
         map((services: Service[]) => {
           return this._group(services, field);
@@ -27,13 +29,14 @@ export class ServicesListService {
 
   private _group(services: Service[], field: string) {
     const servicesMap = services.reduce((result, item) => {
-      const tag_id = item[field] && item[field].id;
+      const source = item[field];
+      const tag_id = source && source.id;
       if (tag_id) {
         if (!result[tag_id]) {
           result[tag_id] = [
             {
-              text: item[field].title,
-              href: item[field].slug,
+              text: source.title,
+              href: source.slug ? '/services/' + source.slug : null,
             },
           ];
         }

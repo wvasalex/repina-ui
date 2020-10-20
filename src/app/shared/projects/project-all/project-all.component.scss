@@ -7,7 +7,6 @@
   width: 100%;
   height: 110%;
   background: #F8F8F8;
-  transition: ease-in 300ms;
 
   .all-icon {
     background-image: url('/assets/icons/main/all.svg');
@@ -19,6 +18,7 @@
   }
 
   &:hover {
+    transition: ease-in 300ms;
     background: rgba(0, 0, 0, .4);
   }
 }

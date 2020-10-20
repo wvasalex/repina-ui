@@ -17,6 +17,15 @@
       label="Тип услуги"
     ></r-select>
 
+    <r-select
+      *ngIf="serviceScopes$ | async as scopes"
+      [(ngModel)]="service.activity_scope"
+      [options]="scopes | selectOptions : $toOption"
+      placeholder="Сфера услуги"
+      label="Сфера"
+      class="ml-2"
+    ></r-select>
+
     <ng-container *ngIf="service.service_type !== 'complex'">
       <r-select
         *ngIf="serviceTags$ | async as serviceTags"
@@ -44,17 +53,6 @@
         [options]="groups | selectOptions : $toOption"
         placeholder="Группа"
         label="Группа"
-        class="ml-2"
-      ></r-select>
-    </ng-container>
-
-    <ng-container *ngIf="service.service_type === 'brand_wiki'">
-      <r-select
-        *ngIf="serviceScopes$ | async as scopes"
-        [(ngModel)]="service.activity_scope"
-        [options]="scopes | selectOptions : $toOption"
-        placeholder="Сфера услуги"
-        label="Сфера"
         class="ml-2"
       ></r-select>
     </ng-container>

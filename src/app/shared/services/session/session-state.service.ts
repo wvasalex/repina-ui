@@ -5,13 +5,14 @@ import { Session } from './session.model';
   providedIn: 'root',
 })
 export class SessionStateService {
+
   public token: string;
   public valid: boolean = false;
 
   private storage: Storage;
 
   constructor() {
-    this.storage = typeof window !== 'undefined' && window.sessionStorage;
+    this.storage = typeof window !== 'undefined' && window.localStorage;
     if (this.storage) {
       this.token = this.storage.getItem('auth.token');
     }
@@ -20,8 +21,9 @@ export class SessionStateService {
   public setState(session: Session): Session {
     this.token = session.token;
     this.valid = !!this.token;
-
+    console.log(this);
     if (this.storage) {
+
       if (!this.token) {
         this.storage.removeItem('auth.token');
       } else {
@@ -31,4 +33,5 @@ export class SessionStateService {
 
     return session;
   }
+
 }

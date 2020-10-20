@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Observable } from 'rxjs';
+import { StrMap } from '@shared/types';
+import { BaseBlock } from '@shared/blocks/block.component';
 import { ProjectsService } from '@shared/projects/projects.service';
 import { Project } from '@shared/projects/projects.model';
 import { Service, ServiceScope, ServiceTag } from '../../services.model';
-import { BaseBlock } from '@shared/blocks/block.component';
-import { StrMap } from '@shared/types';
 
 @Component({
   selector: 'r-service-projects',

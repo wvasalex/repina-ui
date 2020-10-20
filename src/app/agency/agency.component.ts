@@ -11,6 +11,7 @@ import { AgencyRenderService } from './agency-render.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AgencyComponent implements OnInit {
+
   public render = this.agencyRenderService.render;
 
   public blocks$: Observable<ContentBlock[]> = this.agencyService.get();
@@ -149,7 +150,6 @@ export class AgencyComponent implements OnInit {
   }
 
   public ngOnInit() {
-
   }
 
  /* @HostListener('dblclick') _init() {

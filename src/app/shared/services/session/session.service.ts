@@ -5,6 +5,7 @@ import { SessionStateService } from './session-state.service';
   providedIn: 'root',
 })
 export class SessionService {
+
   constructor(private sessionState: SessionStateService) {
   }
 
@@ -39,4 +40,5 @@ export class SessionService {
   public check(): Promise<boolean> {
     return Promise.resolve(this.isValid());
   }
+
 }

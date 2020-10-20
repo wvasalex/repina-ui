@@ -1,0 +1,24 @@
+<div
+  *ngIf="editor"
+  class="h3"
+>
+  Статьи по теме
+</div>
+
+<div
+  *ngIf="!editor"
+>
+  <ng-container *ngIf="related$ | async as related">
+    <div class="h4">Статьи по теме</div>
+
+    <a
+      *ngFor="let service of related; let first = first;"
+      [routerLink]="['/services', service.slug]"
+      [class.mt-2]="first"
+      [class.mt-1_5]="!first"
+      class="d-block text32 bolder underline"
+    >
+      {{service.title}}
+    </a>
+  </ng-container>
+</div>
