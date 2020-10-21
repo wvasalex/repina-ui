@@ -23,6 +23,7 @@ export interface Service {
   is_enabled: boolean;
   service_type: string;
   content_blocks: ContentBlock[];
+  position?: number;
   tag?: number | ServiceTag;
   activity_scope?: number | ServiceScope;
   tag_group?: number | ServiceTagGroup;

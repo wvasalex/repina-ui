@@ -20,6 +20,7 @@ import { GridModule } from '@shared/grid/grid.module';
 import { DynamicModule } from 'ng-dynamic-component';
 import { MatMenuModule } from '@angular/material/menu';
 import { BlockBlankComponent } from './block-blank/block-blank.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   imports: [
@@ -34,6 +35,7 @@ import { BlockBlankComponent } from './block-blank/block-blank.component';
     MatTooltipModule,
     GridModule,
     MatMenuModule,
+    DragDropModule,
   ],
   exports: [
     PromoCardComponent,

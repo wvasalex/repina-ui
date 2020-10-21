@@ -1,7 +1,10 @@
 <r-page>
   <r-main-header></r-main-header>
 
-  <r-service-list groupBy="parent"></r-service-list>
+  <r-service-list
+    [editor]="editor"
+    groupBy="parent"
+  ></r-service-list>
 
   <r-grid type="big-small">
     <r-project-snippet
@@ -150,4 +153,14 @@
     r-parallax
     direction="reverse"
   ></r-about>
+
+  <r-fabs *rWithSession>
+    <button
+      (click)="editor = !editor"
+      mat-fab
+      color="primary"
+    >
+      <r-icon name="components/edit-white"></r-icon>
+    </button>
+  </r-fabs>
 </r-page>

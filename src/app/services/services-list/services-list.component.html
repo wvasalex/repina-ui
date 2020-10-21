@@ -1,4 +1,6 @@
 <r-nav-list
   *ngIf="services$ | async as services"
+  (sort)="$sort($event)"
   [blocks]="services"
+  [editor]="editor"
 ></r-nav-list>
