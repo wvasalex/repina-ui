@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { ServicesListService } from '../services-list.service';
 import { BaseBlock } from '@shared/blocks/block.component';
 import { ToasterService } from '@shared/toaster/toaster.service';
+import { ServicesListService } from '../services-list.service';
 
 @Component({
   selector: 'r-service-list',

@@ -32,6 +32,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { ListReorderModule } from '@shared/list-reorder/list-reorder.module';
 import { ServicesModule } from '../services/services.module';
 import { SharedProjectsModule } from '@shared/projects/projects.module';
+import { SeoModule } from '@shared/seo/seo.module';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { SharedProjectsModule } from '@shared/projects/projects.module';
     ListReorderModule,
     ServicesModule,
     SharedProjectsModule,
+    SeoModule,
   ],
   exports: [
   ],

@@ -1,0 +1,39 @@
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Настройки SEO
+      </mat-panel-title>
+      <!--<mat-panel-description>
+        This is a summary of the content
+      </mat-panel-description>-->
+    </mat-expansion-panel-header>
+
+    <div>
+      <form
+        [formGroup]="formGroup"
+      >
+        <r-input
+          formControlName="title"
+        >
+          <r-input-label>Title</r-input-label>
+        </r-input>
+        <r-input
+          formControlName="description"
+        >
+          <r-input-label>Description</r-input-label>
+        </r-input>
+        <r-input
+          formControlName="keywords"
+        >
+          <r-input-label>Keywords</r-input-label>
+        </r-input>
+        <r-input
+          formControlName="robots"
+        >
+          <r-input-label>Robots</r-input-label>
+        </r-input>
+      </form>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
