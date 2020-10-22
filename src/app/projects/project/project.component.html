@@ -7,6 +7,7 @@
   <r-blocks-render
     [render]="render"
     [blocks]="$content(project.content_blocks)"
+    [data]="{project: project}"
   ></r-blocks-render>
 
   <r-project-next

@@ -21,18 +21,21 @@
 
 <div class="nav row-column">
   <div class="links p-l">
-    <!--<div
-      *ngIf="!editor"
+    <div
+      *ngIf="services$ | async as services"
       class="column"
     >
       <a
-        *ngFor="let service of $parseServices(props.services); let first = first"
-        [routerLink]="['/services', service.value]"
+        *ngFor="let service of services; let first = first"
+        [routerLink]="['/services', service.slug]"
         [class.mt-1_5]="!first"
         class="text32 bolder"
-      >{{service.label}}</a>
+      >
+        {{service.title}}
+      </a>
     </div>
 
+    <!--
     <r-list-content
       *ngIf="editor"
       (valueChanges)="$servicesChanged($event)"
