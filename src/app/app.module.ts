@@ -20,7 +20,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { API_BASE_CONFIG } from '@shared/services/api/api.model';
 import { AuthModule } from './auth/auth.module';
 import { SessionModule } from '@shared/services/session/session.module';
-import { ListsModule } from './lists/lists.module';
 import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
@@ -50,7 +49,6 @@ import { MarkdownModule } from 'ngx-markdown';
     JournalModule,
     ServicesModule,
     SessionModule,
-    ListsModule,
   ],
   declarations: [
     AppComponent,
