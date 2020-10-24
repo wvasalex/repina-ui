@@ -6,6 +6,8 @@ import { ApiConfig } from '@shared/services/api/api.model';
 import { ApiService } from '@shared/services/api/api.service';
 import { StrMap } from '@shared/types';
 import { BlogTag } from './journal.model';
+import { moveItemInArray } from '@angular/cdk/drag-drop';
+import { ContentListItem } from '../lists/lists.model';
 
 @Injectable({
   providedIn: 'root',
@@ -54,6 +56,18 @@ export class JournalTagsService extends RestService {
         this._delete(id);
       }),
     );
+  }
+
+  public move(fromIndex: number, toIndex: number) {
+    const items = this.data.value;
+    moveItemInArray(items, fromIndex, toIndex);
+
+    this.data.next(items.slice());
+
+    items.forEach((item, position: number) => {
+      (item as any).position = position;
+      this.patch(item).subscribe();
+    });
   }
 
   private _update(updated: BlogTag) {

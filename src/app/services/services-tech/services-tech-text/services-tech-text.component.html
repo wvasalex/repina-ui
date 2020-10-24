@@ -1,9 +1,16 @@
 <div
+  *ngIf="editor"
   [r-block]="editor"
   [innerHTML]="$getValue('title')"
   (contentChanged)="$contentChanged($event, 'title')"
   class="h3"
 ></div>
+
+<markdown
+  *ngIf="!editor"
+  [data]="$normalizeSpaces(props.title)"
+  class="h3"
+></markdown>
 
 <div
   [r-block]="editor"

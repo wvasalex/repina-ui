@@ -24,7 +24,7 @@ export class ServiceProjectsComponent extends BaseBlock {
     const service: Service = this.data.service as Service;
 
     const query: StrMap<number> = {
-      per_page: 7,
+      per_page: 5,
     };
 
     if (service.tag) {

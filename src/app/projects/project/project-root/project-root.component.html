@@ -21,28 +21,31 @@
 
 <div class="nav row-column">
   <div class="links p-l">
-    <div
-      *ngIf="services$ | async as services"
-      class="column"
+    <ng-container
+      *ngIf="!editor"
     >
-      <a
-        *ngFor="let service of services; let first = first"
-        [routerLink]="['/services', service.slug]"
-        [class.mt-1_5]="!first"
-        class="text32 bolder"
+      <div
+        *ngIf="services$ | async as services"
+        class="column"
       >
-        {{service.title}}
-      </a>
-    </div>
+        <a
+          *ngFor="let service of services; let first = first"
+          [routerLink]="['/services', service.value]"
+          [class.mt-1_5]="!first"
+          class="text32 bolder"
+        >
+          {{service.label}}
+        </a>
+      </div>
+    </ng-container>
 
-    <!--
     <r-list-content
       *ngIf="editor"
       (valueChanges)="$servicesChanged($event)"
       [options$]="services$"
       [selected]="$parseServices(props.services)"
       placeholder="Оказанные услуги"
-    ></r-list-content>-->
+    ></r-list-content>
   </div>
 
   <r-project-text

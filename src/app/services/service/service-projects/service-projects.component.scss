@@ -4,17 +4,11 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 30px;
   grid-row-gap: 30px;
   margin-top: 30px;
   margin-bottom: 8rem;
-}
-
-.w1024 :host {
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
 }
 
 .w768 :host {
