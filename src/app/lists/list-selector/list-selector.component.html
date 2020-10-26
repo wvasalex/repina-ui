@@ -1,8 +1,17 @@
 <a
+  [routerLink]="['/']"
+>
+  <r-logo
+    menuColor="black"
+    style="transform: scale(.75)"
+  ></r-logo>
+</a>
+
+<a
   *ngFor="let item of types"
   [routerLink]="['/lists', item.value]"
   [class.active]="type === item.value"
-  class="h4 item"
+  class="text32 item"
 >
   {{item.label}}
 </a>

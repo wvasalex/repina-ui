@@ -25,6 +25,7 @@ export class SelectComponent implements ControlValueAccessor {
   @Input() search: boolean;
   @Input() readonly: boolean = false;
   @Input() label: string;
+  @Input() multiple: boolean = false;
 
   public value: string | number;
   public selectedOption: SelectOption;

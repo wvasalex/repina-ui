@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component, HostListener, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ContentBlock } from '@shared/types';
 import { AgencyService } from './agency.service';
-import { Observable } from 'rxjs';
 import { AgencyRenderService } from './agency-render.service';
 
 @Component({

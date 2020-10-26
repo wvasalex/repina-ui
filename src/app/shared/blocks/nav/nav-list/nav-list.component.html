@@ -9,15 +9,17 @@
       {{item.text}}
     </a>
   </div>
-
+<!--(cdkDropListDropped)="$dropGroup($event)"
+    cdkDropList-->
   <div
     class="blocks"
+
   >
     <div
       *ngFor="let block of blocks; let index = index"
       (cdkDropListDropped)="$drop($event, block)"
-      cdkDropList
       class="nav-block column"
+      cdkDropList
     >
       <a
         *ngFor="let item of block; let first = first;"

@@ -77,7 +77,7 @@ export class ProjectsComponent {
     let filters = {};
     if (tags.length) {
       filters = {
-        tag_id__in: keys.join(','),
+        tags__id__in: keys.join(','),
       };
     }
     this._load(filters);

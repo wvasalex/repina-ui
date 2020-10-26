@@ -44,6 +44,38 @@ export class ServicesListService {
     return Promise.all(reqs);
   }
 
+  public sortGroup(items, field) {
+    console.log(items);
+
+    const positionKey = field === 'tag_group' ? 'tag_group_position' : 'position';
+
+    const reqs = items
+      .map((item, index) => {
+        console.log({
+          id: item.id,
+          [positionKey]: index,
+        });
+
+        /*return this.servicesService.patch({
+          id: item.id,
+          [positionKey]: index,
+        }).toPromise();*/
+      });
+
+    /*const reqs = items
+      .filter((item) => {
+        return item.id;
+      })
+      .map((item, index) => {
+        return this.servicesService.patch({
+          id: item.id,
+          [positionKey]: index + 1,
+        }).toPromise();
+      });
+
+    return Promise.all(reqs);*/
+  }
+
   private _group(services: Service[], field) {
     const positionKey = field === 'tag_group' ? 'tag_group_position' : 'position';
 
@@ -57,7 +89,7 @@ export class ServicesListService {
               id: source.slug,
               text: source.title,
               href: source.slug ? '/services/' + source.slug : null,
-              position: 0,
+              position: source.position,
             },
           ];
         }
@@ -77,14 +109,19 @@ export class ServicesListService {
       {
         text: 'Услуги',
         href: '/services',
+        position: -1,
       },
     ]);
 
+    const sort = (a, b) => {
+      return a.position - b.position;
+    };
+
     return groups.map((group: StrMap<any>[]) => {
-      group.sort((a, b) => {
-        return a.position - b.position;
-      });
+      group.sort(sort);
       return group;
+    }).sort((a, b) => {
+      return sort(a[0], b[0]);
     });
   }
 

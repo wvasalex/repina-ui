@@ -2,15 +2,35 @@
   type="services"
 ></r-list-selector>
 
-<div
-  *ngIf="services$ | async as services"
-  class="content"
->
-  <a
-    *ngFor="let service of services"
-    [routerLink]="['/services', service.slug]"
-    class="item"
-  >
-    {{service.title}} ({{$type[service.service_type]}})
-  </a>
+<div class="content">
+  <div class="row">
+
+  </div>
+
+  <table *ngIf="services$ | async as services">
+    <tr
+      *ngFor="let service of services"
+    >
+      <td>
+        <a
+          [routerLink]="['/services', service.slug]"
+          class="item"
+        >
+          {{service.title}}
+        </a>
+      </td>
+      <td>
+        {{service.parent?.title}}
+        {{service.activity_scope?.title}}
+      </td>
+      <td>
+        {{service.tag?.title}}
+      </td>
+      <td>
+        <div
+          [class]="'label type-' + service.service_type"
+        ></div>
+      </td>
+    </tr>
+  </table>
 </div>

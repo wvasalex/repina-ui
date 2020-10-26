@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ToasterService } from '@shared/toaster/toaster.service';
 import { ContentBlock, ContentElement, StrMap } from '@shared/types';
-import { SelectOption } from '@shared/components/select/select.model';
+import { getOption, SelectOption } from '@shared/components/select/select.model';
 import { ProjectsService } from '@shared/projects/projects.service';
 import { Project } from '@shared/projects/projects.model';
 import { ServicesTagsService } from '../../services/services-tags.service';
@@ -127,7 +127,15 @@ export class ProjectEditorComponent implements OnInit {
     });
   }
 
-  public $save() {
+  public $save(tags: ServiceTag[]) {
+    if (this.project.tags) {
+      this.project.tags = this.project.tags.map((tagId: number) => {
+        return tags.find((tag: ServiceTag) => {
+          return tag.id === tagId;
+        });
+      });
+    }
+
     this._save();
   }
 
@@ -179,7 +187,12 @@ export class ProjectEditorComponent implements OnInit {
       }
       return normalize;
     };
-    normalize('tag')('activity_scope');
+    normalize('activity_scope');
+
+    if (project.tags) {
+      project.tags = project.tags.map((tag: ServiceTag) => tag.id);
+    }
+
     return project;
   }
 

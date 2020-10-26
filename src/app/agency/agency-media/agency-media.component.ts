@@ -4,7 +4,6 @@ import { ContentListItem } from '../../lists/lists.model';
 import { AgencyService } from '../agency.service';
 import { map } from 'rxjs/operators';
 import { errorAnimation } from '@shared/animations';
-import { BreakpointState } from '@angular/cdk/layout';
 import { BreakpointService } from '@shared/breakpoint.service';
 
 @Component({
@@ -48,6 +47,10 @@ export class AgencyMediaComponent implements OnInit {
 
   public $more() {
     this.limit += this.pageSize;
+  }
+
+  public $date(raw: string): string {
+    return raw.replace(/(\d+)[\s.-]+(\d+)[\s.-]+(\d+)/, '$1 — $2 / $3');
   }
 
 }

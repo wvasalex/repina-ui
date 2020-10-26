@@ -9,6 +9,7 @@ import { SelectOption } from '@shared/components/select/select.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListSelectorComponent implements OnInit {
+
   @Input() type: string = '';
 
   public types: SelectOption[] = ContentListTypes;

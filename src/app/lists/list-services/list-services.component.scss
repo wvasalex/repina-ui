@@ -4,19 +4,49 @@
   width: 100%;
   height: 100%;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .content {
   width: 100%;
   box-sizing: border-box;
   padding: 8px 0;
+  overflow-y: auto;
 }
 
-.item {
-  display: block;
-  padding: 24px;
+table {
+  width: 100%;
+}
 
-  &:hover {
+td {
+  width: 25%;
+  padding: 24px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #eee;
+
+  &:last-of-type {
+    text-align: right;
+  }
+
+  a:hover {
     text-decoration: underline;
+  }
+}
+
+.label {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+
+  &.type-single {
+    background: green;
+  }
+
+  &.type-complex {
+    background: gray;
+  }
+
+  &.type-brand_wiki {
+    background: blue;
   }
 }

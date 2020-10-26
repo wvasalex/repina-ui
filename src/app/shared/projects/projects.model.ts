@@ -7,7 +7,7 @@ export interface Project {
   is_enabled: boolean;
   position: number;
   description?: string;
-  tag?: number | ServiceTag;
+  tags?: (number | ServiceTag)[];
   activity_scope?: number | ServiceScope;
   slug?: string;
   preview_file?: string;

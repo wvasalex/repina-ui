@@ -1,4 +1,4 @@
-<r-page>
+<r-page *ngIf="serviceTags$ | async as serviceTags">
   <r-padding class="row" style="align-items: center">
     <mat-checkbox
       [(ngModel)]="project.is_enabled"
@@ -11,9 +11,9 @@
 
   <r-padding class="row mt-2">
     <r-select
-      *ngIf="serviceTags$ | async as serviceTags"
-      [(ngModel)]="project.tag"
+      [(ngModel)]="project.tags"
       [options]="serviceTags | selectOptions : $toOption"
+      [multiple]="true"
       placeholder="Тег"
       label="Тег"
     ></r-select>
@@ -58,7 +58,7 @@
 
   <r-fabs *rWithSession>
     <button
-      (click)="$save()"
+      (click)="$save(serviceTags)"
       mat-fab
       color="primary"
     >

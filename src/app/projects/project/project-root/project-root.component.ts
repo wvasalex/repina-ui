@@ -16,7 +16,7 @@ import { ServicesService } from '../../../services/services.service';
 export class ProjectRootComponent extends BaseBlock implements OnInit {
 
   public services$: Observable<SelectOption[]> = this.servicesService.get({
-    service_type__in: 'single,complex'
+    service_type: 'single',
   })
     .pipe(map((services: Service[]) => {
       return services.map((service: Service) => {
