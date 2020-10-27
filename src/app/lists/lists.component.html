@@ -6,10 +6,10 @@
 <div class="content">
   <table
     *ngIf="columns$ | async as displayedColumns"
+    (cdkDropListDropped)="$sort($event)"
     [dataSource]="listsService.data | async"
     mat-table
     cdkDropList
-    (cdkDropListDropped)="$sort($event)"
   >
     <ng-container
       *ngFor="let column of displayedColumns"

@@ -9,12 +9,8 @@
       {{item.text}}
     </a>
   </div>
-<!--(cdkDropListDropped)="$dropGroup($event)"
-    cdkDropList-->
-  <div
-    class="blocks"
 
-  >
+  <div class="blocks">
     <div
       *ngFor="let block of blocks; let index = index"
       (cdkDropListDropped)="$drop($event, block)"
@@ -42,29 +38,3 @@
     </div>
   </div>
 </r-padding>
-
-<!--
-<div class="primary">
-    <a
-      [routerLink]="[]"
-      class="h3"
-    >
-      {{primary}}
-    </a>
-  </div>
-  <div class="blocks">
-    <div
-      *ngFor="let block of blocks"
-      class="nav-block"
-    >
-      <a
-        *ngFor="let link of block; let first = first;"
-        [routerLink]="[]"
-        [class.h3]="first"
-        [class.text32]="!first"
-      >
-        {{link}}
-      </a>
-    </div>
-  </div>
--->

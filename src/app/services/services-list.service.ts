@@ -44,47 +44,25 @@ export class ServicesListService {
     return Promise.all(reqs);
   }
 
-  public sortGroup(items, field) {
-    console.log(items);
-
-    const positionKey = field === 'tag_group' ? 'tag_group_position' : 'position';
-
-    const reqs = items
-      .map((item, index) => {
-        console.log({
-          id: item.id,
-          [positionKey]: index,
-        });
-
-        /*return this.servicesService.patch({
-          id: item.id,
-          [positionKey]: index,
-        }).toPromise();*/
-      });
-
-    /*const reqs = items
-      .filter((item) => {
-        return item.id;
-      })
-      .map((item, index) => {
-        return this.servicesService.patch({
-          id: item.id,
-          [positionKey]: index + 1,
-        }).toPromise();
-      });
-
-    return Promise.all(reqs);*/
-  }
-
   private _group(services: Service[], field) {
     const positionKey = field === 'tag_group' ? 'tag_group_position' : 'position';
 
     const servicesMap = services.reduce((result, item) => {
-      const source = item[field];
-      const tag_id = source && source.id;
-      if (tag_id) {
-        if (!result[tag_id]) {
-          result[tag_id] = [
+      result[item.id] = item;
+      return result;
+    }, {});
+
+    const servicesGroup = services.reduce((result, item) => {
+      let source = item[field];
+      const source_id = source && source.id;
+
+      if (source_id) {
+        if (servicesMap[source_id]) {
+          source = servicesMap[source_id];
+        }
+
+        if (!result[source_id]) {
+          result[source_id] = [
             {
               id: source.slug,
               text: source.title,
@@ -93,7 +71,7 @@ export class ServicesListService {
             },
           ];
         }
-        result[tag_id].push({
+        result[source_id].push({
           id: item.slug,
           text: item.title,
           href: '/services/' + item.slug,
@@ -104,7 +82,7 @@ export class ServicesListService {
       return result;
     }, {});
 
-    const groups = Object.values(servicesMap);
+    const groups = Object.values(servicesGroup);
     groups.unshift([
       {
         text: 'Услуги',
@@ -118,7 +96,7 @@ export class ServicesListService {
     };
 
     return groups.map((group: StrMap<any>[]) => {
-      group.sort(sort);
+      group.slice(1).sort(sort);
       return group;
     }).sort((a, b) => {
       return sort(a[0], b[0]);

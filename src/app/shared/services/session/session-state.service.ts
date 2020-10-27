@@ -21,9 +21,8 @@ export class SessionStateService {
   public setState(session: Session): Session {
     this.token = session.token;
     this.valid = !!this.token;
-    console.log(this);
-    if (this.storage) {
 
+    if (this.storage) {
       if (!this.token) {
         this.storage.removeItem('auth.token');
       } else {

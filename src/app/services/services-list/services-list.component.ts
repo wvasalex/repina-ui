@@ -31,9 +31,4 @@ export class ServicesListComponent extends BaseBlock implements OnInit {
     this.toasterService.wrapPromise(req, 'Сохранено!', 'Не удалось сохранить!');
   }
 
-  public $sortGroup(blocks) {
-    const req = this.servicesListService.sortGroup(blocks, this.groupBy);
-    //this.toasterService.wrapPromise(req, 'Сохранено!', 'Не удалось сохранить!');
-  }
-
 }

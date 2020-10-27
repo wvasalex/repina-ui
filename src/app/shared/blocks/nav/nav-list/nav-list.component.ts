@@ -18,8 +18,6 @@ export class NavListComponent implements OnInit {
 
   public primaryBlock: StrMap<string>[];
 
-  public groupDrag: boolean = false;
-
   constructor() {
   }
 

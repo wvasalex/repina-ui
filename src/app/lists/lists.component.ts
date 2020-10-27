@@ -18,6 +18,7 @@ import { CdkDragDrop } from '@angular/cdk/drag-drop';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListsComponent {
+
   public columns$: Observable<string[]> = this.listsService.type.pipe(
     map((type: string) => {
       return PropsDef[this.listsService.type.value].map((prop) => {
@@ -67,6 +68,6 @@ export class ListsComponent {
   private _delete(item: ContentListItem) {
     const promise = this.listsService.delete(item.id).toPromise();
     this.toasterService.wrapPromise(promise, 'Удалено!', 'Не удалось удалить!');
-
   }
+
 }

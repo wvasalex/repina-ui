@@ -4,12 +4,28 @@
 
 <div class="content">
   <div class="row">
-
+    <div class="ml-1">
+      <mat-button-toggle-group
+        (change)="$typeChange($event)"
+        multiple
+        name="serviceType"
+      >
+        <mat-button-toggle value="single">Простые</mat-button-toggle>
+        <mat-button-toggle value="brand_wiki">Бренд-вики</mat-button-toggle>
+        <mat-button-toggle value="complex">Направления</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    <div></div>
   </div>
 
-  <table *ngIf="services$ | async as services">
+  <table
+    *ngIf="services$ | async as services"
+    (cdkDropListDropped)="$sort($event)"
+    cdkDropList
+  >
     <tr
       *ngFor="let service of services"
+      cdkDrag
     >
       <td>
         <a

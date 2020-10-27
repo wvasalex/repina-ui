@@ -18,6 +18,7 @@ import { ServicesTagsComponent } from './services/services-tags/services-tags.co
 import { ServicesGroupsComponent } from './services/services-groups/services-groups.component';
 import { ServicesScopesComponent } from './services/services-scopes/services-scopes.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [ListsComponent, ListSelectorComponent, ListEditorComponent, ListServicesComponent, BlogTagsComponent, ServicesTagsComponent, ServicesGroupsComponent, ServicesScopesComponent],
@@ -32,6 +33,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatTableModule,
     DragDropModule,
     MatCheckboxModule,
+    MatButtonToggleModule,
   ],
   exports: [
     ListServicesComponent,
