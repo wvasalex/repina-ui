@@ -21,9 +21,22 @@
 }
 
 .controls {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  margin-left: -28px;
   opacity: 0;
   cursor: pointer;
   transition: 300ms;
+
+  button {
+    width: 40px;
+    height: 40px;
+
+    ::ng-deep .mat-button-wrapper {
+      padding: 0;
+    }
+  }
 }
 
 .main-controls {
@@ -44,25 +57,5 @@
   [rel=element_type_0] {
     flex: 1.5;
     max-width: 55%;
-  }
-}
-
-.move-block {
-  position: absolute;
-  left: 50%;
-
-  &.move-down {
-    padding: 12px;
-    bottom: -48px;
-    //border-top: 1px solid #ccc;
-    .icon {
-      margin-top: -3px;
-    }
-  }
-
-  &.move-up  {
-    .icon {
-      margin-bottom: -3px;
-    }
   }
 }

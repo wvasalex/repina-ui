@@ -17,16 +17,14 @@
       label="Тип услуги"
     ></r-select>
 
-    <ng-container *ngIf="service.service_type !== 'complex'">
-      <r-select
-        *ngIf="serviceTags$ | async as serviceTags"
-        [(ngModel)]="service.tag"
-        [options]="serviceTags | selectOptions : $toOption"
-        placeholder="Тег"
-        label="Тег"
-        class="ml-2"
-      ></r-select>
-    </ng-container>
+    <r-select
+      *ngIf="serviceTags$ | async as serviceTags"
+      [(ngModel)]="service.tag"
+      [options]="serviceTags | selectOptions : $toOption"
+      placeholder="Тег"
+      label="Тег"
+      class="ml-2"
+    ></r-select>
 
     <ng-container *ngIf="service.service_type === 'single'">
       <r-select

@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { BaseBlock } from '@shared/blocks/block.component';
-import { ServicesService } from '../../services.service';
 import { Observable } from 'rxjs';
-import { Service, ServiceScope, ServiceTag } from '../../services.model';
+import { map } from 'rxjs/operators';
 import { StrMap } from '@shared/types';
+import { ServicesService } from '../../services.service';
+import { Service, ServiceScope, ServiceTag } from '../../services.model';
 
 @Component({
   selector: 'r-service-related-wiki',
@@ -28,7 +29,7 @@ export class ServiceRelatedWikiComponent extends BaseBlock implements OnInit {
 
     const query: StrMap<number | string> = {
       service_type: 'brand_wiki',
-      per_page: 4,
+      per_page: 5,
     };
 
     if (service.tag) {
@@ -38,7 +39,13 @@ export class ServiceRelatedWikiComponent extends BaseBlock implements OnInit {
       query.activity_scope_id = (service.activity_scope as ServiceScope).id;
     }
 
-    this.related$ = this.servicesService.get(query);
+    this.related$ = this.servicesService.get(query).pipe(
+      map((related: Service[]) => {
+        return related.filter((item: Service) => {
+          return item.id !== service.id;
+        }).slice(0, 5);
+      }),
+    );
   }
 
 }

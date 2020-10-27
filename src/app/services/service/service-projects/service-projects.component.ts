@@ -28,7 +28,7 @@ export class ServiceProjectsComponent extends BaseBlock {
     };
 
     if (service.tag) {
-      query.tag_id = (service.tag as ServiceTag).id;
+      query.tags__id = (service.tag as ServiceTag).id;
     }
     if (service.activity_scope) {
       query.activity_scope_id = (service.activity_scope as ServiceScope).id;

@@ -51,9 +51,20 @@
 
   <div
     *ngIf="editor && $hasControls(block)"
-    class="move-block move-down controls"
+    class="controls"
   >
-    <r-icon-button
+    <button
+      (click)="availableBlocks ? null : $addBlock(block, 1)"
+      (onMenuOpen)="$checkMenu(blockSelector)"
+      [matMenuTriggerFor]="blockSelector"
+      [matMenuTriggerData]="{block: block, offset: 1}"
+      mat-fab
+      color="primary"
+    >
+      <r-icon name="components/add-white"></r-icon>
+    </button>
+
+    <!--<r-icon-button
       (click)="availableBlocks ? null : $addBlock(block, 1)"
       (onMenuOpen)="$checkMenu(blockSelector)"
       [matMenuTriggerFor]="blockSelector"
@@ -61,7 +72,7 @@
       icon="add"
       matTooltip="Добавить блок ниже"
       class="icon"
-    ></r-icon-button>
+    ></r-icon-button>-->
   </div>
 
   <div
@@ -95,9 +106,7 @@
     </ng-template>
   </mat-menu>
 
-  <mat-menu
-      #blockControl="matMenu"
-  >
+  <mat-menu #blockControl="matMenu">
     <ng-container *ngTemplateOutlet="controlTmp; context: {block: block}"></ng-container>
 
     <button mat-menu-item>
