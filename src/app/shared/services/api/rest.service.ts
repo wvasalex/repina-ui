@@ -3,6 +3,7 @@ import { StrMap } from '@shared/types';
 import { ApiConfig } from '@shared/services/api/api.model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Project } from '@shared/projects/projects.model';
 
 export class RestService {
   public config: ApiConfig;

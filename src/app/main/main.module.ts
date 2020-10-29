@@ -13,11 +13,15 @@ import { SharedProjectsModule } from '@shared/projects/projects.module';
 import { ListsModule } from '../lists/lists.module';
 import { ServicesModule } from '../services/services.module';
 import { MatButtonModule } from '@angular/material/button';
+import { MainProjectsComponent } from './main-projects/main-projects.component';
+import { MainProjectComponent } from './main-project/main-project.component';
 
 @NgModule({
   declarations: [
     MainComponent,
     AboutComponent,
+    MainProjectsComponent,
+    MainProjectComponent,
   ],
   imports: [
     CommonModule,

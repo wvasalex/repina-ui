@@ -12,6 +12,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class AgencyService extends RestService {
+
   public config: ApiConfig = {
     path: '/agency_blocks/',
   };
@@ -59,4 +60,5 @@ export class AgencyService extends RestService {
       list_type: 'team',
     });
   }
+
 }

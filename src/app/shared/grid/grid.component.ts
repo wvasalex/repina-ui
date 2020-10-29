@@ -19,6 +19,7 @@ import { Subscription } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GridComponent implements OnInit, OnDestroy {
+
   @Input() @HostBinding('attr.type') type: GridDataType = 'small';
 
   public def: GridDataSizeDef;
@@ -49,10 +50,11 @@ export class GridComponent implements OnInit, OnDestroy {
       }
     });
 
-    if (this.type === 'small-wide' || this.type === 'wide-small') {
-      this.rowHeight = '1.5:2';
+    /*if (this.type === 'small-wide' || this.type === 'wide-small') {
+      this.rowHeight = '1.5:1';
+      console.log(this.rowHeight);
       this.changeDetectorRef.detectChanges();
-    }
+    }*/
   }
 
   ngOnDestroy(): void {

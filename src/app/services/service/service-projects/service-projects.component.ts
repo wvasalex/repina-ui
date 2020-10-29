@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { StrMap } from '@shared/types';
 import { BaseBlock } from '@shared/blocks/block.component';
 import { ProjectsService } from '@shared/projects/projects.service';
@@ -34,7 +34,7 @@ export class ServiceProjectsComponent extends BaseBlock {
       query.activity_scope_id = (service.activity_scope as ServiceScope).id;
     }
 
-    this.projects$ = this.projectsService.get(query);
+    this.projects$ = this.projectsService.getRelevant(query);
   }
 
 }

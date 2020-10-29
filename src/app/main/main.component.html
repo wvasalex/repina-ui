@@ -6,7 +6,13 @@
     groupBy="parent"
   ></r-service-list>
 
-  <r-grid type="big-small">
+  <r-blocks-render
+    *ngIf="blocks$ | async as blocks"
+    [render]="render"
+    [blocks]="blocks"
+  ></r-blocks-render>
+
+  <!--<r-grid type="big-small">
     <r-project-snippet
       [project]="{
         'id': 1,
@@ -106,7 +112,7 @@
       rel="3"
       r-parallax
     ></r-project-all>
-  </r-grid>
+  </r-grid>-->
 
   <r-padding
     [horizontal]="false"

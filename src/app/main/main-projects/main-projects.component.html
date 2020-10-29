@@ -1,0 +1,108 @@
+<ng-container *ngIf="!editor">
+  <r-grid type="big-small">
+    <r-main-project
+      [props]="{
+        project: 'deft'
+      }"
+      rel="1"
+    ></r-main-project>
+    <r-main-project
+      [props]="{
+        project: 'deft'
+      }"
+      rel="2"
+    ></r-main-project>
+    <r-main-project
+      [props]="{
+        project: 'deft'
+      }"
+      rel="3"
+    ></r-main-project>
+  </r-grid>
+
+  <r-grid
+    type="small-wide"
+    class="mt-30"
+  >
+    <r-main-project
+      [props]="{
+        project: 'deft'
+      }"
+      rel="1"
+    ></r-main-project>
+    <r-promo-card
+      type="1"
+      title="Новость года! Мы получили 8 наград в области бренд-дизайна"
+      image="/assets/icons/main/promo_2.svg"
+      r-parallax
+      rel="2"
+    >
+    </r-promo-card>
+  </r-grid>
+
+  <r-grid
+    type="small"
+    class="mt-30"
+  >
+    <r-main-project
+      [props]="{
+        project: 'deft'
+      }"
+      rel="1"
+    ></r-main-project>
+    <r-main-project
+      [props]="{
+        project: 'deft'
+      }"
+      rel="2"
+    ></r-main-project>
+    <r-main-project
+      [props]="{
+        project: 'deft'
+      }"
+      rel="3"
+    ></r-main-project>
+  </r-grid>
+
+  <r-grid
+    type="small-big"
+    class="mt-30"
+  >
+    <r-promo-card
+      rel="1"
+      type="2"
+      title="Новость года! Мы получили 8 наград в области бренд-дизайна"
+      image="/assets/icons/main/promo_2.svg"
+      r-parallax
+    >
+    </r-promo-card>
+    <r-main-project
+      [props]="{
+        project: 'deft'
+      }"
+      rel="2"
+    ></r-main-project>
+    <r-main-project
+      [props]="{
+        project: 'deft'
+      }"
+      rel="3"
+    ></r-main-project>
+  </r-grid>
+</ng-container>
+
+<!--
+<div
+  *ngIf="editor"
+  class="row"
+  style="min-height: 100%"
+>
+  <r-agency-image
+    *ngFor="let element of elements; let index = index"
+    [attr.rel]="index"
+    [id]="element.id"
+    [props]="element.props"
+    [contentFile]="element.content_file"
+    [editor]="true"
+  ></r-agency-image>
+</div>-->

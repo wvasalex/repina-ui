@@ -15,10 +15,11 @@ import { ProjectRolesComponent } from '../../projects/project/project-roles/proj
 import { ProjectFeedbackComponent } from '../../projects/project/project-feedback/project-feedback.component';
 import { ProjectArticlesComponent } from '../../projects/project/project-articles/project-articles.component';
 import { StrMap } from '../types';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProjectsService extends RestService {
 
@@ -44,16 +45,10 @@ export class ProjectsService extends RestService {
     super();
   }
 
-  public public
-
-  get<T>(body: StrMap<any> = {}): Observable<any> {
-    return super.get(body);
-  }
-
   public groupProjectss(projects: Project[], chunkSize: number = 3): Project[][] {
     const chunks = [];
 
-    for(let i = 0; i < projects.length; i += chunkSize) {
+    for (let i = 0; i < projects.length; i += chunkSize) {
       const chunk: any[] = projects.slice(i, i + chunkSize);
       if (chunk.length < chunkSize) {
         chunk.push(...new Array(chunkSize - chunk.length));
@@ -66,6 +61,26 @@ export class ProjectsService extends RestService {
 
   public getLink(slug: string): string {
     return '/projects/' + slug;
+  }
+
+  public getRelevant(body: StrMap<any> = {}, limit: number = 5): Observable<Project[]> {
+    return this.get(body).pipe(
+      switchMap((projects: Project[]) => {
+        if (projects.length === limit) {
+          return of(projects);
+        }
+
+        return this.get({
+          per_page: limit - projects.length,
+          rnd_sort: true,
+        }).pipe(
+          map((extended: Project[]) => {
+            projects.push(...extended);
+            return projects;
+          }),
+        );
+      }),
+    );
   }
 
 }

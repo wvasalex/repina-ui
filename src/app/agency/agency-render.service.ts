@@ -15,6 +15,7 @@ import { AgencyImageComponent } from './agency-image/agency-image.component';
   providedIn: 'root'
 })
 export class AgencyRenderService {
+
   public render = {
     'agency-primary': AgencyPrimaryComponent,
     'agency-achievements': AgencyAchievementsComponent,
@@ -30,4 +31,5 @@ export class AgencyRenderService {
   };
 
   constructor() { }
+
 }
