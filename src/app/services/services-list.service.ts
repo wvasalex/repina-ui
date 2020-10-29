@@ -46,8 +46,7 @@ export class ServicesListService {
 
   private _group(services: Service[], field) {
     const positionKey = field === 'tag_group' ? 'tag_group_position' : 'position';
-
-    const servicesMap = services.reduce((result, item) => {
+    const servicesMap = field === 'tag_group' ? {} : services.reduce((result, item) => {
       result[item.id] = item;
       return result;
     }, {});
