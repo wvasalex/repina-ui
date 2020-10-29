@@ -7,6 +7,7 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class JournalSnippetComponent implements OnInit {
+
   @Input() image: string;
   @Input() tag: string;
   @Input() title: string;

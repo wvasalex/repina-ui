@@ -1,21 +1,18 @@
-<ng-container *ngIf="!editor">
+<ng-container *ngIf="elements">
   <r-grid type="big-small">
     <r-main-project
-      [props]="{
-        project: 'deft'
-      }"
+      [editor]="editor"
+      [props]="elements[0].props"
       rel="1"
     ></r-main-project>
     <r-main-project
-      [props]="{
-        project: 'deft'
-      }"
+      [editor]="editor"
+      [props]="elements[1].props"
       rel="2"
     ></r-main-project>
     <r-main-project
-      [props]="{
-        project: 'deft'
-      }"
+      [editor]="editor"
+      [props]="elements[2].props"
       rel="3"
     ></r-main-project>
   </r-grid>
@@ -25,19 +22,25 @@
     class="mt-30"
   >
     <r-main-project
-      [props]="{
-        project: 'deft'
-      }"
+      [editor]="editor"
+      [props]="elements[3].props"
       rel="1"
     ></r-main-project>
-    <r-promo-card
+
+    <r-main-project
+      [editor]="editor"
+      [props]="elements[4].props"
+      rel="2"
+    ></r-main-project>
+
+    <!--<r-promo-card
       type="1"
       title="Новость года! Мы получили 8 наград в области бренд-дизайна"
-      image="/assets/icons/main/promo_2.svg"
+      image="/assets/icons/main/promo_1.svg"
       r-parallax
       rel="2"
     >
-    </r-promo-card>
+    </r-promo-card>-->
   </r-grid>
 
   <r-grid
@@ -45,21 +48,20 @@
     class="mt-30"
   >
     <r-main-project
-      [props]="{
-        project: 'deft'
-      }"
+      [editor]="editor"
+      [props]="elements[5].props"
       rel="1"
     ></r-main-project>
+
     <r-main-project
-      [props]="{
-        project: 'deft'
-      }"
+      [editor]="editor"
+      [props]="elements[6].props"
       rel="2"
     ></r-main-project>
+
     <r-main-project
-      [props]="{
-        project: 'deft'
-      }"
+      [editor]="editor"
+      [props]="elements[7].props"
       rel="3"
     ></r-main-project>
   </r-grid>
@@ -68,26 +70,74 @@
     type="small-big"
     class="mt-30"
   >
-    <r-promo-card
+    <!--<r-promo-card
       rel="1"
       type="2"
       title="Новость года! Мы получили 8 наград в области бренд-дизайна"
       image="/assets/icons/main/promo_2.svg"
       r-parallax
     >
-    </r-promo-card>
+    </r-promo-card>-->
+
     <r-main-project
-      [props]="{
-        project: 'deft'
-      }"
+      [editor]="editor"
+      [props]="elements[8].props"
+      rel="1"
+    ></r-main-project>
+
+    <r-main-project
+      [editor]="editor"
+      [props]="elements[9].props"
       rel="2"
     ></r-main-project>
+
     <r-main-project
-      [props]="{
-        project: 'deft'
-      }"
+      [editor]="editor"
+      [props]="elements[10].props"
       rel="3"
     ></r-main-project>
+  </r-grid>
+
+  <r-grid
+    type="small"
+    class="mt-30"
+  >
+    <r-main-project
+      [editor]="editor"
+      [props]="elements[11].props"
+      rel="1"
+    ></r-main-project>
+
+    <r-main-project
+      [editor]="editor"
+      [props]="elements[12].props"
+      rel="2"
+    ></r-main-project>
+
+    <r-main-project
+      [editor]="editor"
+      [props]="elements[13].props"
+      rel="3"
+    ></r-main-project>
+  </r-grid>
+
+  <r-grid
+    type="small"
+    class="mt-30"
+  >
+    <r-main-project
+      [editor]="editor"
+      [props]="elements[14].props"
+      rel="1"
+    ></r-main-project>
+
+    <r-main-project
+      [editor]="editor"
+      [props]="elements[15].props"
+      rel="2"
+    ></r-main-project>
+
+    <r-project-all rel="3"></r-project-all>
   </r-grid>
 </ng-container>
 

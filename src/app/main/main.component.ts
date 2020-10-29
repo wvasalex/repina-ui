@@ -23,18 +23,108 @@ export class MainComponent extends BaseBlock implements OnInit {
       content_elements: [
         {
           element_type: 'main-project',
-          props: {},
+          props: {
+            project: 'deft',
+          },
         },
         {
           element_type: 'main-project',
-          props: {},
+          props: {
+            project: 'palmolive',
+          },
         },
         {
           element_type: 'main-project',
-          props: {},
+          props: {
+            project: 'macro-clinic',
+          },
+        },
+        {
+          element_type: 'main-project',
+          props: {
+            project: 'deft',
+          },
+        },
+        {
+          element_type: 'main-project',
+          props: {
+            project: 'palmolive',
+          },
+        },
+        {
+          element_type: 'main-project',
+          props: {
+            project: 'macro-clinic',
+          },
+        },
+        {
+          element_type: 'main-project',
+          props: {
+            project: 'deft',
+          },
+        },
+        {
+          element_type: 'main-project',
+          props: {
+            project: 'palmolive',
+          },
+        },
+        {
+          element_type: 'main-project',
+          props: {
+            project: 'macro-clinic',
+          },
+        },
+        {
+          element_type: 'main-project',
+          props: {
+            project: 'deft',
+          },
+        },
+        {
+          element_type: 'main-project',
+          props: {
+            project: 'palmolive',
+          },
+        },
+        {
+          element_type: 'main-project',
+          props: {
+            project: 'macro-clinic',
+          },
+        },
+        {
+          element_type: 'main-project',
+          props: {
+            project: 'deft',
+          },
+        },
+        {
+          element_type: 'main-project',
+          props: {
+            project: 'palmolive',
+          },
+        },
+        {
+          element_type: 'main-project',
+          props: {
+            project: 'macro-clinic',
+          },
+        },
+        {
+          element_type: 'main-project',
+          props: {
+            project: 'deft',
+          },
         },
       ],
     },
+    {
+      block_type: 'main-articles',
+      position: 0,
+      props: {},
+      content_elements: []
+    }
     /* {
        block_type: 'main-projects',
        position: 0,

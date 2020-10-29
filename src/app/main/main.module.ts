@@ -15,6 +15,8 @@ import { ServicesModule } from '../services/services.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MainProjectsComponent } from './main-projects/main-projects.component';
 import { MainProjectComponent } from './main-project/main-project.component';
+import { FormsModule } from '@angular/forms';
+import { MainArticlesComponent } from './main-articles/main-articles.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { MainProjectComponent } from './main-project/main-project.component';
     AboutComponent,
     MainProjectsComponent,
     MainProjectComponent,
+    MainArticlesComponent,
   ],
   imports: [
     CommonModule,
@@ -36,6 +39,7 @@ import { MainProjectComponent } from './main-project/main-project.component';
     ListsModule,
     ServicesModule,
     MatButtonModule,
+    FormsModule,
   ],
 })
 export class MainModule { }

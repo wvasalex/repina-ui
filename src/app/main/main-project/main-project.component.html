@@ -2,3 +2,18 @@
   *ngIf="project$ | async as project"
   [project]="project"
 ></r-project-snippet>
+
+<ng-container *ngIf="editor">
+  <div
+    *ngIf="published$ | async as projects"
+    class="select"
+  >
+    <r-select
+      (valueChanged)="$projectChanged()"
+      [(ngModel)]="props.project"
+      [options]="projects | selectOptions: $toOption"
+    ></r-select>
+  </div>
+</ng-container>
+
+

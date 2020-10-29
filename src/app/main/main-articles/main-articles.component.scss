@@ -1,0 +1,17 @@
+.journal {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 8rem;
+  padding-bottom: 10% !important;
+
+  .intro {
+    margin-right: 10%;
+    margin-bottom: 4rem;
+  }
+}
+
+.w768 :host, .w320 :host {
+  .journal {
+    flex-direction: column;
+  }
+}

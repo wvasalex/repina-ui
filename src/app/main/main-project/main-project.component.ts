@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { BaseBlock } from '@shared/blocks/block.component';
 import { ProjectsService } from '@shared/projects/projects.service';
 import { Project } from '@shared/projects/projects.model';
-import { map } from 'rxjs/operators';
+import { SelectOption } from '@shared/components/select/select.model';
 
 @Component({
   selector: 'r-main-project',
@@ -13,6 +14,8 @@ import { map } from 'rxjs/operators';
 })
 export class MainProjectComponent extends BaseBlock implements OnInit {
 
+  public published$: Subject<Project[]> = this.projectsService.published$;
+
   public project$: Observable<Project>;
 
   constructor(private projectsService: ProjectsService) {
@@ -20,6 +23,21 @@ export class MainProjectComponent extends BaseBlock implements OnInit {
   }
 
   public ngOnInit(): void {
+    this._resolve();
+  }
+
+  public $projectChanged() {
+    this._resolve();
+  }
+
+  public $toOption(project: Project): SelectOption {
+    return {
+      value: project.slug,
+      label: project.title,
+    };
+  }
+
+  private _resolve() {
     this.project$ = this.projectsService.get({
       slug: this.props.project,
     }).pipe(map((projects: Project[]) => {

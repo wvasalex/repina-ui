@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
+import { map, switchMap, tap } from 'rxjs/operators';
 import { RestService } from '../services/api/rest.service';
 import { ApiService } from '../services/api/api.service';
 import { ApiConfig } from '../services/api/api.model';
@@ -15,8 +17,6 @@ import { ProjectRolesComponent } from '../../projects/project/project-roles/proj
 import { ProjectFeedbackComponent } from '../../projects/project/project-feedback/project-feedback.component';
 import { ProjectArticlesComponent } from '../../projects/project/project-articles/project-articles.component';
 import { StrMap } from '../types';
-import { Observable, of } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -40,6 +40,8 @@ export class ProjectsService extends RestService {
     'project-feedback': ProjectFeedbackComponent,
     'project-articles': ProjectArticlesComponent,
   };
+
+  public published$: Subject<Project[]> = new Subject<Project[]>();
 
   constructor(public api: ApiService) {
     super();
@@ -81,6 +83,19 @@ export class ProjectsService extends RestService {
         );
       }),
     );
+  }
+
+  public getPublished() {
+    this.get().pipe(
+      map((projects: Project[]) => {
+        return projects.filter((project: Project) => {
+          return project.is_enabled;
+        });
+      }),
+      tap((projects: Project[]) => {
+        this.published$.next(projects);
+      })
+    ).subscribe();
   }
 
 }

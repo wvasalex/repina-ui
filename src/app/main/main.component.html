@@ -10,6 +10,7 @@
     *ngIf="blocks$ | async as blocks"
     [render]="render"
     [blocks]="blocks"
+    [editor]="editor"
   ></r-blocks-render>
 
   <!--<r-grid type="big-small">
@@ -113,47 +114,6 @@
       r-parallax
     ></r-project-all>
   </r-grid>-->
-
-  <r-padding
-    [horizontal]="false"
-    class="journal row"
-  >
-    <div>
-      <div class="intro">
-        <div class="h3">
-          Журнал
-        </div>
-        <div class="text32 mt-1">
-          Мы любим слушать и любим говорить.<br>Читайте наш журнал о брендинге и дизайне
-        </div>
-        <r-button class="mt-2">
-          Все статьи
-        </r-button>
-      </div>
-    </div>
-    <div>
-      <r-journal-snippet
-        image="/assets/pictures/journal/1.png"
-        title="Брендинг"
-        description="Как создать нескучную упаковку для профессионального продукта"
-      >
-      </r-journal-snippet>
-      <r-journal-snippet
-        image="/assets/pictures/journal/2.png"
-        title="Маркетинг"
-        description="Валерия Репина в РБК: как брендбук должен служить бизнесу"
-        class="mt-6"
-      >
-      </r-journal-snippet>
-      <r-journal-snippet
-        image="/assets/pictures/journal/3.png"
-        title="Фирменный стиль"
-        description="Как внедрить фирменный стиль в интерьер?"
-        class="mt-6"
-      >
-      </r-journal-snippet>
-    </div>
-  </r-padding>
 
   <r-about
     r-parallax
