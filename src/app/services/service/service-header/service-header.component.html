@@ -1,16 +1,15 @@
 <r-padding>
   <r-card
-    [subtitle]="props.subtitle"
     size="small"
     class="promo"
   >
     <div
+      (contentChanged)="$contentChanged($event, 'subtitle')"
+      [r-block]="editor"
+      [innerHTML]="$getValue('subtitle')"
       subtitle
-    >
-      <span *ngIf="!editor && data.service.tag; else serviceTmp">
-        {{data.service.tag.title}}
-      </span>
-    </div>
+      class="text32 mt-1"
+    ></div>
 
     <div
       (contentChanged)="$contentChanged($event, 'title')"

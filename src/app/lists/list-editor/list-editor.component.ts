@@ -18,9 +18,11 @@ export class ListEditorComponent {
       };
     }
 
-    return this.data.item || {
-      props: {},
-    };
+    if (!this.data.item) {
+      this.data.item = {props: {}};
+    }
+
+    return this.data.item;
   }
 
   public get props(): StrMap<string>[] {
