@@ -1,13 +1,16 @@
 <div class="h3">
-  {{title}}
+  {{props.title}}
 </div>
 <div class="footer">
-  <div *ngIf="type != 3" class="h3 label">
-    {{source}}
+  <div
+    *ngIf="props.type != 3"
+    class="h3 label"
+  >
+    {{props.source}}
   </div>
   <div
-    *ngIf="image"
-    [style.backgroundImage]="'url(' + image + ')'"
+    *ngIf="contentFile"
+    [style.backgroundImage]="'url(' + contentFile + ')'"
     class="image"
   >
   </div>

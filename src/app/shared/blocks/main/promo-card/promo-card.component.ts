@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, HostBinding, Input, OnInit } from '@angular/core';
+import { BaseBlock } from '@shared/blocks/block.component';
 
 @Component({
   selector: 'r-promo-card',
@@ -6,17 +7,12 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input, OnInit } from '
   styleUrls: ['./promo-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PromoCardComponent implements OnInit {
+export class PromoCardComponent extends BaseBlock implements OnInit {
 
-  @Input() @HostBinding('attr.type') type: number = 1;
-  @Input() title: string;
-  @Input() image: string;
-  @Input() source: string = 'Forbes';
+  @Input() @HostBinding('attr.type') type: string;
 
-  constructor() {
-  }
-
-  ngOnInit(): void {
+  public ngOnInit(): void {
+    this.type = this.props.type || '1';
   }
 
 }

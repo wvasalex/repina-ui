@@ -11,6 +11,7 @@ import { AgencyRenderService } from '../agency-render.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AgencyEditorComponent implements OnInit {
+
   public render = this.agencyRenderService.render;
 
   public blocks: ContentBlock[];

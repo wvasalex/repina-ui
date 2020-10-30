@@ -19,9 +19,7 @@
       class="h2 mt-1"
     ></div>
 
-    <div
-      description
-    >
+    <div description>
       <div
         (contentChanged)="$contentChanged($event, 'description')"
         [r-block]="editor"
@@ -34,6 +32,11 @@
         Заказать
       </r-button>
     </div>
+
+    <r-service-animation
+      *ngIf="data?.service?.service_type === 'complex'"
+      image
+    ></r-service-animation>
 
     <!--<r-service-image
       [id]="elements?.length && elements[0].id"

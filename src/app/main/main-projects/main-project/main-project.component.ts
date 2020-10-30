@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { BaseBlock } from '@shared/blocks/block.component';
-import { ProjectsService } from '@shared/projects/projects.service';
-import { Project } from '@shared/projects/projects.model';
-import { SelectOption } from '@shared/components/select/select.model';
+import { BaseBlock } from '../../../shared/blocks/block.component';
+import { ProjectsService } from '../../../shared/projects/projects.service';
+import { Project } from '../../../shared/projects/projects.model';
+import { SelectOption } from '../../../shared/components/select/select.model';
 
 @Component({
   selector: 'r-main-project',

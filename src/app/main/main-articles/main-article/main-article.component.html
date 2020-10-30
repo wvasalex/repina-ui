@@ -1,0 +1,22 @@
+<ng-container *ngIf="article$ | async as article">
+  <r-journal-snippet
+    [image]="article.preview_file"
+    [tag]="article.blog_tag?.title"
+    [title]="article.title"
+  ></r-journal-snippet>
+</ng-container>
+
+<ng-container *ngIf="editor">
+  <div
+    *ngIf="published$ | async as articles"
+    class="select"
+  >
+    <r-select
+      (valueChanged)="$articleChanged()"
+      [(ngModel)]="props.article"
+      [options]="articles | selectOptions: $toOption"
+    ></r-select>
+  </div>
+</ng-container>
+
+

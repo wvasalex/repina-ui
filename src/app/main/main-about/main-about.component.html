@@ -1,0 +1,26 @@
+<r-padding
+  [horizontal]="true"
+  class="row-column"
+>
+  <div class="row-column">
+    <div class="h3" style="flex: 0;">
+      О нас
+    </div>
+    <div
+      r-parallax
+      class="vector"
+    >
+      <img
+        src="/assets/icons/main/vector.svg"
+      />
+    </div>
+  </div>
+  <div class="column">
+    <r-main-about-text
+      *ngFor="let element of elements; let first = first;"
+      [class.mt-6]="!first"
+      [props]="element.props"
+      [editor]="editor"
+    ></r-main-about-text>
+  </div>
+</r-padding>

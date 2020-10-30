@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { MainProjectComponent } from './main-project/main-project.component';
+import { MainProjectComponent } from './main-projects/main-project/main-project.component';
 import { MainProjectsComponent } from './main-projects/main-projects.component';
 import { MainArticlesComponent } from './main-articles/main-articles.component';
+import { MainAboutComponent } from './main-about/main-about.component';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MainRenderService {
 
@@ -12,8 +13,10 @@ export class MainRenderService {
     'main-project': MainProjectComponent,
     'main-projects': MainProjectsComponent,
     'main-articles': MainArticlesComponent,
+    'main-about': MainAboutComponent,
   };
 
-  constructor() { }
+  constructor() {
+  }
 
 }

@@ -13,120 +13,23 @@
     [editor]="editor"
   ></r-blocks-render>
 
-  <!--<r-grid type="big-small">
-    <r-project-snippet
-      [project]="{
-        'id': 1,
-        'title': 'title',
-        'slug': 'slug',
-        'status': 'active'
-      }"
-      rel="1"
-      r-parallax
-    >
-    </r-project-snippet>
-
-    <r-image
-      rel="2"
-      src="/assets/pictures/2.png"
-      r-parallax
-    >
-    </r-image>
-    <r-image
-      rel="3"
-      src="/assets/pictures/3.png"
-      r-parallax
-    >
-    </r-image>
-  </r-grid>
-
-
-  <r-grid
-    type="small-big"
-    class="mt-2"
-  >
-    <r-promo-card
-      rel="1"
-      type="2"
-      title="Новость года! Мы получили 8 наград в области бренд-дизайна"
-      image="/assets/icons/main/promo_2.svg"
-      r-parallax
-    >
-    </r-promo-card>
-    <r-image
-      rel="2"
-      src="/assets/pictures/5.png"
-      r-parallax
-    >
-    </r-image>
-    <r-image
-      rel="3"
-      src="/assets/pictures/6.png"
-      r-parallax
-    >
-    </r-image>
-  </r-grid>
-
-  <r-grid
-    type="small"
-    class="mt-2"
-  >
-    <r-image
-      rel="1"
-      src="/assets/pictures/7.png"
-      r-parallax
-    >
-    </r-image>
-    <r-promo-card
-      rel="2"
-      type="3"
-      title="Как сделать инновационный продукт брендом"
-      image="/assets/icons/main/promo_3.svg"
-      r-parallax
-    ></r-promo-card>
-    <r-image
-      rel="3"
-      src="/assets/pictures/8.png"
-      r-parallax
-    >
-    </r-image>
-  </r-grid>
-
-  <r-grid
-    type="small"
-    class="mt-2"
-  >
-    <r-image
-      rel="1"
-      src="/assets/pictures/9.png"
-      r-parallax
-    >
-    </r-image>
-    <r-image
-      rel="2"
-      src="/assets/pictures/10.png"
-      r-parallax
-    >
-    </r-image>
-
-    <r-project-all
-      rel="3"
-      r-parallax
-    ></r-project-all>
-  </r-grid>-->
-
-  <r-about
-    r-parallax
-    direction="reverse"
-  ></r-about>
-
   <r-fabs *rWithSession>
     <button
-      (click)="editor = !editor"
+      *ngIf="!editor"
+      (click)="editor = true"
       mat-fab
       color="primary"
     >
       <r-icon name="components/edit-white"></r-icon>
+    </button>
+
+    <button
+      *ngIf="editor"
+      (click)="$save()"
+      mat-fab
+      color="primary"
+    >
+      <r-icon name="components/checked-white"></r-icon>
     </button>
   </r-fabs>
 </r-page>
