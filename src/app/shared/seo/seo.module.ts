@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SeoComponent } from './seo.component';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { SharedModule } from '../components/shared.module';
+import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { SeoComponent } from './seo.component';
+import { SharedModule } from '../components/shared.module';
 
 @NgModule({
   declarations: [
@@ -11,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
+    RouterModule,
     MatExpansionModule,
     SharedModule,
     ReactiveFormsModule,

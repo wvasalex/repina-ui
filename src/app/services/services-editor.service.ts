@@ -7,6 +7,7 @@ import { ApiService } from '@shared/services/api/api.service';
   providedIn: 'root',
 })
 export class ServicesEditorService extends RestService {
+
   public config: ApiConfig = {
     path: '/service_content_blocks/',
   };
@@ -14,4 +15,5 @@ export class ServicesEditorService extends RestService {
   constructor(public api: ApiService) {
     super();
   }
+
 }

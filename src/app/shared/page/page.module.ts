@@ -7,6 +7,7 @@ import { SharedModule } from '../components/shared.module';
 import { RequestComponent } from './request/request.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterModule } from '@shared/footer/footer.module';
+import { SeoModule } from '@shared/seo/seo.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { FooterModule } from '@shared/footer/footer.module';
     MenuModule,
     FooterModule,
     SharedModule,
+    SeoModule,
   ],
 })
 export class PageModule { }

@@ -11,6 +11,7 @@
 
     <div>
       <form
+        (submit)="$submit($event)"
         [formGroup]="formGroup"
       >
         <r-input
@@ -33,6 +34,11 @@
         >
           <r-input-label>Robots</r-input-label>
         </r-input>
+
+        <r-button
+          (click)="$submit($event)"
+          class="mt-1"
+        >Сохранить</r-button>
       </form>
     </div>
   </mat-expansion-panel>
