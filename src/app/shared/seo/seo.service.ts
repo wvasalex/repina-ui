@@ -20,7 +20,7 @@ export class SeoService extends RestService {
   }
 
   public getByUrl(url: string): Observable<SeoData> {
-    return this.get()
+    return this.get({ model_name: url })
       .pipe(
         map((seoContent: SeoData[]) => {
           return seoContent[0];

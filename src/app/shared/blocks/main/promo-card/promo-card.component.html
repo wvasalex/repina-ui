@@ -1,17 +1,32 @@
-<div class="h3">
-  {{props.title}}
-</div>
+<div
+  [r-block]="editor"
+  [innerHTML]="$getValue('title')"
+  (contentChanged)="$contentChanged($event, 'title')"
+  class="h3"
+></div>
+
 <div class="footer">
   <div
-    *ngIf="props.type != '3'"
+    *ngIf="type != '3'"
+    [r-block]="editor"
+    [innerHTML]="$getValue('source')"
+    (contentChanged)="$contentChanged($event, 'source')"
     class="h3 label"
-  >
-    {{props.source}}
-  </div>
+  ></div>
+
   <div
-    *ngIf="contentFile"
+    *ngIf="contentFile && !editor"
     [style.backgroundImage]="'url(' + contentFile + ')'"
     class="image"
-  >
-  </div>
+  ></div>
+
+  <r-image-upload
+    *ngIf="editor"
+    [editor]="editor"
+    [id]="id"
+    [contentFile]="contentFile"
+    [props]="props"
+    endpoint="main_content_elements"
+    class="image"
+  ></r-image-upload>
 </div>

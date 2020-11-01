@@ -29,12 +29,13 @@
 
     <r-promo-card
       [editor]="editor"
+      [id]="elements[4].id"
       [props]="elements[4].props"
       [contentFile]="elements[4].content_file"
+      type="1"
       r-parallax
       rel="2"
-    >
-    </r-promo-card>
+    ></r-promo-card>
   </r-grid>
 
   <r-grid
@@ -65,13 +66,14 @@
     class="mt-30"
   >
     <r-promo-card
-      rel="1"
       [editor]="editor"
+      [id]="elements[8].id"
       [props]="elements[8].props"
       [contentFile]="elements[8].content_file"
+      type="2"
       r-parallax
-    >
-    </r-promo-card>
+      rel="1"
+    ></r-promo-card>
 
     <r-main-project
       [editor]="editor"
@@ -97,11 +99,13 @@
     ></r-main-project>
 
     <r-promo-card
-      rel="2"
       [editor]="editor"
+      [id]="elements[12].id"
       [props]="elements[12].props"
       [contentFile]="elements[12].content_file"
+      type="3"
       r-parallax
+      rel="2"
     ></r-promo-card>
 
     <r-main-project

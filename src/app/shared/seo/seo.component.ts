@@ -5,6 +5,7 @@ import { Meta } from '@angular/platform-browser';
 import { SeoService } from '@shared/seo/seo.service';
 import { Subscription } from 'rxjs';
 import { SeoData } from '@shared/seo/seo.model';
+import { ToasterService } from '@shared/toaster/toaster.service';
 
 @Component({
   selector: 'r-seo',
@@ -23,11 +24,14 @@ export class SeoComponent implements OnInit, OnDestroy {
 
   private _sub: Subscription;
 
+  private _id: number = null;
+
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private meta: Meta,
     private formBuilder: FormBuilder,
+    private toasterService: ToasterService,
     private seoService: SeoService,
     ) {
 
@@ -46,10 +50,16 @@ export class SeoComponent implements OnInit, OnDestroy {
   public $submit(e: Event) {
     e.preventDefault();
 
-    this.seoService.save({
+    const data: SeoData = {
       model_name: this._url(),
       props: this.formGroup.value,
-    }).subscribe();
+    };
+
+    if (this._id) {
+      data.id = this._id;
+    }
+
+    this.seoService.save(data).subscribe();
   }
 
   private _url(): string {
@@ -59,7 +69,10 @@ export class SeoComponent implements OnInit, OnDestroy {
   private _init() {
     this.seoService.getByUrl(this._url()).subscribe((seoData: SeoData) => {
       if (seoData) {
+        this._id = seoData.id;
         this._set(seoData);
+      } else {
+        this._id = null;
       }
     });
   }

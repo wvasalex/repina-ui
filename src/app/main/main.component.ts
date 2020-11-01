@@ -2,10 +2,11 @@ import { ChangeDetectionStrategy, Component, HostListener, OnInit } from '@angul
 import { BaseBlock } from '@shared/blocks/block.component';
 import { MainService } from './main.service';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { ContentBlock } from '@shared/types';
+import { ContentBlock, ContentElement } from '@shared/types';
 import { MainRenderService } from './main-render.service';
 import { JournalService } from '../journal/journal.service';
 import { ToasterService } from '@shared/toaster/toaster.service';
+import { element } from 'protractor';
 
 @Component({
   selector: 'r-main',
@@ -48,7 +49,7 @@ export class MainComponent extends BaseBlock implements OnInit {
           },
         },
         {
-          element_type: 'main-project',
+          element_type: 'main-promo',
           props: {
             type: '1',
             title: "Новость года! Мы получили 8 наград в области бренд-дизайна",
@@ -219,6 +220,11 @@ export class MainComponent extends BaseBlock implements OnInit {
 
     blocks.forEach((block: ContentBlock) => {
       block.is_enabled = true;
+      delete block.content_file;
+      block.content_elements.forEach((element: ContentElement, index: number) => {
+        delete element.content_file;
+        element.position = index;
+      });
       promises.push(this.mainService.save(block).toPromise());
     });
 
