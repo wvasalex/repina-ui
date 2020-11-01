@@ -38,7 +38,7 @@ export class ProjectsComponent {
 
   private rows$: Observable<number> = this.breakpointService.change$
     .pipe(map((result: BreakpointState) => {
-      const w = window.innerWidth;
+      const w = typeof window !== 'undefined' ? window.innerWidth : 1920;
       const breakpoints = [1920, 1366, 1024, 768, 320];
       let cn = breakpoints.find((breakpoint) => w > breakpoint) || 320;
 

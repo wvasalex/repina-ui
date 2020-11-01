@@ -1,8 +1,9 @@
-import { Inject, Injectable } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { StrMap } from '@shared/types';
 import { API_BASE_CONFIG, ApiRequestOptions, BaseApiConfig } from './api.model';
+import { isPlatformServer } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,12 @@ import { API_BASE_CONFIG, ApiRequestOptions, BaseApiConfig } from './api.model';
 export class ApiService {
 
   constructor(private httpClient: HttpClient,
+              @Inject(PLATFORM_ID) private platformId: Object,
               @Inject(API_BASE_CONFIG) private config: BaseApiConfig) {
+
+    if (isPlatformServer(platformId)) {
+      this.config.host = 'http://5.63.158.46';
+    }
   }
 
   public postStream<T>(url: string, body: StrMap<any> = {}, options?: ApiRequestOptions): Observable<T> {

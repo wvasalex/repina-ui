@@ -27,6 +27,10 @@ export class AspectRatioDirective implements AfterViewInit {
   }
 
   private _fit() {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
     const width = this.host.nativeElement.getBoundingClientRect().width;
     this.renderer2.setStyle(this.host.nativeElement, 'height', (width / this.rAspectRatio) + 'px');
   }

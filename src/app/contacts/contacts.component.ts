@@ -39,6 +39,10 @@ export class ContactsComponent implements OnInit, AfterViewInit {
   }
 
   public ngAfterViewInit(): void {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
     const maps = window['google'].maps;
     const center = new maps.LatLng(55.801106, 37.6378429);
     const mapOptions = {
