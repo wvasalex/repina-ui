@@ -23,12 +23,12 @@ export class ServiceProjectsComponent extends BaseBlock {
   ngOnInit(): void {
     const service: Service = this.data.service as Service;
 
-    const query: StrMap<number> = {
+    const query: StrMap<any> = {
       per_page: 5,
     };
 
-    if (service.tag) {
-      query.tags__id = (service.tag as ServiceTag).id;
+    if (service.tags) {
+      query.tags__id__in = service.tags.map((tag: ServiceTag) => tag.id);
     }
     if (service.activity_scope) {
       query.activity_scope_id = (service.activity_scope as ServiceScope).id;
