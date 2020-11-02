@@ -1,32 +1,46 @@
-<r-md
-  [editor]="editor"
-  [props]="props"
-  prop="title"
-  className="h3"
-></r-md>
-
-<div class="footer">
+<a
+  (click)="$click($event)"
+  [attr.href]="props.href"
+>
   <r-md
-    *ngIf="type != '3'"
     [editor]="editor"
     [props]="props"
-    prop="source"
-    className="h3 label"
+    prop="title"
+    className="h3"
   ></r-md>
 
   <div
-    *ngIf="contentFile && !editor"
-    [style.backgroundImage]="'url(' + contentFile + ')'"
-    class="image"
+    *ngIf="editor"
+    (contentChanged)="$contentChanged($event, 'href')"
+    [r-block]="editor"
+    [innerHTML]="$getValue('href')"
+    class="text-32"
   ></div>
 
-  <r-image-upload
-    *ngIf="editor"
-    [editor]="editor"
-    [id]="id"
-    [contentFile]="contentFile"
-    [props]="props"
-    endpoint="main_content_elements"
-    class="image"
-  ></r-image-upload>
-</div>
+  <div class="footer">
+    <r-md
+      *ngIf="type != '3'"
+      [editor]="editor"
+      [props]="props"
+      prop="source"
+      className="h3 label"
+    ></r-md>
+
+    <div
+      *ngIf="contentFile && !editor"
+      [style.backgroundImage]="'url(' + contentFile + ')'"
+      class="image"
+    ></div>
+
+    <r-image-upload
+      *ngIf="editor"
+      [editor]="editor"
+      [id]="id"
+      [contentFile]="contentFile"
+      [props]="props"
+      endpoint="main_content_elements"
+      class="image"
+    ></r-image-upload>
+  </div>
+
+</a>

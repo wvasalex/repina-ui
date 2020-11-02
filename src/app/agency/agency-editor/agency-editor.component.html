@@ -1,21 +1,19 @@
 <r-page
+  *ngIf="blocks"
   menuColor="black"
-  backgroundImage="/assets/pictures/agency/bg.png"
+  [backgroundImage]="blocks[0].content_elements[0].content_file"
 >
-  <r-padding header>
-    <r-card
-      color="black"
-      subtitle="Брендинговое агентство"
-      title="Валерии Репиной"
-      class="promo"
-    >
-    </r-card>
-  </r-padding>
+  <r-blocks-render
+    [render]="render"
+    [blocks]="[blocks[0]]"
+    [editor]="true"
+    header
+  ></r-blocks-render>
 
   <r-blocks-render
     *ngIf="blocks"
     [render]="render"
-    [blocks]="blocks"
+    [blocks]="blocks.slice(1)"
     [editor]="true"
   ></r-blocks-render>
 

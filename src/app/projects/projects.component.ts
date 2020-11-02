@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { BreakpointState } from '@angular/cdk/layout';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
@@ -8,9 +8,11 @@ import { ProjectsService } from '@shared/projects/projects.service';
 import { Project } from '@shared/projects/projects.model';
 import { ListReorderComponent } from '@shared/list-reorder/list-reorder.component';
 import { SelectOption } from '@shared/components/select/select.model';
-import { StrMap } from '@shared/types';
+import { ContentBlock, StrMap } from '@shared/types';
 import { ServicesTagsService } from '../services/services-tags.service';
 import { ServiceTag } from '../services/services.model';
+import { ProjectsPageService } from './projects-page.service';
+import { ToasterService } from '@shared/toaster/toaster.service';
 
 @Component({
   selector: 'r-projects',
@@ -19,6 +21,17 @@ import { ServiceTag } from '../services/services.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectsComponent {
+
+  public header: ContentBlock;
+
+  public header$: Observable<ContentBlock> = this.projectsPageService.get({per_page: 200})
+    .pipe(
+      map((blocks: ContentBlock[]) => {
+        return this.header = blocks.find((block) => {
+          return block.block_type === 'projects-header';
+        });
+      }),
+    );
 
   private projects$: BehaviorSubject<Project[]> = new BehaviorSubject<Project[]>([]);
 
@@ -29,11 +42,11 @@ export class ProjectsComponent {
           return tag['show_in_projects'];
         })
         .map((tag: ServiceTag) => {
-        return {
-          value: tag.id,
-          label: tag.title,
-        };
-      });
+          return {
+            value: tag.id,
+            label: tag.title,
+          };
+        });
     }));
 
   private rows$: Observable<number> = this.breakpointService.change$
@@ -56,10 +69,14 @@ export class ProjectsComponent {
       return this.projectsService.groupProjectss(projects, rows);
     }));
 
+  public editor: boolean = false;
+
   constructor(
     private dialog: MatDialog,
     private changeDetectorRef: ChangeDetectorRef,
     private breakpointService: BreakpointService,
+    private toasterService: ToasterService,
+    private projectsPageService: ProjectsPageService,
     private servicesTagsService: ServicesTagsService,
     private projectsService: ProjectsService,
   ) {
@@ -99,6 +116,12 @@ export class ProjectsComponent {
     });
   }
 
+  public $save() {
+    this.editor = false;
+    const req = this.projectsPageService.save(this.header).toPromise();
+    this.toasterService.wrapPromise(req, 'Сохранено!', 'Не удалось сохранить!');
+  }
+
   private _save(items: Project[]) {
     items.forEach((item: Project) => {
       this.projectsService.patch({
@@ -115,5 +138,18 @@ export class ProjectsComponent {
       this.projects$.next(projects);
     });
   }
+
+  /*@HostListener('dblclick') _init() {
+    this.projectsPageService.post({
+      block_type: 'projects-header',
+      props: {
+        title: 'Создаем яркие самобытные решения',
+        subtitle: 'Проекты',
+      },
+      is_enabled: true,
+      position: 0,
+      content_elements: [],
+    }).subscribe();
+  }*/
 
 }

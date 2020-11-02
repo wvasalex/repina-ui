@@ -1,14 +1,16 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, OnInit } from '@angular/core';
 import { JournalService } from './journal.service';
 import { Article, BlogTag } from './journal.model';
 import { JournalTagsService } from './journal-tags.service';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { StrMap } from '@shared/types';
+import { ContentBlock, StrMap } from '@shared/types';
 import { SelectOption } from '@shared/components/select/select.model';
 import { MatDialog } from '@angular/material/dialog';
 import { ListReorderComponent } from '@shared/list-reorder/list-reorder.component';
 import { Project } from '@shared/projects/projects.model';
+import { JournalPageService } from './journal-page.service';
+import { ToasterService } from '@shared/toaster/toaster.service';
 
 @Component({
   selector: 'r-journal',
@@ -17,6 +19,17 @@ import { Project } from '@shared/projects/projects.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class JournalComponent implements OnInit {
+
+  public header: ContentBlock;
+
+  public header$: Observable<ContentBlock> = this.journalPageService.get({ per_page: 200 })
+    .pipe(
+      map((blocks: ContentBlock[]) => {
+        return this.header = blocks.find((block) => {
+          return block.block_type === 'journal-header';
+        });
+      }),
+    );
 
   public articles$: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 
@@ -41,8 +54,12 @@ export class JournalComponent implements OnInit {
       return this.journalService.groupArticles(articles);
     }));
 
+  public editor: boolean = false;
+
   constructor(
     private dialog: MatDialog,
+    private toasterService: ToasterService,
+    private journalPageService: JournalPageService,
     private journalService: JournalService,
     private journalTagsService: JournalTagsService,
   ) {
@@ -78,6 +95,12 @@ export class JournalComponent implements OnInit {
     });
   }
 
+  public $save() {
+    this.editor = false;
+    const req = this.journalPageService.save(this.header).toPromise();
+    this.toasterService.wrapPromise(req, 'Сохранено!', 'Не удалось сохранить!');
+  }
+
   private _save(items: Article[]) {
     items.forEach((item: Article) => {
       this.journalService.patch({
@@ -94,5 +117,18 @@ export class JournalComponent implements OnInit {
       this.articles$.next(articles);
     });
   }
+
+  /*@HostListener('dblclick') _init() {
+    this.journalPageService.post({
+      block_type: 'journal-header',
+      props: {
+        title: 'Создаем яркие самобытные решения',
+        subtitle: 'бложик',
+      },
+      is_enabled: true,
+      position: 0,
+      content_elements: [],
+    }).subscribe();
+  }*/
 
 }

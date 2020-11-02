@@ -16,7 +16,7 @@
 }
 
 :host[color=black] {
-  * {
+  ::ng-deep * {
     color: white !important;
   }
 }

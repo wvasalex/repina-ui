@@ -24,6 +24,7 @@ import { MarkdownModule } from 'ngx-markdown';
 import { ArticleRequestComponent } from './article/article-request/article-request.component';
 import { ArticleSubscribeComponent } from './article/article-subscribe/article-subscribe.component';
 import { ArticleNextComponent } from './article/article-next/article-next.component';
+import { JournalHeaderComponent } from './journal-header/journal-header.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { ArticleNextComponent } from './article/article-next/article-next.compon
     ArticleRequestComponent,
     ArticleSubscribeComponent,
     ArticleNextComponent,
+    JournalHeaderComponent,
   ],
   imports: [
     CommonModule,

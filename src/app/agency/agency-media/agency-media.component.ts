@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ContentListItem } from '../../lists/lists.model';
-import { AgencyService } from '../agency.service';
 import { map } from 'rxjs/operators';
 import { errorAnimation } from '@shared/animations';
 import { BreakpointService } from '@shared/breakpoint.service';
+import { ContentListItem } from '../../lists/lists.model';
+import { AgencyService } from '../agency.service';
 
 @Component({
   selector: 'r-agency-media',
@@ -50,7 +50,7 @@ export class AgencyMediaComponent implements OnInit {
   }
 
   public $date(raw: string): string {
-    return raw.replace(/(\d+)[\s.-]+(\d+)[\s.-]+(\d+)/, '$1 — $2 / $3');
+    return raw.replace(/(\d+)\D+(\d+)\D+(\d+)/, '$1 — $2 / $3');
   }
 
 }

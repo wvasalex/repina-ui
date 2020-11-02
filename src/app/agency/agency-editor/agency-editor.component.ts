@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { AgencyService } from '../agency.service';
-import { ContentBlock } from '@shared/types';
+import { ContentBlock, ContentElement } from '@shared/types';
 import { ToasterService } from '@shared/toaster/toaster.service';
 import { AgencyRenderService } from '../agency-render.service';
 
@@ -38,6 +38,10 @@ export class AgencyEditorComponent implements OnInit {
   private _save() {
     const promises = [];
     this.blocks.forEach((block: ContentBlock) => {
+      block.content_elements.forEach((element: ContentElement) => {
+        delete element.content_file;
+      });
+
       if (block.block_type !== 'agency-gallery') {
         block.is_enabled = true;
         promises.push(this.agencyService.save(block).toPromise());

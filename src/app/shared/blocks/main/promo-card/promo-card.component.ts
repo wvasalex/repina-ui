@@ -12,7 +12,12 @@ export class PromoCardComponent extends BaseBlock implements OnInit {
   @Input() @HostBinding('attr.type') type: string;
 
   public ngOnInit(): void {
-    //this.type = this.props.type || '1';
+  }
+
+  public $click(e: Event) {
+    if (this.editor) {
+      e.preventDefault();
+    }
   }
 
 }

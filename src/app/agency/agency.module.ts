@@ -22,6 +22,7 @@ import { AgencyEditorComponent } from './agency-editor/agency-editor.component';
 import { MatButtonModule } from '@angular/material/button';
 import { AgencyGalleryComponent } from './agency-gallery/agency-gallery.component';
 import { AgencyImageComponent } from './agency-image/agency-image.component';
+import { AgencyHeaderComponent } from './agency-header/agency-header.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { AgencyImageComponent } from './agency-image/agency-image.component';
     AgencyEditorComponent,
     AgencyGalleryComponent,
     AgencyImageComponent,
+    AgencyHeaderComponent,
   ],
   imports: [
     CommonModule,

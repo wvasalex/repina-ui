@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { ContentBlock } from '@shared/types';
 import { AgencyService } from './agency.service';
 import { AgencyRenderService } from './agency-render.service';
@@ -14,7 +15,12 @@ export class AgencyComponent implements OnInit {
 
   public render = this.agencyRenderService.render;
 
-  public blocks$: Observable<ContentBlock[]> = this.agencyService.get();
+  public blocks$: Observable<ContentBlock[]> = this.agencyService.get()
+    .pipe(tap((blocks: ContentBlock[]) => {
+      this._blocks = blocks;
+    }));
+
+  private _blocks: ContentBlock[];
 
   private content_blocks = [
     {
@@ -152,11 +158,15 @@ export class AgencyComponent implements OnInit {
   public ngOnInit() {
   }
 
- /* @HostListener('dblclick') _init() {
-    this.content_blocks.forEach((block, position: number) => {
-      block.position = position;
-      this.agencyService.post(block).subscribe();
-    });
-  }*/
+  @HostListener('dblclick') _init() {
+    /*this._blocks.forEach((block, position: number) => {
+      block.position = position == 0 ? 1 : position == 1 ? 0 : position;
+      block.is_enabled = true;
+      this.agencyService.save({
+        id: block.id,
+        position: block.position,
+      }).subscribe();
+    });*/
+  }
 
 }

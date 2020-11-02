@@ -21,22 +21,19 @@
 
 <div class="nav row-column">
   <div class="links p-l">
-    <ng-container
+    <div
       *ngIf="!editor"
+      class="column"
     >
-      <div
-        class="column"
+      <a
+        *ngFor="let service of $parseServices(props.services); let first = first"
+        [routerLink]="['/services', service.value]"
+        [class.mt-1_5]="!first"
+        class="text32 bolder"
       >
-        <a
-          *ngFor="let service of $parseServices(props.services); let first = first"
-          [routerLink]="['/services', service.value]"
-          [class.mt-1_5]="!first"
-          class="text32 bolder"
-        >
-          {{service.label}}
-        </a>
-      </div>
-    </ng-container>
+        {{service.label}}
+      </a>
+    </div>
 
     <r-list-content
       *ngIf="editor"

@@ -4,20 +4,25 @@
 >
   <div>
     <div class="intro">
-      <div class="h3">
-        Журнал
-      </div>
-      <div
-        *ngIf="editor"
-        [r-block]="editor"
-        [innerHTML]="$getValue('description')"
-        (contentChanged)="$contentChanged($event, 'description')"
-        class="text32 mt-1"
-      ></div>
+      <r-md
+        [editor]="editor"
+        [props]="props"
+        prop="description"
+        className="h3"
+      ></r-md>
 
-      <r-button class="mt-2">
-        Все статьи
-      </r-button>
+      <r-md
+        [editor]="editor"
+        [props]="props"
+        prop="description"
+        className="text32 mt-1"
+      ></r-md>
+
+     <a [routerLink]="['/blog/']">
+       <r-button class="mt-2">
+         Все статьи
+       </r-button>
+     </a>
     </div>
   </div>
   <div>

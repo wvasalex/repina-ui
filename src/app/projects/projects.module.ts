@@ -33,6 +33,7 @@ import { ListReorderModule } from '@shared/list-reorder/list-reorder.module';
 import { ServicesModule } from '../services/services.module';
 import { SharedProjectsModule } from '@shared/projects/projects.module';
 import { SeoModule } from '@shared/seo/seo.module';
+import { ProjectsHeaderComponent } from './projects-header/projects-header.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { SeoModule } from '@shared/seo/seo.module';
     ProjectArticlesComponent,
     ProjectNextComponent,
     ProjectMediaComponent,
+    ProjectsHeaderComponent,
   ],
   imports: [
     CommonModule,

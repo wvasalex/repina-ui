@@ -113,7 +113,15 @@ export class ServiceEditorComponent implements OnInit {
     });
   }
 
-  public $save() {
+  public $save(tags: ServiceTag[]) {
+    if (this.service.tags) {
+      this.service.tags = this.service.tags.map((tagId: number) => {
+        return tags.find((tag: ServiceTag) => {
+          return tag.id === tagId;
+        });
+      });
+    }
+
     this._save();
   }
 
@@ -160,7 +168,12 @@ export class ServiceEditorComponent implements OnInit {
       }
       return normalize;
     };
-    normalize('parent')('tag')('tag_group')('activity_scope');
+    normalize('parent')('tag_group')('activity_scope');
+
+    if (service.tags) {
+      service.tags = service.tags.map((tag: ServiceTag) => tag.id);
+    }
+
     return service;
   }
 

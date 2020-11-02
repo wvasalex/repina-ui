@@ -10,6 +10,6 @@ import { BaseBlock } from '@shared/blocks/block.component';
 export class MdComponent extends BaseBlock {
 
   @Input() prop: string;
-  @Input() className: string = 'text32';
+  @Input() className: string = '';
 
 }

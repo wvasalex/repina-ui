@@ -10,6 +10,7 @@ import { AgencyCustomersComponent } from './agency-customers/agency-customers.co
 import { AgencyMediaComponent } from './agency-media/agency-media.component';
 import { AgencyGalleryComponent } from './agency-gallery/agency-gallery.component';
 import { AgencyImageComponent } from './agency-image/agency-image.component';
+import { AgencyHeaderComponent } from './agency-header/agency-header.component';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,7 @@ import { AgencyImageComponent } from './agency-image/agency-image.component';
 export class AgencyRenderService {
 
   public render = {
+    'agency-header': AgencyHeaderComponent,
     'agency-primary': AgencyPrimaryComponent,
     'agency-achievements': AgencyAchievementsComponent,
     'agency-repina': AgencyRepinaComponent,
