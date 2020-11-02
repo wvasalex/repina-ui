@@ -35,43 +35,21 @@
 
     <r-service-animation
       *ngIf="data?.service?.service_type === 'complex'"
+      [props]="props"
       image
       class="animation"
     ></r-service-animation>
 
-    <!--<r-service-image
-      [id]="elements?.length && elements[0].id"
-      [contentFile]="elements?.length && elements[0].content_file"
+    <r-image-upload
+      *ngIf="editor"
+      (upload)="$upload($event)"
       [editor]="editor"
+      [props]="props"
       image
-    ></r-service-image>-->
+    ></r-image-upload>
   </r-card>
 </r-padding>
 
 <ng-template #serviceTmp>
   Услуги
 </ng-template>
-
-<!--
-<r-padding
-  header
-  [horizontal]="true"
->
-  <r-card
-    color="black"
-    size="small"
-    subtitle="Услуги"
-    title="Корпоративный брендинг"
-    class="promo"
-  >
-    <div class="description text32 mt-1_5">
-      Репина Брендинг — одно из ведущих брендинговых агентств в России. Мы осуществляем полный комплекс услуг по разработке бренда продукта от исследования и стратегии до дизайна упаковки.
-    </div>
-    <r-button
-      class="mt-2"
-    >
-      Заказать
-    </r-button>
-  </r-card>
-</r-padding>
--->

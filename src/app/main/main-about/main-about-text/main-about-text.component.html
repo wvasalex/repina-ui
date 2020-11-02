@@ -1,13 +1,13 @@
-<div
-  [r-block]="editor"
-  [innerHTML]="$getValue('title')"
-  (contentChanged)="$contentChanged($event, 'title')"
-  class="h3"
-></div>
+<r-md
+  [editor]="editor"
+  [props]="props"
+  prop="title"
+  className="h3"
+></r-md>
 
-<div
-  [r-block]="editor"
-  [innerHTML]="$getValue('text')"
-  (contentChanged)="$contentChanged($event, 'text')"
-  class="text32 mt-1"
-></div>
+<r-md
+  [editor]="editor"
+  [props]="props"
+  prop="text"
+  className="text32 mt-1"
+></r-md>

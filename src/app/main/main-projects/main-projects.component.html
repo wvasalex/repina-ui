@@ -1,19 +1,22 @@
-<ng-container *ngIf="elements">
+<ng-container *ngIf="projects && promo">
   <r-grid type="big-small">
     <r-main-project
       [editor]="editor"
-      [props]="elements[0].props"
+      [props]="projects[0].props"
       rel="1"
+      r-parallax
     ></r-main-project>
     <r-main-project
       [editor]="editor"
-      [props]="elements[1].props"
+      [props]="projects[1].props"
       rel="2"
+      r-parallax
     ></r-main-project>
     <r-main-project
       [editor]="editor"
-      [props]="elements[2].props"
+      [props]="projects[2].props"
       rel="3"
+      r-parallax
     ></r-main-project>
   </r-grid>
 
@@ -23,18 +26,19 @@
   >
     <r-main-project
       [editor]="editor"
-      [props]="elements[3].props"
+      [props]="projects[3].props"
       rel="1"
+      r-parallax
     ></r-main-project>
 
     <r-promo-card
       [editor]="editor"
-      [id]="elements[4].id"
-      [props]="elements[4].props"
-      [contentFile]="elements[4].content_file"
+      [id]="promo[0].id"
+      [props]="promo[0].props"
+      [contentFile]="promo[0].content_file"
       type="1"
-      r-parallax
       rel="2"
+      r-parallax
     ></r-promo-card>
   </r-grid>
 
@@ -44,20 +48,23 @@
   >
     <r-main-project
       [editor]="editor"
-      [props]="elements[5].props"
+      [props]="projects[4].props"
       rel="1"
+      r-parallax
     ></r-main-project>
 
     <r-main-project
       [editor]="editor"
-      [props]="elements[6].props"
+      [props]="projects[5].props"
       rel="2"
+      r-parallax
     ></r-main-project>
 
     <r-main-project
       [editor]="editor"
-      [props]="elements[7].props"
+      [props]="projects[6].props"
       rel="3"
+      r-parallax
     ></r-main-project>
   </r-grid>
 
@@ -71,20 +78,22 @@
       [props]="elements[8].props"
       [contentFile]="elements[8].content_file"
       type="2"
-      r-parallax
       rel="1"
+      r-parallax
     ></r-promo-card>
 
     <r-main-project
       [editor]="editor"
-      [props]="elements[9].props"
+      [props]="projects[7].props"
       rel="2"
+      r-parallax
     ></r-main-project>
 
     <r-main-project
       [editor]="editor"
-      [props]="elements[10].props"
+      [props]="projects[8].props"
       rel="3"
+      r-parallax
     ></r-main-project>
   </r-grid>
 
@@ -94,8 +103,9 @@
   >
     <r-main-project
       [editor]="editor"
-      [props]="elements[11].props"
+      [props]="projects[9].props"
       rel="1"
+      r-parallax
     ></r-main-project>
 
     <r-promo-card
@@ -104,14 +114,15 @@
       [props]="elements[12].props"
       [contentFile]="elements[12].content_file"
       type="3"
-      r-parallax
       rel="2"
+      r-parallax
     ></r-promo-card>
 
     <r-main-project
       [editor]="editor"
-      [props]="elements[13].props"
+      [props]="projects[10].props"
       rel="3"
+      r-parallax
     ></r-main-project>
   </r-grid>
 
@@ -121,14 +132,16 @@
   >
     <r-main-project
       [editor]="editor"
-      [props]="elements[14].props"
+      [props]="projects[11].props"
       rel="1"
+      r-parallax
     ></r-main-project>
 
     <r-main-project
       [editor]="editor"
-      [props]="elements[15].props"
+      [props]="projects[12].props"
       rel="2"
+      r-parallax
     ></r-main-project>
 
     <r-project-all rel="3"></r-project-all>

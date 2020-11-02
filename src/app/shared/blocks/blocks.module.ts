@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { PromoCardComponent } from './main/promo-card/promo-card.component';
-import { MainHeaderComponent } from './main/main-header/main-header.component';
 import { SharedModule } from '../components/shared.module';
 import { SphereComponent } from './main/sphere/sphere.component';
 import { NavListComponent } from './nav/nav-list/nav-list.component';
@@ -21,6 +20,8 @@ import { DynamicModule } from 'ng-dynamic-component';
 import { MatMenuModule } from '@angular/material/menu';
 import { BlockBlankComponent } from './block-blank/block-blank.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MdComponent } from './md/md.component';
+import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
   imports: [
@@ -36,18 +37,19 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     GridModule,
     MatMenuModule,
     DragDropModule,
+    MarkdownModule,
   ],
   exports: [
     PromoCardComponent,
-    MainHeaderComponent,
     NavListComponent,
     IconNavListComponent,
     BlocksRenderComponent,
     BlockDirective,
+    MdComponent,
+    SphereComponent,
   ],
   declarations: [
     PromoCardComponent,
-    MainHeaderComponent,
     SphereComponent,
     NavListComponent,
     IconNavListComponent,
@@ -56,6 +58,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     BlockDirective,
     BlockSwitcherComponent,
     BlockBlankComponent,
+    MdComponent,
   ],
 })
 export class BlocksModule {

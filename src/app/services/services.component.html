@@ -1,18 +1,4 @@
 <r-page>
-  <r-padding [horizontal]="true">
-    <r-card
-      subtitle="Услуги"
-      class="promo wide"
-    >
-      <div
-        title
-        class="h2"
-      >
-        Мы помогаем <span class="underline">создавать</span> аутентичные бренды, которые наполняют бизнес энергией для движения вперед
-      </div>
-    </r-card>
-  </r-padding>
-
   <r-blocks-render
     *ngIf="blocks$ | async as blocks"
     [render]="render"
@@ -28,16 +14,12 @@
       <r-icon name="components/edit-white"></r-icon>
     </button>
 
-    <div
-      style="display: inline-block; width: 24px;"
-    ></div>
-
     <button
       [routerLink]="['/services', 'new']"
       mat-fab
       color="primary"
       class="ml-2"
-      style="display: inline-block"
+      style="margin-left: 16px"
     >
       <r-icon name="components/add-white"></r-icon>
     </button>

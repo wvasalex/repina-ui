@@ -33,6 +33,7 @@ import { ServiceProjectsComponent } from './service/service-projects/service-pro
 import { SharedProjectsModule } from '@shared/projects/projects.module';
 import { ServiceRelatedWikiComponent } from './service/service-related-wiki/service-related-wiki.component';
 import { ServiceAnimationComponent } from './service/service-animation/service-animation.component';
+import { ServicesHeaderComponent } from './services-header/services-header.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { ServiceAnimationComponent } from './service/service-animation/service-a
     ServiceProjectsComponent,
     ServiceRelatedWikiComponent,
     ServiceAnimationComponent,
+    ServicesHeaderComponent,
   ],
   imports: [
     CommonModule,

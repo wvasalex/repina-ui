@@ -1,5 +1,9 @@
-<r-page>
-  <r-main-header></r-main-header>
+<r-page *ngIf="blocks$ | async as blocks">
+  <r-blocks-render
+    [render]="render"
+    [blocks]="[blocks[0]]"
+    [editor]="editor"
+  ></r-blocks-render>
 
   <r-service-list
     [editor]="editor"
@@ -7,13 +11,21 @@
   ></r-service-list>
 
   <r-blocks-render
-    *ngIf="blocks$ | async as blocks"
     [render]="render"
-    [blocks]="blocks"
+    [blocks]="blocks.slice(1)"
     [editor]="editor"
   ></r-blocks-render>
 
   <r-fabs *rWithSession>
+    <button
+      (click)="$reorder()"
+      mat-fab
+      color="primary"
+      style="margin-right: 16px"
+    >
+      <r-icon name="components/reorder"></r-icon>
+    </button>
+
     <button
       *ngIf="!editor"
       (click)="editor = true"

@@ -1,5 +1,5 @@
 :host {
-  * {
-    color: inherit;
+  ::ng-deep * {
+    color: #fff !important;
   }
 }

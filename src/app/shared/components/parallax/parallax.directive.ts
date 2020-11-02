@@ -6,6 +6,7 @@ import { debounceTime, map, startWith, throttleTime } from 'rxjs/operators';
   selector: '[r-parallax]',
 })
 export class ParallaxDirective implements OnInit, OnDestroy {
+
   @Input() direction: 'reverse' | null = null;
 
   @HostBinding('class.parallax') cn: boolean = true;
@@ -25,7 +26,7 @@ export class ParallaxDirective implements OnInit, OnDestroy {
     }
 
     this.el = this.host.nativeElement;
-    setTimeout(() => this.init(), 10);
+    setTimeout(() => this.init(), 300);
 
     this.resize = fromEvent(window, 'resize').pipe(
       debounceTime(600),
@@ -41,6 +42,7 @@ export class ParallaxDirective implements OnInit, OnDestroy {
     const box = this.el.getBoundingClientRect();
 
     if (box.height == 0) {
+      console.log('reinit');
       return setTimeout(() => this.init(), 300);
     }
 
@@ -48,11 +50,11 @@ export class ParallaxDirective implements OnInit, OnDestroy {
     this.sub?.unsubscribe();
 
     const getOffset = () => {
-      return -.35 * (this.top - window.scrollY) + window.innerHeight / 5;
+      return -.33 * (this.top - window.scrollY) + window.innerHeight / 5;
     };
 
     this.sub = fromEvent(window, 'scroll').pipe(
-      throttleTime(10),
+      throttleTime(30),
       map(getOffset),
       startWith(getOffset()),
     ).subscribe((offset: number) => {
@@ -61,8 +63,12 @@ export class ParallaxDirective implements OnInit, OnDestroy {
       }
 
       if (this.direction == 'reverse') {
+        offset = Math.max(offset, 0);
+        //this.renderer.setStyle(this.el, 'transform', 'translateY(-' + offset + 'px)');
+
         this.renderer.setStyle(this.el, 'margin-top', '-' + offset + 'px');
-      } else if (offset <= 0) {
+      } else {
+        offset = Math.min(offset, 0);
         this.renderer.setStyle(this.el, 'transform', 'translateY(' + offset + 'px)');
       }
     });
@@ -70,9 +76,11 @@ export class ParallaxDirective implements OnInit, OnDestroy {
 
   private isInViewport(): boolean {
     const bounding = this.el.getBoundingClientRect();
+
     return (
       bounding.top >= 0 &&
       bounding.bottom <= (window.innerHeight + window.scrollY)
     );
   };
+
 }

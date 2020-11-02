@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Meta } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 import { SeoService } from '@shared/seo/seo.service';
 import { Subscription } from 'rxjs';
 import { SeoData } from '@shared/seo/seo.model';
@@ -29,6 +29,7 @@ export class SeoComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    private title: Title,
     private meta: Meta,
     private formBuilder: FormBuilder,
     private toasterService: ToasterService,
@@ -59,7 +60,10 @@ export class SeoComponent implements OnInit, OnDestroy {
       data.id = this._id;
     }
 
-    this.seoService.save(data).subscribe();
+    const req = this.seoService.save(data).toPromise().then(() => {
+      this._set(data);
+    });
+    this.toasterService.wrapPromise(req, 'SEO сохранено!', 'Не удалось сохранить SEO!');
   }
 
   private _url(): string {
@@ -73,6 +77,12 @@ export class SeoComponent implements OnInit, OnDestroy {
         this._set(seoData);
       } else {
         this._id = null;
+        this.formGroup.reset();
+
+        this._set({
+          model_name: this._url(),
+          props: this.formGroup.value,
+        });
       }
     });
   }
@@ -80,6 +90,7 @@ export class SeoComponent implements OnInit, OnDestroy {
   private _set(seo: SeoData) {
     this.formGroup.patchValue(seo.props);
 
+    this.title.setTitle(seo.props.title);
     for (let name in seo.props) {
       if (seo.props.hasOwnProperty(name)) {
         this.meta.updateTag({

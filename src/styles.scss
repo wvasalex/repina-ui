@@ -328,6 +328,10 @@ ul, ol {
 }
 
 markdown {
+  * {
+    color: inherit;
+  }
+
   p {
     white-space: pre-line;
   }
@@ -340,4 +344,9 @@ markdown {
   a {
     text-decoration: underline;
   }
+}
+
+.parallax {
+  will-change: transform, margin;
+  transition: 100ms;
 }

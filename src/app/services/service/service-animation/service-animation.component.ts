@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import * as lottie from 'assets/lottie.min.js';
-import { AnimationData1 } from './animations';
+import { BaseBlock } from '@shared/blocks/block.component';
 
 @Component({
   selector: 'r-service-animation',
@@ -8,21 +8,25 @@ import { AnimationData1 } from './animations';
   styleUrls: ['./service-animation.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ServiceAnimationComponent implements OnInit {
+export class ServiceAnimationComponent extends BaseBlock implements OnInit {
 
   @ViewChild('animation', {static: true}) animationContainer: ElementRef;
 
-  constructor() { }
-
   ngOnInit(): void {
+    const a = this.props.animation;
+    const animationData = a && JSON.parse(a);
+
+    if (!animationData) {
+      return;
+    }
+
     lottie.loadAnimation({
       container: this.animationContainer.nativeElement,
-      animationData: AnimationData1,
+      animationData: JSON.parse(animationData),
       renderer: 'svg',
       loop: true,
       autoplay: true,
-      rendererSettings: {
-      },
+      rendererSettings: {},
     });
   }
 

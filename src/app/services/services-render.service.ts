@@ -13,6 +13,7 @@ import { ServiceVideoComponent } from './service/service-video/service-video.com
 import { ServiceRequestComponent } from './service/service-request/service-request.component';
 import { ServiceProjectsComponent } from './service/service-projects/service-projects.component';
 import { ServiceRelatedWikiComponent } from './service/service-related-wiki/service-related-wiki.component';
+import { ServicesHeaderComponent } from './services-header/services-header.component';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,7 @@ export class ServicesRenderService {
 
   public render = {
     'blank': BlockBlankComponent,
+    'services-header': ServicesHeaderComponent,
     'services-primary': ServicesPrimaryComponent,
     'services-tech': ServicesTechComponent,
     'services-list': ServicesListComponent,

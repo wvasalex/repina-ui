@@ -1,0 +1,14 @@
+<div
+  *ngIf="editor"
+  [r-block]="editor"
+  [innerHTML]="$getValue(prop)"
+  (contentChanged)="$contentChanged($event, prop)"
+  [class.mt-1_5]="$getValue(prop)"
+  [ngClass]="className"
+></div>
+
+<markdown
+  *ngIf="!editor"
+  [data]="$normalizeSpaces(props[prop])"
+  [ngClass]="className"
+></markdown>

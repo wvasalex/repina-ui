@@ -6,7 +6,6 @@ import { SharedModule } from '@shared/components/shared.module';
 import { PageModule } from '@shared/page/page.module';
 import { GridModule } from '@shared/grid/grid.module';
 import { JournalModule } from '../journal/journal.module';
-import { AboutComponent } from './about/about.component';
 import { BlocksModule } from '@shared/blocks/blocks.module';
 import { ProjectsModule } from '../projects/projects.module';
 import { SharedProjectsModule } from '@shared/projects/projects.module';
@@ -20,17 +19,18 @@ import { MainArticlesComponent } from './main-articles/main-articles.component';
 import { MainArticleComponent } from './main-articles/main-article/main-article.component';
 import { MainAboutComponent } from './main-about/main-about.component';
 import { MainAboutTextComponent } from './main-about/main-about-text/main-about-text.component';
+import { MainHeaderComponent } from './main-header/main-header.component';
 
 @NgModule({
   declarations: [
     MainComponent,
-    AboutComponent,
     MainProjectsComponent,
     MainProjectComponent,
     MainArticlesComponent,
     MainArticleComponent,
     MainAboutComponent,
     MainAboutTextComponent,
+    MainHeaderComponent,
   ],
   imports: [
     CommonModule,

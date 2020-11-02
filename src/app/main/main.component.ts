@@ -7,6 +7,9 @@ import { MainRenderService } from './main-render.service';
 import { JournalService } from '../journal/journal.service';
 import { ToasterService } from '@shared/toaster/toaster.service';
 import { element } from 'protractor';
+import { ListReorderComponent } from '@shared/list-reorder/list-reorder.component';
+import { Project } from '@shared/projects/projects.model';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'r-main',
@@ -76,7 +79,7 @@ export class MainComponent extends BaseBlock implements OnInit {
           },
         },
         {
-          element_type: 'main-project',
+          element_type: 'main-promo',
           props: {
             type: '2',
             title: "Новость года! Мы получили 8 наград в области бренд-дизайна",
@@ -103,7 +106,7 @@ export class MainComponent extends BaseBlock implements OnInit {
           },
         },
         {
-          element_type: 'main-project',
+          element_type: 'main-promo',
           props: {
             type: '3',
             title: "Новость года! Мы получили 8 наград в области бренд-дизайна",
@@ -196,6 +199,7 @@ export class MainComponent extends BaseBlock implements OnInit {
   public blocks$: BehaviorSubject<ContentBlock[]> = new BehaviorSubject<ContentBlock[]>([]);
 
   constructor(
+    private dialog: MatDialog,
     private toasterService: ToasterService,
     private mainRenderService: MainRenderService,
     private mainService: MainService,
@@ -214,6 +218,27 @@ export class MainComponent extends BaseBlock implements OnInit {
     this._save();
   }
 
+  public $reorder() {
+    const reorder = (projects) => {
+      this.dialog.open(ListReorderComponent, {
+        data: {
+          items: projects.map((project: Project) => {
+            return {
+              image: project.preview_file,
+              ...project,
+            };
+          }),
+          onChange: (items) => {
+            this._saveProjects(items);
+          },
+        },
+      });
+    };
+
+    const resolver = this.mainService.getProjects(this.blocks$.value[1].content_elements);
+    resolver.then(reorder);
+  }
+
   private _save() {
     const promises = [];
     const blocks = this.blocks$.value;
@@ -224,6 +249,10 @@ export class MainComponent extends BaseBlock implements OnInit {
       block.content_elements.forEach((element: ContentElement, index: number) => {
         delete element.content_file;
         element.position = index;
+        /*element.element_type = 'main-project';
+        if (index === 4 || index === 8 || index === 12) {
+          element.element_type = 'main-promo';
+        }*/
       });
       promises.push(this.mainService.save(block).toPromise());
     });
@@ -232,7 +261,52 @@ export class MainComponent extends BaseBlock implements OnInit {
       Promise.all(promises), 'Сохранено', 'Не удалось сохранить');
   }
 
+  private _saveProjects(items: Project[]) {
+    const elements = items.map((item: Project) => {
+      return {
+        id: item['_element'].id,
+        position: item.position,
+      };
+    });
+
+    this.mainService.saveOrder(elements);
+
+    this.mainService.get().subscribe((blocks: ContentBlock[]) => {
+      this.blocks$.next(blocks);
+    });
+  }
+
   /*@HostListener('dblclick') _init() {
+    const blocks = this.blocks$.value;
+
+    blocks[0].block_type = 'main-projects';
+    blocks[0].content_elements.forEach((element: ContentElement, index: number) => {
+      delete element.content_file;
+      element.position = index;
+      element.element_type = 'main-project';
+      if (index === 4 || index === 8 || index === 12) {
+        element.element_type = 'main-promo';
+      }
+    });
+
+    blocks[1].block_type = 'main-articles';
+    blocks[1].content_elements.forEach((element: ContentElement, index: number) => {
+      delete element.content_file;
+      element.position = index;
+      element.element_type = 'main-article';
+    });
+
+    blocks[2].block_type = 'main-about';
+    blocks[2].content_elements.forEach((element: ContentElement, index: number) => {
+      delete element.content_file;
+      element.position = index;
+      element.element_type = 'main-about-text';
+    });
+
+    this.mainService.save(blocks[0]).toPromise();
+    this.mainService.save(blocks[1]).toPromise();
+    this.mainService.save(blocks[2]).toPromise();
+
     this.content_blocks.forEach((block, position: number) => {
       block.position = position;
       this.mainService.post(block).subscribe();

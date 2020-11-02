@@ -3,29 +3,46 @@
   [src]="contentFile"
 ></r-image>
 
-<button
-  *ngIf="editor && id"
-  mat-fab
-  class="upload"
->
-  <r-icon name="components/upload"></r-icon>
-  <input
-    (change)="$upload($event)"
-    type="file"
-    class="file"
+<ng-container *ngIf="endpoint">
+  <button
+    *ngIf="editor && id"
+    mat-fab
+    class="upload"
   >
-</button>
+    <r-icon name="components/upload"></r-icon>
+    <input
+      (change)="$upload($event)"
+      type="file"
+      class="file"
+    >
+  </button>
 
-<r-image-placeholder
-  *ngIf="editor && !id"
->
-  Сохраните для загрузки медиа
-</r-image-placeholder>
+  <r-image-placeholder
+    *ngIf="editor && !id"
+  >
+    Сохраните для загрузки медиа
+  </r-image-placeholder>
 
-<div
-  *ngIf="editor && contentFile"
-  (click)="$clear()"
-  class="clear"
->
-  <r-icon name="editor/clear"></r-icon>
-</div>
+  <div
+    *ngIf="editor && contentFile"
+    (click)="$clear()"
+    class="clear"
+  >
+    <r-icon name="editor/clear"></r-icon>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="!endpoint">
+  <button
+    *ngIf="editor"
+    mat-fab
+    class="upload"
+  >
+    <r-icon name="components/upload"></r-icon>
+    <input
+      (change)="$upload($event)"
+      type="file"
+      class="file"
+    >
+  </button>
+</ng-container>

@@ -26,6 +26,11 @@ export class ImageUploadComponent extends BaseBlock {
     const data = new FormData();
     data.append('content_file', file);
 
+    if (!this.endpoint) {
+      this.upload.emit(file);
+      return;
+    }
+
     this.api.postFile(`/api/v1/${this.endpoint}/${this.id}/`, data)
       .toPromise()
       .then((element: ContentElement) => {

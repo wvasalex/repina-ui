@@ -30,7 +30,7 @@ export class BlocksRenderComponent implements OnInit {
 
   public $visible(blocks: ContentBlock[]) {
     return blocks.filter((block: ContentBlock) => {
-      return !block._destroy;
+      return block && !block._destroy;
     }).sort((a, b) => {
       return a.position - b.position;
     });
@@ -64,11 +64,6 @@ export class BlocksRenderComponent implements OnInit {
     block.position = new_position;
     this.blocks.splice(position, 1);
     this.blocks.splice(new_position, 0, block);
-
-    /*block.position = new_position;
-    const blocks = this.blocks.slice();
-    moveItemInArray(blocks, position, new_position);
-    this.blocks = blocks;*/
   }
 
   public $swapElements(block: ContentBlock) {

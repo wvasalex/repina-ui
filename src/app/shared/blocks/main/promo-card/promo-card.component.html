@@ -1,18 +1,18 @@
-<div
-  [r-block]="editor"
-  [innerHTML]="$getValue('title')"
-  (contentChanged)="$contentChanged($event, 'title')"
-  class="h3"
-></div>
+<r-md
+  [editor]="editor"
+  [props]="props"
+  prop="title"
+  className="h3"
+></r-md>
 
 <div class="footer">
-  <div
+  <r-md
     *ngIf="type != '3'"
-    [r-block]="editor"
-    [innerHTML]="$getValue('source')"
-    (contentChanged)="$contentChanged($event, 'source')"
-    class="h3 label"
-  ></div>
+    [editor]="editor"
+    [props]="props"
+    prop="source"
+    className="h3 label"
+  ></r-md>
 
   <div
     *ngIf="contentFile && !editor"
