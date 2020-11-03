@@ -8,9 +8,11 @@ import { BaseBlock } from '@shared/blocks/block.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MenuItemComponent extends BaseBlock {
+
   public $click(e: Event) {
     if (this.editor) {
       e.preventDefault();
     }
   }
+
 }

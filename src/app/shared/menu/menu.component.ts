@@ -11,7 +11,6 @@ import {
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ContentBlock, ContentElement } from '@shared/types';
 import { MenuService } from '@shared/menu/menu.service';
-import { map } from 'rxjs/operators';
 import { ToasterService } from '@shared/toaster/toaster.service';
 
 @Component({

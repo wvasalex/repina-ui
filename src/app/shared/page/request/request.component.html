@@ -12,8 +12,32 @@
     <div class="h3">Брендинг для</div>
 
     <r-badge-list
-      [badges]="services"
+      (changed)="$change($event)"
+      [badges]="requestService.services"
+      [selected]="selected"
     ></r-badge-list>
+
+    <div
+      *ngIf="requestService.relations$ | async as relations"
+      @errorAnimation
+    >
+      <div
+        *ngFor="let relation of relations"
+        class=" mt-1_5"
+      >
+        <r-checkbox
+          (change)="$relationChanged(relation, $event)"
+          [disabled]="relation.meta.disabled"
+          [matTooltip]="relation.meta.disabledTooltip"
+          [matTooltipDisabled]="!relation.meta.disabled"
+          matTooltipClass="r-tooltip text24"
+          matTooltipPosition="above"
+          class="d-iblock"
+        >
+          {{relation.label}}
+        </r-checkbox>
+      </div>
+    </div>
 
     <form class="mt-5">
       <div class="h3">
@@ -47,7 +71,8 @@
       </r-button>
 
       <div class="mt-4 text24">
-        При заполнении формы, вы получите предложение в течение 30 минут. Запрос по другим каналам связи обрабатывается до 2-х рабочих дней.
+        При заполнении формы, вы получите предложение в течение 30 минут. Запрос по другим каналам связи обрабатывается
+        до 2-х рабочих дней.
       </div>
 
       <r-checkbox
@@ -58,7 +83,8 @@
 
       <div class="description text16 mt-1_5">
         Нажимая на кнопку «Получить предложение» Вы подтверждаете, что Вы ознакомились полностью с актуальной
-        <a href="/">Информационной политикой</a> на настоящем сайте, полностью согласны с ее положениями и выдали ООО «Репина брендинг» все согласия, указанные в вышеупомянутой Информационной политике
+        <a href="/">Информационной политикой</a> на настоящем сайте, полностью согласны с ее положениями и выдали ООО
+        «Репина брендинг» все согласия, указанные в вышеупомянутой Информационной политике
       </div>
     </form>
   </div>

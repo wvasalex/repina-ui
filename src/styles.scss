@@ -352,3 +352,9 @@ markdown {
   will-change: transform, margin;
   transition: 100ms;
 }
+
+.r-tooltip {
+  padding: 24px !important;
+  background: #000;
+  color: #fff;
+}

@@ -8,6 +8,8 @@ import { RequestComponent } from './request/request.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterModule } from '@shared/footer/footer.module';
 import { SeoModule } from '@shared/seo/seo.module';
+import { FormsModule } from '@angular/forms';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { SeoModule } from '@shared/seo/seo.module';
     FooterModule,
     SharedModule,
     SeoModule,
+    FormsModule,
+    MatTooltipModule,
   ],
 })
 export class PageModule { }

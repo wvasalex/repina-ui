@@ -7,6 +7,7 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input, OnInit } from '
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent implements OnInit {
+
   @Input() backgroundImage: string; // @HostBinding('style.backgroundImage')
   @Input() @HostBinding('class.fullscreen') fullscreenBackgroundImage: boolean;
 

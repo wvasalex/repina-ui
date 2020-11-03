@@ -38,3 +38,6 @@ input:checked+label::before {
 input:not(:disabled):not(:checked)+label:hover::before {
   border-color: #000;
 }
+input:disabled+label {
+  opacity: 0.25;
+}
