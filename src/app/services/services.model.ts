@@ -39,6 +39,7 @@ export interface Service {
 export interface ServiceTag {
   id: number;
   title: string;
+  show_in_projects?: boolean;
 }
 
 export interface ServiceTagGroup {

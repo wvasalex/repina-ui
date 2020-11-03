@@ -3,7 +3,7 @@ import { JournalService } from './journal.service';
 import { Article, BlogTag } from './journal.model';
 import { JournalTagsService } from './journal-tags.service';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { ContentBlock, StrMap } from '@shared/types';
 import { SelectOption } from '@shared/components/select/select.model';
 import { MatDialog } from '@angular/material/dialog';
@@ -22,12 +22,10 @@ export class JournalComponent implements OnInit {
 
   public header: ContentBlock;
 
-  public header$: Observable<ContentBlock> = this.journalPageService.get({ per_page: 200 })
+  public header$: Observable<ContentBlock> = this.journalPageService.getHeader()
     .pipe(
-      map((blocks: ContentBlock[]) => {
-        return this.header = blocks.find((block) => {
-          return block.block_type === 'journal-header';
-        });
+      tap((block: ContentBlock) => {
+        return this.header = block;
       }),
     );
 

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener } f
 import { MatDialog } from '@angular/material/dialog';
 import { BreakpointState } from '@angular/cdk/layout';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { BreakpointService } from '@shared/breakpoint.service';
 import { ProjectsService } from '@shared/projects/projects.service';
 import { Project } from '@shared/projects/projects.model';
@@ -24,12 +24,10 @@ export class ProjectsComponent {
 
   public header: ContentBlock;
 
-  public header$: Observable<ContentBlock> = this.projectsPageService.get({per_page: 200})
+  public header$: Observable<ContentBlock> = this.projectsPageService.getHeader()
     .pipe(
-      map((blocks: ContentBlock[]) => {
-        return this.header = blocks.find((block) => {
-          return block.block_type === 'projects-header';
-        });
+      tap((block: ContentBlock) => {
+        return this.header = block;
       }),
     );
 
@@ -39,7 +37,7 @@ export class ProjectsComponent {
     .pipe(map((tags: ServiceTag[]) => {
       return tags
         .filter((tag: ServiceTag) => {
-          return tag['show_in_projects'];
+          return tag.show_in_projects;
         })
         .map((tag: ServiceTag) => {
           return {
