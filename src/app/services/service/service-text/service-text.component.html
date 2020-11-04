@@ -1,4 +1,19 @@
 <div
+  *ngIf="editor"
+  [r-block]="editor"
+  [innerHTML]="$getValue('value')"
+  (contentChanged)="$contentChanged($event, 'value')"
+  class="text32 mt-1"
+></div>
+
+<markdown
+  *ngIf="!editor"
+  [data]="$normalizeSpaces(props.value)"
+  class="subtitle text32"
+></markdown>
+
+
+<!--<div
   *ngIf="$getValue('i') && index == 0; else blankIndex"
   [r-block]="editor"
   [innerHTML]="$getValue('i')"
@@ -33,4 +48,4 @@
 
 <ng-template #blankIndex>
   <div class="index"></div>
-</ng-template>
+</ng-template>-->

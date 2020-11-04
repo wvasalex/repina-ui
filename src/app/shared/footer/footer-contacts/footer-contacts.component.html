@@ -2,7 +2,9 @@
   <div>Контакты</div>
   <div class="bolder">
     {{data.phone}}<br>
-    {{data.email_address}}@{{data.email_domain}}
+    <a [attr.href]="'mailto:' + data.email_address + '@' + data.email_domain">
+      {{data.email_address}}@{{data.email_domain}}
+    </a>
   </div>
   <div class="mt-5">Адрес</div>
   <div class="bolder">

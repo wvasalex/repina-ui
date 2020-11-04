@@ -9,6 +9,7 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input, OnInit } from '
 export class BadgeComponent implements OnInit {
 
   @Input() @HostBinding('class.selected') selected: boolean = false;
+  @Input() @HostBinding('class.disabled') disabled: boolean = false;
 
   constructor() { }
 

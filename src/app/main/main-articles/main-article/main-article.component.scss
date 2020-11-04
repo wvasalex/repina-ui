@@ -11,3 +11,10 @@
   padding: 8px;
   background: #F8F8F8;
 }
+
+a:hover {
+  text-decoration: none;
+  ::ng-deep .h3 {
+    text-decoration: underline;
+  }
+}

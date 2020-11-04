@@ -1,3 +1,5 @@
+@import "src/theme";
+
 :host {
   display: flex;
   position: relative;
@@ -7,6 +9,10 @@
   width: 100%;
   height: 110%;
   background: #F8F8F8;
+
+  * {
+    color: inherit;
+  }
 
   .all-icon {
     background-image: url('/assets/icons/main/all.svg');
@@ -18,8 +24,11 @@
   }
 
   &:hover {
-    transition: ease-in 300ms;
-    background: rgba(0, 0, 0, .4);
+    .all-icon {
+      background-image: url('/assets/icons/main/all-active.svg');
+    }
+
+    color: $color-red;
   }
 }
 

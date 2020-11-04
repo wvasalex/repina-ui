@@ -43,6 +43,12 @@ body {
 
 h1, .h1 {
   font-weight: 600;
+
+  * {
+    font-weight: inherit;
+    font-size: inherit;
+    font-family: inherit;
+  }
 }
 
 h2, h3, h4, .h, .h2, .h3, .h4, button {
@@ -55,6 +61,10 @@ h2, h3, h4, .h, .h2, .h3, .h4, button {
     font-size: inherit;
     font-family: inherit;
   }
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 a, a:visited {
@@ -313,6 +323,10 @@ span.editable, a.editable {
 
 .h-underline:hover {
   text-decoration: underline;
+}
+
+a.underline:hover {
+  color: $color-red;
 }
 
 ndc-dynamic {

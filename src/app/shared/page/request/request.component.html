@@ -21,10 +21,16 @@
       *ngIf="requestService.relations$ | async as relations"
       @errorAnimation
     >
-      <div
+      <r-badge-list
+        (itemChanged)="$relationChanged($event)"
+        [badges]="relations"
+      ></r-badge-list>
+
+      <!--<div
         *ngFor="let relation of relations"
         class=" mt-1_5"
       >
+
         <r-checkbox
           (change)="$relationChanged(relation, $event)"
           [disabled]="relation.meta.disabled"
@@ -36,7 +42,7 @@
         >
           {{relation.label}}
         </r-checkbox>
-      </div>
+      </div>-->
     </div>
 
     <form class="mt-5">

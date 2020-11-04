@@ -2,7 +2,12 @@
   *ngFor="let badge of badges; let last = last;"
   (click)="$toggle(badge)"
   [selected]="selected.indexOf(badge) != -1"
+  [disabled]="badge.meta?.disabled"
   [class.mr-1]="!last"
+  [matTooltip]="badge.meta?.disabledTooltip"
+  [matTooltipDisabled]="!badge.meta?.disabled"
+  matTooltipClass="r-tooltip text24"
+  matTooltipPosition="above"
 >
   {{badge.label}}
 </r-badge>

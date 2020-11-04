@@ -12,5 +12,10 @@ button {
   outline: none;
   border-radius: 44px;
   white-space: nowrap;
+  transition: 100ms;
   cursor: pointer;
+
+  &:hover {
+    background: #000;
+  }
 }

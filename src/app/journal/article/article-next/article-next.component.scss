@@ -18,3 +18,11 @@
     margin-top: 64px;
   }
 }
+
+a:hover {
+  text-decoration: none;
+
+  ::ng-deep .h3 {
+    text-decoration: underline;
+  }
+}

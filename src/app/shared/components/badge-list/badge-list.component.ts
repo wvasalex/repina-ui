@@ -10,6 +10,7 @@ import { SelectOption } from '@shared/components/select/select.model';
 export class BadgeListComponent implements OnInit {
 
   @Output() changed: EventEmitter<SelectOption[]> = new EventEmitter<SelectOption[]>();
+  @Output() itemChanged: EventEmitter<any> = new EventEmitter<any>();
 
   @Input() badges: SelectOption[] = [];
   @Input() selected: SelectOption[] = [];
@@ -27,6 +28,10 @@ export class BadgeListComponent implements OnInit {
       this.selected.splice(index, 1);
     }
 
+    this.itemChanged.emit({
+      item: badge,
+      checked: index == -1,
+    });
     this.changed.emit(this.selected);
   }
 

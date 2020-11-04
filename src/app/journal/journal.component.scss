@@ -2,6 +2,14 @@
 
 }
 
+a:hover {
+  text-decoration: none;
+
+  ::ng-deep .h3 {
+    text-decoration: underline;
+  }
+}
+
 r-journal-snippet, r-subscribe {
   margin: 4rem 0;
 }

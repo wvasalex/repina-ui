@@ -33,8 +33,9 @@ export class RequestComponent implements OnInit {
     this.requestService.updateRelations(this.selected[0]);
   }
 
-  public $relationChanged(relation: SelectOption, e) {
-    const checked = relation.meta.checked = e.target.checked;
+  public $relationChanged(e) {
+    const relation = e.item;
+    const checked = relation.meta.checked = e.checked;
 
     if (relation.meta.deps) {
       this.requestService.toggleRelation(relation, checked);

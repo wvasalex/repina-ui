@@ -30,6 +30,7 @@ import { AspectRatioDirective } from './aspect-ratio.directive';
 import { LinebreaksPipe } from './linebreaks.pipe';
 import { ImageUploadComponent } from './image-upload/image-upload.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -93,6 +94,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatSelectModule,
     MatSnackBarModule,
     MatButtonModule,
+    MatTooltipModule,
   ],
 })
 export class SharedModule {

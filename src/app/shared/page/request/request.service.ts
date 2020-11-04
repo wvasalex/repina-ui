@@ -26,6 +26,8 @@ export class RequestService {
       const option = getOption(relations, relationId);
       option.meta.disabled = !checked;
     });
+
+    console.log(relations);
   }
 
 }
