@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, forwardRef, Input } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { errorAnimation } from '../../animations';
 
@@ -19,6 +19,7 @@ import { errorAnimation } from '../../animations';
   ],
 })
 export class InputComponent implements ControlValueAccessor {
+
   @Input() type: string = 'text';
   @Input() placeholder: string = '';
   @Input() disabled = false;
@@ -28,7 +29,7 @@ export class InputComponent implements ControlValueAccessor {
   public value: string = '';
   public error: string;
 
-  constructor() {
+  constructor(private changeDetectorRef: ChangeDetectorRef) {
   }
 
   public onChange: any = () => {
@@ -40,6 +41,7 @@ export class InputComponent implements ControlValueAccessor {
   public writeValue(value: any) {
     this.onChange(this.value = value || '');
     this.onTouch();
+    this.changeDetectorRef.detectChanges();
   }
 
   public registerOnChange(fn: any) {
@@ -49,4 +51,5 @@ export class InputComponent implements ControlValueAccessor {
   public registerOnTouched(fn: any) {
     this.onTouch = fn;
   }
+
 }

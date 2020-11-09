@@ -16,9 +16,16 @@
     >
       {{prop.label}}
     </mat-checkbox>
+
+    <r-image-upload
+      *ngIf="prop.type === 'file'"
+      [contentFile]="item.file"
+      [editor]="true"
+      [id]="item.id"
+      endpoint="/content_lists/"
+      name="file"
+    ></r-image-upload>
   </ng-container>
-
-
 </form>
 
 <div class="row mt-2">

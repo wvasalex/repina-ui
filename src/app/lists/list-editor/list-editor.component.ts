@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Inject, OnChanges, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { StrMap } from '@shared/types';
 

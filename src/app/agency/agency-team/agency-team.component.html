@@ -10,7 +10,10 @@
       [class.ml-2]="!first"
       class="member"
   >
-    <div class="member-image"></div>
+    <div
+      [style.backgroundImage]="member.file ? 'url(' + member.file + ')' : null"
+      class="member-image"
+    ></div>
     <div class="h3 mt-2">
       {{member.props.name}}
     </div>

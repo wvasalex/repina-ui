@@ -62,6 +62,11 @@ export const PropsDef = {
       name: 'role',
       label: 'Должность',
     },
+    {
+      name: 'file',
+      type: 'file',
+      label: 'Аватар',
+    },
   ],
   awards: [
     {

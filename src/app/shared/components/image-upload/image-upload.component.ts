@@ -14,6 +14,7 @@ export class ImageUploadComponent extends BaseBlock {
   @Output() upload: EventEmitter<File> = new EventEmitter<File>();
 
   @Input() endpoint: string = '';
+  @Input() name: string = 'content_file';
 
   constructor(
     private changeDetectoRef: ChangeDetectorRef,
@@ -24,7 +25,7 @@ export class ImageUploadComponent extends BaseBlock {
   public $upload(e) {
     const file = e.target.files[0];
     const data = new FormData();
-    data.append('content_file', file);
+    data.append(this.name, file);
 
     if (!this.endpoint) {
       this.upload.emit(file);
@@ -35,13 +36,13 @@ export class ImageUploadComponent extends BaseBlock {
       .toPromise()
       .then((element: ContentElement) => {
         this.upload.emit(file);
-        this.contentFile = element.content_file;
+        this.contentFile = element[this.name];
         this.changeDetectoRef.detectChanges();
       });
   }
 
   public $clear() {
-    this.api.patchStream(`/${this.endpoint}/${this.id}/`, { content_file: null }).toPromise();
+    this.api.patchStream(`/${this.endpoint}/${this.id}/`, { [this.name]: null }).toPromise();
     this.contentFile = null;
     this.changeDetectoRef.detectChanges();
   }

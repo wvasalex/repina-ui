@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { BaseBlock } from '@shared/blocks/block.component';
 import { AgencyService } from '../agency.service';
-import { Observable } from 'rxjs';
 import { ContentListItem } from '../../lists/lists.model';
-import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'r-agency-team',
@@ -12,6 +12,7 @@ import { tap } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AgencyTeamComponent extends BaseBlock {
+
   public members$: Observable<ContentListItem[]> = this.agencyService.getTeam()
     .pipe(tap((members: ContentListItem[]) => {
       this.pagesCount = Math.floor(members.length / this.pageSize);
@@ -43,4 +44,5 @@ export class AgencyTeamComponent extends BaseBlock {
       this.changeDetectorRef.detectChanges();
     }
   }
+
 }
