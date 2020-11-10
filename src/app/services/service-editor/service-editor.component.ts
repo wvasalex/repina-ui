@@ -33,7 +33,6 @@ export class ServiceEditorComponent implements OnInit {
   public render = this.servicesRenderService.render;
 
   public availableElements: SelectOption[] = [
-    {value: 'service-title', label: 'Заголовок'},
     {value: 'service-text', label: 'Текст'},
     {value: 'service-image', label: 'Изображение'},
     {value: 'service-quote', label: 'Цитата'},
@@ -129,6 +128,9 @@ export class ServiceEditorComponent implements OnInit {
     if (!this.service.title) {
       return this.toasterService.error('Название обязательно!');
     }
+
+    //console.log(this.service.content_blocks[0]?.content_elements[0]?.content_file);
+    //return;
 
     this.service.content_blocks.forEach((block: ContentBlock, index: number) => {
       block.position = index;

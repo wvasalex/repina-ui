@@ -1,14 +1,14 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ArticleHeaderComponent } from '../article/article-header/article-header.component';
-import { JournalService } from '../journal.service';
-import { Article, BlogTag } from '../journal.model';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { ContentBlock, ContentElement, StrMap } from '@shared/types';
 import { ToasterService } from '@shared/toaster/toaster.service';
 import { SelectOption } from '@shared/components/select/select.model';
+import { ArticleHeaderComponent } from '../article/article-header/article-header.component';
+import { JournalService } from '../journal.service';
+import { Article, BlogTag } from '../journal.model';
 import { JournalTagsService } from '../journal-tags.service';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'r-article-editor',

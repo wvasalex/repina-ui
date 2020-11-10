@@ -5,8 +5,7 @@
     (contentChanged)="$contentChanged($event, 'i')"
     *ngIf="$getValue('i')"
     class="index h3"
-  >
-  </div>
+  ></div>
 
   <div
     *ngIf="$getValue('title')"
@@ -14,18 +13,16 @@
     [innerHTML]="$getValue('title')"
     (contentChanged)="$contentChanged($event, 'title')"
     class="content title h3"
-  >
-  </div>
+  ></div>
 
   <div class="inner">
     <div
-      *ngIf="$getValue('title')"
+      *ngIf="$getValue('date')"
       [r-block]="editor"
       [innerHTML]="$getValue('date')"
       (contentChanged)="$contentChanged($event, 'date')"
       class="date h4"
-    >
-    </div>
+    ></div>
 
     <div class="content">
       <div
@@ -34,8 +31,7 @@
         (contentChanged)="$contentChanged($event, 'subtitle')"
         [class.mt-1_5]="$getValue('subtitle')"
         class="subtitle h4"
-      >
-      </div>
+      ></div>
 
       <r-blocks-render
         *ngIf="elements?.length"

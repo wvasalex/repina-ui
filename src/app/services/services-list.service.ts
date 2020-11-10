@@ -20,6 +20,7 @@ export class ServicesListService {
   public groupBy(field: string) {
     return this.servicesService.get({
       service_type__in: 'complex,single',
+      per_page: 200,
     })
       .pipe(
         map((services: Service[]) => {

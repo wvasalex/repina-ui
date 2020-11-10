@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { BlockBlankComponent } from '@shared/blocks/block-blank/block-blank.component';
 import { ServicesPrimaryComponent } from './services-primary/services-primary.component';
 import { ServicesTechComponent } from './services-tech/services-tech.component';
 import { ServicesListComponent } from './services-list/services-list.component';
@@ -21,14 +20,12 @@ import { ServicesHeaderComponent } from './services-header/services-header.compo
 export class ServicesRenderService {
 
   public render = {
-    'blank': BlockBlankComponent,
     'services-header': ServicesHeaderComponent,
     'services-primary': ServicesPrimaryComponent,
     'services-tech': ServicesTechComponent,
     'services-list': ServicesListComponent,
     'service-header': ServiceHeaderComponent,
     'service-block': ServiceBlockComponent,
-    'service-title': ServiceTitleComponent,
     'service-text': ServiceTextComponent,
     'service-image': ServiceImageComponent,
     'service-quote': ServiceQuoteComponent,

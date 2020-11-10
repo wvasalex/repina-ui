@@ -20,14 +20,16 @@ export class ServiceAnimationComponent extends BaseBlock implements OnInit {
       return;
     }
 
-    lottie.loadAnimation({
-      container: this.animationContainer.nativeElement,
-      animationData: JSON.parse(animationData),
-      renderer: 'svg',
-      loop: false,
-      autoplay: true,
-      rendererSettings: {},
-    });
+    setTimeout(() => {
+      lottie.loadAnimation({
+        container: this.animationContainer.nativeElement,
+        animationData: JSON.parse(animationData),
+        renderer: 'svg',
+        loop: false,
+        autoplay: true,
+        rendererSettings: {},
+      });
+    }, 300);
   }
 
 }

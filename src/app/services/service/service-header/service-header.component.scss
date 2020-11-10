@@ -1,9 +1,14 @@
 :host {
   display: block;
   background: #F8F8F8;
+  height: calc(100vh - 190px);
   min-height: 600px;
   padding-bottom: 6rem;
   box-sizing: border-box;
+
+  r-padding {
+    height: 100%;
+  }
 }
 
 .promo {

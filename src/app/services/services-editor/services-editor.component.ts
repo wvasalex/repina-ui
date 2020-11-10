@@ -85,6 +85,7 @@ export class ServicesEditorComponent implements OnInit {
 
   private _save() {
     const promises = [];
+
     this.blocks.forEach((block: ContentBlock) => {
       block.is_enabled = true;
       promises.push(this.servicesEditorService.save(block).toPromise());
