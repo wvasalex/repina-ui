@@ -20,7 +20,10 @@
     <div
       *ngIf="requestService.relations$ | async as relations"
       @errorAnimation
+      class="mt-2"
     >
+      <div class="h3">Услуги</div>
+
       <r-badge-list
         (itemChanged)="$relationChanged($event)"
         [badges]="relations"

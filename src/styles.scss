@@ -25,7 +25,6 @@ $repina-ui-theme: mat-light-theme($repina-ui-primary, $repina-ui-accent, $repina
 // that you are using.
 @include angular-material-theme($repina-ui-theme);
 
-
 html, body {
   width: 100%;
   height: 100%;
@@ -327,6 +326,7 @@ span.editable, a.editable {
 
 a.underline:hover {
   color: $color-red;
+  transition: $transition;
 }
 
 ndc-dynamic {

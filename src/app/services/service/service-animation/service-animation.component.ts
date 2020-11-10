@@ -24,7 +24,7 @@ export class ServiceAnimationComponent extends BaseBlock implements OnInit {
       container: this.animationContainer.nativeElement,
       animationData: JSON.parse(animationData),
       renderer: 'svg',
-      loop: true,
+      loop: false,
       autoplay: true,
       rendererSettings: {},
     });
