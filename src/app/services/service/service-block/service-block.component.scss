@@ -18,13 +18,9 @@
   }
 }
 
-.title {
-  padding: 4rem 0 0;
-}
-
 .title, .subtitle {
   width: 50%;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .inner {
@@ -36,7 +32,7 @@
 }
 
 .mb-30 {
-  margin-bottom: 30px;
+  margin-bottom: 64px;
 }
 
 :host:not([editor]) {
@@ -56,7 +52,6 @@
 
 .index {
   position: absolute;
-  margin-top: 64px;
 }
 
 .add-element {

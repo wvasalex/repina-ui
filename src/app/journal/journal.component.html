@@ -19,7 +19,7 @@
   <r-padding *ngIf="groups$ | async as groups">
     <div
       *ngFor="let group of groups"
-      class="row-column"
+      class="group"
     >
       <ng-container *ngFor="let article of group; let first = first; let index = index; let last = last;">
         <ng-container *ngIf="article">
@@ -27,8 +27,6 @@
             *ngIf="article.slug"
             [routerLink]="[article.slug]"
             [class.big]="group.length == 2 && first"
-            [class.ml-30]="!first"
-            [class.mr-30]="group.length == 3 && index == 1"
           >
             <r-journal-snippet
               [tag]="article.blog_tag?.title"
@@ -43,7 +41,7 @@
           <r-article-subscribe
             *ngIf="article.type === 'subscribe'"
             [props]="{ value: 'Узнавайте о последних новостях' }"
-            class="subscription-block ml-30"
+            class="subscription-block"
           ></r-article-subscribe>
         </ng-container>
       </ng-container>
@@ -87,3 +85,8 @@
    </button>
  </r-fabs>
 </r-page>
+<!--
+
+            [class.ml-30]="!first"
+            [class.mr-30]="group.length == 3 && index == 1"
+-->

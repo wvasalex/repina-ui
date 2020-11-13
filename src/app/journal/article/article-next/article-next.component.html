@@ -5,10 +5,10 @@
   <div>
     <div class="text">
       <div class="h3">Блог</div>
-      <div class="text32 mt-1">
-        Мы любим слушать и любим говорить.
-        Читайте наш журнал о брендинге и дизайне
-      </div>
+      <div
+        [innerHTML]="$normalizeSpaces('Мы любим слушать и любим говорить. Читайте наш журнал о брендинге и дизайне')"
+        class="text32 mt-1"
+      ></div>
       <a [routerLink]="['/blog']">
         <r-button class="mt-2">
           Все статьи
