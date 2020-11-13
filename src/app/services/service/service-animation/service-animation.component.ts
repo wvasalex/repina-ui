@@ -14,7 +14,11 @@ export class ServiceAnimationComponent extends BaseBlock implements OnInit {
 
   ngOnInit(): void {
     const a = this.props.animation;
-    const animationData = a && JSON.parse(a);
+    let animationData;
+    try {
+      animationData = a && JSON.parse(a);
+    } catch (e) {
+    }
 
     if (!animationData) {
       return;

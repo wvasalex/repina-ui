@@ -1,11 +1,11 @@
-<r-padding
+<div
   *ngIf="services$ | async as services"
-  [horizontal]="true"
   class="row"
 >
-  <div>
+  <r-padding [horizontal]="false">
     <div
       *ngFor="let service of services; let index = index; let first = first;"
+      (mouseenter)="$setAnimation(service.preview_file)"
       [class.mt-4]="!first"
       class="service"
     >
@@ -17,8 +17,13 @@
         {{service.title}}
       </a>
     </div>
-  </div>
+  </r-padding>
   <div class="right">
-    <div class="circle"></div>
+    <r-service-animation
+      *ngIf="animation$ | async as animation"
+      [props]="{'animation': animation}"
+      image
+      class="animation p-r"
+    ></r-service-animation>
   </div>
-</r-padding>
+</div>

@@ -2,12 +2,16 @@
 
 :host {
   display: block;
-  padding: 8rem 0;
   background: #000;
   margin-top: 8rem;
 
   * {
     color: #fff;
+  }
+
+  r-padding {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
   }
 }
 
@@ -28,6 +32,13 @@
 .right {
   display: flex;
   justify-content: flex-end;
+  position: relative;
+}
+
+.animation {
+  position: absolute;
+  bottom: -8px;
+  height: auto;
 }
 
 .circle {

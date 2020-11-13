@@ -129,8 +129,7 @@ export class ServiceEditorComponent implements OnInit {
       return this.toasterService.error('Название обязательно!');
     }
 
-    //console.log(this.service.content_blocks[0]?.content_elements[0]?.content_file);
-    //return;
+    this.service.preview_file = this.service.content_blocks[0]?.props?.animation;
 
     this.service.content_blocks.forEach((block: ContentBlock, index: number) => {
       block.position = index;
