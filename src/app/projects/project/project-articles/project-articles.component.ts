@@ -1,11 +1,9 @@
 import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { ContentListItem } from '../../../lists/lists.model';
-import { ListsService } from '../../../lists/lists.service';
 import { SelectOption } from '@shared/components/select/select.model';
 import { BaseBlock } from '@shared/blocks/block.component';
-import { JournalService } from '../../../journal/journal.service';
-import { Article } from '../../../journal/journal.model';
+import { ContentListItem } from '../../../lists/lists.model';
+import { ListsService } from '../../../lists/lists.service';
 
 @Component({
   selector: 'r-project-articles',

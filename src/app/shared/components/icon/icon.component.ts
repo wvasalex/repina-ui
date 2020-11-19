@@ -7,6 +7,7 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input, OnInit } from '
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IconComponent implements OnInit {
+
   @Input() name: string;
   @Input() @HostBinding('style.width.px') width: number = 24;
   @Input() @HostBinding('style.height.px') height: number = 24;

@@ -18,6 +18,11 @@
     padding-top: 8rem;
     margin-left: 15px;
   }
+
+  ::ng-deep h1 {
+    font: inherit;
+    margin: 0;
+  }
 }
 
 .w768 :host, .w320 :host {

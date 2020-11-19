@@ -3,21 +3,23 @@
     size="small"
     class="promo"
   >
-    <div
-      (contentChanged)="$contentChanged($event, 'subtitle')"
-      [r-block]="editor"
-      [innerHTML]="$getValue('subtitle')"
+    <r-md
+      [props]="props"
+      [editor]="editor"
+      prop="subtitle"
+      className="text32"
+      class="mt-1"
       subtitle
-      class="text32 mt-1"
-    ></div>
+    ></r-md>
 
-    <div
-      (contentChanged)="$contentChanged($event, 'title')"
-      [r-block]="editor"
-      [innerHTML]="$getValue('title')"
+    <r-md
+      [props]="props"
+      [editor]="editor"
+      prop="title"
+      className="h1"
+      class="mt-1"
       title
-      class="h2 mt-1"
-    ></div>
+    ></r-md>
 
     <div description>
       <div

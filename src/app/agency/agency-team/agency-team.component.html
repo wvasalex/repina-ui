@@ -1,9 +1,13 @@
+<h2>
+  Команда
+</h2>
+
 <div
   *ngIf="members$ | async as members"
   (swipeleft)="$next()"
   (swiperight)="$prev()"
   [style.marginLeft.%]="-105 * currentIndex"
-  class="row list"
+  class="row list mt-3"
 >
   <div
       *ngFor="let member of members; let first = first;"

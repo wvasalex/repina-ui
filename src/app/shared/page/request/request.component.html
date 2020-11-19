@@ -4,12 +4,13 @@
   class="row-column"
 >
   <div *ngIf="title">
-    <div class="h3">
-      {{title}}
-    </div>
+    <div
+      [innerHTML]="title"
+      class="h2"
+    ></div>
   </div>
   <div class="column">
-    <div class="h3">Брендинг для</div>
+    <div class="h2">Брендинг для</div>
 
     <r-badge-list
       (changed)="$change($event)"
@@ -22,34 +23,16 @@
       @errorAnimation
       class="mt-2"
     >
-      <div class="h3">Услуги</div>
+      <div class="h2">Услуги</div>
 
       <r-badge-list
         (itemChanged)="$relationChanged($event)"
         [badges]="relations"
       ></r-badge-list>
-
-      <!--<div
-        *ngFor="let relation of relations"
-        class=" mt-1_5"
-      >
-
-        <r-checkbox
-          (change)="$relationChanged(relation, $event)"
-          [disabled]="relation.meta.disabled"
-          [matTooltip]="relation.meta.disabledTooltip"
-          [matTooltipDisabled]="!relation.meta.disabled"
-          matTooltipClass="r-tooltip text24"
-          matTooltipPosition="above"
-          class="d-iblock"
-        >
-          {{relation.label}}
-        </r-checkbox>
-      </div>-->
     </div>
 
     <form class="mt-5">
-      <div class="h3">
+      <div class="h2">
         Ваши контакты
       </div>
 

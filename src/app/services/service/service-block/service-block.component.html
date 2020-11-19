@@ -1,35 +1,19 @@
-<!--<r-padding>
-  <r-blocks-render
-    *ngIf="elements?.length"
-    [render]="render"
-    [blocks]="elements"
-    [availableElements]="availableElements"
-    [editor]="editor"
-    [data]="data"
-    typeKey="element_type"
-    class="row-column mt-1_5"
-  ></r-blocks-render>
-</r-padding>
--->
-
 <r-padding>
   <div
+    *ngIf="$getValue('i')"
     [r-block]="editor"
     [innerHTML]="$getValue('i')"
     (contentChanged)="$contentChanged($event, 'i')"
-    *ngIf="$getValue('i')"
-    class="index h3"
-  >
-  </div>
+    class="index h2"
+  ></div>
 
-  <div
-    *ngIf="$getValue('title')"
-    [r-block]="editor"
-    [innerHTML]="$getValue('title')"
-    (contentChanged)="$contentChanged($event, 'title')"
-    class="content title h3"
-  >
-  </div>
+  <r-md
+    [props]="props"
+    [editor]="editor"
+    prop="title"
+    className="h2"
+    class="content title"
+  ></r-md>
 
   <div class="inner">
     <div
@@ -38,8 +22,7 @@
       [innerHTML]="$getValue('date')"
       (contentChanged)="$contentChanged($event, 'date')"
       class="date h4"
-    >
-    </div>
+    ></div>
 
     <div class="content">
       <div
@@ -48,8 +31,7 @@
         (contentChanged)="$contentChanged($event, 'subtitle')"
         [class.mt-1_5]="$getValue('subtitle')"
         class="subtitle h4"
-      >
-      </div>
+      ></div>
 
       <r-blocks-render
         *ngIf="elements?.length"

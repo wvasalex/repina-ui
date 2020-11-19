@@ -1,7 +1,7 @@
 <ng-container *ngIf="!editor && props.articles">
   <div class="row-column pv-8">
     <div>
-      <div class="h3">
+      <div class="h2">
         Статьи и награды
       </div>
     </div>
@@ -12,7 +12,7 @@
       >
         <a
           [attr.href]="$href(article.value)"
-          class="h3"
+          class="h2"
         >
           {{$title(article.label)}}
         </a>

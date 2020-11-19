@@ -1,20 +1,29 @@
 <r-padding>
   <r-card>
-    <div
+    <!--<div
       (contentChanged)="$contentChanged($event, 'title')"
       [r-block]="editor"
       [innerHTML]="$getValue('title')"
       title
       class="h2 mt-1"
-    ></div>
+    ></div>-->
+    <r-md
+      [props]="props"
+      [editor]="editor"
+      prop="title"
+      className="h2"
+      class="mt-1"
+      title
+    ></r-md>
 
-    <div
-      (contentChanged)="$contentChanged($event, 'subtitle')"
-      [r-block]="editor"
-      [innerHTML]="$getValue('subtitle')"
+    <r-md
+      [props]="props"
+      [editor]="editor"
+      prop="subtitle"
+      className="h4"
+      class="mt-1"
       subtitle
-      class="h4 mt-1"
-    ></div>
+    ></r-md>
 
     <div
       (contentChanged)="$contentChanged($event, 'description')"

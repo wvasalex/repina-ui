@@ -1,13 +1,6 @@
-<div
-  *ngIf="editor"
-  [r-block]="editor"
-  [innerHTML]="$getValue('value')"
-  (contentChanged)="$contentChanged($event, 'value')"
-  class="text32 mt-1"
-></div>
-
-<markdown
-  *ngIf="!editor"
-  [data]="$normalizeSpaces(props.value)"
-  class="subtitle text32"
-></markdown>
+<r-md
+  [props]="props"
+  [editor]="editor"
+  prop="value"
+  className="subtitle text32"
+></r-md>

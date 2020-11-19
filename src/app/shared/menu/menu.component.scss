@@ -1,8 +1,10 @@
 @import 'src/styles';
+@import 'src/theme';
 
 :host {
   display: block;
   overflow: hidden;
+  padding: 42px var(--padding-horizontal, 0);
 
   .full, .mobile, .mobile-open {
     display: flex;

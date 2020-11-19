@@ -1,20 +1,30 @@
-<div
+<!--div
   *ngIf="editor"
   [r-block]="editor"
   [innerHTML]="$getValue('title')"
   (contentChanged)="$contentChanged($event, 'title')"
-  class="h3"
-></div>
+  class="h2"
+></div-->
 
-<markdown
-  *ngIf="!editor"
-  [data]="$normalizeSpaces(props.title)"
-  class="h3"
-></markdown>
+<r-md
+  [props]="props"
+  [editor]="editor"
+  prop="title"
+  className="h2"
+></r-md>
 
+<r-md
+  [props]="props"
+  [editor]="editor"
+  prop="text"
+  className="text32"
+  class="mt-1"
+></r-md>
+
+<!--
 <div
   [r-block]="editor"
   [innerHTML]="$getValue('text')"
   (contentChanged)="$contentChanged($event, 'text')"
   class="text32 mt-1"
-></div>
+></div>-->

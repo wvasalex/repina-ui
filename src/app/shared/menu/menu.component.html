@@ -1,86 +1,84 @@
-<r-padding [horizontal]="true">
-  <div
-    *ngIf="menu"
-    class="full"
-  >
-    <a [routerLink]="['/']">
-      <r-logo [menuColor]="color"></r-logo>
-    </a>
+<div
+  *ngIf="menu"
+  class="full"
+>
+  <a [routerLink]="['/']">
+    <r-logo [menuColor]="color"></r-logo>
+  </a>
 
-    <div class="menu">
-      <ng-container *ngIf="!editor">
-        <r-menu-item
-          *ngFor="let item of $enabled(menu.content_elements)"
-          [props]="item.props"
-          class="menu-item h-underline ml-2"
-        >
-        </r-menu-item>
-        <r-button
-          (click)="$priceRequest()"
-          class="menu-item request-button ml-2"
-        >
-          Запросить стоимость
-        </r-button>
-        <a
-          class="menu-item ml-2"
-        >
-          Eng
-        </a>
-      </ng-container>
-
-      <div
-        *ngIf="editor"
-        cdkDropList
-        cdkDropListOrientation="horizontal"
-        (cdkDropListDropped)="$sort($event)"
-        class="menu"
+  <div class="menu">
+    <ng-container *ngIf="!editor">
+      <r-menu-item
+        *ngFor="let item of $enabled(menu.content_elements)"
+        [props]="item.props"
+        class="menu-item h-underline ml-2"
       >
-        <r-menu-item
-          *ngFor="let item of menu.content_elements"
-          (change)="$save()"
-          [props]="item.props"
-          [editor]="true"
-          cdkDrag
-          class="menu-item ml-2"
-        >
-          <r-icon-button
-            cdkDragHandle
-            icon="move"
-            size="16"
-            style="margin-bottom:4px;"
-          ></r-icon-button>
-          <mat-checkbox
-            (change)="$save()"
-            [(ngModel)]="item.props.enabled"
-            style="margin-bottom:6px;"
-          ></mat-checkbox>
-        </r-menu-item>
-      </div>
-      <r-icon-button
-        *rWithSession
-        (click)="$toggleEditor()"
-        icon="edit"
-        class="menu-item ml-2"
-      ></r-icon-button>
-    </div>
-  </div>
-
-  <div class="mobile">
-    <a [routerLink]="['/']">
-      <r-logo [menuColor]="color"></r-logo>
-    </a>
-    <div class="menu">
+      </r-menu-item>
       <r-button
         (click)="$priceRequest()"
         class="menu-item request-button ml-2"
       >
         Запросить стоимость
       </r-button>
-      <r-burger
-        (click)="$openDrawer()"
-        [menuColor]="color"
-        class="ml-2"
-      ></r-burger>
+      <a
+        class="menu-item ml-2"
+      >
+        Eng
+      </a>
+    </ng-container>
+
+    <div
+      *ngIf="editor"
+      cdkDropList
+      cdkDropListOrientation="horizontal"
+      (cdkDropListDropped)="$sort($event)"
+      class="menu"
+    >
+      <r-menu-item
+        *ngFor="let item of menu.content_elements"
+        (change)="$save()"
+        [props]="item.props"
+        [editor]="true"
+        cdkDrag
+        class="menu-item ml-2"
+      >
+        <r-icon-button
+          cdkDragHandle
+          icon="move"
+          size="16"
+          style="margin-bottom:4px;"
+        ></r-icon-button>
+        <mat-checkbox
+          (change)="$save()"
+          [(ngModel)]="item.props.enabled"
+          style="margin-bottom:6px;"
+        ></mat-checkbox>
+      </r-menu-item>
     </div>
+    <r-icon-button
+      *rWithSession
+      (click)="$toggleEditor()"
+      icon="edit"
+      class="menu-item ml-2"
+    ></r-icon-button>
   </div>
-</r-padding>
+</div>
+
+<div class="mobile">
+  <a [routerLink]="['/']">
+    <r-logo [menuColor]="color"></r-logo>
+  </a>
+  <div class="menu">
+    <r-button
+      (click)="$priceRequest()"
+      class="menu-item request-button ml-2"
+    >
+      Запросить стоимость
+    </r-button>
+    <r-burger
+      (click)="$openDrawer()"
+      [menuColor]="color"
+      class="ml-2"
+    ></r-burger>
+  </div>
+</div>

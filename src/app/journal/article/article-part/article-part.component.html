@@ -4,16 +4,16 @@
     [innerHTML]="$getValue('i')"
     (contentChanged)="$contentChanged($event, 'i')"
     *ngIf="$getValue('i')"
-    class="index h3"
+    class="index h2"
   ></div>
 
-  <div
-    *ngIf="$getValue('title')"
-    [r-block]="editor"
-    [innerHTML]="$getValue('title')"
-    (contentChanged)="$contentChanged($event, 'title')"
-    class="content title h3"
-  ></div>
+  <r-md
+    [props]="props"
+    [editor]="editor"
+    prop="title"
+    className="h2"
+    class="content title"
+  ></r-md>
 
   <div class="inner">
     <div

@@ -2,38 +2,46 @@
 </r-page>
 
 <ng-template #contentTmp>
-  <r-padding>
-    <div class="row-column">
-      <div class="address-wrapper">
-        <r-contacts-address
-          *ngIf="block"
-          (change)="$save()"
-          [props]="block.content_elements[0].props"
-          [editor]="editor"
-        ></r-contacts-address>
-        <div
-          *rWithSession
-          class="controls"
-        >
-          <r-icon-button
-            (click)="$toggleEditor()"
-            icon="edit"
-            [size]="32"
-          ></r-icon-button>
-        </div>
+  <r-padding
+    [horizontal]="false"
+    class="row-column"
+  >
+    <div class="address-wrapper">
+
+      <r-icon
+        name="main/success"
+        width="93"
+        height="179"
+      ></r-icon>
+
+      <r-contacts-address
+        *ngIf="block"
+        (change)="$save()"
+        [props]="block.content_elements[0].props"
+        [editor]="editor"
+      ></r-contacts-address>
+      <div
+        *rWithSession
+        class="controls"
+      >
+        <r-icon-button
+          (click)="$toggleEditor()"
+          icon="edit"
+          [size]="32"
+        ></r-icon-button>
       </div>
-      <r-request
-        [disablePadding]="true"
-        [title]="''"
-        style="padding: 0;"
-      ></r-request>
     </div>
+    <r-request
+      [disablePadding]="true"
+      [title]="''"
+      style="padding: 0;"
+    ></r-request>
   </r-padding>
   <div class="mt-3">
     <div
-      #map
-      [hidden]="!block?.content_elements[0].props.address"
-      class="map"
+        #map
+        [hidden]="!block?.content_elements[0].props.address"
+        class="map"
     >
     </div>
   </div>

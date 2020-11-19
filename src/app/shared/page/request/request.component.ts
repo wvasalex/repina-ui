@@ -14,7 +14,7 @@ import { errorAnimation } from '@shared/animations';
 })
 export class RequestComponent implements OnInit {
 
-  @Input() title: string = 'Запрос коммерческого предложения';
+  @Input() title: string = 'Запрос коммерческого<br>предложения';
   @Input() disablePadding: boolean = false;
 
   public selected: SelectOption[] = [];

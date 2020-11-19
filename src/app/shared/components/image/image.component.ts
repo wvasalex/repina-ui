@@ -7,7 +7,9 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ImageComponent implements OnInit {
+
   @Input() src: string;
+  @Input() alt: string;
 
   constructor() { }
 

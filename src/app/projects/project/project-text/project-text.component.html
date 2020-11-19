@@ -3,32 +3,25 @@
   [r-block]="editor"
   [innerHTML]="$getValue('i')"
   (contentChanged)="$contentChanged($event, 'i')"
-  class="index h3"
->
-</div>
+  class="index h2"
+></div>
 
 <div class="column">
-  <div
+  <r-md
     *ngIf="$getValue('title')"
-    [r-block]="editor"
-    [innerHTML]="$getValue('title')"
-    (contentChanged)="$contentChanged($event, 'title')"
-    class="content title h3"
-  ></div>
+    [props]="props"
+    [editor]="editor"
+    className="h2 title"
+    prop="title"
+    class="title"
+  ></r-md>
 
-  <div
-    *ngIf="editor"
-    [r-block]="editor"
-    [innerHTML]="$getValue('subtitle')"
-    (contentChanged)="$contentChanged($event, 'subtitle')"
-    [class.mt-1_5]="$getValue('subtitle')"
-    class="subtitle text32"
-  ></div>
-
-  <markdown
-    *ngIf="!editor"
-    [data]="$normalizeSpaces(props.subtitle)"
-    class="subtitle text32"
-  ></markdown>
-
+  <r-md
+    *ngIf="$getValue('subtitle')"
+    [props]="props"
+    [editor]="editor"
+    className="text32"
+    prop="subtitle"
+    class="subtitle"
+  ></r-md>
 </div>

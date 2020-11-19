@@ -8,6 +8,7 @@ import { ContentElement } from '@shared/types';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IconNavListComponent implements OnInit {
+
   @Input() blocks: string[][];
   @Input() title: String;
   @Input() elements: ContentElement[];

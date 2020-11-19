@@ -2,9 +2,9 @@
   *ngIf="media$ | async as media"
   [horizontal]="true"
 >
-  <div class="h3">
+  <h2>
     200+ публикации в СМИ
-  </div>
+  </h2>
 
   <div class="grid">
     <div
@@ -15,7 +15,7 @@
       <a
         [attr.href]="article.props.href || '#'"
         target="_blank"
-        class="h3"
+        class="h2"
       >{{article.props.source}}</a>
       <div class="h4 mt-1">{{$date(article.props.date)}}</div>
       <div class="text32 mt-1">{{article.props.text}}</div>

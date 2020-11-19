@@ -10,6 +10,7 @@
   box-sizing: border-box;
   border: 2px solid #EBEBEB;
   cursor: pointer;
+  transition: 100ms;
   
   &.selected {
     background: #000;
@@ -19,5 +20,13 @@
   &.disabled {
     border: 2px solid #EBEBEB;
     background: #fff;
+  }
+
+  &:not(.selected):hover {
+    color: rgba(0, 0, 0, .5);
+  }
+
+  &.selected:hover {
+    background: rgba(0, 0, 0, .5);
   }
 }

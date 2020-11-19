@@ -21,6 +21,15 @@ a {
   box-sizing: border-box;
   background: #000;
   color: #fff;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: none;
+
+    .title {
+      text-decoration: underline;
+    }
+  }
 
   ::ng-deep * {
     color: inherit;
