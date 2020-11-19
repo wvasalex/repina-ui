@@ -37,7 +37,8 @@ export class AgencyEditorComponent implements OnInit {
 
   private _save() {
     const promises = [];
-    this.blocks.forEach((block: ContentBlock) => {
+    const blocks = JSON.parse(JSON.stringify(this.blocks));
+    blocks.forEach((block: ContentBlock) => {
       block.content_elements.forEach((element: ContentElement) => {
         delete element.content_file;
       });
@@ -48,8 +49,8 @@ export class AgencyEditorComponent implements OnInit {
       }
     });
 
-    this.toasterService.wrapPromise(
-      Promise.all(promises), 'Сохранено', 'Не удалось сохранить');
+    this.toasterService
+      .wrapPromise(Promise.all(promises), 'Сохранено', 'Не удалось сохранить');
   }
 
 }
