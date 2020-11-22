@@ -21,6 +21,10 @@ export class BadgeListComponent implements OnInit {
   }
 
   public $toggle(badge: SelectOption) {
+    if (badge.meta?.disabled) {
+      return;
+    }
+
     const index: number = this.selected.indexOf(badge);
     if (index == -1) {
       this.selected.push(badge);

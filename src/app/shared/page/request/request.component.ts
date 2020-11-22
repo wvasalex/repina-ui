@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit } from '@angular/core';
-import { getOption, SelectOption } from '@shared/components/select/select.model';
+import { SelectOption } from '@shared/components/select/select.model';
 import { RequestService } from '@shared/page/request/request.service';
 import { errorAnimation } from '@shared/animations';
 

@@ -1,0 +1,14 @@
+:host {
+  position: fixed;
+  width: 100%;
+  top: -150px;
+  z-index: 2;
+  background: #fff;
+  transition: 300ms ease-in-out;
+  will-change: top;
+
+  &.visible {
+    display: block;
+    top: 0;
+  }
+}

@@ -22,6 +22,13 @@
   <ng-content select="[header]"></ng-content>
 </r-header>
 
+<r-sticky>
+  <r-menu
+    (openDrawer)="$toggleDrawer(true)"
+    (priceRequest)="$priceRequest()"
+  ></r-menu>
+</r-sticky>
+
 <div class="content">
   <ng-content></ng-content>
 

@@ -31,6 +31,7 @@ import { LinebreaksPipe } from './linebreaks.pipe';
 import { ImageUploadComponent } from './image-upload/image-upload.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { StickyComponent } from './sticky/sticky.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     AspectRatioDirective,
     LinebreaksPipe,
     ImageUploadComponent,
+    StickyComponent,
   ],
   exports: [
     LogoComponent,
@@ -87,6 +89,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     AspectRatioDirective,
     LinebreaksPipe,
     ImageUploadComponent,
+    StickyComponent,
   ],
   imports: [
     CommonModule,

@@ -20,13 +20,14 @@
   &.disabled {
     border: 2px solid #EBEBEB;
     background: #fff;
+    color: #000;
   }
 
-  &:not(.selected):hover {
+  &:not(.selected):not(.disabled):hover {
     color: rgba(0, 0, 0, .5);
   }
 
-  &.selected:hover {
+  &.selected:not(.disabled):hover {
     background: rgba(0, 0, 0, .5);
   }
 }
