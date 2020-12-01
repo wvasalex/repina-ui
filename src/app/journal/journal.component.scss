@@ -6,10 +6,28 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 30px;
+  margin-bottom: 128px;
 
   .big {
     grid-column-start: 1;
     grid-column-end: 3;
+  }
+}
+
+.tags {
+  margin-top: 70px;
+  margin-bottom: 44px;
+}
+
+.w1366, .w1024, .w768 {
+  :host .tags {
+    margin-top: 36px;
+  }
+}
+
+.w320 :host {
+  .tags {
+    margin: 32px 0;
   }
 }
 
@@ -19,10 +37,6 @@ a:hover {
   ::ng-deep .h3 {
     text-decoration: underline;
   }
-}
-
-r-journal-snippet, .subscription-block {
-  margin: 4rem 0;
 }
 
 .w768 :host {
@@ -35,6 +49,7 @@ r-journal-snippet, .subscription-block {
   .group {
     display: flex;
     flex-direction: column;
+    margin-bottom: 30px;
   }
 
   .subscription-block {

@@ -1,12 +1,12 @@
-<r-page>
+<r-page *ngIf="article$ | async as article">
   <r-blocks-render
     [render]="render"
     [blocks]="article.content_blocks"
   ></r-blocks-render>
 
   <r-article-next
-    *ngIf="article.next_blog"
-    [article]="article.next_blog"
+    *ngIf="article.blog_tag"
+    [tag]="article.blog_tag"
     class="mt-8"
   ></r-article-next>
 

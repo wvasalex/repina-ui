@@ -12,11 +12,13 @@
       *ngIf="tags$ | async as tags"
       (changed)="$applyTags($event)"
       [badges]="tags"
-      class="mt-2"
+      class="mt-2 tags"
     ></r-badge-list>
   </r-padding>
 
-  <r-padding *ngIf="groups$ | async as groups">
+  <r-padding
+    *ngIf="groups$ | async as groups"
+  >
     <div
       *ngFor="let group of groups"
       class="group"

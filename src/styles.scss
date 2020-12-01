@@ -327,6 +327,10 @@ span.editable, a.editable {
 a.underline:hover {
   color: $color-red;
   transition: $transition;
+
+  * {
+    color: inherit;
+  }
 }
 
 ndc-dynamic {

@@ -10,7 +10,7 @@ import { ServiceImageComponent } from './service/service-image/service-image.com
 import { ServiceQuoteComponent } from './service/service-quote/service-quote.component';
 import { ServiceVideoComponent } from './service/service-video/service-video.component';
 import { ServiceRequestComponent } from './service/service-request/service-request.component';
-import { ServiceProjectsComponent } from './service/service-projects/service-projects.component';
+import { RelatedProjectsComponent } from '@shared/projects/related-projects/related-projects.component';
 import { ServiceRelatedWikiComponent } from './service/service-related-wiki/service-related-wiki.component';
 import { ServicesHeaderComponent } from './services-header/services-header.component';
 
@@ -31,7 +31,7 @@ export class ServicesRenderService {
     'service-quote': ServiceQuoteComponent,
     'service-video': ServiceVideoComponent,
     'service-request': ServiceRequestComponent,
-    'service-projects': ServiceProjectsComponent,
+    'service-projects': RelatedProjectsComponent,
     'service-related-wiki': ServiceRelatedWikiComponent,
   };
 

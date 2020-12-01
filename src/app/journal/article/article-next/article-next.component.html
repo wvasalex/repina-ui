@@ -1,5 +1,5 @@
 <div
-  *ngIf="article"
+  *ngIf="related$ | async as related"
   class="row-column p-l p-r"
 >
   <div>
@@ -16,16 +16,19 @@
       </a>
     </div>
   </div>
-  <a
-    *ngIf="article.slug"
-    [routerLink]="['/blog', article.slug]"
-  >
-    <r-journal-snippet
-      [tag]="$any(article).blog_tag?.title"
-      [title]="article.title"
-      [image]="article.preview_file || '/assets/pictures/journal/1.png'"
-      class="snippet"
+  <div>
+    <a
+      *ngFor="let article of related; let first = first;"
+      [routerLink]="['/blog', article.slug]"
     >
-    </r-journal-snippet>
-  </a>
+      <r-journal-snippet
+        [tag]="$any(article).blog_tag?.title"
+        [title]="article.title"
+        [image]="article.preview_file || '/assets/pictures/journal/1.png'"
+        [class.mt-6]="!first"
+        class="snippet"
+      >
+      </r-journal-snippet>
+    </a>
+  </div>
 </div>

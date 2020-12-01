@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { pluck } from 'rxjs/operators';
 import { Article } from '../journal.model';
 import { JournalService } from '../journal.service';
 
@@ -10,9 +12,10 @@ import { JournalService } from '../journal.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ArticleComponent implements OnInit {
+
   public render = this.journalService.render;
 
-  public article: Article;
+  public article$: Observable<Article> = this.activatedRoute.data.pipe(pluck('article'));
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -20,7 +23,6 @@ export class ArticleComponent implements OnInit {
   ) {
   }
 
-  ngOnInit(): void {
-    this.article = this.activatedRoute.snapshot.data.article;
-  }
+  ngOnInit(): void {}
+
 }

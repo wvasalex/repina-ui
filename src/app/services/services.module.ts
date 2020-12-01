@@ -29,7 +29,6 @@ import { ServiceQuoteComponent } from './service/service-quote/service-quote.com
 import { ServiceRequestComponent } from './service/service-request/service-request.component';
 import { SelectOptionsPipe } from '@shared/components/select/select-options.pipe';
 import { ServiceTitleComponent } from './service/service-title/service-title.component';
-import { ServiceProjectsComponent } from './service/service-projects/service-projects.component';
 import { SharedProjectsModule } from '@shared/projects/projects.module';
 import { ServiceRelatedWikiComponent } from './service/service-related-wiki/service-related-wiki.component';
 import { ServiceAnimationComponent } from './service/service-animation/service-animation.component';
@@ -55,7 +54,6 @@ import { ServicesHeaderComponent } from './services-header/services-header.compo
     ServiceRequestComponent,
     SelectOptionsPipe,
     ServiceTitleComponent,
-    ServiceProjectsComponent,
     ServiceRelatedWikiComponent,
     ServiceAnimationComponent,
     ServicesHeaderComponent,

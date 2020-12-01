@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, HostBinding, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Service } from '../services.model';
 import { Observable } from 'rxjs';
 import { map, pluck, tap } from 'rxjs/operators';
+import { Service } from '../services.model';
 import { ServicesRenderService } from '../services-render.service';
 
 @Component({

@@ -1,5 +1,5 @@
 <r-page>
-  <r-padding [horizontal]="false">
+  <r-padding>
     <r-projects-header
       *ngIf="header$ | async"
       [props]="header.props"
@@ -10,14 +10,11 @@
       *ngIf="tags$ | async as tags"
       (changed)="$applyTags($event)"
       [badges]="tags"
-      class="mt-2"
+      class="mt-2 tags"
     ></r-badge-list>
   </r-padding>
 
-  <div
-    *ngIf="groups$ | async as groups"
-    class="mt-4"
-  >
+  <div *ngIf="groups$ | async as groups">
     <div
       *ngFor="let group of groups; let last = last;"
       [class.mb-30]="!last"

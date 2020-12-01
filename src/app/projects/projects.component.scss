@@ -1,16 +1,16 @@
-.badges {
+.tags {
   margin-top: 70px;
   margin-bottom: 44px;
 }
 
 .w1366, .w1024, .w768 {
-  :host .badges {
+  :host .tags {
     margin-top: 36px;
   }
 }
 
 .w320 :host {
-  .badges {
+  .tags {
     margin: 32px 0;
   }
 }
