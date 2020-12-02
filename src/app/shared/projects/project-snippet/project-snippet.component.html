@@ -27,10 +27,10 @@
     <div
       [class.h2]="!static"
       [class.text32]="static"
+      [innerHTML]="project.description | linebreaks"
       class="text-white"
       snippet-description
     >
-      {{project.description}}
     </div>
   </r-project-snippet-overlay>
 </a>

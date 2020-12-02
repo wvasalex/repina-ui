@@ -20,6 +20,7 @@
         *ngFor="let item of block; let first = first;"
         [routerLink]="item.href ? [item.href] : null"
         [class.h2]="first"
+        [class.mb-16]="first"
         [class.text32]="!first"
         [cdkDragDisabled]="!editor || first"
         cdkDragLockAxis="y"

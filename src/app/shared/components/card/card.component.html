@@ -1,15 +1,15 @@
 <div class="row-column" style="width: 100%">
   <div class="left">
     <div
-      [attr.class]="subtitleClass"
+      [attr.class]="subtitleClass + ' mb-16'"
     >
-    <span *ngIf="subtitle; else subtitleContent">
-      {{subtitle}}
-    </span>
+      <ng-container *ngIf="subtitle; else subtitleContent">
+        {{subtitle}}
+      </ng-container>
     </div>
     <div
       *ngIf="title; else titleContent"
-      [attr.class]="titleClass + ' mt-16'"
+      [attr.class]="titleClass"
     >
       {{title}}
     </div>
