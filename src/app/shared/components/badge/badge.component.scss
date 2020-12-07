@@ -11,6 +11,7 @@
   border: 2px solid #EBEBEB;
   cursor: pointer;
   transition: 100ms;
+  text-align: center;
   
   &.selected {
     background: #000;
@@ -29,5 +30,17 @@
 
   &.selected:not(.disabled):hover {
     background: rgba(0, 0, 0, .5);
+  }
+
+  &.round {
+    padding: 0;
+    width: 56px;
+    height: 56px;
+    line-height: 56px;
+    box-sizing: border-box;
+
+    &.selected {
+      background: $color-red;
+    }
   }
 }

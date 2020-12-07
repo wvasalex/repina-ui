@@ -24,11 +24,14 @@ export interface ApiRequestOptions {
   [key: string]: string | string[] | StrMap<string | number> | boolean;
 }
 
-export interface PagedRequest {
-  page: number;
-  per_page: number;
+export interface PagedRequest extends StrMap<string | number> {
+  page?: number;
+  per_page?: number;
 }
 
-export interface PagedResponse {
+export interface PagedResponse<T> {
+  page: number;
   total_count: number;
+  per_page: number;
+  results: T[];
 }

@@ -1,0 +1,15 @@
+<ng-container *ngIf="pagination$ | async as pagination">
+  <a
+    *ngFor="let page of pagination.pages"
+    [routerLink]="[]"
+    [queryParams]="{page: page.page}"
+  >
+    <r-badge
+      [selected]="page.isActive"
+      [round]="page.text == page.page"
+    >
+      {{page.text}}
+    </r-badge>
+  </a>
+</ng-container>
+

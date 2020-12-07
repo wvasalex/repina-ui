@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MarkdownModule } from 'ngx-markdown';
 
 import { JournalRoutingModule } from './journal-routing.module';
 import { JournalComponent } from './journal.component';
@@ -8,6 +9,7 @@ import { ArticleComponent } from './article/article.component';
 import { GridModule } from '@shared/grid/grid.module';
 import { SharedModule } from '@shared/components/shared.module';
 import { PageModule } from '@shared/page/page.module';
+import { PaginatorModule } from '@shared/paginator/paginator.module';
 import { ArticleEditorComponent } from './article-editor/article-editor.component';
 import { BlocksModule } from '@shared/blocks/blocks.module';
 import { FormsModule } from '@angular/forms';
@@ -20,12 +22,10 @@ import { ArticleAuthorComponent } from './article/article-author/article-author.
 import { ArticlePartComponent } from './article/article-part/article-part.component';
 import { ArticleQuoteComponent } from './article/article-quote/article-quote.component';
 import { ArticleVideoComponent } from './article/article-video/article-video.component';
-import { MarkdownModule } from 'ngx-markdown';
 import { ArticleRequestComponent } from './article/article-request/article-request.component';
 import { ArticleSubscribeComponent } from './article/article-subscribe/article-subscribe.component';
 import { ArticleNextComponent } from './article/article-next/article-next.component';
 import { JournalHeaderComponent } from './journal-header/journal-header.component';
-
 
 @NgModule({
   declarations: [
@@ -56,6 +56,7 @@ import { JournalHeaderComponent } from './journal-header/journal-header.componen
     MatCheckboxModule,
     MatButtonModule,
     MarkdownModule,
+    PaginatorModule,
   ],
   exports: [
     JournalSnippetComponent,

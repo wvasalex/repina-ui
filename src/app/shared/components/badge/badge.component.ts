@@ -10,6 +10,7 @@ export class BadgeComponent implements OnInit {
 
   @Input() @HostBinding('class.selected') selected: boolean = false;
   @Input() @HostBinding('class.disabled') disabled: boolean = false;
+  @Input() @HostBinding('class.round') round: boolean = false;
 
   constructor() { }
 

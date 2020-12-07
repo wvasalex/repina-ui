@@ -1,16 +1,17 @@
-import { ChangeDetectionStrategy, Component, HostListener, OnInit } from '@angular/core';
-import { JournalService } from './journal.service';
-import { Article, BlogTag } from './journal.model';
-import { JournalTagsService } from './journal-tags.service';
+import { ChangeDetectionStrategy, Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { ContentBlock, StrMap } from '@shared/types';
 import { SelectOption } from '@shared/components/select/select.model';
 import { MatDialog } from '@angular/material/dialog';
 import { ListReorderComponent } from '@shared/list-reorder/list-reorder.component';
-import { Project } from '@shared/projects/projects.model';
-import { JournalPageService } from './journal-page.service';
 import { ToasterService } from '@shared/toaster/toaster.service';
+import { PagedRequest, PagedResponse } from '@shared/services/api/api.model';
+import { JournalPageService } from './journal-page.service';
+import { JournalService } from './journal.service';
+import { Article, BlogTag } from './journal.model';
+import { JournalTagsService } from './journal-tags.service';
+import { PaginatorService } from '@shared/paginator/paginator.service';
 
 @Component({
   selector: 'r-journal',
@@ -18,7 +19,7 @@ import { ToasterService } from '@shared/toaster/toaster.service';
   styleUrls: ['./journal.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class JournalComponent implements OnInit {
+export class JournalComponent implements OnInit, OnDestroy {
 
   public header: ContentBlock;
 
@@ -28,6 +29,8 @@ export class JournalComponent implements OnInit {
         return this.header = block;
       }),
     );
+
+  public data$: Subject<PagedResponse<Article>> = new Subject<PagedResponse<Article>>();
 
   public articles$: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 
@@ -60,11 +63,20 @@ export class JournalComponent implements OnInit {
     private journalPageService: JournalPageService,
     private journalService: JournalService,
     private journalTagsService: JournalTagsService,
+    private paginatorService: PaginatorService,
   ) {
   }
 
-  ngOnInit(): void {
-    this._load();
+  public ngOnInit(): void {
+    this.paginatorService.init();
+
+    this.paginatorService.changes.subscribe((req) => {
+      this._load(req);
+    });
+  }
+
+  public ngOnDestroy(): void {
+    this.paginatorService.destroy();
   }
 
   public $applyTags(tags: SelectOption[]) {
@@ -72,7 +84,8 @@ export class JournalComponent implements OnInit {
       return option.value;
     });
 
-    this._load({
+    this.paginatorService.setFilters({
+      page: '1',
       blog_tag__key__in: keys.join(','),
     });
   }
@@ -110,9 +123,11 @@ export class JournalComponent implements OnInit {
     this.articles$.next(items);
   }
 
-  private _load(filters: StrMap<string> = {}) {
-    this.journalService.get<Article>(filters).subscribe((articles: Article[]) => {
-      this.articles$.next(articles);
+  private _load(req: PagedRequest) {
+    req.per_page = 11;
+    this.journalService.getPage<Article>(req).subscribe((page: PagedResponse<Article>) => {
+      this.data$.next(page);
+      this.articles$.next(page.results);
     });
   }
 

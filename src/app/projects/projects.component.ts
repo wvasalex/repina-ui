@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { BreakpointState } from '@angular/cdk/layout';
-import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { BreakpointService } from '@shared/breakpoint.service';
 import { ProjectsService } from '@shared/projects/projects.service';
@@ -13,6 +13,9 @@ import { ServicesTagsService } from '../services/services-tags.service';
 import { ServiceTag } from '../services/services.model';
 import { ProjectsPageService } from './projects-page.service';
 import { ToasterService } from '@shared/toaster/toaster.service';
+import { PagedRequest, PagedResponse } from '@shared/services/api/api.model';
+import { PaginatorService } from '@shared/paginator/paginator.service';
+import { Article } from '../journal/journal.model';
 
 @Component({
   selector: 'r-projects',
@@ -30,6 +33,8 @@ export class ProjectsComponent {
         return this.header = block;
       }),
     );
+
+  public data$: Subject<PagedResponse<Project>> = new Subject<PagedResponse<Project>>();
 
   private projects$: BehaviorSubject<Project[]> = new BehaviorSubject<Project[]>([]);
 
@@ -77,11 +82,25 @@ export class ProjectsComponent {
     private projectsPageService: ProjectsPageService,
     private servicesTagsService: ServicesTagsService,
     private projectsService: ProjectsService,
+    private paginatorService: PaginatorService,
   ) {
-    this.projectsService.get<Project>()
+  }
+
+  public ngOnInit(): void {
+    /*this.projectsService.get<Project>()
       .subscribe((projects: Project[]) => {
         this.projects$.next(projects);
-      });
+      });*/
+
+    this.paginatorService.init();
+
+    this.paginatorService.changes.subscribe((req) => {
+      this._load(req);
+    });
+  }
+
+  public ngOnDestroy(): void {
+    this.paginatorService.destroy();
   }
 
   public $applyTags(tags: SelectOption[]) {
@@ -92,6 +111,7 @@ export class ProjectsComponent {
     let filters = {};
     if (tags.length) {
       filters = {
+        page: 1,
         tags__id__in: keys.join(','),
       };
     }
@@ -131,11 +151,19 @@ export class ProjectsComponent {
     this.projects$.next(items);
   }
 
-  private _load(filters: StrMap<string> = {}) {
+  private _load(req: PagedRequest) {
+    req.per_page = 15;
+    this.projectsService.getPage<Project>(req).subscribe((page: PagedResponse<Project>) => {
+      this.data$.next(page);
+      this.projects$.next(page.results);
+    });
+  }
+
+  /*private _load(filters: StrMap<string> = {}) {
     this.projectsService.get<Project>(filters).subscribe((projects: Project[]) => {
       this.projects$.next(projects);
     });
-  }
+  }*/
 
   /*@HostListener('dblclick') _init() {
     this.projectsPageService.post({

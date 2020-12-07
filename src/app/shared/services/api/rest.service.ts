@@ -1,11 +1,11 @@
-import { ApiService } from './api.service';
-import { StrMap } from '@shared/types';
-import { ApiConfig } from '@shared/services/api/api.model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Project } from '@shared/projects/projects.model';
+import { ApiService } from './api.service';
+import { StrMap } from '@shared/types';
+import { ApiConfig, PagedRequest, PagedResponse } from '@shared/services/api/api.model';
 
 export class RestService {
+
   public config: ApiConfig;
   public api: ApiService;
 
@@ -30,6 +30,19 @@ export class RestService {
     );
   }
 
+  public getPage<T>(req: PagedRequest): Observable<PagedResponse<T>> {
+    if (!req.per_page) {
+      req.per_page = 15;
+    }
+
+    return this.api.getStream(this.config.path, req).pipe(
+      map((page: PagedResponse<T>) => {
+        page.per_page = req.per_page;
+        return page;
+      }),
+    );
+  }
+
   public getById<T>(body: StrMap<any> = {}) {
     return this.api.getStream<T>(this.config.path + ':id/', body);
   }
@@ -49,4 +62,5 @@ export class RestService {
   public resolve<T>(id: string) {
     return this.api.getStream<T>(this.config.path + ':id/', {id});
   }
+
 }

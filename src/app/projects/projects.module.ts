@@ -34,6 +34,7 @@ import { ServicesModule } from '../services/services.module';
 import { SharedProjectsModule } from '@shared/projects/projects.module';
 import { SeoModule } from '@shared/seo/seo.module';
 import { ProjectsHeaderComponent } from './projects-header/projects-header.component';
+import { PaginatorModule } from '@shared/paginator/paginator.module';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { ProjectsHeaderComponent } from './projects-header/projects-header.compo
     ServicesModule,
     SharedProjectsModule,
     SeoModule,
+    PaginatorModule,
   ],
   exports: [
   ],
