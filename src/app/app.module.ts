@@ -1,13 +1,14 @@
-import { NgModule }       from '@angular/core';
-import { BrowserModule, HammerModule }  from '@angular/platform-browser';
-import { FormsModule }    from '@angular/forms';
-import { HttpClientModule }    from '@angular/common/http';
-
-import { AppRoutingModule }     from './app-routing.module';
-import { AppComponent }         from './app.component';
-
-import { PLATFORM_ID, APP_ID, Inject } from '@angular/core';
+import { NgModule, PLATFORM_ID, APP_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { BrowserModule, HammerModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MarkdownModule } from 'ngx-markdown';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+
 import { SharedModule } from '@shared/components/shared.module';
 import { PageModule } from '@shared/page/page.module';
 import { MainModule } from './main/main.module';
@@ -16,11 +17,10 @@ import { JournalModule } from './journal/journal.module';
 import { AgencyModule } from './agency/agency.module';
 import { ContactsModule } from './contacts/contacts.module';
 import { ServicesModule } from './services/services.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { API_BASE_CONFIG } from '@shared/services/api/api.model';
 import { AuthModule } from './auth/auth.module';
 import { SessionModule } from '@shared/services/session/session.module';
-import { MarkdownModule } from 'ngx-markdown';
+import { NotfoundModule } from '@shared/notfound/notfound.module';
 
 @NgModule({
   imports: [
@@ -28,7 +28,6 @@ import { MarkdownModule } from 'ngx-markdown';
     BrowserAnimationsModule,
     HammerModule,
     FormsModule,
-    AppRoutingModule,
     HttpClientModule,
     MarkdownModule.forRoot(),
 
@@ -38,31 +37,31 @@ import { MarkdownModule } from 'ngx-markdown';
     /*HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, {dataEncapsulation: false},
     ),*/
-
+    SharedModule,
+    PageModule,
+    NotfoundModule,
     AuthModule,
     AgencyModule,
     ContactsModule,
-    SharedModule,
-    PageModule,
-    MainModule,
     ProjectsModule,
     JournalModule,
+    AppRoutingModule,
+    MainModule,
     ServicesModule,
     SessionModule,
   ],
   declarations: [
     AppComponent,
   ],
-  exports: [
-  ],
+  exports: [],
   providers: [
     {
       provide: API_BASE_CONFIG,
       useValue: {
         host: '',
         base: '/api/v1',
-      }
-    }
+      },
+    },
   ],
   bootstrap: [AppComponent],
 })

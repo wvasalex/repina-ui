@@ -1,0 +1,19 @@
+.row-column {
+  align-items: center;
+}
+
+.icon {
+  width: 306px;
+  height: 637px;
+}
+
+.w768 :host, .w320 :host {
+  .row-column {
+    align-items: flex-start;
+  }
+
+  .icon {
+    width: 218px;
+    height: 455px;
+  }
+}

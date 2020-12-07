@@ -36,10 +36,6 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.menuService.get().subscribe((block: ContentBlock) => {
-      block.content_elements.sort((a, b) => {
-        return a.position - b.position;
-      });
-
       this.menu = block;
       this.changeDetectorRef.detectChanges();
     });

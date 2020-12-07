@@ -1,0 +1,31 @@
+<r-page>
+  <r-padding class="row-column">
+    <div class="column">
+      <span class="h4">УПС</span>
+      <h3 class="mt-1">
+        Такой страницы нет
+      </h3>
+      <div class="text32 mt-2">
+        Зато у нас много других интересных страниц!
+      </div>
+
+      <ng-container
+        *ngIf="menu$ | async as menuItems"
+      >
+        <a
+          *ngFor="let item of menuItems"
+          [routerLink]="[item.props.href]"
+          class="text32 underline mt-1"
+        >
+          {{item.props.text}}
+        </a>
+      </ng-container>
+
+    </div>
+    <img
+      src="/assets/icons/404/404.svg"
+      alt="Page not found"
+      class="icon"
+    >
+  </r-padding>
+</r-page>
