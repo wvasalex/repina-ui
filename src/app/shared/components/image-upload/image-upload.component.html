@@ -3,9 +3,9 @@
   [src]="contentFile"
 ></r-image>
 
-<ng-container *ngIf="endpoint">
+<ng-container *ngIf="endpoint && editor">
   <button
-    *ngIf="editor && id"
+    *ngIf="id"
     mat-fab
     class="upload"
   >
@@ -18,13 +18,13 @@
   </button>
 
   <r-image-placeholder
-    *ngIf="editor && !id"
+    *ngIf="!id"
   >
     Сохраните для загрузки медиа
   </r-image-placeholder>
 
   <div
-    *ngIf="editor && contentFile"
+    *ngIf="contentFile"
     (click)="$clear()"
     class="clear"
   >
@@ -32,9 +32,8 @@
   </div>
 </ng-container>
 
-<ng-container *ngIf="!endpoint">
+<ng-container *ngIf="!endpoint && editor">
   <button
-    *ngIf="editor"
     mat-fab
     class="upload"
   >

@@ -5,7 +5,10 @@ import { MainComponent } from './main/main.component';
 import { NotfoundComponent } from '@shared/notfound/notfound.component';
 
 const routes: Routes = [
-  {path: '', component: MainComponent},
+  {
+    path: '',
+    component: MainComponent,
+  },
   {
     path: 'lists',
     loadChildren: () => import('./lists/lists.module').then((m) => {

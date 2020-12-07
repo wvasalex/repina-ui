@@ -42,7 +42,6 @@ export class ParallaxDirective implements OnInit, OnDestroy {
     const box = this.el.getBoundingClientRect();
 
     if (box.height == 0) {
-      console.log('reinit');
       return setTimeout(() => this.init(), 300);
     }
 
@@ -50,7 +49,7 @@ export class ParallaxDirective implements OnInit, OnDestroy {
     this.sub?.unsubscribe();
 
     const getOffset = () => {
-      return -.33 * (this.top - window.scrollY) + window.innerHeight / 6;
+      return -.25 * (this.top - window.scrollY) + window.innerHeight / 8;
     };
 
     this.sub = fromEvent(window, 'scroll').pipe(
@@ -64,12 +63,10 @@ export class ParallaxDirective implements OnInit, OnDestroy {
 
       if (this.direction == 'reverse') {
         offset = Math.max(offset, 0);
-        //this.renderer.setStyle(this.el, 'transform', 'translateY(-' + offset + 'px)');
-
-        this.renderer.setStyle(this.el, 'margin-top', '-' + offset + 'px');
+        this.renderer.setStyle(this.el, 'top', offset + 'px');
       } else {
         offset = Math.min(offset, 0);
-        this.renderer.setStyle(this.el, 'transform', 'perspective(500px) translate3d(0, ' + offset + 'px, 0)');
+        this.renderer.setStyle(this.el, 'transform', 'perspective(500px) translate3d(0, ' + offset + 'px, ' + (-0.25 * offset) + 'px)');
       }
     });
   }
@@ -79,7 +76,7 @@ export class ParallaxDirective implements OnInit, OnDestroy {
 
     return (
       bounding.top >= 0 &&
-      bounding.bottom <= (window.innerHeight + window.scrollY)
+      bounding.bottom <= (window.innerHeight * 2 + window.scrollY)
     );
   };
 

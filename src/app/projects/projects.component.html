@@ -20,13 +20,17 @@
       [class.mb-30]="!last"
       class="group row"
     >
-      <r-project-snippet
+      <div
         *ngFor="let project of group; let index = index;"
-        [project]="project"
-        [rAspectRatio]="1.4"
-        r-parallax
         class="snippet"
-      ></r-project-snippet>
+      >
+        <r-project-snippet
+          [project]="project"
+          [rAspectRatio]="1.4"
+          r-parallax
+
+        ></r-project-snippet>
+      </div>
     </div>
 
     <r-padding>

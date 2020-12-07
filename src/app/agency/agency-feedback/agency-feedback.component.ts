@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { errorAnimation, slider } from '@shared/animations';
 import { Observable } from 'rxjs';
-import { ContentListItem } from '../../lists/lists.model';
 import { tap } from 'rxjs/operators';
+import { errorAnimation, slider } from '@shared/animations';
+import { ContentListItem } from '../../lists/lists.model';
 import { AgencyService } from '../agency.service';
 
 @Component({
@@ -13,14 +13,16 @@ import { AgencyService } from '../agency.service';
   animations: [
     slider,
     errorAnimation,
-  ]
+  ],
 })
 export class AgencyFeedbackComponent implements OnInit {
+
   public feedback$: Observable<ContentListItem[]> = this.agencyService.getFeedback()
     .pipe(tap((awards: ContentListItem[]) => {
       this.pagesCount = Math.ceil(awards.length / this.pageSize);
       this.last = awards.length - 1;
     }));
+
   public pagesCount: number;
 
   public prevIndex: number = 0;
@@ -30,7 +32,8 @@ export class AgencyFeedbackComponent implements OnInit {
 
   private pageSize: number = 1;
 
-  constructor(private agencyService: AgencyService) { }
+  constructor(private agencyService: AgencyService) {
+  }
 
   ngOnInit(): void {
   }

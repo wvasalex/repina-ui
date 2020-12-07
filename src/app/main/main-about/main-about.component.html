@@ -1,20 +1,23 @@
-<r-padding
-  [horizontal]="true"
-  class="row-column"
->
+<r-padding>
   <div class="row-column">
     <r-md
       [editor]="editor"
       [props]="props"
       prop="about"
       className="h2"
+      class="about-text"
     ></r-md>
 
-    <div class="vector">
+    <div class="column vector-container">
       <img
         src="/assets/icons/main/vector.svg"
         alt=""
+        class="vector"
+        r-parallax
+        direction="reverse"
       />
+
+      <div class="circle"></div>
     </div>
   </div>
   <div class="column">
