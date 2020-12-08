@@ -5,11 +5,12 @@ import {
   Component,
   ElementRef,
   OnInit,
-  ViewChild
+  ViewChild,
 } from '@angular/core';
 import { ContactsService } from './contacts.service';
 import { ContentBlock, ContentElement } from '@shared/types';
 import { ToasterService } from '@shared/toaster/toaster.service';
+import { FooterService } from '@shared/footer/footer.service';
 
 @Component({
   selector: 'r-contacts',
@@ -18,7 +19,7 @@ import { ToasterService } from '@shared/toaster/toaster.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContactsComponent implements OnInit, AfterViewInit {
-  @ViewChild('map', { static: false }) map: ElementRef;
+  @ViewChild('map', {static: false}) map: ElementRef;
 
   public block: ContentBlock;
 
@@ -28,14 +29,26 @@ export class ContactsComponent implements OnInit, AfterViewInit {
     private changeDetectorRef: ChangeDetectorRef,
     private toasterService: ToasterService,
     private contactsService: ContactsService,
+    private footerService: FooterService,
   ) {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.contactsService.get().subscribe((blocks: ContentBlock[]) => {
       this.block = blocks[0];
       this.changeDetectorRef.detectChanges();
     });
+
+    this.footerService.setBreadcrumbs([
+      {
+        href: '/contacts',
+        text: 'Контакты',
+      },
+    ]);
+  }
+
+  public ngOnDestroy(): void {
+    this.footerService.setBreadcrumbs([]);
   }
 
   public ngAfterViewInit(): void {
@@ -50,7 +63,7 @@ export class ContactsComponent implements OnInit, AfterViewInit {
       disableDefaultUI: true,
       scrollwheel: false,
       center: center,
-      mapTypeId: maps.MapTypeId.ROADMAP
+      mapTypeId: maps.MapTypeId.ROADMAP,
     };
 
     const map = new maps.Map(this.map.nativeElement, mapOptions);
@@ -58,7 +71,7 @@ export class ContactsComponent implements OnInit, AfterViewInit {
     new maps.Marker({
       position: center,
       map: map,
-      icon: '/assets/icons/contacts/pin.svg'
+      icon: '/assets/icons/contacts/pin.svg',
     });
   }
 

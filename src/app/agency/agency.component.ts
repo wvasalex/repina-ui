@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, Component, HostListener, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { ContentBlock } from '@shared/types';
 import { AgencyService } from './agency.service';
 import { AgencyRenderService } from './agency-render.service';
+import { FooterService } from '@shared/footer/footer.service';
 
 @Component({
   selector: 'r-agency',
@@ -11,7 +12,7 @@ import { AgencyRenderService } from './agency-render.service';
   styleUrls: ['./agency.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AgencyComponent implements OnInit {
+export class AgencyComponent implements OnInit, OnDestroy {
 
   public render = this.agencyRenderService.render;
 
@@ -152,10 +153,21 @@ export class AgencyComponent implements OnInit {
   constructor(
     private agencyService: AgencyService,
     private agencyRenderService: AgencyRenderService,
+    private footerService: FooterService,
   ) {
   }
 
   public ngOnInit() {
+    this.footerService.setBreadcrumbs([
+      {
+        href: '/agency',
+        text: 'Агентство',
+      },
+    ]);
+  }
+
+  public ngOnDestroy(): void {
+    this.footerService.setBreadcrumbs([]);
   }
 
   @HostListener('dblclick') _init() {

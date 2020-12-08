@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, Component, HostBinding, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, pluck, tap } from 'rxjs/operators';
 import { Service } from '../services.model';
 import { ServicesRenderService } from '../services-render.service';
+import { FooterService } from '@shared/footer/footer.service';
 
 @Component({
   selector: 'r-service',
@@ -11,7 +12,7 @@ import { ServicesRenderService } from '../services-render.service';
   styleUrls: ['./service.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ServiceComponent implements OnInit {
+export class ServiceComponent implements OnInit, OnDestroy {
 
   public render = this.servicesRenderService.render;
 
@@ -32,6 +33,17 @@ export class ServiceComponent implements OnInit {
         setTimeout(() => {
           this.type = service.service_type;
         });
+
+        this.footerService.setBreadcrumbs([
+          {
+            href: '/services',
+            text: 'Услуги',
+          },
+          {
+            href: '/services/' + service.slug,
+            text: service.title,
+          },
+        ]);
       }),
     );
 
@@ -40,10 +52,15 @@ export class ServiceComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private servicesRenderService: ServicesRenderService,
+    private footerService: FooterService,
   ) {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
+  }
+
+  public ngOnDestroy(): void {
+    this.footerService.setBreadcrumbs([]);
   }
 
 }

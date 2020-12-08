@@ -1,0 +1,21 @@
+:host {
+}
+
+ol {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  list-style: none;
+
+  li:not(.dot) {
+    margin: 0;
+  }
+}
+
+.dot {
+  margin: 0 8px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #000;
+}

@@ -1,10 +1,11 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map, pluck } from 'rxjs/operators';
+import { map, pluck, tap } from 'rxjs/operators';
 import { ContentBlock } from '@shared/types';
 import { Project } from '@shared/projects/projects.model';
 import { ProjectsService } from '@shared/projects/projects.service';
+import { FooterService } from '@shared/footer/footer.service';
 
 @Component({
   selector: 'r-project',
@@ -12,22 +13,40 @@ import { ProjectsService } from '@shared/projects/projects.service';
   styleUrls: ['./project.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProjectComponent implements OnInit {
+export class ProjectComponent implements OnInit, OnDestroy {
 
   public render = this.projectsService.render;
 
-  public project$: Observable<Project> = this.activatedRoute.data.pipe(pluck('project'));
+  public project$: Observable<Project> = this.activatedRoute.data.pipe(
+    pluck('project'),
+    tap((project: Project) => {
+      this.footerService.setBreadcrumbs([
+        {
+          href: '/projects',
+          text: 'Проекты',
+        },
+        {
+          href: '/projects/' + project.slug,
+          text: project.title,
+        },
+      ]);
+    }),
+  );
 
   public menuColor: string;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private projectsService: ProjectsService,
+    private footerService: FooterService,
   ) {
   }
 
   ngOnInit(): void {
+  }
 
+  public ngOnDestroy(): void {
+    this.footerService.setBreadcrumbs([]);
   }
 
   public $menuColor(project: Project): string {

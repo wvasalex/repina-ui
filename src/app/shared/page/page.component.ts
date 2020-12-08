@@ -1,14 +1,15 @@
 import {
   ChangeDetectionStrategy,
-  Component, ContentChild, ContentChildren, EventEmitter,
-  HostBinding,
+  Component,
+  EventEmitter,
   Input,
   OnDestroy,
   OnInit,
   Renderer2,
-  TemplateRef, ViewChild,
+  TemplateRef,
+  ViewChild,
 } from '@angular/core';
-import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
+import { BreakpointState } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs';
 import { BreakpointService } from '../breakpoint.service';
 import { drawerAnimation } from '../animations';
@@ -30,7 +31,7 @@ export class PageComponent implements OnInit, OnDestroy {
   @Input() contentTmp: TemplateRef<any>;
   @Input() customFooter: boolean = false;
 
-  @ViewChild(RequestComponent, { static: false }) requestViewChild: RequestComponent;
+  @ViewChild(RequestComponent, {static: false}) requestViewChild: RequestComponent;
 
   public drawerOpened: boolean = false;
 
@@ -88,7 +89,7 @@ export class PageComponent implements OnInit, OnDestroy {
     const requestForm = this.requestViewChild;
 
     if (requestForm) {
-      requestForm.ref.nativeElement.scrollIntoView({ behavior: 'smooth' });
+      requestForm.ref.nativeElement.scrollIntoView({behavior: 'smooth'});
     }
   }
 }

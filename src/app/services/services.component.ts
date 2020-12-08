@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, Component, HostListener, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { ContentBlock } from '@shared/types';
 import { ServicesEditorService } from './services-editor.service';
 import { ServicesRenderService } from './services-render.service';
-import { tap } from 'rxjs/operators';
+import { FooterService } from '@shared/footer/footer.service';
 
 @Component({
   selector: 'r-services',
@@ -11,7 +12,7 @@ import { tap } from 'rxjs/operators';
   styleUrls: ['./services.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ServicesComponent implements OnInit {
+export class ServicesComponent implements OnInit, OnDestroy {
 
   public render = this.servicesRenderService.render;
 
@@ -24,10 +25,22 @@ export class ServicesComponent implements OnInit {
 
   constructor(
     private servicesEditorService: ServicesEditorService,
-    private servicesRenderService: ServicesRenderService) {
+    private servicesRenderService: ServicesRenderService,
+    private footerService: FooterService,
+  ) {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
+    this.footerService.setBreadcrumbs([
+      {
+        href: '/services',
+        text: 'Услуги',
+      },
+    ]);
+  }
+
+  public ngOnDestroy(): void {
+    this.footerService.setBreadcrumbs([]);
   }
 
   /*@HostListener('dblclick') init() {

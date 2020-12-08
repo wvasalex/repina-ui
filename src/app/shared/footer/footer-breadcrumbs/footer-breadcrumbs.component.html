@@ -1,0 +1,42 @@
+<ol
+  *ngIf="breadcrumbs$ | async as breadcrumbs"
+  itemscope
+  itemtype="http://schema.org/BreadcrumbList"
+>
+  <ng-container *ngFor="let item of breadcrumbs; let index = index; let last = last;">
+    <li
+      itemprop="itemListElement" itemscope
+      itemtype="http://schema.org/ListItem"
+    >
+      <a
+        *ngIf="!last"
+        [routerLink]="[item.href]"
+        itemprop="item"
+        class="item text16"
+      >
+        <span itemprop="name">{{item.text}}</span>
+        <meta
+          [content]="index + 1"
+          itemprop="position"
+        />
+      </a>
+
+      <ng-container *ngIf="last">
+        <span
+          itemprop="name"
+          class="item text16"
+        >
+          {{item.text}}
+        </span>
+        <meta
+          [content]="index + 1"
+          itemprop="position"
+        />
+      </ng-container>
+    </li>
+    <li
+      *ngIf="!last"
+      class="dot"
+    ></li>
+  </ng-container>
+</ol>

@@ -12,6 +12,7 @@ import { JournalService } from './journal.service';
 import { Article, BlogTag } from './journal.model';
 import { JournalTagsService } from './journal-tags.service';
 import { PaginatorService } from '@shared/paginator/paginator.service';
+import { FooterService } from '@shared/footer/footer.service';
 
 @Component({
   selector: 'r-journal',
@@ -64,19 +65,27 @@ export class JournalComponent implements OnInit, OnDestroy {
     private journalService: JournalService,
     private journalTagsService: JournalTagsService,
     private paginatorService: PaginatorService,
+    private footerService: FooterService,
   ) {
   }
 
   public ngOnInit(): void {
     this.paginatorService.init();
-
     this.paginatorService.changes.subscribe((req) => {
       this._load(req);
     });
+
+    this.footerService.setBreadcrumbs([
+      {
+        href: '/blog',
+        text: 'Журнал',
+      },
+    ]);
   }
 
   public ngOnDestroy(): void {
     this.paginatorService.destroy();
+    this.footerService.setBreadcrumbs([]);
   }
 
   public $applyTags(tags: SelectOption[]) {

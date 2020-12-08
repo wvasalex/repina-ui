@@ -1,33 +1,36 @@
 <r-padding
   [horizontal]="true"
-  class="row-column"
 >
-  <div
-    *ngIf="left"
-    style="margin-right: 1rem;"
-  >
-    <r-logo
-      width="401"
-      height="120"
-    ></r-logo>
+  <r-footer-breadcrumbs></r-footer-breadcrumbs>
 
-    <r-footer-left
-      (change)="$save()"
-      [props]="left.content_elements[0].props"
-      [contentFile]="left.content_elements[0].content_file"
-      [editor]="editor"
-    ></r-footer-left>
-  </div>
+  <div class="row-column mt-3">
+    <div
+      *ngIf="left"
+      style="margin-right: 1rem;"
+    >
+      <r-logo
+        width="401"
+        height="120"
+      ></r-logo>
 
-  <div class="contacts text32">
-    <r-footer-contacts></r-footer-contacts>
-
-    <div class="mt-5 social">
-      <r-footer-social
-        *ngIf="social"
-        [social]="social"
+      <r-footer-left
+        (change)="$save()"
+        [props]="left.content_elements[0].props"
+        [contentFile]="left.content_elements[0].content_file"
         [editor]="editor"
-      ></r-footer-social>
+      ></r-footer-left>
+    </div>
+
+    <div class="contacts text32">
+      <r-footer-contacts></r-footer-contacts>
+
+      <div class="mt-5 social">
+        <r-footer-social
+          *ngIf="social"
+          [social]="social"
+          [editor]="editor"
+        ></r-footer-social>
+      </div>
     </div>
   </div>
 </r-padding>

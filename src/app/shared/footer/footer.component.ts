@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FooterService } from '@shared/footer/footer.service';
-import { ContentBlock, ContentElement } from '@shared/types';
+import { ContentBlock } from '@shared/types';
 
 @Component({
   selector: 'r-footer',
@@ -9,6 +9,7 @@ import { ContentBlock, ContentElement } from '@shared/types';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FooterComponent implements OnInit {
+
   public left: ContentBlock;
   public social: ContentBlock;
 
@@ -16,7 +17,9 @@ export class FooterComponent implements OnInit {
 
   constructor(
     private changeDetectorRef: ChangeDetectorRef,
-    private footerService: FooterService) { }
+    private footerService: FooterService,
+  ) {
+  }
 
   ngOnInit(): void {
     this.footerService.get().subscribe((blocks: ContentBlock[]) => {

@@ -9,13 +9,13 @@ import { Project } from '@shared/projects/projects.model';
 import { ListReorderComponent } from '@shared/list-reorder/list-reorder.component';
 import { SelectOption } from '@shared/components/select/select.model';
 import { ContentBlock, StrMap } from '@shared/types';
-import { ServicesTagsService } from '../services/services-tags.service';
-import { ServiceTag } from '../services/services.model';
-import { ProjectsPageService } from './projects-page.service';
 import { ToasterService } from '@shared/toaster/toaster.service';
 import { PagedRequest, PagedResponse } from '@shared/services/api/api.model';
 import { PaginatorService } from '@shared/paginator/paginator.service';
-import { Article } from '../journal/journal.model';
+import { ServicesTagsService } from '../services/services-tags.service';
+import { ServiceTag } from '../services/services.model';
+import { ProjectsPageService } from './projects-page.service';
+import { FooterService } from '@shared/footer/footer.service';
 
 @Component({
   selector: 'r-projects',
@@ -83,24 +83,28 @@ export class ProjectsComponent {
     private servicesTagsService: ServicesTagsService,
     private projectsService: ProjectsService,
     private paginatorService: PaginatorService,
+    private footerService: FooterService,
   ) {
   }
 
   public ngOnInit(): void {
-    /*this.projectsService.get<Project>()
-      .subscribe((projects: Project[]) => {
-        this.projects$.next(projects);
-      });*/
-
     this.paginatorService.init();
 
     this.paginatorService.changes.subscribe((req) => {
       this._load(req);
     });
+
+    this.footerService.setBreadcrumbs([
+      {
+        href: '/projects',
+        text: 'Проекты',
+      },
+    ]);
   }
 
   public ngOnDestroy(): void {
     this.paginatorService.destroy();
+    this.footerService.setBreadcrumbs([]);
   }
 
   public $applyTags(tags: SelectOption[]) {
