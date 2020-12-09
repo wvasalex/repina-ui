@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { ToasterService } from '@shared/toaster/toaster.service';
 import { ContentBlock, ContentElement, StrMap } from '@shared/types';
 import { getOption, SelectOption } from '@shared/components/select/select.model';
@@ -9,6 +9,7 @@ import { Project } from '@shared/projects/projects.model';
 import { ServicesTagsService } from '../../services/services-tags.service';
 import { ServicesScopesService } from '../../services/services-scopes.service';
 import { ServiceScope, ServiceTag } from '../../services/services.model';
+import { pluck } from 'rxjs/operators';
 
 @Component({
   selector: 'r-project-editor',
@@ -16,7 +17,7 @@ import { ServiceScope, ServiceTag } from '../../services/services.model';
   styleUrls: ['./project-editor.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProjectEditorComponent implements OnInit {
+export class ProjectEditorComponent implements OnInit, OnDestroy {
 
   public project: Project;
 
@@ -41,6 +42,8 @@ export class ProjectEditorComponent implements OnInit {
     {value: 'project-video', label: 'Видео'},
   ];
 
+  private _sub: Subscription;
+
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -53,50 +56,15 @@ export class ProjectEditorComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    const snapshot = this.activatedRoute.snapshot;
-    this.project = this._normalize(snapshot.data.project || {});
+    this._sub = this.activatedRoute.data.pipe(
+      pluck('project')
+    ).subscribe(() => {
+      this._init();
+    });
+  }
 
-    if (!this.project.content_blocks?.length) {
-      this.project.content_blocks = [
-        {
-          block_type: 'project-root',
-          props: {},
-          content_elements: [
-            {
-              element_type: 'project-image',
-              props: {},
-            },
-            {
-              element_type: 'project-image',
-              props: {},
-            },
-          ],
-        },
-        {
-          block_type: 'project-feedback',
-          props: {},
-          content_elements: [],
-        },
-        {
-          block_type: 'project-roles',
-          props: {},
-          content_elements: [],
-        },
-        {
-          block_type: 'project-articles',
-          props: {},
-          content_elements: [],
-        },
-      ];
-    } else {
-      const root = this.project.content_blocks[0];
-      if (root.content_elements?.length == 1) {
-        this.project.content_blocks[0].content_elements.push({
-          element_type: 'project-image',
-          props: {},
-        });
-      }
-    }
+  public ngOnDestroy(): void {
+    this._sub.unsubscribe();
   }
 
   public $addBlock(e: StrMap<any>) {
@@ -168,8 +136,17 @@ export class ProjectEditorComponent implements OnInit {
       });
     });
 
+    // Slug update
+    if (this.project._slug && this.project.slug) {
+      const {slug, _slug} = this.project;
+      if (slug) {
+        this.project._slug = slug;
+      }
+      this.project.slug = _slug;
+    }
+
     const req = this.projectsService.save(this.project).toPromise().then((a: Project) => {
-      if (a.slug != this.project.slug) {
+      if (a.slug != this.project.slug || a.slug != this.project._slug) {
         this.router.navigate(['/projects', a.slug, 'edit']);
       } else {
         this.project = this._normalize(a);
@@ -193,7 +170,58 @@ export class ProjectEditorComponent implements OnInit {
       project.tags = project.tags.map((tag: ServiceTag) => tag.id);
     }
 
+    if (project.slug) {
+      project._slug = project.slug;
+    }
+
     return project;
+  }
+
+  private _init() {
+    const snapshot = this.activatedRoute.snapshot;
+    this.project = this._normalize(snapshot.data.project || {});
+
+    if (!this.project.content_blocks?.length) {
+      this.project.content_blocks = [
+        {
+          block_type: 'project-root',
+          props: {},
+          content_elements: [
+            {
+              element_type: 'project-image',
+              props: {},
+            },
+            {
+              element_type: 'project-image',
+              props: {},
+            },
+          ],
+        },
+        {
+          block_type: 'project-feedback',
+          props: {},
+          content_elements: [],
+        },
+        {
+          block_type: 'project-roles',
+          props: {},
+          content_elements: [],
+        },
+        {
+          block_type: 'project-articles',
+          props: {},
+          content_elements: [],
+        },
+      ];
+    } else {
+      const root = this.project.content_blocks[0];
+      if (root.content_elements?.length == 1) {
+        this.project.content_blocks[0].content_elements.push({
+          element_type: 'project-image',
+          props: {},
+        });
+      }
+    }
   }
 
 }

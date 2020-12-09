@@ -27,8 +27,9 @@ export class ImageUploadComponent extends BaseBlock {
     const data = new FormData();
     data.append(this.name, file);
 
+    this.upload.emit(file);
+
     if (!this.endpoint) {
-      this.upload.emit(file);
       return;
     }
 

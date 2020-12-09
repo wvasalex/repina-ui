@@ -2,11 +2,17 @@
   <r-padding class="row" style="align-items: center">
     <mat-checkbox
       [(ngModel)]="project.is_enabled"
-    > Опубликовать
+      style="flex: 0; margin-right: 48px"
+    >
+      Опубликовать
     </mat-checkbox>
 
-    <div></div>
-    <div></div>
+    <r-input
+      [(ngModel)]="project._slug"
+      placeholder="С"
+    >
+      <r-input-label>Ссылка (slug)</r-input-label>
+    </r-input>
   </r-padding>
 
   <r-padding class="row mt-2">
@@ -105,16 +111,28 @@
       style="flex: auto"
     >
       <mat-button-toggle value="big-small">
-        big-s
+        <r-icon
+          name="editor/gallery/big-small"
+          height="40"
+        ></r-icon>
       </mat-button-toggle>
       <mat-button-toggle value="small-big">
-        s-big
+        <r-icon
+          name="editor/gallery/small-big"
+          height="40"
+        ></r-icon>
       </mat-button-toggle>
       <mat-button-toggle value="small-wide">
-        s-wide
+        <r-icon
+          name="editor/gallery/small-wide"
+          height="40"
+        ></r-icon>
       </mat-button-toggle>
       <mat-button-toggle value="wide-small">
-        wide-s
+        <r-icon
+          name="editor/gallery/wide-small"
+          height="40"
+        ></r-icon>
       </mat-button-toggle>
     </mat-button-toggle-group>
   </button>

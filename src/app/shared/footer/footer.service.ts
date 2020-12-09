@@ -28,6 +28,11 @@ export class FooterService extends RestService {
   }
 
   public setBreadcrumbs(breadcrumbs: BreadcrumbItem[]) {
+    if (breadcrumbs === null) {
+      this.breadcrumbs$.next([]);
+      return;
+    }
+
     this.breadcrumbs$.next([
       {
         href: '/',

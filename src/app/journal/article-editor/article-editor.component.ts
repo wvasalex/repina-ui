@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, Subscription } from 'rxjs';
+import { map, pluck } from 'rxjs/operators';
 import { ContentBlock, ContentElement, StrMap } from '@shared/types';
 import { ToasterService } from '@shared/toaster/toaster.service';
 import { SelectOption } from '@shared/components/select/select.model';
@@ -16,7 +16,7 @@ import { JournalTagsService } from '../journal-tags.service';
   styleUrls: ['./article-editor.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ArticleEditorComponent implements OnInit {
+export class ArticleEditorComponent implements OnInit, OnDestroy {
   public tags$: Observable<SelectOption[]> = this.journalTagsService.get()
     .pipe(map((tags: BlogTag[]) => {
       return tags.map((tag: BlogTag) => {
@@ -44,62 +44,28 @@ export class ArticleEditorComponent implements OnInit {
 
   @ViewChild(ArticleHeaderComponent) headerComponent: ArticleHeaderComponent;
 
-  constructor(private router: Router,
-              private activatedRoute: ActivatedRoute,
-              private changeDetectorRef: ChangeDetectorRef,
-              private journalService: JournalService,
-              private journalTagsService: JournalTagsService,
-              private toasterService: ToasterService) {
+  private _sub: Subscription;
+
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private changeDetectorRef: ChangeDetectorRef,
+    private journalService: JournalService,
+    private journalTagsService: JournalTagsService,
+    private toasterService: ToasterService,
+  ) {
   }
 
-  ngOnInit(): void {
-    const snapshot = this.activatedRoute.snapshot;
-    this.article = snapshot.data.article || {
-      author_name: 'Валерия Репина',
-    };
+  public ngOnInit(): void {
+    this._sub = this.activatedRoute.data.pipe(
+      pluck('project'),
+    ).subscribe(() => {
+      this._init();
+    });
+  }
 
-    if (this.article.blog_tag) {
-      this.article.blog_tag = this.article.blog_tag['id'];
-    }
-
-    if (!this.article.content_blocks?.length) {
-      this.article.content_blocks = [
-        {
-          block_type: 'article-header',
-          props: {
-            title: 'Колонка Валерии Репиной',
-            subtitle: 'Заголовок статьи',
-            description: 'Тут краткое содержание статьи',
-          },
-          content_elements: [
-            {
-              element_type: 'article-image',
-              props: {},
-              content_file: null,
-            },
-          ],
-          is_enabled: true,
-        },
-        {
-          block_type: 'article-part',
-          props: {
-            title: '',
-            subtitle: '',
-          },
-          content_elements: [
-            {
-              element_type: 'article-text',
-              props: {},
-            },
-            {
-              element_type: 'blank',
-              props: {},
-            },
-          ],
-          is_enabled: true,
-        },
-      ];
-    }
+  public ngOnDestroy(): void {
+    this._sub.unsubscribe();
   }
 
   public $addBlock(e: StrMap<any>) {
@@ -155,8 +121,17 @@ export class ArticleEditorComponent implements OnInit {
       });
     });
 
+    // Slug update
+    if (this.article._slug) {
+      const {slug, _slug} = this.article;
+      if (slug) {
+        this.article._slug = slug;
+      }
+      this.article.slug = _slug;
+    }
+
     const req = this.journalService.save(this.article).toPromise().then((a: Article) => {
-      if (a.slug != this.article.slug) {
+      if (a.slug != this.article.slug || a.slug != this.article._slug) {
         this.router.navigate(['/blog', a.slug, 'edit']);
       } else {
         this.article = a;
@@ -165,5 +140,59 @@ export class ArticleEditorComponent implements OnInit {
     });
 
     this.toasterService.wrapPromise(req, 'Сохранено', 'Не удалось сохранить');
+  }
+
+  private _init(): void {
+    const snapshot = this.activatedRoute.snapshot;
+    this.article = snapshot.data.article || {
+      author_name: 'Валерия Репина',
+    };
+
+    if (this.article.slug) {
+      this.article._slug = this.article.slug;
+    }
+
+    if (this.article.blog_tag) {
+      this.article.blog_tag = this.article.blog_tag['id'];
+    }
+
+    if (!this.article.content_blocks?.length) {
+      this.article.content_blocks = [
+        {
+          block_type: 'article-header',
+          props: {
+            title: 'Колонка Валерии Репиной',
+            subtitle: 'Заголовок статьи',
+            description: 'Тут краткое содержание статьи',
+          },
+          content_elements: [
+            {
+              element_type: 'article-image',
+              props: {},
+              content_file: null,
+            },
+          ],
+          is_enabled: true,
+        },
+        {
+          block_type: 'article-part',
+          props: {
+            title: '',
+            subtitle: '',
+          },
+          content_elements: [
+            {
+              element_type: 'article-text',
+              props: {},
+            },
+            {
+              element_type: 'blank',
+              props: {},
+            },
+          ],
+          is_enabled: true,
+        },
+      ];
+    }
   }
 }

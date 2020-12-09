@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 import { BaseBlock } from '@shared/blocks/block.component';
 import { ApiService } from '@shared/services/api/api.service';
 import { ContentElement } from '@shared/types';
@@ -12,6 +12,10 @@ import { ContentElement } from '@shared/types';
 export class ProjectImageComponent extends BaseBlock {
 
   @Output() upload: EventEmitter<File> = new EventEmitter<File>();
+
+  public $upload(file: File) {
+    this.upload.emit(file);
+  }
 
   /*constructor(
     private changeDetectoRef: ChangeDetectorRef,

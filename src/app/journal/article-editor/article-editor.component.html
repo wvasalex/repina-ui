@@ -2,8 +2,20 @@
   <r-padding class="row" style="align-items: center">
     <mat-checkbox
       [(ngModel)]="article.is_enabled"
-    > Опубликовано </mat-checkbox>
+      style="flex: 0; margin-right: 48px"
+    >
+      Опубликовать
+    </mat-checkbox>
 
+    <r-input
+      [(ngModel)]="article._slug"
+      placeholder="Ссылка"
+    >
+      <r-input-label>Ссылка (slug)</r-input-label>
+    </r-input>
+  </r-padding>
+
+  <r-padding class="row" style="align-items: center">
     <r-select
       *ngIf="tags$ | async as tags"
       [(ngModel)]="article.blog_tag"

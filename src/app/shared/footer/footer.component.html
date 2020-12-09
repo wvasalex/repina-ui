@@ -15,6 +15,7 @@
 
       <r-footer-left
         (change)="$save()"
+        [id]="left.content_elements[0].id"
         [props]="left.content_elements[0].props"
         [contentFile]="left.content_elements[0].content_file"
         [editor]="editor"

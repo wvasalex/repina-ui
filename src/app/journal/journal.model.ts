@@ -10,6 +10,7 @@ export interface Article {
   blog_tag?: string | BlogTag;
   id?: string;
   slug?: string;
+  _slug?: string;
   preview_file?: string;
   author_avatar?: string;
   content_blocks: ContentBlock[];

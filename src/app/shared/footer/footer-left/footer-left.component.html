@@ -23,9 +23,17 @@
 </a>
 
 <div class="association">
-  <div>
+  <r-image-upload
+    [editor]="editor"
+    [id]="id"
+    [contentFile]="contentFile"
+    [props]="props"
+    endpoint="menu_footer_elements"
+  ></r-image-upload>
+
+  <!--<div>
     <img src="/assets/icons/footer/association.svg"/>
-  </div>
+  </div>-->
 
   <div
     (contentChanged)="$contentChanged($event, 'branding')"

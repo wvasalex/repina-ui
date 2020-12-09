@@ -10,6 +10,7 @@ export interface Project {
   tags?: (number | ServiceTag)[];
   activity_scope?: number | ServiceScope;
   slug?: string;
+  _slug?: string;
   preview_file?: string;
   content_blocks: ContentBlock[];
   next_project?: Project;

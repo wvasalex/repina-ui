@@ -19,7 +19,7 @@ import { map, tap } from 'rxjs/operators';
 import { Project } from '@shared/projects/projects.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class JournalService extends RestService {
 
@@ -51,7 +51,10 @@ export class JournalService extends RestService {
       body.blog_tag = body.blog_tag.id;
     }
 
-    return super.patch({...body, id: body.slug});
+    return super.patch({
+      ...body,
+      id: body._slug || body.slug,
+    });
   }
 
   public groupArticles(articles: Article[]): Article[][] {
@@ -59,7 +62,7 @@ export class JournalService extends RestService {
     let line: number = 0;
     let chunk_size: number = 2;
 
-    for(let i = 0; i < articles.length;) {
+    for (let i = 0; i < articles.length;) {
       const chunk: any[] = articles.slice(i, i + chunk_size);
       if (chunk.length < chunk_size) {
         while (chunk.length < chunk_size) {
@@ -90,7 +93,7 @@ export class JournalService extends RestService {
       }),
       tap((articles: Article[]) => {
         this.published$.next(articles);
-      })
+      }),
     ).subscribe();
   }
 

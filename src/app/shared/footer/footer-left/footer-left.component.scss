@@ -1,4 +1,4 @@
-.association {
+:host ::ng-deep .association {
   display: flex;
   align-items: center;
   margin-top: 5rem;
@@ -7,13 +7,21 @@
     opacity: .3;
     margin-left: 30px;
   }
+
+  r-image-upload {
+    width: auto;
+    height: auto;
+    min-height: auto;
+  }
+
+  r-image img {
+    width: 104px;
+  }
 }
 
-.w320 :host {
-  .association {
-    img {
-      width: 74px;
-      height: 74px;
-    }
+.w320 :host ::ng-deep .association {
+  r-image img {
+    width: 74px;
+    height: 74px;
   }
 }

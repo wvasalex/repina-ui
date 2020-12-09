@@ -12,7 +12,11 @@ export class ProjectMediaComponent extends BaseBlock {
   @Output() upload: EventEmitter<File> = new EventEmitter<File>();
 
   public $isImage(src: string): boolean {
-    return !src || /\.(jpe?g|png|gif)$/.test(src);
+    return !src || /\.(jpe?g|png|gif|svg)$/.test(src);
+  }
+
+  public $upload(file: File) {
+    this.upload.emit(file);
   }
 
 }

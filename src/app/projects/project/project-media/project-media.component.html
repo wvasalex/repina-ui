@@ -1,5 +1,6 @@
 <r-project-image
   *ngIf="$isImage(contentFile); else video"
+  (upload)="$upload($event)"
   [editor]="editor"
   [id]="id"
   [props]="props"

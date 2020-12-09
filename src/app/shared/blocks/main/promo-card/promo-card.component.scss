@@ -40,6 +40,11 @@ a {
   }
 }
 
+.title {
+  max-height: 50%;
+  overflow: hidden;
+}
+
 .footer {
   @extend .row;
   align-items: flex-end;

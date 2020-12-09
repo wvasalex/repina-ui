@@ -45,6 +45,7 @@ export class ProjectRootComponent extends BaseBlock implements OnInit {
   }
 
   public $upload(file: File) {
+    console.log(file);
     const reader = new FileReader();
     reader.onload = () => {
       this._getImageColor(reader.result as string);

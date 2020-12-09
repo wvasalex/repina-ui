@@ -10,6 +10,7 @@ import { element } from 'protractor';
 import { ListReorderComponent } from '@shared/list-reorder/list-reorder.component';
 import { Project } from '@shared/projects/projects.model';
 import { MatDialog } from '@angular/material/dialog';
+import { FooterService } from '@shared/footer/footer.service';
 
 @Component({
   selector: 'r-main',
@@ -203,6 +204,7 @@ export class MainComponent extends BaseBlock implements OnInit {
     private toasterService: ToasterService,
     private mainRenderService: MainRenderService,
     private mainService: MainService,
+    private footerService: FooterService,
   ) {
     super();
   }
@@ -211,6 +213,8 @@ export class MainComponent extends BaseBlock implements OnInit {
     this.mainService.get().subscribe((blocks: ContentBlock[]) => {
       this.blocks$.next(blocks);
     });
+
+    this.footerService.setBreadcrumbs(null);
   }
 
   public $save() {
