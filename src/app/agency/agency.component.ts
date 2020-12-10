@@ -5,6 +5,7 @@ import { ContentBlock } from '@shared/types';
 import { AgencyService } from './agency.service';
 import { AgencyRenderService } from './agency-render.service';
 import { FooterService } from '@shared/footer/footer.service';
+import { Project } from '@shared/projects/projects.model';
 
 @Component({
   selector: 'r-agency',
@@ -168,6 +169,14 @@ export class AgencyComponent implements OnInit, OnDestroy {
 
   public ngOnDestroy(): void {
     this.footerService.setBreadcrumbs([]);
+  }
+
+  public $background(header: ContentBlock): string {
+    return header.content_elements[0].content_file;
+  }
+
+  public $menuColor(header: ContentBlock): 'white' | 'black' {
+    return header.props?.isDark ? 'black' : 'white';
   }
 
   @HostListener('dblclick') _init() {

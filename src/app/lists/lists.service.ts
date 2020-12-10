@@ -33,6 +33,10 @@ export class ListsService extends RestService {
   }
 
   public save<T>(body: StrMap<any> = {}): Observable<T> {
+    if (body.file) {
+      delete body.file;
+    }
+
     return super.save<T>(body).pipe(
       tap((item: any) => {
         this._update(item as ContentListItem);
@@ -56,7 +60,7 @@ export class ListsService extends RestService {
 
     items.forEach((item: ContentListItem, position: number) => {
       item.position = position;
-      this.patch(item).subscribe();
+      this.save(item).subscribe();
     });
   }
 

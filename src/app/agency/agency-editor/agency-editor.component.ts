@@ -35,6 +35,14 @@ export class AgencyEditorComponent implements OnInit {
     this._save();
   }
 
+  public $background(header: ContentBlock): string {
+    return header.content_elements[0].content_file;
+  }
+
+  public $menuColor(header: ContentBlock): 'white' | 'black' {
+    return header?.props?.isDark ? 'black' : 'white';
+  }
+
   private _save() {
     const promises = [];
     const blocks = JSON.parse(JSON.stringify(this.blocks));

@@ -30,10 +30,6 @@ export class PaginatorService {
     this.base = this.router.url.split('?')[0].replace(/\//g, '_');
     this.LS_KEY = 'LIST_FILTER' + this.base;
 
-    if (!Object.keys(this.route.snapshot.queryParams).length) {
-      this.restore();
-    }
-
     this.paramsSub = this.route.queryParams.pipe(
       debounceTime(200),
     )
@@ -88,31 +84,8 @@ export class PaginatorService {
     this.page = +params.page;
     this.filters = filters;
 
-    /*if (!Object.keys(filters).length) {
-      filters = null;
-    }*/
-    //this.store();
-
     this.changes.next(filters);
   };
-
-  private store() {
-    const state = {
-      ...this.filters,
-      page: this.page,
-    };
-
-    //window.localStorage.setItem(this.LS_KEY, JSON.stringify(state));
-  }
-
-  private restore() {
-    /* const stored = window.localStorage.getItem(this.LS_KEY);
-     if (stored) {
-       const {page, ...filters} = JSON.parse(stored);
-
-       this.setFilters(filters, page);
-     }*/
-  }
 
   public paginate(page: PagedResponse<any>) {
     const pageSize = page.per_page;
@@ -170,8 +143,6 @@ export class PaginatorService {
         text: 'Вперед',
       });
     }
-
-    console.log(pages);
 
     return {
       pages,

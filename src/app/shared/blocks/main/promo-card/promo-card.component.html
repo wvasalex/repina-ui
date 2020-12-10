@@ -10,22 +10,23 @@
     class="title"
   ></r-md>
 
-  <div
-    *ngIf="editor"
-    (contentChanged)="$contentChanged($event, 'href')"
-    [r-block]="editor"
-    [innerHTML]="$getValue('href')"
-    class="text-32"
-  ></div>
-
   <div class="footer">
-    <r-md
-      *ngIf="type != '3'"
-      [editor]="editor"
-      [props]="props"
-      prop="source"
-      className="h2 label"
-    ></r-md>
+    <div class="column">
+      <div
+        *ngIf="editor"
+        (contentChanged)="$contentChanged($event, 'href')"
+        [r-block]="editor"
+        [innerHTML]="$getValue('href')"
+        class="text-32"
+      ></div>
+      <r-md
+        *ngIf="type != '3'"
+        [editor]="editor"
+        [props]="props"
+        prop="source"
+        className="h2 label"
+      ></r-md>
+    </div>
 
     <div
       *ngIf="contentFile && !editor"

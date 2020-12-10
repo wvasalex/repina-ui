@@ -1,7 +1,7 @@
 <r-page
   *ngIf="blocks$ | async as blocks"
-  menuColor="black"
-  [backgroundImage]="blocks[0].content_elements[0].content_file"
+  [menuColor]="$menuColor(blocks[0])"
+  [backgroundImage]="$background(blocks[0])"
 >
   <r-blocks-render
     [render]="render"

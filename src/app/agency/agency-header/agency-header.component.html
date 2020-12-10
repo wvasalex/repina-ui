@@ -1,32 +1,31 @@
-<r-padding>
-  <r-card
-    color="black"
-    class="promo"
-  >
-    <r-md
-      [editor]="editor"
-      [props]="props"
-      prop="subtitle"
-      className="h4"
-      subtitle
-    ></r-md>
+<r-card
+  color="black"
+  class="promo p-l p-r"
+>
+  <r-md
+    [editor]="editor"
+    [props]="props"
+    prop="subtitle"
+    className="h4"
+    subtitle
+  ></r-md>
 
-    <r-md
-      [editor]="editor"
-      [props]="props"
-      prop="title"
-      className="h1"
-      title
-    ></r-md>
+  <r-md
+    [editor]="editor"
+    [props]="props"
+    prop="title"
+    className="h1"
+    title
+  ></r-md>
 
-    <r-image-upload
-      *ngIf="elements?.length && editor"
-      [id]="elements[0].id"
-      [props]="elements[0].props"
-      [contentFile]="elements[0].content_file"
-      [editor]="editor"
-      endpoint="agency_elements"
-      image
-    ></r-image-upload>
-  </r-card>
-</r-padding>
+  <r-image-upload
+    *ngIf="elements?.length && editor"
+    (upload)="$upload($event)"
+    [id]="elements[0].id"
+    [props]="elements[0].props"
+    [contentFile]="elements[0].content_file"
+    [editor]="editor"
+    endpoint="agency_elements"
+    image
+  ></r-image-upload>
+</r-card>
