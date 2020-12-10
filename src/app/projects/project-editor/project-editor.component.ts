@@ -222,6 +222,8 @@ export class ProjectEditorComponent implements OnInit, OnDestroy {
         });
       }
     }
+
+    this.changeDetectorRef.detectChanges();
   }
 
 }

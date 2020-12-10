@@ -194,5 +194,7 @@ export class ArticleEditorComponent implements OnInit, OnDestroy {
         },
       ];
     }
+
+    this.changeDetectorRef.detectChanges();
   }
 }
