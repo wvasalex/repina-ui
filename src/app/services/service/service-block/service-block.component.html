@@ -25,13 +25,13 @@
     ></div>
 
     <div class="content">
-      <div
-        [r-block]="editor"
-        [innerHTML]="$getValue('subtitle')"
-        (contentChanged)="$contentChanged($event, 'subtitle')"
-        [class.mt-1_5]="$getValue('subtitle')"
-        class="subtitle h4"
-      ></div>
+      <r-md
+        [props]="props"
+        [editor]="editor"
+        prop="subtitle"
+        className="h4"
+        class="subtitle"
+      ></r-md>
 
       <r-blocks-render
         *ngIf="elements?.length"

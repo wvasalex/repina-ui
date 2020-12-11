@@ -56,9 +56,7 @@ h2, h3, h4, .h, .h2, .h3, .h4, button {
   margin: 0;
 
   * {
-    font-weight: inherit;
-    font-size: inherit;
-    font-family: inherit;
+    font: inherit;
   }
 }
 

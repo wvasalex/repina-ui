@@ -21,6 +21,12 @@
 .title, .subtitle {
   width: 50%;
   margin-bottom: 2rem;
+
+  ::ng-deep .h4 {
+    * {
+      font: inherit !important;
+    }
+  }
 }
 
 .inner {
