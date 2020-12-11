@@ -1,5 +1,6 @@
 <r-image-upload
   (upload)="$upload($event)"
+  (contentFileChange)="$updateContentFile($event)"
   [editor]="editor"
   [id]="id"
   [contentFile]="contentFile"

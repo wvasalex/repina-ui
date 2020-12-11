@@ -358,17 +358,19 @@ markdown {
     white-space: pre-line;
   }
 
-  h1, h2, h3, h4, h5 {
-    margin-top: 2rem;
-    margin-bottom: 1.5rem;
-  }
-
   a {
     text-decoration: underline;
   }
 
   ul {
     margin: 32px 0;
+  }
+
+  &.md-text {
+    h1, h2, h3, h4, h5 {
+      margin-top: 2rem;
+      margin-bottom: 1.5rem;
+    }
   }
 }
 

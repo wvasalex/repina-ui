@@ -14,7 +14,6 @@ export class ProjectNextComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    //this.project.description = 'Следующий проект';
   }
 
 }

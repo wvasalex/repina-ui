@@ -3,6 +3,7 @@
   class="row"
 >
   <r-project-image
+    (contentFileChange)="elements[0].content_file = $event"
     [id]="elements[0].id"
     [contentFile]="elements[0].content_file"
     [editor]="editor"

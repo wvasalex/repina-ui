@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { StrMap } from '@shared/types';
 import { BaseBlock } from '../../blocks/block.component';
 import { ProjectsService } from '../projects.service';
@@ -14,6 +15,7 @@ import { Service, ServiceScope, ServiceTag } from '../../../services/services.mo
 })
 export class RelatedProjectsComponent extends BaseBlock {
 
+  @Input() project: Project;
   @Input() tags: ServiceTag[];
 
   public projects$: Observable<Project[]>;
@@ -24,7 +26,7 @@ export class RelatedProjectsComponent extends BaseBlock {
 
   ngOnInit(): void {
     const query: StrMap<any> = {
-      per_page: 5,
+      per_page: 6,
     };
 
     if (!this.tags) {
@@ -39,7 +41,16 @@ export class RelatedProjectsComponent extends BaseBlock {
       query.tags__id__in = this.tags.map((tag: ServiceTag) => tag.id).join(',');
     }
 
-    this.projects$ = this.projectsService.getRelevant(query);
+    this.projects$ = this.projectsService.getRelevant(query, 6).pipe(
+      map((projects: Project[]) => {
+        if (this.project) {
+          projects = projects.filter((project: Project) => {
+            return project.slug !== this.project.slug;
+          });
+        }
+        return projects.slice(0, 5);
+      }),
+    );
   }
 
 }

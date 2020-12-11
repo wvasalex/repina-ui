@@ -12,6 +12,7 @@ import { ApiService } from '@shared/services/api/api.service';
 export class ImageUploadComponent extends BaseBlock {
 
   @Output() upload: EventEmitter<File> = new EventEmitter<File>();
+  @Output() contentFileChange: EventEmitter<string> = new EventEmitter<string>();
 
   @Input() endpoint: string = '';
   @Input() name: string = 'content_file';
@@ -36,8 +37,10 @@ export class ImageUploadComponent extends BaseBlock {
     this.api.postFile(`/api/v1/${this.endpoint}/${this.id}/`, data)
       .toPromise()
       .then((element: ContentElement) => {
-        this.upload.emit(file);
         this.contentFile = element[this.name];
+        this.upload.emit(file);
+        this.contentFileChange.emit(this.contentFile);
+
         this.changeDetectoRef.detectChanges();
       });
   }
@@ -47,6 +50,5 @@ export class ImageUploadComponent extends BaseBlock {
     this.contentFile = null;
     this.changeDetectoRef.detectChanges();
   }
-
 
 }

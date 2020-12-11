@@ -12,9 +12,14 @@ import { ContentElement } from '@shared/types';
 export class ProjectImageComponent extends BaseBlock {
 
   @Output() upload: EventEmitter<File> = new EventEmitter<File>();
+  @Output() contentFileChange: EventEmitter<string> = new EventEmitter<string>();
 
   public $upload(file: File) {
     this.upload.emit(file);
+  }
+
+  public $updateContentFile(contentFile: string) {
+    this.contentFileChange.emit(contentFile);
   }
 
   /*constructor(
