@@ -10,14 +10,15 @@ export class RestService {
   public api: ApiService;
 
   public save<T>(body: StrMap<any> = {}): Observable<T> {
+    const {_new, ...data} = body;
     const uid = body._slug || body.slug || body.id;
 
-    return uid ?
+    return uid && !_new ?
       this.patch({
-        ...body,
+        ...data,
         id: uid,
       }) :
-      this.post(body);
+      this.post(data);
   }
 
   public post<T>(body: StrMap<any> = {}) {

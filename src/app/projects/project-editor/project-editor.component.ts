@@ -137,16 +137,14 @@ export class ProjectEditorComponent implements OnInit, OnDestroy {
     });
 
     // Slug update
-    if (this.project._slug && this.project.slug) {
+    if (this.project._slug) {
       const {slug, _slug} = this.project;
-      if (slug) {
-        this.project._slug = slug;
-      }
+      this.project._slug = slug;
       this.project.slug = _slug;
     }
 
     const req = this.projectsService.save(this.project).toPromise().then((a: Project) => {
-      if (a.slug != this.project.slug || a.slug != this.project._slug) {
+      if (this.project.slug != this.project._slug) {
         this.router.navigate(['/projects', a.slug, 'edit']);
       } else {
         this.project = this._normalize(a);
@@ -179,7 +177,7 @@ export class ProjectEditorComponent implements OnInit, OnDestroy {
 
   private _init() {
     const snapshot = this.activatedRoute.snapshot;
-    this.project = this._normalize(snapshot.data.project || {});
+    this.project = this._normalize(snapshot.data.project || { _new: true });
 
     if (!this.project.content_blocks?.length) {
       this.project.content_blocks = [

@@ -124,14 +124,12 @@ export class ArticleEditorComponent implements OnInit, OnDestroy {
     // Slug update
     if (this.article._slug) {
       const {slug, _slug} = this.article;
-      if (slug) {
-        this.article._slug = slug;
-      }
+      this.article._slug = slug;
       this.article.slug = _slug;
     }
 
     const req = this.journalService.save(this.article).toPromise().then((a: Article) => {
-      if (a.slug != this.article.slug || a.slug != this.article._slug) {
+      if (this.article.slug != this.article._slug) {
         this.router.navigate(['/blog', a.slug, 'edit']);
       } else {
         this.article = a;
@@ -146,6 +144,7 @@ export class ArticleEditorComponent implements OnInit, OnDestroy {
     const snapshot = this.activatedRoute.snapshot;
     this.article = snapshot.data.article || {
       author_name: 'Валерия Репина',
+      _new: true,
     };
 
     if (this.article.slug) {
