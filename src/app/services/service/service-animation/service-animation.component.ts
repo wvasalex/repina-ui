@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import * as lottie from 'assets/lottie.min.js';
 import { BaseBlock } from '@shared/blocks/block.component';
 
@@ -11,6 +11,10 @@ import { BaseBlock } from '@shared/blocks/block.component';
 export class ServiceAnimationComponent extends BaseBlock implements OnInit {
 
   @ViewChild('animation', {static: true}) animationContainer: ElementRef;
+
+  constructor(private renderer: Renderer2) {
+    super();
+  }
 
   ngOnInit(): void {
     const a = this.props.animation;
@@ -25,14 +29,19 @@ export class ServiceAnimationComponent extends BaseBlock implements OnInit {
     }
 
     setTimeout(() => {
+      const container = this.animationContainer.nativeElement;
       lottie.loadAnimation({
-        container: this.animationContainer.nativeElement,
+        container,
         animationData: JSON.parse(animationData),
         renderer: 'svg',
         loop: false,
         autoplay: true,
         rendererSettings: {},
+        viewBoxOnly: false,
       });
+
+      this.renderer.removeAttribute(container.firstChild, 'height');
+      this.renderer.removeStyle(container.firstChild, 'width');
     }, 300);
   }
 
