@@ -23,6 +23,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { AgencyGalleryComponent } from './agency-gallery/agency-gallery.component';
 import { AgencyImageComponent } from './agency-image/agency-image.component';
 import { AgencyHeaderComponent } from './agency-header/agency-header.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { AgencyHeaderComponent } from './agency-header/agency-header.component';
     SharedModule,
     BlocksModule,
     MatButtonModule,
+    FormsModule,
   ],
 })
 export class AgencyModule {

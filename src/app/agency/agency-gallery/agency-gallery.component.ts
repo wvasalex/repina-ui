@@ -8,5 +8,4 @@ import { BaseBlock } from '@shared/blocks/block.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AgencyGalleryComponent extends BaseBlock {
-
 }
