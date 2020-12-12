@@ -14,10 +14,4 @@ export class PromoCardComponent extends BaseBlock implements OnInit {
   public ngOnInit(): void {
   }
 
-  public $click(e: Event) {
-    if (this.editor) {
-      e.preventDefault();
-    }
-  }
-
 }

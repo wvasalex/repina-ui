@@ -8,7 +8,7 @@
   background: #EBEBEB;
   white-space: nowrap;
   box-sizing: border-box;
-  border: 2px solid #EBEBEB;
+  //border: 2px solid #EBEBEB;
   cursor: pointer;
   transition: 100ms;
   text-align: center;
@@ -19,7 +19,7 @@
   }
 
   &.disabled {
-    border: 2px solid #EBEBEB;
+    //border: 2px solid #EBEBEB;
     background: #fff;
     color: #000;
   }

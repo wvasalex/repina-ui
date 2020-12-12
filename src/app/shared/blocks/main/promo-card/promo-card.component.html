@@ -1,6 +1,5 @@
 <a
-  (click)="$click($event)"
-  [attr.href]="props.href"
+  [attr.href]="editor ? null : props.href"
 >
   <r-md
     [editor]="editor"
