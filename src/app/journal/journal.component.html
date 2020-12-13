@@ -8,12 +8,17 @@
       ></r-journal-header>
     </div>
 
-    <r-badge-list
-      *ngIf="tags$ | async as tags"
-      (changed)="$applyTags($event)"
-      [badges]="tags"
-      class="mt-2 tags"
-    ></r-badge-list>
+    <ng-container *ngIf="selectedTags$ | async as selectedTags">
+      <r-badge-list
+        *ngIf="tags$ | async as tags"
+        (itemChanged)="$tagChanged($event)"
+        (changed)="$applyTags($event, tags)"
+        [badges]="tags"
+        [selected]="selectedTags"
+        class="mt-2 tags"
+      ></r-badge-list>
+    </ng-container>
+
   </r-padding>
 
   <r-padding>
@@ -55,42 +60,42 @@
     </ng-container>
   </r-padding>
 
- <r-fabs *rWithSession>
-   <button
-     (click)="$reorder()"
-     mat-fab
-     color="primary"
-   >
-     <r-icon name="components/reorder"></r-icon>
-   </button>
+  <r-fabs *rWithSession>
+    <button
+      (click)="$reorder()"
+      mat-fab
+      color="primary"
+    >
+      <r-icon name="components/reorder"></r-icon>
+    </button>
 
-   <button
-     [routerLink]="['/blog/new']"
-     mat-fab
-     color="primary"
-     style="margin: 0 16px;"
-   >
-     <r-icon name="components/add-white"></r-icon>
-   </button>
+    <button
+      [routerLink]="['/blog/new']"
+      mat-fab
+      color="primary"
+      style="margin: 0 16px;"
+    >
+      <r-icon name="components/add-white"></r-icon>
+    </button>
 
-   <button
-     *ngIf="!editor"
-     (click)="editor = true"
-     mat-fab
-     color="primary"
-   >
-     <r-icon name="components/edit-white"></r-icon>
-   </button>
+    <button
+      *ngIf="!editor"
+      (click)="editor = true"
+      mat-fab
+      color="primary"
+    >
+      <r-icon name="components/edit-white"></r-icon>
+    </button>
 
-   <button
-     *ngIf="editor"
-     (click)="$save()"
-     mat-fab
-     color="primary"
-   >
-     <r-icon name="components/checked-white"></r-icon>
-   </button>
- </r-fabs>
+    <button
+      *ngIf="editor"
+      (click)="$save()"
+      mat-fab
+      color="primary"
+    >
+      <r-icon name="components/checked-white"></r-icon>
+    </button>
+  </r-fabs>
 </r-page>
 <!--
 

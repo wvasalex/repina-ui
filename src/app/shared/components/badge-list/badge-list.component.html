@@ -1,7 +1,7 @@
 <r-badge
   *ngFor="let badge of badges; let last = last;"
   (click)="$toggle(badge)"
-  [selected]="selected.indexOf(badge) != -1"
+  [selected]="$isSelected(badge)"
   [disabled]="badge.meta?.disabled"
   [class.mr-1]="!last"
   [matTooltip]="badge.meta?.disabledTooltip"

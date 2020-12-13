@@ -1,3 +1,9 @@
+.projects {
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
 .tags {
   margin-top: 70px;
   margin-bottom: 44px;
@@ -13,30 +19,18 @@
   .tags {
     margin: 32px 0;
   }
-}
 
-.mb-30 {
-  margin-bottom: 30px;
-}
-
-.project {
-  max-height: 450px;
+  .projects {
+    grid-template-columns: 1fr;
+  }
 }
 
 .snippet {
   overflow: hidden;
-  margin-left: 15px;
-  margin-right: 15px;
-
-  &:first-of-type {
-    margin-left: 0;
-  }
-
-  &:last-of-type {
-    margin-right: 0;
-  }
 }
 
-.group {
-  overflow: hidden;
+.w768 :host {
+  .projects {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

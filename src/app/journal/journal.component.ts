@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, HostListener, OnDestroy, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
+import { map, startWith, tap } from 'rxjs/operators';
 import { ContentBlock, StrMap } from '@shared/types';
 import { SelectOption } from '@shared/components/select/select.model';
 import { MatDialog } from '@angular/material/dialog';
@@ -13,6 +13,7 @@ import { Article, BlogTag } from './journal.model';
 import { JournalTagsService } from './journal-tags.service';
 import { PaginatorService } from '@shared/paginator/paginator.service';
 import { FooterService } from '@shared/footer/footer.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'r-journal',
@@ -35,15 +36,7 @@ export class JournalComponent implements OnInit, OnDestroy {
 
   public articles$: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 
-  public tags$: Observable<SelectOption[]> = this.journalTagsService.get()
-    .pipe(map((tags: BlogTag[]) => {
-      return tags.map((tag: BlogTag) => {
-        return {
-          value: tag.key,
-          label: tag.title,
-        };
-      });
-    }));
+  public tags$: Observable<SelectOption[]> = this.journalTagsService.getPublic();
 
   public groups$: Observable<any> = this.articles$
     .pipe(map((articles) => {
@@ -56,10 +49,30 @@ export class JournalComponent implements OnInit, OnDestroy {
       return this.journalService.groupArticles(articles);
     }));
 
+  private _keys$: Observable<string[]> = this.activatedRoute.queryParams
+    .pipe(map((params) => {
+      return (params.blog_tag__key__in || '').split(',');
+    }));
+
+  public selectedTags$: Observable<SelectOption[]> = combineLatest([this.tags$, this._keys$])
+    .pipe(
+      map(([tags, keys]) => {
+        if (keys.length === 1 && keys[0] === '') {
+          return [tags[0]];
+        }
+
+        return tags.filter((tag: SelectOption) => {
+          return keys.indexOf('' + tag.value) !== -1;
+        });
+      }),
+      startWith([]),
+    );
+
   public editor: boolean = false;
 
   constructor(
     private dialog: MatDialog,
+    private activatedRoute: ActivatedRoute,
     private toasterService: ToasterService,
     private journalPageService: JournalPageService,
     private journalService: JournalService,
@@ -88,15 +101,34 @@ export class JournalComponent implements OnInit, OnDestroy {
     this.footerService.setBreadcrumbs([]);
   }
 
-  public $applyTags(tags: SelectOption[]) {
-    const keys = tags.map((option: SelectOption) => {
+  public $applyTags(tags: SelectOption[], allTags: SelectOption[]) {
+    let keys = tags.map((option: SelectOption) => {
       return option.value;
     });
+
+    if (tags.length > 1) {
+      const all = tags.findIndex((item) => item.value === null);
+      if (all != -1) {
+        tags.splice(all, 1);
+      }
+    } else {
+      if (keys.indexOf(null) !== -1) {
+        keys = [];
+      }
+    }
 
     this.paginatorService.setFilters({
       page: '1',
       blog_tag__key__in: keys.join(','),
     });
+  }
+
+  public $tagChanged(tagChange) {
+    if (tagChange.item.value === null && tagChange.checked) {
+      this.paginatorService.setFilters({
+        page: '1',
+      });
+    }
   }
 
   public $reorder() {

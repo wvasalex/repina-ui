@@ -8,30 +8,27 @@
 
     <r-badge-list
       *ngIf="tags$ | async as tags"
-      (changed)="$applyTags($event)"
+      (itemChanged)="$tagChanged($event, tags)"
+      (changed)="$applyTags($event, tags)"
+      [selected]="selectedTags"
       [badges]="tags"
       class="mt-2 tags"
     ></r-badge-list>
   </r-padding>
 
-  <div *ngIf="groups$ | async as groups">
-    <div
-      *ngFor="let group of groups; let last = last;"
-      [class.mb-30]="!last"
-      class="group row"
-    >
+  <div  *ngIf="projects$ | async as projects">
+    <div class="projects">
       <div
-        *ngFor="let project of group; let index = index;"
+        *ngFor="let project of projects; let index = index;"
+        [rAspectRatio]="1.4"
         class="snippet"
       >
         <r-project-snippet
           [project]="project"
-          [rAspectRatio]="1.4"
           r-parallax
         ></r-project-snippet>
       </div>
     </div>
-
     <r-padding>
       <r-paginator
         [data$]="data$"

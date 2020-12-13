@@ -8,6 +8,7 @@ import { StrMap } from '@shared/types';
 import { BlogTag } from './journal.model';
 import { moveItemInArray } from '@angular/cdk/drag-drop';
 import { ContentListItem } from '../lists/lists.model';
+import { SelectOption } from '@shared/components/select/select.model';
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +23,24 @@ export class JournalTagsService extends RestService {
 
   constructor(public api: ApiService) {
     super();
+  }
+
+  public getPublic(): Observable<SelectOption[]> {
+    return this.get().pipe(map((tags: BlogTag[]) => {
+      const active = tags.map((tag: BlogTag) => {
+        return {
+          value: tag.key,
+          label: tag.title,
+        };
+      });
+
+      active.unshift({
+        value: null,
+        label: 'Все',
+      });
+
+      return active;
+    }));
   }
 
   public resolve<T>(list_type: string): Observable<BlogTag[]> {

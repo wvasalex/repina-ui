@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { BreakpointState } from '@angular/cdk/layout';
 import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { BreakpointService } from '@shared/breakpoint.service';
@@ -8,12 +7,11 @@ import { ProjectsService } from '@shared/projects/projects.service';
 import { Project } from '@shared/projects/projects.model';
 import { ListReorderComponent } from '@shared/list-reorder/list-reorder.component';
 import { SelectOption } from '@shared/components/select/select.model';
-import { ContentBlock, StrMap } from '@shared/types';
+import { ContentBlock } from '@shared/types';
 import { ToasterService } from '@shared/toaster/toaster.service';
 import { PagedRequest, PagedResponse } from '@shared/services/api/api.model';
 import { PaginatorService } from '@shared/paginator/paginator.service';
 import { ServicesTagsService } from '../services/services-tags.service';
-import { ServiceTag } from '../services/services.model';
 import { ProjectsPageService } from './projects-page.service';
 import { FooterService } from '@shared/footer/footer.service';
 
@@ -36,41 +34,14 @@ export class ProjectsComponent {
 
   public data$: Subject<PagedResponse<Project>> = new Subject<PagedResponse<Project>>();
 
-  private projects$: BehaviorSubject<Project[]> = new BehaviorSubject<Project[]>([]);
+  public projects$: BehaviorSubject<Project[]> = new BehaviorSubject<Project[]>([]);
 
-  public tags$: Observable<SelectOption[]> = this.servicesTagsService.get()
-    .pipe(map((tags: ServiceTag[]) => {
-      return tags
-        .filter((tag: ServiceTag) => {
-          return tag.show_in_projects;
-        })
-        .map((tag: ServiceTag) => {
-          return {
-            value: tag.id,
-            label: tag.title,
-          };
-        });
+  public tags$: Observable<SelectOption[]> = this.servicesTagsService.getPublic()
+    .pipe(tap((tags: SelectOption[]) => {
+      this.selectedTags = [tags[0]];
     }));
 
-  private rows$: Observable<number> = this.breakpointService.change$
-    .pipe(map((result: BreakpointState) => {
-      const w = typeof window !== 'undefined' ? window.innerWidth : 1920;
-      const breakpoints = [1920, 1366, 1024, 768, 320];
-      let cn = breakpoints.find((breakpoint) => w > breakpoint) || 320;
-
-      if (cn >= 1024) {
-        return 3;
-      }
-      if (cn == 320) {
-        return 1;
-      }
-      return 2;
-    }));
-
-  public groups$: Observable<Project[][]> = combineLatest([this.projects$, this.rows$])
-    .pipe(map(([projects, rows]) => {
-      return this.projectsService.groupProjectss(projects, rows);
-    }));
+  public selectedTags: SelectOption[] = [];
 
   public editor: boolean = false;
 
@@ -107,19 +78,43 @@ export class ProjectsComponent {
     this.footerService.setBreadcrumbs([]);
   }
 
-  public $applyTags(tags: SelectOption[]) {
+  public $applyTags(tags: SelectOption[], allTags: SelectOption[]) {
     const keys = tags.map((option: SelectOption) => {
       return option.value;
     });
 
     let filters = {};
+
+    if (tags.length > 1) {
+      const all = tags.findIndex((item) => item.value === null);
+      if (all != -1) {
+        tags.splice(all, 1);
+      }
+    } else {
+      if (keys.indexOf(null) !== -1) {
+        tags = [];
+      }
+    }
+
     if (tags.length) {
       filters = {
         page: 1,
         tags__id__in: keys.join(','),
       };
+    } else {
+      tags = [allTags[0]];
     }
+
+    this.selectedTags = tags;
     this._load(filters);
+  }
+
+  public $tagChanged(tagChange, allTags: SelectOption[]) {
+    if (tagChange.item.value === null && tagChange.checked) {
+      this.selectedTags = [allTags[0]];
+      this._load({page: 1});
+      this.changeDetectorRef.detectChanges();
+    }
   }
 
   public $reorder() {
