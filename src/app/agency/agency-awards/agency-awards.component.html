@@ -29,8 +29,8 @@
       class="awards"
     >
       <thead>
-        <th>Год</th>
-        <th>Награда</th>
+        <th class="year">Год</th>
+        <th class="title">Награда</th>
         <th>Место</th>
         <th>Номинация</th>
       </thead>
@@ -38,8 +38,8 @@
         <tr
           *ngFor="let award of $page(awards)"
         >
-          <td class="text32">{{award.props.year}}</td>
-          <td class="text32 bolder">{{award.props.title}}</td>
+          <td class="text32 year">{{award.props.year}}</td>
+          <td class="text32 bolder title">{{award.props.title}}</td>
           <td class="text32">{{award.props.position}}</td>
           <td class="text32">{{award.props.type}}</td>
         </tr>

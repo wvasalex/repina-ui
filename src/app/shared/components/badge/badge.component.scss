@@ -19,9 +19,7 @@
   }
 
   &.disabled {
-    //border: 2px solid #EBEBEB;
-    background: #fff;
-    color: #000;
+    opacity: .5;
   }
 
   &:not(.selected):not(.disabled):hover {

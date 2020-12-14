@@ -21,13 +21,13 @@
 
 .index {
   min-width: 56px;
-  margin-top: .5rem;
+  //margin-top: 1.5rem;
 }
 
 .service {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: baseline;
 }
 
 .right {
@@ -38,7 +38,7 @@
 
 .animation {
   position: absolute;
-  bottom: -10%;
+  bottom: -15%;
 }
 
 .circle {

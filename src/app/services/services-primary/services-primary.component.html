@@ -12,18 +12,17 @@
       <div class="h2 index">0{{index + 1}}</div>
       <a
         [routerLink]="['/services', service.slug]"
+        [innerHTML]="$breakLine(service.title)"
         class="title h3 ml-6"
-      >
-        {{service.title}}
-      </a>
+      ></a>
     </div>
   </r-padding>
   <div class="right">
     <r-service-animation
       *ngIf="animation$ | async as animation"
       [props]="{'animation': animation}"
-      image
       class="animation p-r"
+      image
     ></r-service-animation>
   </div>
 </div>

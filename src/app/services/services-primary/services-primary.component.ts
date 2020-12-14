@@ -31,4 +31,8 @@ export class ServicesPrimaryComponent implements OnInit {
     requestAnimationFrame(() => this.animation$.next(animation));
   }
 
+  public $breakLine(text: string): string {
+    return text.split(' ').join('<br>');
+  }
+
 }
