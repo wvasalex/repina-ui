@@ -17,6 +17,20 @@
   .mobile, .mobile-open {
     display: none;
   }
+
+  .mobile {
+    .menu-pane {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 16px;
+    }
+
+    .request-button {
+      width: 100%;
+    }
+  }
 }
 
 :host[color=black] {
@@ -50,12 +64,7 @@
 
   .mobile {
     display: flex;
-  }
-}
-
-.w320 :host {
-  .request-button {
-    display: none;
+    flex-direction: column;
   }
 }
 

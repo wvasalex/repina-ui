@@ -11,10 +11,9 @@
   &:not(.static) {
     .overlay {
       opacity: 0;
-
     }
 
-    &:hover .overlay {
+    &:hover .overlay.active {
       transition: 100ms;
       opacity: 1;
     }

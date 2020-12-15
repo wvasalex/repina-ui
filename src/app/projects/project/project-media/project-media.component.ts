@@ -9,6 +9,7 @@ import { BaseBlock } from '@shared/blocks/block.component';
 })
 export class ProjectMediaComponent extends BaseBlock {
 
+  @Output() contentFileChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() upload: EventEmitter<File> = new EventEmitter<File>();
 
   public $isImage(src: string): boolean {
@@ -17,6 +18,10 @@ export class ProjectMediaComponent extends BaseBlock {
 
   public $upload(file: File) {
     this.upload.emit(file);
+  }
+
+  public $contentFileChange(contentFile: string) {
+    this.contentFileChange.emit(contentFile);
   }
 
 }

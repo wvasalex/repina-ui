@@ -2,7 +2,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  ElementRef, HostListener, OnDestroy, OnInit,
+  ElementRef, EventEmitter, HostListener, OnDestroy, OnInit, Output,
   ViewChild, ViewEncapsulation,
 } from '@angular/core';
 import videojs from 'video.js';
@@ -19,6 +19,10 @@ import { ContentElement } from '@shared/types';
   encapsulation: ViewEncapsulation.None,
 })
 export class ProjectVideoComponent extends BaseBlock implements OnInit, OnDestroy {
+
+  @Output() contentFileChange: EventEmitter<string> = new EventEmitter<string>();
+  @Output() upload: EventEmitter<File> = new EventEmitter<File>();
+
   @ViewChild('video', { static: true }) video: ElementRef;
 
   public paused: boolean = true;
@@ -70,14 +74,16 @@ export class ProjectVideoComponent extends BaseBlock implements OnInit, OnDestro
     const data = new FormData();
     data.append('content_file', file);
 
-    this.toasterService.info('Загрузка видео...');
+    this.upload.emit(file);
+    this.toasterService.info('Загрузка медиа...');
     this.api.postFile('/api/v1/project_content_elements/' + this.id + '/', data)
       .toPromise()
       .then((element: ContentElement) => {
         this.contentFile = element.content_file;
+        this.contentFileChange.emit(this.contentFile);
         this.changeDetectoRef.detectChanges();
 
-        this.toasterService.info('Видео загружено!');
+        this.toasterService.info('Медиа загружено!');
 
         this.initPlayer();
       });

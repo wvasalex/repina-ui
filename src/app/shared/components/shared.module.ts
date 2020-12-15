@@ -32,6 +32,7 @@ import { ImageUploadComponent } from './image-upload/image-upload.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { StickyComponent } from './sticky/sticky.component';
+import { MousemoveDirective } from '@shared/components/mousemove/mousemove.directive';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { StickyComponent } from './sticky/sticky.component';
     LinebreaksPipe,
     ImageUploadComponent,
     StickyComponent,
+    MousemoveDirective,
   ],
   exports: [
     LogoComponent,
@@ -90,6 +92,7 @@ import { StickyComponent } from './sticky/sticky.component';
     LinebreaksPipe,
     ImageUploadComponent,
     StickyComponent,
+    MousemoveDirective,
   ],
   imports: [
     CommonModule,

@@ -6,6 +6,7 @@ import { SelectOption } from '@shared/components/select/select.model';
   selector: 'r-article-part',
   templateUrl: './article-part.component.html',
   styleUrls: ['./article-part.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ArticlePartComponent extends BaseBlock {
   @Input() availableElements: SelectOption[];

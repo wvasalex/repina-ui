@@ -1,5 +1,6 @@
 <r-project-image
   *ngIf="$isImage(contentFile); else video"
+  (contentFileChange)="$contentFileChange($event)"
   (upload)="$upload($event)"
   [editor]="editor"
   [id]="id"
@@ -9,6 +10,8 @@
 
 <ng-template #video>
   <r-project-video
+    (contentFileChange)="$contentFileChange($event)"
+    (upload)="$upload($event)"
     [editor]="editor"
     [id]="id"
     [props]="props"

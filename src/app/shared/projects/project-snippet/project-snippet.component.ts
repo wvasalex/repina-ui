@@ -13,6 +13,8 @@ export class ProjectSnippetComponent implements OnInit {
   @Input() project: Project;
   @Input() @HostBinding('class.static') static: boolean = false;
 
+  public mouseover: boolean = false;
+
   constructor(private projectsService: ProjectsService) { }
 
   ngOnInit(): void {
@@ -20,6 +22,10 @@ export class ProjectSnippetComponent implements OnInit {
 
   public $link(): string {
     return this.projectsService.getLink(this.project.slug);
+  }
+
+  public $hover(mouseover: boolean) {
+    this.mouseover = mouseover;
   }
 
 }

@@ -170,6 +170,11 @@ export class ArticleEditorComponent implements OnInit, OnDestroy {
               props: {},
               content_file: null,
             },
+            {
+              element_type: 'article-image',
+              props: {},
+              content_file: null,
+            },
           ],
           is_enabled: true,
         },
@@ -192,6 +197,15 @@ export class ArticleEditorComponent implements OnInit, OnDestroy {
           is_enabled: true,
         },
       ];
+    }
+
+    const header =this.article.content_blocks.find((block: ContentBlock) => block.block_type === 'article-header');
+    if (header && header.content_elements.length === 1) {
+      header.content_elements.push({
+        element_type: 'article-image',
+        props: {},
+        content_file: null,
+      });
     }
 
     this.changeDetectorRef.detectChanges();

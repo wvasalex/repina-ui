@@ -198,6 +198,10 @@ a, a:visited {
   @extend .row;
 }
 
+.space-between {
+  justify-content: space-between;
+}
+
 .w768, .w320 {
   .row-column {
     flex-direction: column !important;

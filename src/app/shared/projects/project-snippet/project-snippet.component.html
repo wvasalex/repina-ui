@@ -13,7 +13,10 @@
   <div *ngIf="!project.slug"></div>
 
   <r-project-snippet-overlay
+    (rMousemove)="$hover(true)"
+    (mouseleave)="$hover(false)"
     [class.static]="static"
+    [class.active]="mouseover"
     class="overlay"
   >
     <div

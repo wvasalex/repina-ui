@@ -1,12 +1,16 @@
 <r-padding>
+  <div
+    *ngIf="editor && elements.length"
+    style="width: 40%;"
+  >
+    <r-article-image
+      [id]="elements && elements[0]?.id"
+      [contentFile]="elements && elements[0]?.content_file"
+      [editor]="editor"
+    ></r-article-image>
+  </div>
+
   <r-card>
-    <!--<div
-      (contentChanged)="$contentChanged($event, 'title')"
-      [r-block]="editor"
-      [innerHTML]="$getValue('title')"
-      title
-      class="h2 mt-1"
-    ></div>-->
     <r-md
       [props]="props"
       [editor]="editor"
@@ -34,8 +38,8 @@
     ></div>
 
     <r-article-image
-      [id]="elements && elements[0].id"
-      [contentFile]="elements && elements[0].content_file"
+      [id]="elements && elements[1]?.id"
+      [contentFile]="elements && elements[1]?.content_file"
       [editor]="editor"
       image
     ></r-article-image>

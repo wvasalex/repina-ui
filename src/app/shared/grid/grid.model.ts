@@ -21,20 +21,36 @@ export const GridDataSize: StrMap<GridDataSizeDef> = {
       {},
     ],
   },
+  'small-wide-narrow': {
+    cols: 3,
+    roles: [1, 2],
+    grid: [
+      {rowspan: 1},
+      {colspan: 2, rowspan: 1},
+    ],
+  },
+  'wide-small-narrow': {
+    cols: 3,
+    roles: [1, 2],
+    grid: [
+      {colspan: 2, rowspan: 1},
+      {rowspan: 1},
+    ],
+  },
   'small-wide': {
     cols: 3,
     roles: [1, 2],
     grid: [
-      {},
-      {colspan: 2},
+      {rowspan: 2},
+      {colspan: 2, rowspan: 2},
     ],
   },
   'wide-small': {
     cols: 3,
     roles: [1, 2],
     grid: [
-      {colspan: 2},
-      {},
+      {colspan: 2, rowspan: 2},
+      {rowspan: 2},
     ],
   },
   'small': {
@@ -60,7 +76,7 @@ export const GridDataSize: StrMap<GridDataSizeDef> = {
     grid: [
       {},
     ],
-  }
+  },
 };
 
 export interface GridDataSizeDef {

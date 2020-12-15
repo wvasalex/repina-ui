@@ -5,8 +5,10 @@
 }
 
 button {
-  background: $color-red;
+  width: 100%;
   padding: .5rem 2rem;
+  box-sizing: border-box;
+  background: $color-red;
   color: white;
   border: none;
   outline: none;
