@@ -29,6 +29,10 @@
 
     .request-button {
       width: 100%;
+
+      ::ng-deep button {
+        width: 100%;
+      }
     }
   }
 }

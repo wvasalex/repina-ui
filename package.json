@@ -5,13 +5,13 @@
   "description": "Repina branding ui",
   "scripts": {
     "ng": "ng",
-    "build": "ng build",
+    "build": "ng build --prod --cross-origin=use-credentials",
     "start": "ng serve --proxy-config=proxy.conf.json",
     "test": "ng test",
     "lint": "tslint ./src/**/*.ts -t verbose",
     "e2e": "ng e2e",
     "dev:ssr": "ng run repina:serve-ssr",
-    "build:ssr": "ng build --prod && ng run repina:server:production",
+    "build:ssr": "ng build --prod --cross-origin=use-credentials && ng run repina:server:production",
     "serve:ssr": "node dist/server/main.js",
     "prerender": "ng run repina:prerender"
   },

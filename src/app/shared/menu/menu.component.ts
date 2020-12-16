@@ -20,6 +20,8 @@ import { ToasterService } from '@shared/toaster/toaster.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MenuComponent implements OnInit {
+
+  @Input() top: boolean = false;
   @Input() @HostBinding('attr.color') color: 'white' | 'black' = 'white';
 
   @Output() openDrawer: EventEmitter<void> = new EventEmitter<void>();
@@ -29,9 +31,11 @@ export class MenuComponent implements OnInit {
 
   public editor = false;
 
-  constructor(private changeDetectorRef: ChangeDetectorRef,
-              private toasterService: ToasterService,
-              private menuService: MenuService) {
+  constructor(
+    private changeDetectorRef: ChangeDetectorRef,
+    private toasterService: ToasterService,
+    private menuService: MenuService,
+  ) {
   }
 
   ngOnInit(): void {
@@ -133,4 +137,5 @@ export class MenuComponent implements OnInit {
 
     this.toasterService.wrapPromise(req, 'Меню сохранено', 'Не уадлось сохранить меню!');
   }
+
 }

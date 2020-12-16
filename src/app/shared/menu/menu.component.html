@@ -79,6 +79,7 @@
   </div>
 
   <r-button
+    *ngIf="!top"
     (click)="$priceRequest()"
     class="menu-item request-button"
   >
