@@ -1,5 +1,6 @@
 <ng-container *ngIf="!editor">
   <r-grid
+    *ngIf="images?.length > 1; else singleMedia"
     [type]="type"
     rowHeight="1.4:1"
   >
@@ -10,7 +11,6 @@
       [contentFile]="elements[0].content_file"
     ></r-project-media>
     <r-project-media
-      *ngIf="images[1]"
       rel="2"
       [id]="elements[1].id"
       [props]="elements[1].props"
@@ -41,3 +41,12 @@
     [editor]="true"
   ></r-project-media>
 </div>
+
+<ng-template #singleMedia>
+  <r-project-media
+    rel="1"
+    [id]="elements[0].id"
+    [props]="elements[0].props"
+    [contentFile]="elements[0].content_file"
+  ></r-project-media>
+</ng-template>

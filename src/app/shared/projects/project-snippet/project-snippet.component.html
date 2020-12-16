@@ -22,15 +22,14 @@
     <div
       [class.h1]="static"
       [class.text32]="!static"
+      [innerHTML]="project.description | linebreaks"
       snippet-title
       class="text-white"
-    >
-      {{project.title}}
-    </div>
+    ></div>
     <div
       [class.h2]="!static"
       [class.text32]="static"
-      [innerHTML]="project.description | linebreaks"
+      [innerHTML]="project.title | linebreaks"
       class="text-white"
       snippet-description
     ></div>

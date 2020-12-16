@@ -2,7 +2,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  ElementRef, EventEmitter, HostListener, OnDestroy, OnInit, Output,
+  ElementRef, EventEmitter, HostBinding, HostListener, OnDestroy, OnInit, Output,
   ViewChild, ViewEncapsulation,
 } from '@angular/core';
 import videojs from 'video.js';
@@ -25,7 +25,7 @@ export class ProjectVideoComponent extends BaseBlock implements OnInit, OnDestro
 
   @ViewChild('video', { static: true }) video: ElementRef;
 
-  public paused: boolean = true;
+  @HostBinding('class.paused') public paused: boolean = true;
   public muted: boolean = true;
 
   private player: videojs.Player;
@@ -104,7 +104,7 @@ export class ProjectVideoComponent extends BaseBlock implements OnInit, OnDestro
         ],
         controls: false,
         autoplay: this.props.autoplay,
-        loop: true,
+        loop: false,
       }, () => {
         this.video.nativeElement.muted = this.muted = !!this.props.autoplay;
       });
