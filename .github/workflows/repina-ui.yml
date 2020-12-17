@@ -24,7 +24,7 @@ jobs:
           ${{ runner.os }}-node-
     - run: npm install > /dev/null
     - run: npm install -g @angular/cli > /dev/null
-    - run: ng build --prod
+    - run: ng build --prod --cross-origin=use-credentials
 
     - name: copy file via ssh key
       uses: appleboy/scp-action@master
