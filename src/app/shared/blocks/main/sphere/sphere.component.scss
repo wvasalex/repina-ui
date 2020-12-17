@@ -17,6 +17,13 @@
   }
 }
 
+.sphere-rating {
+  position: absolute;
+  right: -36px;
+  top: -48px;
+  transition: 300ms;
+  z-index: 1;
+}
 
 .w1366 :host {
   $width: 416px;
@@ -42,6 +49,10 @@
 
 .w320 :host {
   $width: 128px;
+  flex: 0 !important;
+  align-self: flex-end;
+  margin-right: 40px;
+
   .sphere {
     max-width: $width;
     max-height: $width;
@@ -53,11 +64,5 @@
   }
 }
 
-.sphere-rating {
-  position: absolute;
-  right: -36px;
-  top: -48px;
-  transition: 300ms;
-  z-index: 1;
-}
+
 

@@ -1,26 +1,27 @@
-<div class="text32">
-  &copy;
-  <span
-    (contentChanged)="$contentChanged($event, 'copyright')"
+<div>
+  <div class="text32">
+    &copy;
+    <span
+      (contentChanged)="$contentChanged($event, 'copyright')"
+      [r-block]="editor"
+      [innerHTML]="$getValue('copyright')"
+      class="text32"
+    ></span>
+  </div>
+  <div
+    (contentChanged)="$contentChanged($event, 'description')"
     [r-block]="editor"
-    [innerHTML]="$getValue('copyright')"
+    [innerHTML]="$getValue('description')"
     class="text32"
-  ></span>
+  ></div>
+  <a
+    (contentChanged)="$contentChanged($event, 'politics')"
+    [r-block]="editor"
+    [innerHTML]="$getValue('politics')"
+    class="text32 underline"
+  >
+  </a>
 </div>
-<div
-  (contentChanged)="$contentChanged($event, 'description')"
-  [r-block]="editor"
-  [innerHTML]="$getValue('description')"
-  class="text32"
->
-</div>
-<a
-  (contentChanged)="$contentChanged($event, 'politics')"
-  [r-block]="editor"
-  [innerHTML]="$getValue('politics')"
-  class="text32 underline"
->
-</a>
 
 <div class="association">
   <r-image-upload

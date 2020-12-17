@@ -12,3 +12,9 @@
     height: 100%;
   }
 }
+
+.w320 :host {
+  height: auto;
+  min-height: auto;
+}
+

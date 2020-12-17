@@ -8,6 +8,11 @@
   overflow: hidden;
 }
 
+.wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
 a {
   text-decoration: underline;
 }
@@ -31,7 +36,7 @@ r-logo {
   }
 }
 
-.w1024 :host {
+.w1024 :host, .w768 :host, .w320 :host {
   r-logo {
     width: 184px !important;
     height: 55px !important;
@@ -39,7 +44,7 @@ r-logo {
 }
 
 .w768 :host {
-  r-padding {
+  .wrapper {
     flex-direction: column-reverse !important;
   }
 
@@ -48,7 +53,7 @@ r-logo {
     flex-direction: row;
 
     & > :first-child {
-      margin-right: 2rem;
+      margin-right: 6rem;
     }
   }
 
@@ -57,10 +62,14 @@ r-logo {
     flex-direction: column;
     margin-top: 0;
   }
+
+  .logo {
+    margin-top: 8rem;
+  }
 }
 
 .w320 :host {
-  r-padding {
+  .wrapper {
     flex-direction: column-reverse !important;
   }
 

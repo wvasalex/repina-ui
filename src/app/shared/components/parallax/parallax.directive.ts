@@ -26,7 +26,7 @@ export class ParallaxDirective implements OnInit, OnDestroy {
     }
 
     this.el = this.host.nativeElement;
-    setTimeout(() => this.init(), 300);
+    setTimeout(() => this.init(), 600);
 
     this.resize = fromEvent(window, 'resize').pipe(
       debounceTime(600),
