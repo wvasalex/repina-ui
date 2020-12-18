@@ -30,7 +30,7 @@ export class ProjectArticlesComponent extends BaseBlock {
   }
 
   public $href(href: string): string {
-    return href;
+    return href || null;
   }
 
   public $title(title: string): string {

@@ -28,8 +28,10 @@ export class RequestComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public $change(selected: SelectOption[]) {
-    this.selected = selected.slice(-1);
+  public $change(e) {
+    const {item, checked} = e;
+
+    this.selected = checked ? [item] : [];
     this.requestService.updateRelations(this.selected[0]);
   }
 

@@ -6,7 +6,7 @@
 
 .pv-8 {
   padding-top: 8rem;
-  padding-bottom: 8rem;
+  padding-bottom: calc(8rem - 64px);
 }
 
 .left {

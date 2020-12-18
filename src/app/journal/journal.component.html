@@ -1,12 +1,10 @@
 <r-page>
   <r-padding>
-    <div class="promo">
-      <r-journal-header
-        *ngIf="header$ | async"
-        [props]="header.props"
-        [editor]="editor"
-      ></r-journal-header>
-    </div>
+    <r-journal-header
+      *ngIf="header$ | async"
+      [props]="header.props"
+      [editor]="editor"
+    ></r-journal-header>
 
     <ng-container *ngIf="selectedTags$ | async as selectedTags">
       <r-badge-list
@@ -18,7 +16,6 @@
         class="mt-2 tags"
       ></r-badge-list>
     </ng-container>
-
   </r-padding>
 
   <r-padding>

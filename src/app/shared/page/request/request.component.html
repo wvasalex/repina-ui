@@ -13,7 +13,7 @@
     <div class="h2">Брендинг для</div>
 
     <r-badge-list
-      (changed)="$change($event)"
+      (itemChanged)="$change($event)"
       [badges]="requestService.services"
       [selected]="selected"
     ></r-badge-list>

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { StrMap } from '@shared/types';
@@ -17,6 +17,7 @@ export class RelatedProjectsComponent extends BaseBlock {
 
   @Input() project: Project;
   @Input() tags: ServiceTag[];
+  @Input() @HostBinding('class.inline') inline: boolean = false;
 
   public projects$: Observable<Project[]>;
 
