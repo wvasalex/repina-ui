@@ -1,14 +1,5 @@
-:host:not([editor="true"]) {
-  display: block;
-  width: 100%;
-  height: calc(100vh - 190px);
-  min-height: 600px;
-  padding-bottom: 6rem;
-  box-sizing: border-box;
-
-  r-padding {
-    height: 100%;
-  }
+r-padding {
+  background: inherit;
 }
 
 :host r-card ::ng-deep .row-column {

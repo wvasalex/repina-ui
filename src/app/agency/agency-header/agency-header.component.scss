@@ -1,5 +1,24 @@
+:host {
+  display: block;
+  width: 100%;
+  height: calc(100vh - 190px);
+  min-height: 600px;
+  box-sizing: border-box;
+
+  r-padding {
+    height: 100%;
+  }
+}
+
+.w320 :host {
+  height: auto;
+  min-height: auto;
+}
+
+/*
 .promo {
   display: block;
   margin-top: 128px;
   padding-bottom: 20rem;
 }
+*/

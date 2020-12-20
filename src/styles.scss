@@ -38,6 +38,7 @@ html {
 
 body {
   font-size: inherit;
+  overflow-x: hidden;
 }
 
 h1, .h1 {
@@ -391,4 +392,21 @@ markdown {
 
 .capitalize {
   text-transform: capitalize;
+}
+
+.full-screen {
+  display: block;
+  width: 100%;
+  height: calc(100vh - 140px);
+  min-height: 600px;
+  box-sizing: border-box;
+
+  r-padding {
+    height: 100%;
+  }
+}
+
+.w320 .full-screen {
+  height: auto;
+  min-height: auto;
 }

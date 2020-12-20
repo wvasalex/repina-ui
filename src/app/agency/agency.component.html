@@ -2,6 +2,7 @@
   *ngIf="blocks$ | async as blocks"
   [menuColor]="$menuColor(blocks[0])"
   [backgroundImage]="$background(blocks[0])"
+  [fullscreenBackgroundImage]="true"
 >
   <r-blocks-render
     [render]="render"

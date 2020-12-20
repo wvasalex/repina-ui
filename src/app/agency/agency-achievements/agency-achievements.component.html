@@ -1,12 +1,10 @@
 <r-padding
   [horizontal]="false"
-  class="achievements"
+  class="achievements row-column"
 >
-  <div class="row-column">
-    <r-agency-achievement
-      *ngFor="let element of elements"
-      [props]="element.props"
-      [editor]="editor"
-    ></r-agency-achievement>
-  </div>
+  <r-agency-achievement
+    *ngFor="let element of elements"
+    [props]="element.props"
+    [editor]="editor"
+  ></r-agency-achievement>
 </r-padding>

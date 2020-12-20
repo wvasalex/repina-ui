@@ -33,6 +33,7 @@ import { SharedProjectsModule } from '@shared/projects/projects.module';
 import { ServiceRelatedWikiComponent } from './service/service-related-wiki/service-related-wiki.component';
 import { ServiceAnimationComponent } from './service/service-animation/service-animation.component';
 import { ServicesHeaderComponent } from './services-header/services-header.component';
+import { AgencyModule } from '../agency/agency.module';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { ServicesHeaderComponent } from './services-header/services-header.compo
     ListContentModule,
     MarkdownModule,
     SharedProjectsModule,
+    AgencyModule,
   ],
   exports: [
     SelectOptionsPipe,

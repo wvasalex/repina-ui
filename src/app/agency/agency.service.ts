@@ -17,8 +17,10 @@ export class AgencyService extends RestService {
     path: '/agency_blocks/',
   };
 
-  constructor(public api: ApiService,
-              private listsService: ListsService) {
+  constructor(
+    public api: ApiService,
+    private listsService: ListsService,
+  ) {
     super();
   }
 
@@ -29,6 +31,10 @@ export class AgencyService extends RestService {
         return block;
       }));
     }));
+  }
+
+  public getAchievements(): Observable<ContentBlock> {
+    return this.getBlockByType('agency-achievements');
   }
 
   public getAwards(): Observable<ContentListItem[]> {
@@ -59,6 +65,14 @@ export class AgencyService extends RestService {
     return this.listsService.get({
       list_type: 'team',
     });
+  }
+
+  private getBlockByType(type: string): Observable<ContentBlock> {
+    return this.get().pipe(
+      map((blocks: ContentBlock[]) => {
+        return blocks.find((block: ContentBlock) => block.block_type === type);
+      }),
+    );
   }
 
 }

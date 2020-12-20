@@ -54,6 +54,11 @@ import { FormsModule } from '@angular/forms';
     MatButtonModule,
     FormsModule,
   ],
+  exports: [
+    AgencyAchievementsComponent,
+    AgencyAwardsComponent,
+    AgencyCustomersComponent,
+  ],
 })
 export class AgencyModule {
 }
