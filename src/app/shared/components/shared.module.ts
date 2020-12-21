@@ -33,6 +33,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { StickyComponent } from './sticky/sticky.component';
 import { MousemoveDirective } from '@shared/components/mousemove/mousemove.directive';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -101,6 +102,7 @@ import { MousemoveDirective } from '@shared/components/mousemove/mousemove.direc
     MatSnackBarModule,
     MatButtonModule,
     MatTooltipModule,
+    FormsModule,
   ],
 })
 export class SharedModule {

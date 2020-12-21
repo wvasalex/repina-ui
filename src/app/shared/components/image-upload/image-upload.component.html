@@ -1,6 +1,8 @@
 <r-image
   *ngIf="contentFile"
   [src]="contentFile"
+  [alt]="props.alt"
+  [title]="props.title"
 ></r-image>
 
 <ng-container *ngIf="endpoint && editor">
@@ -45,3 +47,18 @@
     >
   </button>
 </ng-container>
+
+<div
+  *ngIf="editor && contentFile"
+  class="row"
+>
+  <r-input [(ngModel)]="props.title">
+    <r-input-label>title</r-input-label>
+  </r-input>
+  <r-input
+    [(ngModel)]="props.alt"
+    class="ml-1"
+  >
+    <r-input-label>alt</r-input-label>
+  </r-input>
+</div>

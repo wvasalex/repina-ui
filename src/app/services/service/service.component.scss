@@ -1,6 +1,8 @@
 :host {
-  ::ng-deep r-header {
-    background: #F8F8F8;
+  ::ng-deep {
+    r-header, r-service-header {
+      background: #F8F8F8;
+    }
   }
 
   &[type="complex"] ::ng-deep {
@@ -13,7 +15,6 @@
     }
   }
 }
-
 
 .service-list {
   background: #F8F8F8;

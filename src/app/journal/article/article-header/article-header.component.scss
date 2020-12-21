@@ -1,3 +1,19 @@
+:host {
+  display: block;
+}
+
+:host[editor="true"] {
+  height: max-content;
+
+  [image] {
+    min-width: auto !important;
+    min-height: auto !important;
+    max-width: none !important;
+    max-height: none !important;
+    border-radius: 0 !important;
+  }
+}
+
 r-padding {
   background: inherit;
 }
