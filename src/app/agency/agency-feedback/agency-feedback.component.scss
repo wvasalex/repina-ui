@@ -5,16 +5,28 @@
   padding: 8rem 0;
 }
 
+.arrows {
+  margin-top: 64px;
+  margin-bottom: 48px;
+}
+
 .content {
   flex: 2 !important;
 }
 
 .quote {
-  padding: 2.5rem 4rem;
+  padding: 64px 75px;
   background: #F8F8F8;
 }
 
 .full-review {
   text-decoration: underline;
   cursor: pointer;
+}
+
+.w320 :host {
+  .quote {
+    padding: 54px 36px;
+    background: #F8F8F8;
+  }
 }

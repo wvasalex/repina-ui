@@ -4,9 +4,9 @@ import {
   Component,
   EventEmitter,
   HostBinding,
-  Input,
+  Input, OnDestroy,
   OnInit,
-  Output,
+  Output, Renderer2,
 } from '@angular/core';
 import { MenuService } from '@shared/menu/menu.service';
 import { ContentBlock, ContentElement } from '@shared/types';
@@ -17,23 +17,25 @@ import { ContentBlock, ContentElement } from '@shared/types';
   styleUrls: ['./drawer.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DrawerComponent implements OnInit {
+export class DrawerComponent implements OnInit, OnDestroy {
+
   @Output() closeDrawer: EventEmitter<void> = new EventEmitter<void>();
   @Output() priceRequest: EventEmitter<void> = new EventEmitter<void>();
 
-  @HostBinding('style.height.px') public height: number;
+  //@HostBinding('style.height.px') public height: number;
 
   public menu: ContentBlock;
 
   constructor(
+    private renderer2: Renderer2,
     private changeDetectorRef: ChangeDetectorRef,
     private menuService: MenuService,
   ) {
   }
 
-  ngOnInit(): void {
-    if (typeof document !== 'undefined') {
-      this.height = document.documentElement.scrollHeight;
+  public ngOnInit(): void {
+    if (typeof window !== 'undefined') {
+      this.renderer2.setStyle(document.body, 'overflow', 'hidden');
     }
 
     this.menuService.get().subscribe((block: ContentBlock) => {
@@ -44,6 +46,10 @@ export class DrawerComponent implements OnInit {
       this.menu = block;
       this.changeDetectorRef.detectChanges();
     });
+  }
+
+  public ngOnDestroy() {
+    this.renderer2.setStyle(document.body, 'overflow', '');
   }
 
   public $closeDrawer() {

@@ -1,6 +1,6 @@
 :host {
   display: block;
-  padding: 8rem 0;
+  padding: 128px 0;
 
   /*&[editor="true"] {
     .nav-block {
@@ -77,12 +77,9 @@
   .blocks {
     margin-top: 52px;
   }
-
 }
 
 .w320 :host {
-  padding: 2rem 0;
-
   .nav {
     flex-direction: column;
   }
@@ -90,6 +87,7 @@
   .blocks {
     display: flex;
     flex-direction: column;
+    grid-gap: 0;
   }
 
   .nav-block {

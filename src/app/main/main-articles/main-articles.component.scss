@@ -1,8 +1,7 @@
 .journal {
   display: flex;
   justify-content: space-between;
-  padding-top: 8rem;
-  padding-bottom: 10% !important;
+  margin: 8rem 0;
 
   .intro {
     margin-right: 10%;
@@ -13,5 +12,15 @@
 .w768 :host, .w320 :host {
   .journal {
     flex-direction: column;
+  }
+}
+
+.w320 :host {
+  .journal {
+    margin-bottom: 92px;
+  }
+
+  r-main-article {
+    margin-top: 6rem;
   }
 }

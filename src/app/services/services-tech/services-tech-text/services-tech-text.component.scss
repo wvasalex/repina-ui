@@ -3,3 +3,13 @@
     text-decoration: none;
   }
 }
+
+.text {
+  margin-top: 32px;
+}
+
+.w320 :host {
+  .text {
+    margin-top: 8px;
+  }
+}

@@ -8,9 +8,13 @@
     color: #fff !important;
   }
 
-  r-padding {
+  .content {
     display: flex;
     flex-direction: row;
+  }
+
+  .about-text.small {
+    display: none;
   }
 }
 
@@ -63,22 +67,25 @@
 }
 
 .w320 :host {
-  padding: 22px 0;
-
   .left {
     flex: 0;
-    margin-right: 40px;
+    margin-right: 20px;
   }
 
-  .about-text {
-    flex: 0;
+  .about-text.small {
+    display: block;
+    margin-bottom: 40px;
+  }
+
+  .about-text.big {
+    display: none;
   }
 
   .vector {
     flex: 0;
     width: 39px;
     height: 39px;
-    margin-top: 36px;
+    margin-top: 0;
     padding-bottom: 36px;
   }
 

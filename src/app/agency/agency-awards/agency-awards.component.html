@@ -26,23 +26,43 @@
     </div>
     <table
       [@slider]="currentIndex"
-      class="awards"
+      class="awards big"
     >
       <thead>
-        <th class="year">Год</th>
-        <th class="title">Награда</th>
-        <th>Место</th>
-        <th>Номинация</th>
+      <th class="year text16">Год</th>
+      <th class="title text16">Награда</th>
+      <th class="text16">Место</th>
+      <th class="text16">Номинация</th>
       </thead>
       <tbody>
-        <tr
-          *ngFor="let award of $page(awards)"
-        >
-          <td class="text32 year">{{award.props.year}}</td>
-          <td class="text32 bolder title">{{award.props.title}}</td>
-          <td class="text32">{{award.props.position}}</td>
-          <td class="text32">{{award.props.type}}</td>
-        </tr>
+      <tr
+        *ngFor="let award of $page(awards)"
+      >
+        <td class="text32 year">{{award.props.year}}</td>
+        <td class="text32 bolder title">{{award.props.title}}</td>
+        <td class="text32">{{award.props.position}}</td>
+        <td class="text32">{{award.props.type}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <table
+      [@slider]="currentIndex"
+      class="awards small"
+    >
+      <tbody>
+      <tr
+        *ngFor="let award of $page(awards)"
+      >
+        <td class="text32">
+          <div>{{award.props.year}}</div>
+          <div class="bolder mt-1">{{award.props.title}}</div>
+        </td>
+        <td class="text32">
+          <div>{{award.props.position}}</div>
+          <div class="mt-1">{{award.props.type}}</div>
+        </td>
+      </tr>
       </tbody>
     </table>
   </div>

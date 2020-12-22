@@ -1,3 +1,7 @@
+.title {
+  margin-top: 40px;
+}
+
 .address-wrapper {
   position: relative;
 }
@@ -32,12 +36,20 @@
 }
 
 .w768 :host {
+  .title {
+    margin-bottom: 44px;
+  }
+
   .map {
     height: 600px;
   }
 }
 
 .w320 :host {
+  .title {
+    margin-bottom: 64px;
+  }
+
   .space {
     &:after {
       content: ' ';

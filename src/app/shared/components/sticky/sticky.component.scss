@@ -1,7 +1,6 @@
 :host {
   position: fixed;
   width: 100%;
-  top: -150px;
   z-index: 2;
   background: #fff;
   transition: 300ms ease-in-out;
@@ -9,6 +8,6 @@
 
   &.visible {
     display: block;
-    top: 0;
+    top: 0 !important;
   }
 }

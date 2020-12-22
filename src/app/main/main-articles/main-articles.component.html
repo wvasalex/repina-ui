@@ -1,29 +1,26 @@
-<r-padding
-  [horizontal]="false"
-  class="journal row"
+<div
+  class="p-l p-r journal row"
 >
-  <div>
-    <div class="intro">
-      <r-md
-        [editor]="editor"
-        [props]="props"
-        prop="title"
-        className="h2"
-      ></r-md>
+  <div class="intro">
+    <r-md
+      [editor]="editor"
+      [props]="props"
+      prop="title"
+      className="h2"
+    ></r-md>
 
-      <r-md
-        [editor]="editor"
-        [props]="props"
-        prop="description"
-        className="text32 mt-1"
-      ></r-md>
+    <r-md
+      [editor]="editor"
+      [props]="props"
+      prop="description"
+      className="text32 mt-1_5"
+    ></r-md>
 
-     <a [routerLink]="['/blog/']">
-       <r-button class="mt-2">
-         Все статьи
-       </r-button>
-     </a>
-    </div>
+    <a [routerLink]="['/blog/']">
+      <r-button class="mt-2">
+        Все статьи
+      </r-button>
+    </a>
   </div>
   <div>
     <r-main-article
@@ -33,4 +30,4 @@
       [class.mt-6]="!first"
     ></r-main-article>
   </div>
-</r-padding>
+</div>

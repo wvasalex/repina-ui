@@ -7,3 +7,9 @@
     justify-content: space-between;
   }
 }
+
+.w320 :host {
+  r-agency-achievement:not(:last-of-type) {
+    margin-bottom: 6rem;
+  }
+}

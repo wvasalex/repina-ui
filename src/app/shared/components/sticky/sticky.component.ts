@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   Component, ElementRef,
   HostBinding,
@@ -15,7 +16,7 @@ import { distinctUntilChanged, map, tap } from 'rxjs/operators';
   styleUrls: ['./sticky.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class StickyComponent implements OnInit, OnDestroy {
+export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
 
   @Input() threshold: number = 250;
 
@@ -32,17 +33,22 @@ export class StickyComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     if (typeof window !== 'undefined') {
+      const el = this.ref.nativeElement;
       this._visibleSub = fromEvent(window, 'scroll')
         .pipe(
           map(() => this._getVisibility()),
           distinctUntilChanged(),
           tap((visible: boolean) => {
-            const el = this.ref.nativeElement;
             const method = visible ? 'addClass': 'removeClass';
             this.renderer[method](el, 'visible');
           }),
         ).subscribe();
     }
+  }
+
+  public ngAfterViewInit() {
+    const el = this.ref.nativeElement;
+    this.renderer.setStyle(el, 'top', -el.offsetHeight + 'px');
   }
 
   public ngOnDestroy() {

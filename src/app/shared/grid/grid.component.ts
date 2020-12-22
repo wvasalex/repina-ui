@@ -30,7 +30,8 @@ export class GridComponent implements OnInit, OnDestroy {
   private _observe: Subscription;
 
   constructor(private changeDetectorRef: ChangeDetectorRef,
-              private breakpointService: BreakpointService) { }
+              private breakpointService: BreakpointService) {
+  }
 
   ngOnInit(): void {
     this.def = GridDataSize[this.type];
@@ -72,9 +73,10 @@ export class GridComponent implements OnInit, OnDestroy {
       ],
     }
 
-    if (this.type == 'big') {
-      this.column = true;
-    }
+    //if (this.type == 'big') {
+    this.grid = false;
+    this.column = true;
+    //}
     this.changeDetectorRef.detectChanges();
   }
 
@@ -84,7 +86,7 @@ export class GridComponent implements OnInit, OnDestroy {
         cols: 2,
         roles: [1, 2, 3],
         grid: [
-          {colspan: 2, rowspan: 2},
+          { colspan: 2, rowspan: 2 },
           {},
           {},
         ],
@@ -97,7 +99,7 @@ export class GridComponent implements OnInit, OnDestroy {
         grid: [
           {},
           {},
-          {colspan: 2, rowspan: 2},
+          { colspan: 2, rowspan: 2 },
         ],
       }
     }
@@ -106,7 +108,7 @@ export class GridComponent implements OnInit, OnDestroy {
         cols: 2,
         roles: [1, 2, 3],
         grid: [
-          {colspan: 2, rowspan: 2},
+          { colspan: 2, rowspan: 2 },
           {},
           {},
         ],

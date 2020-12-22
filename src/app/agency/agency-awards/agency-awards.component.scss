@@ -10,6 +10,10 @@
   }
 }
 
+.small {
+  display: none;
+}
+
 .next {
   margin-left: 2rem;
 }
@@ -41,5 +45,15 @@
 }
 
 .arrows {
-  margin: 3rem 0;
+  margin: 6rem 0;
+}
+
+.w320 :host {
+  .big {
+    display: none;
+  }
+
+  .small {
+    display: table;
+  }
 }

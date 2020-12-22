@@ -1,31 +1,41 @@
 <r-padding>
-  <div class="row-column left">
-    <r-md
-      [editor]="editor"
-      [props]="props"
-      prop="about"
-      className="h2"
-      class="about-text"
-    ></r-md>
+  <r-md
+    [editor]="editor"
+    [props]="props"
+    prop="about"
+    className="h2"
+    class="about-text small"
+  ></r-md>
 
-    <div class="column vector-container">
-      <img
-        src="/assets/icons/main/vector.svg"
-        alt=""
-        class="vector"
-        r-parallax
-        direction="reverse"
-      />
+  <div class="content">
+    <div class="row-column left">
+      <r-md
+        [editor]="editor"
+        [props]="props"
+        prop="about"
+        className="h2"
+        class="about-text big"
+      ></r-md>
 
-      <div class="circle"></div>
+      <div class="column vector-container">
+        <img
+          src="/assets/icons/main/vector.svg"
+          alt=""
+          class="vector"
+          r-parallax
+          direction="reverse"
+        />
+
+        <div class="circle"></div>
+      </div>
     </div>
-  </div>
-  <div class="column">
-    <r-main-about-text
-      *ngFor="let element of elements; let first = first;"
-      [class.mt-6]="!first"
-      [props]="element.props"
-      [editor]="editor"
-    ></r-main-about-text>
+    <div class="column">
+      <r-main-about-text
+        *ngFor="let element of elements; let first = first;"
+        [class.mt-6]="!first"
+        [props]="element.props"
+        [editor]="editor"
+      ></r-main-about-text>
+    </div>
   </div>
 </r-padding>

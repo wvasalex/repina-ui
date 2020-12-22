@@ -1,13 +1,14 @@
 <div *ngIf="block?.content_elements[0]?.props as data">
   <div>Контакты</div>
   <div class="bolder">
-    {{data.phone}}<br>
+    <span>{{data.phone}}</span>
+    <br>
     <a [attr.href]="'mailto:' + data.email_address + '@' + data.email_domain">
-      {{data.email_address}}@{{data.email_domain}}
+      <span>{{data.email_address}}@{{data.email_domain}}</span>
     </a>
   </div>
   <div class="mt-5">Адрес</div>
   <div class="bolder">
-    {{data.address}}
+    <span>{{data.address}}</span>
   </div>
 </div>

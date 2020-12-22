@@ -24,7 +24,7 @@
       flex-direction: row;
       justify-content: space-between;
       width: 100%;
-      margin-bottom: 16px;
+      margin-bottom: 24px;
     }
 
     .request-button {
@@ -62,6 +62,9 @@
 }
 
 .w1024 :host, .w768 :host, .w320 :host {
+  padding-top: 24px;
+  padding-bottom: 24px;
+
   .full {
     display: none;
   }
