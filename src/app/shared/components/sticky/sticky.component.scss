@@ -5,6 +5,7 @@
   background: #fff;
   transition: 300ms ease-in-out;
   will-change: top;
+  top: -999px;
 
   &.visible {
     display: block;

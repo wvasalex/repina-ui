@@ -8,7 +8,7 @@ import {
   OnInit, Renderer2,
 } from '@angular/core';
 import { fromEvent, Subscription } from 'rxjs';
-import { distinctUntilChanged, map, tap } from 'rxjs/operators';
+import { distinctUntilChanged, map, tap, throttleTime } from 'rxjs/operators';
 
 @Component({
   selector: 'r-sticky',
@@ -28,7 +28,7 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
   constructor(
     private renderer: Renderer2,
     private ref: ElementRef,
-    ) {
+  ) {
   }
 
   ngOnInit(): void {
@@ -36,10 +36,11 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
       const el = this.ref.nativeElement;
       this._visibleSub = fromEvent(window, 'scroll')
         .pipe(
+          throttleTime(300),
           map(() => this._getVisibility()),
           distinctUntilChanged(),
           tap((visible: boolean) => {
-            const method = visible ? 'addClass': 'removeClass';
+            const method = visible ? 'addClass' : 'removeClass';
             this.renderer[method](el, 'visible');
           }),
         ).subscribe();
@@ -47,8 +48,7 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   public ngAfterViewInit() {
-    const el = this.ref.nativeElement;
-    this.renderer.setStyle(el, 'top', -el.offsetHeight + 'px');
+    setTimeout(() => this._setTop(), 300);
   }
 
   public ngOnDestroy() {
@@ -61,6 +61,11 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
     this._lastTop = top;
 
     return top < _prev && top >= this.threshold;
+  }
+
+  private _setTop() {
+    const el = this.ref.nativeElement;
+    this.renderer.setStyle(el, 'top', -el.offsetHeight + 'px');
   }
 
 }
