@@ -1,5 +1,9 @@
 :host {
   display: block;
+
+  &[editor="true"] .content-item {
+    height: max-content;
+  }
 }
 
 .element_type {
@@ -8,7 +12,6 @@
 
 .content-item {
   position: relative;
-  height: max-content;
 
   &:hover {
     > .controls {

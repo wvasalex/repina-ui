@@ -2,7 +2,7 @@
   <r-grid
     *ngIf="images?.length > 1; else singleMedia"
     [type]="type"
-    rowHeight="1.4:1"
+    [rowHeight]="'1.4:1'"
   >
     <r-project-media
       rel="1"

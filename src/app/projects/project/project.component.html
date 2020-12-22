@@ -1,9 +1,16 @@
 <r-page
   *ngIf="project$ | async as project"
-  [backgroundImage]="$background(project)"
-  [fullscreenBackgroundImage]="true"
+  [backgroundImage]="mobile ? null : $background(project)"
+  [fullscreenBackgroundImage]="!mobile"
   [menuColor]="$menuColor(project)"
 >
+  <r-project-image
+    *ngIf="mobile"
+    [contentFile]="$background(project)"
+    [rAspectRatio]="1"
+    class="d-block"
+  ></r-project-image>
+
   <r-blocks-render
     [render]="render"
     [blocks]="$content(project.content_blocks)"

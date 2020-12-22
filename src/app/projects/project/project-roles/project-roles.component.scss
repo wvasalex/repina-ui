@@ -1,7 +1,7 @@
 :host {
   display: block;
   width: 100%;
-  padding: 6rem 0;
+  padding: 8rem 0;
   box-sizing: border-box;
   margin-top: 30px;
 }
@@ -17,4 +17,19 @@
   display: inline-block;
   margin: 2rem 4rem 2rem 0;
   width: calc(30% - 4rem);
+}
+
+.w320 :host {
+  .role {
+    width: 100%;
+    margin: 0;
+
+    &:not(:first-child) {
+      margin-top: 40px;
+    }
+
+    .h4 {
+      margin-bottom: 8px;
+    }
+  }
 }

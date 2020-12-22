@@ -34,14 +34,19 @@
 
 .w320 :host {
   .nav {
-    flex-direction: column-reverse;
-  }
-
-  .links {
+    flex-direction: column-reverse !important;
     margin-top: 8rem;
   }
 
-  .h3 {
+  .links {
+    padding-top: 8rem;
+  }
+
+  ::ng-deep .h2 {
     margin-bottom: 6rem;
+  }
+
+  .text {
+    padding-bottom: 0;
   }
 }

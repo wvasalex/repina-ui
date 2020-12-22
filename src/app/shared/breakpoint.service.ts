@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { BreakpointState } from '@angular/cdk/layout/breakpoints-observer';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BreakpointService {
+
   private breakpoints = [
     '(min-width: 1920px)',
     '(min-width: 1366px)',
@@ -18,5 +20,13 @@ export class BreakpointService {
   public change$ = this.breakpointObserver
     .observe(this.breakpoints);
 
+  public mobile$: Observable<boolean> = this.change$.pipe(
+    map(() => {
+      return typeof window !== 'undefined' &&
+        window.innerWidth < 768;
+    }),
+  );
+
   constructor(private breakpointObserver: BreakpointObserver) { }
+
 }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import { ContentBlock, ContentElement, StrMap } from '@shared/types';
 import { SelectOption } from '@shared/components/select/select.model';
 import { MatMenu } from '@angular/material/menu';
@@ -9,10 +9,11 @@ import { MatMenu } from '@angular/material/menu';
   styleUrls: ['./blocks-render.component.scss'],
 })
 export class BlocksRenderComponent implements OnInit {
+
   @Input() render: StrMap<Component> = {};
   @Input() data: any;
   @Input() blocks: ContentBlock[];
-  @Input() editor: boolean = false;
+  @Input() @HostBinding('attr.editor') editor: boolean = false;
   @Input() typeKey: 'block_type' | 'element_type' = 'block_type';
   @Input() controlTmp: TemplateRef<any>;
 

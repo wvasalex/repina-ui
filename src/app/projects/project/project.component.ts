@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { map, pluck, tap } from 'rxjs/operators';
 import { ContentBlock } from '@shared/types';
 import { Project } from '@shared/projects/projects.model';
 import { ProjectsService } from '@shared/projects/projects.service';
 import { FooterService } from '@shared/footer/footer.service';
+import { BreakpointService } from '@shared/breakpoint.service';
 
 @Component({
   selector: 'r-project',
@@ -16,6 +17,8 @@ import { FooterService } from '@shared/footer/footer.service';
 export class ProjectComponent implements OnInit, OnDestroy {
 
   public render = this.projectsService.render;
+
+  public mobile: boolean = false;
 
   public project$: Observable<Project> = this.activatedRoute.data.pipe(
     pluck('project'),
@@ -35,21 +38,33 @@ export class ProjectComponent implements OnInit, OnDestroy {
 
   public menuColor: string;
 
+  private _mobileSub: Subscription;
+
   constructor(
     private activatedRoute: ActivatedRoute,
+    private breakpointService: BreakpointService,
     private projectsService: ProjectsService,
     private footerService: FooterService,
   ) {
   }
 
   ngOnInit(): void {
+    this._mobileSub = this.breakpointService.mobile$
+      .subscribe((mobile: boolean) => {
+        this.mobile = mobile;
+      });
   }
 
   public ngOnDestroy(): void {
+    this._mobileSub.unsubscribe();
     this.footerService.setBreadcrumbs([]);
   }
 
   public $menuColor(project: Project): string {
+    if (this.mobile) {
+      return 'white';
+    }
+
     const root = this._getRoot(project);
     return root && root.props?.isDark ? 'black' : 'white';
   }

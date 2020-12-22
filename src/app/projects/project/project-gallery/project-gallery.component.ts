@@ -2,6 +2,9 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { BaseBlock } from '@shared/blocks/block.component';
 import { GridDataType } from '@shared/grid/grid.model';
 import { ContentElement } from '@shared/types';
+import { BreakpointService } from '@shared/breakpoint.service';
+import { Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'r-project-gallery',
@@ -10,9 +13,14 @@ import { ContentElement } from '@shared/types';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectGalleryComponent extends BaseBlock implements OnInit {
-  public type: GridDataType = 'big';
 
+  public type: GridDataType = 'big';
   public images: ContentElement[] = [];
+  public mobile$ = this.breakpointService.mobile$;
+
+  constructor(private breakpointService: BreakpointService) {
+    super();
+  }
 
   public ngOnInit() {
     this.images = this.elements.filter((element: ContentElement) => {
@@ -29,4 +37,5 @@ export class ProjectGalleryComponent extends BaseBlock implements OnInit {
       this.type = (this.props.type || 'big') as GridDataType;
     }
   }
+
 }
