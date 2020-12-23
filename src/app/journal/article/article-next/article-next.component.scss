@@ -26,3 +26,8 @@ a:hover {
     text-decoration: underline;
   }
 }
+
+.w320 :host {
+  padding-top: 64px;
+  padding-bottom: 64px;
+}

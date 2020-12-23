@@ -26,6 +26,7 @@
 
     <div class="content">
       <div
+        *ngIf="$getValue('subtitle')"
         [r-block]="editor"
         [innerHTML]="$getValue('subtitle')"
         (contentChanged)="$contentChanged($event, 'subtitle')"

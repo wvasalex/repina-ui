@@ -39,7 +39,7 @@
 
 .date {
   position: absolute;
-  top: 260px;
+  top: 160px;
   left: -16px;
   display: inline-block;
   transform: rotate(270deg);
@@ -83,20 +83,24 @@
 
 .w768 :host, .w320 :host {
   ::ng-deep [rel="element_type_1"] {
-    margin-bottom: 4rem;
+    //margin-bottom: 4rem;
   }
 
   .row-column {
-    flex-direction: column-reverse !important;
+   // flex-direction: column-reverse !important;
     align-items: flex-start;
-  }
-
-  ::ng-deep .title, .subtitle {
-    display: none;
   }
 }
 
 .w320 :host {
+  ::ng-deep [rel="element_type_0"] {
+    max-width: 100%;
+  }
+
+  .title, .subtitle {
+    width: 100%;
+  }
+
   .date {
     left: auto;
     right: -65px;

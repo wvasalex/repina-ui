@@ -32,3 +32,9 @@
     margin: 4rem 0;
   }
 }
+
+.w320 :host {
+  ::ng-deep [rel="block_type_1"] {
+    padding-top: 54px;
+  }
+}

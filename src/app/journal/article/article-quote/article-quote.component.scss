@@ -7,7 +7,7 @@
 .inner {
   overflow-wrap: break-word;
   display: block;
-  padding: 3rem 6rem;
+  padding: 3rem;
   background: #F8F8F8;
   max-width: 100%;
 
@@ -30,4 +30,5 @@
 .author {
   display: flex;
   flex-direction: row;
+  margin-left: 32px;
 }
