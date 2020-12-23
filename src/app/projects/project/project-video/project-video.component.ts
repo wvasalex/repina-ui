@@ -104,7 +104,7 @@ export class ProjectVideoComponent extends BaseBlock implements OnInit, OnDestro
         ],
         controls: false,
         autoplay: this.props.autoplay,
-        loop: false,
+        loop: this.props.autoplay,
       }, () => {
         this.video.nativeElement.muted = this.muted = !!this.props.autoplay;
       });
