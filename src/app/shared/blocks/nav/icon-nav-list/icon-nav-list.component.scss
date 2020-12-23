@@ -47,6 +47,7 @@
 
 .w768 :host {
   .primary {
+    flex: 0;
     max-width: 100%;
   }
 
@@ -63,6 +64,11 @@
 
 .w320 :host {
   padding: 2rem 0;
+
+  .primary {
+    flex: 0;
+    max-width: 100%;
+  }
 
   .blocks {
     display: flex;

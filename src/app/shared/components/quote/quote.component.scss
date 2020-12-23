@@ -18,3 +18,10 @@
     @extend .h;
   }
 }
+
+.w320 :host {
+  &:before {
+    font-size: 78px;
+    margin-left: -32px;
+  }
+}
