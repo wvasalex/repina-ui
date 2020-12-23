@@ -49,9 +49,10 @@
 
 .w320 :host {
   $width: 128px;
-  flex: 0 !important;
+  //flex: 0 !important;
   align-self: flex-end;
   margin-right: 40px;
+  margin-top: -100px;
 
   .sphere {
     max-width: $width;
