@@ -37,4 +37,8 @@
   ::ng-deep [rel="block_type_1"] {
     padding-top: 54px;
   }
+
+  ::ng-deep .element_type[rel="element_type_0"] {
+    margin-bottom: 16px;
+  }
 }

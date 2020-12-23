@@ -18,3 +18,9 @@
 .scroll {
   overflow: auto;
 }
+
+.w768 :host, .w320 :host {
+  .social-item {
+    display: block;
+  }
+}

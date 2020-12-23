@@ -2,19 +2,21 @@
 }
 
 ol {
-  display: flex;
+  /*display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: center;*/
   list-style: none;
   padding: 0;
 
-  li:not(.dot) {
+  li {
+    display: inline-block;
     margin: 0;
+    vertical-align: middle;
   }
 }
 
 .dot {
-  margin: 0 8px;
+  margin: 0 8px !important;
   width: 4px;
   height: 4px;
   border-radius: 50%;
