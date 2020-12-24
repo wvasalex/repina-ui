@@ -21,6 +21,7 @@ import { ContentElement } from '@shared/types';
   encapsulation: ViewEncapsulation.None,
 })
 export class ServiceVideoComponent extends BaseBlock implements OnInit, OnDestroy {
+
   @ViewChild('video', { static: true }) video: ElementRef;
 
   private player: videojs.Player;
@@ -87,4 +88,5 @@ export class ServiceVideoComponent extends BaseBlock implements OnInit, OnDestro
       ]);
     }
   }
+
 }

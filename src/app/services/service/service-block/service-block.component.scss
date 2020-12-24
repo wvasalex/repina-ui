@@ -101,13 +101,37 @@
     align-items: flex-start;
   }
 
-  ::ng-deep .title, .subtitle {
-    display: none;
+  .title, .subtitle {
+    width: 100%;
   }
+
+  .content {
+    margin-left: 102px;
+  }
+
+  .index {
+    position: relative;
+  }
+
+  .mb-30 {
+    margin-bottom: 64px;
+  }
+
 }
 
+
 .w320 :host {
+  ::ng-deep [rel="element_type_0"] {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .title, .subtitle {
+    width: 100%;
+  }
+
   .date {
+    display: none;
     left: auto;
     right: -65px;
   }

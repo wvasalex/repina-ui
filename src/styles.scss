@@ -447,8 +447,7 @@ markdown {
 .full-screen {
   display: block;
   width: 100%;
-  height: calc(100vh - 140px);
-  min-height: 600px;
+  min-height: calc(100vh - 140px);
   box-sizing: border-box;
 
   r-padding {
@@ -457,5 +456,5 @@ markdown {
 }
 
 .w320 .full-screen {
-  min-height: 400px;
+  //min-height: 400px;
 }

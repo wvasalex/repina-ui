@@ -16,6 +16,7 @@
   .text {
     height: 100%;
     padding-top: 8rem;
+    padding-bottom: 8rem;
     margin-left: 15px;
   }
 
@@ -30,6 +31,10 @@
     margin-left: 0;
     padding: var(--padding-vertical) var(--padding-horizontal);
   }
+
+  .links:empty {
+    display: none;
+  }
 }
 
 .w320 :host {
@@ -38,19 +43,12 @@
     margin-top: 8rem;
   }
 
-  .links {
-    padding-top: 8rem;
-
-    &:empty {
-      padding: 0;
-    }
-  }
-
   ::ng-deep .h2 {
     margin-bottom: 6rem;
   }
 
   .text {
+    padding-top: 0;
     padding-bottom: 0;
   }
 }

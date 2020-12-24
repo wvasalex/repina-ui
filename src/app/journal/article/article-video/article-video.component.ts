@@ -20,6 +20,7 @@ import { ContentElement } from '@shared/types';
   encapsulation: ViewEncapsulation.None,
 })
 export class ArticleVideoComponent extends BaseBlock implements OnInit, OnDestroy {
+
   @ViewChild('video', { static: true }) video: ElementRef;
 
   private player: videojs.Player;
@@ -86,4 +87,5 @@ export class ArticleVideoComponent extends BaseBlock implements OnInit, OnDestro
       ]);
     }
   }
+
 }
