@@ -37,7 +37,7 @@ export class ProjectVideoComponent extends BaseBlock implements OnInit, OnDestro
     super();
   }
 
-  @HostListener('click') $onClick() {
+  public $onClick() {
     if (this.props.autoplay) {
       return;
     }
@@ -63,8 +63,7 @@ export class ProjectVideoComponent extends BaseBlock implements OnInit, OnDestro
   public $toggleAudio(e: Event) {
     e.stopPropagation();
 
-    this.muted = !this.muted;
-    this.video.nativeElement.muted = this.muted;
+    this.player.muted(this.muted = !this.muted);
   }
 
   public $upload(e) {
@@ -104,7 +103,7 @@ export class ProjectVideoComponent extends BaseBlock implements OnInit, OnDestro
         autoplay: this.props.autoplay,
         loop: this.props.autoplay,
       }, () => {
-        this.video.nativeElement.muted = this.muted = !!this.props.autoplay;
+        this.player.muted(this.muted = !!this.props.autoplay);
       });
     } else {
       this.player.src([

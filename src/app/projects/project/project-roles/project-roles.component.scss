@@ -16,7 +16,8 @@
 .role {
   display: inline-block;
   margin: 2rem 4rem 2rem 0;
-  width: calc(30% - 4rem);
+  width: calc(33% - 4rem);
+  vertical-align: top;
 }
 
 .w320 :host {
