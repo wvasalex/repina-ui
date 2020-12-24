@@ -43,15 +43,10 @@ export class ProjectVideoComponent extends BaseBlock implements OnInit, OnDestro
     }
 
     this.paused = !this.paused;
-
-    const video = this.video.nativeElement;
-
     if (this.paused) {
       this.player.pause();
-      //video.pause();
     } else {
       this.player.play();
-      //video.play();
     }
   }
 
