@@ -1,21 +1,35 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { requestServices, serviceRelations } from '@shared/page/request/request.model';
 import { getOption, SelectOption } from '../../components/select/select.model';
+import { StrMap } from '@shared/types';
+import { RestService } from '@shared/services/api/rest.service';
+import { ApiConfig } from '@shared/services/api/api.model';
+import { ApiService } from '@shared/services/api/api.service';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class RequestService {
+export class RequestService extends RestService {
 
   public services: SelectOption[] = requestServices;
 
   public relations$: BehaviorSubject<SelectOption[]> = new BehaviorSubject<SelectOption[]>(null);
 
-  constructor() { }
+  public config: ApiConfig = {
+    path: '/content_amo/',
+  };
+
+  constructor(public api: ApiService) {
+    super();
+  }
 
   public updateRelations(activeService: SelectOption) {
     const relations = activeService ? serviceRelations[activeService.value] : null;
+    if (relations) {
+      relations.forEach((option: SelectOption) => option.meta.checked = false);
+    }
 
     this.relations$.next(relations);
   }
@@ -26,6 +40,30 @@ export class RequestService {
       const option = getOption(relations, relationId);
       option.meta.disabled = !checked;
     });
+  }
+
+  public getSelectedRelations(relations: SelectOption[]): SelectOption[] {
+    return relations.filter((option: SelectOption) => option.meta.checked);
+  }
+
+  public send(proposalType: SelectOption, value: StrMap<string>): Observable<boolean> {
+    const proposal_keys = this.getSelectedRelations(this.relations$.value || []).map((option) => option.value);
+    const {name, phone, email, comment} = value;
+
+    if (!proposalType || !proposal_keys.length) {
+      return of(false);
+    }
+
+    return this.post({
+      proposal_type: proposalType.value,
+      proposal_keys,
+      name,
+      phone,
+      email,
+      comment,
+    }).pipe(map((_) => {
+      return true;
+    }));
   }
 
 }

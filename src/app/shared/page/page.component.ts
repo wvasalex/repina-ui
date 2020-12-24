@@ -14,6 +14,7 @@ import { Subscription } from 'rxjs';
 import { BreakpointService } from '../breakpoint.service';
 import { drawerAnimation } from '../animations';
 import { RequestComponent } from './request/request.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'r-page',
@@ -25,6 +26,7 @@ import { RequestComponent } from './request/request.component';
   ],
 })
 export class PageComponent implements OnInit, OnDestroy {
+
   @Input() menuColor: 'white' | 'black' = 'white';
   @Input() backgroundImage: string;
   @Input() fullscreenBackgroundImage: boolean = false;
@@ -41,6 +43,7 @@ export class PageComponent implements OnInit, OnDestroy {
   private _observe: Subscription;
 
   constructor(
+    private dialog: MatDialog,
     private renderer: Renderer2,
     private breakpointService: BreakpointService) {
   }
@@ -86,10 +89,22 @@ export class PageComponent implements OnInit, OnDestroy {
       this.drawerOpened = false;
     }
 
-    const requestForm = this.requestViewChild;
+    const {innerWidth, innerHeight} = window;
+    this.dialog.open(RequestComponent, {
+      width: innerWidth + 'px',
+      height: innerHeight + 'px',
+      maxWidth: 'none',
+      hasBackdrop: false,
+      panelClass: 'borderless',
+      data: {
+        popup: true,
+      },
+    });
+
+    /*const requestForm = this.requestViewChild;
 
     if (requestForm) {
       requestForm.ref.nativeElement.scrollIntoView({behavior: 'smooth'});
-    }
+    }*/
   }
 }

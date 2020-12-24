@@ -2,9 +2,12 @@
 
 :host {
   display: block;
-  padding: 8rem 0;
+  position: relative;
+  height: 100%;
 
   r-padding {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
     justify-content: space-between;
   }
 }
@@ -23,6 +26,20 @@
   a {
     text-decoration: underline;
   }
+}
+
+.close {
+  position: absolute;
+  top: 32px;
+  right: 22px;
+}
+
+.feedback {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .w1920 :host {

@@ -62,13 +62,13 @@ export const errorAnimation = trigger('errorAnimation', [
   ]),
 ]);
 
-export const badgeAnimation = trigger('badgeAnimation', [
+export const opacityAnimation = trigger('opacityAnimation', [
   transition(':enter', [
-    style({ width: 0, opacity: 0 }),
-    animate('160ms', style({ width: '*', opacity: 1 })),
+    style({ opacity: 0 }),
+    animate('300ms', style({ opacity: 1 })),
   ]),
   transition(':leave', [
-    animate('120ms', style({ width: 0, opacity: 0 })),
+    animate('300ms', style({ opacity: 0 })),
   ]),
 ]);
 

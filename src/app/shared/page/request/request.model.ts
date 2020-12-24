@@ -9,41 +9,41 @@ export const requestServices: SelectOption[] = [
     value: 'product',
     label: 'Продукта',
   },
-  {
+  /*{
     value: 'hr',
     label: 'HR-бренда',
-  },
+  },*/
 ];
 
 export const serviceRelations = {
   company: [
     {
-      value: '1',
+      value: 'platform',
       label: 'Позиционирование',
       meta: {},
     },
     {
-      value: '2',
+      value: 'naming',
       label: 'Нейминг',
       meta: {},
     },
     {
-      value: '3',
+      value: 'identity',
       label: 'Фирменный стиль',
       meta: {
-        deps: ['4', '5'],
+        deps: ['webpage', 'landing'],
       },
     },
     {
-      value: '4',
+      value: 'webpage',
       label: 'Сайт',
       meta: {
         disabled: true,
-        disabledTooltip: 'Мы разрабатываем сайты только в рамках комплексной услуги. Выберите фирменный стиль.'
+        disabledTooltip: 'Мы разрабатываем сайты только в рамках комплексной услуги. Выберите фирменный стиль.',
       },
     },
     {
-      value: '5',
+      value: 'landing',
       label: 'Сайт-визитка',
       meta: {
         disabled: true,
@@ -53,26 +53,26 @@ export const serviceRelations = {
   ],
   product: [
     {
-      value: '8',
+      value: 'platform',
       label: 'Позиционирование',
       meta: {
-        deps: ['6']
+        deps: ['quant_res'],
       },
     },
     {
-      value: '9',
+      value: 'naming',
       label: 'Нейминг',
       meta: {},
     },
     {
-      value: '10',
+      value: 'package',
       label: 'Упаковка',
       meta: {
-        deps: ['7']
+        deps: ['focus'],
       },
     },
     {
-      value: '6',
+      value: 'quant_res',
       label: 'Количественные исследования',
       meta: {
         disabled: true,
@@ -80,7 +80,7 @@ export const serviceRelations = {
       },
     },
     {
-      value: '7',
+      value: 'focus',
       label: 'Фокус-группы',
       meta: {
         disabled: true,

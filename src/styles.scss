@@ -445,7 +445,6 @@ markdown {
 }
 
 .full-screen {
-  display: block;
   width: 100%;
   min-height: calc(100vh - 140px);
   box-sizing: border-box;
@@ -455,6 +454,15 @@ markdown {
   }
 }
 
+r-padding.full-screen {
+  display: flex;
+  align-items: center;
+}
+
 .w320 .full-screen {
   //min-height: 400px;
+}
+
+.borderless .mat-dialog-container {
+  padding: 0;
 }

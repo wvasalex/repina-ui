@@ -1,5 +1,5 @@
 <r-padding
-  [horizontal]="true"
+  [horizontal]="false"
   [disabled]="disablePadding"
   class="row-column"
 >
@@ -28,10 +28,15 @@
       <r-badge-list
         (itemChanged)="$relationChanged($event)"
         [badges]="relations"
+        [selected]="$selectedRelations(relations)"
       ></r-badge-list>
     </div>
 
-    <form class="mt-5">
+    <form
+      (submit)="$submit($event)"
+      [formGroup]="formGroup"
+      class="mt-5"
+    >
       <div class="h2">
         Ваши контакты
       </div>
@@ -39,24 +44,30 @@
       <div class="primary">
         <r-input
           [required]="true"
+          formControlName="name"
           placeholder="Имя"
         ></r-input>
         <r-input
           [required]="true"
+          formControlName="phone"
           placeholder="Телефон"
         ></r-input>
       </div>
       <r-input
         [required]="true"
+        formControlName="email"
         placeholder="Почта"
         class="mt-4"
       ></r-input>
       <r-input
+        formControlName="comment"
         placeholder="Комментарий"
         class="mt-4"
       ></r-input>
 
       <r-button
+        (click)="$submit($event)"
+        type="submit"
         class="mt-4"
       >
         Получить предложение
@@ -68,6 +79,7 @@
       </div>
 
       <r-checkbox
+        formControlName="news"
         class="mt-1_5"
       >
         Я согласен получать рассылку новостей агентства
@@ -78,6 +90,21 @@
         <a href="/">Информационной политикой</a> на настоящем сайте, полностью согласны с ее положениями и выдали ООО
         «Репина брендинг» все согласия, указанные в вышеупомянутой Информационной политике
       </div>
+
+      <input type="submit" style="display: none" />
     </form>
   </div>
 </r-padding>
+
+<r-request-feedback
+  *ngIf="sent"
+  @opacityAnimation
+  class="feedback"
+></r-request-feedback>
+
+<r-icon-button
+  *ngIf="data"
+  [mat-dialog-close]="false"
+  icon="close"
+  class="close"
+></r-icon-button>
