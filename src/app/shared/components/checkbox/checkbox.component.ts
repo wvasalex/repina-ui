@@ -20,6 +20,8 @@ export class CheckboxComponent implements OnInit {
     this.writeValue(isChecked);
   };
 
+  @Input() disabled: boolean = false;
+
   @Input() @HostBinding('attr.color') color: 'white' | 'default' = 'default';
 
   static guid: number = 1;
@@ -27,8 +29,6 @@ export class CheckboxComponent implements OnInit {
   public uid: string;
 
   public value: boolean;
-
-  private disabled: boolean = false;
 
   constructor() { }
 
