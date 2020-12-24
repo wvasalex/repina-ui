@@ -64,3 +64,10 @@ r-project-video {
     @extend .control;
   }
 }
+
+.w320 r-project-video.paused {
+  .upload {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

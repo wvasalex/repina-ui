@@ -49,6 +49,7 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
 
   public ngAfterViewInit() {
     setTimeout(() => this._setTop(), 300);
+    setTimeout(() => this._setTop(), 1000);
   }
 
   public ngOnDestroy() {

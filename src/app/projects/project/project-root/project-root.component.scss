@@ -40,6 +40,10 @@
 
   .links {
     padding-top: 8rem;
+
+    &:empty {
+      padding: 0;
+    }
   }
 
   ::ng-deep .h2 {

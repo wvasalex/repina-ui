@@ -11,3 +11,17 @@
     justify-content: center;
   }
 }
+
+.mh {
+  margin: 0 4rem;
+}
+
+.w1024 :host, .w768 :host {
+  .mh {
+    margin: 0 3rem;
+  }
+}
+
+.w320 :host {
+  margin: 0 2rem;
+}

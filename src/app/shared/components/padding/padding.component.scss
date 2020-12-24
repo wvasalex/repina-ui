@@ -5,7 +5,7 @@
   box-sizing: border-box;
 }
 
-:host.horizontal {
+:host:not(.pt-128).horizontal {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
 }

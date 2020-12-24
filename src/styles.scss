@@ -301,6 +301,14 @@ a, a:visited {
   margin-right: 0;
 }
 
+.pt-128 {
+  padding-top: 128px !important;
+}
+
+.w320 .pt-128 {
+  padding-top: 64px !important;
+}
+
 .ml-1 {
   margin-left: 1rem;
 }
