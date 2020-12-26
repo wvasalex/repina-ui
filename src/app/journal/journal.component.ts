@@ -32,7 +32,12 @@ export class JournalComponent implements OnInit, OnDestroy {
       }),
     );
 
-  public data$: Subject<PagedResponse<Article>> = new Subject<PagedResponse<Article>>();
+  public data$: BehaviorSubject<PagedResponse<Article>> = new BehaviorSubject<PagedResponse<Article>>({
+    page: 1,
+    per_page: 10,
+    results: [],
+    total_count: 10,
+  });
 
   public articles$: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 
@@ -40,13 +45,16 @@ export class JournalComponent implements OnInit, OnDestroy {
 
   public groups$: Observable<any> = this.articles$
     .pipe(map((articles) => {
-      if (articles.length >= 6) {
+      /*if (articles.length >= 6) {
         articles.splice(6, 0, {
           type: 'subscribe',
         });
-      }
+      }*/
 
-      return this.journalService.groupArticles(articles);
+      return this.journalService.groupArticles(
+        articles,
+        this.data$.value.page === 1,
+      );
     }));
 
   private _keys$: Observable<string[]> = this.activatedRoute.queryParams
@@ -165,7 +173,7 @@ export class JournalComponent implements OnInit, OnDestroy {
   }
 
   private _load(req: PagedRequest) {
-    req.per_page = 11;
+    req.per_page = req.page == 1 ? 11 : 12;
     this.journalService.getPage<Article>(req).subscribe((page: PagedResponse<Article>) => {
       this.data$.next(page);
       this.articles$.next(page.results);

@@ -16,7 +16,6 @@ import { ArticleVideoComponent } from './article/article-video/article-video.com
 import { ArticleRequestComponent } from './article/article-request/article-request.component';
 import { ArticleSubscribeComponent } from './article/article-subscribe/article-subscribe.component';
 import { map, tap } from 'rxjs/operators';
-import { Project } from '@shared/projects/projects.model';
 
 @Injectable({
   providedIn: 'root',
@@ -37,7 +36,7 @@ export class JournalService extends RestService {
     'article-quote': ArticleQuoteComponent,
     'article-video': ArticleVideoComponent,
     'article-request': ArticleRequestComponent,
-    'article-subscribe': ArticleSubscribeComponent,
+    //'article-subscribe': ArticleSubscribeComponent,
   };
 
   public published$: Subject<Article[]> = new Subject<Article[]>();
@@ -57,10 +56,10 @@ export class JournalService extends RestService {
     });
   }
 
-  public groupArticles(articles: Article[]): Article[][] {
+  public groupArticles(articles: Article[], firstPage: boolean): Article[][] {
     const chunks = [];
     let line: number = 0;
-    let chunk_size: number = 2;
+    let chunk_size: number = firstPage ? 2 : 3;
 
     for (let i = 0; i < articles.length;) {
       const chunk: any[] = articles.slice(i, i + chunk_size);
@@ -74,7 +73,7 @@ export class JournalService extends RestService {
       i += chunk_size;
 
       line++;
-      chunk_size = line % 2 == 0 ? 2 : 3;
+      chunk_size = 3; //line % 2 == 0 ? 2 : 3;
     }
 
     return chunks;

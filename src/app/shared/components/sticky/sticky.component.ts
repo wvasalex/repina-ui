@@ -36,7 +36,7 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
       const el = this.ref.nativeElement;
       this._visibleSub = fromEvent(window, 'scroll')
         .pipe(
-          throttleTime(300),
+          throttleTime(100),
           map(() => this._getVisibility()),
           distinctUntilChanged(),
           tap((visible: boolean) => {
