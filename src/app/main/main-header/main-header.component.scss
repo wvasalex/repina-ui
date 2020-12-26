@@ -8,16 +8,19 @@
 
 .intersect {
   position: absolute;
-  mix-blend-mode: screen;
+
+  //mix-blend-mode: multiply;
   border-radius: 50%;
-  background: #000;
+  background: #fff;
   left: 0;
   //right: -36px;
   top: 0; //-48px;
+  mix-blend-mode: difference;
 }
 
 :host ::ng-deep .left {
   background: #fff;
+
 }
 
 .sphere-rating {
