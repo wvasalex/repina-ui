@@ -19,7 +19,6 @@ export class ArticleComponent implements OnInit, OnDestroy {
   public article$: Observable<Article> = this.activatedRoute.data.pipe(
     pluck('article'),
     tap((article: Article) => {
-      console.log(article);
       this.footerService.setBreadcrumbs([
         {
           href: '/blog',

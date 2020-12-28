@@ -1,12 +1,15 @@
-import { ChangeDetectionStrategy, Component, HostListener, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { BaseBlock } from '@shared/blocks/block.component';
 import { MainService } from './main.service';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { ContentBlock, ContentElement } from '@shared/types';
 import { MainRenderService } from './main-render.service';
-import { JournalService } from '../journal/journal.service';
 import { ToasterService } from '@shared/toaster/toaster.service';
-import { element } from 'protractor';
 import { ListReorderComponent } from '@shared/list-reorder/list-reorder.component';
 import { Project } from '@shared/projects/projects.model';
 import { MatDialog } from '@angular/material/dialog';
@@ -18,7 +21,7 @@ import { FooterService } from '@shared/footer/footer.service';
   styleUrls: ['./main.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MainComponent extends BaseBlock implements OnInit {
+export class MainComponent extends BaseBlock implements OnInit, OnDestroy {
 
   public render = this.mainRenderService.render;
 

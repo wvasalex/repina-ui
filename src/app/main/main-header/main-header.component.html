@@ -3,17 +3,14 @@
   class="full-screen"
 >
   <r-card class="relative">
-    <div subtitle>
-      <r-md
-        [editor]="editor"
-        [props]="props"
-        prop="subtitle"
-        className="h4"
-        class="subtitle text"
-
-      ></r-md>
-
-    </div>
+    <r-md
+      [editor]="editor"
+      [props]="props"
+      prop="subtitle"
+      className="h4"
+      class="subtitle text"
+      subtitle
+    ></r-md>
     <r-md
       [editor]="editor"
       [props]="props"
@@ -23,7 +20,10 @@
       title
     ></r-md>
 
-    <r-sphere class="intersect"></r-sphere>
+    <r-sphere
+      #sphere
+      class="intersect"
+    ></r-sphere>
 
     <r-rating class="sphere-rating"></r-rating>
   </r-card>

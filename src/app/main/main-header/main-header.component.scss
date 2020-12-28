@@ -1,28 +1,23 @@
-.relative {
-  position: relative;
-}
-
  .subtitle {
-
  }
 
 .intersect {
-  position: absolute;
-  border-radius: 50%;
-  left: 0;
-  right: 12px;
-  top: -48px;
+
 }
 
 :host ::ng-deep .left {
-  background: #fff;
-
+  background: transparent;
 }
 
 .sphere-rating {
   position: absolute;
-  right: -36px;
+  right: -30px;
   top: -48px;
   transition: 300ms;
+  z-index: 1;
+}
+
+.relative {
+  position: relative;
   z-index: 1;
 }

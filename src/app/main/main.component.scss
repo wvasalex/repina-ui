@@ -1,3 +1,9 @@
+:host {
+  ::ng-deep .block_type[rel="block_type_0"] {
+    position: static;
+  }
+}
+
 .w768 :host, .w320 :host {
   r-sphere {
     margin-top: 64px;
