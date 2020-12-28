@@ -21,7 +21,7 @@ import { FooterService } from '@shared/footer/footer.service';
   styleUrls: ['./main.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MainComponent extends BaseBlock implements OnInit, OnDestroy {
+export class MainComponent extends BaseBlock implements OnInit {
 
   public render = this.mainRenderService.render;
 

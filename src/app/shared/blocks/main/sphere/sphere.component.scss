@@ -84,18 +84,13 @@
   $width: 128px;
   //flex: 0 !important;
   align-self: flex-end;
-  margin-right: 40px;
-  margin-top: -64px;
+  margin-top: 32px;
 
   //.sphere {
   max-width: $width;
   max-height: $width;
   background-size: $width;
   //}
-
-  .sphere-rating {
-    top: -24px;
-  }
 }
 
 @keyframes bounce {

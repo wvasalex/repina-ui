@@ -21,3 +21,9 @@
   position: relative;
   z-index: 1;
 }
+
+.w320 :host {
+  .sphere-rating {
+    top: 0;
+  }
+}

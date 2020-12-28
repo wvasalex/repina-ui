@@ -58,7 +58,11 @@ export class MainAnimationService {
     element.style.position = 'absolute';
     element.style.top = rect.top + 'px';
     element.style.left = rect.left + 'px';
-    parent.appendChild(this.doc.createElement('div'));
+
+    const holder = this.doc.createElement('div');
+    holder.style.width = rect.width + 'px';
+    holder.style.height = rect.height + 'px';
+    parent.appendChild(holder);
     this.host.appendChild(element);
 
     const move = fromEvent(this.doc.body, 'mousemove')
