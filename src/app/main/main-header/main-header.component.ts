@@ -1,11 +1,12 @@
 import {
   ChangeDetectionStrategy,
-  Component, ElementRef,
+  Component, ElementRef, OnChanges,
   OnDestroy,
-  OnInit, ViewChild, ViewContainerRef,
+  OnInit, SimpleChanges, ViewChild, ViewContainerRef,
 } from '@angular/core';
 import { BaseBlock } from '@shared/blocks/block.component';
 import { MainAnimationService } from '../main-animation.service';
+import { SessionStateService } from '@shared/services/session';
 
 @Component({
   selector: 'r-main-header',
@@ -18,6 +19,7 @@ export class MainHeaderComponent extends BaseBlock implements OnInit, OnDestroy 
   @ViewChild('sphere', { static: true, read: ViewContainerRef }) sphereRef: ViewContainerRef;
 
   constructor(
+    private sessionStateService: SessionStateService,
     private ref: ElementRef,
     private mainAnimationService: MainAnimationService,
   ) {
@@ -25,7 +27,7 @@ export class MainHeaderComponent extends BaseBlock implements OnInit, OnDestroy 
   }
 
   public ngOnInit() {
-    if (!this.editor) {
+    if (!this.sessionStateService.token) {
       this.mainAnimationService.attach(this.ref.nativeElement, this.sphereRef);
     }
   }

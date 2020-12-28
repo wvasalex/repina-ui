@@ -23,6 +23,10 @@
     <div class="relative">
       <r-sphere
         #sphere
+        [id]="elements[0].id"
+        [props]="elements[0].props"
+        [contentFile]="elements[0].content_file"
+        [editor]="editor"
         class="intersect"
       ></r-sphere>
 

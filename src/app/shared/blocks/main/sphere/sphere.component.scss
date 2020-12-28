@@ -1,13 +1,26 @@
 @import "src/theme";
 
-:host {
+r-sphere {
   position: relative;
   display: flex;
   justify-content: flex-end;
-  transition: height 600ms, width 600ms, top 300ms, left 300ms, background-color 600ms 100ms;
+  transition: height 200ms ease-in, width 200ms ease-in, top 300ms, left 300ms;
   transform-origin: center;
   background: transparent;
   border-radius: 50%;
+  overflow: hidden;
+
+  max-width: 556px;
+  max-height: 556px;
+  width: 600px;
+  height: 600px;
+
+  video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    //display: none;
+  }
 
   &.absolute {
     position: absolute;
@@ -23,40 +36,23 @@
     height: 10px;
     background: $color-red;
 
-    video {
+    > * {
       //transition: 0ms;
       transform: scale(0);
     }
   }
 
-  video {
-    transition: 600ms;
+  > * {
+    transition: 200ms;
   }
 }
 
-.w320 :host:not(.absolute) {
+.w320 r-sphere:not(.absolute) {
   animation: none;
 }
 
-:host {
-  display: block;
-  max-width: 556px;
-  max-height: 556px;
-  border-radius: 50%;
-  overflow: hidden;
-  //background: #fff;
-  width: 600px;
-  height: 600px;
 
-  video {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-    //display: none;
-  }
-}
-
-.w1366 :host {
+.w1366 r-sphere {
   $width: 416px;
 
   //.sphere {
@@ -66,7 +62,7 @@
   //}
 }
 
-.w1024 :host, .w768 :host {
+.w1024 r-sphere, .w768 r-sphere {
   $width: 266px;
 
   //.sphere {
@@ -80,7 +76,7 @@
   }
 }
 
-.w320 :host {
+.w320 r-sphere {
   $width: 128px;
   //flex: 0 !important;
   align-self: flex-end;
@@ -108,5 +104,37 @@
   }
 }
 
+@import '~video.js/dist/video-js.css';
+
+r-sphere {
+  outline: none;
+
+  &[editor=true] {
+    .upload {
+      opacity: .25;
+      transform: scale(1);
+    }
+  }
 
 
+  .file {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+  }
+
+  .upload {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -28px;
+    margin-top: -28px;
+    transition: 100ms 300ms;
+    z-index: 3;
+    opacity: 0;
+    transform: scale(0);
+  }
+}

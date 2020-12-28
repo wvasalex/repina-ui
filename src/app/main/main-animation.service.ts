@@ -9,6 +9,8 @@ import { BreakpointService } from '@shared/breakpoint.service';
 })
 export class MainAnimationService {
 
+  public editor: boolean = false;
+
   private mobile$: Observable<boolean> = this.breakpointService.mobile$
     .pipe(
       take(1),
@@ -82,6 +84,10 @@ export class MainAnimationService {
   }
 
   private _move(e: MouseEvent) {
+    if (this.editor) {
+      return;
+    }
+
     const s = this.sphere;
 
     const wh = window.innerHeight;
