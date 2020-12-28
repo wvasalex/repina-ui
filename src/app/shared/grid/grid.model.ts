@@ -53,7 +53,7 @@ export const GridDataSize: StrMap<GridDataSizeDef> = {
       {rowspan: 2},
     ],
   },
-  'small': {
+  small: {
     cols: 3,
     roles: [1, 2, 3],
     grid: [
@@ -62,7 +62,7 @@ export const GridDataSize: StrMap<GridDataSizeDef> = {
       {},
     ],
   },
-  'big': {
+  big: {
     cols: 2,
     roles: [1, 2],
     grid: [
@@ -75,6 +75,14 @@ export const GridDataSize: StrMap<GridDataSizeDef> = {
     roles: [1],
     grid: [
       {},
+    ],
+  },
+  'two-towers': {
+    cols: 2,
+    roles: [1, 2],
+    grid: [
+      {colspan: 1, rowspan: 2},
+      {colspan: 1, rowspan: 2},
     ],
   },
 };
