@@ -2,6 +2,10 @@
   <div>Контакты</div>
   <div class="bolder">
     <span>{{data.phone}}</span>
+    <meta
+      [attr.content]="data.phone"
+      itemprop="telephone"
+    />
     <br>
     <a [attr.href]="'mailto:' + data.email_address + '@' + data.email_domain">
       <span>{{data.email_address}}@{{data.email_domain}}</span>
@@ -10,5 +14,9 @@
   <div class="mt-5">Адрес</div>
   <div class="bolder">
     <span>{{data.address}}</span>
+    <meta
+      [attr.content]="data.address"
+      itemprop="address"
+    />
   </div>
 </div>

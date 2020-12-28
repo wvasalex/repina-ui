@@ -11,6 +11,7 @@ export class ImageComponent implements OnInit {
   @Input() src: string;
   @Input() alt: string;
   @Input() title: string;
+  @Input() itemprop: string;
 
   constructor() { }
 

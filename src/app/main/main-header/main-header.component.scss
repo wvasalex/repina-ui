@@ -8,14 +8,10 @@
 
 .intersect {
   position: absolute;
-
-  //mix-blend-mode: multiply;
   border-radius: 50%;
-  background: #fff;
   left: 0;
-  //right: -36px;
-  top: 0; //-48px;
-  mix-blend-mode: difference;
+  right: 12px;
+  top: -48px;
 }
 
 :host ::ng-deep .left {
