@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { SelectOption } from '@shared/components/select/select.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToasterService } from '@shared/toaster/toaster.service';
@@ -10,6 +10,7 @@ import { ServicesTagsService } from '../services-tags.service';
 import { ServicesScopesService } from '../services-scopes.service';
 import { ServicesGroupsService } from '../services-groups.service';
 import { ServicesRenderService } from '../services-render.service';
+import { pluck } from 'rxjs/operators';
 
 @Component({
   selector: 'r-service-editor',
@@ -41,6 +42,8 @@ export class ServiceEditorComponent implements OnInit {
     {value: 'service-related-wiki', label: 'Статьи по теме'},
   ];
 
+  private _sub: Subscription;
+
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -55,37 +58,15 @@ export class ServiceEditorComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    const snapshot = this.activatedRoute.snapshot;
-    this._normalize(this.service = snapshot.data.service || {});
+    this._sub = this.activatedRoute.data.pipe(
+      pluck('service')
+    ).subscribe(() => {
+      this._init();
+    });
+  }
 
-    if (!this.service.content_blocks?.length) {
-      this.service.content_blocks = [
-        {
-          block_type: 'service-header',
-          props: {},
-          content_elements: [
-            {
-              element_type: 'service-image',
-              props: {},
-            },
-          ],
-        },
-        {
-          block_type: 'service-block',
-          props: {},
-          content_elements: [
-            {
-              element_type: 'service-text',
-              props: {},
-            },
-            {
-              element_type: 'service-blank',
-              props: {},
-            },
-          ],
-        },
-      ];
-    }
+  public ngOnDestroy(): void {
+    this._sub.unsubscribe();
   }
 
   public $addBlock(e: StrMap<any>) {
@@ -143,8 +124,16 @@ export class ServiceEditorComponent implements OnInit {
       });
     });
 
+    // Slug update
+    if (this.service._slug) {
+      const {slug, _slug} = this.service;
+      this.service._slug = slug;
+      this.service.slug = _slug;
+    }
+
     const req = this.servicesService.save(this.service).toPromise().then((a: Service) => {
-      if (a.slug != this.service.slug) {
+      console.log(a);
+      if (this.service.slug != this.service._slug) {
         this.router.navigate(['/services', a.slug, 'edit']);
       } else {
         this._normalize(this.service = a);
@@ -175,7 +164,47 @@ export class ServiceEditorComponent implements OnInit {
       service.tags = service.tags.map((tag: ServiceTag) => tag.id);
     }
 
+    if (service.slug) {
+      service._slug = service.slug;
+    }
+
     return service;
+  }
+
+  private _init(): void {
+    const snapshot = this.activatedRoute.snapshot;
+    this.service = this._normalize(snapshot.data.service || { _new: true });
+
+    if (!this.service.content_blocks?.length) {
+      this.service.content_blocks = [
+        {
+          block_type: 'service-header',
+          props: {},
+          content_elements: [
+            {
+              element_type: 'service-image',
+              props: {},
+            },
+          ],
+        },
+        {
+          block_type: 'service-block',
+          props: {},
+          content_elements: [
+            {
+              element_type: 'service-text',
+              props: {},
+            },
+            {
+              element_type: 'service-blank',
+              props: {},
+            },
+          ],
+        },
+      ];
+    }
+
+    this.changeDetectorRef.detectChanges();
   }
 
 }

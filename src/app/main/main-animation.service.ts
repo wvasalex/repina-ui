@@ -102,7 +102,11 @@ export class MainAnimationService {
 
     if (threshold !== this.round) {
       this.round = threshold;
+      s.classList.add('no-bg');
       s.classList.toggle('point', threshold);
+      setTimeout(() => {
+        s.classList.remove('no-bg');
+      }, 200);
     }
 
     if (this.round) {

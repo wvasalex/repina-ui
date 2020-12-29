@@ -17,6 +17,7 @@ import { JournalTagsService } from '../journal-tags.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ArticleEditorComponent implements OnInit, OnDestroy {
+
   public tags$: Observable<SelectOption[]> = this.journalTagsService.get()
     .pipe(map((tags: BlogTag[]) => {
       return tags.map((tag: BlogTag) => {
@@ -33,13 +34,13 @@ export class ArticleEditorComponent implements OnInit, OnDestroy {
 
   public availableElements: SelectOption[] = [
     //{value: 'blank', label: 'Пустой'},
-    {value: 'article-text', label: 'Текст'},
-    {value: 'article-image', label: 'Изображение'},
-    {value: 'article-quote', label: 'Цитата'},
-    {value: 'article-author', label: 'Автор'},
-    {value: 'article-video', label: 'Видео'},
-    {value: 'article-request', label: 'Запрос стоимости'},
-    {value: 'article-subscribe', label: 'Подписаться'},
+    { value: 'article-text', label: 'Текст' },
+    { value: 'article-image', label: 'Изображение' },
+    { value: 'article-quote', label: 'Цитата' },
+    { value: 'article-author', label: 'Автор' },
+    { value: 'article-video', label: 'Видео' },
+    { value: 'article-request', label: 'Запрос стоимости' },
+    { value: 'article-subscribe', label: 'Подписаться' },
   ];
 
   @ViewChild(ArticleHeaderComponent) headerComponent: ArticleHeaderComponent;
@@ -58,7 +59,7 @@ export class ArticleEditorComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this._sub = this.activatedRoute.data.pipe(
-      pluck('project'),
+      pluck('article'),
     ).subscribe(() => {
       this._init();
     });
@@ -69,7 +70,7 @@ export class ArticleEditorComponent implements OnInit, OnDestroy {
   }
 
   public $addBlock(e: StrMap<any>) {
-    const {target, offset} = e;
+    const { target, offset } = e;
     const index = this.article.content_blocks.indexOf(target) + offset;
 
     this.article.content_blocks.splice(index, 0, {
@@ -123,7 +124,7 @@ export class ArticleEditorComponent implements OnInit, OnDestroy {
 
     // Slug update
     if (this.article._slug) {
-      const {slug, _slug} = this.article;
+      const { slug, _slug } = this.article;
       this.article._slug = slug;
       this.article.slug = _slug;
     }
@@ -199,7 +200,7 @@ export class ArticleEditorComponent implements OnInit, OnDestroy {
       ];
     }
 
-    const header =this.article.content_blocks.find((block: ContentBlock) => block.block_type === 'article-header');
+    const header = this.article.content_blocks.find((block: ContentBlock) => block.block_type === 'article-header');
     if (header && header.content_elements.length === 1) {
       header.content_elements.push({
         element_type: 'article-image',

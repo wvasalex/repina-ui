@@ -22,6 +22,7 @@ r-sphere {
     //display: none;
   }
 
+
   &.absolute {
     position: absolute;
     transform: translate(-50%, -50%);
@@ -34,10 +35,12 @@ r-sphere {
   &.point {
     width: 10px;
     height: 10px;
-    background: $color-red;
+
+    &:not(.no-bg) {
+      background: $color-red;
+    }
 
     > * {
-      //transition: 0ms;
       transform: scale(0);
     }
   }

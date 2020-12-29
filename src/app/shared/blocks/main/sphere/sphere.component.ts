@@ -30,6 +30,7 @@ export class SphereComponent extends BaseBlock {
   @ViewChild('video', { static: true }) video: ElementRef;
 
   @HostBinding('class.paused') public paused: boolean = false;
+  @HostBinding('class.ready') public ready: boolean = false;
   public muted: boolean = true;
 
   private player: videojs.Player;
@@ -68,7 +69,6 @@ export class SphereComponent extends BaseBlock {
     this.api.postFile('/api/v1/main_content_elements/' + this.id + '/', data)
       .toPromise()
       .then((element: ContentElement) => {
-        console.log(element);
         this.contentFile = element.content_file;
         this.contentFileChange.emit(this.contentFile);
         this.changeDetectoRef.detectChanges();

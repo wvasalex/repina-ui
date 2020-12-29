@@ -28,6 +28,7 @@ export interface Service {
   activity_scope?: number | ServiceScope;
   tag_group?: number | ServiceTagGroup;
   slug?: string;
+  _slug?: string;
   preview_file?: string;
   parent?: number | {
     id: number;

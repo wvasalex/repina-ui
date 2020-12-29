@@ -20,8 +20,8 @@ export class MainHeaderComponent extends BaseBlock implements OnInit, OnDestroy 
 
   constructor(
     private sessionStateService: SessionStateService,
-    private ref: ElementRef,
     private mainAnimationService: MainAnimationService,
+    private ref: ElementRef,
   ) {
     super();
   }
