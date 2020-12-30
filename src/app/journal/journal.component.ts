@@ -173,7 +173,6 @@ export class JournalComponent implements OnInit, OnDestroy {
   }
 
   private _load(req: PagedRequest) {
-    req.per_page = req.page == 1 ? 11 : 12;
     this.journalService.getPage<Article>(req).subscribe((page: PagedResponse<Article>) => {
       this.data$.next(page);
       this.articles$.next(page.results);

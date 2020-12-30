@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { RestService } from '@shared/services/api/rest.service';
 import { ApiService } from '@shared/services/api/api.service';
-import { ApiConfig } from '@shared/services/api/api.model';
+import { ApiConfig, PagedRequest, PagedResponse } from '@shared/services/api/api.model';
 import { BlockBlankComponent } from '@shared/blocks/block-blank/block-blank.component';
 import { StrMap } from '@shared/types';
 import { Article } from './journal.model';
@@ -54,6 +54,12 @@ export class JournalService extends RestService {
       ...body,
       id: body._slug || body.slug,
     });
+  }
+
+  public getPage<T>(req: PagedRequest): Observable<PagedResponse<T>> {
+    req.per_page = 15;
+
+    return super.getPage(req);
   }
 
   public groupArticles(articles: Article[], firstPage: boolean): Article[][] {
