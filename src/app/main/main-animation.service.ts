@@ -72,15 +72,17 @@ export class MainAnimationService {
         throttleTime(100),
       );
 
-    move.pipe(
-      take(1),
-    ).subscribe(() => {
-      this.sphere.classList.add('absolute');
-    })
+    setTimeout(() => {
+      move.pipe(
+        take(1),
+      ).subscribe(() => {
+        this.sphere.classList.add('absolute');
+      });
 
-    this._subs.push(move.subscribe((e) => {
-      this._move(e as MouseEvent);
-    }));
+      this._subs.push(move.subscribe((e) => {
+        this._move(e as MouseEvent);
+      }));
+    }, 3000);
   }
 
   private _move(e: MouseEvent) {

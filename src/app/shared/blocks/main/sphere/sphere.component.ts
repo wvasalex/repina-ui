@@ -29,14 +29,14 @@ export class SphereComponent extends BaseBlock {
 
   @ViewChild('video', { static: true }) video: ElementRef;
 
-  @HostBinding('class.paused') public paused: boolean = false;
-  @HostBinding('class.ready') public ready: boolean = false;
+  public ready: boolean = false;
   public muted: boolean = true;
 
   private player: videojs.Player;
 
   constructor(
     private changeDetectoRef: ChangeDetectorRef,
+    private element: ElementRef,
     private toasterService: ToasterService,
     private api: ApiService,
   ) {
@@ -97,6 +97,10 @@ export class SphereComponent extends BaseBlock {
         loop: true,
       }, () => {
         this.player.muted(this.muted = true);
+
+        setTimeout(() => {
+          this.element.nativeElement.classList.add('ready');
+        }, 300);
       });
     } else {
       this.player.src([
