@@ -140,18 +140,20 @@ export class JournalComponent implements OnInit, OnDestroy {
   }
 
   public $reorder() {
-    this.dialog.open(ListReorderComponent, {
-      data: {
-        items: this.articles$.value.map((article: Article) => {
-          return {
-            image: article.preview_file,
-            ...article,
-          };
-        }),
-        onChange: (items) => {
-          this._save(items);
+    this.journalService.get({per_page:999}).subscribe((articles: Article[]) => {
+      this.dialog.open(ListReorderComponent, {
+        data: {
+          items: articles.map((article: Article) => {
+            return {
+              image: article.preview_file,
+              ...article,
+            };
+          }),
+          onChange: (items) => {
+            this._save(items);
+          },
         },
-      },
+      });
     });
   }
 
