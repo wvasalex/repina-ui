@@ -57,7 +57,7 @@ export class JournalService extends RestService {
   }
 
   public getPage<T>(req: PagedRequest): Observable<PagedResponse<T>> {
-    req.per_page = 15;
+    req.per_page = 14;
 
     return super.getPage(req);
   }
