@@ -20,6 +20,6 @@ export class ProjectTextComponent extends BaseBlock implements OnInit {
   @HostBinding('class.has-index') hasIndex;
 
   public ngOnInit() {
-    this.hasIndex = this.index === 0;
+    this.hasIndex = this.props.i || this.index === 0;
   }
 }
