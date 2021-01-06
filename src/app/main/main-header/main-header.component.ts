@@ -14,7 +14,7 @@ import { SessionStateService } from '@shared/services/session';
   styleUrls: ['./main-header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MainHeaderComponent extends BaseBlock implements OnInit, OnDestroy {
+export class MainHeaderComponent extends BaseBlock implements OnInit, OnDestroy, OnChanges {
 
   @ViewChild('sphere', { static: true, read: ViewContainerRef }) sphereRef: ViewContainerRef;
 
@@ -27,13 +27,17 @@ export class MainHeaderComponent extends BaseBlock implements OnInit, OnDestroy 
   }
 
   public ngOnInit() {
-    if (!this.sessionStateService.token) {
+    if (!this.editor) {
       this.mainAnimationService.attach(this.ref.nativeElement, this.sphereRef);
     }
   }
 
   public ngOnDestroy() {
     this.mainAnimationService.detach();
+  }
+
+  public ngOnChanges(changes: SimpleChanges) {
+    this.mainAnimationService.editor = this.editor;
   }
 
 }

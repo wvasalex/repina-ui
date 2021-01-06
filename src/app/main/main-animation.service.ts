@@ -40,7 +40,7 @@ export class MainAnimationService {
 
     setTimeout(() => {
       this._initMove();
-    }, 3000);
+    }, 1200);
   }
 
   public detach() {
