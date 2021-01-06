@@ -27,7 +27,7 @@ export class MainHeaderComponent extends BaseBlock implements OnInit, OnDestroy,
   }
 
   public ngOnInit() {
-    if (!this.editor) {
+    if (!this.sessionStateService.token) {
       this.mainAnimationService.attach(this.ref.nativeElement, this.sphereRef);
     }
   }
@@ -37,7 +37,7 @@ export class MainHeaderComponent extends BaseBlock implements OnInit, OnDestroy,
   }
 
   public ngOnChanges(changes: SimpleChanges) {
-    this.mainAnimationService.editor = this.editor;
+    //this.mainAnimationService.editor = this.editor;
   }
 
 }
