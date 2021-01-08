@@ -108,7 +108,7 @@ export class MainAnimationService {
       s.classList.toggle('point', threshold);
       setTimeout(() => {
         s.classList.remove('no-bg');
-      }, 200);
+      }, 330);
     }
 
     if (this.round) {
