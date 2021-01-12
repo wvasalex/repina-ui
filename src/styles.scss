@@ -61,7 +61,7 @@ h2, h3, h4, .h, .h2, .h3, .h4, button {
   }
 }
 
-a:hover {
+a[href]:hover {
   text-decoration: underline;
 }
 

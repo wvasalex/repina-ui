@@ -2,7 +2,7 @@
   <div class="primary-block">
     <a
       *ngFor="let item of primaryBlock; let first = first;"
-      [routerLink]="item.href ? [item.href] : null"
+      [attr.href]="item.href | href"
       [class.text32]="!first"
     >
       <h2>{{item.text}}</h2>
@@ -18,7 +18,7 @@
     >
       <a
         *ngFor="let item of block; let first = first;"
-        [routerLink]="item.href ? [item.href] : null"
+        [attr.href]="item.href | href"
         [class.h2]="first"
         [class.mb-16]="first"
         [class.text32]="!first"
