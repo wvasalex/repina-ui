@@ -20,12 +20,15 @@ export class AgencyMediaComponent implements OnInit {
   public media$: Observable<ContentListItem[]> = this.agencyService.getMedia()
     .pipe(map((list: ContentListItem[]) => {
       return list.sort((a, b) => {
-        if (a.props.date == b.props.date) {
+        const dateA = new Date(this._normalizeDate(a.props.date, true));
+        const dateB = new Date(this._normalizeDate(b.props.date, true));
+
+        if (dateA == dateB) {
           return 0;
         }
 
-        return a.props.date > b.props.date ?
-          1 : -1;
+        return dateA > dateB ?
+          -1 : 1;
       });
     }));
 
@@ -50,7 +53,11 @@ export class AgencyMediaComponent implements OnInit {
   }
 
   public $date(raw: string): string {
-    return raw.replace(/(\d+)\D+(\d+)\D+(\d+)/, '$1 — $2 / $3');
+    return this._normalizeDate(raw);
+  }
+
+  private _normalizeDate(raw: string, normal: boolean = false): string {
+    return raw.replace(/(\d+)\D+(\d+)\D+(\d+)/, normal ? '$2.$1.$3' : '$1 — $2 / $3');
   }
 
 }
