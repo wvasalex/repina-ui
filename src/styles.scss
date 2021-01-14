@@ -88,19 +88,24 @@ a, a:visited {
     line-height: 124px;
   }
 
-  .h3, h3 {
-    font-size: 72px;
-    line-height: 76px;
-  }
-
   .h2, h2 {
     font-size: 48px;
     line-height: 56px;
   }
 
+  .h3, h3 {
+    font-size: 36px;
+    line-height: 48px;
+  }
+
   .h4, h4 {
     font-size: 36px;
     line-height: 48px;
+  }
+
+  .h1_5 {
+    font-size: 72px;
+    line-height: 76px;
   }
 
   .text32 {
@@ -126,8 +131,8 @@ a, a:visited {
   }
 
   .h3, h3 {
-    font-size: 52px;
-    line-height: 60px;
+    font-size: 24px;
+    line-height: 32px;
   }
 
   .h2, h2 {
@@ -138,6 +143,11 @@ a, a:visited {
   .h4, h4 {
     font-size: 24px;
     line-height: 32px;
+  }
+
+  .h1_5 {
+    font-size: 52px;
+    line-height: 60px;
   }
 
   .text32 {
@@ -175,13 +185,18 @@ a, a:visited {
   }
 
   .h3, h3 {
-    font-size: 32px;
-    line-height: 40px;
+    font-size: 24px;
+    line-height: 32px;
   }
 
   .h4, h4 {
     font-size: 24px;
     line-height: 32px;
+  }
+
+  .h1_5 {
+    font-size: 32px;
+    line-height: 40px;
   }
 
   .text32 {
@@ -418,7 +433,8 @@ markdown {
   }
 
   ul {
-    margin: 32px 0;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
   }
 
   &.md-text {
