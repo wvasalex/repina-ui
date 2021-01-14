@@ -16,30 +16,45 @@
       display: flex;
     }
   }
-}
 
-.title, .subtitle {
-  width: 50%;
-  margin-bottom: 2rem;
 
-  ::ng-deep .h4 {
-    * {
-      font: inherit !important;
+  .title, .subtitle {
+    width: 50%;
+    margin-bottom: 2rem;
+
+    ::ng-deep .h4 {
+      * {
+        font: inherit !important;
+      }
     }
+  }
+
+  .inner {
+    position: relative;
+  }
+
+  .content {
+    margin-left: 102px;
+  }
+
+  .mb-30 {
+    margin-bottom: 64px;
+  }
+
+  .date {
+    position: absolute;
+    top: 260px;
+    left: -16px;
+    display: inline-block;
+    transform: rotate(270deg);
+    transform-origin: left top;
+  }
+
+  .index {
+    position: absolute;
   }
 }
 
-.inner {
-  position: relative;
-}
-
-.content {
-  margin-left: 102px;
-}
-
-.mb-30 {
-  margin-bottom: 64px;
-}
 
 :host:not([editor]) {
   .row-column {
@@ -47,22 +62,11 @@
   }
 }
 
-.date {
-  position: absolute;
-  top: 260px;
-  left: -16px;
-  display: inline-block;
-  transform: rotate(270deg);
-  transform-origin: left top;
-}
-
-.index {
-  position: absolute;
-}
-
-.add-element {
-  display: block;
-  margin: 4rem auto;
+:host[editor="true"] {
+  .add-element {
+    display: block;
+    margin: 4rem auto;
+  }
 }
 
 .w1920 :host {
@@ -144,55 +148,3 @@
 .element_type {
   align-items: center;
 }
-
-
-/*:host {
-  display: block;
-
-  ::ng-deep .element_type {
-    height: 100%;
-  }
-}
-
-
-.w1920 :host {
-  ::ng-deep [rel="element_type_1"] {
-    padding-left: 180px;
-  }
-}
-
-.w1366 :host {
-  .content {
-    margin-left: 75px;
-  }
-
-  ::ng-deep [rel="element_type_1"] {
-    padding-left: 136px;
-  }
-}
-
-.w1024 :host {
-  .content {
-    margin-left: 50px;
-  }
-
-  ::ng-deep [rel="element_type_1"] {
-    padding-left: 112px;
-  }
-}
-
-.w768 :host, .w320 :host {
-  ::ng-deep [rel="element_type_1"] {
-    margin-bottom: 4rem;
-  }
-
-  .row-column {
-    flex-direction: column-reverse !important;
-    align-items: flex-start;
-  }
-
-  ::ng-deep .title, .subtitle {
-    display: none;
-  }
-}
-*/

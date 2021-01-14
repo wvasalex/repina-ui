@@ -63,8 +63,6 @@
 }
 
 .w320 :host {
-  padding: 2rem 0;
-
   .primary {
     flex: 0;
     max-width: 100%;
@@ -73,9 +71,5 @@
   .blocks {
     display: flex;
     flex-direction: column;
-  }
-
-  .nav-block:not(:first-of-type) {
-    margin-top: 4rem;
   }
 }

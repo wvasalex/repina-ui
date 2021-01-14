@@ -42,3 +42,9 @@
     }
   }
 }
+
+.w1366, .w768, .w320 :host.round {
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+}

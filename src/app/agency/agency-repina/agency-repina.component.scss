@@ -23,5 +23,7 @@
 }
 
 .w320 :host {
-  margin: 0 2rem;
+  .mh {
+    margin: 0;
+  }
 }

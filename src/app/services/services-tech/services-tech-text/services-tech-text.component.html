@@ -1,11 +1,3 @@
-<!--div
-  *ngIf="editor"
-  [r-block]="editor"
-  [innerHTML]="$getValue('title')"
-  (contentChanged)="$contentChanged($event, 'title')"
-  class="h2"
-></div-->
-
 <r-md
   [props]="props"
   [editor]="editor"
@@ -20,11 +12,3 @@
   className="text32"
   class="text"
 ></r-md>
-
-<!--
-<div
-  [r-block]="editor"
-  [innerHTML]="$getValue('text')"
-  (contentChanged)="$contentChanged($event, 'text')"
-  class="text32 mt-1"
-></div>-->

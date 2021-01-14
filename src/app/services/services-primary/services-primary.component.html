@@ -13,7 +13,7 @@
       <a
         [routerLink]="['/services', service.slug]"
         [innerHTML]="$breakLine(service.title)"
-        class="title h3 ml-6"
+        class="title h1_5 ml-6"
       ></a>
     </div>
   </r-padding>
@@ -21,7 +21,7 @@
     <r-service-animation
       *ngIf="animation$ | async as animation"
       [props]="{'animation': animation}"
-      class="animation p-r"
+      class="animation"
       image
     ></r-service-animation>
   </div>

@@ -34,7 +34,6 @@
   display: flex;
   justify-content: flex-end;
   position: relative;
-  overflow: hidden;
 }
 
 .animation {
@@ -58,6 +57,12 @@
   }
 }
 
+.w768 :host {
+  .right {
+    display: none;
+  }
+}
+
 .w320 :host {
   r-padding {
     padding-top: 64px;
@@ -69,8 +74,8 @@
   }
 
   .service {
-    flex-direction: column;
-    align-items: flex-start;
+    //flex-direction: column;
+    //align-items: flex-start;
   }
 
   .ml-6 {
