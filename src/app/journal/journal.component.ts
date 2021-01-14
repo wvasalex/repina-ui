@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, HostListener, OnDestroy, OnInit } from '@angular/core';
-import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { map, pluck, startWith, tap } from 'rxjs/operators';
 import { ContentBlock, StrMap } from '@shared/types';
 import { SelectOption } from '@shared/components/select/select.model';
@@ -9,7 +9,7 @@ import { ToasterService } from '@shared/toaster/toaster.service';
 import { PagedRequest, PagedResponse } from '@shared/services/api/api.model';
 import { JournalPageService } from './journal-page.service';
 import { JournalService } from './journal.service';
-import { Article, BlogTag } from './journal.model';
+import { Article } from './journal.model';
 import { JournalTagsService } from './journal-tags.service';
 import { PaginatorService } from '@shared/paginator/paginator.service';
 import { FooterService } from '@shared/footer/footer.service';
@@ -107,7 +107,7 @@ export class JournalComponent implements OnInit, OnDestroy {
     this.footerService.setBreadcrumbs([]);
   }
 
-  public $tagChanged(tagChange, allTags: SelectOption[]) {
+  public $tagChanged(tagChange) {
     const filters: StrMap<string> = {page: '1'};
 
     if (tagChange.checked) {

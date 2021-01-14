@@ -10,7 +10,6 @@
       <r-badge-list
         *ngIf="tags$ | async as tags"
         (itemChanged)="$tagChanged($event)"
-        (changed)="$applyTags($event, tags)"
         [badges]="tags"
         [selected]="selectedTags"
         class="mt-2 tags"

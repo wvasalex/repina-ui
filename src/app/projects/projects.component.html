@@ -9,7 +9,7 @@
     <ng-container *ngIf="selectedTags$ | async as selectedTags">
       <r-badge-list
         *ngIf="tags$ | async as tags"
-        (itemChanged)="$tagChanged($event, tags)"
+        (itemChanged)="$tagChanged($event)"
         [badges]="tags"
         [selected]="selectedTags"
         class="mt-2 tags"

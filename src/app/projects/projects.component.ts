@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
 import { map, pluck, startWith, tap } from 'rxjs/operators';
@@ -92,7 +92,7 @@ export class ProjectsComponent {
     this.footerService.setBreadcrumbs([]);
   }
 
-  public $tagChanged(tagChange, allTags: SelectOption[]) {
+  public $tagChanged(tagChange) {
     const filters: StrMap<string> = {page: '1'};
 
     if (tagChange.checked) {
@@ -140,7 +140,7 @@ export class ProjectsComponent {
   }
 
   private _load(req: PagedRequest) {
-    req.per_page = 3;
+    req.per_page = 15;
     this.projectsService.getPage<Project>(req).subscribe((page: PagedResponse<Project>) => {
       this.data$.next(page);
       this.projects$.next(page.results);
