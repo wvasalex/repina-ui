@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@a
 import { Observable, Subject, Subscription } from 'rxjs';
 import { PagedResponse } from '@shared/services/api/api.model';
 import { PaginatorService } from '@shared/paginator/paginator.service';
+import { StrMap } from '@shared/types';
 
 @Component({
   selector: 'r-paginator',
@@ -28,6 +29,13 @@ export class PaginatorComponent implements OnInit, OnDestroy {
 
   public ngOnDestroy(): void {
     this._sub.unsubscribe();
+  }
+
+  public $queryParams(query: StrMap<string>) {
+    const filters = Object.assign({}, this.paginatorService.getFilters(), query);
+    delete filters.per_page;
+
+    return filters;
   }
 
 }

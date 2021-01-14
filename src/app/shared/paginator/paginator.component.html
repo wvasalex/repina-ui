@@ -2,7 +2,7 @@
   <a
     *ngFor="let page of pagination.pages"
     [routerLink]="[]"
-    [queryParams]="{page: page.page}"
+    [queryParams]="$queryParams({page: page.page})"
   >
     <r-badge
       [selected]="page.isActive"

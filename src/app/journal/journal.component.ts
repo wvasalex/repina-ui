@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
-import { map, startWith, tap } from 'rxjs/operators';
+import { map, pluck, startWith, tap } from 'rxjs/operators';
 import { ContentBlock, StrMap } from '@shared/types';
 import { SelectOption } from '@shared/components/select/select.model';
 import { MatDialog } from '@angular/material/dialog';
@@ -58,14 +58,12 @@ export class JournalComponent implements OnInit, OnDestroy {
     }));
 
   private _keys$: Observable<string[]> = this.activatedRoute.queryParams
-    .pipe(map((params) => {
-      return (params.blog_tag__key__in || '').split(',');
-    }));
+    .pipe(pluck('blog_tag__key__in'));
 
   public selectedTags$: Observable<SelectOption[]> = combineLatest([this.tags$, this._keys$])
     .pipe(
       map(([tags, keys]) => {
-        if (keys.length === 1 && keys[0] === '') {
+        if (!keys) {
           return [tags[0]];
         }
 
@@ -109,34 +107,16 @@ export class JournalComponent implements OnInit, OnDestroy {
     this.footerService.setBreadcrumbs([]);
   }
 
-  public $applyTags(tags: SelectOption[], allTags: SelectOption[]) {
-    let keys = tags.map((option: SelectOption) => {
-      return option.value;
-    });
+  public $tagChanged(tagChange, allTags: SelectOption[]) {
+    const filters: StrMap<string> = {page: '1'};
 
-    if (tags.length > 1) {
-      const all = tags.findIndex((item) => item.value === null);
-      if (all != -1) {
-        tags.splice(all, 1);
-      }
-    } else {
-      if (keys.indexOf(null) !== -1) {
-        keys = [];
+    if (tagChange.checked) {
+      if (tagChange.item.value) {
+        filters.blog_tag__key__in = '' + tagChange.item.value;
       }
     }
 
-    this.paginatorService.setFilters({
-      page: '1',
-      blog_tag__key__in: keys.join(','),
-    });
-  }
-
-  public $tagChanged(tagChange) {
-    if (tagChange.item.value === null && tagChange.checked) {
-      this.paginatorService.setFilters({
-        page: '1',
-      });
-    }
+    this.paginatorService.setFilters(filters);
   }
 
   public $reorder() {

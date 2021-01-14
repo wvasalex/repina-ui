@@ -6,17 +6,18 @@
       [editor]="editor"
     ></r-projects-header>
 
-    <r-badge-list
-      *ngIf="tags$ | async as tags"
-      (itemChanged)="$tagChanged($event, tags)"
-      (changed)="$applyTags($event, tags)"
-      [selected]="selectedTags"
-      [badges]="tags"
-      class="mt-2 tags"
-    ></r-badge-list>
+    <ng-container *ngIf="selectedTags$ | async as selectedTags">
+      <r-badge-list
+        *ngIf="tags$ | async as tags"
+        (itemChanged)="$tagChanged($event, tags)"
+        [badges]="tags"
+        [selected]="selectedTags"
+        class="mt-2 tags"
+      ></r-badge-list>
+    </ng-container>
   </r-padding>
 
-  <div  *ngIf="projects$ | async as projects">
+  <div *ngIf="projects$ | async as projects">
     <div class="projects">
       <div
         *ngFor="let project of projects; let index = index;"

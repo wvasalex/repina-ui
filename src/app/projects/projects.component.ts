@@ -1,19 +1,20 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map, pluck, startWith, tap } from 'rxjs/operators';
 import { BreakpointService } from '@shared/breakpoint.service';
 import { ProjectsService } from '@shared/projects/projects.service';
 import { Project } from '@shared/projects/projects.model';
 import { ListReorderComponent } from '@shared/list-reorder/list-reorder.component';
 import { SelectOption } from '@shared/components/select/select.model';
-import { ContentBlock } from '@shared/types';
+import { ContentBlock, StrMap } from '@shared/types';
 import { ToasterService } from '@shared/toaster/toaster.service';
 import { PagedRequest, PagedResponse } from '@shared/services/api/api.model';
 import { PaginatorService } from '@shared/paginator/paginator.service';
 import { ServicesTagsService } from '../services/services-tags.service';
 import { ProjectsPageService } from './projects-page.service';
 import { FooterService } from '@shared/footer/footer.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'r-projects',
@@ -36,17 +37,30 @@ export class ProjectsComponent {
 
   public projects$: BehaviorSubject<Project[]> = new BehaviorSubject<Project[]>([]);
 
-  public tags$: Observable<SelectOption[]> = this.servicesTagsService.getPublic()
-    .pipe(tap((tags: SelectOption[]) => {
-      this.selectedTags = [tags[0]];
-    }));
+  public tags$: Observable<SelectOption[]> = this.servicesTagsService.getPublic();
 
-  public selectedTags: SelectOption[] = [];
+  private _keys$: Observable<string[]> = this.activatedRoute.queryParams
+    .pipe(pluck('tags__id'));
+
+  public selectedTags$: Observable<SelectOption[]> = combineLatest([this.tags$, this._keys$])
+    .pipe(
+      map(([tags, keys]) => {
+        if (!keys) {
+          return [tags[0]];
+        }
+
+        return tags.filter((tag: SelectOption) => {
+          return keys.indexOf('' + tag.value) !== -1;
+        });
+      }),
+      startWith([]),
+    );
 
   public editor: boolean = false;
 
   constructor(
     private dialog: MatDialog,
+    private activatedRoute: ActivatedRoute,
     private changeDetectorRef: ChangeDetectorRef,
     private breakpointService: BreakpointService,
     private toasterService: ToasterService,
@@ -78,43 +92,16 @@ export class ProjectsComponent {
     this.footerService.setBreadcrumbs([]);
   }
 
-  public $applyTags(tags: SelectOption[], allTags: SelectOption[]) {
-    const keys = tags.map((option: SelectOption) => {
-      return option.value;
-    });
-
-    let filters = {};
-
-    if (tags.length > 1) {
-      const all = tags.findIndex((item) => item.value === null);
-      if (all != -1) {
-        tags.splice(all, 1);
-      }
-    } else {
-      if (keys.indexOf(null) !== -1) {
-        tags = [];
-      }
-    }
-
-    if (tags.length) {
-      filters = {
-        page: 1,
-        tags__id__in: keys.join(','),
-      };
-    } else {
-      tags = [allTags[0]];
-    }
-
-    this.selectedTags = tags;
-    this._load(filters);
-  }
-
   public $tagChanged(tagChange, allTags: SelectOption[]) {
-    if (tagChange.item.value === null && tagChange.checked) {
-      this.selectedTags = [allTags[0]];
-      this._load({page: 1});
-      this.changeDetectorRef.detectChanges();
+    const filters: StrMap<string> = {page: '1'};
+
+    if (tagChange.checked) {
+      if (tagChange.item.value) {
+        filters.tags__id = '' + tagChange.item.value;
+      }
     }
+
+    this.paginatorService.setFilters(filters);
   }
 
   public $reorder() {
@@ -153,7 +140,7 @@ export class ProjectsComponent {
   }
 
   private _load(req: PagedRequest) {
-    req.per_page = 15;
+    req.per_page = 3;
     this.projectsService.getPage<Project>(req).subscribe((page: PagedResponse<Project>) => {
       this.data$.next(page);
       this.projects$.next(page.results);
