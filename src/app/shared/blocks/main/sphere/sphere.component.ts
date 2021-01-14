@@ -89,7 +89,7 @@ export class SphereComponent extends BaseBlock {
         sources: [
           {
             type: 'video/mp4',
-            src: this.contentFile + '#t=0',
+            src: this.contentFile + '#t=0.001',
           },
         ],
         controls: false,

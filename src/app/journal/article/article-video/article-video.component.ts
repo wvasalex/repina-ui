@@ -70,7 +70,7 @@ export class ArticleVideoComponent extends BaseBlock implements OnInit, OnDestro
         sources: [
           {
             type: 'video/mp4',
-            src: this.contentFile,
+            src: this.contentFile + '#t=0.001',
           },
         ],
         controls: false,
