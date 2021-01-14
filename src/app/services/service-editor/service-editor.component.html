@@ -2,11 +2,16 @@
   <r-padding class="row" style="align-items: center">
     <mat-checkbox
       [(ngModel)]="service.is_enabled"
+      style="flex: 0; margin-right: 48px"
     > Опубликовать
     </mat-checkbox>
 
-    <div>
-    </div>
+    <r-input
+      [(ngModel)]="service._slug"
+      placeholder="Относительная ссылка"
+    >
+      <r-input-label>Ссылка (slug)</r-input-label>
+    </r-input>
   </r-padding>
 
   <r-padding class="row mt-2">

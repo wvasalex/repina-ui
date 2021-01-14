@@ -24,7 +24,7 @@
       <r-journal-snippet
         [tag]="$any(article).blog_tag?.title"
         [title]="article.title"
-        [image]="article.preview_file || '/assets/pictures/journal/1.png'"
+        [image]="article.preview_file"
         [class.mt-6]="!first"
         class="snippet"
       ></r-journal-snippet>

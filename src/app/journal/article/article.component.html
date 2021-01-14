@@ -1,8 +1,18 @@
 <r-page *ngIf="article$ | async as article">
-  <r-blocks-render
-    [render]="render"
-    [blocks]="article.content_blocks"
-  ></r-blocks-render>
+  <time
+    itemprop="datePublished"
+    [attr.datetime]="article.created_at"
+    style="display: none"
+  >
+    {{article.created_at}}
+  </time>
+
+  <article itemprop="articleBody">
+    <r-blocks-render
+      [render]="render"
+      [blocks]="article.content_blocks"
+    ></r-blocks-render>
+  </article>
 
   <r-article-next
     *ngIf="article.blog_tag"

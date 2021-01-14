@@ -3,3 +3,29 @@
     font: inherit;
   }
 }
+
+ .subtitle {
+ }
+
+:host ::ng-deep .left {
+  background: transparent;
+}
+
+.sphere-rating {
+  position: absolute;
+  right: -30px;
+  top: -48px;
+  transition: 300ms;
+  z-index: 1;
+}
+
+.relative {
+  position: relative;
+  z-index: 1;
+}
+
+.w320 :host {
+  .sphere-rating {
+    top: 0;
+  }
+}

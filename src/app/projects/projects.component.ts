@@ -118,18 +118,20 @@ export class ProjectsComponent {
   }
 
   public $reorder() {
-    this.dialog.open(ListReorderComponent, {
-      data: {
-        items: this.projects$.value.map((project: Project) => {
-          return {
-            image: project.preview_file,
-            ...project,
-          };
-        }),
-        onChange: (items) => {
-          this._save(items);
+    this.projectsService.get({per_page: 999}).subscribe((projects: Project[]) => {
+      this.dialog.open(ListReorderComponent, {
+        data: {
+          items: projects.map((project: Project) => {
+            return {
+              image: project.preview_file,
+              ...project,
+            };
+          }),
+          onChange: (items) => {
+            this._save(items);
+          },
         },
-      },
+      });
     });
   }
 

@@ -10,9 +10,24 @@
         multiple
         name="serviceType"
       >
-        <mat-button-toggle value="single">Простые</mat-button-toggle>
-        <mat-button-toggle value="brand_wiki">Бренд-вики</mat-button-toggle>
-        <mat-button-toggle value="complex">Направления</mat-button-toggle>
+        <mat-button-toggle
+          value="single"
+          class="label type-single"
+        >
+          Простые
+        </mat-button-toggle>
+        <mat-button-toggle
+          value="brand_wiki"
+          class="label type-brand_wiki"
+        >
+          Бренд-вики
+        </mat-button-toggle>
+        <mat-button-toggle
+          value="complex"
+          class="label type-complex"
+        >
+          Направления
+        </mat-button-toggle>
       </mat-button-toggle-group>
     </div>
     <div></div>
@@ -36,11 +51,28 @@
         </a>
       </td>
       <td>
-        {{service.parent?.title}}
-        {{service.activity_scope?.title}}
+        <r-badge
+          *ngIf="service.parent"
+          matTooltip="Направление"
+          class="mr-1"
+        >
+          {{service.parent.title}}
+        </r-badge>
+        <r-badge
+          *ngIf="service.activity_scope"
+          matTooltip="Сфера"
+        >
+          {{service.activity_scope.title}}
+        </r-badge>
       </td>
       <td>
-        {{service.tag?.title}}
+        <r-badge
+          *ngFor="let tag of service.tags; let first = first"
+          [class.mt-1]="!first"
+          class="ml-1"
+        >
+          {{tag.title}}
+        </r-badge>
       </td>
       <td>
         <div

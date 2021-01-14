@@ -1,6 +1,37 @@
-<div class="sphere">
-  <img
-    src="/assets/icons/main/sphere.svg"
-  />
-</div>
-<r-rating class="sphere-rating"></r-rating>
+<video
+  #video
+  muted
+  playsinline
+  preload="auto"
+  class="video-js"
+></video>
+
+<ng-container *ngIf="editor">
+  <button
+    *ngIf="id"
+    mat-fab
+    class="upload"
+  >
+    <r-icon name="components/upload"></r-icon>
+    <input
+      (change)="$upload($event)"
+      type="file"
+      class="file"
+    >
+  </button>
+
+  <r-image-placeholder
+    *ngIf="!id"
+  >
+    Сохраните проект для загрузки медиа
+  </r-image-placeholder>
+</ng-container>
+
+<!--
+<video
+  [muted]="true"
+  src="/assets/pictures/video.mp4"
+  playsinline
+  autoplay
+  loop
+></video>-->

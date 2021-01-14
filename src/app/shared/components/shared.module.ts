@@ -34,6 +34,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { StickyComponent } from './sticky/sticky.component';
 import { MousemoveDirective } from '@shared/components/mousemove/mousemove.directive';
 import { FormsModule } from '@angular/forms';
+import { HrefPipe } from '@shared/components/href.pipe';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { FormsModule } from '@angular/forms';
     ImageUploadComponent,
     StickyComponent,
     MousemoveDirective,
+    HrefPipe,
   ],
   exports: [
     LogoComponent,
@@ -94,6 +96,7 @@ import { FormsModule } from '@angular/forms';
     ImageUploadComponent,
     StickyComponent,
     MousemoveDirective,
+    HrefPipe,
   ],
   imports: [
     CommonModule,

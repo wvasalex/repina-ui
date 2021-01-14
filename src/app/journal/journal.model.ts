@@ -3,6 +3,7 @@ import { ContentBlock } from '@shared/types';
 export interface Article {
   title: string;
   author_name: string;
+  created_at: string;
   article: string;
   description?: string;
   is_enabled?: boolean;

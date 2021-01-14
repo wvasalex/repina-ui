@@ -2,24 +2,34 @@
   [horizontal]="false"
   class="full-screen"
 >
-  <r-card>
+  <r-card class="relative">
     <r-md
       [editor]="editor"
       [props]="props"
       prop="subtitle"
       className="h4"
-      class="subtitle"
+      class="subtitle text"
       subtitle
     ></r-md>
-
     <r-md
       [editor]="editor"
       [props]="props"
       prop="title"
       className="h1"
+      class="text"
       title
     ></r-md>
 
-    <r-sphere></r-sphere>
+    <div class="relative">
+      <r-sphere
+        #sphere
+        [id]="elements[0].id"
+        [props]="elements[0].props"
+        [contentFile]="elements[0].content_file"
+        [editor]="editor"
+      ></r-sphere>
+
+      <r-rating class="sphere-rating"></r-rating>
+    </div>
   </r-card>
 </r-padding>

@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
@@ -6,6 +7,7 @@ import { SeoService } from '@shared/seo/seo.service';
 import { Subscription } from 'rxjs';
 import { SeoData } from '@shared/seo/seo.model';
 import { ToasterService } from '@shared/toaster/toaster.service';
+import { StrMap } from '@shared/types';
 
 @Component({
   selector: 'r-seo',
@@ -20,6 +22,7 @@ export class SeoComponent implements OnInit, OnDestroy {
     description: [''],
     keywords: [''],
     robots: ['index, follow'],
+    canonical: [''],
   });
 
   private _sub: Subscription;
@@ -27,6 +30,7 @@ export class SeoComponent implements OnInit, OnDestroy {
   private _id: number = null;
 
   constructor(
+    @Inject(DOCUMENT) private doc,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private title: Title,
@@ -34,7 +38,7 @@ export class SeoComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private toasterService: ToasterService,
     private seoService: SeoService,
-    ) {
+  ) {
 
   }
 
@@ -90,13 +94,33 @@ export class SeoComponent implements OnInit, OnDestroy {
   private _set(seo: SeoData) {
     this.formGroup.patchValue(seo.props);
 
-    this.title.setTitle(seo.props.title);
-    for (let name in seo.props) {
-      if (seo.props.hasOwnProperty(name)) {
+    const { title, canonical, ...meta } = seo.props;
+
+    this.title.setTitle(title);
+    this._setLink('canonical', { rel: 'canonical', html: canonical });
+
+    for (let name in meta) {
+      if (meta.hasOwnProperty(name)) {
         this.meta.updateTag({
           name,
-          content: seo.props[name],
+          content: meta[name],
         });
+      }
+    }
+  }
+
+  private _setLink(id: string, attrs: StrMap<string>) {
+    const head = this.doc.head;
+    let el = head?.querySelector('#' + id);
+    if (!el) {
+      el = this.doc.createElement('link');
+      el.id = id;
+      head.appendChild(el);
+    }
+
+    for(let attr in attrs) {
+      if (attrs.hasOwnProperty(attr)) {
+        el.setAttribute(attr, attrs[attr] || '');
       }
     }
   }
