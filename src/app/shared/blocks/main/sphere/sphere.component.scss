@@ -59,11 +59,6 @@ r-sphere {
   }
 }
 
-.w320 r-sphere:not(.absolute) {
-  //animation: none;
-}
-
-
 .w1366 r-sphere {
   $width: 416px;
 
@@ -104,6 +99,7 @@ r-sphere {
   background-size: $width;
   width: $width;
   height: $width;
+  animation: none;
   //}
 }
 

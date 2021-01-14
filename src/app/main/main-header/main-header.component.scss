@@ -4,9 +4,6 @@
   }
 }
 
- .subtitle {
- }
-
 :host ::ng-deep .left {
   background: transparent;
 }
@@ -27,5 +24,10 @@
 .w320 :host {
   .sphere-rating {
     top: 0;
+  }
+
+  ::ng-deep .h1 {
+    font-size: 52px;
+    line-height: 60px;
   }
 }
