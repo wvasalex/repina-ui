@@ -150,10 +150,16 @@ a, a:visited {
     line-height: 60px;
   }
 
-  .text32 {
+  /*.text32 {
     font-size: 22px;
     line-height: 34px;
+  }*/
+
+  .text32 {
+    font-size: 20px;
+    line-height: 28px;
   }
+
 
   .text24 {
     font-size: 16px;
@@ -320,7 +326,7 @@ a, a:visited {
   padding-top: 128px !important;
 }
 
-.w320 .pt-128 {
+.w1366 .pt-128, .w1024 .pt-128, .w768 .pt-128, .w320 .pt-128 {
   padding-top: 64px !important;
 }
 

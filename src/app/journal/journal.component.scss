@@ -5,7 +5,7 @@
 .group {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 30px;
+  gap: 30px;
   margin-bottom: 128px;
 
   .big {
@@ -47,10 +47,14 @@ a:hover {
 
 .w320 :host {
   .group {
-    display: flex;
+    grid-template-columns: 1fr;
+    grid-gap: 64px;
+    margin-bottom: 64px;
+
+    /*display: flex;
     flex-direction: column;
     margin-bottom: 64px;
-    grid-gap: 64px;
+    grid-gap: 64px;*/
   }
 
   .subscription-block {
