@@ -17,3 +17,9 @@ r-padding {
   right: 0;
   bottom: 0;
 }
+
+.w320 :host {
+  .animation {
+    display: none;
+  }
+}
