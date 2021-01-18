@@ -14,7 +14,7 @@
     text-align: right;
   }
 
-  .mobile, .mobile-open {
+  .mobile, .mobile-open, .request-middle, .request-mobile {
     display: none;
   }
 
@@ -74,6 +74,19 @@
     flex-direction: column;
   }
 }
+
+.w1024 :host, .w768 :host {
+  .request-middle {
+    display: block;
+  }
+}
+
+.w320 :host {
+  .request-mobile {
+    display: block;
+  }
+}
+
 
 .cdk-drag-preview {
   background: #fff;

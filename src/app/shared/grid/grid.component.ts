@@ -92,6 +92,7 @@ export class GridComponent implements OnInit, OnDestroy {
         ],
       }
     }
+
     if (this.type == 'small-big') {
       this.def = {
         cols: 2,
@@ -103,6 +104,7 @@ export class GridComponent implements OnInit, OnDestroy {
         ],
       }
     }
+
     if (this.type == 'small') {
       this.def = {
         cols: 2,

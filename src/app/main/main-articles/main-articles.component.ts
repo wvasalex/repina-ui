@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, SimpleChanges } from '@angular/core';
 import { JournalService } from '../../journal/journal.service';
 import { BaseBlock } from '@shared/blocks/block.component';
 

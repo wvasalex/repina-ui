@@ -4,6 +4,9 @@
 <ng-template #rel2>
   <ng-content select="[rel=2]"></ng-content>
 </ng-template>
+<ng-template #rel3>
+  <ng-content select="[rel=3]"></ng-content>
+</ng-template>
 
 <mat-grid-list
   *ngIf="grid"
@@ -23,7 +26,9 @@
       <ng-container *ngSwitchCase="2">
         <ng-container *ngTemplateOutlet="rel2"></ng-container>
       </ng-container>
-      <ng-content *ngSwitchCase="3" select="[rel=3]"></ng-content>
+      <ng-container *ngSwitchCase="3">
+        <ng-container *ngTemplateOutlet="rel3"></ng-container>
+      </ng-container>
     </ng-container>
   </mat-grid-tile>
 </mat-grid-list>
@@ -34,4 +39,5 @@
 >
   <ng-container *ngTemplateOutlet="rel1"></ng-container>
   <ng-container *ngTemplateOutlet="rel2"></ng-container>
+  <ng-container *ngTemplateOutlet="rel3"></ng-container>
 </div>

@@ -70,6 +70,12 @@
       <r-logo [menuColor]="color"></r-logo>
     </a>
     <div class="menu">
+      <r-button
+        (click)="$priceRequest()"
+        class="menu-item request-button request-middle"
+      >
+        Запросить стоимость
+      </r-button>
       <r-burger
         (click)="$openDrawer()"
         [menuColor]="color"
@@ -80,7 +86,7 @@
 
   <r-button
     (click)="$priceRequest()"
-    class="menu-item request-button"
+    class="menu-item request-button request-mobile"
   >
     Запросить стоимость
   </r-button>
