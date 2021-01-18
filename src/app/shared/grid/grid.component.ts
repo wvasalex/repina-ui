@@ -90,7 +90,7 @@ export class GridComponent implements OnInit, OnDestroy {
           {},
           {},
         ],
-      }
+      };
     }
 
     if (this.type == 'small-big') {
@@ -102,7 +102,7 @@ export class GridComponent implements OnInit, OnDestroy {
           {},
           { colspan: 2, rowspan: 2 },
         ],
-      }
+      };
     }
 
     if (this.type == 'small') {
@@ -114,11 +114,20 @@ export class GridComponent implements OnInit, OnDestroy {
           {},
           {},
         ],
-      }
+      };
     }
 
     if (this.type == 'big') {
-      this.column = true;
+      this.def = {
+        cols: 1,
+        roles: [1, 2],
+        grid: [
+          {},
+          {},
+        ],
+      }
+
+      //this.column = true;
     }
 
     this.changeDetectorRef.detectChanges();
