@@ -77,11 +77,10 @@ export class RequestComponent implements OnInit {
     const req = this.requestService.send(this.selected[0], this.formGroup.value)
       .toPromise()
       .then((sent: boolean) => {
-        if (sent) {
-          this.sent = true;
-          this.changeDetectorRef.detectChanges();
-        }
+        this.sent = true;
+        this.changeDetectorRef.detectChanges();
       });
+
     this.toasterService.wrapPromise(req, 'Обращение отправлено!', 'Не удалось отправить обращение, попробуйте позже!');
   }
 

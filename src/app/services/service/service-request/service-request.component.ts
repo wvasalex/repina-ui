@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { PageComponent } from '@shared/page/page.component';
 import { BaseBlock } from '@shared/blocks/block.component';
 
 @Component({
@@ -10,13 +9,9 @@ import { BaseBlock } from '@shared/blocks/block.component';
 })
 export class ServiceRequestComponent extends BaseBlock {
 
-  constructor(private page: PageComponent) {
-    super();
-  }
-
-  public $priceRequest() {
-    if (!this.editor) {
-      this.page.priceRequest.emit();
+  public $click(e) {
+    if (this.editor) {
+      e.preventDefault();
     }
   }
 

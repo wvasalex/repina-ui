@@ -10,6 +10,7 @@ r-sphere {
   border-radius: 50%;
   overflow: hidden;
   transform: translateZ(0);
+  border: 0;
 
   max-width: 556px;
   max-height: 556px;
@@ -17,6 +18,7 @@ r-sphere {
   height: 556px;
   opacity: 0;
   animation: 6s bounce infinite;
+  will-change: margin, top, left, width, height;
 
   .video-js {
     object-fit: cover;

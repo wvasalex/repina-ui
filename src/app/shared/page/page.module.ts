@@ -12,6 +12,7 @@ import { SharedModule } from '../components/shared.module';
 import { RequestComponent } from './request/request.component';
 import { HeaderComponent } from './header/header.component';
 import { RequestFeedbackComponent } from './request-feedback/request-feedback.component';
+import { RequestDirective } from '@shared/page/request.directive';
 
 @NgModule({
   declarations: [
@@ -19,10 +20,12 @@ import { RequestFeedbackComponent } from './request-feedback/request-feedback.co
     RequestComponent,
     HeaderComponent,
     RequestFeedbackComponent,
+    RequestDirective,
   ],
   exports: [
     PageComponent,
     RequestComponent,
+    RequestDirective,
   ],
   imports: [
     CommonModule,

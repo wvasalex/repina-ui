@@ -7,12 +7,18 @@ r-badge {
   margin-bottom: 20px;
 }
 
-.w320 :host {
+.w320 :host.inline {
   display: flex;
   white-space: nowrap;
   overflow: auto;
 
   r-badge {
     display: inline;
+  }
+}
+
+.w320 :host {
+  r-badge.disabled {
+    display: none;
   }
 }

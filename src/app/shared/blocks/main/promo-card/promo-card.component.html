@@ -1,5 +1,6 @@
 <a
-  [attr.href]="editor ? null : props.href"
+  *ngIf="!editor"
+  [routerLink]="[props.href]"
 >
   <r-md
     [editor]="editor"
@@ -28,19 +29,33 @@
     </div>
 
     <div
-      *ngIf="contentFile && !editor"
+      *ngIf="contentFile"
       [style.backgroundImage]="'url(' + contentFile + ')'"
       class="image"
     ></div>
+  </div>
+</a>
+
+<div *ngIf="editor">
+  <r-input [(ngModel)]="props.title">
+    <r-input-label>Заголовок</r-input-label>
+  </r-input>
+  <r-input [(ngModel)]="props.href">
+    <r-input-label>Ссылка</r-input-label>
+  </r-input>
+
+  <div class="footer">
+    <r-input [(ngModel)]="props.source">
+      <r-input-label>Источник</r-input-label>
+    </r-input>
 
     <r-image-upload
-      *ngIf="editor"
       [editor]="editor"
       [id]="id"
       [contentFile]="contentFile"
       [props]="props"
       endpoint="main_content_elements"
-      class="image"
+      class="ml-1"
     ></r-image-upload>
   </div>
-</a>
+</div>

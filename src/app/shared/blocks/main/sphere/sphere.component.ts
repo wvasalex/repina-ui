@@ -4,7 +4,6 @@ import {
   Component,
   ElementRef,
   EventEmitter,
-  HostBinding,
   Output,
   ViewChild,
   ViewEncapsulation,

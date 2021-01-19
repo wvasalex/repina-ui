@@ -1,7 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  EventEmitter,
+  EventEmitter, HostBinding,
   Input,
   OnInit,
   Output,
@@ -23,6 +23,7 @@ export class BadgeListComponent implements OnInit {
   @Input() set selected(options) {
     this._value = options.map((option) => option.value);
   };
+  @Input() @HostBinding('class.inline') inline: boolean = true;
 
   private _value = [];
 

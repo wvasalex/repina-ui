@@ -100,11 +100,5 @@ export class PageComponent implements OnInit, OnDestroy {
         popup: true,
       },
     });
-
-    /*const requestForm = this.requestViewChild;
-
-    if (requestForm) {
-      requestForm.ref.nativeElement.scrollIntoView({behavior: 'smooth'});
-    }*/
   }
 }

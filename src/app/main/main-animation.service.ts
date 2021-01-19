@@ -93,14 +93,15 @@ export class MainAnimationService {
     const s = this.sphere;
 
     const wh = window.innerHeight;
-    let left = e.pageX;
+    const ww = window.innerWidth;
+    let left = Math.max(e.pageX, ww/2);
     let top = e.pageY;
 
     if (top > wh + 100) {
       return;
     }
 
-    const threshold = e.pageY <= 200 || (e.pageY >= wh);
+    const threshold = top <= 300 || top >= wh;
 
     if (threshold !== this.round) {
       this.round = threshold;
@@ -112,7 +113,7 @@ export class MainAnimationService {
     }
 
     if (this.round) {
-      left += 10;
+      left = e.pageX + 20;
     }
 
     this.sphere.style.left = left + 'px';

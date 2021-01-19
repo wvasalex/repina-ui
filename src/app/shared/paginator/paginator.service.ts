@@ -57,7 +57,11 @@ export class PaginatorService {
       }
     });
     Object.assign(query_params, filters, {page});
-    this.router.navigate([], {queryParams: query_params});
+
+    const scrollTop: number = window.scrollY;
+    this.router.navigate([], {queryParams: query_params}).then(() => {
+      window.scrollTo(0, scrollTop);
+    });
   }
 
   public getFilters() {
