@@ -14,9 +14,7 @@ import { ArticleTextComponent } from './article/article-text/article-text.compon
 import { ArticleQuoteComponent } from './article/article-quote/article-quote.component';
 import { ArticleVideoComponent } from './article/article-video/article-video.component';
 import { ArticleRequestComponent } from './article/article-request/article-request.component';
-import { ArticleSubscribeComponent } from './article/article-subscribe/article-subscribe.component';
 import { map, switchMap, tap } from 'rxjs/operators';
-import { Project } from '@shared/articles/articles.model';
 
 @Injectable({
   providedIn: 'root',
