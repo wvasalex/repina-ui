@@ -3,6 +3,11 @@
   width: 100%;
   padding: 128px 75px;
   box-sizing: border-box;
+
+  &.pv-128 {
+    padding-top: 128px !important;
+    padding-bottom: 128px !important;
+  }
 }
 
 :host:not(.pt-128).horizontal {
@@ -28,4 +33,9 @@
 
 .w320 :host {
   padding: 48px 12px;
+
+  &.pv-128 {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+  }
 }

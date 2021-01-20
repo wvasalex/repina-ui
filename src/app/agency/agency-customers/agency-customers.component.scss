@@ -1,6 +1,11 @@
+@import "src/theme";
+
 :host {
   display: block;
-  padding: 8rem 0;
+}
+
+r-marquee {
+  margin-left: calc(-1 * var(--padding-horizontal, 0));
 }
 
 .customer {

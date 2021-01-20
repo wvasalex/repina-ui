@@ -1,6 +1,4 @@
 .achievements {
-  padding-top: 8rem !important;
-  padding-bottom: 8rem !important;
   background: #EBEBEB;
 
   .row {
@@ -8,7 +6,7 @@
   }
 }
 
-.w320 :host {
+.w768 :host, .w320 :host {
   r-agency-achievement:not(:last-of-type) {
     margin-bottom: 6rem;
   }

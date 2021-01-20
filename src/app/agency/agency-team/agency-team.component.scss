@@ -3,6 +3,11 @@
 :host {
   display: block;
   overflow: hidden;
+
+  r-padding {
+    padding-top: 128px;
+    padding-bottom: 128px;
+  }
 }
 
 .list {
@@ -18,5 +23,12 @@
 
   &.transparent {
     opacity: 0;
+  }
+}
+
+.w320 :host {
+  r-padding {
+    padding-top: 42px;
+    padding-bottom: 42px;
   }
 }

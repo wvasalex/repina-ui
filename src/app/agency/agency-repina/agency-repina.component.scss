@@ -17,10 +17,17 @@
   margin-right: 4rem;
 }
 
-.w1024 :host, .w768 :host {
+.w1024 :host {
   .mh {
     margin-left: 3rem;
     margin-right: 3rem;
+  }
+}
+
+.w768 :host {
+  .mh {
+    margin-left: -2rem;
+    margin-right: 0;
   }
 }
 
