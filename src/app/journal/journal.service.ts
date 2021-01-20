@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { RestService } from '@shared/services/api/rest.service';
 import { ApiService } from '@shared/services/api/api.service';
 import { ApiConfig, PagedRequest, PagedResponse } from '@shared/services/api/api.model';
@@ -15,7 +15,8 @@ import { ArticleQuoteComponent } from './article/article-quote/article-quote.com
 import { ArticleVideoComponent } from './article/article-video/article-video.component';
 import { ArticleRequestComponent } from './article/article-request/article-request.component';
 import { ArticleSubscribeComponent } from './article/article-subscribe/article-subscribe.component';
-import { map, tap } from 'rxjs/operators';
+import { map, switchMap, tap } from 'rxjs/operators';
+import { Project } from '@shared/articles/articles.model';
 
 @Injectable({
   providedIn: 'root',
@@ -60,6 +61,30 @@ export class JournalService extends RestService {
     req.per_page = 14;
 
     return super.getPage(req);
+  }
+
+  public getRelevant(body: StrMap<any> = {}, limit: number = 5): Observable<Article[]> {
+    return this.get({
+      ...body,
+      per_page: limit,
+      rnd_sort: true,
+    }).pipe(
+      switchMap((articles: Article[]) => {
+        if (articles.length === limit) {
+          return of(articles);
+        }
+
+        return this.get({
+          per_page: limit - articles.length,
+          rnd_sort: true,
+        }).pipe(
+          map((extended: Article[]) => {
+            articles.push(...extended);
+            return articles;
+          }),
+        );
+      }),
+    );
   }
 
   public groupArticles(articles: Article[], firstPage: boolean): Article[][] {

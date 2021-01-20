@@ -26,9 +26,7 @@ export class RelatedProjectsComponent extends BaseBlock {
   }
 
   ngOnInit(): void {
-    const query: StrMap<any> = {
-      per_page: 6,
-    };
+    const query: StrMap<any> = {};
 
     if (!this.tags) {
       const service: Service = this.data.service as Service;

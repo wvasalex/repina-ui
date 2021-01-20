@@ -17,6 +17,7 @@ export class ImageUploadComponent extends BaseBlock {
   @Input() endpoint: string = '';
   @Input() name: string = 'content_file';
   @Input() itemprop: string;
+  @Input() metaDisabled: boolean = false;
 
   constructor(
     private changeDetectoRef: ChangeDetectorRef,

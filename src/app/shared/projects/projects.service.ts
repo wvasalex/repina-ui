@@ -66,7 +66,11 @@ export class ProjectsService extends RestService {
   }
 
   public getRelevant(body: StrMap<any> = {}, limit: number = 5): Observable<Project[]> {
-    return this.get(body).pipe(
+    return this.get({
+      ...body,
+      per_page: limit,
+      rnd_sort: true,
+    }).pipe(
       switchMap((projects: Project[]) => {
         if (projects.length === limit) {
           return of(projects);

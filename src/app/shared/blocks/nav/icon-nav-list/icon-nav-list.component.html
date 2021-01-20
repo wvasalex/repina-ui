@@ -15,12 +15,9 @@
       [class.mt-6]="!first"
       class="nav-block"
     >
-      <div class="row-column">
-        <img [src]="images[index]"/>
-        <ng-container
-          *ngTemplateOutlet="itemTemplate; context: {element: el, index: index}"
-        ></ng-container>
-      </div>
+      <ng-container
+        *ngTemplateOutlet="itemTemplate; context: {element: el, index: index}"
+      ></ng-container>
     </div>
   </div>
 </r-padding>

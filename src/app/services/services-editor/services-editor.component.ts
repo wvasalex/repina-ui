@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, OnInit } from '@angular/core';
-import { ContentBlock } from '@shared/types';
+import { ContentBlock, ContentElement } from '@shared/types';
 import { ToasterService } from '@shared/toaster/toaster.service';
 import { ServicesEditorService } from '../services-editor.service';
 import { ServicesRenderService } from '../services-render.service';
@@ -88,6 +88,9 @@ export class ServicesEditorComponent implements OnInit {
 
     this.blocks.forEach((block: ContentBlock) => {
       block.is_enabled = true;
+      block.content_elements.forEach((element: ContentElement) => {
+        delete element.content_file;
+      });
       promises.push(this.servicesEditorService.save(block).toPromise());
     });
 

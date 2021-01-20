@@ -50,7 +50,7 @@
 </ng-container>
 
 <div
-  *ngIf="editor && contentFile"
+  *ngIf="editor && contentFile && !metaDisabled"
   class="row"
 >
   <r-input [(ngModel)]="props.title">

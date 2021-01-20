@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
 import { BaseBlock } from '@shared/blocks/block.component';
 
 @Component({
@@ -8,5 +8,7 @@ import { BaseBlock } from '@shared/blocks/block.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AgencyPrimaryTextComponent extends BaseBlock {
+
+  @HostBinding('class.row-column') _row = true;
 
 }

@@ -1,13 +1,26 @@
-<r-md
+<r-image-upload
   [editor]="editor"
+  [id]="id"
+  [contentFile]="contentFile"
   [props]="props"
-  prop="title"
-  className="h2"
-></r-md>
+  [metaDisabled]="true"
+  endpoint="agency_elements"
+  class="image"
+></r-image-upload>
 
-<r-md
-  [editor]="editor"
-  [props]="props"
-  prop="text"
-  className="text32 mt-1"
-></r-md>
+<div>
+  <r-md
+    [editor]="editor"
+    [props]="props"
+    prop="title"
+    className="h2"
+  ></r-md>
+
+  <r-md
+    [editor]="editor"
+    [props]="props"
+    prop="text"
+    className="text32 mt-1"
+  ></r-md>
+</div>
+

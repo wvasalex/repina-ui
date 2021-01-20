@@ -8,6 +8,12 @@
   margin-top: 32px;
 }
 
+.image {
+  max-width: 190px;
+  max-height: 190px;
+  min-height: auto;
+}
+
 .w320 :host {
   .text {
     margin-top: 8px;
