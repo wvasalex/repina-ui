@@ -26,11 +26,13 @@ export class ListContentComponent {
     });
 
     if (option) {
-      return;
+    //  return;
     }
 
     this.selected.push(selectedOption);
     this.valueChanges.emit(this.selected);
+
+    select.reset();
   }
 
   public $labelChanged(item: SelectOption, label: string) {
