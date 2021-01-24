@@ -1,7 +1,13 @@
 <r-padding [horizontal]="false">
-  <h2>
-    Команда
-  </h2>
+  <div class="row">
+    <r-md
+      [editor]="editor"
+      [props]="props"
+      prop="title"
+      className="h2"
+    ></r-md>
+    <div></div>
+  </div>
 
   <div
     *ngIf="members$ | async as members"

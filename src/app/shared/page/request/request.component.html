@@ -1,4 +1,5 @@
 <r-padding
+  *ngIf="!sent"
   [horizontal]="false"
   [disabled]="disablePadding"
   class="row-column"
@@ -45,17 +46,20 @@
       <div class="primary">
         <r-input
           [required]="true"
+          [error]="$getError('name')"
           formControlName="name"
           placeholder="Имя"
         ></r-input>
         <r-input
           [required]="true"
+          [error]="$getError('phone')"
           formControlName="phone"
           placeholder="Телефон"
         ></r-input>
       </div>
       <r-input
         [required]="true"
+        [error]="$getError('email')"
         formControlName="email"
         placeholder="Почта"
         class="mt-4"
@@ -79,12 +83,12 @@
         до 2-х рабочих дней.
       </div>
 
-      <r-checkbox
+      <!--<r-checkbox
         formControlName="news"
         class="mt-1_5"
       >
         Я согласен получать рассылку новостей агентства
-      </r-checkbox>
+      </r-checkbox>-->
 
       <div class="description text16 mt-1_5">
         Нажимая на кнопку «Получить предложение» Вы подтверждаете, что Вы ознакомились полностью с актуальной

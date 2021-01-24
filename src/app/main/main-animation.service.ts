@@ -24,7 +24,6 @@ export class MainAnimationService {
 
   private host: HTMLElement;
   private sphere: HTMLElement;
-  private round: boolean = false;
   private mobile: boolean = false;
 
   constructor(
@@ -72,17 +71,15 @@ export class MainAnimationService {
         throttleTime(100),
       );
 
-    setTimeout(() => {
-      move.pipe(
-        take(1),
-      ).subscribe(() => {
-        this.sphere.classList.add('absolute');
-      });
+    move.pipe(
+      take(1),
+    ).subscribe(() => {
+      this.sphere.classList.add('absolute');
+    });
 
-      this._subs.push(move.subscribe((e) => {
-        this._move(e as MouseEvent);
-      }));
-    }, 3000);
+    this._subs.push(move.subscribe((e) => {
+      this._move(e as MouseEvent);
+    }));
   }
 
   private _move(e: MouseEvent) {
@@ -91,19 +88,22 @@ export class MainAnimationService {
     }
 
     const s = this.sphere;
-
+    const sphere_radius = this.sphere.clientHeight / 2;
     const wh = window.innerHeight;
     const ww = window.innerWidth;
     let left = Math.max(e.pageX, ww/2);
-    let top = e.pageY;
-
-    if (top > wh + 100) {
-      return;
+    let top = Math.max(e.pageY, sphere_radius + 160);
+    if (top + sphere_radius >= wh + 100) {
+      top = wh + 100 - sphere_radius;
     }
 
-    const threshold = top <= 300 || top >= wh;
+    //const bound: boolean = top <= 300 || ;
 
-    if (threshold !== this.round) {
+    /*if (top + sphere_radius >= wh + 100) {
+      return;
+    }*/
+
+    /*if (threshold !== this.round) {
       this.round = threshold;
       s.classList.add('no-bg');
       s.classList.toggle('point', threshold);
@@ -114,7 +114,7 @@ export class MainAnimationService {
 
     if (this.round) {
       left = e.pageX + 20;
-    }
+    }*/
 
     this.sphere.style.left = left + 'px';
     this.sphere.style.top = top + 'px';

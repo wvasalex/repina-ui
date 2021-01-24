@@ -1,7 +1,14 @@
+@import 'src/theme';
+
 :host {
   display: flex;
   flex-direction: column;
   width: 100%;
+
+  &.invalid .input {
+    color: $color-red;
+    border-color: $color-red;
+  }
 }
 
 .container {
@@ -25,6 +32,10 @@
   bottom: 1rem;
   right: 0;
   background: url('/assets/icons/components/required.svg') no-repeat;
+}
+
+r-input-error {
+  margin-top: 8px;
 }
 
 .w1366, .w1024, .w768, .w320 {

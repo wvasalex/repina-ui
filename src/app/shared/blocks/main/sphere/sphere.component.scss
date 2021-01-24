@@ -17,7 +17,6 @@ r-sphere {
   width: 556px;
   height: 556px;
   opacity: 0;
-  animation: 6s bounce infinite;
   will-change: margin, top, left, width, height;
 
   .video-js {
@@ -37,32 +36,18 @@ r-sphere {
   &.absolute {
     position: absolute;
     transform: translate(-50%, -50%);
-    transition: height 200ms ease-in, width 200ms ease-in, top 900ms, left 900ms, margin-left 300ms, margin-top 300ms;
+    transition: top 1200ms linear, left 1200ms linear, margin-left 300ms, margin-top 300ms;
   }
 
   /*&:not(.absolute) {
     animation: 5s bounce infinite;
   }*/
 
-  &.point {
-    width: 10px !important;
-    height: 10px !important;
-    animation: none;
-
-    &:not(.no-bg) {
-      background: $color-red;
-    }
-
-    > * {
-      transform: scale(0);
-    }
-  }
-
   > * {
     transition: 200ms;
   }
 }
-
+/*
 .w1366 r-sphere {
   $width: 416px;
 
@@ -133,7 +118,7 @@ r-sphere {
     margin-top: 0;
   }
 }
-
+*/
 r-sphere {
   outline: none;
 

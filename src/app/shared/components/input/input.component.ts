@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, Input } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, HostBinding, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { errorAnimation } from '../../animations';
 
@@ -25,9 +25,9 @@ export class InputComponent implements ControlValueAccessor {
   @Input() disabled = false;
   @Input() required: boolean = false;
   @Input() textarea: boolean = false;
+  @Input() @HostBinding('class.invalid') error: string;
 
   public value: string = '';
-  public error: string;
 
   constructor(private changeDetectorRef: ChangeDetectorRef) {
   }
