@@ -69,7 +69,6 @@ export class ProjectsService extends RestService {
     return this.get({
       ...body,
       per_page: limit,
-      rnd_sort: true,
     }).pipe(
       switchMap((projects: Project[]) => {
         if (projects.length === limit) {
@@ -77,11 +76,11 @@ export class ProjectsService extends RestService {
         }
 
         return this.get({
-          per_page: limit - projects.length,
+          per_page: limit,
           rnd_sort: true,
         }).pipe(
           map((extended: Project[]) => {
-            projects.push(...extended);
+            projects.push(...extended.slice(0, limit - projects.length));
             return projects;
           }),
         );

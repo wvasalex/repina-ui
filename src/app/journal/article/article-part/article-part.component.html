@@ -1,9 +1,9 @@
 <r-padding [horizontal]="true">
   <div
+    *ngIf="$getValue('i')"
     [r-block]="editor"
     [innerHTML]="$getValue('i')"
     (contentChanged)="$contentChanged($event, 'i')"
-    *ngIf="$getValue('i')"
     class="index h2"
   ></div>
 

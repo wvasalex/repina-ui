@@ -1,6 +1,6 @@
 <a
   *ngIf="!editor"
-  [routerLink]="[props.href]"
+  [attr.href]="props.href"
 >
   <r-md
     [editor]="editor"
@@ -24,7 +24,8 @@
         [editor]="editor"
         [props]="props"
         prop="source"
-        className="h2 label"
+        className="h2"
+        class="label"
       ></r-md>
     </div>
 

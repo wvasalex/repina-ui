@@ -19,3 +19,11 @@
 .service-list {
   background: #F8F8F8;
 }
+
+.w320 :host {
+  ::ng-deep .block_type[rel="block_type_2"] {
+    .row-column {
+      flex-direction: column-reverse !important;
+    }
+  }
+}

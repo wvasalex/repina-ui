@@ -10,6 +10,7 @@
     content: '“';
     position: absolute;
     margin-left: -48px;
+    margin-top: -24px;
     font-size: 112px;
   }
 
@@ -22,6 +23,7 @@
   &:before {
     font-size: 64px;
     margin-left: -32px;
+    margin-top: 0;
   }
 
   font-size: 20px !important;

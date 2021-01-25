@@ -17,7 +17,7 @@
 
   <div class="inner">
     <div
-      *ngIf="$getValue('title')"
+      *ngIf="$getValue('date')"
       [r-block]="editor"
       [innerHTML]="$getValue('date')"
       (contentChanged)="$contentChanged($event, 'date')"

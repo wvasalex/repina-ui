@@ -27,18 +27,19 @@ export class RelatedProjectsComponent extends BaseBlock {
 
   ngOnInit(): void {
     const query: StrMap<any> = {};
+    let tags: any = this.tags;
 
-    if (!this.tags) {
+    if (!tags) {
       const service: Service = this.data.service as Service;
       if (service.tags) {
-        query.tags__id__in = service.tags.map((tag: ServiceTag) => tag.id).join(',');
+        tags = service.tags;
       }
       if (service.activity_scope) {
         query.activity_scope_id = (service.activity_scope as ServiceScope).id;
       }
-    } else {
-      query.tags__id__in = this.tags.map((tag: ServiceTag) => tag.id).join(',');
     }
+
+    query.tags__id__in = tags.map((tag: ServiceTag) => tag.id).join(',');
 
     this.projects$ = this.projectsService.getRelevant(query, 6).pipe(
       map((projects: Project[]) => {

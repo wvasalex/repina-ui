@@ -9,6 +9,7 @@ import { BaseBlock } from '@shared/blocks/block.component';
 })
 export class ArticleImageComponent extends BaseBlock {
 
+  @Input() metaDisabled: boolean;
   @Input() itemprop: string;
 
 }

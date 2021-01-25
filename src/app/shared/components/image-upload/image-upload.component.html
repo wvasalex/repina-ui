@@ -26,13 +26,13 @@
     Сохраните для загрузки медиа
   </r-image-placeholder>
 
-  <div
+  <r-icon
     *ngIf="contentFile"
     (click)="$clear()"
     class="clear"
-  >
-    <r-icon name="editor/clear"></r-icon>
-  </div>
+    name="editor/clear"
+    title="Удалить файл"
+  ></r-icon>
 </ng-container>
 
 <ng-container *ngIf="!endpoint && editor">

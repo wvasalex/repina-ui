@@ -4,7 +4,6 @@ import { ServicesTechComponent } from './services-tech/services-tech.component';
 import { ServicesListComponent } from './services-list/services-list.component';
 import { ServiceHeaderComponent } from './service/service-header/service-header.component';
 import { ServiceBlockComponent } from './service/service-block/service-block.component';
-import { ServiceTitleComponent } from './service/service-title/service-title.component';
 import { ServiceTextComponent } from './service/service-text/service-text.component';
 import { ServiceImageComponent } from './service/service-image/service-image.component';
 import { ServiceQuoteComponent } from './service/service-quote/service-quote.component';
