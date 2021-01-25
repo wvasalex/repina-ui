@@ -1,5 +1,8 @@
 <ng-container *ngIf="projects && promo">
-  <r-grid type="big-small">
+  <r-grid
+    [mobileGrid]="true"
+    type="big-small"
+  >
     <r-main-project
       [editor]="editor"
       [props]="projects[0].props"
@@ -21,6 +24,7 @@
   </r-grid>
 
   <r-grid
+    [mobileGrid]="true"
     type="small-wide-narrow"
     class="mt-30"
   >
@@ -43,6 +47,7 @@
   </r-grid>
 
   <r-grid
+    [mobileGrid]="true"
     type="small"
     class="mt-30"
   >
@@ -69,6 +74,7 @@
   </r-grid>
 
   <r-grid
+    [mobileGrid]="true"
     type="small-big"
     class="mt-30"
   >
@@ -98,6 +104,7 @@
   </r-grid>
 
   <r-grid
+    [mobileGrid]="true"
     type="small"
     class="mt-30"
   >
@@ -127,6 +134,7 @@
   </r-grid>
 
   <r-grid
+    [mobileGrid]="true"
     type="small"
     class="mt-30"
   >

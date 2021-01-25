@@ -20,10 +20,22 @@ import { Subscription } from 'rxjs';
 })
 export class GridComponent implements OnInit, OnDestroy {
 
+  /**
+   * Grid type
+   */
   @Input() @HostBinding('attr.type') type: GridDataType = 'small';
 
-  public def: GridDataSizeDef;
+  /**
+   * Row proportions
+   */
   @Input() rowHeight: string = '1.5:1';
+
+  /**
+   * Use grid on mobile, not column
+   */
+  @Input() mobileGrid: boolean = false;
+
+  public def: GridDataSizeDef;
   public column: boolean = false;
   public grid: boolean = true;
 
@@ -63,9 +75,11 @@ export class GridComponent implements OnInit, OnDestroy {
   }
 
   private _small() {
+    const roles = this.def.roles;
+
     this.def = {
       cols: 1,
-      roles: [1, 2, 3],
+      roles: roles,
       grid: [
         {},
         {},
@@ -73,10 +87,8 @@ export class GridComponent implements OnInit, OnDestroy {
       ],
     }
 
-    //if (this.type == 'big') {
-    this.grid = false;
-    this.column = true;
-    //}
+    this.grid = this.mobileGrid;
+    this.column = !this.grid;
     this.changeDetectorRef.detectChanges();
   }
 

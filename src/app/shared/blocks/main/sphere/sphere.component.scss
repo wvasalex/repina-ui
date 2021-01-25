@@ -2,22 +2,23 @@
 @import '~video.js/dist/video-js.css';
 
 r-sphere {
-  position: relative;
   display: flex;
   justify-content: flex-end;
   transform-origin: center;
   background: transparent;
   border-radius: 50%;
   overflow: hidden;
-  transform: translateZ(0);
   border: 0;
+  //transform: translate(-50%, -50%);
 
+  transform: translateZ(0);
   max-width: 556px;
   max-height: 556px;
   width: 556px;
   height: 556px;
   opacity: 0;
   will-change: margin, top, left, width, height;
+  animation: 5s bounce infinite;
 
   .video-js {
     object-fit: cover;
@@ -34,19 +35,14 @@ r-sphere {
   }
 
   &.absolute {
-    position: absolute;
-    transform: translate(-50%, -50%);
     transition: top 1200ms linear, left 1200ms linear, margin-left 300ms, margin-top 300ms;
   }
-
-  /*&:not(.absolute) {
-    animation: 5s bounce infinite;
-  }*/
 
   > * {
     transition: 200ms;
   }
 }
+
 /*
 .w1366 r-sphere {
   $width: 416px;
@@ -91,34 +87,28 @@ r-sphere {
   animation: none;
   //}
 }
-
+*/
 @keyframes bounce {
   0% {
-    margin-left: 0;
-    margin-top: 0;
+    transform: translate(0, 0);
   }
   25% {
-    margin-left: -25px;
-    margin-top: -25px;
+    transform: translate(-3%, -3%);
   }
   50% {
-    margin-left: -20px;
-    margin-top: 30px;
+    transform: translate(3%, -6%);
   }
   60% {
-    margin-left: 20px;
-    margin-top: 0;
+    transform: translate(-4%, 3%);
   }
   75% {
-    margin-left: -15px;
-    margin-top: 15px;
+    transform: translate(-6%, 10%);
   }
   100% {
-    margin-left: 0;
-    margin-top: 0;
+    transform: translate(0%, 0%);
   }
 }
-*/
+
 r-sphere {
   outline: none;
 

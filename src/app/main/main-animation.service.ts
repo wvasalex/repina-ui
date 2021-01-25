@@ -57,8 +57,9 @@ export class MainAnimationService {
     const parent = this.sphere.parentElement;
     const element = parent.removeChild(this.sphere);
     element.style.position = 'absolute';
-    element.style.top = rect.top + 'px';
+    element.style.top = rect.top+ 'px';
     element.style.left = rect.left + 'px';
+    element.classList.add('absolute');
 
     const holder = this.doc.createElement('div');
     holder.style.width = rect.width + 'px';
@@ -66,16 +67,12 @@ export class MainAnimationService {
     parent.appendChild(holder);
     this.host.appendChild(element);
 
+    //this.sphere.classList.add('absolute');
+
     const move = fromEvent(this.doc.body, 'mousemove')
       .pipe(
         throttleTime(100),
       );
-
-    move.pipe(
-      take(1),
-    ).subscribe(() => {
-      this.sphere.classList.add('absolute');
-    });
 
     this._subs.push(move.subscribe((e) => {
       this._move(e as MouseEvent);
@@ -116,8 +113,8 @@ export class MainAnimationService {
       left = e.pageX + 20;
     }*/
 
-    this.sphere.style.left = left + 'px';
-    this.sphere.style.top = top + 'px';
+    this.sphere.style.left = (left - sphere_radius) + 'px';
+    this.sphere.style.top = (top - sphere_radius) + 'px';
   }
 
 }
