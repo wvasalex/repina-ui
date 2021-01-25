@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { BaseBlock } from '@shared/blocks/block.component';
@@ -16,15 +16,17 @@ export class AgencyTeamComponent extends BaseBlock {
   public members$: Observable<ContentListItem[]> = this.agencyService.getTeam()
     .pipe(tap((members: ContentListItem[]) => {
       this.pagesCount = Math.floor(members.length / this.pageSize);
+      this.pages = new Array(this.pagesCount + 1);
     }));
 
   public pagesCount: number;
-  public prevIndex: number = 0;
   public currentIndex: number = 0;
+  public pages: number[] = [];
 
   private pageSize: number = 3;
 
   constructor(
+    private ref: ElementRef,
     private changeDetectorRef: ChangeDetectorRef,
     private agencyService: AgencyService,
   ) {
@@ -34,15 +36,21 @@ export class AgencyTeamComponent extends BaseBlock {
   public $prev() {
     if (this.currentIndex > 0) {
       this.currentIndex--;
-      this.changeDetectorRef.detectChanges();
     }
   }
 
   public $next() {
     if (this.currentIndex < this.pagesCount) {
       this.currentIndex++;
-      this.changeDetectorRef.detectChanges();
     }
+  }
+
+  public $setIndex(index: number) {
+    this.currentIndex = index;
+  }
+
+  public $margin(index: number): number {
+    return -100 * index;
   }
 
 }

@@ -17,13 +17,22 @@ import { StrMap } from '@shared/types';
 })
 export class SeoComponent implements OnInit, OnDestroy {
 
-  public formGroup: FormGroup = this.formBuilder.group({
+  private _controls = {
     title: [''],
     description: [''],
     keywords: [''],
     robots: ['index, follow'],
     canonical: [''],
-  });
+    'og:type': ['article'],
+    'og:title': [''],
+    'og:description': [''],
+    'og:url': [''],
+    'og:image': [''],
+    'og:locale': [''],
+  };
+
+  public formGroup: FormGroup = this.formBuilder.group(this._controls);
+  public controls: string[] = Object.keys(this._controls);
 
   private _sub: Subscription;
 

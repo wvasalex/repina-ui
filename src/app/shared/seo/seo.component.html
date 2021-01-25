@@ -4,9 +4,6 @@
       <mat-panel-title>
         Настройки SEO
       </mat-panel-title>
-      <!--<mat-panel-description>
-        This is a summary of the content
-      </mat-panel-description>-->
     </mat-expansion-panel-header>
 
     <div>
@@ -15,29 +12,10 @@
         [formGroup]="formGroup"
       >
         <r-input
-          formControlName="title"
+          *ngFor="let control of controls"
+          [formControlName]="control"
         >
-          <r-input-label>Title</r-input-label>
-        </r-input>
-        <r-input
-          formControlName="description"
-        >
-          <r-input-label>Description</r-input-label>
-        </r-input>
-        <r-input
-          formControlName="keywords"
-        >
-          <r-input-label>Keywords</r-input-label>
-        </r-input>
-        <r-input
-          formControlName="robots"
-        >
-          <r-input-label>Robots</r-input-label>
-        </r-input>
-        <r-input
-          formControlName="canonical"
-        >
-          <r-input-label>Canonical</r-input-label>
+          <r-input-label>{{control}}</r-input-label>
         </r-input>
 
         <r-button

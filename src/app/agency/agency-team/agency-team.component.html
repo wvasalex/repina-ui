@@ -1,19 +1,26 @@
 <r-padding [horizontal]="false">
-  <div class="row">
+  <div class="row space-between">
     <r-md
       [editor]="editor"
       [props]="props"
       prop="title"
       className="h2"
     ></r-md>
-    <div></div>
+    <div class="indicator">
+      <div
+        *ngFor="let _ of pages; let index = index"
+        (click)="$setIndex(index)"
+        [class.active]="index == currentIndex"
+        class="point"
+      ></div>
+    </div>
   </div>
 
   <div
     *ngIf="members$ | async as members"
     (swipeleft)="$next()"
     (swiperight)="$prev()"
-    [style.marginLeft.%]="-105 * currentIndex"
+    [style.marginLeft.%]="$margin(currentIndex)"
     class="row list mt-3"
   >
     <div
@@ -36,9 +43,17 @@
     <div class="member ml-2">
       <div class="member-image transparent"></div>
     </div>
-
     <div class="member ml-2">
       <div class="member-image transparent"></div>
     </div>
+  </div>
+
+  <div class="indicator indicator-mobile mt-6">
+    <div
+      *ngFor="let _ of pages; let index = index"
+      (click)="$setIndex(index)"
+      [class.active]="index == currentIndex"
+      class="point"
+    ></div>
   </div>
 </r-padding>

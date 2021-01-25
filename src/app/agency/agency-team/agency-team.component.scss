@@ -15,7 +15,7 @@
 }
 
 .member-image {
-  width: 30vw;
+  width: calc(33vw - 4rem);
   min-width: 200px;
   padding-top: 100%;
   background: center $color-gray;
@@ -26,9 +26,44 @@
   }
 }
 
+.indicator {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.indicator-mobile {
+  display: none;
+}
+
+.point {
+  width: 16px;
+  height: 16px;
+  background: #EBEBEB;
+  border-radius: 50%;
+  margin-right: 16px;
+  transition: 300ms;
+
+  &.active {
+    width: 20px;
+    height: 20px;
+    background: $color-red;
+  }
+}
+
 .w320 :host {
   r-padding {
     padding-top: 42px;
     padding-bottom: 42px;
+  }
+
+  .indicator {
+    display: none;
+  }
+
+  .indicator-mobile {
+    display: flex;
+    justify-content: flex-start;
   }
 }
