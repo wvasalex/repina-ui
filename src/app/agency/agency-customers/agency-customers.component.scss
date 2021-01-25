@@ -2,13 +2,14 @@
 
 :host {
   display: block;
-}
-
-r-marquee {
-  margin-left: calc(-1 * var(--padding-horizontal, 0));
+  padding: 128px 0;
 }
 
 .customer {
   white-space: nowrap;
   margin: 0 4rem;
+}
+
+.w320 :host {
+  padding: 48px 0;
 }

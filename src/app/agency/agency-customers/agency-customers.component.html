@@ -1,9 +1,7 @@
-<r-padding
+<ng-container
   *ngIf="customers$ | async as customers"
-  [horizontal]="false"
-  class="pv-128"
 >
-  <h2>Клиенты</h2>
+  <h2 class="p-l">Клиенты</h2>
   <r-marquee class="mt-4">
     <ng-template #marqueeContent>
       <div
@@ -14,4 +12,5 @@
       </div>
     </ng-template>
   </r-marquee>
-</r-padding>
+</ng-container>
+
