@@ -5,9 +5,13 @@
 >
   <div class="row-column">
     <div>
-      <h2>
-        Отзывы клиентов
-      </h2>
+      <r-md
+        [editor]="editor"
+        [props]="props"
+        prop="title"
+        className="h2"
+      ></r-md>
+
       <div
         *ngIf="last > 0"
         class="arrows"

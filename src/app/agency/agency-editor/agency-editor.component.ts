@@ -52,7 +52,6 @@ export class AgencyEditorComponent implements OnInit {
       });
 
       if (block.block_type !== 'agency-gallery') {
-        block.is_enabled = true;
         promises.push(this.agencyService.save(block).toPromise());
       }
     });

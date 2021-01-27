@@ -2,7 +2,7 @@
   display: block;
   background: #000;
 
-  * {
+  ::ng-deep * {
     color: #fff;
   }
 }

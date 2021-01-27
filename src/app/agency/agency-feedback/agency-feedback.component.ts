@@ -4,6 +4,7 @@ import { tap } from 'rxjs/operators';
 import { errorAnimation, slider } from '@shared/animations';
 import { ContentListItem } from '../../lists/lists.model';
 import { AgencyService } from '../agency.service';
+import { BaseBlock } from '@shared/blocks/block.component';
 
 @Component({
   selector: 'r-agency-feedback',
@@ -15,7 +16,7 @@ import { AgencyService } from '../agency.service';
     errorAnimation,
   ],
 })
-export class AgencyFeedbackComponent implements OnInit {
+export class AgencyFeedbackComponent extends BaseBlock {
 
   public feedback$: Observable<ContentListItem[]> = this.agencyService.getFeedback()
     .pipe(tap((awards: ContentListItem[]) => {
@@ -33,6 +34,7 @@ export class AgencyFeedbackComponent implements OnInit {
   private pageSize: number = 1;
 
   constructor(private agencyService: AgencyService) {
+    super();
   }
 
   ngOnInit(): void {

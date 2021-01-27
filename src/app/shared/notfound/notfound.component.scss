@@ -3,8 +3,8 @@
 }
 
 .icon {
-  width: 306px;
-  height: 637px;
+  max-width: 306px;
+  max-height: 637px;
 }
 
 .w768 :host, .w320 :host {
@@ -13,7 +13,7 @@
   }
 
   .icon {
-    width: 218px;
-    height: 455px;
+    max-width: 218px;
+    max-height: 455px;
   }
 }

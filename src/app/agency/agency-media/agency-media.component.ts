@@ -5,6 +5,7 @@ import { errorAnimation } from '@shared/animations';
 import { BreakpointService } from '@shared/breakpoint.service';
 import { ContentListItem } from '../../lists/lists.model';
 import { AgencyService } from '../agency.service';
+import { BaseBlock } from '@shared/blocks/block.component';
 
 @Component({
   selector: 'r-agency-media',
@@ -15,7 +16,7 @@ import { AgencyService } from '../agency.service';
     errorAnimation,
   ],
 })
-export class AgencyMediaComponent implements OnInit {
+export class AgencyMediaComponent extends BaseBlock {
 
   public media$: Observable<ContentListItem[]> = this.agencyService.getMedia()
     .pipe(map((list: ContentListItem[]) => {
@@ -39,6 +40,7 @@ export class AgencyMediaComponent implements OnInit {
   constructor(
     private breakpointService: BreakpointService,
     private agencyService: AgencyService) {
+    super();
   }
 
   ngOnInit(): void {

@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AgencyService } from '../agency.service';
-import { ContentListItem } from '../../lists/lists.model';
 import { tap } from 'rxjs/operators';
 import { slider } from '@shared/animations';
+import { BaseBlock } from '@shared/blocks/block.component';
+import { AgencyService } from '../agency.service';
+import { ContentListItem } from '../../lists/lists.model';
 
 @Component({
   selector: 'r-agency-awards',
@@ -14,7 +15,7 @@ import { slider } from '@shared/animations';
     slider,
   ]
 })
-export class AgencyAwardsComponent implements OnInit {
+export class AgencyAwardsComponent extends BaseBlock {
 
   public awards$: Observable<ContentListItem[]> = this.agencyService.getAwards()
     .pipe(tap((awards: ContentListItem[]) => {
@@ -31,6 +32,7 @@ export class AgencyAwardsComponent implements OnInit {
   private pageSize: number = 7;
 
   constructor(private agencyService: AgencyService) {
+    super();
   }
 
   ngOnInit(): void {

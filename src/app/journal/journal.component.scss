@@ -50,11 +50,11 @@ a:hover {
     grid-template-columns: 1fr;
     grid-gap: 64px;
     margin-bottom: 64px;
+  }
 
-    /*display: flex;
-    flex-direction: column;
-    margin-bottom: 64px;
-    grid-gap: 64px;*/
+  .big {
+    grid-column-start: auto;
+    grid-column-end: auto;
   }
 
   .subscription-block {

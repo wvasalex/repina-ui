@@ -15,8 +15,7 @@ import { RequestService } from '@shared/page/request/request.service';
 import { errorAnimation, opacityAnimation } from '@shared/animations';
 import { ToasterService } from '@shared/toaster/toaster.service';
 import { StrMap } from '@shared/types';
-import { BehaviorSubject, Observable, Subject, Subscription } from 'rxjs';
-import { mapTo, tap } from 'rxjs/operators';
+import { BehaviorSubject, Subscription } from 'rxjs';
 
 @Component({
   selector: 'r-request',
@@ -100,11 +99,13 @@ export class RequestComponent implements OnInit, OnDestroy {
     const req = this.requestService.send(this.selected[0], this.formGroup.value)
       .toPromise()
       .then((sent: boolean) => {
-        this.sent = true;
+        this.sent = sent;
         this.changeDetectorRef.detectChanges();
-      });
 
-    this.toasterService.wrapPromise(req, 'Обращение отправлено!', 'Не удалось отправить обращение, попробуйте позже!');
+        if (!sent) {
+          this.toasterService.error('Пожалуйста, выберите интересующие вас услуги!');
+        }
+      });
   }
 
   public $getError(field: string): string {

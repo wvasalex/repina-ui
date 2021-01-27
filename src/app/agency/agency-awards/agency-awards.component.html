@@ -5,9 +5,12 @@
 >
   <div class="row-column">
     <div>
-      <h2>
-        Наши награды
-      </h2>
+      <r-md
+        [editor]="editor"
+        [props]="props"
+        prop="title"
+        className="h2"
+      ></r-md>
       <div
         *ngIf="last > 0"
         class="arrows"

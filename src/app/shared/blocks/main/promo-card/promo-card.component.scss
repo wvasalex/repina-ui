@@ -75,10 +75,6 @@ a {
 :host[type="3"] {
   flex-direction: column-reverse;
 
-  .footer {
-    align-items: flex-start;
-  }
-
   .image {
     height: 100%;
     margin-top: -2rem;
