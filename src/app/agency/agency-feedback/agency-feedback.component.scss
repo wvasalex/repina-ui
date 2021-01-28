@@ -16,6 +16,10 @@
 .quote {
   padding: 64px 75px;
   background: #F8F8F8;
+
+  &:before {
+    margin-top: 0;
+  }
 }
 
 .full-review {

@@ -20,13 +20,17 @@ export class ListContentComponent {
   constructor() { }
 
   public $changed(select: SelectComponent) {
-    const selectedOption = select.selectedOption;
-    const option = this.selected.find((val: SelectOption) => {
+    const selectedOption = {...select.selectedOption};
+    /*const option = this.selected.find((val: SelectOption) => {
       return val.value === selectedOption.value;
     });
 
     if (option) {
     //  return;
+    }*/
+
+    if (selectedOption.meta) {
+      Object.assign(selectedOption, selectedOption.meta);
     }
 
     this.selected.push(selectedOption);

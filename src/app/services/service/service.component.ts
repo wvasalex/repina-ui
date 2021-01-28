@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  HostBinding, HostListener,
+  OnDestroy,
+  OnInit, ViewChild,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, pluck, tap } from 'rxjs/operators';
@@ -23,8 +31,7 @@ export class ServiceComponent implements OnInit, OnDestroy {
         service.content_blocks.splice(1, 0, {
           block_type: 'service-projects',
           props: {},
-          content_elements: [
-          ],
+          content_elements: [],
         });
 
         return service;
@@ -53,6 +60,7 @@ export class ServiceComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private servicesRenderService: ServicesRenderService,
     private footerService: FooterService,
+    private ref: ElementRef,
   ) {
   }
 
@@ -61,6 +69,15 @@ export class ServiceComponent implements OnInit, OnDestroy {
 
   public ngOnDestroy(): void {
     this.footerService.setBreadcrumbs([]);
+  }
+
+  @HostListener('document:click', ['$event']) onClick(e) {
+    const target = e.target as HTMLElement;
+    const link = target.tagName.toLowerCase() === 'a' ? target : target.closest('a');
+
+    if (link) {
+      link.setAttribute('target', '_blank');
+    }
   }
 
 }

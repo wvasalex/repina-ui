@@ -16,8 +16,11 @@ export class ProjectRolesComponent extends BaseBlock {
     .pipe(map((services: ContentListItem[]) => {
       return services.map((member: ContentListItem) => {
         return {
-          value: member.props.role,
+          value: member.props.name,
           label: member.props.name,
+          meta: {
+            value: member.props.role,
+          },
         };
       });
     }));

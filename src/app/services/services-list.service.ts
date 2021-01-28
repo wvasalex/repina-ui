@@ -86,7 +86,7 @@ export class ServicesListService {
     groups.unshift([
       {
         text: 'Услуги',
-        href: '/services',
+        href: field === 'tag_group' ? null : '/services',
         position: -1,
       },
     ]);
@@ -95,8 +95,9 @@ export class ServicesListService {
       return a.position - b.position;
     };
 
-    return groups.map((group: StrMap<any>[]) => {
-      group.slice(1).sort(sort);
+    return groups.map((group: any[]) => {
+      group.sort(sort);
+
       return group;
     }).sort((a, b) => {
       return sort(a[0], b[0]);

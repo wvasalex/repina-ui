@@ -10,7 +10,7 @@ import { ServicesTagsService } from '../services-tags.service';
 import { ServicesScopesService } from '../services-scopes.service';
 import { ServicesGroupsService } from '../services-groups.service';
 import { ServicesRenderService } from '../services-render.service';
-import { pluck } from 'rxjs/operators';
+import { map, pluck } from 'rxjs/operators';
 
 @Component({
   selector: 'r-service-editor',

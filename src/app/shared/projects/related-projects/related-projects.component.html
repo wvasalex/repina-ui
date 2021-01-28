@@ -6,6 +6,7 @@
       *ngFor="let project of projects"
       [project]="project"
       [rAspectRatio]="1.4"
+      [blank]="data?.service !== null"
     ></r-project-snippet>
 
     <r-project-all [rAspectRatio]="1.4"></r-project-all>

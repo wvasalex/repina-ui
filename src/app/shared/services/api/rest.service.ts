@@ -26,6 +26,10 @@ export class RestService {
   }
 
   public get<T>(body: StrMap<any> = {}) {
+    if (!body.per_page) {
+      body.per_page = 999;
+    }
+
     return this.api.getStream(this.config.path, body).pipe(
       map((data) => {
         return data.results || data;

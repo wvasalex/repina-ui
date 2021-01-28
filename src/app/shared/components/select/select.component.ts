@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { MatSelect, MatSelectChange } from '@angular/material/select';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { getOption, SelectOption } from './select.model';
@@ -16,7 +16,7 @@ import { getOption, SelectOption } from './select.model';
     },
   ],
 })
-export class SelectComponent implements ControlValueAccessor {
+export class SelectComponent implements OnInit, ControlValueAccessor {
 
   @Output() valueChanged: EventEmitter<string | number> = new EventEmitter<string | number>();
 
@@ -26,6 +26,7 @@ export class SelectComponent implements ControlValueAccessor {
   @Input() readonly: boolean = false;
   @Input() label: string;
   @Input() multiple: boolean = false;
+  @Input() resetLabel: string;
 
   public value: string | number;
   public selectedOption: SelectOption;
@@ -33,6 +34,15 @@ export class SelectComponent implements ControlValueAccessor {
   public searchFocused: boolean = false;
 
   public term: string = '';
+
+  public ngOnInit() {
+    if (this.resetLabel) {
+      this.options.unshift({
+        label: this.resetLabel,
+        value: null,
+      });
+    }
+  }
 
   public onChange: any = () => {
   };

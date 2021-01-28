@@ -1,5 +1,6 @@
 <a
   *ngIf="project?.slug"
+  [target]="blank ? '_blank' : ''"
   [routerLink]="[$link()]"
   class="project"
   style="overflow: hidden"

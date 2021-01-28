@@ -19,6 +19,7 @@ export class ProjectRootComponent extends BaseBlock implements OnInit {
     service_type: 'single',
   })
     .pipe(map((services: Service[]) => {
+      console.log(services);
       return services.map((service: Service) => {
         return {
           value: service.slug,

@@ -28,6 +28,7 @@
       *ngIf="serviceScopes$ | async as scopes"
       [(ngModel)]="project.activity_scope"
       [options]="scopes | selectOptions : $toOption"
+      resetLabel="Не использовать"
       placeholder="Сфера услуги"
       label="Сфера услуги"
       class="ml-2"
