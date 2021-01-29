@@ -96,9 +96,9 @@ export class ServicesListService {
     };
 
     return groups.map((group: any[]) => {
+      const root = group.shift();
       group.sort(sort);
-
-      return group;
+      return [root, ...group];
     }).sort((a, b) => {
       return sort(a[0], b[0]);
     });
