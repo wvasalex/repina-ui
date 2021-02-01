@@ -60,7 +60,6 @@ export class ServiceComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private servicesRenderService: ServicesRenderService,
     private footerService: FooterService,
-    private ref: ElementRef,
   ) {
   }
 

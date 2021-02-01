@@ -58,16 +58,18 @@
 }
 
 .w320 :host {
+  r-padding {
+    align-items: flex-start;
+  }
+
+  .sphere-wrapper {
+    margin-top: 48px;
+  }
+
   .sphere {
-    display: none;
-  }
-
-  .sphere-rating {
-    top: 0;
-  }
-
-  ::ng-deep .h1 {
-    font-size: 52px;
-    line-height: 60px;
+    min-width: 215px;
+    min-height: 215px;
+    max-width: 215px;
+    max-height: 215px;
   }
 }

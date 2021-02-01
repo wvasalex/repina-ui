@@ -29,7 +29,7 @@
 }
 
 .close {
-  position: absolute;
+  position: fixed;
   top: 32px;
   right: 22px;
 }
@@ -40,6 +40,10 @@
   left: 0;
   right: 0;
   bottom: 0;
+
+  &.fixed {
+    position: fixed;
+  }
 }
 
 .w1920 :host {
