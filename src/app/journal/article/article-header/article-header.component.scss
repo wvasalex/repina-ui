@@ -28,6 +28,15 @@ r-padding {
   overflow: hidden;
 }
 
+.w2560 :host {
+  [image] {
+    min-width: 880px;
+    min-height: 880px;
+    max-width: 880px;
+    max-height: 880px;
+  }
+}
+
 .w1920 :host {
   [image] {
     min-width: 608px;

@@ -82,7 +82,7 @@ a, a:visited {
   @extend .h;
 }
 
-.w1920 {
+.w2560, .w1920 {
   .h1, h1 {
     font-size: 112px;
     line-height: 124px;
@@ -121,6 +121,18 @@ a, a:visited {
   .text16 {
     font-size: 16px;
     line-height: 22px;
+  }
+}
+
+.w2560 {
+  .h1, h1 {
+    font-size: 154px;
+    line-height: 166px;
+  }
+
+  .h1_5 {
+    font-size: 78px;
+    line-height: 84px;
   }
 }
 

@@ -55,7 +55,7 @@
   margin: 4rem auto;
 }
 
-.w1920 :host {
+.w2560 :host, .w1920 :host {
   ::ng-deep [rel="element_type_1"] {
     padding-left: 180px;
   }

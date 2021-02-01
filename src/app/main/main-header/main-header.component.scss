@@ -21,6 +21,15 @@
   z-index: 1;
 }
 
+.w2560 :host {
+  .sphere {
+    min-width: 880px;
+    min-height: 880px;
+    max-width: 880px;
+    max-height: 880px;
+  }
+}
+
 .w1920 :host {
   .sphere {
     min-width: 608px;

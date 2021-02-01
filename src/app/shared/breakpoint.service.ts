@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
-import { BreakpointState } from '@angular/cdk/layout/breakpoints-observer';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -10,6 +9,7 @@ import { map } from 'rxjs/operators';
 export class BreakpointService {
 
   private breakpoints = [
+    '(min-width: 2560px)',
     '(min-width: 1920px)',
     '(min-width: 1366px)',
     '(min-width: 1024px)',
