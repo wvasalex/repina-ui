@@ -97,6 +97,7 @@ import { HrefPipe } from '@shared/components/href.pipe';
     StickyComponent,
     MousemoveDirective,
     HrefPipe,
+    InputErrorComponent,
   ],
   imports: [
     CommonModule,

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
+import { mapTo } from 'rxjs/operators';
+import { StrMap } from '@shared/types';
 import { requestServices, serviceRelations } from '@shared/page/request/request.model';
 import { getOption, SelectOption } from '../../components/select/select.model';
-import { StrMap } from '@shared/types';
 import { RestService } from '@shared/services/api/rest.service';
 import { ApiConfig } from '@shared/services/api/api.model';
 import { ApiService } from '@shared/services/api/api.service';
-import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -46,6 +46,12 @@ export class RequestService extends RestService {
     return relations.filter((option: SelectOption) => option.meta.checked);
   }
 
+  public valid(proposalType: SelectOption): boolean {
+    const proposals = this.getSelectedRelations(this.relations$.value || []);
+
+    return proposalType && proposals.length > 0;
+  }
+
   public send(proposalType: SelectOption, value: StrMap<string>): Observable<boolean> {
     const proposal_keys = this.getSelectedRelations(this.relations$.value || []).map((option) => option.value);
     const {name, phone, email, comment} = value;
@@ -61,9 +67,7 @@ export class RequestService extends RestService {
       phone,
       email,
       comment,
-    }).pipe(map((_) => {
-      return true;
-    }));
+    }).pipe(mapTo(true));
   }
 
 }

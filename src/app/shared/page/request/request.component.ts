@@ -13,7 +13,6 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SelectOption } from '@shared/components/select/select.model';
 import { RequestService } from '@shared/page/request/request.service';
 import { errorAnimation, opacityAnimation } from '@shared/animations';
-import { ToasterService } from '@shared/toaster/toaster.service';
 import { StrMap } from '@shared/types';
 import { BehaviorSubject, Subscription } from 'rxjs';
 
@@ -41,14 +40,13 @@ export class RequestComponent implements OnInit, OnDestroy {
   });
 
   public selected: SelectOption[] = [];
-
+  public proposalError: boolean;
   public sent: boolean = false;
 
   private sub: Subscription;
   private submitted: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(
-    private toasterService: ToasterService,
     private changeDetectorRef: ChangeDetectorRef,
     private formBuilder: FormBuilder,
     public requestService: RequestService,
@@ -90,9 +88,8 @@ export class RequestComponent implements OnInit, OnDestroy {
     e.preventDefault();
 
     this.submitted.next(true);
-
-    if (!this.formGroup.valid) {
-      this.toasterService.error('Пожалуйста, заполните все обязательные поля!');
+    this.proposalError = !this.requestService.valid(this.selected[0]);
+    if (this.proposalError || !this.formGroup.valid) {
       return;
     }
 
@@ -101,10 +98,6 @@ export class RequestComponent implements OnInit, OnDestroy {
       .then((sent: boolean) => {
         this.sent = sent;
         this.changeDetectorRef.detectChanges();
-
-        if (!sent) {
-          this.toasterService.error('Пожалуйста, выберите интересующие вас услуги!');
-        }
       });
   }
 

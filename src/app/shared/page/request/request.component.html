@@ -33,6 +33,14 @@
       ></r-badge-list>
     </div>
 
+    <r-input-error
+      *ngIf="proposalError"
+      @errorAnimation
+      class="text32"
+    >
+      Пожалуйста, выберите интересующие вас услуги!
+    </r-input-error>
+
     <form
       (submit)="$submit($event)"
       [formGroup]="formGroup"
