@@ -111,6 +111,7 @@
 <r-request-feedback
   *ngIf="sent"
   @opacityAnimation
+  [class.fixed]="data?.popup"
   class="feedback"
 ></r-request-feedback>
 
