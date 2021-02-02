@@ -47,10 +47,10 @@
 <body>
 <script>
   (function (b, w) {
-    const breakpoints = [2560, 1920, 1366, 1024, 768, 320];
+    const breakpoints = [2048, 1920, 1366, 1024, 768, 320];
     const cn = breakpoints.find((breakpoint) => w > breakpoint) || 320;
     b.className = 'w' + cn;
-  })(document.documentElement, window.innerWidth);
+  })(document.documentElement, window.outerWidth);
 </script>
 <app-root></app-root>
 

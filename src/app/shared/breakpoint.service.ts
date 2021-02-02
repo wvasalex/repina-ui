@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 export class BreakpointService {
 
   private breakpoints = [
-    '(min-width: 2560px)',
+    '(min-width: 2048px)',
     '(min-width: 1920px)',
     '(min-width: 1366px)',
     '(min-width: 1024px)',

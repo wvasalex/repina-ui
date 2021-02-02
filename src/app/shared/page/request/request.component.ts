@@ -1,7 +1,7 @@
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
-  Component,
+  Component, ElementRef,
   Inject,
   Input,
   OnDestroy,
@@ -50,6 +50,7 @@ export class RequestComponent implements OnInit, OnDestroy {
     private changeDetectorRef: ChangeDetectorRef,
     private formBuilder: FormBuilder,
     public requestService: RequestService,
+    private ref: ElementRef,
     @Inject(MAT_DIALOG_DATA) @Optional() public data: StrMap<any>,
   ) {
   }
@@ -90,6 +91,7 @@ export class RequestComponent implements OnInit, OnDestroy {
     this.submitted.next(true);
     this.proposalError = !this.requestService.valid(this.selected[0]);
     if (this.proposalError || !this.formGroup.valid) {
+      this._scrollView();
       return;
     }
 
@@ -129,6 +131,11 @@ export class RequestComponent implements OnInit, OnDestroy {
     }
 
     return null;
+  }
+
+  private _scrollView() {
+    const container = this.data?.popup ? this.ref.nativeElement.closest('.mat-dialog-container') : null;
+    container?.scrollTo(0, 0);
   }
 
 }

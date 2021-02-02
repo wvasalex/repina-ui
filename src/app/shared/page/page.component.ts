@@ -54,8 +54,8 @@ export class PageComponent implements OnInit, OnDestroy {
     }
 
     this._observe = this.breakpointService.change$.subscribe((result: BreakpointState) => {
-      const w = window.innerWidth;
-      const breakpoints = [2560, 1920, 1366, 1024, 768, 320];
+      const w = window.outerWidth;
+      const breakpoints = [2048, 1920, 1366, 1024, 768, 320];
       let cn = breakpoints.find((breakpoint) => w > breakpoint) || 320;
 
       if (typeof window !== 'undefined' && cn != 320) {

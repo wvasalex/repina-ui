@@ -63,7 +63,7 @@
   }
 }
 
-.w1920 :host {
+.w2048 :host, .w1920 :host {
   ::ng-deep [rel="element_type_1"] {
     padding-left: 180px;
   }

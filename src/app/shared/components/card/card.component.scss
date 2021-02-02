@@ -34,6 +34,11 @@
   }
 }
 
+:host ::ng-deep [image] {
+  max-width: 38rem;
+  max-height: 38rem;
+}
+
 .w768 :host, .w320 :host {
   flex-direction: column;
   align-items: flex-end;
@@ -44,9 +49,10 @@
   }
 }
 
-:host ::ng-deep [image] {
-  max-width: 38rem;
-  max-height: 38rem;
+.w2048 :host {
+  .left {
+    margin-right: 180px;
+  }
 }
 
 .w1366 :host {
