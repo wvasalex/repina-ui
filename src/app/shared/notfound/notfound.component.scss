@@ -2,34 +2,48 @@
   align-items: center;
 }
 
-.icon {
-  width: 660px;
-  height: 660px;
+.w768 :host, .w320 :host {
+  .row-column {
+    align-items: flex-start;
+  }
+}
+
+.w2048 :host {
+  .icon {
+    width: 880px;
+    height: 680px;
+  }
+}
+
+.w1920 :host {
+  .icon {
+    width: 608px;
+    height: 480px;
+  }
+}
+
+.w1366 :host {
+  .icon {
+    width: 496px;
+    height: 396px;
+  }
 }
 
 .w1024 :host {
   .icon {
-    width: 480px;
-    height: 480px;
+    width: 386px;
+    height: 310px;
   }
 }
 
 .w768 :host {
-  .row-column {
-    align-items: flex-start;
-  }
-
   .icon {
-    width: 480px;
-    height: 480px;
+    width: 215px;
+    height: 150px;
   }
 }
 
 .w320 :host {
-  .row-column {
-    align-items: flex-start;
-  }
-
   .icon {
     display: none;
   }
