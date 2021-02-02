@@ -3,17 +3,34 @@
 }
 
 .icon {
-  max-width: 306px;
-  max-height: 637px;
+  width: 660px;
+  height: 660px;
 }
 
-.w768 :host, .w320 :host {
+.w1024 :host {
+  .icon {
+    width: 480px;
+    height: 480px;
+  }
+}
+
+.w768 :host {
   .row-column {
     align-items: flex-start;
   }
 
   .icon {
-    max-width: 218px;
-    max-height: 455px;
+    width: 480px;
+    height: 480px;
+  }
+}
+
+.w320 :host {
+  .row-column {
+    align-items: flex-start;
+  }
+
+  .icon {
+    display: none;
   }
 }
