@@ -49,7 +49,7 @@ export class ServiceVideoComponent extends BaseBlock implements OnInit, OnDestro
     data.append('content_file', file);
 
     this.toasterService.info('Загрузка видео...');
-    this.api.postFile('/api/v1/blog_content_elements/' + this.id + '/', data)
+    this.api.postFile('/api/v1/service_content_elements/' + this.id + '/', data)
       .toPromise()
       .then((element: ContentElement) => {
         this.contentFile = element.content_file;
