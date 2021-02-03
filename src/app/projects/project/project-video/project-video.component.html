@@ -1,62 +1,7 @@
-<div
-  (tap)="$onClick()"
-  style="height: 100%;"
->
-  <video
-      #video
-      muted
-      playsinline
-      preload="auto"
-      class="video-js vjs-16-9"
-  ></video>
-
-  <div
-    *ngIf="!editor && !props.autoplay"
-    class="upload play-control"
-  >
-    <r-icon
-      [name]="'components/audio-' + (paused ? 'play' : 'pause')"
-      width="56"
-      height="56"
-    ></r-icon>
-  </div>
-</div>
-
-<div
-  *ngIf="!editor && !props.autoplay"
-  (click)="$toggleAudio($event)"
-  class="volume-control"
->
-  <r-icon
-    [name]="'components/volume-' + (muted ? 'off' : 'on')"
-  ></r-icon>
-</div>
-
-<ng-container *ngIf="editor">
-  <button
-    *ngIf="id"
-    mat-fab
-    class="upload"
-  >
-    <r-icon name="components/upload"></r-icon>
-    <input
-      (change)="$upload($event)"
-      type="file"
-      class="file"
-    >
-  </button>
-
-  <r-image-placeholder
-    *ngIf="!id"
-  >
-    Сохраните проект для загрузки медиа
-  </r-image-placeholder>
-
-  <r-padding [horizontal]="false">
-    <mat-checkbox
-      [(ngModel)]="props.autoplay"
-    >
-      Воспроизводить автоматически
-    </mat-checkbox>
-  </r-padding>
-</ng-container>
+<r-video
+  [editor]="editor"
+  [id]="id"
+  [props]="props"
+  [contentFile]="contentFile"
+  [endpoint]="'project_content_elements'"
+></r-video>

@@ -22,6 +22,7 @@ import { BlockBlankComponent } from './block-blank/block-blank.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MdComponent } from './md/md.component';
 import { MarkdownModule } from 'ngx-markdown';
+import { VideoComponent } from './video/video.component';
 
 @NgModule({
   imports: [
@@ -47,6 +48,7 @@ import { MarkdownModule } from 'ngx-markdown';
     BlockDirective,
     MdComponent,
     SphereComponent,
+    VideoComponent,
   ],
   declarations: [
     PromoCardComponent,
@@ -59,6 +61,7 @@ import { MarkdownModule } from 'ngx-markdown';
     BlockSwitcherComponent,
     BlockBlankComponent,
     MdComponent,
+    VideoComponent,
   ],
 })
 export class BlocksModule {

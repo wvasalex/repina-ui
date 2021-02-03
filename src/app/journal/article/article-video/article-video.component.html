@@ -1,4 +1,13 @@
-<video
+<r-video
+  [editor]="editor"
+  [id]="id"
+  [props]="props"
+  [contentFile]="contentFile"
+  [endpoint]="'blog_content_elements'"
+></r-video>
+
+
+<!--<video
   #video
   class="video-js vjs-16-9"
   muted
@@ -23,4 +32,4 @@
   *ngIf="editor && !id"
 >
   Сохраните статью для загрузки медиа
-</r-image-placeholder>
+</r-image-placeholder>-->

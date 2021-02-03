@@ -1,4 +1,12 @@
-<video
+<r-video
+  [editor]="editor"
+  [id]="id"
+  [props]="props"
+  [contentFile]="contentFile"
+  [endpoint]="'service_content_elements'"
+></r-video>
+
+<!--<video
   *ngIf="!editor"
   #video
   class="video-js vjs-16-9"
@@ -24,3 +32,4 @@
 >
   Сохраните статью для загрузки медиа
 </r-image-placeholder>
+-->

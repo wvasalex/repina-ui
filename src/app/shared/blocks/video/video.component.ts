@@ -4,7 +4,7 @@ import {
   Component,
   ElementRef,
   EventEmitter,
-  HostBinding,
+  HostBinding, Input,
   OnDestroy,
   OnInit,
   Output,
@@ -16,19 +16,15 @@ import { BaseBlock } from '@shared/blocks/block.component';
 import { ApiService } from '@shared/services/api/api.service';
 import { ToasterService } from '@shared/toaster/toaster.service';
 import { ContentElement } from '@shared/types';
-import { VideoComponent } from '@shared/blocks/video/video.component';
 
 @Component({
-  selector: 'r-project-video',
-  templateUrl: './project-video.component.html',
-  styleUrls: ['./project-video.component.scss'],
+  selector: 'r-video',
+  templateUrl: './video.component.html',
+  styleUrls: ['./video.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class ProjectVideoComponent extends BaseBlock {}
-
-/*
-export class ProjectVideoComponent extends BaseBlock implements OnInit, OnDestroy {
+export class VideoComponent extends BaseBlock implements OnInit, OnDestroy {
 
   @Output() contentFileChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() upload: EventEmitter<File> = new EventEmitter<File>();
@@ -36,6 +32,8 @@ export class ProjectVideoComponent extends BaseBlock implements OnInit, OnDestro
   @ViewChild('video', {static: true}) video: ElementRef;
 
   @HostBinding('class.paused') public paused: boolean = true;
+
+  @Input() endpoint: string;
   public muted: boolean = true;
 
   private player: videojs.Player;
@@ -83,7 +81,7 @@ export class ProjectVideoComponent extends BaseBlock implements OnInit, OnDestro
 
     this.upload.emit(file);
     this.toasterService.info('Загрузка медиа...');
-    this.api.postFile('/api/v1/project_content_elements/' + this.id + '/', data)
+    this.api.postFile('/api/v1/' + this.endpoint + '/' + this.id + '/', data)
       .toPromise()
       .then((element: ContentElement) => {
         this.contentFile = element.content_file;
@@ -124,4 +122,4 @@ export class ProjectVideoComponent extends BaseBlock implements OnInit, OnDestro
       ]);
     }
   }
-}*/
+}

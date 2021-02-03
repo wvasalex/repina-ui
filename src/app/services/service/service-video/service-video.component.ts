@@ -20,7 +20,9 @@ import { ContentElement } from '@shared/types';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class ServiceVideoComponent extends BaseBlock implements OnInit, OnDestroy {
+export class ServiceVideoComponent extends BaseBlock {}
+
+/*implements OnInit, OnDestroy {
 
   @ViewChild('video', { static: true }) video: ElementRef;
 
@@ -89,4 +91,4 @@ export class ServiceVideoComponent extends BaseBlock implements OnInit, OnDestro
     }
   }
 
-}
+}*/

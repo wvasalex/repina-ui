@@ -1,6 +1,6 @@
-/*@import '~video.js/dist/video-js.css';
+@import '~video.js/dist/video-js.css';
 
-r-project-video {
+r-video {
   position: relative;
   display: block;
   width: 100% !important;
@@ -65,9 +65,9 @@ r-project-video {
   }
 }
 
-.w320 r-project-video.paused {
+.w320 r-video.paused {
   .upload {
     opacity: 1;
     transform: scale(1);
   }
-}*/
+}
