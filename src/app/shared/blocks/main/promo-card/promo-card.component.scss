@@ -77,3 +77,10 @@ a {
     background-position: left bottom;
   }
 }
+
+.w320 :host .title {
+  ::ng-deep .h2 {
+    @extend .h4;
+    color: inherit;
+  }
+}

@@ -9,10 +9,10 @@ export const requestServices: SelectOption[] = [
     value: 'product',
     label: 'Продукта',
   },
-  /*{
-    value: 'hr',
-    label: 'HR-бренда',
-  },*/
+  {
+    value: 'retail',
+    label: 'Ритейла',
+  },
 ];
 
 export const serviceRelations = {
@@ -38,6 +38,7 @@ export const serviceRelations = {
       value: 'webpage',
       label: 'Сайт',
       meta: {
+        exclude: ['landing'],
         disabled: true,
         disabledTooltip: 'Мы разрабатываем сайты только в рамках комплексной услуги. Выберите фирменный стиль.',
       },
@@ -46,6 +47,7 @@ export const serviceRelations = {
       value: 'landing',
       label: 'Сайт-визитка',
       meta: {
+        exclude: ['webpage'],
         disabled: true,
         disabledTooltip: 'Мы разрабатываем сайты только в рамках комплексной услуги. Выберите фирменный стиль.',
       },
@@ -88,11 +90,67 @@ export const serviceRelations = {
       },
     },
   ],
-  hr: [
+  retail: [
     {
-      value: '1',
-      label: 'Для HR',
+      value: 'platform',
+      label: 'Позиционирование',
+      meta: {
+        deps: ['quant_res'],
+      },
+    },
+    {
+      value: 'naming',
+      label: 'Нейминг',
       meta: {},
+    },
+    {
+      value: 'package',
+      label: 'Упаковка',
+      meta: {
+        deps: ['focus'],
+      },
+    },
+    {
+      value: 'identity',
+      label: 'Фирменный стиль',
+      meta: {
+        deps: ['interior', 'webpage', 'landing'],
+      },
+    },
+    {
+      value: 'interior',
+      label: 'Интерьер',
+      meta: {
+        deps: ['retail-book'],
+        disabled: true,
+        disabledTooltip: 'Мы разрабатываем интерьер только в рамках комплексной услуги. Выберите фирменный стиль.',
+      },
+    },
+    {
+      value: 'retail-book',
+      label: 'Ритейл-бук',
+      meta: {
+        disabled: true,
+        disabledTooltip: 'Мы разрабатываем ритейл-бук только в рамках комлексной услуги. Выберите фирменный стиль и интерьер',
+      },
+    },
+    {
+      value: 'webpage',
+      label: 'Сайт',
+      meta: {
+        exclude: ['landing'],
+        disabled: true,
+        disabledTooltip: 'Мы разрабатываем сайты только в рамках комплексной услуги. Выберите фирменный стиль.',
+      },
+    },
+    {
+      value: 'landing',
+      label: 'Сайт-визитка',
+      meta: {
+        exclude: ['webpage'],
+        disabled: true,
+        disabledTooltip: 'Мы разрабатываем сайты только в рамках комплексной услуги. Выберите фирменный стиль.',
+      },
     },
   ],
 };

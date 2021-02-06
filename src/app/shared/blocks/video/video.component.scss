@@ -9,16 +9,14 @@ r-video {
 
   &[editor=true] {
     .upload {
-      opacity: .25;
+      opacity: .35;
       transform: scale(1);
     }
   }
 
-  &.paused:hover {
-    .upload {
-      opacity: 1;
-      transform: scale(1);
-    }
+  &:not(.paused) .control {
+    opacity: 0;
+    transform: scale(0);
   }
 
   .video-js {
@@ -38,19 +36,17 @@ r-video {
     position: absolute;
     left: 50%;
     top: 50%;
-    margin-left: -28px;
-    margin-top: -28px;
+    margin-left: -33px;
+    margin-top: -33px;
     transition: 100ms 300ms;
     z-index: 1000;
-    opacity: 0;
-    transform: scale(0);
   }
 
   .control {
-    padding: 1rem;
-    background: rgba(255, 255, 255, .5);
+    background: #fff;
     border-radius: 50%;
     line-height: 0;
+    border: 8px solid #000;
   }
 
   .volume-control {
@@ -58,10 +54,13 @@ r-video {
     position: absolute;
     right: 24px;
     bottom: 24px;
+    padding: 1rem;
+    border-width: 5px;
   }
 
   .play-control {
     @extend .control;
+    padding: 2rem;
   }
 }
 

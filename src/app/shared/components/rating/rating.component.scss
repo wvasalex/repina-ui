@@ -22,16 +22,10 @@
   animation: rotating 10s linear infinite;
 }
 
-.w1024 :host, .w768 :host {
+.w1024 :host, .w768 :host, .w320 :host {
   width: 112px;
   height: 112px;
   background-size: 112px;
-}
-
-.w320 :host {
-  width: 90px;
-  height: 90px;
-  background-size: 90px;
 }
 
 @keyframes rotating {

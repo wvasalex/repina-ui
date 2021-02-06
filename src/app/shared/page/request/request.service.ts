@@ -9,7 +9,7 @@ import { ApiConfig } from '@shared/services/api/api.model';
 import { ApiService } from '@shared/services/api/api.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RequestService extends RestService {
 
@@ -36,10 +36,24 @@ export class RequestService extends RestService {
 
   public toggleRelation(relation: SelectOption, checked: boolean) {
     const relations = this.relations$.value;
-    relation.meta.deps.forEach((relationId: string) => {
-      const option = getOption(relations, relationId);
-      option.meta.disabled = !checked;
-    });
+
+    if (checked && relation.meta.exclude) {
+      relation.meta.exclude.forEach((relationId: string) => {
+        const option = getOption(relations, relationId);
+        option.meta.checked = false;
+      });
+    }
+
+    if (relation.meta.deps) {
+      relation.meta.deps.forEach((relationId: string) => {
+        const option = getOption(relations, relationId);
+        option.meta.disabled = !checked;
+
+        if (option.meta.deps) {
+          this.toggleRelation(option, option.meta.checked && !option.meta.disabled);
+        }
+      });
+    }
   }
 
   public getSelectedRelations(relations: SelectOption[]): SelectOption[] {

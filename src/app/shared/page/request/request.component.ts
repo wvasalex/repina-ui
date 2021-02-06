@@ -76,7 +76,7 @@ export class RequestComponent implements OnInit, OnDestroy {
     const relation = e.item;
     const checked = relation.meta.checked = e.checked;
 
-    if (relation.meta.deps) {
+    if (relation.meta.deps || relation.meta.exclude) {
       this.requestService.toggleRelation(relation, checked);
     }
   }
@@ -134,8 +134,13 @@ export class RequestComponent implements OnInit, OnDestroy {
   }
 
   private _scrollView() {
-    const container = this.data?.popup ? this.ref.nativeElement.closest('.mat-dialog-container') : null;
-    container?.scrollTo(0, 0);
+    const popupContainer = this.data?.popup ? this.ref.nativeElement.closest('.mat-dialog-container') : null;
+
+    if (popupContainer) {
+      popupContainer?.scrollTo(0, 0);
+    } else {
+      this.ref.nativeElement.scrollIntoView();
+    }
   }
 
 }
