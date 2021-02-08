@@ -16,6 +16,7 @@ export interface ContentBlock {
   blog?: number;
   position?: number;
   is_enabled?: boolean;
+  inViewport?: boolean;
   _destroy?: boolean;
 }
 

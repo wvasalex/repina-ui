@@ -35,6 +35,7 @@ import { StickyComponent } from './sticky/sticky.component';
 import { MousemoveDirective } from '@shared/components/mousemove/mousemove.directive';
 import { FormsModule } from '@angular/forms';
 import { HrefPipe } from '@shared/components/href.pipe';
+import { ViewportIntersectDirective } from '@shared/components/viewport-intersect.directive';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { HrefPipe } from '@shared/components/href.pipe';
     StickyComponent,
     MousemoveDirective,
     HrefPipe,
+    ViewportIntersectDirective,
   ],
   exports: [
     LogoComponent,
@@ -98,6 +100,7 @@ import { HrefPipe } from '@shared/components/href.pipe';
     MousemoveDirective,
     HrefPipe,
     InputErrorComponent,
+    ViewportIntersectDirective,
   ],
   imports: [
     CommonModule,

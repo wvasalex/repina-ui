@@ -1,31 +1,9 @@
 <div
   *ngFor="let block of $visible(blocks); let index = index; let first = first; let last = last;"
+  (viewportIntersect)="$blockVisible(block)"
   [attr.rel]="typeKey + '_' + index"
-  [attr.class]="typeKey + ' content-item'"
+  [attr.class]="typeKey + (block.inViewport ? ' in-viewport' : '') + ' content-item'"
 >
-  <!--<div
-    *ngIf="0 && editor && $hasControls(block)"
-    class="move-block move-up controls"
-  >
-    <r-icon-button
-      *ngIf="!first"
-      (click)="$move(block, -1)"
-      icon="down-arrow"
-      matTooltip="Переместить вверх"
-      class="icon revert"
-    ></r-icon-button>
-
-    <r-icon-button
-      (click)="availableBlocks ? null : $addBlock(block, 0)"
-      (onMenuOpen)="$checkMenu(blockSelector)"
-      [matMenuTriggerFor]="blockSelector"
-      [matMenuTriggerData]="{block: block, offset: 0}"
-      icon="add"
-      matTooltip="Добавить блок выше"
-      class="icon revert"
-    ></r-icon-button>
-  </div>-->
-
   <r-block-switcher
     *ngIf="editor && typeKey == 'element_type' && availableElements?.length"
     (change)="$setType(block, $event)"
@@ -63,16 +41,6 @@
     >
       <r-icon name="components/add-white"></r-icon>
     </button>
-
-    <!--<r-icon-button
-      (click)="availableBlocks ? null : $addBlock(block, 1)"
-      (onMenuOpen)="$checkMenu(blockSelector)"
-      [matMenuTriggerFor]="blockSelector"
-      [matMenuTriggerData]="{block: block, offset: 1}"
-      icon="add"
-      matTooltip="Добавить блок ниже"
-      class="icon"
-    ></r-icon-button>-->
   </div>
 
   <div
