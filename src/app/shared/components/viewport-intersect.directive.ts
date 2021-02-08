@@ -1,20 +1,21 @@
 import { AfterViewInit, Directive, ElementRef, EventEmitter, OnDestroy, Output } from '@angular/core';
 
-const supported: boolean = 'IntersectionObserver' in window &&
+const supported: boolean = typeof window !== 'undefined' &&
+  'IntersectionObserver' in window &&
   'IntersectionObserverEntry' in window;
 
 @Directive({
-  selector: '[viewportIntersect]'
+  selector: '[viewportIntersect]',
 })
 export class ViewportIntersectDirective implements AfterViewInit, OnDestroy {
-  
+
   @Output() viewportIntersect: EventEmitter<any> = new EventEmitter();
 
   private observer: IntersectionObserver;
-  
+
   constructor(private ref: ElementRef) {
   }
-  
+
   public ngAfterViewInit() {
     if (!supported) {
       this.emit();
@@ -50,7 +51,7 @@ export class ViewportIntersectDirective implements AfterViewInit, OnDestroy {
       }
     });
   };
-  
+
   private checkIfIntersecting(entry: IntersectionObserverEntry) {
     return (<any>entry).isIntersecting && entry.target === this.ref.nativeElement;
   }

@@ -104,13 +104,6 @@ export const serviceRelations = {
       meta: {},
     },
     {
-      value: 'package',
-      label: 'Упаковка',
-      meta: {
-        deps: ['focus'],
-      },
-    },
-    {
       value: 'identity',
       label: 'Фирменный стиль',
       meta: {

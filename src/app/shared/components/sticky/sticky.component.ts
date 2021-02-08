@@ -53,7 +53,7 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   public ngOnDestroy() {
-    this._visibleSub.unsubscribe();
+    this._visibleSub?.unsubscribe();
   }
 
   private _getVisibility() {
