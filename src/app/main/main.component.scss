@@ -9,3 +9,9 @@
     margin-top: 64px;
   }
 }
+
+.w320 :host {
+  .services ::ng-deep r-nav-list {
+    padding-top: 0;
+  }
+}

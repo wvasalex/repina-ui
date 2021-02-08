@@ -36,10 +36,9 @@ r-video {
     position: absolute;
     left: 50%;
     top: 50%;
-    margin-left: -33px;
-    margin-top: -33px;
     transition: 100ms 300ms;
     z-index: 1000;
+    transform: translate(-50%, -50%);
   }
 
   .control {
@@ -47,6 +46,7 @@ r-video {
     border-radius: 50%;
     line-height: 0;
     border: 8px solid #000;
+    cursor: pointer;
   }
 
   .volume-control {
@@ -64,9 +64,8 @@ r-video {
   }
 }
 
-.w320 r-video.paused {
-  .upload {
-    opacity: 1;
-    transform: scale(1);
+.w320 r-video {
+  .control {
+    padding: 4px;
   }
 }
