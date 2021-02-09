@@ -1,7 +1,7 @@
 <div *ngIf="block?.content_elements[0]?.props as data">
   <div>Контакты</div>
   <div class="bolder">
-    <span>{{data.phone}}</span>
+    <a [attr.href]="'tel:' + data.phone">{{data.phone}}</a>
     <meta
       [attr.content]="data.phone"
       itemprop="telephone"

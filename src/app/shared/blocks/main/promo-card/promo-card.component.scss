@@ -78,9 +78,13 @@ a {
   }
 }
 
-.w320 :host .title {
-  ::ng-deep .h2 {
+.w320 :host {
+  .title ::ng-deep .h2 {
     @extend .h4;
     color: inherit;
+  }
+
+  .label ::ng-deep .h2 {
+    line-height: 32px;
   }
 }

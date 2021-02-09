@@ -23,6 +23,8 @@ export class BlocksRenderComponent implements OnInit {
   //@Output() change: EventEmitter<void> = new EventEmitter<void>();
   @Output() addBlock: EventEmitter<StrMap<any>> = new EventEmitter<StrMap<any>>();
 
+  @Input() @HostBinding('class.animated') animated: boolean = false;
+
   constructor() {
   }
 
@@ -92,5 +94,9 @@ export class BlocksRenderComponent implements OnInit {
     if (!this.availableBlocks?.length) {
       menu.closed.emit('click');
     }
+  }
+
+  public $blockVisible(block: ContentBlock) {
+    block.inViewport = true;
   }
 }

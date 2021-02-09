@@ -76,6 +76,7 @@ export class RequestComponent implements OnInit, OnDestroy {
     const relation = e.item;
     const checked = relation.meta.checked = e.checked;
 
+    this.proposalError = false;
     if (relation.meta.deps || relation.meta.exclude) {
       this.requestService.toggleRelation(relation, checked);
     }

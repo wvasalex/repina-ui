@@ -1,7 +1,10 @@
 <div class="text32">
   Почтовый адрес
 </div>
-<div class="h2">
+<div
+  *ngIf="editor"
+  class="h2"
+>
   <span
     (contentChanged)="$contentChanged($event, 'email_address')"
     [innerHTML]="$getValue('email_address')"
@@ -13,15 +16,31 @@
     [r-block]="editor"
   ></span>
 </div>
+<a
+  *ngIf="!editor"
+  [attr.href]="'mailto:' + props.email_address + '@' + props.email_domain"
+  class="h2"
+>
+  <span>{{props.email_address}}@{{props.email_domain}}</span>
+</a>
+
 <div class="text32 mt-64">
   Телефон
 </div>
 <div
+  *ngIf="editor"
   (contentChanged)="$contentChanged($event, 'phone')"
   [innerHTML]="$getValue('phone')"
   [r-block]="editor"
   class="h2"
 ></div>
+<a
+  *ngIf="!editor"
+  [innerHTML]="$getValue('phone')"
+  [attr.href]="'tel:' + props.phone"
+  class="h2"
+></a>
+
 <div class="text32 mt-64">
   Адрес
 </div>

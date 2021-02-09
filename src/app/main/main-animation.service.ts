@@ -49,7 +49,7 @@ export class MainAnimationService {
   }
 
   private _initMove() {
-    if (this.mobile) {
+    if (this.mobile || typeof window === 'undefined') {
       return;
     }
 
