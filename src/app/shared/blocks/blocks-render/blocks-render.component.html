@@ -1,8 +1,8 @@
 <div
   *ngFor="let block of $visible(blocks); let index = index; let first = first; let last = last;"
-  (viewportIntersect)="$blockVisible(block)"
+  (viewportIntersect)="$blockVisible(index)"
   [attr.rel]="typeKey + '_' + index"
-  [attr.class]="typeKey + (block.inViewport ? ' in-viewport' : '') + ' content-item'"
+  [attr.class]="typeKey + (inViewport >= index ? ' in-viewport' : '') + ' content-item'"
 >
   <r-block-switcher
     *ngIf="editor && typeKey == 'element_type' && availableElements?.length"

@@ -25,6 +25,8 @@ export class BlocksRenderComponent implements OnInit {
 
   @Input() @HostBinding('class.animated') animated: boolean = false;
 
+  public inViewport = {};
+
   constructor() {
   }
 
@@ -96,7 +98,7 @@ export class BlocksRenderComponent implements OnInit {
     }
   }
 
-  public $blockVisible(block: ContentBlock) {
-    block.inViewport = true;
+  public $blockVisible(index: number) {
+    this.inViewport = index;
   }
 }
