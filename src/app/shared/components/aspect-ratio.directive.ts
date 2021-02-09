@@ -14,6 +14,10 @@ export class AspectRatioDirective implements AfterViewInit {
   }
 
   public ngAfterViewInit(): void {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
     if (this.host.nativeElement.tagName.toLowerCase() === 'img') {
       this.host.nativeElement.onload = () => {
         this._fit();

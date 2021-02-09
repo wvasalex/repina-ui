@@ -33,6 +33,10 @@ export class MainAnimationService {
   }
 
   public attach(host: HTMLElement, sphere: ViewContainerRef) {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
     this.host = host;
     this.sphere = sphere.element.nativeElement;
     this._subs.push(this.mobile$.subscribe());
@@ -49,7 +53,7 @@ export class MainAnimationService {
   }
 
   private _initMove() {
-    if (this.mobile || typeof window === 'undefined') {
+    if (this.mobile) {
       return;
     }
 

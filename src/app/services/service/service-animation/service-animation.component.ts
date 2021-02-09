@@ -17,6 +17,10 @@ export class ServiceAnimationComponent extends BaseBlock implements OnInit {
   }
 
   ngOnInit(): void {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
     const a = this.props.animation;
     let animationData;
     try {
