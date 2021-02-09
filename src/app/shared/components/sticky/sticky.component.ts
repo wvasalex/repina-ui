@@ -32,9 +32,9 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnInit(): void {
-    if (typeof window === 'undefined') {
+    /*if (typeof window === 'undefined') {
       return;
-    }
+    }*/
     const el = this.ref.nativeElement;
     this._visibleSub = fromEvent(window, 'scroll')
       .pipe(
