@@ -81,7 +81,7 @@ export class BlocksRenderComponent implements OnInit {
   }
 
   public $addBlock(target: ContentBlock, offset: number, blockType?: String) {
-    this.addBlock.emit({ target, offset, blockType });
+    this.addBlock.emit({target, offset, blockType});
   }
 
   public $setType(target: ContentBlock, type: string) {

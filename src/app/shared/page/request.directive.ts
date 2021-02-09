@@ -1,4 +1,4 @@
-import { Directive, HostListener } from '@angular/core';
+import { Directive, HostListener, Input } from '@angular/core';
 import { PageComponent } from './page.component';
 
 @Directive({
@@ -6,13 +6,15 @@ import { PageComponent } from './page.component';
 })
 export class RequestDirective {
 
+  @Input() rRequest: boolean = true;
+
   constructor(
     private pageComponent: PageComponent,
   ) {
   }
 
   @HostListener('click') $onClick() {
-    this.pageComponent.$priceRequest();
+    this.rRequest && this.pageComponent.$priceRequest();
   }
 
 }

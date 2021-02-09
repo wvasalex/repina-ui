@@ -26,12 +26,15 @@ export class RequestService extends RestService {
   }
 
   public updateRelations(activeService: SelectOption) {
-    const relations = activeService ? serviceRelations[activeService.value] : null;
-    if (relations) {
-      relations.forEach((option: SelectOption) => option.meta.checked = false);
-    }
+    const reset = (options: SelectOption[]) => {
+      options?.forEach((option: SelectOption) => option.meta.checked = false);
+    };
 
-    this.relations$.next(relations);
+    const relations = activeService ? serviceRelations[activeService.value] : null;
+    reset(this.relations$.value);
+    reset(relations);
+
+    this.relations$.next(JSON.parse(JSON.stringify(relations)));
   }
 
   public toggleRelation(relation: SelectOption, checked: boolean) {

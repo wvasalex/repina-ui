@@ -9,7 +9,7 @@
 
 <div
   (click)="$click($event)"
-  rRequest
+  [rRequest]="!editor"
   [r-block]="editor"
   [innerHTML]="$getValue('label')"
   (contentChanged)="$contentChanged($event, 'label')"

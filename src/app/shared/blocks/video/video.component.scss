@@ -54,18 +54,23 @@ r-video {
     position: absolute;
     right: 24px;
     bottom: 24px;
-    padding: 1rem;
+    padding: .75rem;
     border-width: 5px;
   }
 
   .play-control {
     @extend .control;
-    padding: 2rem;
+    padding: 1.2rem;
   }
 }
 
 .w320 r-video {
   .control {
     padding: 4px;
+    border-width: 3px;
+  }
+
+  .volume-control {
+    border-width: 2px;
   }
 }
