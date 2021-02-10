@@ -73,7 +73,5 @@ export class AppModule {
       'in the browser' : 'on the server';
 
     console.log(`Running ${platform} with appId=${appId}`);
-    console.log('typeof window = ' + (typeof window));
-
   }
 }

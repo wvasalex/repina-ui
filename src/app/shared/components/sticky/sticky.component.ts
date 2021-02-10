@@ -32,12 +32,9 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnInit(): void {
-    console.log('r-sticky.ngOnInit()');
-
     if (typeof window === 'undefined') {
       return;
     }
-
 
     const el = this.ref.nativeElement;
     this._visibleSub = fromEvent(window, 'scroll')
@@ -53,9 +50,6 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   public ngAfterViewInit() {
-    console.log('r-sticky.ngAfterViewInit()');
-    console.log('typeof window = ' + (typeof window));
-
     if (typeof window !== 'undefined') {
       setTimeout(() => this._setTop(), 1000);
       setTimeout(() => this._setTop(), 3000);

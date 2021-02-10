@@ -27,8 +27,10 @@ export class ServicesPrimaryComponent implements OnInit {
   }
 
   public $setAnimation(animation: string) {
-    this.animation$.next(null);
-    requestAnimationFrame(() => this.animation$.next(animation));
+    if (typeof window !== 'undefined') {
+      this.animation$.next(null);
+      requestAnimationFrame(() => this.animation$.next(animation));
+    }
   }
 
   public $breakLine(text: string): string {
