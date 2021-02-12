@@ -19,9 +19,9 @@
 <a
   *ngIf="!editor"
   [attr.href]="'mailto:' + props.email_address + '@' + props.email_domain"
-  class="h2"
+  class="h2 email"
 >
-  <span>{{props.email_address}}@{{props.email_domain}}</span>
+  <span>{{props.email_address}}</span><span class="space"></span><span>@{{props.email_domain}}</span>
 </a>
 
 <div class="text32 mt-64">

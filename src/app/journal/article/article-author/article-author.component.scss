@@ -1,10 +1,5 @@
 :host {
   display: block;
-
-  &:not([editor]) {
-    margin-top: -75px;
-    padding-bottom: 75px;
-  }
 }
 
 .avatar {
@@ -13,4 +8,8 @@
   height: 120px;
   border-radius: 50%;
   overflow: hidden;
+}
+
+.w320 :host {
+  margin-top: 16px;
 }

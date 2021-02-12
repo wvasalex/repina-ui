@@ -4,6 +4,7 @@
 
 .address-wrapper {
   position: relative;
+  overflow: hidden;
 }
 
 .map {
@@ -48,12 +49,6 @@
 .w320 :host {
   .title {
     margin-bottom: 64px;
-  }
-
-  .space {
-    &:after {
-      content: ' ';
-    }
   }
 
   .map {
