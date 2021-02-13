@@ -25,14 +25,18 @@ export class RequestService extends RestService {
     super();
   }
 
-  public updateRelations(activeService: SelectOption) {
-    const reset = (options: SelectOption[]) => {
-      options?.forEach((option: SelectOption) => option.meta.checked = false);
-    };
+  public reset(options?: SelectOption[]) {
+    (options || this.relations$.value)?.forEach((option: SelectOption) => option.meta.checked = false);
 
+    if (!options) {
+      this.relations$.next(null);
+    }
+  }
+
+  public updateRelations(activeService: SelectOption) {
     const relations = activeService ? serviceRelations[activeService.value] : null;
-    reset(this.relations$.value);
-    reset(relations);
+    this.reset(this.relations$.value);
+    this.reset(relations);
 
     this.relations$.next(JSON.parse(JSON.stringify(relations)));
   }

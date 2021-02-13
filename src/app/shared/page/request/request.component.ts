@@ -62,6 +62,7 @@ export class RequestComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
+    this.requestService.reset();
     this.sub.unsubscribe();
   }
 

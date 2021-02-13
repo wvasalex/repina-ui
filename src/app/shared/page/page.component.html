@@ -5,9 +5,11 @@
   @drawerAnimation
 ></r-drawer>
 
-<r-seo
-  *rWithSession
-></r-seo>
+<ng-container  *rWithSession>
+  <link rel="stylesheet" href="/assets/material.css">
+
+  <r-seo></r-seo>
+</ng-container>
 
 <r-header
   [class.has-image]="!!backgroundImage"
