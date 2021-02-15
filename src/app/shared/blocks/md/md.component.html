@@ -1,7 +1,7 @@
 <div
   *ngIf="editor"
   [r-block]="editor"
-  [innerHTML]="$getValue(prop)"
+  [innerHTML]="props[prop]"
   (contentChanged)="$contentChanged($event, prop)"
   [class.mt-1_5]="$getValue(prop)"
   [ngClass]="className"

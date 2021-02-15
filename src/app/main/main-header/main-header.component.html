@@ -11,14 +11,22 @@
       class="subtitle text"
       subtitle
     ></r-md>
-    <r-md
-      [editor]="editor"
-      [props]="props"
-      prop="title"
-      className="h1"
-      class="text"
-      title
-    ></r-md>
+    <ng-container title>
+      <r-md
+        [editor]="editor"
+        [props]="props"
+        prop="title"
+        className="h1"
+        class="text"
+      ></r-md>
+      <r-input
+        *ngIf="editor"
+        [(ngModel)]="props.position"
+        class="mt-2"
+      >
+        <s-input-label>Позиция в рейтинге</s-input-label>
+      </r-input>
+    </ng-container>
 
     <div class="relative sphere-wrapper">
       <r-sphere
@@ -30,7 +38,10 @@
         class="sphere"
       ></r-sphere>
 
-      <r-rating class="sphere-rating"></r-rating>
+      <r-rating
+        [position]="props.position"
+        class="sphere-rating"
+      ></r-rating>
     </div>
   </r-card>
 </r-padding>

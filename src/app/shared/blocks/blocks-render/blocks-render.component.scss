@@ -17,12 +17,14 @@
 }
 
 :host.animated {
+  overflow: hidden;
+
   .block_type:not(:first-of-type) {
-    transform: translate3d(0, 30vh, 0);
+    transform: perspective(500px) translate3d(0, -30px, 120px);
     transition: 600ms 100ms;
 
     &.in-viewport {
-      transform: translate3d(0, 0, 0);
+      transform: perspective(500px) translate3d(0, 0, 0);
     }
   }
 }

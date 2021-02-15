@@ -419,6 +419,11 @@ markdown {
 
   p {
     white-space: pre-line;
+
+    &.br {
+      content: ' ';
+      height: 16px;
+    }
   }
 
   a {
