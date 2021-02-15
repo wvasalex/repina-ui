@@ -44,7 +44,7 @@ export class RequestComponent implements OnInit, OnDestroy {
   public sent: boolean = false;
 
   private sub: Subscription;
-  private submitted: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public submitted: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(
     private changeDetectorRef: ChangeDetectorRef,
