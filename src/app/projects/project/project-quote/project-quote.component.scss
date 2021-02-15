@@ -1,14 +1,10 @@
-:host {
+/*:host {
   display: flex;
   height: 100%;
   box-sizing: border-box;
   padding-top: 8rem;
   padding-bottom: 8rem;
   padding-left: 2rem;
-
-  &.center {
-    //padding-right: 8rem;
-  }
 }
 
 .inner {
@@ -35,4 +31,31 @@
   height: 120px;
   border-radius: 50%;
   overflow: hidden;
+}
+
+.w320 :host {
+  .author {
+    margin-left: 0;
+  }
+}*/
+
+:host {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+.inner {
+  overflow-wrap: break-word;
+  display: block;
+  padding: 3rem;
+  max-width: 100%;
+
+  &.small {
+    padding: 1rem;
+  }
+}
+
+.w320 :host {
+  padding-left: 0;
 }

@@ -6,7 +6,7 @@ import {
   Input,
   OnDestroy,
   OnInit,
-  Optional,
+  Optional, Renderer2,
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -59,11 +59,20 @@ export class RequestComponent implements OnInit, OnDestroy {
     this.sub = this.formGroup.valueChanges.subscribe(() => {
       this.submitted.next(false);
     });
+
+    if (this.data?.popup && typeof window !== 'undefined') {
+      document.body.style.overflow = 'hidden';
+      this.ref.nativeElement.classList.add('popup');
+    }
   }
 
   public ngOnDestroy(): void {
     this.requestService.reset();
     this.sub.unsubscribe();
+
+    if (typeof window !== 'undefined') {
+      document.body.style.overflow = '';
+    }
   }
 
   public $change(e) {

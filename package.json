@@ -31,6 +31,7 @@
     "@angular/platform-server": "~10.0.2",
     "@angular/router": "~10.0.2",
     "@angular/upgrade": "~10.0.2",
+    "@googlemaps/js-api-loader": "^1.11.1",
     "@nguniversal/express-engine": "^10.0.1",
     "angular-in-memory-web-api": "~0.11.0",
     "compression": "^1.7.4",

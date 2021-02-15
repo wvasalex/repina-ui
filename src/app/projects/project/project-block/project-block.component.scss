@@ -21,10 +21,6 @@
     }
   }
 
-  ::ng-deep r-project-quote {
-    padding-left: calc(10% - 15px + 2rem) !important;
-  }
-
   ::ng-deep r-project-text, ::ng-deep r-project-quote {
     background: var(--background, transparent);
   }
@@ -45,6 +41,12 @@
   }
 }
 
+.w2048, .w1920, .w1366, .w1024 {
+  :host ::ng-deep r-project-quote {
+    padding-left: calc(10% - 15px + 2rem) !important;
+  }
+}
+
 .w768 :host, .w320 :host {
   ::ng-deep [rel=element_type_0] {
     min-width: 100%;
@@ -53,7 +55,7 @@
   }
 
   ::ng-deep [rel=element_type_1] {
-    r-project-text, r-project-quote {
+    r-project-text {
       padding: var(--padding-vertical) var(--padding-horizontal);
       box-sizing: border-box;
     }

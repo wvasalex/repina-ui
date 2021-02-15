@@ -7,8 +7,9 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
+import { Loader } from '@googlemaps/js-api-loader';
 import { ContactsService } from './contacts.service';
-import { ContentBlock, ContentElement } from '@shared/types';
+import { ContentBlock } from '@shared/types';
 import { ToasterService } from '@shared/toaster/toaster.service';
 import { FooterService } from '@shared/footer/footer.service';
 
@@ -56,6 +57,27 @@ export class ContactsComponent implements OnInit, AfterViewInit {
       return;
     }
 
+    const loader = new Loader({
+      apiKey: 'AIzaSyDhSZQh9vTDnc7Meb2apgiJ1QiPOkKzz2U',
+      version: 'weekly',
+    });
+
+    loader.load().then(() => {
+      this._init();
+    });
+  }
+
+  public $toggleEditor() {
+    this.editor = !this.editor;
+  }
+
+  public $save() {
+    const req = this.contactsService.save(this.block).toPromise();
+
+    this.toasterService.wrapPromise(req, 'Контакты сохранены!', 'Не удалось сохранить контакты!');
+  }
+
+  private _init() {
     const maps = window['google'].maps;
     const center = new maps.LatLng(55.801106, 37.6378429);
     const mapOptions = {
@@ -73,16 +95,6 @@ export class ContactsComponent implements OnInit, AfterViewInit {
       map: map,
       icon: '/assets/icons/contacts/pin.svg',
     });
-  }
-
-  public $toggleEditor() {
-    this.editor = !this.editor;
-  }
-
-  public $save() {
-    const req = this.contactsService.save(this.block).toPromise();
-
-    this.toasterService.wrapPromise(req, 'Контакты сохранены!', 'Не удалось сохранить контакты!');
   }
 
   /*@HostListener('dblclick') onInit() {

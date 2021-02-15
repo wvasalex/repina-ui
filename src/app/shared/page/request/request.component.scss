@@ -5,6 +5,10 @@
   position: relative;
   height: 100%;
 
+  &.popup {
+    z-index: 3;
+  }
+
   r-padding {
     padding-top: 8rem;
     padding-bottom: 8rem;
