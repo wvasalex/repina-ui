@@ -34,7 +34,7 @@ export class RequestComponent implements OnInit, OnDestroy {
   public formGroup: FormGroup = this.formBuilder.group({
     name: ['', Validators.required],
     phone: ['', Validators.required],
-    email: ['', [Validators.required, Validators.email] ],
+    email: ['', [Validators.required, Validators.email]],
     comment: [''],
     news: [true],
   });
@@ -99,6 +99,10 @@ export class RequestComponent implements OnInit, OnDestroy {
   public $submit(e) {
     e.preventDefault();
 
+    if (this.submitted.value) {
+      return;
+    }
+
     this.submitted.next(true);
     this.proposalError = !this.requestService.valid(this.selected[0]);
     if (this.proposalError || !this.formGroup.valid) {
@@ -109,7 +113,9 @@ export class RequestComponent implements OnInit, OnDestroy {
     const req = this.requestService.send(this.selected[0], this.formGroup.value)
       .toPromise()
       .then((sent: boolean) => {
+        this._scrollView();
         this.sent = sent;
+        this.submitted.next(false);
         this.changeDetectorRef.detectChanges();
       });
   }
@@ -150,7 +156,10 @@ export class RequestComponent implements OnInit, OnDestroy {
     if (popupContainer) {
       popupContainer?.scrollTo(0, 0);
     } else {
-      this.ref.nativeElement.scrollIntoView();
+      const el = this.ref.nativeElement;
+      const top = el.offsetTop + el.clientHeight / 5;
+
+      window.scrollTo(0, top);
     }
   }
 

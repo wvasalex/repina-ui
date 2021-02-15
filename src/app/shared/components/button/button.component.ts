@@ -9,6 +9,7 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
 export class ButtonComponent implements OnInit {
 
   @Input() type: string;
+  @Input() disabled: boolean;
 
   constructor() { }
 

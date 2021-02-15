@@ -79,6 +79,7 @@
 
       <r-button
         (click)="$submit($event)"
+        [disabled]="submitted | async"
         type="submit"
         class="mt-4"
       >
