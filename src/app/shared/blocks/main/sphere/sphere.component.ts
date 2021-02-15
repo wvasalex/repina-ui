@@ -43,7 +43,9 @@ export class SphereComponent extends BaseBlock {
   }
 
   public ngOnInit(): void {
-    this.initPlayer();
+    if (typeof window !== 'undefined') {
+      this.initPlayer();
+    }
   }
 
   public ngOnDestroy() {

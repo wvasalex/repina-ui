@@ -8,8 +8,8 @@ import { join } from 'path';
 import { AppServerModule } from './src/main.server';
 import { APP_BASE_HREF } from '@angular/common';
 import { existsSync } from 'fs';
+import * as mcache from 'memory-cache';
 
-// The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
   const server = express();
   server.use(compression());
@@ -37,7 +37,22 @@ export function app(): express.Express {
 
   // All regular routes use the Universal engine
   server.get('*', (req, res) => {
-    res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
+    let key = '__express__' + req.originalUrl;
+    let cachedBody = mcache.get(key);
+    if (cachedBody) {
+      console.log('cached! ' + key);
+
+      res.send(cachedBody);
+    } else {
+      console.log('not cached! ' + key);
+      const send = res.send;
+      res.send = (body) => {
+        mcache.put(key, body, 300000);
+        return send.call(res, body);
+      };
+
+      res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
+    }
   });
 
   return server;
