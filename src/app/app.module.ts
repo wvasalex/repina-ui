@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MarkdownModule } from 'ngx-markdown';
+import { TransferHttpCacheModule } from '@nguniversal/common';
 
 import { SharedModule } from '@shared/components/shared.module';
 import { PageModule } from '@shared/page/page.module';
@@ -24,6 +25,7 @@ import { AppComponent } from './app.component';
 @NgModule({
   imports: [
     BrowserModule.withServerTransition({appId: 'repina'}),
+    TransferHttpCacheModule,
     BrowserAnimationsModule,
     HammerModule,
     FormsModule,
