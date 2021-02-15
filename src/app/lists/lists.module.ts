@@ -20,9 +20,10 @@ import { ServicesScopesComponent } from './services/services-scopes/services-sco
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { ListRootComponent } from './list-root/list-root.component';
 
 @NgModule({
-  declarations: [ListsComponent, ListSelectorComponent, ListEditorComponent, ListServicesComponent, BlogTagsComponent, ServicesTagsComponent, ServicesGroupsComponent, ServicesScopesComponent],
+  declarations: [ListsComponent, ListSelectorComponent, ListEditorComponent, ListServicesComponent, BlogTagsComponent, ServicesTagsComponent, ServicesGroupsComponent, ServicesScopesComponent, ListRootComponent],
   imports: [
     CommonModule,
     ListsRoutingModule,
