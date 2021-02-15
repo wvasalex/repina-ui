@@ -166,7 +166,10 @@
             "browserTarget": "repina:build:production",
             "serverTarget": "repina:server:production",
             "routes": [
-              "/"
+              "/",
+              "/contacts",
+              "/agency",
+              "/services"
             ]
           },
           "configurations": {

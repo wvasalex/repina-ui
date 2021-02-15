@@ -8,45 +8,52 @@ import { BlogTagsComponent } from './blog/blog-tags/blog-tags.component';
 import { ServicesTagsComponent } from './services/services-tags/services-tags.component';
 import { ServicesScopesComponent } from './services/services-scopes/services-scopes.component';
 import { ServicesGroupsComponent } from './services/services-groups/services-groups.component';
+import { ListRootComponent } from './list-root/list-root.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'awards',
-    pathMatch: 'full',
-  },
-  {
-    path: 'services',
-    canActivate: [SessionGuardService],
-    component: ListServicesComponent,
-  },
-  {
-    path: 'blog-tags',
-    canActivate: [SessionGuardService],
-    component: BlogTagsComponent,
-  },
-  {
-    path: 'services-scopes',
-    canActivate: [SessionGuardService],
-    component: ServicesScopesComponent,
-  },
-  {
-    path: 'services-groups',
-    canActivate: [SessionGuardService],
-    component: ServicesGroupsComponent,
-  },
-  {
-    path: 'services-tags',
-    canActivate: [SessionGuardService],
-    component: ServicesTagsComponent,
-  },
-  {
-    path: ':id',
-    canActivate: [SessionGuardService],
-    resolve: {
-      list: ListsResolver,
-    },
-    component: ListsComponent,
+    component: ListRootComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'awards',
+        pathMatch: 'full',
+      },
+      {
+        path: 'services',
+        canActivate: [SessionGuardService],
+        component: ListServicesComponent,
+      },
+      {
+        path: 'blog-tags',
+        canActivate: [SessionGuardService],
+        component: BlogTagsComponent,
+      },
+      {
+        path: 'services-scopes',
+        canActivate: [SessionGuardService],
+        component: ServicesScopesComponent,
+      },
+      {
+        path: 'services-groups',
+        canActivate: [SessionGuardService],
+        component: ServicesGroupsComponent,
+      },
+      {
+        path: 'services-tags',
+        canActivate: [SessionGuardService],
+        component: ServicesTagsComponent,
+      },
+      {
+        path: ':id',
+        canActivate: [SessionGuardService],
+        resolve: {
+          list: ListsResolver,
+        },
+        component: ListsComponent,
+      },
+    ],
   },
 ];
 
