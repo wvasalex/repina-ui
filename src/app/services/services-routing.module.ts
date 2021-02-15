@@ -5,30 +5,29 @@ import { SessionGuardService } from '@shared/services/session/guard/session-guar
 import { ServiceEditorComponent } from './service-editor/service-editor.component';
 import { ServiceComponent } from './service/service.component';
 import { ServiceResolver } from './service.resolver';
-import { AgencyEditorComponent } from '../agency/agency-editor/agency-editor.component';
 import { ServicesEditorComponent } from './services-editor/services-editor.component';
 
 const routes: Routes = [
-  { path: 'services', component: ServicesComponent },
+  { path: '', component: ServicesComponent },
   {
-    path: 'services/new',
+    path: 'new',
     component: ServiceEditorComponent,
     canActivate: [SessionGuardService],
   },
   {
-    path: 'services/edit',
+    path: 'edit',
     component: ServicesEditorComponent,
     canActivate: [SessionGuardService],
   },
   {
-    path: 'services/:id',
+    path: ':id',
     component: ServiceComponent,
     resolve: {
       service: ServiceResolver,
     },
   },
   {
-    path: 'services/:id/edit',
+    path: ':id/edit',
     component: ServiceEditorComponent,
     canActivate: [SessionGuardService],
     resolve: {

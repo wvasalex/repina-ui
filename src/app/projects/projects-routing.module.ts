@@ -8,23 +8,23 @@ import { ProjectResolver } from './project.resolver';
 
 const routes: Routes = [
   {
-    path: 'projects',
+    path: '',
     component: ProjectsComponent
   },
   {
-    path: 'projects/new',
+    path: 'new',
     component: ProjectEditorComponent,
     canActivate: [SessionGuardService],
   },
   {
-    path: 'projects/:id',
+    path: ':id',
     component: ProjectComponent,
     resolve: {
       project: ProjectResolver,
     },
   },
   {
-    path: 'projects/:id/edit',
+    path: ':id/edit',
     component: ProjectEditorComponent,
     canActivate: [SessionGuardService],
     resolve: {

@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-import { MainComponent } from './main/main.component';
 import { NotfoundComponent } from '@shared/notfound/notfound.component';
+import { MainComponent } from './main/main.component';
 
 const routes: Routes = [
   {
@@ -10,10 +9,32 @@ const routes: Routes = [
     component: MainComponent,
   },
   {
+    path: 'projects',
+    loadChildren: () => import('./projects/projects.module').then((m) => m.ProjectsModule),
+  },
+  {
+    path: 'blog',
+    loadChildren: () => import('./journal/journal.module').then((m) => m.JournalModule),
+  },
+  {
+    path: 'agency',
+    loadChildren: () => import('./agency/agency.module').then((m) => m.AgencyModule),
+  },
+  {
+    path: 'services',
+    loadChildren: () => import('./services/services.module').then((m) => m.ServicesModule),
+  },
+  {
+    path: 'contacts',
+    loadChildren: () => import('./contacts/contacts.module').then((m) => m.ContactsModule),
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
     path: 'lists',
-    loadChildren: () => import('./lists/lists.module').then((m) => {
-      return m.ListsModule;
-    }),
+    loadChildren: () => import('./lists/lists.module').then((m) => m.ListsModule),
   },
   {
     path: '404',

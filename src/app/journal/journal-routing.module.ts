@@ -7,21 +7,24 @@ import { ArticleEditorComponent } from './article-editor/article-editor.componen
 import { ArticleResolver } from './article.resolver';
 
 const routes: Routes = [
-  {path: 'blog', component: JournalComponent},
   {
-    path: 'blog/new',
+    path: '',
+    component: JournalComponent,
+  },
+  {
+    path: 'new',
     component: ArticleEditorComponent,
     canActivate: [SessionGuardService],
   },
   {
-    path: 'blog/:id',
+    path: ':id',
     component: ArticleComponent,
     resolve: {
       article: ArticleResolver,
     },
   },
   {
-    path: 'blog/:id/edit',
+    path: ':id/edit',
     component: ArticleEditorComponent,
     canActivate: [SessionGuardService],
     resolve: {

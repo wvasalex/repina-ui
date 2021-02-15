@@ -5,9 +5,9 @@ import { SessionGuardService } from '@shared/services/session/guard/session-guar
 import { AgencyEditorComponent } from './agency-editor/agency-editor.component';
 
 const routes: Routes = [
-  { path: 'agency', component: AgencyComponent },
+  { path: '', component: AgencyComponent },
   {
-    path: 'agency/edit',
+    path: 'edit',
     component: AgencyEditorComponent,
     canActivate: [SessionGuardService],
   },

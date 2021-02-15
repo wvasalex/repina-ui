@@ -13,14 +13,11 @@ import { API_BASE_CONFIG } from '@shared/services/api/api.model';
 import { SessionModule } from '@shared/services/session/session.module';
 import { NotfoundModule } from '@shared/notfound/notfound.module';
 import { MainModule } from './main/main.module';
-import { ProjectsModule } from './projects/projects.module';
-import { JournalModule } from './journal/journal.module';
-import { AgencyModule } from './agency/agency.module';
-import { ContactsModule } from './contacts/contacts.module';
-import { ServicesModule } from './services/services.module';
 import { AuthModule } from './auth/auth.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+import { environment } from '../environments/environment';
 
 @NgModule({
   imports: [
@@ -34,14 +31,8 @@ import { AppComponent } from './app.component';
     SharedModule,
     PageModule,
     NotfoundModule,
-    AuthModule,
-    AgencyModule,
-    ContactsModule,
-    ProjectsModule,
-    JournalModule,
     AppRoutingModule,
     MainModule,
-    ServicesModule,
     SessionModule,
   ],
   declarations: [
@@ -52,7 +43,7 @@ import { AppComponent } from './app.component';
     {
       provide: API_BASE_CONFIG,
       useValue: {
-        host: '',
+        host: environment.production ? 'http://5.63.158.46' : '',
         base: '/api/v1',
       },
     },

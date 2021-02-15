@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, Input, OnDestroy, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -16,6 +16,8 @@ import { StrMap } from '@shared/types';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SeoComponent implements OnInit, OnDestroy {
+
+  @Input() readonly: boolean = true;
 
   private _controls = {
     title: [''],
