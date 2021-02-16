@@ -418,10 +418,15 @@ markdown {
   }
 
   p {
-    &.br {
-      content: ' ';
-      line-height: 1rem;
-    }
+    //white-space: pre-line;
+  }
+
+  br {
+    display: block;
+    content: ' ';
+    font-size: 0;
+    line-height: 0;
+    height: 1rem;
   }
 
   a {
@@ -438,8 +443,8 @@ markdown {
 
   &.md-text {
     h1, h2, h3, h4, h5 {
-      margin-top: 2rem;
-      margin-bottom: 1.5rem;
+      //margin-top: 2rem;
+      //margin-bottom: 1.5rem;
     }
   }
 }
