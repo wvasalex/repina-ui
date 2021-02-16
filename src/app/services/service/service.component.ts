@@ -28,7 +28,7 @@ export class ServiceComponent implements OnInit, OnDestroy {
     .pipe(
       pluck('service'),
       map((service: Service) => {
-        if (service.content_blocks[0].block_type !== 'service-projects') {
+        if (service.content_blocks[1].block_type !== 'service-projects') {
           service.content_blocks.splice(1, 0, {
             block_type: 'service-projects',
             props: {},
