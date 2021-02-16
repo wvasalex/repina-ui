@@ -28,11 +28,13 @@ export class ServiceComponent implements OnInit, OnDestroy {
     .pipe(
       pluck('service'),
       map((service: Service) => {
-        service.content_blocks.splice(1, 0, {
-          block_type: 'service-projects',
-          props: {},
-          content_elements: [],
-        });
+        if (service.content_blocks[0].block_type !== 'service-projects') {
+          service.content_blocks.splice(1, 0, {
+            block_type: 'service-projects',
+            props: {},
+            content_elements: [],
+          });
+        }
 
         return service;
       }),
