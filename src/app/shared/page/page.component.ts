@@ -15,6 +15,7 @@ import { BreakpointService } from '../breakpoint.service';
 import { drawerAnimation } from '../animations';
 import { RequestComponent } from './request/request.component';
 import { MatDialog } from '@angular/material/dialog';
+import { SessionService } from '@shared/services/session';
 
 @Component({
   selector: 'r-page',
@@ -35,6 +36,8 @@ export class PageComponent implements OnInit, OnDestroy {
 
   @ViewChild(RequestComponent, {static: false}) requestViewChild: RequestComponent;
 
+  public sessionValid: boolean = this.sessionService.isValid();
+
   public drawerOpened: boolean = false;
 
   public priceRequest: EventEmitter<void> = new EventEmitter<void>();
@@ -45,7 +48,9 @@ export class PageComponent implements OnInit, OnDestroy {
   constructor(
     private dialog: MatDialog,
     private renderer: Renderer2,
-    private breakpointService: BreakpointService) {
+    private breakpointService: BreakpointService,
+    private sessionService: SessionService,
+    ) {
   }
 
   ngOnInit(): void {

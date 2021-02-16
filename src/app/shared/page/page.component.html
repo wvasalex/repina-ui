@@ -1,4 +1,12 @@
-<r-seo [readonly]="true"></r-seo>
+<ng-container *ngIf="sessionValid">
+  <link rel="stylesheet" href="/assets/material.css">
+
+  <r-seo [readonly]="false"></r-seo>
+</ng-container>
+
+<ng-container *ngIf="!sessionValid">
+  <r-seo [readonly]="true"></r-seo>
+</ng-container>
 
 <r-drawer
   *ngIf="drawerOpened"
@@ -6,12 +14,6 @@
   (priceRequest)="$priceRequest()"
   @drawerAnimation
 ></r-drawer>
-
-<ng-container *rWithSession>
-  <link rel="stylesheet" href="/assets/material.css">
-
-  <r-seo></r-seo>
-</ng-container>
 
 <r-header
   [class.has-image]="!!backgroundImage"

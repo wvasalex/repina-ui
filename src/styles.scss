@@ -418,11 +418,9 @@ markdown {
   }
 
   p {
-    white-space: pre-line;
-
     &.br {
       content: ' ';
-      height: 16px;
+      line-height: 1rem;
     }
   }
 
@@ -436,8 +434,6 @@ markdown {
   }
 
   ul {
-    margin-top: 2rem;
-    margin-bottom: 1.5rem;
   }
 
   &.md-text {

@@ -1,10 +1,11 @@
-import { Directive, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
+import { Directive, Input, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
 import { SessionService } from '@shared/services/session';
 
 @Directive({
   selector: '[rWithSession]'
 })
 export class WithSessionDirective implements OnInit {
+
   constructor(private templateRef: TemplateRef<any>,
               private viewContainer: ViewContainerRef,
               private sessionService: SessionService) { }
