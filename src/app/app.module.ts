@@ -13,7 +13,6 @@ import { API_BASE_CONFIG } from '@shared/services/api/api.model';
 import { SessionModule } from '@shared/services/session/session.module';
 import { NotfoundModule } from '@shared/notfound/notfound.module';
 import { MainModule } from './main/main.module';
-import { AuthModule } from './auth/auth.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
