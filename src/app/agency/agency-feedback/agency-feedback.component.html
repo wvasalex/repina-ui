@@ -51,9 +51,10 @@
     <div class="text32 mt-1">
       {{comment.props.role}}
     </div>
-    <r-quote class="quote h4 mt-6">
-      {{comment.props.quote}}
-    </r-quote>
+    <r-quote
+      [innerHTML]="comment.props.quote | linebreaks"
+      class="quote h4 mt-6"
+    ></r-quote>
     <div
       (click)="$toggle()"
       class="text32 mt-2_5 bolder full-review"
@@ -63,10 +64,9 @@
 
     <div
       *ngIf="expanded"
+      [innerHTML]="comment.props.text | linebreaks"
       @errorAnimation
       class="mt-3 text32"
-    >
-      {{comment.props.text}}
-    </div>
+    ></div>
   </ng-container>
 </ng-template>

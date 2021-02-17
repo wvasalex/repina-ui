@@ -1,7 +1,15 @@
+:host {
+  margin-right: 30px;
+}
+
 .w768 :host {
   .achievements {
     .text32 {
       padding-bottom: 1rem;
     }
   }
+}
+
+.w320 :host {
+  margin-right: 0;
 }

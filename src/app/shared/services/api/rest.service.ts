@@ -70,4 +70,19 @@ export class RestService {
     return this.api.getStream<T>(this.config.path + ':id/', {id});
   }
 
+  public bulkResolve(slugs: string[]) {
+    return this.get({
+      slug__in: slugs.join(','),
+    })
+      .toPromise()
+      .then((resolved) => {
+        const map = resolved.reduce((acc, item) => {
+          acc[item.slug] = item;
+          return acc;
+        }, {});
+
+        return slugs.map((slug: string) => map[slug]);
+      });
+  }
+
 }

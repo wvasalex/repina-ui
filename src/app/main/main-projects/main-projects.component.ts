@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { BaseBlock } from '@shared/blocks/block.component';
 import { ProjectsService } from '@shared/projects/projects.service';
 import { ContentElement } from '@shared/types';
+import { Project } from '@shared/projects/projects.model';
 
 @Component({
   selector: 'r-main-projects',
@@ -13,15 +14,18 @@ export class MainProjectsComponent extends BaseBlock implements OnInit, OnChange
 
   public projects: ContentElement[];
   public promo: ContentElement[];
+  public resolved: Project[];
 
-  constructor(private projectsService: ProjectsService) {
+  constructor(
+    private changeDetectorRef: ChangeDetectorRef,
+    private projectsService: ProjectsService,
+  ) {
     super();
   }
 
   public ngOnInit(): void {
     const promo = [];
     const projects = [];
-
     this.elements.forEach((element) => {
       if (element.element_type === 'main-promo') {
         promo.push(element);
@@ -29,9 +33,14 @@ export class MainProjectsComponent extends BaseBlock implements OnInit, OnChange
         projects.push(element);
       }
     });
+    const slugs = projects.map((item) => item.props.project);
 
     this.promo = promo;
-    this.projects = projects;
+    this.projectsService.bulkResolve(slugs).then((resolved) => {
+      this.resolved = resolved;
+      this.projects = projects;
+      this.changeDetectorRef.detectChanges();
+    });
   }
 
   public ngOnChanges(changes: SimpleChanges): void {

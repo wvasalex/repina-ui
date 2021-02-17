@@ -6,7 +6,7 @@
   "scripts": {
     "ng": "ng",
     "build": "ng build --prod --cross-origin=use-credentials",
-    "start": "ng serve --proxy-config=proxy.conf.json",
+    "start": "ng serve --proxy-config=proxy.conf.json --port=4201",
     "test": "ng test",
     "lint": "tslint ./src/**/*.ts -t verbose",
     "e2e": "ng e2e",

@@ -13,6 +13,7 @@ import { map, pluck, tap } from 'rxjs/operators';
 import { Service } from '../services.model';
 import { ServicesRenderService } from '../services-render.service';
 import { FooterService } from '@shared/footer/footer.service';
+import { ContentBlock } from '@shared/types';
 
 @Component({
   selector: 'r-service',
@@ -28,15 +29,7 @@ export class ServiceComponent implements OnInit, OnDestroy {
     .pipe(
       pluck('service'),
       map((service: Service) => {
-        if (service.content_blocks[1].block_type !== 'service-projects') {
-          service.content_blocks.splice(1, 0, {
-            block_type: 'service-projects',
-            props: {},
-            content_elements: [],
-          });
-        }
-
-        return service;
+        return this._injectProjectsBlock(service);
       }),
       tap((service) => {
         setTimeout(() => {
@@ -81,4 +74,19 @@ export class ServiceComponent implements OnInit, OnDestroy {
     }
   }
 
+  private _injectProjectsBlock(service: Service) {
+    const projects_block = service.content_blocks.find((block: ContentBlock) => {
+      return block.block_type === 'service-projects';
+    });
+
+    if (!projects_block) {
+      service.content_blocks.splice(1, 0, {
+        block_type: 'service-projects',
+        props: {},
+        content_elements: [],
+      });
+    }
+
+    return service;
+  }
 }
