@@ -93,8 +93,7 @@ export class RestService {
 
   private _dropCache(url) {
     return () => {
-      console.log('Drop cache for ' + url);
-      this.api.getStream('clearcache').toPromise();
+      this.api.clearCache().toPromise();
     };
   }
 

@@ -46,6 +46,10 @@ export class ApiService {
     return this.httpClient.patch<T>(url, data);
   }
 
+  public clearCache(): Observable<any> {
+    return this.httpClient.get('/clearchache');
+  }
+
   private _stream<T>(method: string, url: string, body: StrMap<any> = {}, options?: ApiRequestOptions): Observable<T> {
     const params = {...body};
     if (params.hasOwnProperty('slug')) {
