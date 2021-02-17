@@ -35,12 +35,13 @@ export function app(): express.Express {
     maxAge: '1y'
   }));
 
-  server.get('/clearcache', (req, res) => {
-    mcache.clear();
-    res.status(200).send('ok');
-  });
-
   server.get('*', (req, res) => {
+    if (req.originalUrl == '/clearcache') {
+      mcache.clear();
+      res.status(200).send('ok');
+      return;
+    }
+
     let key = '__express__' + req.originalUrl;
     let cachedBody = mcache.get(key);
     if (cachedBody) {

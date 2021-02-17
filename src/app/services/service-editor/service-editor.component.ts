@@ -59,7 +59,7 @@ export class ServiceEditorComponent implements OnInit {
 
   public ngOnInit(): void {
     this._sub = this.activatedRoute.data.pipe(
-      pluck('service')
+      pluck('service'),
     ).subscribe(() => {
       this._init();
     });
@@ -112,17 +112,22 @@ export class ServiceEditorComponent implements OnInit {
 
     this.service.preview_file = this.service.content_blocks[0]?.props?.animation;
 
-    this.service.content_blocks.forEach((block: ContentBlock, index: number) => {
-      block.position = index;
-
-      block.content_elements.forEach((element: ContentElement, elementIndex: number) => {
-        element.position = elementIndex;
-
-        if (element.hasOwnProperty('content_file')) {
-          delete element.content_file;
+    this.service.content_blocks
+      .forEach((block: ContentBlock, index: number) => {
+        if (block.block_type === 'service-projects') {
+          block._destroy = true;
         }
+
+        block.position = index;
+
+        block.content_elements.forEach((element: ContentElement, elementIndex: number) => {
+          element.position = elementIndex;
+
+          if (element.hasOwnProperty('content_file')) {
+            delete element.content_file;
+          }
+        });
       });
-    });
 
     // Slug update
     if (this.service._slug) {
@@ -132,7 +137,6 @@ export class ServiceEditorComponent implements OnInit {
     }
 
     const req = this.servicesService.save(this.service).toPromise().then((a: Service) => {
-      console.log(a);
       if (this.service.slug != this.service._slug) {
         this.router.navigate(['/services', a.slug, 'edit']);
       } else {
@@ -173,7 +177,7 @@ export class ServiceEditorComponent implements OnInit {
 
   private _init(): void {
     const snapshot = this.activatedRoute.snapshot;
-    this.service = this._normalize(snapshot.data.service || { _new: true });
+    this.service = this._normalize(snapshot.data.service || {_new: true});
 
     if (!this.service.content_blocks?.length) {
       this.service.content_blocks = [
