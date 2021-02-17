@@ -93,7 +93,7 @@ export class RestService {
 
   private _dropCache(url) {
     return () => {
-      this.api.clearCache().toPromise();
+      //this.api.clearCache().toPromise();
     };
   }
 
