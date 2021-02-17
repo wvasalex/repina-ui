@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { ApiService } from './api.service';
 import { StrMap } from '@shared/types';
 import { ApiConfig, PagedRequest, PagedResponse } from '@shared/services/api/api.model';
@@ -22,7 +22,9 @@ export class RestService {
   }
 
   public post<T>(body: StrMap<any> = {}) {
-    return this.api.postStream<T>(this.config.path, body);
+    return this.api.postStream<T>(this.config.path, body).pipe(
+      tap(this._dropCache(this.config.path + ':id/')),
+    );
   }
 
   public get<T>(body: StrMap<any> = {}) {
@@ -55,7 +57,9 @@ export class RestService {
   }
 
   public patch<T>(body: StrMap<any> = {}) {
-    return this.api.patchStream<T>(this.config.path + ':id/', body);
+    return this.api.patchStream<T>(this.config.path + ':id/', body).pipe(
+      tap(this._dropCache(this.config.path + ':id/')),
+    );
   }
 
   public put<T>(body: StrMap<any> = {}) {
@@ -63,7 +67,9 @@ export class RestService {
   }
 
   public delete<T>(id: number) {
-    return this.api.deleteStream(this.config.path + ':id/', {id});
+    return this.api.deleteStream(this.config.path + ':id/', {id}).pipe(
+      tap(this._dropCache(this.config.path + ':id/')),
+    );
   }
 
   public resolve<T>(id: string) {
@@ -83,6 +89,13 @@ export class RestService {
 
         return slugs.map((slug: string) => map[slug]);
       });
+  }
+
+  private _dropCache(url) {
+    return () => {
+      console.log('Drop cache for ' + url);
+      this.api.getStream('clearcache').toPromise();
+    };
   }
 
 }

@@ -35,7 +35,11 @@ export function app(): express.Express {
     maxAge: '1y'
   }));
 
-  // All regular routes use the Universal engine
+  server.get('/clearcache', (req, res) => {
+    mcache.clear();
+    res.status(200).send('ok');
+  });
+
   server.get('*', (req, res) => {
     let key = '__express__' + req.originalUrl;
     let cachedBody = mcache.get(key);
