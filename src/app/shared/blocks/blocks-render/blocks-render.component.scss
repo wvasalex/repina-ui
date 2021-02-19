@@ -20,11 +20,12 @@
   overflow: hidden;
 
   .block_type:not(:first-of-type) {
-    transform: perspective(300px) translate3d(0, 20vh, 0);
+    will-change: transform;
+    transform: translate3d(0, 20vh, 0);
     transition: 600ms 100ms ease-out;
 
     &.in-viewport {
-      transform: perspective(300px) translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
     }
   }
 }

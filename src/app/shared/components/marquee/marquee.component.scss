@@ -9,16 +9,17 @@ span {
   display: flex;
   flex-direction: row;
   white-space: nowrap;
-  -webkit-animation: scroll 16s infinite linear;
-  -moz-animation: scroll 16s infinite linear;
-  animation: scroll 16s infinite linear;
+  -webkit-animation: scroll 20s infinite linear;
+  -moz-animation: scroll 20s infinite linear;
+  animation: scroll 20s infinite linear;
+  will-change: transform;
 }
 
 @keyframes scroll {
   0% {
-    transform: translate(0, 0);
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    transform: translate(-100%, 0)
+    transform: translate3d(-100%, 0, 0)
   }
 }
