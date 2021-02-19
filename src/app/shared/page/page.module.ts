@@ -13,6 +13,7 @@ import { RequestComponent } from './request/request.component';
 import { HeaderComponent } from './header/header.component';
 import { RequestFeedbackComponent } from './request-feedback/request-feedback.component';
 import { RequestDirective } from '@shared/page/request.directive';
+import { CookiesComponent } from './cookies/cookies.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { RequestDirective } from '@shared/page/request.directive';
     HeaderComponent,
     RequestFeedbackComponent,
     RequestDirective,
+    CookiesComponent,
   ],
   exports: [
     PageComponent,

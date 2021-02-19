@@ -6,4 +6,7 @@
 
 <div class="text32 tag">{{tag}}</div>
 
-<div class="h2 mt-16">{{title}}</div>
+<div
+  [innerHTML]="title | linebreaks"
+  class="h2 mt-16"
+></div>

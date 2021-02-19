@@ -1,0 +1,23 @@
+:host {
+  position: fixed;
+  display: none;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  padding: 32px 0;
+  background: #EBEBEB;
+
+
+  &.visible {
+    display: block;
+  }
+
+  r-button {
+    flex: 0;
+  }
+
+  r-padding {
+    align-items: center;
+  }
+}

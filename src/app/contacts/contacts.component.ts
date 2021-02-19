@@ -86,6 +86,11 @@ export class ContactsComponent implements OnInit, AfterViewInit {
       scrollwheel: false,
       center: center,
       mapTypeId: maps.MapTypeId.ROADMAP,
+      styles: [{
+        stylers: [{
+          saturation: -100
+        }]
+      }],
     };
 
     const map = new maps.Map(this.map.nativeElement, mapOptions);

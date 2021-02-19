@@ -41,7 +41,6 @@ export class MainArticleComponent extends BaseBlock {
     this.article$ = this.journalService.get({
       slug: this.props.article,
     }).pipe(map((articles: Article[]) => {
-      console.log(articles);
       return articles[0];
     }));
   }

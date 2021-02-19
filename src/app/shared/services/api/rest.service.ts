@@ -9,6 +9,8 @@ export class RestService {
   public config: ApiConfig;
   public api: ApiService;
 
+  private _cacheDropTimeout;
+
   public save<T>(body: StrMap<any> = {}): Observable<T> {
     const {_new, ...data} = body;
     const uid = body._slug || body.slug || body.id;
@@ -93,7 +95,17 @@ export class RestService {
 
   private _dropCache(url) {
     return () => {
-      //this.api.clearCache().toPromise();
+      if (typeof window === 'undefined') {
+        return;
+      }
+
+      if (this._cacheDropTimeout) {
+        clearTimeout(this._cacheDropTimeout);
+      }
+
+      this._cacheDropTimeout = setTimeout(() => {
+        this.api.clearCache().toPromise();
+      },  100);
     };
   }
 
