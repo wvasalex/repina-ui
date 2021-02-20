@@ -22,6 +22,7 @@
   .block_type:not(:first-of-type) {
     -webkit-transform: translateY(160px);
     transform: translateY(160px);
+    -webkit-transition: 600ms 100ms ease-out;;
     transition: 600ms 100ms ease-out;
     will-change: transform;
 
