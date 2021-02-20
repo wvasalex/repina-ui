@@ -20,14 +20,14 @@
   overflow: hidden;
 
   .block_type:not(:first-of-type) {
-    will-change: transform, -webkit-transform;
-    transform: translate3d(0, 160px, 0);
-    -webkit-transform: translate3d(0, 160px, 0);
+    -webkit-transform: translateY(160px);
+    transform: translateY(160px);
     transition: 600ms 100ms ease-out;
+    will-change: transform;
 
     &.in-viewport {
-      transform: translate3d(0, 0, 0);
-      -webkit-transform: translate3d(0, 0, 0);
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
     }
   }
 }
