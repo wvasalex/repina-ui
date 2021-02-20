@@ -1,5 +1,4 @@
-import { NgModule, PLATFORM_ID, APP_ID, Inject } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { BrowserModule, HammerModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -42,7 +41,7 @@ import { environment } from '../environments/environment';
     {
       provide: API_BASE_CONFIG,
       useValue: {
-        host: environment.production ? 'http://5.63.158.46' : '',
+        host: '',
         base: '/api/v1',
       },
     },
