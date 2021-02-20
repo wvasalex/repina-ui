@@ -15,7 +15,7 @@ import { API_BASE_CONFIG } from './shared/services/api/api.model';
     {
       provide: API_BASE_CONFIG,
       useValue: {
-        host: '//5.63.158.46',
+        host: 'https://repinabranding.ru',
         base: '/api/v1',
       },
     },
