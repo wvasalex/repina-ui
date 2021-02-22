@@ -33,7 +33,7 @@ export class RequestComponent implements OnInit, OnDestroy {
 
   public formGroup: FormGroup = this.formBuilder.group({
     name: ['', Validators.required],
-    phone: ['', Validators.required],
+    phone: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
     email: ['', [Validators.required, Validators.email]],
     comment: [''],
     news: [true],
@@ -87,12 +87,14 @@ export class RequestComponent implements OnInit, OnDestroy {
     const checked = relation.meta.checked = e.checked;
 
     this.proposalError = false;
+
     if (relation.meta.deps || relation.meta.exclude) {
       this.requestService.toggleRelation(relation, checked);
     }
   }
 
   public $selectedRelations(relations: SelectOption[]) {
+    this.submitted.next(false);
     return this.requestService.getSelectedRelations(relations);
   }
 
@@ -105,7 +107,7 @@ export class RequestComponent implements OnInit, OnDestroy {
 
     this.submitted.next(true);
     this.proposalError = !this.requestService.valid(this.selected[0]);
-    if (this.proposalError || !this.formGroup.valid) {
+    if (this.proposalError || this.formGroup.invalid) {
       this._scrollView();
       return;
     }
@@ -157,7 +159,7 @@ export class RequestComponent implements OnInit, OnDestroy {
       popupContainer?.scrollTo(0, 0);
     } else {
       const el = this.ref.nativeElement;
-      const top = el.offsetTop + el.clientHeight / 5;
+      const top = el.offsetTop + el.clientHeight / 5 - 150;
 
       window.scrollTo(0, top);
     }

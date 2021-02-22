@@ -74,8 +74,11 @@ export class RequestService extends RestService {
   }
 
   public send(proposalType: SelectOption, value: StrMap<string>): Observable<boolean> {
-    const proposal_keys = this.getSelectedRelations(this.relations$.value || []).map((option) => option.value);
-    const {name, phone, email, comment} = value;
+    const proposal_keys = this.getSelectedRelations(this.relations$.value || [])
+      .filter((option) => !option.meta.disabled)
+      .map((option) => option.value);
+
+    const { name, phone, email, comment } = value;
 
     if (!proposalType || !proposal_keys.length) {
       return of(false);
