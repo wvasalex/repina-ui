@@ -55,6 +55,9 @@ export class RequestService extends RestService {
       relation.meta.deps.forEach((relationId: string) => {
         const option = getOption(relations, relationId);
         option.meta.disabled = !checked;
+        if (option.meta.disabled) {
+          option.meta.checked = false;
+        }
 
         if (option.meta.deps) {
           this.toggleRelation(option, option.meta.checked && !option.meta.disabled);
