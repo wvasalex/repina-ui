@@ -19,6 +19,7 @@ export class ViewportIntersectDirective implements AfterViewInit, OnDestroy {
   public ngAfterViewInit() {
     if (!supported) {
       this.emit();
+      this.destroy();
       return;
     }
 
@@ -36,7 +37,7 @@ export class ViewportIntersectDirective implements AfterViewInit, OnDestroy {
    * Emit output event
    */
   private emit() {
-    this.viewportIntersect.emit();
+    this.viewportIntersect.emit(this.ref.nativeElement);
   }
 
   /**

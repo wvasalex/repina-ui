@@ -1,3 +1,5 @@
+@import "src/styles";
+
 :host {
   .h3 * {
     font: inherit;
@@ -8,10 +10,12 @@
   }
 }
 
+.email {
+  word-break: break-all;
+}
+
 .w320 :host {
-  .space {
-    &:after {
-      content: ' ';
-    }
-  }
+ /* .email {
+    @extend .h3;
+  }*/
 }

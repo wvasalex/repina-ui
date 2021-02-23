@@ -98,7 +98,9 @@ export class BlocksRenderComponent implements OnInit {
     }
   }
 
-  public $blockVisible(index: number) {
-    this.inViewport = index;
+  public $blockVisible(target, index: number) {
+    const transform = 'translateY(0)';
+    target.style.WebkitTransform = transform;
+    target.style.transform = transform;
   }
 }
