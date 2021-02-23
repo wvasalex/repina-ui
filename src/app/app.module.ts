@@ -41,7 +41,7 @@ import { environment } from '../environments/environment';
     {
       provide: API_BASE_CONFIG,
       useValue: {
-        host: '',
+        host: environment.production ? 'https://repinabranding.ru' : '',
         base: '/api/v1',
       },
     },

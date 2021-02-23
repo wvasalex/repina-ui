@@ -14,9 +14,9 @@ export class ApiService {
               @Inject(PLATFORM_ID) private platformId: Object,
               @Inject(API_BASE_CONFIG) private config: BaseApiConfig) {
 
-    if (isPlatformServer(platformId)) {
+    /*if (isPlatformServer(platformId)) {
       this.config.host = 'http://5.63.158.46';
-    }
+    }*/
   }
 
   public postStream<T>(url: string, body: StrMap<any> = {}, options?: ApiRequestOptions): Observable<T> {

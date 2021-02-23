@@ -19,7 +19,7 @@
 <a
   *ngIf="!editor"
   [attr.href]="'mailto:' + props.email_address + '@' + props.email_domain"
-  class="h2 email"
+  class="contact-data"
 >
   {{props.email_address}}@{{props.email_domain}}
 </a>
@@ -38,7 +38,7 @@
   *ngIf="!editor"
   [innerHTML]="$getValue('phone')"
   [attr.href]="'tel:' + props.phone"
-  class="h2 mgo-number-12938"
+  class="contact-data mgo-number-12938"
 ></a>
 
 <div class="text32 mt-64">
@@ -48,5 +48,5 @@
   (contentChanged)="$contentChanged($event, 'address')"
   [innerHTML]="$getValue('address')"
   [r-block]="editor"
-  class="h2"
+  class="contact-data"
 ></div>

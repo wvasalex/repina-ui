@@ -5,17 +5,14 @@
     font: inherit;
   }
 
-  .h2 {
+  .contact-data {
+    @extend .h2;
     margin-top: 8px;
   }
 }
 
-.email {
-  word-break: break-all;
-}
-
 .w320 :host {
- /* .email {
+  .contact-data {
     @extend .h3;
-  }*/
+  }
 }
