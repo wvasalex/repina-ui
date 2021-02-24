@@ -79,7 +79,7 @@ export class ContactsComponent implements OnInit, AfterViewInit {
 
   private _init() {
     const maps = window['google'].maps;
-    const center = new maps.LatLng(55.801106, 37.6378429);
+    const center = new maps.LatLng(55.800084, 37.637497);
     const mapOptions = {
       zoom: 16,
       disableDefaultUI: true,

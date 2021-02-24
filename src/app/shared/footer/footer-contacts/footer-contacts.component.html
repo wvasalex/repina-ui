@@ -9,9 +9,12 @@
       [attr.content]="data.phone"
       itemprop="telephone"
     />
-    <br>
-    <a [attr.href]="'mailto:' + data.email_address + '@' + data.email_domain">
-      <span>{{data.email_address}}@{{data.email_domain}}</span>
+
+    <a
+      [attr.href]="'mailto:' + data.email_address + '@' + data.email_domain"
+      class="d-block"
+    >
+      {{data.email_address}}@{{data.email_domain}}
     </a>
   </div>
   <div class="mt-5">Адрес</div>
