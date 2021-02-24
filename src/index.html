@@ -138,12 +138,17 @@
     p = d.getElementsByTagName("script")[0];
     p.parentNode.insertBefore(s, p);
   }(window, document, "//widgets.mango-office.ru/widgets/mango.js", "mango-js", "mgo"));
-  mgo({
-    calltracking: {
-      id: 12938,
-      elements: [{"selector": ".mgo-number-12938"}],
-    }
-  });
+
+  window.initMango = function() {
+    mgo({
+      calltracking: {
+        id: 12938,
+        elements: [{"selector": ".mgo-number-12938"}],
+      }
+    });
+  };
+
+  initMango();
 </script>
 
 </body>
