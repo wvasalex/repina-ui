@@ -23,6 +23,7 @@ export class AppComponent implements OnDestroy {
   }
 
   public ngOnDestroy() {
+    this._navigationSub.unsubscribe();
   }
 
 }
