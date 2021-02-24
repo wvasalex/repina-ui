@@ -140,12 +140,11 @@
   }(window, document, "//widgets.mango-office.ru/widgets/mango.js", "mango-js", "mgo"));
 
   window.initMango = function() {
-    mgo({
-      calltracking: {
-        id: 12938,
-        elements: [{"selector": ".mgo-number-12938"}],
-      }
-    });
+    mgo.getNumber('', function(e) {
+      document.querySelectorAll(".mgo-number-12938").forEach(function(elem) {
+        elem.innerText = result.formattedNumber;
+      });
+    })
   };
 
   mgo({
