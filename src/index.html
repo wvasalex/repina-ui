@@ -140,7 +140,7 @@
   }(window, document, "//widgets.mango-office.ru/widgets/mango.js", "mango-js", "mgo"));
 
   window.initMango = function() {
-    mgo && mgo.getNumber('', function(e) {
+    mgo.getNumber && mgo.getNumber('', function(e) {
       document.querySelectorAll(".mgo-number-12938").forEach(function(elem) {
         elem.innerText = e.formattedNumber;
       });
