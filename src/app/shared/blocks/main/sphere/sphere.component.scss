@@ -18,7 +18,6 @@ r-sphere {
   height: 556px;
   opacity: 0;
   will-change: margin, top, left, width, height;
-  animation: 5s bounce infinite;
 
   .video-js {
     object-fit: cover;
@@ -32,6 +31,7 @@ r-sphere {
   &.ready {
     transition: opacity 1200ms;
     opacity: 1;
+    animation: 5s bounce infinite;
   }
 
   &.absolute {

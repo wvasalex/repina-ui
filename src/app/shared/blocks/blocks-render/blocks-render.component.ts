@@ -99,6 +99,10 @@ export class BlocksRenderComponent implements OnInit {
   }
 
   public $blockVisible(target, index: number) {
+    if (!this.animated) {
+      return;
+    }
+
     const transform = 'translateY(0)';
     target.style.WebkitTransform = transform;
     target.style.transform = transform;

@@ -93,10 +93,10 @@ export class MainAnimationService {
     const wh = window.innerHeight;
     const ww = window.innerWidth;
     let left = Math.max(e.pageX, ww / 2);
-    let top = Math.max(e.pageY, sphere_radius + 20);
+    let top = Math.max(e.pageY, sphere_radius + 120);
 
-    if (top + sphere_radius * 1.2 >= wh) {
-      top = wh - sphere_radius * 1.2;
+    if (top + sphere_radius >= wh + 100) {
+      top = wh - sphere_radius + 100;
     }
 
     //const bound: boolean = top <= 300 || ;
