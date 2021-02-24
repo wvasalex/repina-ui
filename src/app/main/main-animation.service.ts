@@ -61,7 +61,7 @@ export class MainAnimationService {
     const parent = this.sphere.parentElement;
     const element = parent.removeChild(this.sphere);
     element.style.position = 'absolute';
-    element.style.top = rect.top+ 'px';
+    element.style.top = rect.top + 'px';
     element.style.left = rect.left + 'px';
     element.classList.add('absolute');
 
@@ -89,14 +89,14 @@ export class MainAnimationService {
     }
 
     const s = this.sphere;
-    const sphere_radius = this.sphere.clientHeight / 2;
+    const sphere_radius = s.clientHeight / 2;
     const wh = window.innerHeight;
     const ww = window.innerWidth;
-    let left = Math.max(e.pageX, ww/2);
-    let top = Math.max(e.pageY, sphere_radius + 100);
+    let left = Math.max(e.pageX, ww / 2);
+    let top = Math.max(e.pageY, sphere_radius + 20);
 
-    if (top + sphere_radius >= wh - 80) {
-      top = wh - sphere_radius - 80;
+    if (top + sphere_radius * 1.2 >= wh) {
+      top = wh - sphere_radius * 1.2;
     }
 
     //const bound: boolean = top <= 300 || ;
@@ -118,8 +118,8 @@ export class MainAnimationService {
       left = e.pageX + 20;
     }*/
 
-    this.sphere.style.left = (left - sphere_radius) + 'px';
-    this.sphere.style.top = (top - sphere_radius) + 'px';
+    s.style.left = (left - sphere_radius) + 'px';
+    s.style.top = (top - sphere_radius) + 'px';
   }
 
 }
