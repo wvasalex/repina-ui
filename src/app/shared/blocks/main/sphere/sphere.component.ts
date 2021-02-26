@@ -103,6 +103,12 @@ export class SphereComponent extends BaseBlock {
           this.element.nativeElement.classList.add('ready');
         }, 300);
       });
+
+      this.player.on('error', () => {
+        if (!this.editor) {
+          this.player.dispose();
+        }
+      });
     } else {
       this.player.src([
         {
