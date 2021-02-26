@@ -6,6 +6,11 @@
   class="video-js"
 ></video>
 
+<img
+  *ngIf="error"
+  src="/assets/pictures/sphere.jpg"
+>
+
 <ng-container *ngIf="editor">
   <button
     *ngIf="id"

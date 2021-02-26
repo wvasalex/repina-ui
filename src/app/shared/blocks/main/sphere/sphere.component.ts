@@ -30,6 +30,7 @@ export class SphereComponent extends BaseBlock {
 
   public ready: boolean = false;
   public muted: boolean = true;
+  public error: boolean = false;
 
   private player: videojs.Player;
 
@@ -106,7 +107,10 @@ export class SphereComponent extends BaseBlock {
 
       this.player.on('error', () => {
         if (!this.editor) {
+          this.error = true;
           this.player.dispose();
+
+          this.changeDetectoRef.detectChanges();
         }
       });
     } else {
