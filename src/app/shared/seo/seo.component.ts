@@ -82,7 +82,7 @@ export class SeoComponent implements OnInit, OnDestroy {
   }
 
   private _url(): string {
-    return this.router.url;
+    return this.router.url.replace('/edit', '');
   }
 
   private _init() {

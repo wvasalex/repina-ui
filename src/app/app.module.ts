@@ -16,6 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { environment } from '../environments/environment';
+import { CookieModule } from 'ngx-cookie';
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import { environment } from '../environments/environment';
     FormsModule,
     HttpClientModule,
     MarkdownModule.forRoot(),
+    CookieModule.forRoot(),
     SharedModule,
     PageModule,
     NotfoundModule,

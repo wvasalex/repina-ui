@@ -14,6 +14,7 @@ import { HeaderComponent } from './header/header.component';
 import { RequestFeedbackComponent } from './request-feedback/request-feedback.component';
 import { RequestDirective } from '@shared/page/request.directive';
 import { CookiesComponent } from './cookies/cookies.component';
+import { CookieModule } from 'ngx-cookie';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { CookiesComponent } from './cookies/cookies.component';
     RequestDirective,
   ],
   imports: [
+    CookieModule.forChild(),
     CommonModule,
     ObserversModule,
     MenuModule,

@@ -6,7 +6,7 @@ import {
   Input,
   OnDestroy,
   OnInit,
-  Optional, Renderer2,
+  Optional,
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -15,6 +15,7 @@ import { RequestService } from '@shared/page/request/request.service';
 import { errorAnimation, opacityAnimation } from '@shared/animations';
 import { StrMap } from '@shared/types';
 import { BehaviorSubject, Subscription } from 'rxjs';
+import { CookieService } from 'ngx-cookie';
 
 @Component({
   selector: 'r-request',
@@ -47,6 +48,7 @@ export class RequestComponent implements OnInit, OnDestroy {
   public submitted: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(
+    private cookieService: CookieService,
     private changeDetectorRef: ChangeDetectorRef,
     private formBuilder: FormBuilder,
     public requestService: RequestService,
@@ -112,7 +114,10 @@ export class RequestComponent implements OnInit, OnDestroy {
       return;
     }
 
-    const req = this.requestService.send(this.selected[0], this.formGroup.value)
+    const value = this.formGroup.value;
+    value.roistat_visit = this.cookieService.get('roistat_visit');
+
+    const req = this.requestService.send(this.selected[0], value)
       .toPromise()
       .then((sent: boolean) => {
         this._scrollView();

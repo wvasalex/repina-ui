@@ -95,8 +95,6 @@ export class RestService {
 
   private _dropCache(url) {
     return () => {
-      return;
-      /*
       if (typeof window === 'undefined') {
         return;
       }
@@ -107,7 +105,7 @@ export class RestService {
 
       this._cacheDropTimeout = setTimeout(() => {
         this.api.clearCache().toPromise();
-      },  100);*/
+      },  100);
     };
   }
 
