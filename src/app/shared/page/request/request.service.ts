@@ -81,7 +81,7 @@ export class RequestService extends RestService {
       .filter((option) => !option.meta.disabled)
       .map((option) => option.value);
 
-    const { name, phone, email, comment } = value;
+    const { name, phone, email, comment, roistat_visit } = value;
 
     if (!proposalType || !proposal_keys.length) {
       return of(false);
@@ -89,6 +89,7 @@ export class RequestService extends RestService {
 
     return this.post({
       proposal_type: proposalType.value,
+      roistat_visit,
       proposal_keys,
       name,
       phone,
