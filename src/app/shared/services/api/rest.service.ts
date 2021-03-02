@@ -104,7 +104,7 @@ export class RestService {
       }
 
       this._cacheDropTimeout = setTimeout(() => {
-        this.api.clearCache().toPromise();
+        //this.api.clearCache().toPromise();
       },  100);
     };
   }
