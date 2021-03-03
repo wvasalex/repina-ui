@@ -95,8 +95,8 @@ export class MainAnimationService {
     let left = Math.max(e.pageX, ww / 2);
     let top = Math.max(e.pageY, sphere_radius + 120);
 
-    if (top + sphere_radius >= wh + 100) {
-      top = wh - sphere_radius + 100;
+    if (top + sphere_radius >= wh + 40) {
+      top = wh - sphere_radius + 40;
     }
 
     //const bound: boolean = top <= 300 || ;

@@ -164,7 +164,7 @@ export class RequestComponent implements OnInit, OnDestroy {
       popupContainer?.scrollTo(0, 0);
     } else {
       const el = this.ref.nativeElement;
-      const top = el.offsetTop + el.clientHeight / 5 - 150;
+      const top = el.offsetTop + el.clientHeight / 2 - window.innerHeight / 2;
 
       window.scrollTo(0, top);
     }
