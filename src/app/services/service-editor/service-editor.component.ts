@@ -114,7 +114,7 @@ export class ServiceEditorComponent implements OnInit {
 
     this.service.content_blocks
       .forEach((block: ContentBlock, index: number) => {
-        if (block.block_type === 'service-projects') {
+        if (block.id && block.block_type === 'service-projects') {
           block._destroy = true;
         }
 
