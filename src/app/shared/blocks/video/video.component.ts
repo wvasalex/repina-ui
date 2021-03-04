@@ -112,6 +112,7 @@ export class VideoComponent extends BaseBlock implements OnInit, OnDestroy {
         loop: this.props.autoplay,
         responsive: true,
         fill: true,
+        fluid: true,
       }, () => {
         this.player.muted(this.muted = !!this.props.autoplay);
       });
