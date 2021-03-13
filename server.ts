@@ -45,18 +45,15 @@ export function app(): express.Express {
     let key = '__express__' + req.originalUrl;
     let cachedBody = mcache.get(key);
     if (cachedBody) {
-      console.log('cached! ' + key);
-
       res.send(cachedBody);
     } else {
-      console.log('not cached! ' + key);
       const send = res.send;
       res.send = (body) => {
         mcache.put(key, body, 300000);
         return send.call(res, body);
       };
 
-      res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
+      res.render(indexHtml, { req, res, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
     }
   });
 

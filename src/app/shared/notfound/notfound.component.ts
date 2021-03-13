@@ -1,8 +1,11 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { RESPONSE } from '@nguniversal/express-engine/tokens';
+import { Response } from 'express';
+import { ChangeDetectionStrategy, Component, Inject, OnInit, Optional, PLATFORM_ID } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MenuService } from '@shared/menu/menu.service';
 import { ContentBlock, ContentElement } from '@shared/types';
 import { map } from 'rxjs/operators';
+import { isPlatformServer } from '@angular/common';
 
 @Component({
   selector: 'r-notfound',
@@ -19,11 +22,16 @@ export class NotfoundComponent implements OnInit {
   );
 
   constructor(
+    @Inject(PLATFORM_ID) private platformId: any,
+    @Optional() @Inject(RESPONSE) private response: Response,
     private menuService: MenuService,
   ) {
   }
 
   ngOnInit(): void {
+    if (isPlatformServer(this.platformId)) {
+      this.response.status(404);
+    }
   }
 
 }

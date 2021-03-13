@@ -4,10 +4,9 @@
   left: 0;
   right: 0;
   bottom: 0;
-
   padding: 28px 0;
   background: #EBEBEB;
-
+  z-index: 1;
 
   &.visible {
     display: block;
