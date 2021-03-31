@@ -35,26 +35,35 @@ export function app(): express.Express {
     maxAge: '1y'
   }));
 
-  server.get('*', (req, res) => {
-    if (req.originalUrl == '/clearcache') {
+  server.get('*', (req, res, next) => {
+    const url = req.originalUrl;
+    if (url === '/clearcache') {
       mcache.clear();
       res.status(200).send('ok');
       return;
     }
 
-    let key = '__express__' + req.originalUrl;
-    let cachedBody = mcache.get(key);
-    if (cachedBody) {
-      res.send(cachedBody);
-    } else {
-      const send = res.send;
-      res.send = (body) => {
-        mcache.put(key, body, 300000);
-        return send.call(res, body);
-      };
+    const preventCache =  url === '/404' || url.indexOf('/_') > -1;
 
-      res.render(indexHtml, { req, res, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
+    const cachedHtml = preventCache ? null : mcache.get('__express__' + req.originalUrl);
+    if (cachedHtml) {
+      res.send(cachedHtml);
+    } else {
+      next();
     }
+  }, (req, res) => {
+    const cacheKey = '__express__' + req.originalUrl;
+
+    res.render(indexHtml, {
+      req,
+      res,
+      providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }]
+    }, (err: Error, html: string) => {
+      if (!err) {
+        mcache.put(cacheKey, html, 300000);
+      }
+      res.send(html);
+    });
   });
 
   return server;
