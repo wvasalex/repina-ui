@@ -1,12 +1,10 @@
-@import '~@angular/material/theming';
+/*@import '~@angular/material/theming';
 @include mat-core();
 $repina-ui-primary: mat-palette($mat-red);
 $repina-ui-accent: mat-palette($mat-pink, A200, A100, A400);
 $repina-ui-warn: mat-palette($mat-red);
-$repina-ui-theme: mat-light-theme($repina-ui-primary, $repina-ui-accent, $repina-ui-warn);
+$repina-ui-theme: mat-light-theme($repina-ui-primary, $repina-ui-accent, $repina-ui-warn);*/
 
-@include mat-tooltip-theme($repina-ui-theme);
-@include mat-dialog-theme($repina-ui-theme);
 
 
 $color-blue: #0043EE;

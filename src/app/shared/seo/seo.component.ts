@@ -108,7 +108,7 @@ export class SeoComponent implements OnInit, OnDestroy {
     const { title, canonical, ...meta } = seo.props;
 
     this.title.setTitle(title);
-    this._setLink('canonical', { rel: 'canonical', html: canonical });
+    this._setLink('canonical', { rel: 'canonical', href: canonical });
 
     for (let name in meta) {
       if (meta.hasOwnProperty(name)) {
