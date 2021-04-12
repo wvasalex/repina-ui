@@ -4,32 +4,44 @@ const supported: boolean = typeof window !== 'undefined' &&
   'IntersectionObserver' in window &&
   'IntersectionObserverEntry' in window;
 
+const observer: any = supported ? new IntersectionObserver((entries) => {
+  entries.forEach((entry: IntersectionObserverEntry) => {
+    if (entry.isIntersecting) {
+      const component = observer.components.get(entry.target);
+      component.intersect();
+    }
+  });
+}, {
+  rootMargin: '0px 0px 20% 0px',
+}) : {};
+
+observer.components = new Map();
+
 @Directive({
   selector: '[viewportIntersect]',
 })
 export class ViewportIntersectDirective implements AfterViewInit, OnDestroy {
 
-  @Output() viewportIntersect: EventEmitter<any> = new EventEmitter();
-
-  private observer: IntersectionObserver;
+  @Output() viewportIntersect: EventEmitter<HTMLElement> = new EventEmitter();
 
   constructor(private ref: ElementRef) {
   }
 
   public ngAfterViewInit() {
-    if (!supported) {
-      this.emit();
-      this.destroy();
-      return;
+    if (!observer.observe) {
+      return this.intersect();
     }
 
-    this.observer = new IntersectionObserver((entries) => {
-      this.checkForIntersection(entries);
-    }, {});
-    this.observer.observe(<Element>this.ref.nativeElement);
+    observer.components.set(this.ref.nativeElement, this);
+    observer.observe(this.ref.nativeElement as HTMLElement);
   }
 
   public ngOnDestroy() {
+    this.destroy();
+  }
+
+  public intersect() {
+    this.emit();
     this.destroy();
   }
 
@@ -40,31 +52,11 @@ export class ViewportIntersectDirective implements AfterViewInit, OnDestroy {
     this.viewportIntersect.emit(this.ref.nativeElement);
   }
 
-  /**
-   * Check for intersections
-   * @param {Array<IntersectionObserverEntry>} entries
-   */
-  private checkForIntersection = (entries: Array<IntersectionObserverEntry>) => {
-    entries.forEach((entry: IntersectionObserverEntry) => {
-      if (this.checkIfIntersecting(entry)) {
-        this.emit();
-        this.destroy();
-      }
-    });
-  };
-
-  private checkIfIntersecting(entry: IntersectionObserverEntry) {
-    return (<any>entry).isIntersecting && entry.target === this.ref.nativeElement;
-  }
-
   private destroy() {
-    if (!this.observer) {
-      return;
-    }
+    observer.unobserve &&
+      observer.unobserve(this.ref.nativeElement as HTMLElement);
 
-    this.observer.unobserve(<Element>this.ref.nativeElement);
-    this.observer.disconnect();
-    this.observer = null;
+    observer.components.delete(this.ref.nativeElement);
   }
 
 }

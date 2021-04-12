@@ -1,9 +1,8 @@
 :host {
   display: block;
-
   transition: 300ms;
 
-  img {
+  svg {
     width: 100%;
     height: 100%;
   }
@@ -14,7 +13,7 @@
   height: 52px !important;
 }
 
-.w320 :host {
+.w768 :host, .w320 :host {
   width: 100px !important;
   height: 29px !important;
 }

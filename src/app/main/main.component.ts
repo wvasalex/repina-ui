@@ -1,7 +1,6 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  OnDestroy,
   OnInit,
 } from '@angular/core';
 import { BaseBlock } from '@shared/blocks/block.component';

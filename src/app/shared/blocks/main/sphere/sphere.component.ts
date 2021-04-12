@@ -30,7 +30,7 @@ export class SphereComponent extends BaseBlock {
 
   public ready: boolean = false;
   public muted: boolean = true;
-  public error: boolean = false;
+  public placeholder: boolean = true;
 
   private player: videojs.Player;
 
@@ -44,21 +44,23 @@ export class SphereComponent extends BaseBlock {
   }
 
   public ngOnInit(): void {
-    if (typeof window !== 'undefined') {
-      this.initPlayer();
-    }
   }
 
   public ngOnDestroy() {
-    if (this.player) {
-      this.player.dispose();
+    this.player?.dispose();
+  }
+
+  public $ready() {
+    this.element.nativeElement.classList.add('ready');
+
+    if (typeof window !== 'undefined') {
+      setTimeout(() => this.initPlayer(), 3000);
     }
   }
 
   public $toggleAudio(e: Event) {
     e.stopPropagation();
-
-    this.player.muted(this.muted = !this.muted);
+    this.player?.muted(this.muted = !this.muted);
   }
 
   public $upload(e) {
@@ -101,13 +103,14 @@ export class SphereComponent extends BaseBlock {
         this.player.muted(this.muted = true);
 
         setTimeout(() => {
-          this.element.nativeElement.classList.add('ready');
+          this.placeholder = false;
+          this.changeDetectoRef.detectChanges();
         }, 300);
       });
 
       this.player.on('error', () => {
         if (!this.editor) {
-          this.error = true;
+          this.placeholder = true;
           this.player.dispose();
 
           this.changeDetectoRef.detectChanges();

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NotfoundComponent } from './notfound.component';
-import { SharedModule } from '../components/shared.module';
+import { SharedModule } from '@shared/components/shared.module';
 import { PageModule } from '@shared/page/page.module';
-import { RouterModule } from '@angular/router';
+import { NotfoundRoutingModule } from './notfound-routing.module';
 
 @NgModule({
   declarations: [NotfoundComponent],
@@ -11,7 +11,7 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     SharedModule,
     PageModule,
-    RouterModule,
+    NotfoundRoutingModule,
   ],
 })
 export class NotfoundModule { }

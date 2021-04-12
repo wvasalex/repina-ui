@@ -1,5 +1,6 @@
 <img
-  [src]="src"
+  (viewportIntersect)="$visible($event)"
+  [attr.data-src]="src"
   [attr.alt]="alt"
   [attr.title]="title"
   [attr.itemprop]="itemprop"

@@ -1,6 +1,15 @@
 :host {
+  --sphere-size: 880px;
+
   .subtitle ::ng-deep h1 {
     font: inherit;
+  }
+
+  .sphere {
+    min-width: var(--sphere-size);
+    min-height: var(--sphere-size);
+    max-width: var(--sphere-size);
+    max-height: var(--sphere-size);
   }
 }
 
@@ -21,52 +30,25 @@
   z-index: 1;
 }
 
-.w2048 :host {
-  .sphere {
-    min-width: 880px;
-    min-height: 880px;
-    max-width: 880px;
-    max-height: 880px;
-  }
-}
-
 .w1920 :host {
-  .sphere {
-    min-width: 608px;
-    min-height: 608px;
-    max-width: 608px;
-    max-height: 608px;
-  }
+  --sphere-size: 608px;
 }
 
 .w1366 :host {
-  .sphere {
-    min-width: 496px;
-    min-height: 496px;
-    max-width: 496px;
-    max-height: 496px;
-  }
+  --sphere-size: 496px;
 }
 
 .w1024 :host {
-  .sphere {
-    min-width: 386px;
-    min-height: 386px;
-    max-width: 386px;
-    max-height: 386px;
-  }
+  --sphere-size: 386px;
 }
 
 .w768 :host {
-  .sphere {
-    min-width: 215px;
-    min-height: 215px;
-    max-width: 215px;
-    max-height: 215px;
-  }
+  --sphere-size: 215px;
 }
 
 .w320 :host {
+  --sphere-size: 215px;
+
   r-padding {
     align-items: flex-start;
   }
@@ -77,12 +59,5 @@
 
   .sphere-rating {
     top: -20px;
-  }
-
-  .sphere {
-    min-width: 215px;
-    min-height: 215px;
-    max-width: 215px;
-    max-height: 215px;
   }
 }

@@ -26,7 +26,8 @@ input+label::before {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 0;
-  background-image: url('/assets/icons/components/checked.svg');
+  //background-image: url('/assets/icons/components/checked.svg');
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMTUiIHZpZXdCb3g9IjAgMCAyMCAxNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxwYXRoIGQ9Ik0xOCAyTDcuMjk5OTkgMTJMMiA3IiBzdHJva2U9IiNFNDJBNDUiIHN0cm9rZS13aWR0aD0iNCIvPg0KPC9zdmc+DQo=');
   transition: 300ms;
 }
 
