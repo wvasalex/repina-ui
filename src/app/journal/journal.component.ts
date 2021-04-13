@@ -45,12 +45,6 @@ export class JournalComponent implements OnInit, OnDestroy {
 
   public groups$: Observable<any> = this.articles$
     .pipe(map((articles) => {
-      /*if (articles.length >= 6) {
-        articles.splice(6, 0, {
-          type: 'subscribe',
-        });
-      }*/
-
       return this.journalService.groupArticles(
         articles,
         this.data$.value.page === 1,

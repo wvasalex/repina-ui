@@ -24,6 +24,12 @@
   ></a>
 </div>
 
+<a
+  [routerLink]="['/sitemap']"
+  title="Карта сайта"
+  class="text32"
+>Карта сайта</a>
+
 <div class="association">
   <r-image-upload
     [editor]="editor"
@@ -33,15 +39,10 @@
     endpoint="menu_footer_elements"
   ></r-image-upload>
 
-  <!--<div>
-    <img src="/assets/icons/footer/association.svg"/>
-  </div>-->
-
   <div
     (contentChanged)="$contentChanged($event, 'branding')"
     [r-block]="editor"
     [innerHTML]="$getValue('branding')"
     class="text32"
-  >
-  </div>
+  ></div>
 </div>

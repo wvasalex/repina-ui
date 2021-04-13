@@ -40,6 +40,10 @@ const routes: Routes = [
     loadChildren: () => import('./notfound/notfound.module').then((m) => m.NotfoundModule),
   },
   {
+    path: 'sitemap',
+    loadChildren: () => import('./sitemap/sitemap.module').then((m) => m.SitemapModule),
+  },
+  {
     path: '**',
     redirectTo: '404',
   },

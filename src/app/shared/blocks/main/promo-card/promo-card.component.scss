@@ -29,12 +29,16 @@ a {
   color: #fff;
   cursor: pointer;
 
-  ::ng-deep * {
-    color: inherit;
+  &:hover {
+    text-decoration: none !important;
+
+    .title {
+      text-decoration: underline;
+    }
   }
 
-  &:hover .title {
-    text-decoration: underline;
+  ::ng-deep * {
+    color: inherit;
   }
 }
 

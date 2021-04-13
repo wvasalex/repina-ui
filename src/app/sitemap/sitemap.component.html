@@ -1,0 +1,24 @@
+<r-page>
+  <r-padding class="pt-128">
+    <h3 class="h1_5">
+      Карта сайта
+    </h3>
+
+    <div
+      *ngIf="sitemap$ | async as mapItems"
+      class="column"
+    >
+      <a
+        *ngFor="let item of mapItems"
+        [attr.href]="item.url"
+        [attr.title]="item.title"
+        [class.underline]="item.root"
+        [class.ml-3]="!item.root"
+        class="text32 mt-1"
+      >
+        {{item.title}}
+      </a>
+    </div>
+  </r-padding>
+</r-page>
+

@@ -1,4 +1,14 @@
-import { AfterViewInit, Directive, ElementRef, EventEmitter, OnDestroy, Output } from '@angular/core';
+import {
+  AfterViewInit,
+  Directive,
+  ElementRef,
+  EventEmitter,
+  Inject,
+  OnDestroy,
+  Output,
+  PLATFORM_ID,
+} from '@angular/core';
+import { isPlatformServer } from '@angular/common';
 
 const supported: boolean = typeof window !== 'undefined' &&
   'IntersectionObserver' in window &&
@@ -12,7 +22,7 @@ const observer: any = supported ? new IntersectionObserver((entries) => {
     }
   });
 }, {
-  rootMargin: '0px 0px 20% 0px',
+  rootMargin: '0px 0px 10% 0px',
 }) : {};
 
 observer.components = new Map();
@@ -24,10 +34,15 @@ export class ViewportIntersectDirective implements AfterViewInit, OnDestroy {
 
   @Output() viewportIntersect: EventEmitter<HTMLElement> = new EventEmitter();
 
-  constructor(private ref: ElementRef) {
+  constructor(@Inject(PLATFORM_ID) private platformId: any,
+              private ref: ElementRef) {
   }
 
   public ngAfterViewInit() {
+    if (isPlatformServer(this.platformId)) {
+      return;
+    }
+
     if (!observer.observe) {
       return this.intersect();
     }

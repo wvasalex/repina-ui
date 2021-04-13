@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, Subject } from 'rxjs';
+import { map, switchMap, tap } from 'rxjs/operators';
 import { RestService } from '@shared/services/api/rest.service';
 import { ApiService } from '@shared/services/api/api.service';
 import { ApiConfig, PagedRequest, PagedResponse } from '@shared/services/api/api.model';
@@ -14,7 +15,7 @@ import { ArticleTextComponent } from './article/article-text/article-text.compon
 import { ArticleQuoteComponent } from './article/article-quote/article-quote.component';
 import { ArticleVideoComponent } from './article/article-video/article-video.component';
 import { ArticleRequestComponent } from './article/article-request/article-request.component';
-import { map, switchMap, tap } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root',
