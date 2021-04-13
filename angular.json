@@ -168,6 +168,7 @@
             "serverTarget": "repina:server:production",
             "routes": [
               "/",
+              "/404",
               "/contacts",
               "/agency",
               "/services"

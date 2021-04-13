@@ -29,7 +29,7 @@ export class NotfoundComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (isPlatformServer(this.platformId)) {
+    if (isPlatformServer(this.platformId) && this.response) {
       this.response.status(404);
     }
   }
