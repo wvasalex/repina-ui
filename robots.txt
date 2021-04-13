@@ -1,2 +1,26 @@
 User-agent: *
-Disallow: /
+Disallow: /*hmsr=
+Disallow: /*ref=
+Disallow: /*source=
+Disallow: /*order=
+Disallow: /blog/rabotodatel-mechty
+Disallow: /blog/5-trendov-v-upakovke
+Disallow: /blog/brend-za-5-shagov
+Disallow: /blog/repina-dlya-sekreta-firmy-kak-vybrat-agentstvo
+Disallow: /blog/5-mifov-o-mire-posle-pandemii
+Disallow: /blog/brend-kak-osnova-vyzhivaniya
+Disallow: /blog/kak-sozdat-love-brand
+Disallow: /blog/kak-brendbuk-dolzhen-sluzhit-biznesu
+Disallow: /blog/intervyu-s-valeriy-repinoy-o-metodakh-sozdaniya-upakovki-i-trendakh-v-brendinge
+Disallow: /blog/pro-antipatiyu-k-borshchu-porvannye-yubki-i-upravlenie-khaotichnym-biznesom
+Disallow: /blog/den-brendinga-valeriya-repina-o-tonkostyakh-razrabotki-nazvaniy-dlya-brendov
+Disallow: /blog/valeriya-repina-v-forbes-oshibki-pri-vykhode-na-ico
+Disallow: /blog/valeriya-repina-delitsya-mneniem-o-roli-anglitsizmov-v-rossiyskom-biznese-v-zhurnale-forbes
+Disallow: /blog/valeriya-repina-rasskazyvaet-ob-okhranosposobnom-neyminge-zhurnalu-forbes
+Disallow: /blog/printsipy-raboty-repina-brending-intervyu-valerii-repinoy-dlya-sostav-ru
+Disallow: /blog/kak_startapu_sekonomit_na_brendinge
+Disallow: /blog/valeriya-repina-v-gostyakh-na-radio-mayak-v-peredache-odin-vadim
+Disallow: /blog/valeriya-repina-kak-prevratit-professiyu-v-biznes
+Disallow: /blog/repy-v-brendinge
+
+Sitemap: https://repinabranding.ru/sitemap.xml
