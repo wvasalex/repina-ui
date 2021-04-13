@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
   selector: 'r-image',
@@ -6,7 +6,7 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
   styleUrls: ['./image.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ImageComponent implements OnInit {
+export class ImageComponent {
 
   @Input() src: string;
   @Input() alt: string;
@@ -15,7 +15,8 @@ export class ImageComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  public $visible(element: HTMLElement) {
+    element.setAttribute('src', this.src);
   }
 
 }

@@ -4,7 +4,6 @@
   [attr.rel]="typeKey + '_' + index"
   [attr.class]="typeKey +  ' content-item'"
 >
-  <!--(inViewport >= index ? ' in-viewport' : '') +-->
   <r-block-switcher
     *ngIf="editor && typeKey == 'element_type' && availableElements?.length"
     (change)="$setType(block, $event)"
@@ -78,55 +77,57 @@
   <mat-menu #blockControl="matMenu">
     <ng-container *ngTemplateOutlet="controlTmp; context: {block: block}"></ng-container>
 
-    <button mat-menu-item>
-      <mat-checkbox
-        [(ngModel)]="block.is_enabled"
-      >Использовать</mat-checkbox>
-    </button>
+    <ng-container *ngIf="editor">
+      <button mat-menu-item>
+        <mat-checkbox
+          [(ngModel)]="block.is_enabled"
+        >Использовать</mat-checkbox>
+      </button>
 
-    <button
-      *ngIf="!first"
-      (click)="$move(block, -1)"
-      mat-menu-item
-    >
-      <r-icon-button
-        [size]="18"
-        icon="arrow-up"
-        class="icon"
-      ></r-icon-button>
-      Переместить вверх
-    </button>
-
-    <button
-      *ngIf="!last"
-      (click)="$move(block, 1)"
-      mat-menu-item
-    >
-      <r-icon-button
-        [size]="18"
-        icon="arrow-down"
-        class="icon"
-      ></r-icon-button>
-      Переместить вниз
-    </button>
-
-    <button mat-menu-item>
-      <r-icon-button
-        (click)="$swapElements(block)"
-        [size]="18"
-        icon="repeat"
+      <button
+        *ngIf="!first"
+        (click)="$move(block, -1)"
+        mat-menu-item
       >
-        Поменять элементы местами
-      </r-icon-button>
-    </button>
+        <r-icon-button
+          [size]="18"
+          icon="arrow-up"
+          class="icon"
+        ></r-icon-button>
+        Переместить вверх
+      </button>
 
-    <button mat-menu-item>
-      <r-icon-button
-        (click)="$remove(block)"
-        [size]="18"
-        icon="close"
-      >Удалить
-      </r-icon-button>
-    </button>
+      <button
+        *ngIf="!last"
+        (click)="$move(block, 1)"
+        mat-menu-item
+      >
+        <r-icon-button
+          [size]="18"
+          icon="arrow-down"
+          class="icon"
+        ></r-icon-button>
+        Переместить вниз
+      </button>
+
+      <button mat-menu-item>
+        <r-icon-button
+          (click)="$swapElements(block)"
+          [size]="18"
+          icon="repeat"
+        >
+          Поменять элементы местами
+        </r-icon-button>
+      </button>
+
+      <button mat-menu-item>
+        <r-icon-button
+          (click)="$remove(block)"
+          [size]="18"
+          icon="close"
+        >Удалить
+        </r-icon-button>
+      </button>
+    </ng-container>
   </mat-menu>
 </div>

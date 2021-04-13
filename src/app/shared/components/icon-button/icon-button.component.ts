@@ -11,7 +11,6 @@ export class IconButtonComponent implements OnInit {
   @Input() icon: string;
   @Input() size: number = 32;
 
-
   constructor() {
   }
 

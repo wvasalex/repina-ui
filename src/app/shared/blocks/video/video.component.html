@@ -4,9 +4,10 @@
 >
   <video
       #video
+      (viewportIntersect)="$intersect()"
       muted
       playsinline
-      preload="auto"
+      preload="metadata"
       class="video-js "
   ></video>
 

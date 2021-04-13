@@ -17,7 +17,7 @@ export class ResolverService<M> implements Resolve<M> {
           }
 
           throw error;
-        })
+        }),
       );
   }
 }

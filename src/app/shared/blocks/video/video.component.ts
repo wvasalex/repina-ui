@@ -6,7 +6,6 @@ import {
   EventEmitter,
   HostBinding, Input,
   OnDestroy,
-  OnInit,
   Output,
   ViewChild,
   ViewEncapsulation,
@@ -24,7 +23,7 @@ import { ContentElement } from '@shared/types';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class VideoComponent extends BaseBlock implements OnInit, OnDestroy {
+export class VideoComponent extends BaseBlock implements OnDestroy {
 
   @Output() contentFileChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() upload: EventEmitter<File> = new EventEmitter<File>();
@@ -45,6 +44,14 @@ export class VideoComponent extends BaseBlock implements OnInit, OnDestroy {
     super();
   }
 
+  public ngOnDestroy() {
+    this.player?.dispose();
+  }
+
+  public $intersect() {
+    this.initPlayer();
+  }
+
   public $onClick() {
     if (this.props.autoplay) {
       return;
@@ -55,16 +62,6 @@ export class VideoComponent extends BaseBlock implements OnInit, OnDestroy {
       this.player.pause();
     } else {
       this.player.play();
-    }
-  }
-
-  public ngOnInit(): void {
-    this.initPlayer();
-  }
-
-  public ngOnDestroy() {
-    if (this.player) {
-      this.player.dispose();
     }
   }
 

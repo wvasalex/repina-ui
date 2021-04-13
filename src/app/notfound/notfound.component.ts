@@ -1,11 +1,10 @@
 import { RESPONSE } from '@nguniversal/express-engine/tokens';
-import { Response } from 'express';
+import { Response } from 'express';import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { ChangeDetectionStrategy, Component, Inject, OnInit, Optional, PLATFORM_ID } from '@angular/core';
-import { Observable } from 'rxjs';
+import { isPlatformServer } from '@angular/common';
 import { MenuService } from '@shared/menu/menu.service';
 import { ContentBlock, ContentElement } from '@shared/types';
-import { map } from 'rxjs/operators';
-import { isPlatformServer } from '@angular/common';
 
 @Component({
   selector: 'r-notfound',

@@ -25,8 +25,6 @@ export class BlocksRenderComponent implements OnInit {
 
   @Input() @HostBinding('class.animated') animated: boolean = false;
 
-  public inViewport = {};
-
   constructor() {
   }
 

@@ -28,6 +28,7 @@
               "src/googlea868c7495be9b937.html"
             ],
             "styles": [
+              "src/styles-material.scss",
               "src/styles.scss",
               "src/assets/fonts.scss"
             ],
@@ -47,7 +48,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,

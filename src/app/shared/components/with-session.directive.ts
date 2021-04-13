@@ -1,17 +1,21 @@
-import { Directive, Input, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
+import { Directive, Inject, OnInit, PLATFORM_ID, TemplateRef, ViewContainerRef } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { SessionService } from '@shared/services/session';
 
 @Directive({
-  selector: '[rWithSession]'
+  selector: '[rWithSession]',
 })
 export class WithSessionDirective implements OnInit {
 
-  constructor(private templateRef: TemplateRef<any>,
-              private viewContainer: ViewContainerRef,
-              private sessionService: SessionService) { }
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: any,
+    private templateRef: TemplateRef<any>,
+    private viewContainer: ViewContainerRef,
+    private sessionService: SessionService) {
+  }
 
   public ngOnInit(): void {
-    if (this.sessionService.isValid()) {
+    if (isPlatformBrowser(this.platformId) && this.sessionService.isValid()) {
       this.viewContainer.createEmbeddedView(this.templateRef);
     } else {
       this.viewContainer.clear();
