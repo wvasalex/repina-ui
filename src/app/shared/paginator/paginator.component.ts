@@ -31,9 +31,13 @@ export class PaginatorComponent implements OnInit, OnDestroy {
     this._sub.unsubscribe();
   }
 
-  public $queryParams(query: StrMap<string>) {
+  public $queryParams(query: StrMap<any>) {
     const filters = Object.assign({}, this.paginatorService.getFilters(), query);
     delete filters.per_page;
+
+    if (filters.page === 1) {
+      delete filters.page;
+    }
 
     return filters;
   }

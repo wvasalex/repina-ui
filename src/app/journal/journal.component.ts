@@ -14,6 +14,7 @@ import { JournalTagsService } from './journal-tags.service';
 import { PaginatorService } from '@shared/paginator/paginator.service';
 import { FooterService } from '@shared/footer/footer.service';
 import { ActivatedRoute } from '@angular/router';
+import { SeoService } from '@shared/seo/seo.service';
 
 @Component({
   selector: 'r-journal',
@@ -73,6 +74,7 @@ export class JournalComponent implements OnInit, OnDestroy {
   constructor(
     private dialog: MatDialog,
     private activatedRoute: ActivatedRoute,
+    private seoService: SeoService,
     private toasterService: ToasterService,
     private journalPageService: JournalPageService,
     private journalService: JournalService,

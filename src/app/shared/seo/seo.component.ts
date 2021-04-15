@@ -1,13 +1,10 @@
-import { ChangeDetectionStrategy, Component, Inject, Input, OnDestroy, OnInit } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { combineLatest, Subscription } from 'rxjs';
+import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Meta, Title } from '@angular/platform-browser';
 import { SeoService } from '@shared/seo/seo.service';
-import { Subscription } from 'rxjs';
 import { SeoData } from '@shared/seo/seo.model';
 import { ToasterService } from '@shared/toaster/toaster.service';
-import { StrMap } from '@shared/types';
 
 @Component({
   selector: 'r-seo',
@@ -41,11 +38,8 @@ export class SeoComponent implements OnInit, OnDestroy {
   private _id: number = null;
 
   constructor(
-    @Inject(DOCUMENT) private doc,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private title: Title,
-    private meta: Meta,
     private formBuilder: FormBuilder,
     private toasterService: ToasterService,
     private seoService: SeoService,
@@ -54,8 +48,12 @@ export class SeoComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit(): void {
-    this._sub = this.activatedRoute.url.subscribe(() => {
+    this._sub = combineLatest([
+      this.activatedRoute.url,
+      this.activatedRoute.queryParams,
+    ]).subscribe(() => {
       this._init();
+      console.log('change!');
     });
   }
 
@@ -82,7 +80,11 @@ export class SeoComponent implements OnInit, OnDestroy {
   }
 
   private _url(): string {
-    return this.router.url.replace('/edit', '');
+    const url = this.router.url.replace('/edit', '')
+      .replace(/page=(\d+)/, '')
+      .replace(/\?$/, '');
+
+    return url;
   }
 
   private _init() {
@@ -105,35 +107,19 @@ export class SeoComponent implements OnInit, OnDestroy {
   private _set(seo: SeoData) {
     this.formGroup.patchValue(seo.props);
 
-    const { title, canonical, ...meta } = seo.props;
-
-    this.title.setTitle(title);
-    this._setLink('canonical', { rel: 'canonical', href: canonical });
+    const {title, canonical, ...meta} = seo.props;
 
     for (let name in meta) {
       if (meta.hasOwnProperty(name)) {
-        this.meta.updateTag({
+        this.seoService.updateTag(
           name,
-          content: meta[name],
-        });
+          meta[name],
+        );
       }
     }
-  }
 
-  private _setLink(id: string, attrs: StrMap<string>) {
-    const head = this.doc.head;
-    let el = head?.querySelector('#' + id);
-    if (!el) {
-      el = this.doc.createElement('link');
-      el.id = id;
-      head.appendChild(el);
-    }
-
-    for(let attr in attrs) {
-      if (attrs.hasOwnProperty(attr)) {
-        el.setAttribute(attr, attrs[attr] || '');
-      }
-    }
+    const {page} = this.activatedRoute.snapshot.queryParams;
+    this.seoService.setPaginated(page, title, canonical);
   }
 
 }
