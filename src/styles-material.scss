@@ -13,6 +13,7 @@ $repina-ui-theme: mat-light-theme($repina-ui-primary, $repina-ui-accent, $repina
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 
+@include mat-checkbox-theme($repina-ui-theme);
 @include mat-select-theme($repina-ui-theme);
 @include mat-tooltip-theme($repina-ui-theme);
 @include mat-dialog-theme($repina-ui-theme);
