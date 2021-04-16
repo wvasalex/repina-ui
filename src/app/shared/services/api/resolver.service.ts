@@ -11,8 +11,10 @@ export class ResolverService<M> implements Resolve<M> {
     state: RouterStateSnapshot,
   ) {
     const uid = route.paramMap.get('id');
-    if (typeof window === 'undefined' && uid.indexOf('_') === 0) {
-      return this.router.navigate(['/404']);
+    if (uid.indexOf('_') === 0) {
+      if (typeof window === 'undefined' || !window.localStorage.getItem('auth.token')) {
+        return this.router.navigate(['/404']);
+      }
     }
 
     return this.service.resolve(route.paramMap.get('id'))
