@@ -18,6 +18,7 @@ export class SeoComponent implements OnInit, OnDestroy {
 
   private _controls = {
     title: [''],
+    title_pagination: [''],
     description: [''],
     keywords: [''],
     robots: ['index, follow'],
@@ -53,7 +54,6 @@ export class SeoComponent implements OnInit, OnDestroy {
       this.activatedRoute.queryParams,
     ]).subscribe(() => {
       this._init();
-      console.log('change!');
     });
   }
 
@@ -107,7 +107,7 @@ export class SeoComponent implements OnInit, OnDestroy {
   private _set(seo: SeoData) {
     this.formGroup.patchValue(seo.props);
 
-    const {title, canonical, ...meta} = seo.props;
+    const {title, title_pagination, canonical, ...meta} = seo.props;
 
     for (let name in meta) {
       if (meta.hasOwnProperty(name)) {
@@ -119,7 +119,7 @@ export class SeoComponent implements OnInit, OnDestroy {
     }
 
     const {page} = this.activatedRoute.snapshot.queryParams;
-    this.seoService.setPaginated(page, title, canonical);
+    this.seoService.setPaginated(page, page > 1 && title_pagination || title, canonical);
   }
 
 }
