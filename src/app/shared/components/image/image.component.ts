@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'r-image',
@@ -6,16 +6,26 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   styleUrls: ['./image.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ImageComponent {
+export class ImageComponent implements OnInit {
 
+  @Input() visible: boolean = false;
   @Input() src: string;
   @Input() alt: string;
   @Input() title: string;
   @Input() itemprop: string;
 
-  constructor() { }
+  @ViewChild('img', {static: true}) image: ElementRef;
 
-  public $visible(element: HTMLElement) {
+  constructor() {
+  }
+
+  public ngOnInit(): void {
+    if (this.visible) {
+      this.$visible(this.image.nativeElement);
+    }
+  }
+
+  public $visible(element) {
     element.setAttribute('src', this.src);
   }
 

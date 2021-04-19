@@ -80,11 +80,7 @@ export class SeoComponent implements OnInit, OnDestroy {
   }
 
   private _url(): string {
-    const url = this.router.url.replace('/edit', '')
-      .replace(/page=(\d+)/, '')
-      .replace(/\?$/, '');
-
-    return url;
+    return this.router.url.replace('/edit', '').split('?')[0];
   }
 
   private _init() {

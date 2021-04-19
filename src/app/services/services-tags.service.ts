@@ -4,7 +4,7 @@ import { ApiConfig } from '@shared/services/api/api.model';
 import { ApiService } from '@shared/services/api/api.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ServiceTag } from './services.model';
+import { ServiceTag, TagUrlMap } from './services.model';
 import { SelectOption } from '@shared/components/select/select.model';
 
 @Injectable({
@@ -32,16 +32,30 @@ export class ServicesTagsService extends JournalTagsService {
           return {
             value: tag.id,
             label: tag.title,
+            meta: {
+              href: TagUrlMap[tag.id]
+            },
           };
         });
 
       active.unshift({
         value: null,
         label: 'Все',
+        meta: {
+          href: '',
+        },
       });
 
       return active;
     }));
+  }
+
+  public getTagByUrl(url: string): string {
+    for(let id in TagUrlMap) {
+      if (TagUrlMap[id] === url) {
+        return id;
+      }
+    }
   }
 
 }

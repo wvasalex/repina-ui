@@ -6,15 +6,20 @@
       [editor]="editor"
     ></r-projects-header>
 
-    <ng-container *ngIf="selectedTags$ | async as selectedTags">
-      <r-badge-list
-        *ngIf="tags$ | async as tags"
-        (itemChanged)="$tagChanged($event)"
-        [badges]="tags"
-        [selected]="selectedTags"
-        class="mt-2 tags"
-      ></r-badge-list>
-    </ng-container>
+    <div
+      *ngIf="tags$ | async as tags"
+      class="mt-2 tags"
+    >
+      <a
+        *ngFor="let tag of tags; let last = last;"
+        [routerLink]="tag.meta.href ? ['/projects', 'tag', tag.meta.href] : ['/projects']"
+        [class.mr-1]="!last"
+      >
+        <r-badge [routerLinkActive]="tag.meta.href ? 'selected': ''">
+          {{tag.label}}
+        </r-badge>
+      </a>
+    </div>
   </r-padding>
 
   <div *ngIf="projects$ | async as projects">
@@ -26,6 +31,7 @@
       >
         <r-project-snippet
           [project]="project"
+          [imageVisible]="index < 6"
           r-parallax
         ></r-project-snippet>
       </div>

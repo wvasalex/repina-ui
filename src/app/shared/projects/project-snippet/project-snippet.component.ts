@@ -13,6 +13,7 @@ export class ProjectSnippetComponent implements OnInit {
   @Input() project: Project;
   @Input() @HostBinding('class.static') static: boolean = false;
   @Input() blank: boolean = false;
+  @Input() imageVisible: boolean;
 
   public mouseover: boolean = false;
 

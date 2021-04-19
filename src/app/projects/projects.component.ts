@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
-import { map, pluck, startWith, tap } from 'rxjs/operators';
+import { BehaviorSubject, combineLatest, Observable, Subject, Subscription } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { BreakpointService } from '@shared/breakpoint.service';
 import { ProjectsService } from '@shared/projects/projects.service';
 import { Project } from '@shared/projects/projects.model';
@@ -34,29 +34,11 @@ export class ProjectsComponent {
     );
 
   public data$: Subject<PagedResponse<Project>> = new Subject<PagedResponse<Project>>();
-
   public projects$: BehaviorSubject<Project[]> = new BehaviorSubject<Project[]>([]);
-
   public tags$: Observable<SelectOption[]> = this.servicesTagsService.getPublic();
-
-  private _keys$: Observable<string[]> = this.activatedRoute.queryParams
-    .pipe(pluck('tags__id'));
-
-  public selectedTags$: Observable<SelectOption[]> = combineLatest([this.tags$, this._keys$])
-    .pipe(
-      map(([tags, keys]) => {
-        if (!keys) {
-          return [tags[0]];
-        }
-
-        return tags.filter((tag: SelectOption) => {
-          return keys.indexOf('' + tag.value) !== -1;
-        });
-      }),
-      startWith([]),
-    );
-
   public editor: boolean = false;
+
+  private _sub: Subscription;
 
   constructor(
     private dialog: MatDialog,
@@ -75,7 +57,15 @@ export class ProjectsComponent {
   public ngOnInit(): void {
     this.paginatorService.init();
 
-    this.paginatorService.changes.subscribe((req) => {
+    this._sub = combineLatest([
+      this.paginatorService.changes,
+      this.activatedRoute.params,
+    ]).subscribe(([req, params]) => {
+      if (params?.url) {
+        req.tags__id__in = this.servicesTagsService.getTagByUrl(params.url) as any;
+      }
+
+      console.log(req,params);
       this._load(req);
     });
 
@@ -88,20 +78,9 @@ export class ProjectsComponent {
   }
 
   public ngOnDestroy(): void {
+    this._sub.unsubscribe();
     this.paginatorService.destroy();
     this.footerService.setBreadcrumbs([]);
-  }
-
-  public $tagChanged(tagChange) {
-    const filters: StrMap<string> = {page: '1'};
-
-    if (tagChange.checked) {
-      if (tagChange.item.value) {
-        filters.tags__id = '' + tagChange.item.value;
-      }
-    }
-
-    this.paginatorService.setFilters(filters);
   }
 
   public $reorder() {

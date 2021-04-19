@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
   selector: 'r-journal-snippet',
@@ -6,15 +6,15 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
   styleUrls: ['./journal-snippet.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class JournalSnippetComponent implements OnInit {
+export class JournalSnippetComponent {
 
   @Input() image: string;
   @Input() tag: string;
   @Input() title: string;
+  @Input() imageVisible: boolean = false;
 
-  constructor() { }
+  constructor() {
 
-  ngOnInit(): void {
   }
 
 }

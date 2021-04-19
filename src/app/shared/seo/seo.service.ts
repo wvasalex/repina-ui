@@ -52,7 +52,7 @@ export class SeoService extends RestService {
 
   public setPaginated(page: number, title: string, canonical: string) {
     if (page > 1) {
-      title = title.replace('page', '' + page);
+      title = (title || '').replace('page', '' + page);
       this.updateTag('description', null);
     } else {
       canonical = null;

@@ -1,8 +1,16 @@
-<img
-  [src]="image"
+<!--<img
+  (viewportIntersect)="$visible($event)"
+  [attr.data-src]="image"
   [rAspectRatio]="1.4"
   [alt]="title"
-/>
+/>-->
+
+<r-image
+  [src]="image"
+  [alt]="title"
+  [rAspectRatio]="1.4"
+  [visible]="imageVisible"
+></r-image>
 
 <div class="text32 tag">{{tag}}</div>
 
