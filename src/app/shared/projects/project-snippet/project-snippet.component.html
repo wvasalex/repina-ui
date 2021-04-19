@@ -1,7 +1,7 @@
 <a
   *ngIf="project?.slug"
   [target]="blank ? '_blank' : ''"
-  [routerLink]="[$link()]"
+  [routerLink]="['/projects', project.slug]"
   class="project"
   style="overflow: hidden"
 >

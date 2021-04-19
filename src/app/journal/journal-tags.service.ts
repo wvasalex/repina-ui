@@ -5,9 +5,8 @@ import { RestService } from '@shared/services/api/rest.service';
 import { ApiConfig } from '@shared/services/api/api.model';
 import { ApiService } from '@shared/services/api/api.service';
 import { StrMap } from '@shared/types';
-import { BlogTag } from './journal.model';
+import { BlogTag, TagUrlMap } from './journal.model';
 import { moveItemInArray } from '@angular/cdk/drag-drop';
-import { ContentListItem } from '../lists/lists.model';
 import { SelectOption } from '@shared/components/select/select.model';
 
 @Injectable({
@@ -18,6 +17,7 @@ export class JournalTagsService extends RestService {
     path: '/blog_tags/',
   };
 
+  public tags$: BehaviorSubject<SelectOption[]> = new BehaviorSubject<SelectOption[]>([]);
   public data: BehaviorSubject<BlogTag[]> = new BehaviorSubject<BlogTag[]>([]);
   public type: BehaviorSubject<string> = new BehaviorSubject<string>('blog-tags');
 
@@ -27,20 +27,30 @@ export class JournalTagsService extends RestService {
 
   public getPublic(): Observable<SelectOption[]> {
     return this.get().pipe(map((tags: BlogTag[]) => {
-      const active = tags.map((tag: BlogTag) => {
-        return {
-          value: tag.key,
-          label: tag.title,
-        };
-      });
+        const active = tags.map((tag: BlogTag) => {
+          return {
+            value: tag.key,
+            label: tag.title,
+            meta: {
+              href: TagUrlMap[tag.key],
+            },
+          };
+        });
 
-      active.unshift({
-        value: null,
-        label: 'Все',
-      });
+        active.unshift({
+          value: null,
+          label: 'Все',
+          meta: {
+            href: '',
+          },
+        });
 
-      return active;
-    }));
+        return active;
+      }),
+      tap((tags: SelectOption[]) => {
+        this.tags$.next(tags);
+      }),
+    );
   }
 
   public resolve<T>(list_type: string): Observable<BlogTag[]> {
@@ -87,6 +97,14 @@ export class JournalTagsService extends RestService {
       (item as any).position = position;
       this.patch(item).subscribe();
     });
+  }
+
+  public getTagByUrl(url: string): string {
+    for (let id in TagUrlMap) {
+      if (TagUrlMap[id] === url) {
+        return id;
+      }
+    }
   }
 
   private _update(updated: BlogTag) {

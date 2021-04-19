@@ -12,6 +12,10 @@ const routes: Routes = [
     component: JournalComponent,
   },
   {
+    path: 'tag/:url',
+    component: JournalComponent,
+  },
+  {
     path: 'new',
     component: ArticleEditorComponent,
     canActivate: [SessionGuardService],

@@ -1,5 +1,9 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { combineLatest, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { BaseBlock } from '@shared/blocks/block.component';
+import { JournalTagsService } from '../journal-tags.service';
 
 @Component({
   selector: 'r-journal-header',
@@ -7,7 +11,30 @@ import { BaseBlock } from '@shared/blocks/block.component';
   styleUrls: ['./journal-header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class JournalHeaderComponent extends BaseBlock {
+export class JournalHeaderComponent extends BaseBlock implements OnInit {
 
+  public tagName$: Observable<string> = combineLatest([
+    this.activatedRoute.params,
+    this.journalTagsService.tags$,
+  ]).pipe(
+    map(([params, tags]) => {
+      if (!tags?.length || !params.url) {
+        return;
+      }
+
+      return tags.find((tag) => tag.meta.href === params.url)?.label;
+    }),
+  );
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private journalTagsService: JournalTagsService,
+  ) {
+    super();
+  }
+
+  public ngOnInit(): void {
+
+  }
 
 }

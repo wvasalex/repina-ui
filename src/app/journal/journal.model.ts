@@ -28,3 +28,10 @@ export interface BlogTag {
     key: string;
   };
 }
+
+export const TagUrlMap = {
+  repina: 'kolonka-repinoy',
+  'design-jisign': 'dizayn-zhizayn',
+  'brand-wiki': 'brand-wiki',
+  'news': 'chto-novogo',
+};

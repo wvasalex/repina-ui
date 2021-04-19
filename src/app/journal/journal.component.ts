@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable, Subscription } from 'rxjs';
 import { map, pluck, startWith, tap } from 'rxjs/operators';
 import { ContentBlock, StrMap } from '@shared/types';
 import { SelectOption } from '@shared/components/select/select.model';
@@ -41,9 +41,7 @@ export class JournalComponent implements OnInit, OnDestroy {
   });
 
   public articles$: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
-
   public tags$: Observable<SelectOption[]> = this.journalTagsService.getPublic();
-
   public groups$: Observable<any> = this.articles$
     .pipe(map((articles) => {
       return this.journalService.groupArticles(
@@ -52,7 +50,7 @@ export class JournalComponent implements OnInit, OnDestroy {
       );
     }));
 
-  private _keys$: Observable<string[]> = this.activatedRoute.queryParams
+ /* private _keys$: Observable<string[]> = this.activatedRoute.queryParams
     .pipe(pluck('blog_tag__key__in'));
 
   public selectedTags$: Observable<SelectOption[]> = combineLatest([this.tags$, this._keys$])
@@ -67,9 +65,11 @@ export class JournalComponent implements OnInit, OnDestroy {
         });
       }),
       startWith([]),
-    );
+    );*/
 
   public editor: boolean = false;
+
+  private _sub: Subscription;
 
   constructor(
     private dialog: MatDialog,
@@ -86,7 +86,18 @@ export class JournalComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.paginatorService.init();
-    this.paginatorService.changes.subscribe((req) => {
+    /*this.paginatorService.changes.subscribe((req) => {
+      this._load(req);
+    });*/
+    this._sub = combineLatest([
+      this.paginatorService.changes,
+      this.activatedRoute.params,
+    ]).subscribe(([req, params]) => {
+      if (params?.url) {
+        req.blog_tag__key__in = this.journalTagsService.getTagByUrl(params.url) as any;
+      }
+
+      console.log(req,params);
       this._load(req);
     });
 
@@ -99,20 +110,9 @@ export class JournalComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
+    this._sub.unsubscribe();
     this.paginatorService.destroy();
     this.footerService.setBreadcrumbs([]);
-  }
-
-  public $tagChanged(tagChange) {
-    const filters: StrMap<string> = {page: '1'};
-
-    if (tagChange.checked) {
-      if (tagChange.item.value) {
-        filters.blog_tag__key__in = '' + tagChange.item.value;
-      }
-    }
-
-    this.paginatorService.setFilters(filters);
   }
 
   public $reorder() {

@@ -8,7 +8,7 @@ import { ProjectsService } from '../projects.service';
   styleUrls: ['./project-snippet.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProjectSnippetComponent implements OnInit {
+export class ProjectSnippetComponent {
 
   @Input() project: Project;
   @Input() @HostBinding('class.static') static: boolean = false;
@@ -17,13 +17,7 @@ export class ProjectSnippetComponent implements OnInit {
 
   public mouseover: boolean = false;
 
-  constructor(private projectsService: ProjectsService) { }
-
-  ngOnInit(): void {
-  }
-
-  public $link(): string {
-    return this.projectsService.getLink(this.project.slug);
+  constructor() {
   }
 
   public $hover(mouseover: boolean) {

@@ -1,20 +1,20 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { BehaviorSubject, combineLatest, Observable, Subject, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 import { BreakpointService } from '@shared/breakpoint.service';
 import { ProjectsService } from '@shared/projects/projects.service';
 import { Project } from '@shared/projects/projects.model';
 import { ListReorderComponent } from '@shared/list-reorder/list-reorder.component';
 import { SelectOption } from '@shared/components/select/select.model';
-import { ContentBlock, StrMap } from '@shared/types';
+import { ContentBlock } from '@shared/types';
 import { ToasterService } from '@shared/toaster/toaster.service';
 import { PagedRequest, PagedResponse } from '@shared/services/api/api.model';
 import { PaginatorService } from '@shared/paginator/paginator.service';
+import { FooterService } from '@shared/footer/footer.service';
 import { ServicesTagsService } from '../services/services-tags.service';
 import { ProjectsPageService } from './projects-page.service';
-import { FooterService } from '@shared/footer/footer.service';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'r-projects',
@@ -65,7 +65,6 @@ export class ProjectsComponent {
         req.tags__id__in = this.servicesTagsService.getTagByUrl(params.url) as any;
       }
 
-      console.log(req,params);
       this._load(req);
     });
 
