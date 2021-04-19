@@ -1,5 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { combineLatest, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BaseBlock } from '@shared/blocks/block.component';
+import { ActivatedRoute } from '@angular/router';
+import { ServicesTagsService } from '../../services/services-tags.service';
 
 @Component({
   selector: 'r-projects-header',
@@ -9,6 +13,25 @@ import { BaseBlock } from '@shared/blocks/block.component';
 })
 export class ProjectsHeaderComponent extends BaseBlock {
 
+  public tagName$: Observable<string> = combineLatest([
+    this.activatedRoute.params,
+    this.servicesTagsService.tags$,
+  ]).pipe(
+    map(([params, tags]) => {
+      if (!tags?.length || !params.url) {
+        return;
+      }
+
+      return tags.find((tag) => tag.meta.href === params.url)?.label;
+    }),
+  );
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private servicesTagsService: ServicesTagsService,
+  ) {
+    super();
+  }
 
 
 }

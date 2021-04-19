@@ -7,11 +7,23 @@
     subtitle
   ></r-md>
 
+  <ng-container title>
+    <div
+      *ngIf="tagName$ | async as tagName else editableH1;"
+      class="h1"
+    >
+      <h1>
+        {{tagName}}
+      </h1>
+    </div>
+  </ng-container>
+</r-card>
+
+<ng-template #editableH1>
   <r-md
     [editor]="editor"
     [props]="props"
     prop="title"
     className="h1"
-    title
   ></r-md>
-</r-card>
+</ng-template>

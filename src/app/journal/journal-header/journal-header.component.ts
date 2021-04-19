@@ -1,6 +1,6 @@
 import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BaseBlock } from '@shared/blocks/block.component';
 import { JournalTagsService } from '../journal-tags.service';
@@ -11,7 +11,7 @@ import { JournalTagsService } from '../journal-tags.service';
   styleUrls: ['./journal-header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class JournalHeaderComponent extends BaseBlock implements OnInit {
+export class JournalHeaderComponent extends BaseBlock {
 
   public tagName$: Observable<string> = combineLatest([
     this.activatedRoute.params,
@@ -31,10 +31,6 @@ export class JournalHeaderComponent extends BaseBlock implements OnInit {
     private journalTagsService: JournalTagsService,
   ) {
     super();
-  }
-
-  public ngOnInit(): void {
-
   }
 
 }

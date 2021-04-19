@@ -3,7 +3,7 @@ import { JournalTagsService } from '../journal/journal-tags.service';
 import { ApiConfig } from '@shared/services/api/api.model';
 import { ApiService } from '@shared/services/api/api.service';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { ServiceTag, TagUrlMap } from './services.model';
 import { SelectOption } from '@shared/components/select/select.model';
 
@@ -16,6 +16,7 @@ export class ServicesTagsService extends JournalTagsService {
     path: '/service_tags/',
   };
 
+  public tags$: BehaviorSubject<SelectOption[]> = new BehaviorSubject<SelectOption[]>([]);
   public type: BehaviorSubject<string> = new BehaviorSubject<string>('services-tags');
 
   constructor(public api: ApiService) {
@@ -24,34 +25,38 @@ export class ServicesTagsService extends JournalTagsService {
 
   public getPublic(): Observable<SelectOption[]> {
     return this.get().pipe(map((tags: ServiceTag[]) => {
-      const active = tags
-        .filter((tag: ServiceTag) => {
-          return tag.show_in_projects;
-        })
-        .map((tag: ServiceTag) => {
-          return {
-            value: tag.id,
-            label: tag.title,
-            meta: {
-              href: TagUrlMap[tag.id]
-            },
-          };
+        const active = tags
+          .filter((tag: ServiceTag) => {
+            return tag.show_in_projects;
+          })
+          .map((tag: ServiceTag) => {
+            return {
+              value: tag.id,
+              label: tag.title,
+              meta: {
+                href: TagUrlMap[tag.id],
+              },
+            };
+          });
+
+        active.unshift({
+          value: null,
+          label: 'Все',
+          meta: {
+            href: '',
+          },
         });
 
-      active.unshift({
-        value: null,
-        label: 'Все',
-        meta: {
-          href: '',
-        },
-      });
-
-      return active;
-    }));
+        return active;
+      }),
+      tap((tags: SelectOption[]) => {
+        this.tags$.next(tags);
+      }),
+    );
   }
 
   public getTagByUrl(url: string): string {
-    for(let id in TagUrlMap) {
+    for (let id in TagUrlMap) {
       if (TagUrlMap[id] === url) {
         return id;
       }
