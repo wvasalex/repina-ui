@@ -16,15 +16,6 @@ export const SERVICE_TYPES: SelectOption[] = [
   },
 ];
 
-export const TagUrlMap = {
-  6: 'pozicionirovanie',
-  3: 'neyming',
-  4: 'firmennyy-stil',
-  5: 'upakovka',
-  1: 'brendbuk',
-  2: 'interer',
-};
-
 export interface Service {
   id?: number;
   title: string;
@@ -49,6 +40,7 @@ export interface Service {
 export interface ServiceTag {
   id: number;
   title: string;
+  key?: string;
   show_in_projects?: boolean;
 }
 

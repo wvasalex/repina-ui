@@ -29,9 +29,3 @@ export interface BlogTag {
   };
 }
 
-export const TagUrlMap = {
-  repina: 'kolonka-repinoy',
-  'design-jisign': 'dizayn-zhizayn',
-  'brand-wiki': 'brand-wiki',
-  'news': 'chto-novogo',
-};

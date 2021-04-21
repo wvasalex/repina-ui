@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
-import { JournalTagsService } from '../journal/journal-tags.service';
-import { ApiConfig } from '@shared/services/api/api.model';
-import { ApiService } from '@shared/services/api/api.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { ServiceTag, TagUrlMap } from './services.model';
+import { Injectable } from '@angular/core';
+import { ApiConfig } from '@shared/services/api/api.model';
+import { ApiService } from '@shared/services/api/api.service';
 import { SelectOption } from '@shared/components/select/select.model';
+import { JournalTagsService } from '../journal/journal-tags.service';
+import { ServiceTag } from './services.model';
 
 @Injectable({
   providedIn: 'root',
@@ -34,7 +34,7 @@ export class ServicesTagsService extends JournalTagsService {
               value: tag.id,
               label: tag.title,
               meta: {
-                href: TagUrlMap[tag.id],
+                key: tag.key
               },
             };
           });
@@ -43,7 +43,7 @@ export class ServicesTagsService extends JournalTagsService {
           value: null,
           label: 'Все',
           meta: {
-            href: '',
+            key: '',
           },
         });
 
@@ -55,12 +55,10 @@ export class ServicesTagsService extends JournalTagsService {
     );
   }
 
-  public getTagByUrl(url: string): string {
-    for (let id in TagUrlMap) {
-      if (TagUrlMap[id] === url) {
-        return id;
-      }
-    }
+  public getIdByKey(key: string): number | string {
+    return this.tags$.value.find((tag: SelectOption) => {
+      return tag.meta?.key === key;
+    })?.value;
   }
 
 }

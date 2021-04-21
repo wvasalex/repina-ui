@@ -22,7 +22,7 @@ export class ProjectsHeaderComponent extends BaseBlock {
         return;
       }
 
-      return tags.find((tag) => tag.meta.href === params.url)?.label;
+      return tags.find((tag) => tag.meta?.key === params.url)?.label;
     }),
   );
 

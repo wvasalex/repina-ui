@@ -1,7 +1,7 @@
 import { BehaviorSubject, combineLatest, Observable, Subject, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { BreakpointService } from '@shared/breakpoint.service';
 import { ProjectsService } from '@shared/projects/projects.service';
@@ -42,6 +42,7 @@ export class ProjectsComponent {
 
   constructor(
     private dialog: MatDialog,
+    private router: Router,
     private activatedRoute: ActivatedRoute,
     private changeDetectorRef: ChangeDetectorRef,
     private breakpointService: BreakpointService,
@@ -62,7 +63,7 @@ export class ProjectsComponent {
       this.activatedRoute.params,
     ]).subscribe(([req, params]) => {
       if (params?.url) {
-        req.tags__id__in = this.servicesTagsService.getTagByUrl(params.url) as any;
+        req.tags__id__in = this.servicesTagsService.getIdByKey(params.url) as string;
       }
 
       this._load(req);
@@ -119,10 +120,15 @@ export class ProjectsComponent {
 
   private _load(req: PagedRequest) {
     req.per_page = 15;
-    this.projectsService.getPage<Project>(req).subscribe((page: PagedResponse<Project>) => {
-      this.data$.next(page);
-      this.projects$.next(page.results);
-    });
+    this.projectsService.getPage<Project>(req)
+      .subscribe((page: PagedResponse<Project>) => {
+        this.data$.next(page);
+        this.projects$.next(page.results);
+      }, (error) => {
+        if (error?.status === 400) {
+          this.router.navigate(['/404']);
+        }
+      });
   }
 
   /*private _load(filters: StrMap<string> = {}) {

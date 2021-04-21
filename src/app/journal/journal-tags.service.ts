@@ -5,7 +5,7 @@ import { RestService } from '@shared/services/api/rest.service';
 import { ApiConfig } from '@shared/services/api/api.model';
 import { ApiService } from '@shared/services/api/api.service';
 import { StrMap } from '@shared/types';
-import { BlogTag, TagUrlMap } from './journal.model';
+import { BlogTag } from './journal.model';
 import { moveItemInArray } from '@angular/cdk/drag-drop';
 import { SelectOption } from '@shared/components/select/select.model';
 
@@ -31,18 +31,12 @@ export class JournalTagsService extends RestService {
           return {
             value: tag.key,
             label: tag.title,
-            meta: {
-              href: TagUrlMap[tag.key],
-            },
           };
         });
 
         active.unshift({
           value: null,
           label: 'Все',
-          meta: {
-            href: '',
-          },
         });
 
         return active;
@@ -97,14 +91,6 @@ export class JournalTagsService extends RestService {
       (item as any).position = position;
       this.patch(item).subscribe();
     });
-  }
-
-  public getTagByUrl(url: string): string {
-    for (let id in TagUrlMap) {
-      if (TagUrlMap[id] === url) {
-        return id;
-      }
-    }
   }
 
   private _update(updated: BlogTag) {

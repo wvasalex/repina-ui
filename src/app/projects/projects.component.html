@@ -12,10 +12,10 @@
     >
       <a
         *ngFor="let tag of tags; let last = last;"
-        [routerLink]="tag.meta.href ? ['/projects', 'tag', tag.meta.href] : ['/projects']"
+        [routerLink]="tag.meta.key ? ['/projects', 'tag', tag.meta.key] : ['/projects']"
         [class.mr-1]="!last"
       >
-        <r-badge [routerLinkActive]="tag.meta.href ? 'selected': ''">
+        <r-badge [routerLinkActive]="tag.meta.key ? 'selected': ''">
           {{tag.label}}
         </r-badge>
       </a>

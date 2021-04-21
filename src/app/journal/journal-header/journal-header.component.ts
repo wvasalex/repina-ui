@@ -22,7 +22,7 @@ export class JournalHeaderComponent extends BaseBlock {
         return;
       }
 
-      return tags.find((tag) => tag.meta.href === params.url)?.label;
+      return tags.find((tag) => tag.value === params.url)?.label;
     }),
   );
 

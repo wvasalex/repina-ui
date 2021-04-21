@@ -41,9 +41,11 @@ export class MainAnimationService {
     this.sphere = sphere.element.nativeElement;
     this._subs.push(this.mobile$.subscribe());
 
-    setTimeout(() => {
-      this._initMove();
-    }, 1200);
+    if (!this.mobile) {
+      requestAnimationFrame(() => {
+        this._initMove();
+      });
+    }
   }
 
   public detach() {
@@ -53,10 +55,6 @@ export class MainAnimationService {
   }
 
   private _initMove() {
-    if (this.mobile) {
-      return;
-    }
-
     const rect = this.sphere.getBoundingClientRect();
     const parent = this.sphere.parentElement;
     const element = parent.removeChild(this.sphere);
