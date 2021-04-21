@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FooterService } from '@shared/footer/footer.service';
 import { ContentBlock } from '@shared/types';
+import { MangoService } from '@shared/services/mango.service';
 
 @Component({
   selector: 'r-footer',
@@ -18,6 +19,7 @@ export class FooterComponent implements OnInit {
   constructor(
     private changeDetectorRef: ChangeDetectorRef,
     private footerService: FooterService,
+    private mangoService: MangoService,
   ) {
   }
 
@@ -86,5 +88,9 @@ export class FooterComponent implements OnInit {
 
   public $save() {
     this.footerService.save(this.left).toPromise();
+  }
+
+  public $initMango() {
+    this.mangoService.init();
   }
 }

@@ -36,6 +36,7 @@ import { MousemoveDirective } from '@shared/components/mousemove/mousemove.direc
 import { FormsModule } from '@angular/forms';
 import { HrefPipe } from '@shared/components/href.pipe';
 import { ViewportIntersectDirective } from '@shared/components/viewport-intersect.directive';
+import { NoindexComponent } from './noindex/noindex.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { ViewportIntersectDirective } from '@shared/components/viewport-intersec
     MousemoveDirective,
     HrefPipe,
     ViewportIntersectDirective,
+    NoindexComponent,
   ],
   exports: [
     LogoComponent,
@@ -101,6 +103,7 @@ import { ViewportIntersectDirective } from '@shared/components/viewport-intersec
     HrefPipe,
     InputErrorComponent,
     ViewportIntersectDirective,
+    NoindexComponent,
   ],
   imports: [
     CommonModule,

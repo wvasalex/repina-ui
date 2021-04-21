@@ -12,6 +12,7 @@ import { ContactsService } from './contacts.service';
 import { ContentBlock } from '@shared/types';
 import { ToasterService } from '@shared/toaster/toaster.service';
 import { FooterService } from '@shared/footer/footer.service';
+import { MangoService } from '@shared/services/mango.service';
 
 @Component({
   selector: 'r-contacts',
@@ -31,10 +32,13 @@ export class ContactsComponent implements OnInit, AfterViewInit {
     private toasterService: ToasterService,
     private contactsService: ContactsService,
     private footerService: FooterService,
+    private mangoService: MangoService,
   ) {
   }
 
   public ngOnInit(): void {
+    this.mangoService.init();
+
     this.contactsService.get().subscribe((blocks: ContentBlock[]) => {
       this.block = blocks[0];
       this.changeDetectorRef.detectChanges();

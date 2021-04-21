@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { ContentElement } from '@shared/types';
 import { RestService } from '@shared/services/api/rest.service';
 import { ApiConfig } from '@shared/services/api/api.model';
