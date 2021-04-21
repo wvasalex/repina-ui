@@ -49,7 +49,7 @@ export class ParallaxDirective implements OnInit, OnDestroy {
     this.sub?.unsubscribe();
 
     const getOffset = () => {
-      return -.2 * (this.top - window.scrollY) + window.innerHeight / 10;
+      return -.15 * (this.top - window.scrollY) + window.innerHeight / 15;
     };
 
     this.sub = fromEvent(window, 'scroll').pipe(
@@ -66,6 +66,7 @@ export class ParallaxDirective implements OnInit, OnDestroy {
         this.renderer.setStyle(this.el, 'top', offset + 'px');
       } else {
         offset = Math.min(offset, 0);
+        this.renderer.setStyle(this.el, 'transition', 'transform 300ms');
         this.renderer.setStyle(this.el, 'transform', 'perspective(500px) translate3d(0, ' + offset + 'px, ' + (-0.25 * offset) + 'px)');
       }
     });
