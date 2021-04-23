@@ -55,10 +55,4 @@ export class ServicesTagsService extends JournalTagsService {
     );
   }
 
-  public getIdByKey(key: string): number | string {
-    return this.tags$.value.find((tag: SelectOption) => {
-      return tag.meta?.key === key;
-    })?.value;
-  }
-
 }

@@ -42,9 +42,9 @@ export class MainAnimationService {
     this._subs.push(this.mobile$.subscribe());
 
     if (!this.mobile) {
-      requestAnimationFrame(() => {
+      setTimeout(() => {
         this._initMove();
-      });
+      }, 1200);
     }
   }
 

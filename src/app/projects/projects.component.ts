@@ -63,7 +63,7 @@ export class ProjectsComponent {
       this.activatedRoute.params,
     ]).subscribe(([req, params]) => {
       if (params?.url) {
-        req.tags__id__in = this.servicesTagsService.getIdByKey(params.url) as string;
+        req.tags__key = params.url;
       }
 
       this._load(req);

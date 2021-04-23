@@ -54,7 +54,7 @@ export class SphereComponent extends BaseBlock {
     this.element.nativeElement.classList.add('ready');
 
     if (typeof window !== 'undefined') {
-      setTimeout(() => this.initPlayer(), 3000);
+      setTimeout(() => this.initPlayer(), 5000);
     }
   }
 
