@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    setTimeout(() => this.countersService.init(), 3000);
+    this.countersService.init()
   }
 
 }

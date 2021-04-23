@@ -12,8 +12,10 @@ export class CountersService {
 
   init() {
     if (isPlatformBrowser(this.platformId)) {
-      this._ensureGtag();
-      this._ensureFb();
+      setTimeout(() => {
+        this._ensureGtag();
+        this._ensureFb();
+      }, 3000);
     }
   }
 
