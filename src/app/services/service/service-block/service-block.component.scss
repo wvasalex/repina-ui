@@ -50,13 +50,13 @@
   transform-origin: left top;
 }
 
-:host:not([editor]) {
+:host:not(.editor) {
   .row-column {
     align-items: center;
   }
 }
 
-:host[editor="true"] {
+:host.editor {
   .add-element {
     display: block;
     margin: 4rem auto;

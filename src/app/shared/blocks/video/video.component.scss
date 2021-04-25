@@ -7,7 +7,7 @@ r-video {
   height: 100% !important;
   outline: none;
 
-  &[editor=true] {
+  &.editor {
     .upload {
       opacity: .35;
       transform: scale(1);

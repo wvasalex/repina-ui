@@ -14,7 +14,7 @@ export class NavListComponent implements OnInit {
   @Output() sortGroup: EventEmitter<any> = new EventEmitter<any>();
 
   @Input() blocks: StrMap<string>[][];
-  @Input() @HostBinding('attr.editor') editor: boolean;
+  @Input() @HostBinding('class.editor') editor: boolean;
 
   public primaryBlock: StrMap<string>[];
 

@@ -1,10 +1,4 @@
-<ng-container *ngIf="sessionValid">
-  <r-seo [readonly]="false"></r-seo>
-</ng-container>
-
-<ng-container *ngIf="!sessionValid">
-  <r-seo [readonly]="true"></r-seo>
-</ng-container>
+<r-seo [readonly]="!sessionValid"></r-seo>
 
 <r-drawer
   *ngIf="drawerOpened"
@@ -26,7 +20,7 @@
   <ng-content select="[header]"></ng-content>
 </r-header>
 
-<r-sticky>
+<r-sticky *ngIf="platformBrowser">
   <r-menu
     (openDrawer)="$toggleDrawer(true)"
     (priceRequest)="$priceRequest()"

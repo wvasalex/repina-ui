@@ -1,21 +1,22 @@
+import { Subscription } from 'rxjs';
 import {
   ChangeDetectionStrategy,
   Component,
-  EventEmitter,
+  EventEmitter, Inject,
   Input,
   OnDestroy,
-  OnInit,
+  OnInit, PLATFORM_ID,
   Renderer2,
   TemplateRef,
   ViewChild,
 } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { BreakpointState } from '@angular/cdk/layout';
-import { Subscription } from 'rxjs';
+import { SessionService } from '@shared/services/session';
 import { BreakpointService } from '../breakpoint.service';
 import { drawerAnimation } from '../animations';
 import { RequestComponent } from './request/request.component';
-import { MatDialog } from '@angular/material/dialog';
-import { SessionService } from '@shared/services/session';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'r-page',
@@ -37,15 +38,15 @@ export class PageComponent implements OnInit, OnDestroy {
   @ViewChild(RequestComponent, {static: false}) requestViewChild: RequestComponent;
 
   public sessionValid: boolean = this.sessionService.isValid();
-
   public drawerOpened: boolean = false;
-
   public priceRequest: EventEmitter<void> = new EventEmitter<void>();
+  public platformBrowser: boolean = isPlatformBrowser(this.platformId);
 
   private _priceRequest: Subscription;
   private _observe: Subscription;
 
   constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
     private dialog: MatDialog,
     private renderer: Renderer2,
     private breakpointService: BreakpointService,

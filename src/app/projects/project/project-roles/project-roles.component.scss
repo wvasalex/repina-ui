@@ -6,7 +6,7 @@
   margin-top: 30px;
 }
 
-:host:not([editor=true]) {
+:host:not(.editor) {
   background: #000;
   * {
     color: #fff;

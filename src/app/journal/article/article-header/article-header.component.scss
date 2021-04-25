@@ -2,7 +2,7 @@
   display: block;
 }
 
-:host[editor="true"] {
+:host.editor {
   height: max-content;
 
   [image] {

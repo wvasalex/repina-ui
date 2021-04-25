@@ -3,7 +3,7 @@
   position: relative;
   width: 100%;
 
-  &[editor=true] {
+  &.editor {
     min-height: 80px;
     border: 1px dashed rgba(0, 0, 0, .05);
   }

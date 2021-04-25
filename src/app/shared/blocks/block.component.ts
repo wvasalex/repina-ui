@@ -10,7 +10,7 @@ export class BaseBlock {
   @Input() id: number;
   @Input() props: StrMap<string> = {};
   @Input() contentFile: string;
-  @Input() @HostBinding('attr.editor') editor: boolean = false;
+  @Input() @HostBinding('class.editor') editor: boolean = false;
   @Input() elements: any[];
   @Input() render;
   @Input() index: number = 0;
