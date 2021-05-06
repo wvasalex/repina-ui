@@ -13,13 +13,14 @@ export class CountersService {
   init() {
     if (isPlatformBrowser(this.platformId)) {
       setTimeout(() => {
+        this._ensureRoistat();
         this._ensureGtag();
         this._ensureFb();
-      }, 3000);
+      }, 2000);
     }
   }
 
-  _ensureGtag() {
+  private _ensureGtag() {
     (function (w, d, s, l, i) {
       if (d.getElementById('gtm')) {
         return;
@@ -41,7 +42,7 @@ export class CountersService {
     })(window, document, 'script', 'dataLayer', 'GTM-5BT3MQN');
   }
 
-  _ensureFb() {
+  private _ensureFb() {
     (function (f, b, e, v, n, t, s) {
       if (b.getElementById('fbpixel')) {
         return;
@@ -69,4 +70,22 @@ export class CountersService {
     fbq('track', 'PageView');
   }
 
+  private _ensureRoistat() {
+    (function (w, d, s, h, id) {
+      if (d.getElementById(id)) {
+        return;
+      }
+
+      w['roistatProjectId'] = id;
+      w['roistatHost'] = h;
+      var p = d.location.protocol === 'https:' ? 'https://' : 'http://';
+      var u = /^.*roistat_visit=[^;]+(.*)?$/.test(d.cookie) ? '/dist/module.js' : '/api/site/1.0/' + id + '/init?referrer=' + encodeURIComponent(d.location.href);
+      var js = d.createElement(s) as any;
+      js.id = id;
+      js.async = 1;
+      js.src = p + h + u;
+      var js2 = d.getElementsByTagName(s)[0];
+      js2.parentNode.insertBefore(js, js2);
+    })(window, document, 'script', 'cloud.roistat.com', '3f1e65d3c2424c977d1c1167d8628a6e');
+  }
 }

@@ -14,8 +14,6 @@ export class MangoService {
       return;
     }
 
-    this._ensureRoistat();
-
     this._ensureMango(() => {
       window['mgo'].getNumber('', function(e) {
         document.querySelectorAll('.mgo-number-12938').forEach(function(elem: HTMLElement) {
@@ -52,25 +50,6 @@ export class MangoService {
       p = d.getElementsByTagName('script')[0];
       p.parentNode.insertBefore(s, p);
     }(window, document, '//widgets.mango-office.ru/widgets/mango.js', 'mango-js', 'mgo'));
-  }
-
-  private _ensureRoistat() {
-    (function (w, d, s, h, id) {
-      if (d.getElementById(id)) {
-        return;
-      }
-
-      w['roistatProjectId'] = id;
-      w['roistatHost'] = h;
-      var p = d.location.protocol === 'https:' ? 'https://' : 'http://';
-      var u = /^.*roistat_visit=[^;]+(.*)?$/.test(d.cookie) ? '/dist/module.js' : '/api/site/1.0/' + id + '/init?referrer=' + encodeURIComponent(d.location.href);
-      var js = d.createElement(s) as any;
-      js.id = id;
-      js.async = 1;
-      js.src = p + h + u;
-      var js2 = d.getElementsByTagName(s)[0];
-      js2.parentNode.insertBefore(js, js2);
-    })(window, document, 'script', 'cloud.roistat.com', '3f1e65d3c2424c977d1c1167d8628a6e');
   }
 
 }
