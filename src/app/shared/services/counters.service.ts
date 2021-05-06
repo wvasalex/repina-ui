@@ -16,7 +16,7 @@ export class CountersService {
         this._ensureRoistat();
         this._ensureGtag();
         this._ensureFb();
-      }, 2000);
+      }, 3000);
     }
   }
 
