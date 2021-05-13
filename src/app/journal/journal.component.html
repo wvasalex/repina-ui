@@ -15,7 +15,10 @@
         [routerLink]="tag.value ? ['/blog', 'tag', tag.value] : ['/blog']"
         [class.mr-1]="!last"
       >
-        <r-badge [routerLinkActive]="tag.value ? 'selected': ''">
+        <r-badge
+          [routerLinkActive]="tag.value ? 'selected': ''"
+          class="mt-1"
+        >
           {{tag.label}}
         </r-badge>
       </a>
