@@ -36,6 +36,10 @@ const routes: Routes = [
     loadChildren: () => import('./lists/lists.module').then((m) => m.ListsModule),
   },
   {
+    path: 'ref',
+    loadChildren: () => import('./ref/ref.module').then((m) => m.RefModule),
+  },
+  {
     path: '404',
     loadChildren: () => import('./notfound/notfound.module').then((m) => m.NotfoundModule),
   },

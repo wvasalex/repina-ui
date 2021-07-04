@@ -1,0 +1,10 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.bg {
+  background: url('/assets/pictures/auth/bg.png') center no-repeat;
+  background-size: cover;
+  flex: 1.5;
+}

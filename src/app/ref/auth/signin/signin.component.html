@@ -1,0 +1,56 @@
+<form
+  (submit)="$submit($event)"
+  [formGroup]="formGroup"
+  class="mt-5"
+>
+  <h2>
+    Регистрация
+  </h2>
+
+  <r-input
+    [required]="true"
+    [error]="$getError('name')"
+    formControlName="name"
+    placeholder="Имя"
+    class="mt-2"
+  ></r-input>
+  <r-input
+    [required]="true"
+    [error]="$getError('phone')"
+    formControlName="email"
+    placeholder="Телефон"
+    class="mt-4"
+  ></r-input>
+  <r-input
+    [required]="true"
+    [error]="$getError('code')"
+    formControlName="code"
+    placeholder="Код из СМС"
+    class="mt-4"
+  ></r-input>
+  <r-input
+    formControlName="password"
+    placeholder="Пароль"
+    class="mt-4"
+  ></r-input>
+
+  <r-button
+    (click)="$submit($event)"
+    [disabled]="submitted | async"
+    type="submit"
+    class="mt-4"
+  >
+    Зарегистрироваться
+  </r-button>
+
+  <r-checkbox
+    formControlName="policy"
+    class="mt-1_5"
+  >
+    <div class="description text16 mt-1_5">
+      Я подтверждаю согласие на обработку персональных данных в соответствии с условиями <a href="/assets/policy.pdf" target="_blank">Информационной политики</a>
+    </div>
+  </r-checkbox>
+
+  <input type="submit" style="display: none"/>
+</form>

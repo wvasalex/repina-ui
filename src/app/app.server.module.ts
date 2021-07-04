@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { ServerModule, ServerTransferStateModule } from '@angular/platform-server';
 
+import { environment } from '../environments/environment';
 import { AppModule } from './app.module';
 import { AppComponent } from './app.component';
-import { API_BASE_CONFIG } from './shared/services/api/api.model';
+import { API_BASE_CONFIG } from '@shared/services/api/api.model';
 
 @NgModule({
   imports: [
@@ -15,7 +16,7 @@ import { API_BASE_CONFIG } from './shared/services/api/api.model';
     {
       provide: API_BASE_CONFIG,
       useValue: {
-        host: 'https://repinabranding.ru',
+        host: environment.host,
         base: '/api/v1',
       },
     },
