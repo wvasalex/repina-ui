@@ -56,4 +56,4 @@ jobs:
         host: ${{ secrets.SERVER_DEV_IP }}
         username: ${{ secrets.SERVER_DEV_USERNAME }}
         key: ${{ secrets.DEV_SSH_KEY }}
-        script: systemctl restart ssr
+        script: sudo service ssr restart
