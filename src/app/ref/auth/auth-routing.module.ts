@@ -9,10 +9,6 @@ import { RestoreComponent } from './restore/restore.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'auth',
-  },
-  {
-    path: 'auth',
     component: AuthComponent,
     children: [
       {

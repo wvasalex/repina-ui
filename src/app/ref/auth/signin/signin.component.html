@@ -43,6 +43,17 @@
     Зарегистрироваться
   </r-button>
 
+  <div class="row mt-2_5 space-between">
+    <a
+      [routerLink]="['signin']"
+      class="underline text24 bolder"
+    >Войти</a>
+    <a
+      [routerLink]="['restore']"
+      class="underline text24 bolder"
+    >Забыли пароль?</a>
+  </div>
+
   <r-checkbox
     formControlName="policy"
     class="mt-1_5"
