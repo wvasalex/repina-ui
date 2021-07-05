@@ -3,11 +3,14 @@
 <div class="row h-100">
   <r-padding
     [horizontal]="false"
+    class="left"
   >
     <a [routerLink]="['/']">
       <r-logo [menuColor]="'white'"></r-logo>
     </a>
     <router-outlet></router-outlet>
   </r-padding>
-  <div class="bg"></div>
+  <div class="right">
+    <div class="bg"></div>
+  </div>
 </div>

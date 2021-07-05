@@ -1,0 +1,22 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+  background: #000;
+  padding-top: 12px;
+
+  * {
+    color: #fff;
+  }
+}
+
+.item {
+  outline: none;
+  padding: 12px 24px;
+  cursor: pointer;
+
+  &.active {
+    text-decoration: underline;
+  }
+}

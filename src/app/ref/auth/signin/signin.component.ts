@@ -11,11 +11,8 @@ import { BehaviorSubject, Subscription } from 'rxjs';
 export class SigninComponent implements OnInit, OnDestroy {
 
   public formGroup: FormGroup = this.formBuilder.group({
-    name: [''],
-    email: [''],
-    code: [''],
+    phone: [''],
     password: [''],
-    policy: [false],
   });
 
   public submitted: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
