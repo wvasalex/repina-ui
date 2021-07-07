@@ -15,7 +15,7 @@ export class WithSessionDirective implements OnInit {
   }
 
   public ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId) && this.sessionService.isValid()) {
+    if (isPlatformBrowser(this.platformId) && this.sessionService.isAdmin()) {
       this.viewContainer.createEmbeddedView(this.templateRef);
     } else {
       this.viewContainer.clear();

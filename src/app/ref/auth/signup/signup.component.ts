@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BehaviorSubject, Subscription } from 'rxjs';
+import { ToasterService } from '@shared/toaster/toaster.service';
+import { SessionService } from '@shared/services/session';
 
 @Component({
   selector: 'r-signup',
@@ -11,18 +13,23 @@ import { BehaviorSubject, Subscription } from 'rxjs';
 export class SignupComponent implements OnInit, OnDestroy {
 
   public formGroup: FormGroup = this.formBuilder.group({
-    name: [''],
-    email: [''],
-    phone: [''],
-    code: [''],
-    password: [''],
-    policy: [false],
+    first_name: ['', [Validators.required]],
+    email: ['', [Validators.required]],
+    phone: ['', [Validators.required]],
+    code: ['', [Validators.required]],
+    password: ['', [Validators.required]],
+    policy: [false, [Validators.requiredTrue]],
   });
 
   public submitted: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private sub: Subscription;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private toaster: ToasterService,
+    private sessionService: SessionService,
+  ) {
+  }
 
   ngOnInit(): void {
     this.sub = this.formGroup.valueChanges.subscribe(() => {
@@ -36,6 +43,18 @@ export class SignupComponent implements OnInit, OnDestroy {
 
   public $submit(e) {
     e.preventDefault();
+
+    const {policy, code, ...value} = this.formGroup.value;
+
+    if (!policy) {
+      this.toaster.error('Пожалуйста, подтвердите согласие на обработку персональных данных!');
+      return;
+    }
+
+    value.verify_password = value.password;
+    const req = this.sessionService.signUp(value).toPromise();
+
+    this.toaster.wrapPromise(req, 'Регистрация прошла успешно!', 'Не удалось зарегистрироваться!');
   }
 
   public $getError(field: string): string {

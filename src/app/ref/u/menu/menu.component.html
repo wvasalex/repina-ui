@@ -1,6 +1,11 @@
+<r-logo
+  menuColor="black"
+  class="item logo"
+></r-logo>
+
 <a
   *ngFor="let item of items"
-  [routerLink]="['ref', 'u', item.href]"
+  [routerLink]="['/ref', 'u', item.href]"
   class="text32 item"
 >
   {{item.label}}

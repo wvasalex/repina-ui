@@ -16,7 +16,12 @@ button {
   transition: 100ms;
   cursor: pointer;
 
-  &:hover {
+  &:not([disabled]):hover {
     background: #000;
+  }
+
+  &[disabled] {
+    opacity: .5;
+    cursor: default;
   }
 }

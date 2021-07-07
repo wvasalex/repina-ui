@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SessionGuardService } from '@shared/services/session/guard/session-guard.service';
+import { RefComponent } from './ref.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'auth',
+    component: RefComponent,
   },
   {
     path: 'auth',
@@ -13,6 +15,7 @@ const routes: Routes = [
   {
     path: 'u',
     loadChildren: () => import('./u/u.module').then((m) => m.UModule),
+    canActivate: [SessionGuardService],
   },
 ];
 

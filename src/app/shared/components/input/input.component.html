@@ -5,6 +5,7 @@
   <input
       *ngIf="!textarea"
       (input)="writeValue($any($event.target).value)"
+      [type]="type"
       [value]="value"
       [placeholder]="placeholder"
       [disabled]="disabled"

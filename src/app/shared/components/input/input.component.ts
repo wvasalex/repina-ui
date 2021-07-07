@@ -20,7 +20,7 @@ import { errorAnimation } from '../../animations';
 })
 export class InputComponent implements ControlValueAccessor {
 
-  @Input() type: string = 'text';
+  @Input() type: 'text' | 'password' = 'text';
   @Input() placeholder: string = '';
   @Input() disabled = false;
   @Input() required: boolean = false;

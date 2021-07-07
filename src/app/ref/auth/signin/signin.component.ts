@@ -1,6 +1,9 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BehaviorSubject, Subscription } from 'rxjs';
+import { SessionService } from '@shared/services/session';
+import { ToasterService } from '@shared/toaster/toaster.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'r-signin',
@@ -11,14 +14,20 @@ import { BehaviorSubject, Subscription } from 'rxjs';
 export class SigninComponent implements OnInit, OnDestroy {
 
   public formGroup: FormGroup = this.formBuilder.group({
-    phone: [''],
-    password: [''],
+    phone: ['', [Validators.required]],
+    password: ['', [Validators.required]],
   });
 
   public submitted: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private sub: Subscription;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private sessionService: SessionService,
+    private toaster: ToasterService,
+  ) {
+  }
 
   ngOnInit(): void {
     this.sub = this.formGroup.valueChanges.subscribe(() => {
@@ -32,6 +41,12 @@ export class SigninComponent implements OnInit, OnDestroy {
 
   public $submit(e) {
     e.preventDefault();
+
+    const req = this.sessionService.signIn(this.formGroup.value).toPromise().then(() => {
+      this.router.navigate(['/ref/u/info']);
+    });
+
+    this.toaster.wrapPromise(req, 'Вы вошли в систему!', 'Не удалось войти!');
   }
 
   public $getError(field: string): string {

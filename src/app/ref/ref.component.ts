@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { SessionService } from '@shared/services/session';
 
 @Component({
   selector: 'r-ref',
@@ -7,9 +9,14 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 })
 export class RefComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private sessionService: SessionService,
+  ) {
+  }
 
   ngOnInit(): void {
+    this.router.navigate(this.sessionService.isValid() ? ['/ref/u/info'] : ['/ref/auth']);
   }
 
 }

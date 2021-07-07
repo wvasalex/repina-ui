@@ -8,6 +8,7 @@ import { StatModule } from '../stat/stat.module';
 import { PayModule } from '../pay/pay.module';
 import { UComponent } from './u.component';
 import { MenuComponent } from './menu/menu.component';
+import { SharedModule } from '@shared/components/shared.module';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { MenuComponent } from './menu/menu.component';
     InfoModule,
     StatModule,
     PayModule,
-  ]
+    SharedModule,
+  ],
 })
 export class UModule { }

@@ -9,8 +9,8 @@
 
   <r-input
     [required]="true"
-    [error]="$getError('name')"
-    formControlName="name"
+    [error]="$getError('first_name')"
+    formControlName="first_name"
     placeholder="Имя"
     class="mt-2"
   ></r-input>
@@ -44,7 +44,7 @@
 
   <r-button
     (click)="$submit($event)"
-    [disabled]="submitted | async"
+    [disabled]="formGroup.invalid || (submitted | async)"
     type="submit"
     class="mt-4"
   >
@@ -60,7 +60,7 @@
     <a
       [routerLink]="['..']"
       class="underline text24 bolder text-right"
-    >Войти</a>
+    >Вход</a>
   </div>
 
   <r-checkbox

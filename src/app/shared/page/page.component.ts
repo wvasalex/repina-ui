@@ -36,7 +36,7 @@ export class PageComponent implements OnInit, OnDestroy {
 
   @ViewChild(RequestComponent, {static: false}) requestViewChild: RequestComponent;
 
-  public sessionValid: boolean = this.sessionService.isValid();
+  public sessionValid: boolean = this.sessionService.isAdmin();
   public drawerOpened: boolean = false;
   public priceRequest: EventEmitter<void> = new EventEmitter<void>();
   public platformBrowser: boolean = isPlatformBrowser(this.platformId);
