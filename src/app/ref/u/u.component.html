@@ -1,5 +1,11 @@
-<r-ref-menu>
-
-</r-ref-menu>
+<r-ref-menu
+  (openDrawer)="$toggleDrawer(true)"
+></r-ref-menu>
 
 <div class="content"></div>
+
+<r-ref-drawer
+  *ngIf="drawerOpened"
+  (closeDrawer)="$toggleDrawer(false)"
+  @drawerAnimation
+></r-ref-drawer>

@@ -56,7 +56,7 @@ export class MenuComponent implements OnInit {
     }).subscribe();*/
 
     /*this.menuService.post({
-      block_type: 'menu',
+      block_type: 'ref-menu',
       props: {},
       is_enabled: true,
       content_elements: [

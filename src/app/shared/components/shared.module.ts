@@ -37,6 +37,7 @@ import { FormsModule } from '@angular/forms';
 import { HrefPipe } from '@shared/components/href.pipe';
 import { ViewportIntersectDirective } from '@shared/components/viewport-intersect.directive';
 import { NoindexComponent } from './noindex/noindex.component';
+import { BurgerComponent } from '@shared/components/burger/burger.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { NoindexComponent } from './noindex/noindex.component';
     HrefPipe,
     ViewportIntersectDirective,
     NoindexComponent,
+    BurgerComponent,
   ],
   exports: [
     LogoComponent,
@@ -104,6 +106,7 @@ import { NoindexComponent } from './noindex/noindex.component';
     InputErrorComponent,
     ViewportIntersectDirective,
     NoindexComponent,
+    BurgerComponent,
   ],
   imports: [
     CommonModule,

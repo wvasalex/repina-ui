@@ -12,3 +12,7 @@
   box-sizing: border-box;
   overflow: auto;
 }
+
+.w768 :host, .w320 :host {
+  flex-direction: column;
+}
