@@ -1,0 +1,46 @@
+<form
+  (submit)="$submit($event)"
+  [formGroup]="formGroup"
+  class="mt-5"
+>
+  <h2>
+    Вход
+  </h2>
+
+  <r-input
+    [required]="true"
+    [error]="$getError('phone')"
+    formControlName="phone"
+    placeholder="Телефон"
+    class="mt-4"
+  ></r-input>
+  <r-input
+    [required]="true"
+    type="password"
+    formControlName="password"
+    placeholder="Пароль"
+    class="mt-4"
+  ></r-input>
+
+  <r-button
+    (click)="$submit($event)"
+    [disabled]="submitted | async"
+    type="submit"
+    class="mt-4"
+  >
+    Войти
+  </r-button>
+
+  <div class="row mt-2_5 space-between">
+    <a
+      [routerLink]="['restore']"
+      class="underline text24 bolder"
+    >Забыли пароль?</a>
+    <a
+      [routerLink]="['signup']"
+      class="underline text24 bolder text-right"
+    >Регистрация</a>
+  </div>
+
+  <input type="submit" style="display: none"/>
+</form>

@@ -1,0 +1,59 @@
+name: Repina-ui-dev CI
+
+on:
+  workflow_dispatch:
+    inputs:
+      git-ref:
+        description: Git Ref (Optional)    
+        required: false
+
+jobs:
+  build:
+ 
+    runs-on: ubuntu-latest
+ 
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '14'
+
+    - uses: actions/cache@v1
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+          
+    - run: npm install > /dev/null
+    - run: npm install -g @angular/cli > /dev/null
+    - run: ng build --prod --cross-origin=use-credentials
+    - run: ng run repina:server:production
+
+    - name: copy file via ssh key
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.SERVER_DEV_IP }}
+        username: ${{ secrets.SERVER_DEV_USERNAME }}
+        key: ${{ secrets.DEV_SSH_KEY }}
+        source: "dist/browser/"
+        target: "/home/ma/repinabranding/front/browser/"
+        strip_components: 2
+  
+    - name: copy server file via ssh key
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.SERVER_DEV_IP }}
+        username: ${{ secrets.SERVER_DEV_USERNAME }}
+        key: ${{ secrets.DEV_SSH_KEY }}
+        source: "dist/server/"
+        target: "/home/ma/repinabranding/front/server/"
+        strip_components: 2
+    
+    - name: restart ssr systemd
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SERVER_DEV_IP }}
+        username: ${{ secrets.SERVER_DEV_USERNAME }}
+        key: ${{ secrets.DEV_SSH_KEY }}
+        script: sudo service ssr restart

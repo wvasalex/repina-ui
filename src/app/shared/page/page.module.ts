@@ -29,6 +29,7 @@ import { CookieModule } from 'ngx-cookie';
     PageComponent,
     RequestComponent,
     RequestDirective,
+    HeaderComponent,
   ],
   imports: [
     CookieModule.forChild(),

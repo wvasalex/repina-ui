@@ -10,14 +10,16 @@ export class CountersService {
 
   constructor(@Inject(PLATFORM_ID) private platformId: any) { }
 
-  init() {
+  init(): boolean {
     if (isPlatformBrowser(this.platformId)) {
       setTimeout(() => {
         this._ensureRoistat();
         this._ensureGtag();
         this._ensureFb();
       }, 3000);
+      return true;
     }
+    return false;
   }
 
   private _ensureGtag() {

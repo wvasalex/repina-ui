@@ -1,0 +1,30 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.left {
+  padding-right: 10% !important;
+}
+
+.right {
+  flex: 1.5;
+}
+
+.bg {
+  position: fixed;
+  width: 60%;
+  height: 100%;
+  background: url('/assets/pictures/auth/bg.png') center no-repeat;
+  background-size: cover;
+}
+
+.w320 :host {
+  .left {
+    padding-right: 12px !important;
+  }
+
+  .right {
+    display: none;
+  }
+}

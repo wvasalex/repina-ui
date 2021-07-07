@@ -1,0 +1,7 @@
+<a
+  *ngFor="let item of items"
+  [routerLink]="['ref', 'u', item.href]"
+  class="text32 item"
+>
+  {{item.label}}
+</a>

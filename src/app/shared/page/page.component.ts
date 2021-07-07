@@ -2,18 +2,17 @@ import { Subscription } from 'rxjs';
 import {
   ChangeDetectionStrategy,
   Component,
-  EventEmitter, Inject,
+  EventEmitter,
+  Inject,
   Input,
   OnDestroy,
-  OnInit, PLATFORM_ID,
-  Renderer2,
+  OnInit,
+  PLATFORM_ID,
   TemplateRef,
   ViewChild,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { BreakpointState } from '@angular/cdk/layout';
 import { SessionService } from '@shared/services/session';
-import { BreakpointService } from '../breakpoint.service';
 import { drawerAnimation } from '../animations';
 import { RequestComponent } from './request/request.component';
 import { isPlatformBrowser } from '@angular/common';
@@ -43,38 +42,18 @@ export class PageComponent implements OnInit, OnDestroy {
   public platformBrowser: boolean = isPlatformBrowser(this.platformId);
 
   private _priceRequest: Subscription;
-  private _observe: Subscription;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     private dialog: MatDialog,
-    private renderer: Renderer2,
-    private breakpointService: BreakpointService,
     private sessionService: SessionService,
     ) {
   }
 
   ngOnInit(): void {
-    if (typeof window === 'undefined') {
+    if (!this.platformBrowser) {
       return;
     }
-
-    this._observe = this.breakpointService.change$.subscribe((result: BreakpointState) => {
-      const w = window.innerWidth;
-      const breakpoints = [2048, 1920, 1366, 1024, 768, 320];
-      let cn = breakpoints.find((breakpoint) => w > breakpoint) || 320;
-
-      if (typeof window !== 'undefined' && cn != 320) {
-        if ('ontouchstart' in window ||
-          (window['DocumentTouch'] && document instanceof window['DocumentTouch'])) {
-          cn = 320;
-        }
-      }
-
-      if (typeof document !== 'undefined') {
-        this.renderer.setAttribute(document.documentElement, 'class', 'w' + cn);
-      }
-    });
 
     this._priceRequest = this.priceRequest.subscribe(() => {
       this.$priceRequest();
@@ -82,7 +61,6 @@ export class PageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this._observe?.unsubscribe();
     this._priceRequest?.unsubscribe();
   }
 
