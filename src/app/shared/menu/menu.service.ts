@@ -26,7 +26,7 @@ export class MenuService extends RestService {
         });
       }),
       map((menu: ContentBlock) => {
-        menu.content_elements.sort((a, b) => {
+        menu?.content_elements.sort((a, b) => {
           return a.position - b.position;
         });
         return menu;

@@ -1,0 +1,35 @@
+:host {
+  display: flex;
+  flex-direction: row;
+}
+
+.content {
+  margin-left: 80px;
+}
+
+.w1366 :host {
+  .content {
+    margin-left: 64px;
+  }
+}
+
+.w1024 :host {
+  .content {
+    margin-left: 32px;
+  }
+}
+
+.w768 :host {
+  .content {
+    margin-left: 32px;
+  }
+}
+
+.w320 :host {
+  flex-direction: column;
+
+  .content {
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+}

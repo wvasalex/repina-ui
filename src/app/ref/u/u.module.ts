@@ -11,12 +11,11 @@ import { UComponent } from './u.component';
 import { RefMenuComponent } from './ref-menu/ref-menu.component';
 import { RefDrawerComponent } from './ref-drawer/ref-drawer.component';
 
-
 @NgModule({
   declarations: [
     UComponent,
     RefMenuComponent,
-    RefDrawerComponent
+    RefDrawerComponent,
   ],
   imports: [
     CommonModule,
@@ -26,6 +25,8 @@ import { RefDrawerComponent } from './ref-drawer/ref-drawer.component';
     StatModule,
     PayModule,
     SharedModule,
+  ],
+  exports: [
   ],
 })
 export class UModule { }

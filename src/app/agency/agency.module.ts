@@ -58,6 +58,7 @@ import { FormsModule } from '@angular/forms';
     AgencyAchievementsComponent,
     AgencyAwardsComponent,
     AgencyCustomersComponent,
+    AgencyGalleryComponent,
   ],
 })
 export class AgencyModule {

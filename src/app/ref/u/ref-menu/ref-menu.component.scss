@@ -19,7 +19,6 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  min-height: 120px;
 }
 
 .item {
@@ -45,11 +44,6 @@
 }
 
 :host.embed {
-  .text32 {
-    font-size: 52px;
-    line-height: 80px;
-  }
-
   .spacer {
     display: initial;
   }
@@ -58,11 +52,16 @@
 .w768 :host, .w320 :host {
   padding: 0 4rem;
 
+  .main {
+    min-height: 120px;
+  }
+
   &:not(.embed) {
+    height: auto;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    height: 120px;
+    min-height: 120px;
 
     .spacer, .item {
       display: none;
@@ -85,5 +84,19 @@
   r-logo {
     width: 184px !important;
     height: 55px !important;
+  }
+}
+
+.w768 :host {
+  .text32 {
+    font-size: 52px;
+    line-height: 80px;
+  }
+}
+
+.w320 :host {
+  .text32 {
+    font-size: 32px;
+    line-height: 40px;
   }
 }
