@@ -1,0 +1,26 @@
+
+.main-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 4rem;
+}
+
+.customers {
+  padding: 4rem 0;
+
+  ::ng-deep [prop="title"] {
+    padding-left: 0;
+  }
+
+  ::ng-deep r-marquee {
+    margin-left: -20%;
+    width: 140%;
+  }
+}
+
+.w320 :host {
+  .awards {
+    margin-left: -12px;
+    width: calc(100% + 24px);
+  }
+}

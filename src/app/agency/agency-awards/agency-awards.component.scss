@@ -56,3 +56,32 @@
     display: table;
   }
 }
+
+:host.embed {
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+  }
+
+  .arrows {
+    margin: 0;
+  }
+
+  .pv-128 {
+    padding-top: 4rem !important;
+    padding-bottom: 4rem !important;
+  }
+}
+
+.w320 :host.embed {
+  .header {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .arrows {
+    margin-top: 6rem;
+  }
+}

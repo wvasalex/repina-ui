@@ -2,12 +2,11 @@
   (openDrawer)="$toggleDrawer(true)"
 ></r-ref-menu>
 
-<r-padding
-  [horizontal]="false"
+<div
   class="content"
 >
   <router-outlet></router-outlet>
-</r-padding>
+</div>
 
 <r-ref-drawer
   *ngIf="drawerOpened"

@@ -37,6 +37,10 @@ export class AgencyService extends RestService {
     return this.getBlockByType('agency-achievements');
   }
 
+  public getGallery(): Observable<ContentBlock> {
+    return this.getBlockByType('agency-gallery');
+  }
+
   public getAwards(): Observable<ContentListItem[]> {
     return this.listsService.get({
       list_type: 'awards',

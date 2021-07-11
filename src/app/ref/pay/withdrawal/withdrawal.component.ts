@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'r-pay',
-  templateUrl: './pay.component.html',
-  styleUrls: ['./pay.component.scss'],
+  selector: 'r-withdrawal',
+  templateUrl: './withdrawal.component.html',
+  styleUrls: ['./withdrawal.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PayComponent implements OnInit {
+export class WithdrawalComponent implements OnInit {
 
   constructor() { }
 

@@ -2,6 +2,12 @@
 
 :host {
   display: block;
+
+  &.w-100 {
+    button {
+      width: 100%;
+    }
+  }
 }
 
 button {

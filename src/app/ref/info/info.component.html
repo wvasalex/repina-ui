@@ -1,4 +1,5 @@
-<h2>Партнерская программа</h2>
+<div class="h1_5">Партнерская программа</div>
+
 <div class="text32 mt-1_5">
   Рекомендуйте нас, верьте в нас, зарабатывайте вместе с нами.
 </div>
@@ -7,12 +8,28 @@
   <div index>01</div>
 
   <div class="h3">Repina Branding</div>
-  <div>
+  <div class="mt-4">
     Ведущее брендинговое агентство России. Вы можете рекомендовать нас для разработки бренда, ребрендинга, создания
     нейминга, фирменного стиля и упаковки.
   </div>
 
-  <!--<r-agency-gallery></r-agency-gallery>-->
+  <r-agency-gallery
+    *ngIf="gallery$ | async as gallery"
+    [props]="gallery.props"
+    [elements]="gallery.content_elements"
+    class="mt-2"
+  >
+    {{gallery|json}}
+  </r-agency-gallery>
+
+  <a
+    href="/"
+    class="c-red underline"
+  >Сайт агентства</a>
+
+  <div class="mt-1_5">
+    Воспользуйтесь презентациями на странице Материалы, чтобы предоставить клиентам наиболее полную информацию о нашем опыте и проектах.
+  </div>
 </r-ref-block>
 
 <r-ref-block class="mt-5">

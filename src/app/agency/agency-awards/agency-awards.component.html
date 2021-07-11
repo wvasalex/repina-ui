@@ -3,8 +3,8 @@
   [horizontal]="false"
   class="pv-128"
 >
-  <div class="row-column">
-    <div>
+  <div [class.row-column]="!embed">
+    <div class="header">
       <r-md
         [editor]="editor"
         [props]="props"

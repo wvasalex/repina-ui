@@ -8,10 +8,30 @@
 
 .content {
   width: 100%;
+  padding: 52px 192px 52px 52px;
   box-sizing: border-box;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .w768 :host, .w320 :host {
   flex-direction: column;
+}
+
+.w1366 :host {
+  .content {
+    padding-right: 142px;
+  }
+}
+
+.w1024 :host, .w768 :host {
+  .content {
+    padding-right: 90px;
+  }
+}
+
+.w320 :host {
+  .content {
+    padding: 62px 12px;
+  }
 }

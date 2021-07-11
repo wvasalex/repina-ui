@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { slider } from '@shared/animations';
@@ -16,6 +16,8 @@ import { ContentListItem } from '../../lists/lists.model';
   ]
 })
 export class AgencyAwardsComponent extends BaseBlock {
+
+  @Input() @HostBinding('class.embed') embed: boolean = false;
 
   public awards$: Observable<ContentListItem[]> = this.agencyService.getAwards()
     .pipe(tap((awards: ContentListItem[]) => {

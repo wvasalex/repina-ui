@@ -50,3 +50,6 @@ $transition: 300ms ease-in-out 100ms;
 .p-b {
   padding-bottom: var(--padding-vertical, 0);
 }
+.c-red {
+  color: $color-red !important;
+}

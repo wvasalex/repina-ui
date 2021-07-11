@@ -1,4 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+import { ContentBlock } from '@shared/types';
 import { AgencyService } from '../../agency/agency.service';
 
 @Component({
@@ -9,12 +13,11 @@ import { AgencyService } from '../../agency/agency.service';
 })
 export class InfoComponent implements OnInit {
 
+  public gallery$: Observable<ContentBlock> = this.agencyService.getGallery();
+
   constructor(private agencyService: AgencyService) { }
 
   ngOnInit(): void {
-    this.agencyService.get().subscribe((a) => {
-      console.log(a);
-    });
   }
 
 }
