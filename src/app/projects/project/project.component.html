@@ -4,12 +4,12 @@
   [fullscreenBackgroundImage]="!mobile"
   [menuColor]="$menuColor(project)"
 >
-  <r-project-image
+  <r-project-media
     *ngIf="mobile"
     [contentFile]="$background(project)"
-    [rAspectRatio]="1"
+    [props]="{autoplay: true}"
     class="d-block mt-16"
-  ></r-project-image>
+  ></r-project-media>
 
   <r-blocks-render
     [render]="render"
