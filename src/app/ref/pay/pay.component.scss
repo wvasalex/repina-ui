@@ -1,0 +1,10 @@
+.amount {
+  max-width: 480px;
+}
+
+.w2048 :host, .w1920 :host {
+  .amount {
+    max-width: 780px;
+  }
+}
+

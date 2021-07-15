@@ -1,0 +1,10 @@
+<div
+  *ngFor="let item of items"
+  class="column"
+>
+  <div class="header h3">
+    <div>{{item.label}}</div>
+    <r-icon name="ref/portfolio"></r-icon>
+  </div>
+  <img [src]="'assets/pictures/ref/' + item.icon">
+</div>

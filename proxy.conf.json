@@ -1,7 +1,7 @@
 {
   "/api": {
-    "target": "http://5.63.158.46",
-    "_" : "https://repinadev.millionagents.com",
+    "_": "http://5.63.158.46",
+    "target" : "https://repinadev.millionagents.com",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug"

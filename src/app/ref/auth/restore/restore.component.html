@@ -14,16 +14,32 @@
     placeholder="Телефон"
     class="mt-4"
   ></r-input>
-  <r-input
-    [required]="true"
-    formControlName="password"
-    placeholder="Пароль"
-    class="mt-4"
-  ></r-input>
+
+  <ng-container *ngIf="sms$ | async">
+    <r-input
+      [required]="true"
+      formControlName="token"
+      placeholder="Код из sms"
+      class="mt-4"
+    ></r-input>
+    <r-input
+      [required]="true"
+      formControlName="new_password1"
+      placeholder="Новый пароль"
+      class="mt-4"
+    ></r-input>
+    <r-input
+      [required]="true"
+      formControlName="new_password2"
+      placeholder="Повторите пароль"
+      class="mt-4"
+    ></r-input>
+  </ng-container>
 
   <r-button
     (click)="$submit($event)"
-    [disabled]="submitted | async"
+    [disabled]="formGroup.invalid || (submitted$ | async)"
+    [fullwidth]="true"
     type="submit"
     class="mt-4"
   >
@@ -32,9 +48,9 @@
 
   <div class="row mt-2_5 space-between">
     <a
-      [routerLink]="['restore']"
+      [routerLink]="['..']"
       class="underline text24 bolder"
-    >Забыли пароль?</a>
+    >Вход</a>
     <a
       [routerLink]="['signup']"
       class="underline text24 bolder text-right"

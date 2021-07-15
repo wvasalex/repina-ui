@@ -25,6 +25,7 @@
   <r-button
     (click)="$submit($event)"
     [disabled]="formGroup.invalid || (submitted | async)"
+    [fullwidth]="true"
     type="submit"
     class="mt-4"
   >

@@ -41,6 +41,10 @@ export class SessionService  {
     return this.api.postStream('/registration/', data);
   }
 
+  public restorePassword(data): Observable<any> {
+    return this.api.postStream('/set_password/', data);
+  }
+
   public confirmPhone(phone: string, token?: string) {
     const data: StrMap<string> = {phone};
     if (token) {
